@@ -57,7 +57,11 @@ const TRACKS = [
 const FAQ = [
   {
     q: 'Is this tax-deductible?',
-    a: 'Yes, for eligible initiatives. ZAO Festivals collaborates with ENTERACT for production and execution support, with eligible public funding administered through New Media Commons, a fiscally sponsored project of Fractured Atlas (the 501(c)(3) public charity). Tax-deductible support routed this way comes with proper documentation issued by Fractured Atlas.',
+    a: 'Yes, if you take the public path. ZAO Festivals offers two sponsor paths. Public path: funds route through Fractured Atlas (501(c)(3) public charity) and New Media Commons (a fiscally sponsored project of Fractured Atlas), then through ENTERACT for production. Tax receipt issued by Fractured Atlas. Standard 6-8% admin via FA plus 2% ENTERACT treasury. Net to production around 90-92%.',
+  },
+  {
+    q: 'Can we sponsor without the tax-deductible piece?',
+    a: 'Yes, take the commercial path. Direct sponsorship through ENTERACT (2% treasury), no Fractured Atlas admin fee. Payment is 50% upfront, 50% before delivery. Net to production around 98%. Faster and simpler if you do not need the tax receipt - the trade-off is no charitable deduction.',
   },
   {
     q: 'What do you do with the funds?',

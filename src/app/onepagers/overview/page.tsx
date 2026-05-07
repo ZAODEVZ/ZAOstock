@@ -115,7 +115,7 @@ const HOW_TO = [
   {
     role: 'Sponsors',
     detail:
-      '$500+ across 3 tiers. Local + national both welcome. Eligible support may be administered through New Media Commons, a fiscally sponsored project of Fractured Atlas, in coordination with ENTERACT.',
+      '$500+ across 3 tiers. Local + national both welcome. Two paths: tax-deductible (Fractured Atlas / New Media Commons + ENTERACT) or commercial (ENTERACT direct, 50% upfront / 50% before delivery).',
     cta: { label: 'Partner deck', href: '/sponsor/deck' },
   },
   {
