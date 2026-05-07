@@ -62,7 +62,7 @@ const SPONSOR_OFFERINGS = [
       'Post-event thank-you feature and recap',
       'Advisory seat for Year 2 planning',
       'Priority placement in 2027',
-      'Tax-deductible via Fractured Atlas 501(c)(3)',
+      'Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas',
     ],
   },
 ];
@@ -89,8 +89,9 @@ const PAST_EVENTS = [
 const PARTNERS = [
   { name: 'Heart of Ellsworth', role: 'Local promotion + Maine Craft Weekend coordination', confirmed: true, poc: 'Zaal' },
   { name: 'Town of Ellsworth', role: 'Parklet venue', confirmed: true, poc: 'Zaal' },
-  { name: 'Fractured Atlas', role: '501(c)(3) fiscal sponsor (via ENTERACT)', confirmed: true, poc: 'FailOften' },
-  { name: 'ENTERACT', role: 'Technical build', confirmed: true, poc: 'FailOften' },
+  { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives', confirmed: true, poc: 'FailOften' },
+  { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
+  { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
 ].filter((p) => p.confirmed);
 
 const NAV = [
@@ -162,6 +163,9 @@ export default async function TestPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-base sm:text-xl text-gray-300 leading-relaxed">
             A community-built outdoor music festival in Ellsworth, Maine. Independent artists. One stage. All day.
+          </p>
+          <p className="mt-3 max-w-2xl text-base sm:text-lg text-[#f5a623] font-medium leading-relaxed">
+            Walk in free. Stay because it is good. Friday Oct 3, Ellsworth Maine.
           </p>
           <div className="mt-10">
             <FactStrip facts={FACTS} />
@@ -244,7 +248,7 @@ export default async function TestPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-7">
-              <SectionHeader eyebrow="About" title="Built where every car to Acadia passes through." />
+              <SectionHeader eyebrow="About" title="Every car heading to Acadia passes through. Free to listen from the sidewalk." />
               <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed">
                 <p>
                   ZAOstock is The ZAO&apos;s flagship IRL music festival. A full-day outdoor showcase at the Franklin
@@ -279,12 +283,12 @@ export default async function TestPage() {
       {/* Manifesto + stats bento */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="How We Run It" title="Built by the community, for the community." />
+          <SectionHeader eyebrow="How We Run It" title="Built by 26 teammates, the local Ellsworth crew, and the artists who want this to exist." />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.12] border border-white/[0.12]">
-            <StatTile value="100%" label="To artist pay + materials" accent />
-            <StatTile value="Oct 3" label="2026 festival day" />
-            <StatTile value="6 hrs" label="Noon to 6 PM" />
-            <StatTile value="Free" label="To listen from sidewalks" />
+            <StatTile value="26" label="Teammates building this" accent />
+            <StatTile value="100+" label="ZAO community members" />
+            <StatTile value="2" label="Prior festivals (NYC + Miami)" />
+            <StatTile value="501(c)(3)" label="Funding via New Media Commons / Fractured Atlas" />
           </div>
         </div>
       </section>
@@ -292,7 +296,7 @@ export default async function TestPage() {
       {/* Crossroads of Downeast - location pride */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Where" title="Crossroads of Downeast." />
+          <SectionHeader eyebrow="Where" title="Crossroads of Downeast Maine - gateway to Acadia." />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
             <div className="lg:col-span-5 space-y-4">
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
@@ -347,7 +351,7 @@ export default async function TestPage() {
       {/* Partners */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Partners" title="Time + service. No checks written." />
+          <SectionHeader eyebrow="Partners" title="Partners give time and skill. No cash." />
           <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl mb-8">
             Partners give time, venue, and infrastructure - not money. Each one has a confirmed agreement and a dedicated point of contact on the ZAO team. Sponsorship tracks below.
           </p>
@@ -432,10 +436,9 @@ export default async function TestPage() {
       {/* Sponsorship */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Sponsors" title="Three paths. No tiers." />
+          <SectionHeader eyebrow="Sponsors" title="Three sponsorship tracks. Same level of recognition. Pick by what fits your goals." />
           <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl mb-8">
-            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Tax-deductible donations supporting
-            ZAOstock route through ENTERACT's fiscal sponsorship with Fractured Atlas, a 501(c)(3) public charity.
+            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Tax-deductible support for qualifying ZAO Festival initiatives may be administered through New Media Commons, a fiscally sponsored project of Fractured Atlas, in coordination with ENTERACT.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12]">
             {SPONSOR_OFFERINGS.map((g) => (

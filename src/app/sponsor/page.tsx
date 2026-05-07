@@ -6,7 +6,7 @@ import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 export const metadata: Metadata = {
   title: 'Sponsor ZAOstock | Community Music Festival',
   description:
-    'Partner with ZAOstock — a community-built outdoor music festival in Ellsworth, Maine. October 3, 2026. Tax-deductible via Fractured Atlas 501(c)(3).',
+    'Partner with ZAOstock — a community-built outdoor music festival in Ellsworth, Maine. October 3, 2026. Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas.',
   openGraph: {
     title: 'Sponsor ZAOstock | Community Music Festival',
     description:
@@ -36,7 +36,7 @@ const SPONSOR_TRACKS = [
       'Logo on zaostock.com (permanent)',
       'Featured in local press outreach (Ellsworth American, BDN)',
       'Wayfinding signage with your branding',
-      'Tax-deductible via Fractured Atlas 501(c)(3)',
+      'Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas',
     ],
   },
   {
@@ -64,7 +64,7 @@ const SPONSOR_TRACKS = [
       'Priority placement at ZAOVille (DMV) and future city expansions',
       'Advisory board seat for founding ecosystem partners',
       'Year-round partnership with quarterly reports',
-      'Tax-deductible via Fractured Atlas 501(c)(3)',
+      'Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas',
       'Multi-year commitment with first-pick renewal',
     ],
   },
@@ -223,9 +223,11 @@ export default function SponsorPage() {
           <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Tax-Deductible</p>
           <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 border border-[#f5a623]/30">
             <p className="text-sm text-gray-300 leading-relaxed">
-              ZAOstock activations are produced under ENTERACT, a fiscally sponsored project of
-              Fractured Atlas, a 501(c)(3) public charity. Donations supporting ZAOstock through
-              this channel may be tax-deductible to the extent allowed by law.
+              ZAO Festivals collaborates with ENTERACT for production and execution support, with
+              eligible public funding for qualifying ZAO Festival initiatives administered through
+              New Media Commons, a fiscally sponsored project of Fractured Atlas (a 501(c)(3) public
+              charity). Tax-deductible support routed this way comes with proper documentation issued
+              by Fractured Atlas.
             </p>
           </div>
         </section>
