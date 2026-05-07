@@ -322,7 +322,7 @@ export default async function StockPage() {
           <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Partner With Us</p>
           <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-2">
             <p className="text-sm text-gray-300 leading-relaxed">
-              No Gold / Silver / Bronze. Partners get named credit for the role they play: Main Stage Partner, Broadcast Partner, or Year-Round Partner. Three paths, plus flexible custom packages for Local Ellsworth businesses, digital creator brands, and ecosystem partners. Tax-deductible support for qualifying ZAO Festival initiatives may be administered through New Media Commons, a fiscally sponsored project of Fractured Atlas, in coordination with ENTERACT.
+              No Gold / Silver / Bronze. Partners get named credit for the role they play: Main Stage Partner, Broadcast Partner, or Year-Round Partner. Three sponsorship tracks, plus flexible custom packages for Local Ellsworth businesses, digital creator brands, and ecosystem partners. Two funding paths: a public path for tax-deductible support administered through New Media Commons (a fiscally sponsored project of Fractured Atlas, 501(c)(3)), or a commercial path direct through ENTERACT for sponsors who do not need a tax receipt.
             </p>
             <p className="text-xs text-gray-500">
               Full deck on request &middot; Reach out to start the conversation

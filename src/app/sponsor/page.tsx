@@ -218,16 +218,24 @@ export default function SponsorPage() {
           </p>
         </section>
 
-        {/* Tax Deductible */}
+        {/* Two paths */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Tax-Deductible</p>
-          <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 border border-[#f5a623]/30">
-            <p className="text-sm text-gray-300 leading-relaxed">
-              ZAO Festivals collaborates with ENTERACT for production and execution support, with
-              eligible public funding for qualifying ZAO Festival initiatives administered through
-              New Media Commons, a fiscally sponsored project of Fractured Atlas (a 501(c)(3) public
-              charity). Tax-deductible support routed this way comes with proper documentation issued
-              by Fractured Atlas.
+          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Two paths · pick what fits</p>
+          <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 border border-[#f5a623]/30 space-y-4">
+            <div>
+              <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Public · tax-deductible</p>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Donor or grant. Funds route through Fractured Atlas (501(c)(3)) and New Media Commons (a fiscally sponsored project of Fractured Atlas), then through ENTERACT for production. Tax receipt issued by Fractured Atlas. Standard admin fee 6-8% via Fractured Atlas plus 2% ENTERACT treasury.
+              </p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Commercial · sponsor-funded</p>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Direct sponsorship deal. Funds route through ENTERACT (2% treasury) to production. 50% upfront, 50% before delivery. No tax receipt. Faster, simpler, no fiscal sponsor admin.
+              </p>
+            </div>
+            <p className="text-xs text-gray-500 italic pt-1">
+              ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit. Eligible initiatives may use the public path for tax-deductible support.
             </p>
           </div>
         </section>

@@ -438,7 +438,7 @@ export default async function TestPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <SectionHeader eyebrow="Sponsors" title="Three sponsorship tracks. Same level of recognition. Pick by what fits your goals." />
           <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl mb-8">
-            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Tax-deductible support for qualifying ZAO Festival initiatives may be administered through New Media Commons, a fiscally sponsored project of Fractured Atlas, in coordination with ENTERACT.
+            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Two funding paths: a public path for tax-deductible support administered through New Media Commons (a fiscally sponsored project of Fractured Atlas, 501(c)(3)), or a commercial path direct through ENTERACT for sponsors who do not need a tax receipt. Pick the one that fits.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12]">
             {SPONSOR_OFFERINGS.map((g) => (
