@@ -137,6 +137,20 @@ export function EntryPage(props: EntryPageProps) {
               </Link>
             </div>
           </div>
+          <div className="mt-6 pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-gray-500">
+            <p>
+              Questions? Email{' '}
+              <a
+                href="mailto:info@thezao.com"
+                className="text-[#f5a623] hover:text-[#ffd700] transition-colors"
+              >
+                info@thezao.com
+              </a>
+            </p>
+            <p className="font-[family-name:var(--font-mono)] uppercase tracking-[0.18em] text-[10px] text-gray-600">
+              Onward to October
+            </p>
+          </div>
         </footer>
       </div>
     </div>

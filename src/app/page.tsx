@@ -232,6 +232,34 @@ export default async function StockPage() {
           </div>
         </section>
 
+        {/* Plug in - 3 entry doors */}
+        <section className="space-y-3">
+          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">How To Plug In</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link
+              href="/musicians"
+              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] rounded-xl p-4 border border-white/[0.08] hover:border-[#f5a623]/40 transition-colors"
+            >
+              <p className="font-bold text-white text-sm group-hover:text-[#f5a623] transition-colors">For Musicians</p>
+              <p className="text-xs text-gray-400 mt-1 leading-relaxed">Made music nobody&apos;s paying you to make? Submit for the lineup.</p>
+            </Link>
+            <Link
+              href="/artists"
+              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] rounded-xl p-4 border border-white/[0.08] hover:border-[#f5a623]/40 transition-colors"
+            >
+              <p className="font-bold text-white text-sm group-hover:text-[#f5a623] transition-colors">For Artists</p>
+              <p className="text-xs text-gray-400 mt-1 leading-relaxed">Build the visual identity. Posters, signage, installations, motion.</p>
+            </Link>
+            <Link
+              href="/event-organizers"
+              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] rounded-xl p-4 border border-white/[0.08] hover:border-[#f5a623]/40 transition-colors"
+            >
+              <p className="font-bold text-white text-sm group-hover:text-[#f5a623] transition-colors">For Organizers</p>
+              <p className="text-xs text-gray-400 mt-1 leading-relaxed">Run your own ZAO in your city. Next chapter could be yours.</p>
+            </Link>
+          </div>
+        </section>
+
         {/* Lineup */}
         <section className="space-y-3">
           <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Lineup</p>
