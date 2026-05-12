@@ -4,17 +4,17 @@ import { EntryPage } from '@/components/entry/EntryPage';
 export const metadata: Metadata = {
   title: 'For Artists · ZAOstock',
   description:
-    'Build the visual identity of a festival people remember. ZAOstock needs visual artists across the build - posters, signage, on-site installations, photography, motion. Your work becomes part of the ZAO Festivals lineage.',
+    'Visual artists, designers, photographers, and makers - we are taking interest. ZAOstock 2026 is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. If you want to bring visual energy to the build, reach out.',
   openGraph: {
     title: 'For Artists · ZAOstock 2026',
-    description: 'Build the visual identity of a festival people remember. Posters, signage, installations, motion. October 3, 2026.',
+    description: 'Visual artists - we are taking interest. Email info@thezao.com if you want to bring visual energy to ZAOstock.',
     url: 'https://zaostock.com/artists',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'For Artists · ZAOstock 2026',
-    description: 'Build the visual identity. Posters, signage, installations, motion.',
+    description: 'Visual artists - we are taking interest. Email info@thezao.com to talk.',
   },
 };
 
@@ -23,27 +23,22 @@ export default function ArtistsPage() {
     <EntryPage
       personaSlug="artists"
       personaLabel="Artists"
-      hero="Build the visual identity of a festival people remember."
-      subhead="ZAOstock needs visual artists across the build. Posters, signage, on-site installations, photography, motion graphics. Your work becomes part of the ZAO Festivals lineage that started in NYC and Miami."
+      hero="Visual artists - we are taking interest."
+      subhead="ZAOstock is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. We are not locking specifics for the visual side yet. If you do work that could fit - posters, signage, photography, motion, on-site - reach out and we will talk about how to participate."
       youGet={[
-        'Named credit on every surface your work appears - zaostock.com, social, day-of signage, recap content.',
-        'A real piece in your portfolio - a festival people travel to see.',
-        'Direct collaboration with Candy and DCoop on the brand kit and logo work.',
-        'Pay or revenue share depending on the project. Per-piece deals - we work it out together.',
-        'Day-of access plus crew shirt plus meals on site.',
-        'Eligible for the 5/10/15% finder and management fee structure if you bring a partner relationship.',
+        'A conversation with the ZAO team about how your work could fit into ZAOstock.',
+        'Named credit if your work makes it into the build.',
+        'Part of the ZAO Festivals lineage if it lands - PALOOZA NYC and CHELLA Miami came before.',
       ]}
       weAsk={[
-        'Bring your work or portfolio when you reach out. No pitch decks needed - just show what you make.',
-        'Be willing to iterate. This is a community-build, not a client deal.',
-        'Show up day-of if your work is on-site (installations, live photography, projection, etc).',
-        'Help share when we feature your work.',
+        'Show us what you make. Portfolio, links, samples - whatever lives where.',
+        'Be patient. We are working out what we can actually offer before we commit to anything.',
+        'Be honest about what you want in return so we can be honest about what we can do.',
       ]}
       ctas={[
-        { label: 'Send your portfolio', href: 'mailto:info@thezao.com?subject=ZAOstock%20Artist%20Portfolio', primary: true },
-        { label: 'Recommend an artist', href: 'mailto:info@thezao.com?subject=ZAOstock%20Artist%20Recommendation' },
+        { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Artist%20Interest', primary: true },
       ]}
-      footnote="Bring an idea, not a pitch deck. The team that ships the visual identity for ZAOstock 2026 carries that work forward into ZAOville, future festivals, and the broader ZAO Festivals brand kit."
+      footnote="We are not promising compensation, crew perks, or specific deliverables yet. We are taking interest from artists who want to participate and working out the details case by case. If this sounds like an opportunity, write us."
     />
   );
 }
