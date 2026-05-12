@@ -453,12 +453,13 @@ export default async function TestPage() {
       {/* Pro Ticket */}
       <section id="pro-ticket" className="my-16 sm:my-24 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Pro Ticket" title="Free to attend. $50 if you want to plug in deeper." />
+          <SectionHeader eyebrow="Pro Ticket" title="Free to attend. $50 for 20 people who want to plug in deeper." />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
             <div className="lg:col-span-7 space-y-4">
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                 ZAOstock is free for anyone who wants to show up. If you want to do more than show up - support the festival,
-                meet the team, find your way in - grab a Pro Ticket. Funds go straight into artist pay and production.
+                meet the team, find your way in - grab a Pro Ticket. Capped at 20 for this first round. Funds go straight
+                into artist pay and production.
               </p>
               <ul className="space-y-3 text-base text-gray-200 leading-relaxed">
                 <li className="flex gap-3">
@@ -481,10 +482,13 @@ export default async function TestPage() {
             </div>
             <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
               <div className="bg-[#0d1b2a] border border-[#f5a623]/30 p-6 sm:p-8">
-                <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">Pro Ticket</p>
+                <div className="flex items-baseline justify-between gap-3">
+                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">Pro Ticket</p>
+                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-gray-500">20 spots only</p>
+                </div>
                 <p className="font-bold text-white text-4xl sm:text-5xl tracking-tight mt-2">$50</p>
                 <p className="text-sm text-gray-400 mt-3 leading-relaxed">
-                  Limited window. Available in advance only - not at the gate.
+                  20 spots in this first round. Available in advance only - not at the gate.
                 </p>
                 <Link
                   href="/donate"
