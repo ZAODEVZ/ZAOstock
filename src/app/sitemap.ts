@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/musicians/submit',
     '/artists',
     '/event-organizers',
+    '/pitch',
     '/apply',
     '/suggest',
     '/donate',
