@@ -37,8 +37,8 @@ export default function MusiciansPage() {
         'Help share when we post your slot. We do the heavy lift on socials, you amplify.',
       ]}
       ctas={[
-        { label: 'Email us your music', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest', primary: true },
-        { label: 'Recommend a musician', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Recommendation' },
+        { label: 'Submit your music', href: '/musicians/submit', primary: true },
+        { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest' },
       ]}
       footnote="Submissions open until roughly one month before the event. Independent and ZAO-vetted only. This is not a pay-to-play festival."
     />
