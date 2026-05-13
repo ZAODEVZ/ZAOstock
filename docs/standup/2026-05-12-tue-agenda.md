@@ -44,7 +44,7 @@ Walk in this order:
 - Pro Ticket section - $50, 20 spots
 - Volunteer + Get on the list
 - Sponsors - 3 tracks (Main Stage / Broadcast / Year-Round)
-- Lineage - PALOOZA + CHELLA + ZAOville
+- Lineage - ZAO-PALOOZA + ZAO-CHELLA + ZAOville
 
 Ask the team:
 - Anything that reads wrong?
@@ -124,25 +124,28 @@ After audio plays:
 
 # Block 3A - ZAOfestivals intro post (paste-ready, plain text, no asterisks)
 
-ZAOstock 2026 planning is live.
+## Workflow change (locked May 12)
 
-Saturday October 3, 2026. Franklin Street Parklet, Ellsworth Maine. One stage, all day, independent artists with DJs between. Part of the 9th annual Art of Ellsworth during Maine Craft Weekend.
+Luma FIRST, then announce.
 
-This is chapter 3 in the ZAO Festivals series. PALOOZA in NYC (April 2024) and CHELLA in Miami (December 2024) came before. Both broke even. Both were built by the community for the community.
+Step 1: Create the ZAOstock 2026 Luma event using Block 3B below.
+Step 2: Copy the Luma URL.
+Step 3: Paste the Luma URL into the short announcement below where [LUMA URL] appears.
+Step 4: Post in ZAOfestivals chat, ZAO ops, and cascade out.
 
-We're opening the doors early on three sides:
+## Short announcement (with [LUMA URL] placeholder)
 
-Partners. Real partners who give time, venue, or infrastructure (not cash) in exchange for named credit and a seat at the table for year 2. We already have 5 locked: Heart of Ellsworth, Town of Ellsworth, New Media Commons via Fractured Atlas, ENTERACT, and Web3Metal.
+ZAOstock 2026
 
-Sponsors. Three sponsorship tracks, no Gold/Silver/Bronze tiers. Main Stage Sponsor, Broadcast Sponsor, Year-Round Sponsor. Two funding paths - a public path for tax-deductible support administered through New Media Commons (a fiscally sponsored project of Fractured Atlas, 501(c)(3)), or a commercial path direct through ENTERACT for sponsors who do not need a tax receipt. Custom packages available.
+Saturday October 3, 2026
+12:00 PM - 6:00 PM Eastern
+Franklin Street Parklet, Ellsworth Maine
 
-Artists. Musicians submitting for the lineup. Visual artists building the festival identity - posters, signage, installations, motion. Day-of crew that wants to plug in. All three doors are open at zaostock.com.
+Free to attend.
 
-Pro Tickets are open today. $50, 20 spots in round 1. Free to attend, paid only if you want to plug in deeper. Pro Ticket buyers get a 1:1 with the team before the event and we help them find a real way to get involved.
-
-Read the full thing at zaostock.com. Reach out to info@thezao.com if you want to talk.
-
-This is the festival that built itself.
+RSVP: [LUMA URL]
+More: https://zaostock.com
+Questions: info@thezao.com
 
 ---
 
@@ -173,7 +176,7 @@ Free to attend. Walk in from the sidewalk and stay because it is good.
 
 If you want to plug in deeper, a Pro Ticket is $50 (20 spots in round 1). Pro Ticket buyers get a 1:1 with someone on the ZAO team before the festival - we use that conversation to find you a real way to get involved.
 
-ZAOstock is chapter 3 in the ZAO Festivals series after PALOOZA (NYC, April 2024) and CHELLA (Miami, December 2024). Both prior festivals broke even.
+ZAOstock is chapter 3 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024) and ZAO-CHELLA (Miami, December 2024). Both prior festivals broke even.
 
 Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist. 100+ ZAO community members supporting from afar.
 

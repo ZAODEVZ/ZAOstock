@@ -30,19 +30,17 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 
 ## Partner tracks
 
-- Main Stage Partner ($500-$2,500): Local Ellsworth and Maine businesses. Named credit on stage, booth space, co-presented in printed materials.
-- Broadcast Partner ($1,000-$5,000): Digital creator brands and ecosystem partners. Livestream overlay, sponsored segment, social campaign across Farcaster + X + Bluesky + LinkedIn.
-- Year-Round Partner ($5,000+): Strategic long-term partners. All Broadcast credits plus Year 2 advisory seat and priority 2027 placement.
+- Main Stage Sponsor ($500+): Local Ellsworth and Maine businesses. Named credit on stage, booth space, co-presented in printed materials.
+- Broadcast Sponsor ($1,000+): Digital creator brands and ecosystem partners. Livestream overlay, sponsored segment, social campaign across Farcaster + X + Bluesky + LinkedIn.
+- Year-Round Sponsor ($5,000+): Strategic long-term partners. All Broadcast credits plus Year 2 advisory seat and priority 2027 placement.
+
+Two funding paths: public tax-deductible support administered through New Media Commons (a fiscally sponsored project of Fractured Atlas, 501(c)(3)) or commercial direct through ENTERACT for sponsors who do not need a tax receipt.
 
 ## Team
 
-15 members across four scopes:
-- Operations: Zaal (lead), Candy (2nd), FailOften, Hurric4n3Ike, Swarthy Hatter, Jango
-- Design: DaNici (lead), Shawn
-- Music: DCoop (2nd), AttaBotty
-- Finance: Tyler Stambaugh, Ohnahji B, DFresh, Craig G, Maceo
+27 teammates total across operations, design, music, finance, livestream, and content. Mickey (Thy Revolution) is the livestream team lead. Iman is interning with The ZAO and co-managing the info@thezao.com inbox while leading COC Concertz #6 with his Zambia squad.
 
-Every team member has a public profile at https://zaostock.com/team/m/[slug] with photo, bio, and links.
+Every team member has a public profile at https://zaostock.com/team/m/[slug] with photo, bio, and links. Current team grid lives at https://zaostock.com/team.
 
 ## Public form submissions
 

@@ -120,7 +120,7 @@ export function EntryPage(props: EntryPageProps) {
         <footer className="max-w-7xl mx-auto px-5 sm:px-8 mt-24 sm:mt-32 pt-10 border-t border-white/[0.06]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p className="text-xs text-gray-500 leading-relaxed">
-              ZAOstock is one chapter in the ZAO Festivals series. Past chapters: PALOOZA NYC (2024), CHELLA Miami (2024). Built by The ZAO, a community of 100+ independent musicians.
+              ZAOstock is one chapter in the ZAO Festivals series. Past chapters: ZAO-PALOOZA NYC (2024), ZAO-CHELLA Miami (2024). Built by The ZAO, a community of 100+ independent musicians.
             </p>
             <div className="flex gap-4 text-[11px] font-[family-name:var(--font-mono)] uppercase tracking-[0.18em] text-gray-500">
               <Link href="/musicians" className={`hover:text-white transition-colors ${personaSlug === 'musicians' ? 'text-[#f5a623]' : ''}`}>

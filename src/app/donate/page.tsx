@@ -156,7 +156,7 @@ export default function DonatePage() {
 
         {/* Stats bento - what's been raised + what's coming */}
         <section className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <StatTile value="$169" sub="Already raised" />
+          <StatTile value="Year 1" sub="First festival in Maine" />
           <StatTile value="5" sub="Past contributors" />
           <StatTile value="Oct 3" sub="2026 festival day" />
           <StatTile value="Maine" sub="Franklin St Parklet" />
