@@ -137,10 +137,18 @@ export default async function TestPage() {
               </Link>
             ))}
             <a
+              href="https://ticket.zaostock.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] px-3 py-1.5 rounded transition-colors"
+            >
+              RSVP
+            </a>
+            <a
               href="https://thezao.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-[#f5a623] hover:text-[#ffd700] transition-colors"
+              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-[#f5a623] hover:text-[#ffd700] transition-colors hidden sm:inline"
             >
               The ZAO
             </a>
@@ -181,12 +189,14 @@ export default async function TestPage() {
             <FactStrip facts={FACTS} />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Link
-              href="#rsvp"
+            <a
+              href="https://ticket.zaostock.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
             >
-              Get on the list
-            </Link>
+              RSVP free
+            </a>
             <Link
               href="#pro-ticket"
               className="border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
@@ -538,7 +548,7 @@ export default async function TestPage() {
             </div>
             <div className="bg-[#0d1b2a] p-8 sm:p-10">
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">Get on the list</h3>
+                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">RSVP</h3>
                 {counts.rsvps > 0 && (
                   <div className="text-right flex-shrink-0">
                     <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
@@ -551,7 +561,18 @@ export default async function TestPage() {
                 )}
               </div>
               <p className="text-sm text-gray-400 leading-relaxed mb-5">
-                Limited capacity. First to know when tickets drop and the lineup is announced.
+                RSVP on Luma to lock your spot and stay in the loop on the lineup. Free to attend.
+              </p>
+              <a
+                href="https://ticket.zaostock.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
+              >
+                RSVP on Luma -&gt;
+              </a>
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em] mt-6 mb-3">
+                Or just get notified by email
               </p>
               <RSVPForm eventSlug="zao-stock-2026" />
             </div>
