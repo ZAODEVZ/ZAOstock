@@ -130,7 +130,7 @@ Luma FIRST, then announce.
 
 Step 1: Create the ZAOstock 2026 Luma event using Block 3B below.
 Step 2: Copy the Luma URL.
-Step 3: Paste the Luma URL into the short announcement below where [LUMA URL] appears.
+Step 3: DONE - Luma is live. Public URL is ticket.zaostock.com (302 forward to luma.com/vhwv9n2h).
 Step 4: Post in ZAOfestivals chat, ZAO ops, and cascade out.
 
 ## Per-channel announcements (locked May 14, grilled)
@@ -150,7 +150,7 @@ Franklin Street Parklet, Ellsworth Maine
 
 Free to attend.
 
-RSVP to stay in the loop: [LUMA URL]
+RSVP to stay in the loop: ticket.zaostock.com
 More: zaostock.com
 Questions: info@thezao.com
 
@@ -160,7 +160,7 @@ ZAOstock 2026 - chapter 4 of ZAO Festivals.
 
 Outdoor music festival in Ellsworth, Maine. October 3. Free to attend.
 
-RSVP: [LUMA URL]
+RSVP: ticket.zaostock.com
 
 ### Notes from grilling
 
