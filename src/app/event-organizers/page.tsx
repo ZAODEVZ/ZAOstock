@@ -4,7 +4,7 @@ import { EntryPage } from '@/components/entry/EntryPage';
 export const metadata: Metadata = {
   title: 'For Event Organizers · ZAOstock',
   description:
-    'Built a community? Run your own ZAO. ZAOstock is the third event in the ZAO Festivals series after ZAO-PALOOZA NYC and ZAO-CHELLA Miami. The next one could be yours - in your city, with your community, under the umbrella.',
+    'Built a community? Run your own ZAO. ZAOstock is the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next one could be yours - in your city, with your community, under the umbrella.',
   openGraph: {
     title: 'For Organizers · ZAOstock 2026',
     description: 'Built a community? Run your own ZAO. The next chapter could be yours - in your city, with your community.',
@@ -24,7 +24,7 @@ export default function EventOrganizersPage() {
       personaSlug="event-organizers"
       personaLabel="Event Organizers"
       hero="Built a community? Run your own ZAO."
-      subhead="ZAOstock is the third event in the ZAO Festivals series after ZAO-PALOOZA NYC and ZAO-CHELLA Miami. The next chapter could be yours - in your city, with your community, under the ZAO Festivals umbrella."
+      subhead="ZAOstock is the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next chapter could be yours - in your city, with your community, under the ZAO Festivals umbrella."
       youGet={[
         'The full ZAOstock playbook - run-of-show, sponsor framework, fiscal sponsorship infrastructure (NMC + Fractured Atlas), finders fee structure, livestream rig, partner template.',
         'Access to the 100+ member ZAO music community for booking artists.',
@@ -42,7 +42,7 @@ export default function EventOrganizersPage() {
         { label: 'Schedule a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAOstock%20Event%20Organizer%20Intro', primary: true },
         { label: 'Ask about hosting a city', href: 'mailto:info@thezao.com?subject=ZAOstock%20City%20Host%20Inquiry' },
       ]}
-      footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (NYC, NFT NYC, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both broke even, both proved the model."
+      footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (NYC, NFT NYC, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both proved the model."
     />
   );
 }

@@ -130,22 +130,45 @@ Luma FIRST, then announce.
 
 Step 1: Create the ZAOstock 2026 Luma event using Block 3B below.
 Step 2: Copy the Luma URL.
-Step 3: Paste the Luma URL into the short announcement below where [LUMA URL] appears.
+Step 3: DONE - Luma is live. Public URL is ticket.zaostock.com (302 forward to luma.com/vhwv9n2h).
 Step 4: Post in ZAOfestivals chat, ZAO ops, and cascade out.
 
-## Short announcement (with [LUMA URL] placeholder)
+## Per-channel announcements (locked May 14, grilled)
+
+Two versions. Both attach the ZAOstock logo (/images/festivals/zao-stock-logo.jpeg).
+
+### TG version - ZAOfestivals chat + ZAO ops (personal voice)
+
+Alright - ZAOstock is officially on.
+
+Chapter 4 of ZAO Festivals - after ZAO-PALOOZA in NYC, ZAO-CHELLA in Miami, and ZAOville hitting the DMV this July.
 
 ZAOstock 2026
-
 Saturday October 3, 2026
 12:00 PM - 6:00 PM Eastern
 Franklin Street Parklet, Ellsworth Maine
 
 Free to attend.
 
-RSVP: [LUMA URL]
-More: https://zaostock.com
+RSVP to stay in the loop: ticket.zaostock.com
+More: zaostock.com
 Questions: info@thezao.com
+
+### Social version - X / Farcaster / Bluesky (dry broadcast)
+
+ZAOstock 2026 - chapter 4 of ZAO Festivals.
+
+Outdoor music festival in Ellsworth, Maine. October 3. Free to attend.
+
+RSVP: ticket.zaostock.com
+
+### Notes from grilling
+
+- Post's one job: share the Luma link. Not a marketing block.
+- RSVP framing stays soft ("stay in the loop") - no fake-scarcity perk.
+- Pro Ticket is NOT in this post - it gets its own follow-up post 2-3 days later.
+- ZAOville is lineage mention only, no separate CTA.
+- Chapter 4 (ZAO-PALOOZA, ZAO-CHELLA, ZAOville, then ZAOstock).
 
 ---
 
@@ -174,9 +197,11 @@ Saturday October 3, 2026 at the Franklin Street Parklet in downtown Ellsworth, M
 
 Free to attend. Walk in from the sidewalk and stay because it is good.
 
-If you want to plug in deeper, a Pro Ticket is $50 (20 spots in round 1). Pro Ticket buyers get a 1:1 with someone on the ZAO team before the festival - we use that conversation to find you a real way to get involved.
+The first round of crowdfunding starts now. We are asking 20 people for $50 each - that is the next $1,000 toward making ZAOstock happen. Everyone who chips in gets a Pro Ticket: a 1:1 with someone on the ZAO team before the festival, where we find you a real way to plug in.
 
-ZAOstock is chapter 3 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024) and ZAO-CHELLA (Miami, December 2024). Both prior festivals broke even.
+Send $50 to thezao.eth (0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB) or via PayPal at paypal.com/paypalme/zaalpanthaki.
+
+ZAOstock is chapter 4 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024), ZAO-CHELLA (Miami, December 2024), and ZAOville (DMV, July 2026). ZAO-PALOOZA broke even.
 
 Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist. 100+ ZAO community members supporting from afar.
 
