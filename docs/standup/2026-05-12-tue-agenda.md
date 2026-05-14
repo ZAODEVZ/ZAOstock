@@ -197,9 +197,11 @@ Saturday October 3, 2026 at the Franklin Street Parklet in downtown Ellsworth, M
 
 Free to attend. Walk in from the sidewalk and stay because it is good.
 
-If you want to plug in deeper, a Pro Ticket is $50 (20 spots in round 1). Pro Ticket buyers get a 1:1 with someone on the ZAO team before the festival - we use that conversation to find you a real way to get involved.
+The first round of crowdfunding starts now. We are asking 20 people for $50 each - that is the next $1,000 toward making ZAOstock happen. Everyone who chips in gets a Pro Ticket: a 1:1 with someone on the ZAO team before the festival, where we find you a real way to plug in.
 
-ZAOstock is chapter 4 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024), ZAO-CHELLA (Miami, December 2024), and ZAOville (DMV, July 2026). ZAO-PALOOZA and ZAO-CHELLA both broke even.
+Send $50 to thezao.eth (0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB) or via PayPal at paypal.com/paypalme/zaalpanthaki.
+
+ZAOstock is chapter 4 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024), ZAO-CHELLA (Miami, December 2024), and ZAOville (DMV, July 2026). ZAO-PALOOZA broke even.
 
 Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist. 100+ ZAO community members supporting from afar.
 

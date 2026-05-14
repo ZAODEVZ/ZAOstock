@@ -453,13 +453,13 @@ export default async function TestPage() {
       {/* Pro Ticket */}
       <section id="pro-ticket" className="my-16 sm:my-24 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Pro Ticket" title="Free to attend. $50 for 20 people who want to plug in deeper." />
+          <SectionHeader eyebrow="Pro Ticket" title="Free to attend. The first round of crowdfunding starts now." />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
             <div className="lg:col-span-7 space-y-4">
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                ZAOstock is free for anyone who wants to show up. If you want to do more than show up - support the festival,
-                meet the team, find your way in - grab a Pro Ticket. Capped at 20 for this first round. Funds go straight
-                into artist pay and production.
+                ZAOstock is free for anyone who wants to show up. The first round of crowdfunding starts now - we are
+                asking 20 people for $50 each, the next $1,000 toward making ZAOstock happen. Everyone who chips in gets
+                a Pro Ticket. Funds go straight into artist pay and production.
               </p>
               <ul className="space-y-3 text-base text-gray-200 leading-relaxed">
                 <li className="flex gap-3">
@@ -488,7 +488,7 @@ export default async function TestPage() {
                 </div>
                 <p className="font-bold text-white text-4xl sm:text-5xl tracking-tight mt-2">$50</p>
                 <p className="text-sm text-gray-400 mt-3 leading-relaxed">
-                  20 spots in this first round. Available in advance only - not at the gate.
+                  Round 1 goal: 20 people, $1,000. Send $50 to thezao.eth or via PayPal.
                 </p>
                 <Link
                   href="/donate"
@@ -497,7 +497,7 @@ export default async function TestPage() {
                   Get the Pro Ticket
                 </Link>
                 <p className="text-xs text-gray-500 mt-4 leading-relaxed text-center">
-                  Donation processed via PayPal or Giveth.<br />
+                  Send $50 to thezao.eth or paypal.com/paypalme/zaalpanthaki.<br />
                   After payment, email info@thezao.com so we can schedule your 1:1.
                 </p>
               </div>

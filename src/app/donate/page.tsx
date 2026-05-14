@@ -132,7 +132,10 @@ export default function DonatePage() {
               Send via Giveth
             </h2>
             <p className="text-sm text-gray-300 mt-3 leading-relaxed">
-              Wallet-to-wallet. USDC on Base preferred. Works on Ethereum, Base, Optimism, Polygon, Gnosis, Arbitrum, Celo.
+              Wallet-to-wallet to <span className="text-white font-mono">thezao.eth</span>. USDC on Base preferred. Works on Ethereum, Base, Optimism, Polygon, Gnosis, Arbitrum, Celo.
+            </p>
+            <p className="text-[10px] text-gray-500 mt-2 font-mono break-all">
+              0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB
             </p>
             <div className="flex-1" />
             <div className="mt-6 flex items-center justify-between">

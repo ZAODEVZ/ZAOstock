@@ -42,7 +42,7 @@ export default function EventOrganizersPage() {
         { label: 'Schedule a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAOstock%20Event%20Organizer%20Intro', primary: true },
         { label: 'Ask about hosting a city', href: 'mailto:info@thezao.com?subject=ZAOstock%20City%20Host%20Inquiry' },
       ]}
-      footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (NYC, NFT NYC, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both broke even, both proved the model."
+      footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (NYC, NFT NYC, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both proved the model."
     />
   );
 }

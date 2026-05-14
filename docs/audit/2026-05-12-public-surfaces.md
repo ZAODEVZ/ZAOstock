@@ -69,7 +69,7 @@ Just rewrote today (fix/artists-page-decommit-may12 - PR pending).
 | "Coaching from Zaal and the team during your first event" | COMMIT | Bandwidth commitment |
 | "Per-event revenue split. We work the deal out per-city" | KEEP | Open-ended, fine |
 | "First city to commit gets the slot" | COMMIT | Hard constraint, intentional? |
-| "Lineage: PALOOZA + CHELLA both broke even" | KEEP | True |
+| "Lineage: ZAO-PALOOZA + ZAO-CHELLA both broke even" | FIXED | Only ZAO-PALOOZA broke even - ZAO-CHELLA did not. Corrected May 14. |
 
 ---
 

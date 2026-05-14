@@ -103,7 +103,7 @@ const PLUG_IN_DOORS = [
   },
   {
     label: 'Supporters',
-    pitch: 'Free to attend. Pro Ticket $50 (20 spots round 1) includes a 1:1 with the team and a real way to plug in.',
+    pitch: 'Free to attend. Round 1 crowdfunding is live - 20 people, $50 each. Chip in, get a Pro Ticket + a 1:1 with the team.',
     href: '/#pro-ticket',
   },
 ];
@@ -165,12 +165,12 @@ export default async function PitchPage() {
           >
             A community-built music festival
             <br />
-            <span className="text-[#f5a623]">that paid for itself.</span>
+            <span className="text-[#f5a623]">that runs at break-even.</span>
           </h1>
           <p className="mt-8 max-w-3xl text-lg sm:text-2xl text-gray-300 leading-relaxed">
-            ZAOstock 2026 is the fourth chapter in the ZAO Festivals series. ZAO-PALOOZA in NYC and ZAO-CHELLA in Miami
-            both broke even. ZAOville hits the DMV this July. Now we are taking the model to Ellsworth, Maine - on the
-            road to Acadia, during Maine Craft Weekend.
+            ZAOstock 2026 is the fourth chapter in the ZAO Festivals series. ZAO-PALOOZA in NYC broke even. ZAO-CHELLA in
+            Miami brought together 16+ musicians and 100+ visual artists. ZAOville hits the DMV this July. Now we are
+            taking the model to Ellsworth, Maine - on the road to Acadia, during Maine Craft Weekend.
           </p>
           <div className="mt-10">
             <FactStrip facts={HERO_FACTS} />
@@ -202,7 +202,7 @@ export default async function PitchPage() {
                 A one-day outdoor music festival at the Franklin Street Parklet in downtown Ellsworth, Maine. Independent artists with DJs between every act. Part of the 9th annual Art of Ellsworth during Maine Craft Weekend.
               </p>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                Free to attend. A $50 Pro Ticket (20 spots in round 1) is optional - buyers get a 1:1 with the team and a real way to plug in.
+                Free to attend. The first round of crowdfunding is live - 20 people, $50 each, the next $1,000 toward the festival. Everyone who chips in gets a Pro Ticket and a 1:1 with the team.
               </p>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
                 Built by 27 teammates and 100+ ZAO community members. Run at break-even.
@@ -231,9 +231,9 @@ export default async function PitchPage() {
       {/* Lineage proof */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="The Lineage" title="What came before. Both broke even." />
+          <SectionHeader eyebrow="The Lineage" title="What came before." />
           <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-3xl mt-3 mb-8">
-            The ZAO Festivals series tested the model in two cities before Ellsworth. PALOOZA proved community could volunteer-organize a real festival in 6 weeks. CHELLA proved the model scales across communities and IP rails.
+            The ZAO Festivals series tested the model in two cities before Ellsworth. ZAO-PALOOZA proved community could volunteer-organize a real festival in 6 weeks and break even. ZAO-CHELLA proved the model scales across communities and IP rails.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <TiltCard>
@@ -307,7 +307,7 @@ export default async function PitchPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.12] border border-white/[0.12] mt-6">
             <StatTile value="27" label="Teammates building this" accent />
             <StatTile value="100+" label="ZAO community members" />
-            <StatTile value="2" label="Prior festivals broke even (NYC + Miami)" />
+            <StatTile value="2" label="Prior festivals (NYC + Miami)" />
             <StatTile value="501(c)(3)" label="Funding infrastructure via NMC / Fractured Atlas" />
           </div>
         </div>
@@ -327,9 +327,9 @@ export default async function PitchPage() {
             </div>
             <div className="bg-[#0d1b2a] p-6 sm:p-8">
               <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">02 / Pro Ticket</span>
-              <p className="font-bold text-white text-xl tracking-tight mt-3">$50 - 20 spots</p>
+              <p className="font-bold text-white text-xl tracking-tight mt-3">$50 - round 1 of 20</p>
               <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Round 1 capped at 20. Pro Ticket buyers get a 1:1 with the team and a real way to plug in. Direct support for artist pay.
+                First crowdfunding round: 20 people, $50 each, $1,000 total. Everyone who chips in gets a Pro Ticket - a 1:1 with the team and a real way to plug in. Direct support for artist pay.
               </p>
             </div>
             <div className="bg-[#0d1b2a] p-6 sm:p-8">
