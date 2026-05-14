@@ -168,8 +168,9 @@ export default async function PitchPage() {
             <span className="text-[#f5a623]">that paid for itself.</span>
           </h1>
           <p className="mt-8 max-w-3xl text-lg sm:text-2xl text-gray-300 leading-relaxed">
-            ZAOstock 2026 is the third chapter in the ZAO Festivals series. PALOOZA in NYC and CHELLA in Miami broke even.
-            Now we are taking the model to Ellsworth, Maine - on the road to Acadia, during Maine Craft Weekend.
+            ZAOstock 2026 is the fourth chapter in the ZAO Festivals series. ZAO-PALOOZA in NYC and ZAO-CHELLA in Miami
+            both broke even. ZAOville hits the DMV this July. Now we are taking the model to Ellsworth, Maine - on the
+            road to Acadia, during Maine Craft Weekend.
           </p>
           <div className="mt-10">
             <FactStrip facts={HERO_FACTS} />

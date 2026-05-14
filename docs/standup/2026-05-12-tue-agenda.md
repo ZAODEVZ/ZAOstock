@@ -133,19 +133,42 @@ Step 2: Copy the Luma URL.
 Step 3: Paste the Luma URL into the short announcement below where [LUMA URL] appears.
 Step 4: Post in ZAOfestivals chat, ZAO ops, and cascade out.
 
-## Short announcement (with [LUMA URL] placeholder)
+## Per-channel announcements (locked May 14, grilled)
+
+Two versions. Both attach the ZAOstock logo (/images/festivals/zao-stock-logo.jpeg).
+
+### TG version - ZAOfestivals chat + ZAO ops (personal voice)
+
+Alright - ZAOstock is officially on.
+
+Chapter 4 of ZAO Festivals - after ZAO-PALOOZA in NYC, ZAO-CHELLA in Miami, and ZAOville hitting the DMV this July.
 
 ZAOstock 2026
-
 Saturday October 3, 2026
 12:00 PM - 6:00 PM Eastern
 Franklin Street Parklet, Ellsworth Maine
 
 Free to attend.
 
-RSVP: [LUMA URL]
-More: https://zaostock.com
+RSVP to stay in the loop: [LUMA URL]
+More: zaostock.com
 Questions: info@thezao.com
+
+### Social version - X / Farcaster / Bluesky (dry broadcast)
+
+ZAOstock 2026 - chapter 4 of ZAO Festivals.
+
+Outdoor music festival in Ellsworth, Maine. October 3. Free to attend.
+
+RSVP: [LUMA URL]
+
+### Notes from grilling
+
+- Post's one job: share the Luma link. Not a marketing block.
+- RSVP framing stays soft ("stay in the loop") - no fake-scarcity perk.
+- Pro Ticket is NOT in this post - it gets its own follow-up post 2-3 days later.
+- ZAOville is lineage mention only, no separate CTA.
+- Chapter 4 (ZAO-PALOOZA, ZAO-CHELLA, ZAOville, then ZAOstock).
 
 ---
 
@@ -176,7 +199,7 @@ Free to attend. Walk in from the sidewalk and stay because it is good.
 
 If you want to plug in deeper, a Pro Ticket is $50 (20 spots in round 1). Pro Ticket buyers get a 1:1 with someone on the ZAO team before the festival - we use that conversation to find you a real way to get involved.
 
-ZAOstock is chapter 3 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024) and ZAO-CHELLA (Miami, December 2024). Both prior festivals broke even.
+ZAOstock is chapter 4 in the ZAO Festivals series after ZAO-PALOOZA (NYC, April 2024), ZAO-CHELLA (Miami, December 2024), and ZAOville (DMV, July 2026). ZAO-PALOOZA and ZAO-CHELLA both broke even.
 
 Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist. 100+ ZAO community members supporting from afar.
 
