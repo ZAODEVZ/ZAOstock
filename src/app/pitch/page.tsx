@@ -176,9 +176,17 @@ export default async function PitchPage() {
             <FactStrip facts={HERO_FACTS} />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="https://ticket.zaostock.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
+            >
+              RSVP free
+            </a>
             <Link
               href="/"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
+              className="border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
             >
               See the festival page
             </Link>
@@ -455,8 +463,16 @@ export default async function PitchPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href="mailto:info@thezao.com?subject=ZAOstock%20Conversation"
+                href="https://ticket.zaostock.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-7 py-4 transition-colors"
+              >
+                RSVP free
+              </a>
+              <a
+                href="mailto:info@thezao.com?subject=ZAOstock%20Conversation"
+                className="border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-7 py-4 transition-colors"
               >
                 info@thezao.com
               </a>
