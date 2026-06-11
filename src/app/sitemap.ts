@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/onepagers/overview',
     '/cypher',
     '/circles',
+    '/zaoville',
   ];
 
   return routes.map((path) => ({
