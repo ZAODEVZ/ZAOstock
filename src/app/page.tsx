@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     title: 'ZAOstock | Community Music Festival',
     description: 'A community-built outdoor music festival in Ellsworth, Maine. October 3, 2026.',
     url: 'https://zaostock.com',
-    images: ['/images/festivals/zao-stock-logo.jpeg'],
+    images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'ZAOstock - a community-built music festival' }],
   },
 };
 
 const FESTIVAL_DATE = '2026-10-03T12:00:00-04:00';
 
 const FACTS = [
-  { label: 'Date', value: 'Oct 03 2026' },
+  { label: 'Date', value: 'Oct 3, 2026' },
   { label: 'Venue', value: 'Franklin St Parklet' },
   { label: 'Time', value: '12 PM - 6 PM' },
   { label: 'Lineup', value: 'Independent Artists' },
@@ -421,10 +421,18 @@ export default async function TestPage() {
       <section id="team" className="my-16 sm:my-24 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <SectionHeader eyebrow="The Team" title="Built by these people." />
-          <TeamMosaic members={typedMembers} />
-          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-600 tracking-[0.18em] mt-5">
-            Tap any name for full bio + links
-          </p>
+          {typedMembers.length > 0 ? (
+            <>
+              <TeamMosaic members={typedMembers} />
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-600 tracking-[0.18em] mt-5">
+                Tap any name for full bio + links
+              </p>
+            </>
+          ) : (
+            <p className="text-gray-400 text-sm max-w-xl">
+              A volunteer crew across operations, music, design, finance, livestream, and content. Full roster coming soon.
+            </p>
+          )}
         </div>
       </section>
 

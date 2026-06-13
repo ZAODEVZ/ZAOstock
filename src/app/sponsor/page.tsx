@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Sponsor ZAOstock | Community Music Festival',
     description:
       'Partner with ZAOstock — October 3, 2026, Ellsworth, Maine. Tax-deductible sponsorships available.',
-    images: ['/images/festivals/zao-stock-logo.jpeg'],
+    images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'ZAOstock - sponsor a community-built music festival' }],
   },
 };
 
@@ -20,7 +20,7 @@ const CREDIBILITY_STATS = [
   { number: '400+', label: 'Daily Newsletter Editions' },
   { number: '795', label: 'WaveWarZ Music Battles' },
   { number: '4M+', label: 'Acadia Visitors (2025)' },
-  { number: '5', label: 'COC Concertz Events' },
+  { number: '5', label: 'COC Concertz Events (partner)' },
   { number: '19', label: 'Team Members + Advisors' },
 ];
 
@@ -48,18 +48,18 @@ const SPONSOR_TRACKS = [
       'Logo in digital attendance collectible (claimed by every attendee)',
       'Sponsored segment in post-event highlight reel',
       'Social media campaign across Farcaster, X, LinkedIn',
-      'Featured in COC Concertz monthly virtual events (4+ months pre-event exposure)',
-      'Mentioned in 400+ edition daily newsletter (Year of the ZABAL)',
+      'Featured through the ZAO Festivals + COC Concertz partnership - monthly virtual events, 4+ months pre-event exposure (framing pending COC confirmation)',
+      'Mentioned in 400+ edition daily newsletter',
       'Post-event metrics report: livestream views, social reach, content views',
     ],
   },
   {
     track: 'Ecosystem Partners',
-    subtitle: 'Year-round ZAO Festivals partnership (Stock, Ville, WaveWarZ, COC)',
+    subtitle: 'Year-round ZAO Festivals partnership (Stock, Ville, WaveWarZ) + COC Concertz partnership',
     color: '#f5a623',
     benefits: [
       'Branding across ALL ZAO Festival events (not just ZAOstock)',
-      'Logo in COC Concertz monthly metaverse concerts',
+      'Logo via the ZAO Festivals + COC Concertz partnership - monthly virtual concerts (framing pending COC confirmation)',
       'Sponsor visibility in WaveWarZ music battles (795+ battles, growing)',
       'Priority placement at ZAOVille (DMV) and future city expansions',
       'Advisory board seat for founding ecosystem partners',
@@ -84,12 +84,12 @@ const PAST_PROOF = [
     detail: 'Art Basel Miami, Dec 2024 - 16+ musicians, 100+ visual artists, 50+ music communities, ZAO HOUSE residency, Wynwood',
   },
   {
-    name: 'COC Concertz',
-    detail: '5 monthly metaverse concerts, free entry, artists from 4 countries',
+    name: 'COC Concertz (community partner)',
+    detail: '5 monthly virtual concerts, free entry, artists from 4 countries (framing pending COC confirmation)',
   },
   {
     name: 'WaveWarZ',
-    detail: '795 music battles, 435 SOL ($37K+) volume, artists paid instantly via Solana',
+    detail: '795 music battles, $37K+ in artist payouts, paid out instantly',
   },
   {
     name: 'ZAO Fractals',
@@ -294,7 +294,7 @@ export default function SponsorPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
               <a
-                href="mailto:zaal@zaoos.com?subject=ZAO%20Stock%20Sponsorship"
+                href="mailto:info@thezao.com?subject=ZAOstock%20Sponsorship"
                 className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-6 py-3 text-sm transition-colors inline-block"
               >
                 Email Us

@@ -28,7 +28,7 @@ export default function ArtistsPage() {
       youGet={[
         'A conversation with the ZAO team about how your work could fit into ZAOstock.',
         'Named credit if your work makes it into the build.',
-        'Part of the ZAO Festivals lineage if it lands - PALOOZA NYC and CHELLA Miami came before.',
+        'Part of the ZAO Festivals lineage if it lands - ZAO-PALOOZA NYC and ZAO-CHELLA Miami came before.',
       ]}
       weAsk={[
         'Show us what you make. Portfolio, links, samples - whatever lives where.',

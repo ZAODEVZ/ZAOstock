@@ -85,7 +85,8 @@ export async function POST(request: NextRequest) {
     const publicUrl = `/artist/${slug}`;
 
     return NextResponse.json({ success: true, slug, editUrl, publicUrl, claim_token }, { status: 201 });
-  } catch {
+  } catch (err) {
+    console.error('[cypher] unexpected', err);
     return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
   }
 }

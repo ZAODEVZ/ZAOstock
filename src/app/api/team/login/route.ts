@@ -8,6 +8,23 @@ const loginSchema = z.object({
   password: z.string().min(1).max(64),
 });
 
+// Best-effort in-memory throttle (per warm instance). A durable store is the
+// real fix, but this raises the bar against naive brute-forcing of team codes.
+const WINDOW_MS = 5 * 60_000;
+const MAX_ATTEMPTS = 10;
+const attempts = new Map<string, { count: number; resetAt: number }>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const rec = attempts.get(ip);
+  if (!rec || now > rec.resetAt) {
+    attempts.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return false;
+  }
+  rec.count += 1;
+  return rec.count > MAX_ATTEMPTS;
+}
+
 function verifyPassword(password: string, stored: string): boolean {
   if (!stored) return false;
   const [salt, hash] = stored.split(':');
@@ -20,6 +37,14 @@ function verifyPassword(password: string, stored: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = (request.headers.get('x-forwarded-for') || 'unknown').split(',')[0].trim();
+    if (rateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Too many attempts. Wait a few minutes and try again.' },
+        { status: 429 },
+      );
+    }
+
     const body = await request.json();
     const parsed = loginSchema.safeParse(body);
     if (!parsed.success) {
@@ -46,7 +71,8 @@ export async function POST(request: NextRequest) {
 
     await saveStockTeamSession(match.id, match.name);
     return NextResponse.json({ success: true, name: match.name });
-  } catch {
+  } catch (err) {
+    console.error('[team/login] unexpected', err);
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });
   }
 }

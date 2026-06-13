@@ -92,7 +92,10 @@ export async function getPublicMembers(): Promise<PublicMember[]> {
     .neq('active', false)
     .order('created_at');
 
-  if (error || !data) return [];
+  if (error || !data) {
+    if (error) console.error('[getPublicMembers] query failed (check Supabase project + schema):', error.message);
+    return [];
+  }
 
   return data.map((m) => ({
     id: m.id,

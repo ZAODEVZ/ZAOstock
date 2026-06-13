@@ -37,12 +37,16 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true }, { status: 201 });
-  } catch {
+  } catch (err) {
+    console.error('[suggestions] unexpected', err);
     return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
   }
 }
 
 export async function GET() {
+  const member = await getStockTeamMember();
+  if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('suggestions')

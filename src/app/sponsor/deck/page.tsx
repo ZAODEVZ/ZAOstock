@@ -69,7 +69,7 @@ const FAQ = [
   },
   {
     q: 'Who is The ZAO?',
-    a: 'A decentralized music community on Farcaster, Base, and Solana, active since 2023. Two community events ran so far: ZAO-PALOOZA in NYC during NFT NYC, April 2024; ZAO-CHELLA in Miami during Art Basel, December 2024. ZAOville in the DMV is co-hosted with DCoop (founder of The Village Entertainment Collective) in July 2026 - cross-promotion across the series since DCoop performed at ZAO-CHELLA Miami 2024 and returns for ZAOstock. Lineup includes PROF!T, ELYVN, and more. ZAOstock 2026 is the next event - a one-day festival in Ellsworth Maine, part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Co-presented with Heart of Ellsworth and the Town of Ellsworth.',
+    a: 'An independent community of musicians and digital creators, active since 2023. Two community events ran so far: ZAO-PALOOZA in NYC, April 2024; ZAO-CHELLA in Miami, December 2024. ZAOville in the DMV is co-hosted with DCoop (founder of The Village Entertainment Collective) in July 2026 - cross-promotion across the series since DCoop performed at ZAO-CHELLA Miami 2024 and returns for ZAOstock. Lineup includes PROF!T, ELYVN, and more. ZAOstock 2026 is the next event - a one-day festival in Ellsworth Maine, part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Co-presented with Heart of Ellsworth and the Town of Ellsworth.',
   },
   {
     q: 'How many people show up?',
@@ -112,7 +112,7 @@ export default async function DeckPage() {
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">ZAOstock Partners</h1>
           <p className="text-sm text-gray-400 max-w-xl mx-auto">
-            October 3, 2026. Franklin Street Parklet, Ellsworth Maine. Independent artists, one stage, all day. Part of the 9th Annual Art of Ellsworth. Run by The ZAO, a decentralized music community.
+            October 3, 2026. Franklin Street Parklet, Ellsworth Maine. Independent artists, one stage, all day. Part of the 9th Annual Art of Ellsworth. Run by The ZAO, an independent music community.
           </p>
         </div>
 

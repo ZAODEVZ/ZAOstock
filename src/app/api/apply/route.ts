@@ -58,7 +58,8 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true }, { status: 201 });
-  } catch {
+  } catch (err) {
+    console.error('[apply] unexpected', err);
     return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
   }
 }

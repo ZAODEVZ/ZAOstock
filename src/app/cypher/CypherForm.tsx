@@ -164,7 +164,7 @@ export function CypherForm() {
         <input
           value={socials}
           onChange={(e) => setSocials(e.target.value)}
-          placeholder="X, Farcaster, Spotify, Soundcloud, website"
+          placeholder="X, Farcaster, Spotify, SoundCloud, website"
           maxLength={500}
           className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
         />

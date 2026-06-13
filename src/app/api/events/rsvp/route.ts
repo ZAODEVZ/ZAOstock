@@ -56,7 +56,8 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true }, { status: 201 });
-  } catch {
+  } catch (err) {
+    console.error('[events/rsvp] unexpected', err);
     return NextResponse.json({ error: 'Could not submit right now' }, { status: 500 });
   }
 }
