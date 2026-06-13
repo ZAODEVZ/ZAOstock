@@ -100,7 +100,7 @@ export default function DonatePage() {
               Send via PayPal
             </h2>
             <p className="text-sm text-gray-300 mt-3 leading-relaxed">
-              Direct to <span className="text-white font-mono">paypal.me/zaalpanthaki</span>. Card or PayPal balance. Goes straight to project operations.
+              Direct to <span className="text-white font-mono">paypal.com/paypalme/zaalpanthaki</span>. Card or PayPal balance. Goes straight to project operations.
             </p>
             <div className="flex-1" />
             <div className="mt-6 flex items-center justify-between">

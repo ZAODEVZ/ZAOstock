@@ -38,13 +38,16 @@ export async function GET(request: NextRequest) {
 
   if (error) return NextResponse.json({ error: 'Failed to load attachments' }, { status: 500 });
 
-  const attachments = await Promise.all(
+  const settled = await Promise.allSettled(
     (data ?? []).map(async (row) => {
       const { data: signed } = await supabase.storage
         .from(BUCKET)
         .createSignedUrl(row.storage_path, DOWNLOAD_TTL_SECONDS);
       return { ...row, download_url: signed?.signedUrl ?? null };
     }),
+  );
+  const attachments = settled.map((r, i) =>
+    r.status === 'fulfilled' ? r.value : { ...(data ?? [])[i], download_url: null },
   );
 
   return NextResponse.json({ attachments });

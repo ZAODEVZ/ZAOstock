@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Sponsor ZAOstock | Community Music Festival',
     description:
       'Partner with ZAOstock — October 3, 2026, Ellsworth, Maine. Tax-deductible sponsorships available.',
-    images: ['/images/festivals/zao-stock-logo.jpeg'],
+    images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'ZAOstock - sponsor a community-built music festival' }],
   },
 };
 
@@ -294,7 +294,7 @@ export default function SponsorPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
               <a
-                href="mailto:zaal@zaoos.com?subject=ZAO%20Stock%20Sponsorship"
+                href="mailto:info@thezao.com?subject=ZAOstock%20Sponsorship"
                 className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-6 py-3 text-sm transition-colors inline-block"
               >
                 Email Us
