@@ -38,7 +38,7 @@ Two funding paths: public tax-deductible support administered through New Media 
 
 ## Team
 
-27 teammates total across operations, design, music, finance, livestream, and content. Mickey (Thy Revolution) is the livestream team lead. Iman is interning with The ZAO and co-managing the info@thezao.com inbox while leading COC Concertz #6 with his Zambia squad.
+27 teammates total across operations, design, music, finance, livestream, and content. Mickey (Thy Revolution) is the livestream team lead. Iman is interning with The ZAO and co-managing the info@thezao.com inbox while helping run COC Concertz #6 with his Zambia squad (COC Concertz is a community partnership, not a ZAO sub-brand; framing pending COC confirmation).
 
 Every team member has a public profile at https://zaostock.com/team/m/[slug] with photo, bio, and links. Current team grid lives at https://zaostock.com/team.
 

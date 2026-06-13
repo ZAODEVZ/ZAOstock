@@ -24,9 +24,9 @@ const VIBES: Vibe[] = [
   },
   {
     src: '/zao/zabal-art.jpeg',
-    alt: 'ZABAL geometric art',
-    caption: 'ZABAL energy across the day',
-    tag: 'ZABAL',
+    alt: 'Geometric community art',
+    caption: 'Creative energy across the day',
+    tag: 'Art',
   },
   {
     src: '/zao/zaal-real.jpg',
