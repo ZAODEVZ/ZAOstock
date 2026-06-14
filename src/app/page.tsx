@@ -656,6 +656,9 @@ export default async function TestPage() {
             <Link href="/artists" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
               Artists
             </Link>
+            <Link href="/zaoville" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
+              ZAOville
+            </Link>
             <Link href="/event-organizers" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
               Organizers
             </Link>
