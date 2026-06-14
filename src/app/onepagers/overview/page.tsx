@@ -136,7 +136,7 @@ function daysUntil(iso: string): number {
 
 export default async function OverviewOnePager() {
   const [pager, counts, members, session] = await Promise.all([
-    getOnePager('overview'),
+    getOnePager('overview').catch(() => null),
     getStockCounts().catch(() => null),
     getPublicMembers().catch(() => []),
     getStockTeamMember().catch(() => null),

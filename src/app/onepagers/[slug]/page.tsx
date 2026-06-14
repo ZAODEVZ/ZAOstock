@@ -19,14 +19,14 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const p = await getOnePager(slug);
+  const p = await getOnePager(slug).catch(() => null);
   if (!p) return { title: 'Not found' };
   return { title: p.title, description: p.purpose };
 }
 
 export default async function OnePagerDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const pager = await getOnePager(slug);
+  const pager = await getOnePager(slug).catch(() => null);
   if (!pager) notFound();
   const activity = await listActivity(slug, 30);
 
