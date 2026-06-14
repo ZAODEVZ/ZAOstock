@@ -24,9 +24,16 @@ export async function getStockTeamSession(): Promise<IronSession<StockTeamPayloa
 }
 
 export async function getStockTeamMember(): Promise<{ memberId: string; memberName: string } | null> {
-  const session = await getStockTeamSession();
-  if (!session.memberId || !session.memberName) return null;
-  return { memberId: session.memberId, memberName: session.memberName };
+  // Fail closed (anonymous) instead of throwing - a misconfigured/missing
+  // SESSION_SECRET should never 500 a public page.
+  try {
+    const session = await getStockTeamSession();
+    if (!session.memberId || !session.memberName) return null;
+    return { memberId: session.memberId, memberName: session.memberName };
+  } catch (err) {
+    console.error('[getStockTeamMember] session read failed (check SESSION_SECRET):', err);
+    return null;
+  }
 }
 
 export async function saveStockTeamSession(memberId: string, memberName: string) {
