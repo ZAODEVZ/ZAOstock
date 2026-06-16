@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/suggest',
     '/donate',
     '/program',
+    '/ellsworth',
     '/sponsor',
     '/sponsor/deck',
     '/team',
