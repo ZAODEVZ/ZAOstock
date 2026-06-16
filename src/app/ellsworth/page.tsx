@@ -21,23 +21,40 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 const GETTING_HERE: { mode: string; detail: string }[] = [
-  { mode: 'By car', detail: 'TODO: confirm drive times - approx from Portland, Bangor, Boston. Route 1 / Route 1A through downtown.' },
-  { mode: 'Nearest airport', detail: 'TODO: confirm - Bangor International (BGR) and Hancock County-Bar Harbor (BHB).' },
-  { mode: 'Parking', detail: 'TODO: city hall parking info - public lots, street parking, festival-day plan near the Franklin Street Parklet.' },
+  { mode: 'By car', detail: 'About 40 min (30 mi) from Bangor, ~3 hrs (135 mi) from Portland, and ~5 hrs from Boston. Route 1 / Route 1A run right through downtown.' },
+  { mode: 'Bangor International (BGR)', detail: 'Nearest major airport, ~40 min away. A direct shuttle bus runs to Ellsworth twice daily (~35 min). Best bet for most travelers.' },
+  { mode: 'Hancock County-Bar Harbor (BHB)', detail: 'Smaller regional airport ~20 min away, with seasonal Cape Air service (including from Boston). Closest to the venue.' },
+  { mode: 'Parking', detail: 'Downtown has public lots and street parking near the Franklin Street Parklet. Festival-day parking details coming soon.' },
 ];
 
 const STAY: { name: string; note: string }[] = [
-  { name: 'TODO: hotel / inn', note: 'From City Hall list - name, distance to venue, booking link.' },
+  { name: 'Hampton Inn Ellsworth/Bar Harbor', note: 'One of the newest hotels in town. Indoor heated saltwater pool, breakfast included.' },
+  { name: 'Comfort Inn Ellsworth - Bar Harbor', note: 'Indoor saltwater pool and hot tub, free WiFi, daily continental breakfast.' },
+  { name: 'Colonial Inn Ellsworth', note: '85-room property, renovated in 2016. Central to downtown.' },
+  { name: 'Hawthorn Extended Stay by Wyndham', note: 'Suites with full kitchens - good for a multi-night stay. Breakfast + onsite laundry.' },
+  { name: 'Book early', note: 'Ellsworth is the Acadia gateway and early October is foliage season - rooms go fast. Reserve ahead.' },
 ];
 
 const EAT: { name: string; note: string }[] = [
-  { name: 'Black Moon Public House', note: 'ZAOstock afterparty venue.' },
-  { name: 'TODO: more from City Hall', note: 'Restaurants, cafes, breweries near downtown.' },
+  { name: 'Black Moon Public House', note: 'The ZAOstock afterparty venue. Start here after the show.' },
+  { name: 'Union River Lobster Pot', note: 'Seasonal seafood on the banks of the Union River downtown - lobster and a famous slice of pie.' },
+  { name: 'Cleonice', note: 'Mediterranean bistro in the historic 1938 Luchini building on Main Street.' },
+  { name: 'Serendib', note: 'Award-winning Indian and Sri Lankan cuisine.' },
+  { name: 'Fogtown Brewing', note: 'Taproom with a dog-friendly beer garden.' },
+  { name: 'Airline Brewing Company', note: 'British-style local beers and classic pub fare.' },
 ];
 
 const DO: { name: string; note: string }[] = [
-  { name: 'Acadia National Park', note: 'Ellsworth is the gateway - roughly 4M visitors a year pass through.' },
-  { name: 'TODO: downtown + local', note: 'Things to do from City Hall - downtown, waterfront, nearby.' },
+  { name: 'Acadia National Park', note: 'Ellsworth is the gateway - about 25 mi to Bar Harbor and the park. Carriage roads, Cabot Cliffs, Cadillac Mountain sunrise.' },
+  { name: 'Woodlawn Museum, Gardens & Park', note: 'The historic Black House on 180 acres - gardens, trails, and a croquet court.' },
+  { name: 'Birdsacre (Stanwood Wildlife Sanctuary)', note: 'Rescued birds and miles of quiet walking trails, plus the Stanwood homestead museum.' },
+  { name: 'Downtown Ellsworth', note: '19th-century Main Street: galleries (Courthouse Gallery, Atlantic Art Glass), shops, and cafes climbing up from the river.' },
+];
+
+const GOOD_TO_KNOW: { label: string; detail: string }[] = [
+  { label: 'Weather', detail: 'Early October runs roughly 58-62°F by day, ~44°F at night - crisp and breezy with peak fall color. Pack layers and a jacket; ZAOstock is outdoors.' },
+  { label: 'Daylight', detail: 'About 11 hours of daylight, sunrise ~6:48 AM, sunset ~5:49 PM. The festival runs noon-6 PM, finishing near golden hour.' },
+  { label: 'Rain', detail: 'Roughly a 1-in-3 chance of rain on any given fall day - a packable rain layer is smart.' },
 ];
 
 export default function EllsworthPage() {
@@ -115,6 +132,19 @@ export default function EllsworthPage() {
               <div key={d.name} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
                 <div className="font-semibold text-white">{d.name}</div>
                 <p className="text-sm text-gray-400 mt-1">{d.note}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Good to know */}
+        <section>
+          <SectionHeader eyebrow="Good to know" title="Before you come." />
+          <div className="space-y-3">
+            {GOOD_TO_KNOW.map((g) => (
+              <div key={g.label} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
+                <div className="font-semibold text-white">{g.label}</div>
+                <p className="text-sm text-gray-400 mt-1">{g.detail}</p>
               </div>
             ))}
           </div>
