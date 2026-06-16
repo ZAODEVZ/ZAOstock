@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 // ---------------------------------------------------------------------------
-// CONTENT - populate these from the City Hall info dump.
-// Anything marked TODO is a placeholder waiting on real local data.
+// CONTENT - seeded from web research (2026-06). Refine/expand with City Hall
+// specifics: festival-day parking plan, exact addresses, booking/links.
 // ---------------------------------------------------------------------------
 
 const GETTING_HERE: { mode: string; detail: string }[] = [
