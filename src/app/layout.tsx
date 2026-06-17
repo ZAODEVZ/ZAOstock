@@ -26,13 +26,11 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com',
     siteName: 'ZAOstock',
     type: 'website',
-    images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'ZAOstock - a community-built music festival' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ZAOstock 2026',
     description: 'A one-day artist-built music festival in downtown Ellsworth, Maine. October 3, 2026.',
-    images: ['/zao/wavewarz-banner.jpg'],
   },
 };
 
