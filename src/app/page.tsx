@@ -101,6 +101,7 @@ const PARTNERS = [
 ].filter((p) => p.confirmed);
 
 const NAV = [
+  { href: '/festivals', label: 'ZAO Festivals' },
   { href: '/program', label: 'Program' },
   { href: '/musicians', label: 'Musicians' },
   { href: '/artists', label: 'Artists' },
