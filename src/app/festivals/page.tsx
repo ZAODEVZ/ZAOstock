@@ -54,7 +54,8 @@ const TWEETS: string[] = [
 // Instagram posts/reels to embed. Paste the full permalink (https://www.instagram.com/reel/<id>/ or /p/<id>/).
 // This is where the real ZAO-CHELLA / ZAO-PALOOZA recap media lives (@zaofestivals).
 const INSTAGRAM: string[] = [
-  'https://www.instagram.com/reel/DDa-oPBJ7G7/', // ZAO-CHELLA 2024 Miami recap
+  'https://www.instagram.com/reel/DDa-oPBJ7G7/', // ZAO-CHELLA 2024 Miami recap ("you can feel the love")
+  'https://www.instagram.com/reel/DDLVvNuu5_3/', // ZAO-CHELLA 2024 "Future of Art & Technology" (wristkeyglobal coverage)
 ];
 
 const STATUS_STYLE: Record<Chapter['status'], string> = {
