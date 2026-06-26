@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Tweet } from 'react-tweet';
+import { InstagramEmbed } from './InstagramEmbed';
 
 export const metadata: Metadata = {
   title: 'ZAO Festivals',
@@ -48,6 +49,12 @@ const PRINCIPLES: Principle[] = [
 // Photos + videos render inline. Newest first.
 const TWEETS: string[] = [
   // '1234567890123456789',
+];
+
+// Instagram posts/reels to embed. Paste the full permalink (https://www.instagram.com/reel/<id>/ or /p/<id>/).
+// This is where the real ZAO-CHELLA / ZAO-PALOOZA recap media lives (@zaofestivals).
+const INSTAGRAM: string[] = [
+  'https://www.instagram.com/reel/DDa-oPBJ7G7/', // ZAO-CHELLA 2024 Miami recap
 ];
 
 const STATUS_STYLE: Record<Chapter['status'], string> = {
@@ -185,17 +192,20 @@ export default function FestivalsPage() {
           </div>
         </section>
 
-        {/* From X - photos + videos */}
-        {TWEETS.length > 0 && (
+        {/* From the festivals - photos + videos (Instagram + X) */}
+        {(TWEETS.length > 0 || INSTAGRAM.length > 0) && (
           <section className="py-8 border-t border-white/[0.08]">
             <h2 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-gray-500">
               From the festivals
             </h2>
-            <div data-theme="dark" className="mt-4 flex flex-col items-center gap-4">
-              {TWEETS.map((id) => (
-                <Tweet key={id} id={id} />
-              ))}
-            </div>
+            {INSTAGRAM.length > 0 && <div className="mt-4"><InstagramEmbed urls={INSTAGRAM} /></div>}
+            {TWEETS.length > 0 && (
+              <div data-theme="dark" className="mt-4 flex flex-col items-center gap-4">
+                {TWEETS.map((id) => (
+                  <Tweet key={id} id={id} />
+                ))}
+              </div>
+            )}
           </section>
         )}
 
