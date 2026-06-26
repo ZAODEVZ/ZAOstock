@@ -19,16 +19,17 @@ interface Chapter {
   name: string;
   place: string;
   year: string;
+  note: string;
   href?: string;
   status: 'past' | 'next' | 'flagship';
 }
 
-// The ZAO Festivals series (matches the lineage on /zaoville).
+// The ZAO Festivals series. Details from ZAO's own festival history (see ZAOOS memory).
 const SERIES: Chapter[] = [
-  { name: 'ZAO-PALOOZA', place: 'New York City', year: 'Apr 2024', status: 'past' },
-  { name: 'ZAO-CHELLA', place: 'Miami', year: 'Dec 2024', status: 'past' },
-  { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', href: '/zaoville', status: 'next' },
-  { name: 'ZAOstock', place: 'Ellsworth, Maine', year: 'Oct 3, 2026', href: '/', status: 'flagship' },
+  { name: 'ZAO-PALOOZA', place: 'New York City', year: 'Apr 2024', note: 'During NFT NYC - 12 artists, the community’s first IRL meetup. Broke even.', status: 'past' },
+  { name: 'ZAO-CHELLA', place: 'Miami', year: 'Dec 2024', note: 'During Art Basel - 10 artists, WaveWarZ LIVE, AR art, cross-community.', status: 'past' },
+  { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', note: 'Co-hosted with DCoop + The VEC - open mic, live sets, DJ night swim.', href: '/zaoville', status: 'next' },
+  { name: 'ZAOstock', place: 'Ellsworth, Maine', year: 'Oct 3, 2026', note: 'The flagship - free, all-day, downtown, gateway to Acadia.', href: '/', status: 'flagship' },
 ];
 
 interface Principle {
@@ -119,20 +120,23 @@ export default function FestivalsPage() {
             {SERIES.map((c) => {
               const inner = (
                 <div
-                  className={`flex items-center justify-between rounded-xl border p-4 transition-colors ${STATUS_STYLE[c.status]} ${c.href ? 'hover:border-[#f5a623]/60' : ''}`}
+                  className={`rounded-xl border p-4 transition-colors ${STATUS_STYLE[c.status]} ${c.href ? 'hover:border-[#f5a623]/60' : ''}`}
                 >
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-semibold text-white">{c.name}</span>
-                    <span className="text-sm text-gray-400">{c.place}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-semibold text-white">{c.name}</span>
+                      <span className="text-sm text-gray-400">{c.place}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      {c.status === 'flagship' && (
+                        <span className="font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-[#f5a623]">
+                          flagship
+                        </span>
+                      )}
+                      <span className="font-[family-name:var(--font-mono)] text-[11px] text-gray-400">{c.year}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    {c.status === 'flagship' && (
-                      <span className="font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-[0.2em] text-[#f5a623]">
-                        flagship
-                      </span>
-                    )}
-                    <span className="font-[family-name:var(--font-mono)] text-[11px] text-gray-400">{c.year}</span>
-                  </div>
+                  <p className="mt-1.5 text-sm text-gray-400 leading-relaxed">{c.note}</p>
                 </div>
               );
               return c.href ? (
