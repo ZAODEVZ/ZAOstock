@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Tweet } from 'react-tweet';
 
 export const metadata: Metadata = {
   title: 'ZAO Festivals',
@@ -40,6 +41,12 @@ const PRINCIPLES: Principle[] = [
   { k: '01', t: 'Artist-built', b: 'The lineup and the day are built by the artists and the community, not a promoter extracting margin. Curated by the people in the room.' },
   { k: '02', t: 'Community-owned', b: 'The crowd that funds it owns it. We treat a festival as a protocol, not a product - open, shared, repeatable by anyone.' },
   { k: '03', t: 'Free + fair', b: 'Free to attend. Artists paid fairly and transparently. Built in public, every step shared.' },
+];
+
+// X posts to embed. Add the tweet ID (the number at the end of an x.com/<user>/status/<ID> link).
+// Photos + videos render inline. Newest first.
+const TWEETS: string[] = [
+  // '1234567890123456789',
 ];
 
 const STATUS_STYLE: Record<Chapter['status'], string> = {
@@ -173,6 +180,20 @@ export default function FestivalsPage() {
             </div>
           </div>
         </section>
+
+        {/* From X - photos + videos */}
+        {TWEETS.length > 0 && (
+          <section className="py-8 border-t border-white/[0.08]">
+            <h2 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-gray-500">
+              From the festivals
+            </h2>
+            <div data-theme="dark" className="mt-4 flex flex-col items-center gap-4">
+              {TWEETS.map((id) => (
+                <Tweet key={id} id={id} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Get involved */}
         <section className="py-8 border-t border-white/[0.08]">
