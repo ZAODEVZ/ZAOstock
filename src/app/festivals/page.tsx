@@ -27,7 +27,7 @@ interface Chapter {
 // The ZAO Festivals series. Details from ZAO's own festival history (see ZAOOS memory).
 const SERIES: Chapter[] = [
   { name: 'ZAO-PALOOZA', place: 'New York City', year: 'Apr 2024', note: 'During NFT NYC - 12 artists, the community’s first IRL meetup. Broke even.', status: 'past' },
-  { name: 'ZAO-CHELLA', place: 'Miami', year: 'Dec 2024', note: 'During Art Basel - 10 artists, WaveWarZ LIVE, AR art, cross-community.', status: 'past' },
+  { name: 'ZAO-CHELLA', place: 'Wynwood, Miami', year: 'Dec 2024', note: 'During Art Basel, in Wynwood - 10 artists, WaveWarZ LIVE, AR art, cross-community.', status: 'past' },
   { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', note: 'Co-hosted with DCoop + The VEC - open mic, live sets, DJ night swim.', href: '/zaoville', status: 'next' },
   { name: 'ZAOstock', place: 'Ellsworth, Maine', year: 'Oct 3, 2026', note: 'The flagship - free, all-day, downtown, gateway to Acadia.', href: '/', status: 'flagship' },
 ];
