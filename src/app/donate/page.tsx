@@ -175,6 +175,31 @@ export default function DonatePage() {
           </p>
         </section>
 
+        {/* Who runs it + how giving is handled (entity + fiscal-sponsor disclosure) */}
+        <section className="bg-[#0d1b2a] rounded-2xl p-6 border border-white/[0.08] space-y-3">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[#f5a623] font-bold">
+            Who you&apos;re giving to
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            ZAOstock is produced by ZAO Festivals, the events arm of The ZAO. The PayPal handle
+            (<span className="font-mono text-gray-200">paypal.me/zaalpanthaki</span>) is the project&apos;s
+            collection account — contributions go to ZAOstock artist pay and materials, not to an individual.
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            Tax-deductible support is administered through New Media Commons, a fiscally sponsored project of
+            Fractured Atlas (a 501(c)(3) public charity), which issues the tax receipt — the same path our
+            sponsors use. Giving by PayPal or Giveth above is quick, but does not by itself generate a
+            charitable receipt.
+          </p>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            Questions, or want a tax-deductible receipt? Email{' '}
+            <a href="mailto:zaal@thezao.com" className="text-[#f5a623] hover:underline font-medium">
+              zaal@thezao.com
+            </a>{' '}
+            and we&apos;ll route you through Fractured Atlas.
+          </p>
+        </section>
+
         {/* ZAO Festivals lineage */}
         <section className="space-y-3">
           <p className="text-[10px] uppercase tracking-[0.2em] text-[#f5a623] font-bold">
