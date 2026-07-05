@@ -1,3 +1,4 @@
+import 'server-only';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Server-side admin client (uses service role key). Server only.

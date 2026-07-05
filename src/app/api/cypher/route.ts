@@ -37,11 +37,19 @@ export async function POST(request: NextRequest) {
 
     const supabase = getSupabaseAdmin();
 
-    const { data: existing } = await supabase
-      .from('artists')
-      .select('id, name, claim_token')
-      .ilike('name', parsed.data.name)
-      .maybeSingle();
+    // Only merge into an existing artist when the submitter proves ownership of
+    // the matching email. Matching by name alone let anyone overwrite a
+    // confirmed artist's profile and receive their edit token (write-IDOR).
+    // With no email (or no email match) we always create a new row instead.
+    let existing: { id: string; name: string; claim_token: string | null } | null = null;
+    if (parsed.data.email) {
+      const { data } = await supabase
+        .from('artists')
+        .select('id, name, claim_token')
+        .ilike('contact_email', parsed.data.email)
+        .maybeSingle();
+      existing = data;
+    }
 
     let claim_token: string;
     let name: string;
@@ -66,7 +74,7 @@ export async function POST(request: NextRequest) {
     } else {
       claim_token = generateClaimToken();
       name = parsed.data.name;
-      const { error: insertError } = await supabase.from('artists').insert({
+      const insertRow: Record<string, unknown> = {
         name: parsed.data.name,
         status: 'wishlist',
         socials: parsed.data.socials || '',
@@ -74,7 +82,11 @@ export async function POST(request: NextRequest) {
         cypher_role: parsed.data.cypher_role,
         notes: notesBlob,
         claim_token,
-      });
+      };
+      // Store the email in a queryable column so a repeat signup updates the
+      // same row (via the email match above) instead of creating a duplicate.
+      if (parsed.data.email) insertRow.contact_email = parsed.data.email;
+      const { error: insertError } = await supabase.from('artists').insert(insertRow);
       if (insertError) {
         return NextResponse.json({ error: 'Could not save signup' }, { status: 500 });
       }
