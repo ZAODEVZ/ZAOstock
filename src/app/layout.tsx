@@ -39,7 +39,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-[#f5a623] focus:text-black focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg"
+        >
+          Skip to content
+        </a>
+        <div id="main-content">{children}</div>
+      </body>
     </html>
   );
 }

@@ -256,32 +256,32 @@ export function RiderForm() {
       {/* 01 Artist info */}
       <Section n={1} title="Artist information">
         <div className="space-y-1.5">
-          <label className={LABEL}>
+          <label htmlFor="rider-name" className={LABEL}>
             Artist / band name <span className="text-[#f5a623]">*</span>
           </label>
-          <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="What you go by on a stage" className={INPUT} />
+          <input id="rider-name" type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="What you go by on a stage" className={INPUT} />
         </div>
         <div className="space-y-1.5">
-          <label className={LABEL}>
+          <label htmlFor="rider-email" className={LABEL}>
             Email <span className="text-[#f5a623]">*</span>
           </label>
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@somewhere.com" className={INPUT} />
+          <input id="rider-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@somewhere.com" className={INPUT} />
         </div>
         <div className="space-y-1.5">
-          <label className={LABEL}>Social media handles</label>
-          <input type="text" value={socials} onChange={(e) => setSocials(e.target.value)} placeholder="Instagram, X, Farcaster, TikTok" className={INPUT} />
+          <label htmlFor="rider-socials" className={LABEL}>Social media handles</label>
+          <input id="rider-socials" type="text" value={socials} onChange={(e) => setSocials(e.target.value)} placeholder="Instagram, X, Farcaster, TikTok" className={INPUT} />
         </div>
         <div className="space-y-1.5">
-          <label className={LABEL}>Streaming profiles</label>
-          <input type="text" value={streaming} onChange={(e) => setStreaming(e.target.value)} placeholder="Spotify, Apple Music, Audius, SoundCloud" className={INPUT} />
+          <label htmlFor="rider-streaming" className={LABEL}>Streaming profiles</label>
+          <input id="rider-streaming" type="text" value={streaming} onChange={(e) => setStreaming(e.target.value)} placeholder="Spotify, Apple Music, Audius, SoundCloud" className={INPUT} />
         </div>
         <div className="space-y-1.5">
-          <label className={LABEL}>Website / other media (labeled)</label>
-          <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="EPK, press kit, YouTube, etc." className={INPUT} />
+          <label htmlFor="rider-website" className={LABEL}>Website / other media (labeled)</label>
+          <input id="rider-website" type="text" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="EPK, press kit, YouTube, etc." className={INPUT} />
         </div>
         <div className="space-y-1.5">
-          <label className={LABEL}>Artist bio</label>
-          <textarea rows={3} value={bio} onChange={(e) => setBio(e.target.value)} placeholder="A few sentences for promo + the lineup announcement." className={`${INPUT} resize-none`} />
+          <label htmlFor="rider-bio" className={LABEL}>Artist bio</label>
+          <textarea id="rider-bio" rows={3} value={bio} onChange={(e) => setBio(e.target.value)} placeholder="A few sentences for promo + the lineup announcement." className={`${INPUT} resize-none`} />
         </div>
       </Section>
 
@@ -309,7 +309,10 @@ export function RiderForm() {
           ))}
         </div>
         {scheduleResp === 'change_requested' ? (
-          <textarea rows={2} value={scheduleNote} onChange={(e) => setScheduleNote(e.target.value)} placeholder="What change are you requesting, and why?" className={`${INPUT} resize-none`} />
+          <>
+            <label htmlFor="rider-schedule-note" className="sr-only">Schedule change request details</label>
+            <textarea id="rider-schedule-note" rows={2} value={scheduleNote} onChange={(e) => setScheduleNote(e.target.value)} placeholder="What change are you requesting, and why?" className={`${INPUT} resize-none`} />
+          </>
         ) : null}
       </Section>
 
@@ -337,7 +340,10 @@ export function RiderForm() {
           ))}
         </div>
         {equipResp === 'additional_needs' ? (
-          <textarea rows={2} value={equipNeeds} onChange={(e) => setEquipNeeds(e.target.value)} placeholder="List equipment you need or will bring that needs conversion / support." className={`${INPUT} resize-none`} />
+          <>
+            <label htmlFor="rider-equip-needs" className="sr-only">Equipment needs details</label>
+            <textarea id="rider-equip-needs" rows={2} value={equipNeeds} onChange={(e) => setEquipNeeds(e.target.value)} placeholder="List equipment you need or will bring that needs conversion / support." className={`${INPUT} resize-none`} />
+          </>
         ) : null}
       </Section>
 
@@ -347,7 +353,8 @@ export function RiderForm() {
           Paste links to your set tracks (labeled in order with artist + song). You can also upload
           files directly after you submit this rider.
         </p>
-        <textarea rows={3} value={trackLinks} onChange={(e) => setTrackLinks(e.target.value)} placeholder="One link per line. Dropbox, Drive, WeTransfer, Audius, etc." className={`${INPUT} resize-none`} />
+        <label htmlFor="rider-track-links" className="sr-only">Backing track links</label>
+        <textarea id="rider-track-links" rows={3} value={trackLinks} onChange={(e) => setTrackLinks(e.target.value)} placeholder="One link per line. Dropbox, Drive, WeTransfer, Audius, etc." className={`${INPUT} resize-none`} />
       </Section>
 
       {/* 05 Merch */}
@@ -359,8 +366,8 @@ export function RiderForm() {
         {merchSelling ? (
           <div className="space-y-4 pl-1">
             <div className="space-y-1.5">
-              <label className={LABEL}>Merch type(s)</label>
-              <input type="text" value={merchTypes} onChange={(e) => setMerchTypes(e.target.value)} placeholder="Apparel, physical music, stickers, posters, other" className={INPUT} />
+              <label htmlFor="rider-merch-types" className={LABEL}>Merch type(s)</label>
+              <input id="rider-merch-types" type="text" value={merchTypes} onChange={(e) => setMerchTypes(e.target.value)} placeholder="Apparel, physical music, stickers, posters, other" className={INPUT} />
             </div>
             <div className="space-y-1.5">
               <label className={LABEL}>Table space</label>
@@ -382,8 +389,8 @@ export function RiderForm() {
               </div>
             </div>
             <div className="space-y-1.5">
-              <label className={LABEL}>Who is managing your merch?</label>
-              <input type="text" value={merchManager} onChange={(e) => setMerchManager(e.target.value)} placeholder="You, or someone on your team" className={INPUT} />
+              <label htmlFor="rider-merch-manager" className={LABEL}>Who is managing your merch?</label>
+              <input id="rider-merch-manager" type="text" value={merchManager} onChange={(e) => setMerchManager(e.target.value)} placeholder="You, or someone on your team" className={INPUT} />
             </div>
             <p className="text-[11px] text-gray-600 leading-relaxed">
               Selling merch? Arrive before 2 PM to secure a spot. The host is not responsible for
@@ -425,8 +432,8 @@ export function RiderForm() {
               </div>
             </div>
             <div className="space-y-1.5">
-              <label className={LABEL}>General availability</label>
-              <input type="text" value={interviewAvail} onChange={(e) => setInterviewAvail(e.target.value)} placeholder="e.g. Mondays 1-4 PM, Weds 5-10 PM" className={INPUT} />
+              <label htmlFor="rider-interview-avail" className={LABEL}>General availability</label>
+              <input id="rider-interview-avail" type="text" value={interviewAvail} onChange={(e) => setInterviewAvail(e.target.value)} placeholder="e.g. Mondays 1-4 PM, Weds 5-10 PM" className={INPUT} />
             </div>
           </div>
         ) : null}
@@ -464,8 +471,8 @@ export function RiderForm() {
               </div>
             </div>
             <div className="space-y-1.5">
-              <label className={LABEL}>General availability</label>
-              <input type="text" value={retreatAvail} onChange={(e) => setRetreatAvail(e.target.value)} placeholder="e.g. Mondays 1-4 PM, Weds 5-10 PM" className={INPUT} />
+              <label htmlFor="rider-retreat-avail" className={LABEL}>General availability</label>
+              <input id="rider-retreat-avail" type="text" value={retreatAvail} onChange={(e) => setRetreatAvail(e.target.value)} placeholder="e.g. Mondays 1-4 PM, Weds 5-10 PM" className={INPUT} />
             </div>
           </div>
         ) : null}
@@ -485,10 +492,10 @@ export function RiderForm() {
           <span className="text-sm text-gray-200">I have read and agree to the above.</span>
         </label>
         <div className="space-y-1.5">
-          <label className={LABEL}>
+          <label htmlFor="rider-signature" className={LABEL}>
             Type your name to sign <span className="text-[#f5a623]">*</span>
           </label>
-          <input type="text" value={signature} onChange={(e) => setSignature(e.target.value)} placeholder="Your full name" className={INPUT} />
+          <input id="rider-signature" type="text" value={signature} onChange={(e) => setSignature(e.target.value)} placeholder="Your full name" className={INPUT} />
         </div>
       </Section>
 
