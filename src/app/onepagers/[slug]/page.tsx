@@ -28,7 +28,7 @@ export default async function OnePagerDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const pager = await getOnePager(slug).catch(() => null);
   if (!pager) notFound();
-  const activity = await listActivity(slug, 30);
+  const activity = await listActivity(slug, 30).catch(() => []);
 
   const session = await getStockTeamMember();
   if (pager.visibility !== 'public' && !session) {
