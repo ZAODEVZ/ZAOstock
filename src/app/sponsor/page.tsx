@@ -21,7 +21,7 @@ const CREDIBILITY_STATS = [
   { number: '795', label: 'WaveWarZ Music Battles' },
   { number: '4M+', label: 'Acadia Visitors (2025)' },
   { number: '5', label: 'COC Concertz Events (partner)' },
-  { number: '19', label: 'Team Members + Advisors' },
+  { number: '27', label: 'Teammates Building This' },
 ];
 
 const SPONSOR_TRACKS = [
