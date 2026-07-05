@@ -74,14 +74,18 @@ export function SuggestForm() {
         aria-hidden="true"
       />
       <div className="grid grid-cols-2 gap-2">
+        <label htmlFor="suggest-name" className="sr-only">Your name (optional)</label>
         <input
+          id="suggest-name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Your name (optional)"
           maxLength={200}
           className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
         />
+        <label htmlFor="suggest-contact" className="sr-only">Contact (optional)</label>
         <input
+          id="suggest-contact"
           value={contact}
           onChange={(e) => setContact(e.target.value)}
           placeholder="Contact (optional)"
@@ -89,7 +93,9 @@ export function SuggestForm() {
           className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
         />
       </div>
+      <label htmlFor="suggest-text" className="sr-only">Your suggestion</label>
       <textarea
+        id="suggest-text"
         value={suggestion}
         onChange={(e) => setSuggestion(e.target.value)}
         placeholder="Your suggestion..."

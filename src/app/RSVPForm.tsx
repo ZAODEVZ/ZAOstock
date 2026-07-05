@@ -64,7 +64,9 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <div className="flex flex-col sm:flex-row gap-3">
+        <label htmlFor="rsvp-name" className="sr-only">Your name</label>
         <input
+          id="rsvp-name"
           type="text"
           placeholder="Your name"
           value={name}
@@ -72,7 +74,9 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
           required
           className="flex-1 bg-[#0a1628] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#f5a623]/50"
         />
+        <label htmlFor="rsvp-email" className="sr-only">Email address</label>
         <input
+          id="rsvp-email"
           type="email"
           placeholder="Email address"
           value={email}

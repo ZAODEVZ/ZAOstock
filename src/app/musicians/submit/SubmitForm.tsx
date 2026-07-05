@@ -97,10 +97,11 @@ export function MusicianSubmitForm() {
       />
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">
+        <label htmlFor="submit-name" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
           Artist name or band <span className="text-[#f5a623]">*</span>
         </label>
         <input
+          id="submit-name"
           type="text"
           required
           value={name}
@@ -111,10 +112,11 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">
+        <label htmlFor="submit-email" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
           Email <span className="text-[#f5a623]">*</span>
         </label>
         <input
+          id="submit-email"
           type="email"
           required
           value={email}
@@ -126,8 +128,9 @@ export function MusicianSubmitForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">City / Where you are based</label>
+          <label htmlFor="submit-city" className="text-xs text-gray-400 uppercase tracking-wider font-bold">City / Where you are based</label>
           <input
+            id="submit-city"
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
@@ -136,8 +139,9 @@ export function MusicianSubmitForm() {
           />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Genre / Sound</label>
+          <label htmlFor="submit-genre" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Genre / Sound</label>
           <input
+            id="submit-genre"
             type="text"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
@@ -148,10 +152,11 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">
+        <label htmlFor="submit-track-ideas" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
           Track or song ideas for your set
         </label>
         <textarea
+          id="submit-track-ideas"
           rows={3}
           value={trackIdeas}
           onChange={(e) => setTrackIdeas(e.target.value)}
@@ -161,10 +166,11 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">
+        <label htmlFor="submit-mp3" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
           MP3 / audio links
         </label>
         <textarea
+          id="submit-mp3"
           rows={3}
           value={mp3Links}
           onChange={(e) => setMp3Links(e.target.value)}
@@ -174,8 +180,9 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Social links</label>
+        <label htmlFor="submit-socials" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Social links</label>
         <input
+          id="submit-socials"
           type="text"
           value={socials}
           onChange={(e) => setSocials(e.target.value)}
@@ -185,8 +192,9 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Short bio</label>
+        <label htmlFor="submit-bio" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Short bio</label>
         <textarea
+          id="submit-bio"
           rows={3}
           value={bio}
           onChange={(e) => setBio(e.target.value)}
@@ -196,8 +204,9 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Referred by</label>
+        <label htmlFor="submit-referred" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Referred by</label>
         <input
+          id="submit-referred"
           type="text"
           value={referredBy}
           onChange={(e) => setReferredBy(e.target.value)}
@@ -233,8 +242,9 @@ export function MusicianSubmitForm() {
 
       {needsTravel ? (
         <div className="space-y-1.5">
-          <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Traveling from</label>
+          <label htmlFor="submit-travel-from" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Traveling from</label>
           <input
+            id="submit-travel-from"
             type="text"
             value={travelFrom}
             onChange={(e) => setTravelFrom(e.target.value)}
