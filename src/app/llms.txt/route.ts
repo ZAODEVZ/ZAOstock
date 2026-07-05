@@ -9,7 +9,7 @@ const CONTENT = `# ZAOstock
 
 ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (NYC during NFT NYC, April 2024), ZAO-CHELLA (Miami Wynwood during Art Basel, December 2024), and the co-hosted ZAOville DMV chapter with DCoop in July 2026. ZAOville is a cross-promotion across the series — DCoop performed at ZAO-CHELLA and returns for ZAOstock. ZAOville lineup includes PROF!T, ELYVN, and more. ZAOstock takes place during Maine Craft Weekend as part of the 9th Annual Art of Ellsworth. The festival operates at break-even with fair artist pay. ZAO Festivals collaborates with ENTERACT for production and execution support. Sponsor money flows through one of two paths. Public path (tax-deductible): donor or grant -> Fractured Atlas (501(c)(3), 6-8% admin) -> New Media Commons -> ENTERACT (2% treasury) -> production / partners. Commercial path (sponsor-funded, no tax receipt): client / sponsor -> ENTERACT (2% treasury) -> production / partners with 50% upfront and 50% before delivery. ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit.
 
-The festival format: independent artists performing with DJs between, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty venue TBA.
+The festival format: independent artists performing with DJs between, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
 
 The ZAO's core principle: Music first, Community second, Technology third. The festival leads with the music experience. The ZAO are digital creators focused on helping musicians and other artists with distribution and support.
 
@@ -26,7 +26,7 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 - [Day-of program](https://zaostock.com/program): Draft schedule with music, talks, and WaveWarZ battles
 - [Partner deck](https://zaostock.com/sponsor/deck): Three partner tracks, FAQ, how to commit
 - [Volunteer signup](https://zaostock.com/apply): Sign up to volunteer in setup, check-in, stage crew, content, teardown, and other roles
-- [Team dashboard login](https://zaostock.com/team): 4-letter code access for the organizing team (15 members across Ops, Design, Music, Finance)
+- [Team dashboard login](https://zaostock.com/team): 4-letter code access for the organizing team (27 members across operations, design, music, finance, livestream, and content)
 
 ## Partner tracks
 
@@ -38,7 +38,7 @@ Two funding paths: public tax-deductible support administered through New Media 
 
 ## Team
 
-27 teammates total across operations, design, music, finance, livestream, and content. Mickey (Thy Revolution) is the livestream team lead. Iman is interning with The ZAO and co-managing the info@thezao.com inbox while helping run COC Concertz #6 with his Zambia squad (COC Concertz is a community partnership, not a ZAO sub-brand; framing pending COC confirmation).
+27 teammates total across operations, design, music, finance, livestream, and content. Mickey (Thy Revolution) is the livestream team lead. Iman is interning with The ZAO and co-managing the info@thezao.com inbox while helping run COC Concertz #6 with his Zambia squad (COC Concertz is a community partnership, not a ZAO sub-brand).
 
 Every team member has a public profile at https://zaostock.com/team/m/[slug] with photo, bio, and links. Current team grid lives at https://zaostock.com/team.
 

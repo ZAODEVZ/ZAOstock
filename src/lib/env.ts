@@ -1,4 +1,8 @@
 // Trim of ZAOOS ENV - only zaostock-relevant vars.
+// Server-only: this object exposes SUPABASE_SERVICE_ROLE_KEY / SESSION_SECRET,
+// so it must never be bundled into client code. Importing it from a client
+// component is a build-time error.
+import 'server-only';
 
 export const ENV = {
   NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { slugify, parseLinks, type ParsedLink } from '@/lib/members';
+import { slugify, parseLinks, type ParsedLink } from '@/lib/members-shared';
 import { HelpIcon } from './HelpIcon';
 
 interface Member {

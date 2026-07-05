@@ -165,7 +165,7 @@ export default async function DeckPage() {
           </ol>
           <div className="pt-2">
             <a
-              href="mailto:zaalp99@gmail.com?subject=ZAOstock%20Partner%20Interest"
+              href="mailto:zaal@thezao.com?subject=ZAOstock%20Partner%20Interest"
               className="inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-4 py-2.5 text-sm transition-colors"
             >
               Email Zaal

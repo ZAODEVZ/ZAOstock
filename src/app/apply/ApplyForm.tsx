@@ -90,8 +90,9 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       />
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Your name</label>
+        <label htmlFor="apply-name" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Your name</label>
         <input
+          id="apply-name"
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -102,8 +103,9 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Email</label>
+        <label htmlFor="apply-email" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Email</label>
         <input
+          id="apply-email"
           required
           type="email"
           value={email}
@@ -115,8 +117,9 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Phone (optional)</label>
+        <label htmlFor="apply-phone" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Phone (optional)</label>
         <input
+          id="apply-phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Day-of only, so we can reach you fast"
@@ -126,8 +129,9 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Where do you want to plug in?</label>
+        <label htmlFor="apply-role" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Where do you want to plug in?</label>
         <select
+          id="apply-role"
           value={roleInterest}
           onChange={(e) => setRoleInterest(e.target.value)}
           className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#f5a623]/30"
@@ -142,8 +146,9 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Shift preference</label>
+        <label htmlFor="apply-shift" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Shift preference</label>
         <select
+          id="apply-shift"
           value={shiftInterest}
           onChange={(e) => setShiftInterest(e.target.value)}
           className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#f5a623]/30"
@@ -155,8 +160,9 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Anything else? (optional)</label>
+        <label htmlFor="apply-message" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Anything else? (optional)</label>
         <textarea
+          id="apply-message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Skills, availability caveats, who referred you, why you want to help"

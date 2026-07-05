@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { slugify } from '@/lib/members';
+import { slugify } from '@/lib/members-shared';
 import { HelpIcon } from './HelpIcon';
 
 interface Member {

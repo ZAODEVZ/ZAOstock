@@ -17,11 +17,11 @@ const PROGRAM: Block[] = [
   { target: '12:00', type: 'DJ', label: 'Doors open', detail: 'Welcome DJ set, crowd arrives, grab your first drink.' },
   { target: '12:15', type: 'MUSIC', label: 'Opening set', detail: 'First artist of the day, 25-30 minutes.' },
   { target: '~12:50', type: 'TALK', label: 'Welcome to ZAOstock', detail: '5-10 minutes. What this is and why we built it.' },
-  { target: '~13:05', type: 'MUSIC', label: 'Artist 2', detail: '15-20 minute set.' },
+  { target: '~13:05', type: 'MUSIC', label: 'Artist — TBA', detail: '15-20 minute set. Lineup announces August 2026.' },
   { target: '~13:35', type: 'TALK', label: 'Music distribution 101', detail: '5-10 minutes. Why digital distribution matters for independent artists, pitched for IRL audience.' },
-  { target: '~13:50', type: 'MUSIC', label: 'Artist 3', detail: '15-20 minute set.' },
+  { target: '~13:50', type: 'MUSIC', label: 'Artist — TBA', detail: '15-20 minute set. Lineup announces August 2026.' },
   { target: '~14:20', type: 'BREAK', label: 'Mid-day break', detail: '15 minutes. Food trucks, bathrooms, mingle.' },
-  { target: '~14:35', type: 'MUSIC', label: 'Artist 4', detail: '20-30 minute set.' },
+  { target: '~14:35', type: 'MUSIC', label: 'Artist — TBA', detail: '20-30 minute set. Lineup announces August 2026.' },
   { target: '~15:10', type: 'BATTLE', label: 'WaveWarZ battle', detail: 'Two artists go head-to-head. Audience decides the winner.' },
   { target: '~15:45', type: 'DJ', label: 'DJ bridge', detail: 'Music keeps going while we reset the stage.' },
   { target: '~16:00', type: 'MUSIC', label: 'Artist set', detail: 'Independent artist set.' },
@@ -30,7 +30,7 @@ const PROGRAM: Block[] = [
   { target: '~16:55', type: 'BATTLE', label: 'WaveWarZ battle', detail: 'Two artists go head-to-head. Audience decides the winner.' },
   { target: '~17:25', type: 'DJ', label: 'DJ bridge', detail: 'Stage reset.' },
   { target: '~17:30', type: 'MUSIC', label: 'Closing set', detail: 'Special guest, 25-30 minutes.' },
-  { target: '~17:55', type: 'DJ', label: 'Wind down', detail: 'Closing DJ set. Afterparty venue TBA.' },
+  { target: '~17:55', type: 'DJ', label: 'Wind down', detail: 'Closing DJ set. Afterparty at Black Moon Public House downtown.' },
 ];
 
 const TYPE_COLOR: Record<Block['type'], string> = {
@@ -106,7 +106,7 @@ export default function ProgramPage() {
           <ul className="text-sm text-gray-300 space-y-1.5">
             <li>- Full lineup announces August 2026.</li>
             <li>- Weather: tent coverage via Wallace Events, rain or shine.</li>
-            <li>- Afterparty venue TBA.</li>
+            <li>- Afterparty at Black Moon Public House, walkable downtown.</li>
             <li>- This schedule is a draft. Final version locks September 2026.</li>
           </ul>
         </div>

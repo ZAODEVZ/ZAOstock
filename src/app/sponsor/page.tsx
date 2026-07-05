@@ -20,7 +20,7 @@ const CREDIBILITY_STATS = [
   { number: '795', label: 'WaveWarZ Music Battles' },
   { number: '4M+', label: 'Acadia Visitors (2025)' },
   { number: '5', label: 'COC Concertz Events (partner)' },
-  { number: '19', label: 'Team Members + Advisors' },
+  { number: '27', label: 'Teammates Building This' },
 ];
 
 const SPONSOR_TRACKS = [
@@ -47,7 +47,7 @@ const SPONSOR_TRACKS = [
       'Logo in digital attendance collectible (claimed by every attendee)',
       'Sponsored segment in post-event highlight reel',
       'Social media campaign across Farcaster, X, LinkedIn',
-      'Featured through the ZAO Festivals + COC Concertz partnership - monthly virtual events, 4+ months pre-event exposure (framing pending COC confirmation)',
+      'Featured through the ZAO Festivals + COC Concertz partnership - monthly virtual events, 4+ months pre-event exposure',
       'Mentioned in 400+ edition daily newsletter',
       'Post-event metrics report: livestream views, social reach, content views',
     ],
@@ -58,7 +58,7 @@ const SPONSOR_TRACKS = [
     color: '#f5a623',
     benefits: [
       'Branding across ALL ZAO Festival events (not just ZAOstock)',
-      'Logo via the ZAO Festivals + COC Concertz partnership - monthly virtual concerts (framing pending COC confirmation)',
+      'Logo via the ZAO Festivals + COC Concertz partnership - monthly virtual concerts',
       'Sponsor visibility in WaveWarZ music battles (795+ battles, growing)',
       'Priority placement at ZAOVille (DMV) and future city expansions',
       'Advisory board seat for founding ecosystem partners',
@@ -84,7 +84,7 @@ const PAST_PROOF = [
   },
   {
     name: 'COC Concertz (community partner)',
-    detail: '5 monthly virtual concerts, free entry, artists from 4 countries (framing pending COC confirmation)',
+    detail: '5 monthly virtual concerts, free entry, artists from 4 countries',
   },
   {
     name: 'WaveWarZ',

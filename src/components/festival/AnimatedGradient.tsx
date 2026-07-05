@@ -3,6 +3,7 @@ export function AnimatedGradient() {
     <>
       <div
         aria-hidden
+        data-zaostock-bg
         className="pointer-events-none fixed inset-0 z-[0] opacity-[0.18] motion-reduce:opacity-[0.05]"
         style={{
           background:
