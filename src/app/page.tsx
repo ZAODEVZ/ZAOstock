@@ -25,7 +25,6 @@ export const metadata: Metadata = {
     title: 'ZAOstock | Community Music Festival',
     description: 'A community-built outdoor music festival in Ellsworth, Maine. October 3, 2026.',
     url: 'https://zaostock.com',
-    images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'ZAOstock - a community-built music festival' }],
   },
 };
 

@@ -19,7 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'ZAOstock 2026 — Overview',
       description:
         'ZAO Festivals presents ZAOstock — October 3, 2026 at the Franklin Street Parklet, Ellsworth, Maine.',
-      images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'ZAOstock - a community-built music festival' }],
     },
   };
 }

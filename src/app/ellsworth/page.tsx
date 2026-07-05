@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     description:
       'Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. October 3, 2026.',
     url: 'https://zaostock.com/ellsworth',
-    images: [{ url: '/zao/wavewarz-banner.jpg', width: 1200, height: 630, alt: 'Ellsworth, Maine - host of ZAOstock' }],
   },
 };
 
