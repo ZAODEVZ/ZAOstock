@@ -45,6 +45,27 @@ const config: NextConfig = {
           destination: '/donate/:path*',
           has: [{ type: 'host', value: 'donate.zaostock.com' }],
         },
+        // zaofestivals.com -> /festivals (the ZAO Festivals umbrella hub)
+        {
+          source: '/',
+          destination: '/festivals',
+          has: [{ type: 'host', value: 'zaofestivals.com' }],
+        },
+        {
+          source: '/',
+          destination: '/festivals',
+          has: [{ type: 'host', value: 'www.zaofestivals.com' }],
+        },
+        {
+          source: '/:path*',
+          destination: '/festivals/:path*',
+          has: [{ type: 'host', value: 'zaofestivals.com' }],
+        },
+        {
+          source: '/:path*',
+          destination: '/festivals/:path*',
+          has: [{ type: 'host', value: 'www.zaofestivals.com' }],
+        },
       ],
       afterFiles: [],
       fallback: [],
