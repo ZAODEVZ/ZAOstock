@@ -150,9 +150,11 @@ export default function SponsorPage() {
               meeting every Monday for 90+ weeks straight.
             </p>
             <p className="text-sm text-gray-300 leading-relaxed">
-              Downtown Ellsworth just received National Historic Register designation. Heart of
-              Ellsworth facilitated 28 events in 2025 with $391K in grants and 50+ sponsors. Every
-              car heading to Acadia passes through here - 4 million visitors last year.
+              Downtown Ellsworth just received National Historic Register designation and is a
+              Main Street America Nationally Accredited Community (since Sept 2024). Heart of
+              Ellsworth facilitated 28 events in 2025 with $391K in grants and 50+ sponsors. More
+              than 30,000 vehicles a day pass through Ellsworth in summer on the only road routes
+              to Acadia - which had 4.08 million visitors in 2025, an all-time record.
             </p>
             <p className="text-sm text-gray-300 leading-relaxed">
               ZAOstock is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend - a
@@ -276,6 +278,10 @@ export default function SponsorPage() {
               <div>
                 <p className="text-gray-500 text-xs">Livestream</p>
                 <p className="text-white font-medium">YouTube + Twitch + ZAO OS</p>
+              </div>
+              <div>
+                <p className="text-gray-500 text-xs">Budget target</p>
+                <p className="text-white font-medium">$20K ($7K minimum viable)</p>
               </div>
             </div>
             <p className="text-xs text-gray-500 mt-2">
