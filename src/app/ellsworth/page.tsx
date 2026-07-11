@@ -39,21 +39,25 @@ const EAT: { name: string; note: string }[] = [
   { name: 'Union River Lobster Pot', note: 'Seasonal seafood on the banks of the Union River downtown - lobster and a famous slice of pie.' },
   { name: 'Cleonice', note: 'Mediterranean bistro in the historic 1938 Luchini building on Main Street.' },
   { name: 'Serendib', note: 'Award-winning Indian and Sri Lankan cuisine.' },
+  { name: 'Provender Kitchen + Bar', note: 'Chef-driven contemporary American at 112 Main St, 4.5-star. Reservations recommended.' },
+  { name: "Finn's Irish Pub", note: 'Irish food and pub fare at 156 Main St, 4.4-star, casual.' },
   { name: 'Fogtown Brewing', note: 'Taproom with a dog-friendly beer garden.' },
   { name: 'Airline Brewing Company', note: 'British-style local beers and classic pub fare.' },
 ];
 
 const DO: { name: string; note: string }[] = [
-  { name: 'Acadia National Park', note: 'Ellsworth is the gateway - about 25 mi to Bar Harbor and the park. Carriage roads, Otter Cliff, Cadillac Mountain sunrise.' },
+  { name: 'Acadia National Park', note: 'Ellsworth is the gateway - about 25 mi to Bar Harbor and the park. See the full ZAO Guide to Acadia for must-see spots, reservations, and excursion plans.' },
+  { name: 'Union River Sculpture Trail', note: 'New granite sculptures by Maine artists along the Riverwalk - first installations launching Fall 2026.' },
   { name: 'Woodlawn Museum, Gardens & Park', note: 'The historic Black House on 180 acres - gardens, trails, and a croquet court.' },
   { name: 'Birdsacre (Stanwood Wildlife Sanctuary)', note: 'Rescued birds and miles of quiet walking trails, plus the Stanwood homestead museum.' },
   { name: 'Downtown Ellsworth', note: '19th-century Main Street: galleries (Courthouse Gallery, Atlantic Art Glass), shops, and cafes climbing up from the river.' },
 ];
 
 const GOOD_TO_KNOW: { label: string; detail: string }[] = [
-  { label: 'Weather', detail: 'Early October runs roughly 58-62°F by day, ~44°F at night - crisp and breezy with peak fall color. Pack layers and a jacket; ZAOstock is outdoors.' },
+  { label: 'Weather', detail: 'Early October runs roughly 58-62°F by day, ~44°F at night - crisp and breezy, with the season just turning toward fall color. Pack layers and a jacket; ZAOstock is outdoors.' },
   { label: 'Daylight', detail: 'About 11 hours of daylight, sunrise ~6:48 AM, sunset ~5:49 PM. The festival runs noon-6 PM, finishing near golden hour.' },
   { label: 'Rain', detail: 'Roughly a 1-in-3 chance of rain on any given fall day - a packable rain layer is smart.' },
+  { label: 'Island Explorer shuttle', detail: "Free shuttle bus connecting Ellsworth-area hotels, Bar Harbor, and Acadia - running through October 12, 2026. Good way to skip the park's parking crunch." },
 ];
 
 export default function EllsworthPage() {
@@ -134,6 +138,12 @@ export default function EllsworthPage() {
               </div>
             ))}
           </div>
+          <Link
+            href="/acadia"
+            className="mt-3 inline-block text-sm text-[#f5a623] hover:text-[#ffd700] transition-colors"
+          >
+            Full ZAO Guide to Acadia National Park &rarr;
+          </Link>
         </section>
 
         {/* Good to know */}

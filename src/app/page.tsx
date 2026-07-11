@@ -665,6 +665,9 @@ export default async function TestPage() {
             <Link href="/ellsworth" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
               Visit Ellsworth
             </Link>
+            <Link href="/acadia" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
+              Acadia Guide
+            </Link>
             <Link href="/onepagers/overview" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
               Overview deck
             </Link>
