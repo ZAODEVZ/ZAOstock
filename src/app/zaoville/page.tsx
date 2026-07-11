@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'ZAOville · ZAO Festivals',
+  title: 'ZAOville Pool Party · ZAO Festivals',
   description:
-    'ZAOville is the DMV chapter of the ZAO Festivals series, co-hosted with DCoop and The VEC. Open mic, live sets, and DJ night swim. Part of the lineage behind ZAO-PALOOZA, ZAO-CHELLA, and ZAOstock.',
+    'The ZAOville Pool Party - Laurel, MD, Saturday July 25, 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets, and a DJ night swim. Part of the lineage behind ZAO-PALOOZA, ZAO-CHELLA, and ZAOstock.',
   openGraph: {
-    title: 'ZAOville · ZAO Festivals',
+    title: 'ZAOville Pool Party · ZAO Festivals',
     description:
-      'The DMV chapter of the ZAO Festivals series, co-hosted with DCoop and The VEC. Open mic, live sets, DJ night swim.',
+      'Laurel, MD - Saturday July 25, 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
     url: 'https://zaostock.com/zaoville',
     type: 'website',
   },
@@ -45,7 +45,7 @@ const TYPE_COLOR: Record<Slot['type'], string> = {
 const SERIES = [
   { name: 'ZAO-PALOOZA', place: 'NYC', year: 'Apr 2024' },
   { name: 'ZAO-CHELLA', place: 'Miami', year: 'Dec 2024' },
-  { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', current: true },
+  { name: 'ZAOville', place: 'Laurel, MD', year: 'Jul 25 2026', current: true },
   { name: 'ZAOstock', place: 'Ellsworth ME', year: 'Oct 2026' },
 ];
 
@@ -65,13 +65,14 @@ export default function ZAOvillePage() {
         {/* Hero */}
         <div className="space-y-3">
           <p className="inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-xs text-emerald-400 font-medium border border-emerald-500/30">
-            DMV Chapter · Summer 2026
+            Laurel, MD · Saturday, July 25, 2026
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">ZAOville</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">ZAOville Pool Party</h1>
           <p className="text-sm text-gray-400 leading-relaxed">
             The DMV chapter of the ZAO Festivals series, co-hosted with DCoop (founder of The VEC).
-            Open mic, live independent sets, host transitions, and a DJ night swim to close it out.
-            Cross-promoted across the series and feeding directly into ZAOstock.
+            Free entry, free drinks - the party pops off at 11:00 AM with a vibe sesh and food, into
+            open mic, live independent sets, and a DJ night swim to close it out. Cross-promoted
+            across the series and feeding directly into ZAOstock.
           </p>
         </div>
 
