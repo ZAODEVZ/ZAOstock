@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/donate',
     '/program',
     '/ellsworth',
+    '/acadia',
+    '/festivals',
     '/sponsor',
     '/sponsor/deck',
     '/team',
