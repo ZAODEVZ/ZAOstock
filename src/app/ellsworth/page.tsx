@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 };
 
 // ---------------------------------------------------------------------------
-// CONTENT - seeded from web research (2026-06). Refine/expand with City Hall
-// specifics: festival-day parking plan, exact addresses, booking/links.
+// CONTENT - seeded from web research (2026-06), parking/restroom plan from
+// research doc 1032 (2026-07-11). Refine/expand with exact addresses, links.
 // ---------------------------------------------------------------------------
 
 const GETTING_HERE: { mode: string; detail: string }[] = [
   { mode: 'By car', detail: 'About 40 min (30 mi) from Bangor, ~3 hrs (135 mi) from Portland, and ~5 hrs from Boston. Route 1 / Route 1A run right through downtown.' },
   { mode: 'Bangor International (BGR)', detail: 'Nearest major airport, ~40 min away. A direct shuttle bus runs to Ellsworth twice daily (~35 min). Best bet for most travelers.' },
   { mode: 'Hancock County-Bar Harbor (BHB)', detail: 'Smaller regional airport ~20 min away, with seasonal Cape Air service (including from Boston). Closest to the venue.' },
-  { mode: 'Parking', detail: 'Downtown has public lots and street parking near the Franklin Street Parklet. Festival-day parking details coming soon.' },
+  { mode: 'Parking', detail: 'Existing downtown street parking plus 1-2 public lots within a 5-10 minute walk of the Franklin Street Parklet - no shuttle needed at this scale. Follow parking directional signage near the venue on festival day.' },
 ];
 
 const STAY: { name: string; note: string }[] = [
@@ -58,6 +58,7 @@ const GOOD_TO_KNOW: { label: string; detail: string }[] = [
   { label: 'Daylight', detail: 'About 11 hours of daylight, sunrise ~6:48 AM, sunset ~5:49 PM. The festival runs noon-6 PM, finishing near golden hour.' },
   { label: 'Rain', detail: 'Roughly a 1-in-3 chance of rain on any given fall day - a packable rain layer is smart.' },
   { label: 'Island Explorer shuttle', detail: "Free shuttle bus connecting Ellsworth-area hotels, Bar Harbor, and Acadia - running through October 12, 2026. Good way to skip the park's parking crunch." },
+  { label: 'Restrooms', detail: 'On-site portable restrooms (including ADA-accessible units) near the stage/food area, plus walkable downtown restroom access nearby.' },
 ];
 
 export default function EllsworthPage() {
