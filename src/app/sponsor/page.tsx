@@ -279,10 +279,6 @@ export default function SponsorPage() {
                 <p className="text-gray-500 text-xs">Livestream</p>
                 <p className="text-white font-medium">YouTube + Twitch + ZAO OS</p>
               </div>
-              <div>
-                <p className="text-gray-500 text-xs">Budget target</p>
-                <p className="text-white font-medium">$20K ($7K minimum viable)</p>
-              </div>
             </div>
             <p className="text-xs text-gray-500 mt-2">
               Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend (statewide)
