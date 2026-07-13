@@ -81,7 +81,7 @@ const FAQ = [
   },
   {
     q: 'What is the deadline?',
-    a: 'We are locking partners by June 15, 2026 to hit print and digital deadlines. Earlier is better.',
+    a: 'We are locking partners by September 15, 2026 to hit print and digital deadlines. Earlier is better - it means more of the promo runway between now and Oct 3 to feature you.',
   },
   {
     q: 'Can we pay in USDC or stablecoins?',
@@ -159,8 +159,8 @@ export default async function DeckPage() {
           <ol className="text-sm text-gray-300 space-y-2">
             <li><strong className="text-white">1.</strong> Email Zaal with the track you want (Main Stage / Broadcast / Year-Round) and any custom asks.</li>
             <li><strong className="text-white">2.</strong> We send a simple partner agreement. Tax docs (W-9 from Fractured Atlas via New Media Commons) follow if you are routing tax-deductible support.</li>
-            <li><strong className="text-white">3.</strong> Partner contribution due by June 30 to lock printed materials.</li>
-            <li><strong className="text-white">4.</strong> You ship your logo file by August 1 for all merch, stage, and broadcast use.</li>
+            <li><strong className="text-white">3.</strong> Partner contribution due by September 20 to lock printed materials.</li>
+            <li><strong className="text-white">4.</strong> You ship your logo file by September 25 for all merch, stage, and broadcast use.</li>
             <li><strong className="text-white">5.</strong> Oct 3 - you are named on the stage, the broadcast, the website, and the day.</li>
           </ol>
           <div className="pt-2">
