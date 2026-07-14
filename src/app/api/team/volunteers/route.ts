@@ -4,6 +4,7 @@ import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
+import { VOLUNTEER_ROLES, VOLUNTEER_SHIFTS } from '@/lib/team-constants';
 
 export async function GET() {
   const member = await getStockTeamMember();
@@ -24,8 +25,8 @@ const createSchema = z.object({
   name: z.string().min(1).max(200),
   email: z.string().max(200).optional(),
   phone: z.string().max(50).optional(),
-  role: z.enum(['setup', 'checkin', 'water', 'safety', 'teardown', 'floater', 'content', 'unassigned']).optional(),
-  shift: z.enum(['early', 'block1', 'block2', 'teardown', 'allday']).optional(),
+  role: z.enum(VOLUNTEER_ROLES).optional(),
+  shift: z.enum(VOLUNTEER_SHIFTS).optional(),
   notes: z.string().max(1000).optional(),
 });
 
@@ -64,8 +65,8 @@ const patchSchema = z.object({
   name: z.string().min(1).max(200).optional(),
   email: z.string().max(200).optional(),
   phone: z.string().max(50).optional(),
-  role: z.enum(['setup', 'checkin', 'water', 'safety', 'teardown', 'floater', 'content', 'unassigned']).optional(),
-  shift: z.enum(['early', 'block1', 'block2', 'teardown', 'allday']).optional(),
+  role: z.enum(VOLUNTEER_ROLES).optional(),
+  shift: z.enum(VOLUNTEER_SHIFTS).optional(),
   confirmed: z.boolean().optional(),
   notes: z.string().max(1000).optional(),
 });

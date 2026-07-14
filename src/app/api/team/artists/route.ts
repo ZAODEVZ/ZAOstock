@@ -4,6 +4,7 @@ import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
+import { ARTIST_STATUSES } from '@/lib/team-constants';
 
 export async function GET() {
   const member = await getStockTeamMember();
@@ -25,7 +26,7 @@ const createSchema = z.object({
   name: z.string().min(1).max(200),
   genre: z.string().max(100).optional(),
   city: z.string().max(100).optional(),
-  status: z.enum(['wishlist', 'contacted', 'interested', 'confirmed', 'declined', 'travel_booked']).optional(),
+  status: z.enum(ARTIST_STATUSES).optional(),
   socials: z.string().max(500).optional(),
   travel_from: z.string().max(200).optional(),
   needs_travel: z.boolean().optional(),
@@ -67,7 +68,7 @@ const patchSchema = z.object({
   name: z.string().min(1).max(200).optional(),
   genre: z.string().max(100).optional(),
   city: z.string().max(100).optional(),
-  status: z.enum(['wishlist', 'contacted', 'interested', 'confirmed', 'declined', 'travel_booked']).optional(),
+  status: z.enum(ARTIST_STATUSES).optional(),
   socials: z.string().max(500).optional(),
   travel_from: z.string().max(200).optional(),
   needs_travel: z.boolean().optional(),

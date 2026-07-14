@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
+import { SPONSOR_TRACKS, SPONSOR_STATUSES } from '@/lib/team-constants';
 import { parseJsonBody } from '@/lib/api/parse-json';
 
 export async function GET() {
@@ -23,8 +24,8 @@ export async function GET() {
 
 const createSchema = z.object({
   name: z.string().min(1).max(200),
-  track: z.enum(['local', 'virtual', 'ecosystem']),
-  status: z.enum(['lead', 'contacted', 'in_talks', 'committed', 'paid', 'declined']).optional(),
+  track: z.enum(SPONSOR_TRACKS),
+  status: z.enum(SPONSOR_STATUSES).optional(),
   contact_name: z.string().max(200).optional(),
   contact_email: z.string().max(200).optional(),
   contact_phone: z.string().max(50).optional(),
@@ -65,8 +66,8 @@ export async function POST(request: NextRequest) {
 const patchSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1).max(200).optional(),
-  track: z.enum(['local', 'virtual', 'ecosystem']).optional(),
-  status: z.enum(['lead', 'contacted', 'in_talks', 'committed', 'paid', 'declined']).optional(),
+  track: z.enum(SPONSOR_TRACKS).optional(),
+  status: z.enum(SPONSOR_STATUSES).optional(),
   contact_name: z.string().max(200).optional(),
   contact_email: z.string().max(200).optional(),
   contact_phone: z.string().max(50).optional(),
