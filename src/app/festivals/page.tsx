@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Tweet } from 'react-tweet';
+import dynamic from 'next/dynamic';
 import { InstagramEmbed } from './InstagramEmbed';
+
+// Deferred: react-tweet ships real client-side weight, and TWEETS below is
+// currently empty (all entries commented out) - no reason to include it in
+// this page's bundle until there's an actual tweet ID to render.
+const Tweet = dynamic(() => import('react-tweet').then((m) => m.Tweet));
 
 export const metadata: Metadata = {
   title: 'ZAO Festivals',
