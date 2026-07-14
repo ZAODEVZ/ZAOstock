@@ -7,20 +7,27 @@ export interface StockTeamPayload {
   memberName?: string;
 }
 
-const stockTeamSessionOptions = {
-  password: ENV.SESSION_SECRET,
-  cookieName: 'team_session',
-  cookieOptions: {
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    sameSite: 'lax' as const,
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
-};
+// Built lazily, not as a module-level constant - ENV.SESSION_SECRET now
+// throws if unset (see lib/env.ts), and this needs to stay inside
+// getStockTeamMember()'s own try/catch so a missing secret fails closed
+// (anonymous) instead of crashing every page that imports this module,
+// including at build time during Next's page-data collection.
+function stockTeamSessionOptions() {
+  return {
+    password: ENV.SESSION_SECRET,
+    cookieName: 'team_session',
+    cookieOptions: {
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,
+      sameSite: 'lax' as const,
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+    },
+  };
+}
 
 export async function getStockTeamSession(): Promise<IronSession<StockTeamPayload>> {
   const cookieStore = await cookies();
-  return getIronSession<StockTeamPayload>(cookieStore, stockTeamSessionOptions);
+  return getIronSession<StockTeamPayload>(cookieStore, stockTeamSessionOptions());
 }
 
 export async function getStockTeamMember(): Promise<{ memberId: string; memberName: string } | null> {

@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logger } from '@/lib/logger';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 const postSchema = z.object({
   action: z.enum(['join', 'leave']),
@@ -115,7 +116,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Not signed in.' }, { status: 401 });
     }
 
-    const body = await request.json();
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = postSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

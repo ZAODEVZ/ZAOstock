@@ -9,6 +9,7 @@ import {
   listActivity,
 } from '@/lib/onepagers';
 import { logger } from '@/lib/logger';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 const patchSchema = z.object({
   title: z.string().min(1).max(200).optional(),
@@ -54,7 +55,9 @@ export async function PATCH(request: NextRequest, { params }: Params) {
     const session = await getStockTeamMember();
     if (!session) return NextResponse.json({ error: 'Not signed in.' }, { status: 401 });
 
-    const body = await request.json();
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = patchSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

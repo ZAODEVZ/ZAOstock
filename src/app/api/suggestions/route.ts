@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { getStockTeamMember } from '@/lib/auth/session';
+import { parseJsonBody } from '@/lib/api/parse-json';
+import { rateLimitPublicForm } from '@/lib/api/rate-limit';
 
 const createSchema = z.object({
   name: z.string().trim().max(200).optional(),
@@ -12,7 +14,12 @@ const createSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const limited = rateLimitPublicForm(request, 'suggestions');
+    if (limited) return limited;
+
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = createSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -69,7 +76,9 @@ export async function PATCH(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await request.json();
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const body = parsedBody.data;
   const parsed = patchSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
@@ -96,7 +105,9 @@ export async function DELETE(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await request.json();
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const body = parsedBody.data;
   const parsed = deleteSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
 

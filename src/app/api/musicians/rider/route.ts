@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { generateClaimToken, slugify } from '@/lib/artists';
 import { ENV } from '@/lib/env';
+import { parseJsonBody } from '@/lib/api/parse-json';
+import { rateLimitPublicForm } from '@/lib/api/rate-limit';
 
 // Confirmed-artist rider intake. Public form at /musicians/rider.
 // Closes the loop the artist deal memo promises ("technical rider intake form").
@@ -44,6 +46,7 @@ const riderSchema = z.object({
   }),
   signature: z.string().trim().min(1, 'Type your name to acknowledge').max(200),
 
+  token: z.string().trim().max(200).optional(),
   hp: z.string().optional(),
 });
 
@@ -98,7 +101,12 @@ function formatRiderBlock(d: z.infer<typeof riderSchema>): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const limited = rateLimitPublicForm(request, 'musicians-rider');
+    if (limited) return limited;
+
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = riderSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -117,7 +125,11 @@ export async function POST(request: NextRequest) {
     const riderBlock = formatRiderBlock(d);
     const supabase = getSupabaseAdmin();
 
-    // Match an existing artist by email first, then by name.
+    // Match an existing artist by email only. Matching by name too (the
+    // prior behavior) let anyone who knew a confirmed artist's public band
+    // name - not even their email - overwrite their profile and receive
+    // their edit token. Name isn't ownership proof; email plus the existing
+    // token check below is the actual gate.
     let existing: { id: string; name: string; claim_token: string | null; notes: string | null } | null = null;
     const byEmail = await supabase
       .from('artists')
@@ -126,13 +138,16 @@ export async function POST(request: NextRequest) {
       .maybeSingle();
     if (byEmail.data) {
       existing = byEmail.data;
-    } else {
-      const byName = await supabase
-        .from('artists')
-        .select('id, name, claim_token, notes')
-        .ilike('name', d.name)
-        .maybeSingle();
-      if (byName.data) existing = byName.data;
+    }
+
+    // A row that already has a claim_token has already been claimed - knowing
+    // the artist's email isn't proof you're that person. Require the actual
+    // token before allowing an update or re-issuing it.
+    if (existing?.claim_token && existing.claim_token !== d.token) {
+      return NextResponse.json(
+        { success: true, message: 'Thanks - if you already have a profile, use your existing edit link to update it.' },
+        { status: 200 },
+      );
     }
 
     let artistId: string;

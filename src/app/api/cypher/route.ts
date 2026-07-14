@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { generateClaimToken, slugify } from '@/lib/artists';
+import { parseJsonBody } from '@/lib/api/parse-json';
+import { rateLimitPublicForm } from '@/lib/api/rate-limit';
 
 const cypherSchema = z.object({
   name: z.string().trim().min(1, 'Name required').max(200),
@@ -9,12 +11,18 @@ const cypherSchema = z.object({
   socials: z.string().trim().max(500).optional(),
   cypher_role: z.string().trim().min(1, 'Tell us what you bring').max(300),
   notes: z.string().trim().max(1000).optional(),
+  token: z.string().trim().max(200).optional(),
   hp: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const limited = rateLimitPublicForm(request, 'cypher');
+    if (limited) return limited;
+
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = cypherSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -49,6 +57,18 @@ export async function POST(request: NextRequest) {
         .ilike('contact_email', parsed.data.email)
         .maybeSingle();
       existing = data;
+    }
+
+    // A row that already has a claim_token has already been claimed by
+    // someone - knowing the artist's email isn't proof you're that person.
+    // Require the actual token before allowing an update or re-issuing it
+    // (otherwise anyone who guesses/knows a confirmed artist's email could
+    // overwrite their profile and walk away with their edit link).
+    if (existing?.claim_token && existing.claim_token !== parsed.data.token) {
+      return NextResponse.json(
+        { success: true, message: 'Thanks - if you already have a profile, use your existing edit link to update it.' },
+        { status: 200 },
+      );
     }
 
     let claim_token: string;

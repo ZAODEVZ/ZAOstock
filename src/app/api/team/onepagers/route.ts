@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { listOnePagers, createOnePager, slugify } from '@/lib/onepagers';
 import { logger } from '@/lib/logger';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 const postSchema = z.object({
   slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/i).max(60).optional(),
@@ -36,7 +37,9 @@ export async function POST(request: NextRequest) {
     if (!session) {
       return NextResponse.json({ error: 'Not signed in.' }, { status: 401 });
     }
-    const body = await request.json();
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = postSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

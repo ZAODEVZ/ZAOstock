@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity } from '@/lib/log-activity';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 const ENTITY_TYPES = ['sponsor', 'artist', 'timeline', 'todo', 'note', 'volunteer', 'budget'] as const;
 
@@ -48,7 +49,9 @@ export async function POST(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await request.json();
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const body = parsedBody.data;
   const parsed = createSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });
@@ -87,7 +90,9 @@ export async function DELETE(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await request.json();
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const body = parsedBody.data;
   const parsed = deleteSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
 

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
+import { parseJsonBody } from '@/lib/api/parse-json';
+import { rateLimitPublicForm } from '@/lib/api/rate-limit';
 
 const submitSchema = z.object({
   name: z.string().trim().min(1, 'Artist name required').max(200),
@@ -20,7 +22,12 @@ const submitSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const limited = rateLimitPublicForm(request, 'musicians-submit');
+    if (limited) return limited;
+
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = submitSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

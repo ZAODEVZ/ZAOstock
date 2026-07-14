@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 export async function GET() {
   const member = await getStockTeamMember();
@@ -27,8 +28,9 @@ export async function PATCH(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const body = await request.json();
-  const parsed = patchSchema.safeParse(body);
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const parsed = patchSchema.safeParse(parsedBody.data);
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });
   }

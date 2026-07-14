@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logger } from '@/lib/logger';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 const patchSchema = z.object({
   bio: z.string().max(2000).optional(),
@@ -27,7 +28,9 @@ export async function PATCH(request: NextRequest) {
       return NextResponse.json({ error: 'Not signed in. Log out and back in.' }, { status: 401 });
     }
 
-    const body = await request.json();
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = patchSchema.safeParse(body);
     if (!parsed.success) {
       const firstMsg = parsed.error.issues[0]?.message || 'Invalid input';

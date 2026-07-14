@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { verifyClaimToken } from '@/lib/artists';
 import { logger } from '@/lib/logger';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 // Records a backing-track file an artist just uploaded. Token-gated.
 // The file already lives in the bucket; here we index it on the artist row
@@ -24,7 +25,9 @@ function formatBytes(n: number): string {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const body = parsedBody.data;
   const parsed = schema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });

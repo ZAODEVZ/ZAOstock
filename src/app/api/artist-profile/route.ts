@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { verifyClaimToken } from '@/lib/artists';
+import { parseJsonBody } from '@/lib/api/parse-json';
+import { rateLimitPublicForm } from '@/lib/api/rate-limit';
 
 const httpsOnly = (label: string) =>
   z
@@ -29,7 +31,13 @@ const ELIGIBLE_THRESHOLD = 2;
 
 export async function PATCH(request: NextRequest) {
   try {
-    const body = await request.json();
+    // Also guards against token brute-forcing, not just spam.
+    const limited = rateLimitPublicForm(request, 'artist-profile', { windowMs: 10 * 60_000, maxAttempts: 20 });
+    if (limited) return limited;
+
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = patchSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

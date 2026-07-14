@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { scryptSync, timingSafeEqual } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { saveStockTeamSession } from '@/lib/auth/session';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 const loginSchema = z.object({
   password: z.string().min(1).max(64),
@@ -45,7 +46,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
+    const parsedBody = await parseJsonBody(request);
+    if (!parsedBody.ok) return parsedBody.response;
+    const body = parsedBody.data;
     const parsed = loginSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json({ error: 'Password required' }, { status: 400 });

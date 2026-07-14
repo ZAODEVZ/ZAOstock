@@ -4,6 +4,7 @@ import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { verifyClaimToken } from '@/lib/artists';
 import { logger } from '@/lib/logger';
+import { parseJsonBody } from '@/lib/api/parse-json';
 
 // Token-gated signed upload URL for confirmed artists submitting backing tracks.
 // Reuses the private `stock-attachments` bucket under artist/<id>/tracks/.
@@ -25,7 +26,9 @@ function safeFilename(raw: string): string {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  const parsedBody = await parseJsonBody(request);
+  if (!parsedBody.ok) return parsedBody.response;
+  const body = parsedBody.data;
   const parsed = schema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });

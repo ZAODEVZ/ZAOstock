@@ -15,6 +15,13 @@ import { ScrollEyebrow } from '@/components/festival/ScrollEyebrow';
 import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 import { TiltCard } from '@/components/festival/TiltCard';
 
+// NOTE (attempted, reverted): switching this to `revalidate = 60` for ISR
+// would cut real database load, but it requires SUPABASE_SERVICE_ROLE_KEY to
+// be available at BUILD time (Next tries to statically prerender the page),
+// not just request time. Couldn't verify locally whether Vercel's build step
+// has that var in scope for this project - reverted to force-dynamic rather
+// than risk breaking a real deploy. Worth revisiting with a real Vercel-
+// connected build test.
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
