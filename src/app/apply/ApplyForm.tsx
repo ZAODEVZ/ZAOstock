@@ -94,11 +94,12 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
         <input
           id="apply-name"
           required
+          aria-required="true"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="First Last or handle"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
         />
       </div>
 
@@ -107,12 +108,14 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
         <input
           id="apply-email"
           required
+          aria-required="true"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          aria-describedby={status === 'error' ? 'apply-error' : undefined}
+          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
         />
       </div>
 
@@ -188,16 +191,16 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       <button
         type="submit"
         disabled={busy || !name.trim() || !email.trim()}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-3 text-sm transition-colors"
+        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-3 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
       >
         {busy ? 'Sending...' : 'Sign me up'}
       </button>
 
       {status === 'error' && (
-        <p className="text-xs text-red-400 text-center">{errMsg || 'Something went wrong. Try again.'}</p>
+        <p id="apply-error" role="alert" className="text-xs text-red-400 text-center">{errMsg || 'Something went wrong. Try again.'}</p>
       )}
 
-      <p className="text-[11px] text-gray-600 text-center">
+      <p className="text-[11px] text-gray-500 text-center">
         We reach out within a few days. No commitment until you say yes to a specific shift.
       </p>
     </form>

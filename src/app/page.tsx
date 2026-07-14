@@ -129,7 +129,7 @@ export default async function TestPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
           <div className="flex items-baseline gap-3">
             <Link href="/" className="font-bold text-base tracking-tight">ZAOstock</Link>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.2em] hidden sm:inline">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em] hidden sm:inline">
               / Oct 03 2026
             </span>
           </div>
@@ -216,7 +216,7 @@ export default async function TestPage() {
             >
               Volunteer
             </Link>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em] ml-2">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] ml-2">
               Free to attend / Optional $50 pro ticket supports the festival
             </span>
           </div>
@@ -236,7 +236,7 @@ export default async function TestPage() {
       <section className="border-y border-white/[0.12] bg-[#0d1b2a]/40">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-6">
           <div className="flex items-center justify-between gap-6 flex-wrap">
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.2em]">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em]">
               Countdown
             </span>
             <div className="flex-1 min-w-[260px]">
@@ -259,15 +259,15 @@ export default async function TestPage() {
             <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
               <dl className="space-y-4">
                 <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em]">Lineup drops</dt>
+                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Lineup drops</dt>
                   <dd className="text-base text-white">August 2026</dd>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em]">Stage</dt>
+                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Stage</dt>
                   <dd className="text-base text-white">One stage, all day</dd>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em]">Format</dt>
+                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Format</dt>
                   <dd className="text-base text-white">Live sets with DJs between</dd>
                 </div>
               </dl>
@@ -301,7 +301,7 @@ export default async function TestPage() {
                   { k: 'Weekend', v: 'Maine Craft Weekend' },
                 ].map((row) => (
                   <div key={row.k} className="flex flex-col gap-1 pb-4 border-b border-white/[0.08]">
-                    <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em]">
+                    <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
                       {row.k}
                     </dt>
                     <dd className="text-base text-white">{row.v}</dd>
@@ -431,7 +431,7 @@ export default async function TestPage() {
           {typedMembers.length > 0 ? (
             <>
               <TeamMosaic members={typedMembers} />
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-600 tracking-[0.18em] mt-5">
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-5">
                 Tap any name for full bio + links
               </p>
             </>
@@ -457,14 +457,14 @@ export default async function TestPage() {
                   <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-[#f5a623]">
                     Confirmed
                   </span>
-                  <span className="font-[family-name:var(--font-mono)] text-[10px] text-gray-600">
+                  <span className="font-[family-name:var(--font-mono)] text-[10px] text-gray-400">
                     /CFM
                   </span>
                 </div>
                 <p className="font-bold text-white text-lg tracking-tight">{p.name}</p>
                 <p className="text-xs sm:text-sm text-gray-400 mt-1">{p.role}</p>
                 <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-baseline justify-between gap-2">
-                  <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em]">
+                  <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
                     POC
                   </span>
                   <span className="text-sm text-white font-medium">{p.poc}</span>
@@ -509,7 +509,7 @@ export default async function TestPage() {
               <div className="bg-[#0d1b2a] border border-[#f5a623]/30 p-6 sm:p-8">
                 <div className="flex items-baseline justify-between gap-3">
                   <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">Pro Ticket</p>
-                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-gray-500">20 spots only</p>
+                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-gray-400">20 spots only</p>
                 </div>
                 <p className="font-bold text-white text-4xl sm:text-5xl tracking-tight mt-2">$50</p>
                 <p className="text-sm text-gray-400 mt-3 leading-relaxed">
@@ -521,7 +521,7 @@ export default async function TestPage() {
                 >
                   Get the Pro Ticket
                 </Link>
-                <p className="text-xs text-gray-500 mt-4 leading-relaxed text-center">
+                <p className="text-xs text-gray-400 mt-4 leading-relaxed text-center">
                   Send $50 to thezao.eth or paypal.com/paypalme/zaalpanthaki.<br />
                   After payment, email info@thezao.com so we can schedule your 1:1.
                 </p>
@@ -544,7 +544,7 @@ export default async function TestPage() {
                     <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
                       {counts.volunteers}
                     </p>
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em] mt-2">
+                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
                       Signed up
                     </p>
                   </div>
@@ -569,7 +569,7 @@ export default async function TestPage() {
                     <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
                       {counts.rsvps}
                     </p>
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em] mt-2">
+                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
                       On the list
                     </p>
                   </div>
@@ -586,7 +586,7 @@ export default async function TestPage() {
               >
                 RSVP on Luma -&gt;
               </a>
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em] mt-6 mb-3">
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-6 mb-3">
                 Or just get notified by email
               </p>
               <RSVPForm eventSlug="zao-stock-2026" />
@@ -653,7 +653,7 @@ export default async function TestPage() {
       {/* Footer */}
       <footer className="border-t border-white/[0.12] mt-16">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-wrap items-center justify-between gap-4">
-          <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.2em]">
+          <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em]">
             ZAOstock / Oct 03 2026 / Ellsworth ME
           </span>
           <div className="flex items-center gap-5 flex-wrap">
@@ -681,6 +681,9 @@ export default async function TestPage() {
             <Link href="/team" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
               Team login
             </Link>
+            <Link href="/privacy" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
+              Privacy
+            </Link>
             <a href="https://thezao.com" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-[#f5a623] hover:text-[#ffd700] tracking-[0.18em] transition-colors">
               The ZAO
             </a>
@@ -696,7 +699,7 @@ export default async function TestPage() {
 function FactRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-500 tracking-[0.18em]">
+      <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
         {label}
       </dt>
       <dd className="text-base text-white font-medium mt-0.5">{value}</dd>

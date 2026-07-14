@@ -33,7 +33,7 @@ export default function DonatePage() {
           <Link href="/" className="text-xs text-gray-400 hover:text-[#f5a623]">
             &larr; ZAOstock
           </Link>
-          <span className="text-xs text-gray-500 uppercase tracking-[0.2em]">Donate</span>
+          <span className="text-xs text-gray-400 uppercase tracking-[0.2em]">Donate</span>
         </div>
       </header>
 
@@ -74,7 +74,7 @@ export default function DonatePage() {
               </a>
             ))}
           </div>
-          <p className="text-[11px] text-gray-500 mt-3">
+          <p className="text-[11px] text-gray-400 mt-3">
             Tap an amount to open PayPal pre-filled. Crypto + custom amounts below.
           </p>
         </section>
@@ -134,7 +134,7 @@ export default function DonatePage() {
             <p className="text-sm text-gray-300 mt-3 leading-relaxed">
               Wallet-to-wallet to <span className="text-white font-mono">thezao.eth</span>. USDC on Base preferred. Works on Ethereum, Base, Optimism, Polygon, Gnosis, Arbitrum, Celo.
             </p>
-            <p className="text-[10px] text-gray-500 mt-2 font-mono break-all">
+            <p className="text-[10px] text-gray-400 mt-2 font-mono break-all">
               0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB
             </p>
             <div className="flex-1" />
@@ -213,7 +213,7 @@ export default function DonatePage() {
           </div>
         </section>
 
-        <footer className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3 text-[11px] text-gray-500">
+        <footer className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3 text-[11px] text-gray-400">
           <span>ZAO Festivals · 2026 · Ellsworth, Maine</span>
           <Link href="/" className="hover:text-[#f5a623] transition-colors">
             zaostock.com &rarr;
@@ -228,7 +228,7 @@ function TrustTile({ label, sub }: { label: string; sub: string }) {
   return (
     <div className="bg-[#0d1b2a] p-4 text-center">
       <p className="text-lg font-bold text-white">{label}</p>
-      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-500 mt-1">{sub}</p>
+      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-400 mt-1">{sub}</p>
     </div>
   );
 }
@@ -239,7 +239,7 @@ function StatTile({ value, sub }: { value: string; sub: string }) {
       <p className="text-3xl sm:text-4xl font-bold text-[#f5a623] tracking-tight tabular-nums">
         {value}
       </p>
-      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-500 mt-2">{sub}</p>
+      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-400 mt-2">{sub}</p>
     </div>
   );
 }

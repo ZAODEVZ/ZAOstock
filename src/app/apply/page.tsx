@@ -5,6 +5,11 @@ import { ApplyForm } from './ApplyForm';
 export const metadata: Metadata = {
   title: 'Volunteer with ZAOstock | October 3, 2026',
   description: 'Sign up to volunteer at ZAOstock, a community music festival in Ellsworth, Maine on October 3, 2026.',
+  openGraph: {
+    title: 'Volunteer with ZAOstock',
+    description: 'Sign up to volunteer at ZAOstock, a community music festival in Ellsworth, Maine on October 3, 2026.',
+    url: 'https://zaostock.com/apply',
+  },
 };
 
 const ROLES: Array<{ value: string; label: string; hint: string }> = [

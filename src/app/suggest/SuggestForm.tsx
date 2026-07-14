@@ -100,18 +100,20 @@ export function SuggestForm() {
         onChange={(e) => setSuggestion(e.target.value)}
         placeholder="Your suggestion..."
         required
+        aria-required="true"
+        aria-describedby={status === 'error' ? 'suggest-error' : undefined}
         rows={4}
         maxLength={2000}
-        className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30 resize-none"
+        className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30 resize-none"
       />
       <button
         type="submit"
         disabled={busy || !suggestion.trim()}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-2.5 text-sm transition-colors"
+        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-2.5 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
       >
         {busy ? 'Sending...' : 'Drop suggestion'}
       </button>
-      {status === 'error' && <p className="text-xs text-red-400 text-center">{errMsg}</p>}
+      {status === 'error' && <p id="suggest-error" role="alert" className="text-xs text-red-400 text-center">{errMsg}</p>}
     </form>
   );
 }

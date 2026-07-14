@@ -142,7 +142,7 @@ export default function SponsorPage() {
 
         {/* The Story */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Why Ellsworth</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Why Ellsworth</p>
           <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
             <p className="text-sm text-gray-300 leading-relaxed">
               The founder bought a house in Ellsworth. This isn&apos;t a fly-in event - it&apos;s a
@@ -166,7 +166,7 @@ export default function SponsorPage() {
 
         {/* Credibility Numbers */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">The Numbers</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">The Numbers</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {CREDIBILITY_STATS.map((stat) => (
               <div
@@ -174,7 +174,7 @@ export default function SponsorPage() {
                 className="bg-[#0d1b2a] rounded-xl p-4 border border-white/[0.08] text-center"
               >
                 <p className="text-2xl font-bold text-[#f5a623]">{stat.number}</p>
-                <p className="text-[11px] text-gray-500 mt-1 uppercase tracking-wider">{stat.label}</p>
+                <p className="text-[11px] text-gray-400 mt-1 uppercase tracking-wider">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -182,7 +182,7 @@ export default function SponsorPage() {
 
         {/* Past Events */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Track Record</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Track Record</p>
           <div className="space-y-2">
             {PAST_PROOF.map((event) => (
               <div key={event.name} className="bg-[#0d1b2a] rounded-xl p-4 border border-white/[0.08]">
@@ -195,13 +195,13 @@ export default function SponsorPage() {
 
         {/* Sponsor Tracks */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Three Ways to Partner</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Three Ways to Partner</p>
           <div className="space-y-4">
             {SPONSOR_TRACKS.map((track) => (
               <div key={track.track} className="bg-[#0d1b2a] rounded-xl border border-white/[0.08] overflow-hidden">
                 <div className="px-4 py-3 border-b border-white/[0.06]" style={{ borderLeftWidth: 3, borderLeftColor: track.color }}>
                   <span className="font-bold text-sm text-white">{track.track}</span>
-                  <p className="text-[11px] text-gray-500 mt-0.5">{track.subtitle}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">{track.subtitle}</p>
                 </div>
                 <ul className="px-4 py-3 space-y-1.5">
                   {track.benefits.map((item) => (
@@ -214,14 +214,14 @@ export default function SponsorPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-gray-500 text-center px-4">
+          <p className="text-xs text-gray-400 text-center px-4">
             All tracks are flexible. We build packages around what works for you, not rigid tiers.
           </p>
         </section>
 
         {/* Two paths */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Two paths · pick what fits</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Two paths · pick what fits</p>
           <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 border border-[#f5a623]/30 space-y-4">
             <div>
               <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Public · tax-deductible</p>
@@ -235,7 +235,7 @@ export default function SponsorPage() {
                 Direct sponsorship deal. Funds route through ENTERACT (2% treasury) to production. 50% upfront, 50% before delivery. No tax receipt. Faster, simpler, no fiscal sponsor admin.
               </p>
             </div>
-            <p className="text-xs text-gray-500 italic pt-1">
+            <p className="text-xs text-gray-400 italic pt-1">
               ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit. Eligible initiatives may use the public path for tax-deductible support.
             </p>
           </div>
@@ -243,12 +243,12 @@ export default function SponsorPage() {
 
         {/* Advisory Board */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Advisory Board</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Advisory Board</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {ADVISORS.map((advisor) => (
               <div key={advisor.name} className="bg-[#0d1b2a] rounded-xl p-3 border border-white/[0.08]">
                 <p className="font-medium text-white text-sm">{advisor.name}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{advisor.title}</p>
+                <p className="text-xs text-gray-400 mt-0.5">{advisor.title}</p>
               </div>
             ))}
           </div>
@@ -256,31 +256,31 @@ export default function SponsorPage() {
 
         {/* The Event */}
         <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">The Event</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">The Event</p>
           <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <p className="text-gray-500 text-xs">Date</p>
+                <p className="text-gray-400 text-xs">Date</p>
                 <p className="text-white font-medium">October 3, 2026</p>
               </div>
               <div>
-                <p className="text-gray-500 text-xs">Time</p>
+                <p className="text-gray-400 text-xs">Time</p>
                 <p className="text-white font-medium">12pm - 6pm</p>
               </div>
               <div>
-                <p className="text-gray-500 text-xs">Venue</p>
+                <p className="text-gray-400 text-xs">Venue</p>
                 <p className="text-white font-medium">Franklin Street Parklet</p>
               </div>
               <div>
-                <p className="text-gray-500 text-xs">Artists</p>
+                <p className="text-gray-400 text-xs">Artists</p>
                 <p className="text-white font-medium">Independent performers</p>
               </div>
               <div>
-                <p className="text-gray-500 text-xs">Livestream</p>
+                <p className="text-gray-400 text-xs">Livestream</p>
                 <p className="text-white font-medium">YouTube + Twitch + ZAO OS</p>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-gray-400 mt-2">
               Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend (statewide)
             </p>
           </div>

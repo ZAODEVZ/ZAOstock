@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description:
     'Confirmed for the ZAOstock lineup? Complete your performance & participation rider - schedule, equipment, backing tracks, merch, interview, and retreat.',
   robots: { index: false, follow: false },
+  openGraph: {
+    title: 'Artist Rider · ZAOstock',
+    description: 'Confirmed for the ZAOstock lineup? Complete your performance & participation rider.',
+    url: 'https://zaostock.com/musicians/rider',
+  },
 };
 
 export default function RiderPage() {

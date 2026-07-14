@@ -4,6 +4,11 @@ import { CirclesView } from './CirclesView';
 export const metadata: Metadata = {
   title: 'ZAOstock Circles',
   description: 'Eight circles for the Oct 3 festival. Anyone can join. Zaal coordinates by default until someone volunteers.',
+  openGraph: {
+    title: 'ZAOstock Circles',
+    description: 'Eight circles for the Oct 3 festival. Anyone can join.',
+    url: 'https://zaostock.com/circles',
+  },
 };
 
 export const dynamic = 'force-dynamic';

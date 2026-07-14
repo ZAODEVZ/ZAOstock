@@ -27,6 +27,27 @@ const config: NextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
+          // Report-Only: never blocks anything, just lets you see (via the
+          // browser console) what a real CSP would flag before actually
+          // enforcing one. No dangerouslySetInnerHTML/inline-script injection
+          // points were found in a security audit, so this is a defense-in-
+          // depth starting point, not a response to a known gap. Move to a
+          // real Content-Security-Policy header once this has run clean for
+          // a while with no unexpected violations.
+          {
+            key: 'Content-Security-Policy-Report-Only',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https://pbs.twimg.com https://i.imgur.com https://imgur.com https://i.postimg.cc https://postimg.cc",
+              "font-src 'self' data:",
+              "connect-src 'self'",
+              "frame-src 'self' https://platform.twitter.com",
+              "object-src 'none'",
+              "base-uri 'self'",
+            ].join('; '),
+          },
         ],
       },
     ];

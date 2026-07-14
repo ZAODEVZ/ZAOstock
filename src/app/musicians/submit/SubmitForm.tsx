@@ -104,10 +104,11 @@ export function MusicianSubmitForm() {
           id="submit-name"
           type="text"
           required
+          aria-required="true"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="What you go by on a stage"
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
         />
       </div>
 
@@ -119,10 +120,11 @@ export function MusicianSubmitForm() {
           id="submit-email"
           type="email"
           required
+          aria-required="true"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@somewhere.com"
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
         />
       </div>
 

@@ -4,6 +4,11 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'ZAOstock Program | October 3, 2026',
   description: 'Day-of schedule for ZAOstock. Draft program with music sets, WaveWarZ battles, and short talks throughout the day.',
+  openGraph: {
+    title: 'ZAOstock Program',
+    description: 'Day-of schedule for ZAOstock. Music sets, WaveWarZ battles, and short talks throughout the day.',
+    url: 'https://zaostock.com/program',
+  },
 };
 
 interface Block {

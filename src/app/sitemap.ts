@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/musicians',
     '/musicians/submit',
+    '/musicians/rider',
     '/artists',
     '/event-organizers',
     '/pitch',
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/cypher',
     '/circles',
     '/zaoville',
+    '/privacy',
   ];
 
   return routes.map((path) => ({
