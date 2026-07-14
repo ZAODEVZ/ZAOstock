@@ -4,7 +4,7 @@
 // component is a build-time error.
 import 'server-only';
 
-function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET'): string {
+function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET' | 'CRON_SECRET'): string {
   const value = process.env[key];
   if (!value) {
     // Fail fast and loud the moment the value is actually read, not when this
@@ -27,6 +27,7 @@ export const ENV = {
   NEXT_PUBLIC_APP_URL: string;
   SUPABASE_SERVICE_ROLE_KEY: string;
   SESSION_SECRET: string;
+  CRON_SECRET: string;
 };
 
 Object.defineProperty(ENV, 'SUPABASE_SERVICE_ROLE_KEY', {
@@ -36,6 +37,10 @@ Object.defineProperty(ENV, 'SUPABASE_SERVICE_ROLE_KEY', {
 Object.defineProperty(ENV, 'SESSION_SECRET', {
   enumerable: true,
   get: () => requiredServerEnv('SESSION_SECRET'),
+});
+Object.defineProperty(ENV, 'CRON_SECRET', {
+  enumerable: true,
+  get: () => requiredServerEnv('CRON_SECRET'),
 });
 
 if (typeof window === 'undefined' && !ENV.NEXT_PUBLIC_SUPABASE_URL) {

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { GoalsBoard } from './GoalsBoard';
 import { TodoList } from './TodoList';
 import { TeamRoles } from './TeamRoles';
+import { AccessPanel } from './AccessPanel';
 import { SponsorCRM } from './SponsorCRM';
 import { ArtistPipeline } from './ArtistPipeline';
 import { Timeline } from './Timeline';
@@ -331,7 +332,12 @@ export function Dashboard({
         )}
         {tab === 'budget' && <BudgetTracker entries={budget} />}
         {tab === 'notes' && <MeetingNotes notes={meetingNotes} members={memberList} />}
-        {tab === 'team' && <TeamRoles members={members} />}
+        {tab === 'team' && (
+          <div className="space-y-4">
+            <TeamRoles members={members} />
+            <AccessPanel memberId={memberId} />
+          </div>
+        )}
       </div>
     </div>
   );

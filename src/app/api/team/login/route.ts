@@ -57,10 +57,12 @@ export async function POST(request: NextRequest) {
     const normalized = parsed.data.password.trim().toUpperCase();
 
     const supabase = getSupabaseAdmin();
+    // Fetch regardless of active status - an inactive match still needs to
+    // resolve to a distinct "access paused" response, not a generic 401
+    // indistinguishable from a wrong password.
     const { data: members, error } = await supabase
       .from('team_members')
-      .select('id, name, password_hash, active')
-      .neq('active', false);
+      .select('id, name, password_hash, active');
 
     if (error || !members) {
       return NextResponse.json({ error: 'Login failed' }, { status: 500 });
@@ -72,6 +74,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid code' }, { status: 401 });
     }
 
+    if (match.active === false) {
+      return NextResponse.json(
+        { error: 'access_paused', message: 'Access paused after 3 days without a login. Request access below.' },
+        { status: 403 },
+      );
+    }
+
+    await supabase.from('team_members').update({ last_login_at: new Date().toISOString() }).eq('id', match.id);
     await saveStockTeamSession(match.id, match.name);
     return NextResponse.json({ success: true, name: match.name });
   } catch (err) {

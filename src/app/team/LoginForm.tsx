@@ -7,12 +7,16 @@ import { useRouter } from 'next/navigation';
 export function LoginForm() {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
+  const [accessPaused, setAccessPaused] = useState(false);
+  const [requestSent, setRequestSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
+    setAccessPaused(false);
+    setRequestSent(false);
     setLoading(true);
 
     try {
@@ -24,7 +28,12 @@ export function LoginForm() {
 
       if (!res.ok) {
         const data = await res.json();
-        setError(data.error || 'Invalid code');
+        if (data.error === 'access_paused') {
+          setAccessPaused(true);
+          setError(data.message || 'Access paused after 3 days without a login.');
+        } else {
+          setError(data.error || 'Invalid code');
+        }
         setLoading(false);
         return;
       }
@@ -32,6 +41,22 @@ export function LoginForm() {
       router.refresh();
     } catch {
       setError('Network error');
+      setLoading(false);
+    }
+  }
+
+  async function handleRequestAccess() {
+    setLoading(true);
+    try {
+      await fetch('/api/team/request-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: code.toUpperCase() }),
+      });
+      setRequestSent(true);
+    } catch {
+      setError('Network error');
+    } finally {
       setLoading(false);
     }
   }
@@ -76,6 +101,19 @@ export function LoginForm() {
                   <p className="text-red-400/70 text-[11px] mt-1">
                     Codes are 4 characters from {'A-Z'} and {'2-9'}. No 0/O/1/I/L. Check the DM Zaal sent.
                   </p>
+                )}
+                {accessPaused && !requestSent && (
+                  <button
+                    type="button"
+                    onClick={handleRequestAccess}
+                    disabled={loading}
+                    className="mt-2 w-full bg-red-500/20 hover:bg-red-500/30 text-red-200 font-bold rounded px-3 py-2 text-xs transition-colors disabled:opacity-50"
+                  >
+                    Request access
+                  </button>
+                )}
+                {requestSent && (
+                  <p className="text-emerald-400 text-[11px] mt-2">Request sent - an admin will reinstate you.</p>
                 )}
               </div>
             )}
