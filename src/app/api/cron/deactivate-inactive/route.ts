@@ -1,14 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { timingSafeEqual } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { ENV } from '@/lib/env';
 
 const INACTIVITY_WINDOW_DAYS = 3;
 
+function isAuthorized(authHeader: string | null, cronSecret: string): boolean {
+  const expected = Buffer.from(`Bearer ${cronSecret}`);
+  const actual = Buffer.from(authHeader ?? '');
+  if (actual.length !== expected.length) return false;
+  return timingSafeEqual(actual, expected);
+}
+
 // Vercel Cron calls this on schedule (see vercel.json) with a bearer token
-// matching CRON_SECRET. Locks out any active team member who hasn't logged
-// in within the window - falls back to created_at for members who have
-// never logged in, so new hires get a grace period instead of an instant
-// lockout.
+// matching CRON_SECRET. Locks out any active, non-lead team member who
+// hasn't logged in within the window - falls back to created_at for members
+// who have never logged in, so new hires get a grace period instead of an
+// instant lockout. Leads are exempt: they're the only ones who can reinstate
+// a locked-out member, so auto-locking them out too could brick the whole
+// dashboard with no recovery path (leads can still be manually deactivated
+// by another lead via PATCH /api/team/members).
 export async function GET(request: NextRequest) {
   let cronSecret: string;
   try {
@@ -18,8 +29,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${cronSecret}`) {
+  if (!isAuthorized(request.headers.get('authorization'), cronSecret)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -29,7 +39,8 @@ export async function GET(request: NextRequest) {
   const { data: candidates, error: selectError } = await supabase
     .from('team_members')
     .select('id, name, last_login_at, created_at')
-    .eq('active', true);
+    .eq('active', true)
+    .neq('role', 'lead');
 
   if (selectError) {
     return NextResponse.json({ error: 'Lookup failed' }, { status: 500 });

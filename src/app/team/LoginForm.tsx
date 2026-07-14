@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 export function LoginForm() {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
-  const [accessPaused, setAccessPaused] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -15,7 +14,6 @@ export function LoginForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
-    setAccessPaused(false);
     setRequestSent(false);
     setLoading(true);
 
@@ -28,12 +26,11 @@ export function LoginForm() {
 
       if (!res.ok) {
         const data = await res.json();
-        if (data.error === 'access_paused') {
-          setAccessPaused(true);
-          setError(data.message || 'Access paused after 3 days without a login.');
-        } else {
-          setError(data.error || 'Invalid code');
-        }
+        // The server deliberately doesn't say whether this was a wrong code
+        // or a code that's valid but paused for inactivity - so the request-
+        // access fallback is always offered, not shown conditionally on the
+        // response (see the login route for why).
+        setError(data.error || 'Invalid code');
         setLoading(false);
         return;
       }
@@ -97,23 +94,24 @@ export function LoginForm() {
             {error && (
               <div className="bg-red-500/10 border border-red-500/30 rounded px-3 py-2">
                 <p className="text-red-300 text-xs">{error}</p>
-                {error.toLowerCase().includes('invalid') && (
-                  <p className="text-red-400/70 text-[11px] mt-1">
-                    Codes are 4 characters from {'A-Z'} and {'2-9'}. No 0/O/1/I/L. Check the DM Zaal sent.
-                  </p>
-                )}
-                {accessPaused && !requestSent && (
+                <p className="text-red-400/70 text-[11px] mt-1">
+                  Codes are 4 characters from {'A-Z'} and {'2-9'}. No 0/O/1/I/L. Check the DM Zaal sent. If your
+                  code used to work, it may have been paused after 3 days without a login.
+                </p>
+                {!requestSent && (
                   <button
                     type="button"
                     onClick={handleRequestAccess}
-                    disabled={loading}
+                    disabled={loading || code.length < 4}
                     className="mt-2 w-full bg-red-500/20 hover:bg-red-500/30 text-red-200 font-bold rounded px-3 py-2 text-xs transition-colors disabled:opacity-50"
                   >
                     Request access
                   </button>
                 )}
                 {requestSent && (
-                  <p className="text-emerald-400 text-[11px] mt-2">Request sent - an admin will reinstate you.</p>
+                  <p className="text-emerald-400 text-[11px] mt-2">
+                    If that code is on file, an admin has been notified.
+                  </p>
                 )}
               </div>
             )}

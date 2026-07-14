@@ -57,9 +57,6 @@ export async function POST(request: NextRequest) {
     const normalized = parsed.data.password.trim().toUpperCase();
 
     const supabase = getSupabaseAdmin();
-    // Fetch regardless of active status - an inactive match still needs to
-    // resolve to a distinct "access paused" response, not a generic 401
-    // indistinguishable from a wrong password.
     const { data: members, error } = await supabase
       .from('team_members')
       .select('id, name, password_hash, active');
@@ -70,15 +67,15 @@ export async function POST(request: NextRequest) {
 
     const match = members.find((m) => m.password_hash && verifyPassword(normalized, m.password_hash));
 
-    if (!match) {
+    // Deliberately the same response whether the code was wrong or it
+    // matched an inactive member - a distinct "your code is valid but
+    // paused" response would let an attacker enumerate real team codes by
+    // password-guessing and watching for the different status. The client
+    // always offers a "request access" fallback after any failed login
+    // instead, since /api/team/request-access is itself already a no-op for
+    // wrong codes and active members.
+    if (!match || match.active === false) {
       return NextResponse.json({ error: 'Invalid code' }, { status: 401 });
-    }
-
-    if (match.active === false) {
-      return NextResponse.json(
-        { error: 'access_paused', message: 'Access paused after 3 days without a login. Request access below.' },
-        { status: 403 },
-      );
     }
 
     await supabase.from('team_members').update({ last_login_at: new Date().toISOString() }).eq('id', match.id);

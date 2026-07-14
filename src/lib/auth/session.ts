@@ -1,6 +1,7 @@
 import { getIronSession, IronSession } from 'iron-session';
 import { cookies } from 'next/headers';
 import { ENV } from '@/lib/env';
+import { getSupabaseAdmin } from '@/lib/db/supabase';
 
 export interface StockTeamPayload {
   memberId?: string;
@@ -36,6 +37,23 @@ export async function getStockTeamMember(): Promise<{ memberId: string; memberNa
   try {
     const session = await getStockTeamSession();
     if (!session.memberId || !session.memberName) return null;
+
+    // A valid session cookie alone isn't enough - it can outlive a member
+    // being deactivated (by the inactivity cron or a lead's manual PATCH) by
+    // up to 30 days otherwise, since the cookie itself carries no live
+    // status. Re-check `active` against the DB on every read.
+    const supabase = getSupabaseAdmin();
+    const { data: row } = await supabase
+      .from('team_members')
+      .select('active')
+      .eq('id', session.memberId)
+      .maybeSingle();
+
+    if (!row || row.active === false) {
+      session.destroy();
+      return null;
+    }
+
     return { memberId: session.memberId, memberName: session.memberName };
   } catch (err) {
     console.error('[getStockTeamMember] session read failed (check SESSION_SECRET):', err);
