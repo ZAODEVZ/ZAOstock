@@ -5,15 +5,18 @@ import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { ARTIST_STATUSES } from '@/lib/team-constants';
+import { resolveEventId } from '@/lib/api/resolve-event';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('artists')
     .select('*, outreach:team_members!outreach_by(id, name)')
+    .eq('event_id', eventId)
     .order('status')
     .order('set_order', { ascending: true, nullsFirst: false })
     .order('created_at', { ascending: false });
@@ -45,10 +48,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });
   }
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('artists')
-    .insert(parsed.data)
+    .insert({ ...parsed.data, event_id: eventId })
     .select('*, outreach:team_members!outreach_by(id, name)')
     .single();
 

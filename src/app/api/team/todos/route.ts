@@ -4,17 +4,20 @@ import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
+import { resolveEventId } from '@/lib/api/resolve-event';
 
 export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const owner = request.nextUrl.searchParams.get('owner');
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
 
   let query = supabase
     .from('todos')
     .select('*, owner:team_members!owner_id(id, name), creator:team_members!created_by(id, name)')
+    .eq('event_id', eventId)
     .order('status')
     .order('created_at', { ascending: false });
 
@@ -45,6 +48,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });
   }
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('todos')
@@ -52,6 +56,7 @@ export async function POST(request: NextRequest) {
       title: parsed.data.title,
       owner_id: parsed.data.owner_id || null,
       created_by: member.memberId,
+      event_id: eventId,
     })
     .select('*, owner:team_members!owner_id(id, name), creator:team_members!created_by(id, name)')
     .single();

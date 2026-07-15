@@ -35,12 +35,17 @@ export async function POST(request: NextRequest) {
 
     const supabase = getSupabaseAdmin();
 
-    const emailLower = parsed.data.email.toLowerCase();
-    const { data: existing } = await supabase
-      .from('rsvps')
+    const { data: event } = await supabase
+      .from('events')
       .select('id')
-      .eq('email', emailLower)
+      .eq('slug', parsed.data.eventSlug || 'zaostock')
       .maybeSingle();
+    const eventId = event?.id ?? null;
+
+    const emailLower = parsed.data.email.toLowerCase();
+    let existingQuery = supabase.from('rsvps').select('id').eq('email', emailLower);
+    existingQuery = eventId ? existingQuery.eq('event_id', eventId) : existingQuery.is('event_id', null);
+    const { data: existing } = await existingQuery.maybeSingle();
 
     if (existing) {
       return NextResponse.json({ error: 'Already RSVPed' }, { status: 409 });
@@ -56,6 +61,7 @@ export async function POST(request: NextRequest) {
       email: emailLower,
       source: sourceParts.join(' | '),
       notes: parsed.data.notes || null,
+      event_id: eventId,
     });
 
     if (error) {
