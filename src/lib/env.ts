@@ -4,7 +4,7 @@
 // component is a build-time error.
 import 'server-only';
 
-function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET' | 'CRON_SECRET'): string {
+function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET' | 'CRON_SECRET' | 'PRIVY_VERIFICATION_KEY'): string {
   const value = process.env[key];
   if (!value) {
     // Fail fast and loud the moment the value is actually read, not when this
@@ -22,12 +22,15 @@ function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET' |
 export const ENV = {
   NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
   NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL ?? 'https://zaostock.com',
+  PRIVY_APP_ID: process.env.PRIVY_APP_ID ?? 'cmrlw537c029y0cjp8xurotsp',
 } as {
   NEXT_PUBLIC_SUPABASE_URL: string;
   NEXT_PUBLIC_APP_URL: string;
+  PRIVY_APP_ID: string;
   SUPABASE_SERVICE_ROLE_KEY: string;
   SESSION_SECRET: string;
   CRON_SECRET: string;
+  PRIVY_VERIFICATION_KEY: string;
 };
 
 Object.defineProperty(ENV, 'SUPABASE_SERVICE_ROLE_KEY', {
@@ -41,6 +44,10 @@ Object.defineProperty(ENV, 'SESSION_SECRET', {
 Object.defineProperty(ENV, 'CRON_SECRET', {
   enumerable: true,
   get: () => requiredServerEnv('CRON_SECRET'),
+});
+Object.defineProperty(ENV, 'PRIVY_VERIFICATION_KEY', {
+  enumerable: true,
+  get: () => requiredServerEnv('PRIVY_VERIFICATION_KEY'),
 });
 
 if (typeof window === 'undefined' && !ENV.NEXT_PUBLIC_SUPABASE_URL) {
