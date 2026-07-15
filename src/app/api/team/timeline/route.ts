@@ -4,15 +4,18 @@ import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
+import { resolveEventId } from '@/lib/api/resolve-event';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('timeline')
     .select('*, owner:team_members!owner_id(id, name)')
+    .eq('event_id', eventId)
     .order('due_date', { ascending: true });
 
   if (error) return NextResponse.json({ error: 'Failed to load timeline' }, { status: 500 });
@@ -39,10 +42,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });
   }
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('timeline')
-    .insert(parsed.data)
+    .insert({ ...parsed.data, event_id: eventId })
     .select('*, owner:team_members!owner_id(id, name)')
     .single();
 

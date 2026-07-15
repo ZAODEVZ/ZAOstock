@@ -5,15 +5,18 @@ import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { VOLUNTEER_ROLES, VOLUNTEER_SHIFTS } from '@/lib/team-constants';
+import { resolveEventId } from '@/lib/api/resolve-event';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('volunteers')
     .select('*, recruited_by_member:team_members!recruited_by(id, name)')
+    .eq('event_id', eventId)
     .order('confirmed', { ascending: false })
     .order('created_at', { ascending: false });
 
@@ -42,10 +45,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid input', details: parsed.error.issues }, { status: 400 });
   }
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('volunteers')
-    .insert({ ...parsed.data, recruited_by: member.memberId })
+    .insert({ ...parsed.data, recruited_by: member.memberId, event_id: eventId })
     .select('*, recruited_by_member:team_members!recruited_by(id, name)')
     .single();
 

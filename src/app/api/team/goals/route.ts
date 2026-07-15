@@ -3,15 +3,18 @@ import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { parseJsonBody } from '@/lib/api/parse-json';
+import { resolveEventId } from '@/lib/api/resolve-event';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const eventId = await resolveEventId(request);
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('goals')
     .select('*')
+    .eq('event_id', eventId)
     .order('sort_order');
 
   if (error) return NextResponse.json({ error: 'Failed to load goals' }, { status: 500 });
