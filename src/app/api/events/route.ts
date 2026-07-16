@@ -15,7 +15,10 @@ export async function GET() {
 
   if (error) {
     console.error('[api/events] Supabase query failed', error);
-    return NextResponse.json({ error: 'Failed to load events' }, { status: 500 });
+    // TEMP diagnostic - real error text in the response so it's visible
+    // without Vercel log access. Reverting to a plain message once the
+    // 2026-07-16 production 500 is diagnosed.
+    return NextResponse.json({ error: 'Failed to load events', debug: error.message, code: error.code }, { status: 500 });
   }
   return NextResponse.json({ events: data });
 }
