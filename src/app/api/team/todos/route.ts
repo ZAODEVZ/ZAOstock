@@ -5,6 +5,7 @@ import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { resolveEventId } from '@/lib/api/resolve-event';
+import { sendPushNotification } from '@/lib/push/send-push-notification';
 
 export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
@@ -69,6 +70,23 @@ export async function POST(request: NextRequest) {
     action: 'create',
     newValue: { title: data.title, owner_id: data.owner_id },
   });
+
+  // Notify the assignee - but not when someone assigns a todo to
+  // themselves, and not exposing push_token in the response above (a
+  // separate, server-only lookup instead) since Expo's push API accepts
+  // unauthenticated sends to any token it's given.
+  if (data.owner_id && data.owner_id !== member.memberId) {
+    const { data: owner } = await supabase.from('team_members').select('push_token').eq('id', data.owner_id).maybeSingle();
+    if (owner?.push_token) {
+      await sendPushNotification({
+        to: owner.push_token,
+        title: 'New todo assigned to you',
+        body: data.title,
+        data: { path: '/(tabs)' },
+      });
+    }
+  }
+
   return NextResponse.json({ todo: data }, { status: 201 });
 }
 
@@ -112,5 +130,20 @@ export async function PATCH(request: NextRequest) {
   if (before) {
     await logFieldChanges(member.memberId, 'todo', id, before, updates);
   }
+
+  // Notify on reassignment specifically - not on a status/notes-only edit,
+  // not when the owner_id didn't actually change, and not on self-assign.
+  if (updates.owner_id && updates.owner_id !== before?.owner_id && updates.owner_id !== member.memberId) {
+    const { data: owner } = await supabase.from('team_members').select('push_token').eq('id', updates.owner_id).maybeSingle();
+    if (owner?.push_token && before) {
+      await sendPushNotification({
+        to: owner.push_token,
+        title: 'Todo assigned to you',
+        body: before.title,
+        data: { path: '/(tabs)' },
+      });
+    }
+  }
+
   return NextResponse.json({ success: true });
 }
