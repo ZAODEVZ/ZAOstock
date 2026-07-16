@@ -13,6 +13,9 @@ export async function GET() {
     .select('id, name, slug, place, event_date, status, description')
     .order('event_date');
 
-  if (error) return NextResponse.json({ error: 'Failed to load events' }, { status: 500 });
+  if (error) {
+    console.error('[api/events] Supabase query failed', error);
+    return NextResponse.json({ error: 'Failed to load events' }, { status: 500 });
+  }
   return NextResponse.json({ events: data });
 }
