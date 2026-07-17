@@ -18,7 +18,13 @@ export async function GET() {
     // TEMP diagnostic - real error text in the response so it's visible
     // without Vercel log access. Reverting to a plain message once the
     // 2026-07-16 production 500 is diagnosed.
-    return NextResponse.json({ error: 'Failed to load events', debug: error.message, code: error.code }, { status: 500 });
+    let resolvedHost = 'unset';
+    try {
+      resolvedHost = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL || '').hostname;
+    } catch {
+      resolvedHost = 'invalid-url';
+    }
+    return NextResponse.json({ error: 'Failed to load events', debug: error.message, code: error.code, resolvedHost }, { status: 500 });
   }
   return NextResponse.json({ events: data });
 }

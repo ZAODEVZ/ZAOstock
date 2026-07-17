@@ -32,8 +32,8 @@ interface Chapter {
 
 // The ZAO Festivals series. Details from ZAO's own festival history (see ZAOOS memory).
 const SERIES: Chapter[] = [
-  { name: 'ZAO-PALOOZA', place: 'New York City', year: 'Apr 2024', note: 'During NFT NYC - 12 artists, the community’s first IRL meetup. Broke even.', status: 'past' },
-  { name: 'ZAO-CHELLA', place: 'Wynwood, Miami', year: 'Dec 2024', note: 'During Art Basel, in Wynwood - 10 artists, WaveWarZ LIVE, AR art, cross-community.', status: 'past' },
+  { name: 'ZAO-PALOOZA', place: 'New York City', year: 'Apr 2024', note: 'During NFT NYC - 12 artists, the community’s first IRL meetup. Broke even.', href: '#recap', status: 'past' },
+  { name: 'ZAO-CHELLA', place: 'Wynwood, Miami', year: 'Dec 2024', note: 'During Art Basel, in Wynwood - 10 artists, WaveWarZ LIVE, AR art, cross-community.', href: '#recap', status: 'past' },
   { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', note: 'Co-hosted with DCoop + The VEC - open mic, live sets, DJ night swim.', href: '/zaoville', status: 'next' },
   { name: 'ZAOstock', place: 'Ellsworth, Maine', year: 'Oct 3, 2026', note: 'The flagship - free, all-day, downtown, gateway to Acadia.', href: '/', status: 'flagship' },
 ];
@@ -200,7 +200,7 @@ export default function FestivalsPage() {
 
         {/* From the festivals - photos + videos (Instagram + X) */}
         {(TWEETS.length > 0 || INSTAGRAM.length > 0) && (
-          <section className="py-8 border-t border-white/[0.08]">
+          <section id="recap" className="py-8 border-t border-white/[0.08] scroll-mt-16">
             <h2 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-gray-500">
               From the festivals
             </h2>
