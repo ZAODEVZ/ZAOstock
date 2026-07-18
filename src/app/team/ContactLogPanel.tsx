@@ -75,6 +75,11 @@ export function ContactLogPanel({
   }
 
   useEffect(() => {
+    // Standard fetch-on-mount/on-id-change pattern - refresh() sets state
+    // only after its own awaits resolve, never synchronously. Safe, not a
+    // real cascading-render risk; disabling the stricter lint rule here
+    // rather than introducing a data-fetching library for one component.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entityType, entityId]);

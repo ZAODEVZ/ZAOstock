@@ -50,6 +50,9 @@ export function CirclesView() {
   };
 
   useEffect(() => {
+    // Standard fetch-on-mount pattern - load() sets state only after its
+    // own awaits resolve, never synchronously.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void load();
   }, []);
 

@@ -1,21 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const STORAGE_KEY = 'zaostock-onboarding-seen-v1';
 
-export function OnboardingModal({ memberName }: { memberName: string }) {
-  const [open, setOpen] = useState(false);
+function hasNotSeenOnboarding(): boolean {
+  try {
+    if (typeof window === 'undefined') return false;
+    return !window.localStorage.getItem(STORAGE_KEY);
+  } catch {
+    // localStorage blocked or unavailable, skip
+    return false;
+  }
+}
 
-  useEffect(() => {
-    try {
-      if (typeof window === 'undefined') return;
-      const seen = window.localStorage.getItem(STORAGE_KEY);
-      if (!seen) setOpen(true);
-    } catch {
-      // localStorage blocked or unavailable, skip
-    }
-  }, []);
+export function OnboardingModal({ memberName }: { memberName: string }) {
+  // Lazy initializer instead of effect+setState - localStorage is read
+  // synchronously once, no need for an effect to sync it into state.
+  const [open, setOpen] = useState(hasNotSeenOnboarding);
 
   function dismiss() {
     try {

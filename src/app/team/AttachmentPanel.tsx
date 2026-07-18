@@ -67,6 +67,9 @@ export function AttachmentPanel({
   }
 
   useEffect(() => {
+    // Standard fetch-on-mount/on-id-change pattern - refresh() sets state
+    // only after its own awaits resolve, never synchronously.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entityType, entityId]);

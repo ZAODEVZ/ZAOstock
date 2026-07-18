@@ -54,6 +54,16 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-2">
+          <h2 className="text-lg font-bold text-[#f5a623]">The mobile app &amp; push notifications</h2>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            If you&apos;re a signed-in team member using the ZAO Festivals app and you allow notifications, we
+            store a device push token so we can notify you about tasks assigned to you. It&apos;s tied to your
+            team account, not shared with anyone outside the team, and only used to send you notifications about
+            your own work. You can turn this off anytime in your device&apos;s notification settings.
+          </p>
+        </section>
+
+        <section className="space-y-2">
           <h2 className="text-lg font-bold text-[#f5a623]">Where it lives</h2>
           <p className="text-sm text-gray-300 leading-relaxed">
             In a Supabase-hosted database used to run this site and its team dashboard. Access is

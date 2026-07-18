@@ -31,6 +31,12 @@ export function CountdownTimer({ targetDate, eventName }: CountdownTimerProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Intentional SSR-hydration guard, not a candidate for a lazy
+    // initializer: "now" legitimately differs between server and client
+    // clocks, so this can't be computed the same way on both without
+    // risking a hydration mismatch. mounted must flip only after the
+    // client has actually rendered once.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     if (!targetDate) return;
 
