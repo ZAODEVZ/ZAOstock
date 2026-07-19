@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CountdownTimer } from '@/components/CountdownTimer';
 import { RSVPForm } from './RSVPForm';
 import { getPublicMembers, getStockCounts, type PublicMember } from '@/lib/members';
@@ -14,6 +15,8 @@ import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
 import { ScrollEyebrow } from '@/components/festival/ScrollEyebrow';
 import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 import { TiltCard } from '@/components/festival/TiltCard';
+import { VibesGrid } from '@/components/festival/VibesGrid';
+import { NavMenu } from '@/components/festival/NavMenu';
 
 // NOTE (attempted, reverted): switching this to `revalidate = 60` for ISR
 // would cut real database load, but it requires SUPABASE_SERVICE_ROLE_KEY to
@@ -106,14 +109,19 @@ const PARTNERS = [
   { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
 ].filter((p) => p.confirmed);
 
-const NAV = [
+// Top nav is deliberately short: two primary destinations, the persona links
+// grouped under one "Get Involved" menu, then Partner. Keeps the header from
+// spilling 7+ links across the bar and lets the RSVP button read as the one
+// bright call to action.
+const NAV_PRIMARY = [
   { href: '/festivals', label: 'ZAO Festivals' },
   { href: '/program', label: 'Program' },
+];
+const NAV_INVOLVED = [
   { href: '/musicians', label: 'Musicians' },
   { href: '/artists', label: 'Artists' },
   { href: '/apply', label: 'Volunteer' },
   { href: '/donate', label: 'Donate' },
-  { href: '/sponsor/deck', label: 'Partner' },
 ];
 
 export default async function TestPage() {
@@ -134,7 +142,7 @@ export default async function TestPage() {
             </span>
           </div>
           <nav className="flex items-center gap-5">
-            {NAV.map((n) => (
+            {NAV_PRIMARY.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
@@ -143,11 +151,18 @@ export default async function TestPage() {
                 {n.label}
               </Link>
             ))}
+            <NavMenu label="Get Involved" items={NAV_INVOLVED} />
+            <Link
+              href="/sponsor/deck"
+              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-gray-400 hover:text-[#f5a623] transition-colors hidden sm:inline"
+            >
+              Partner
+            </Link>
             <a
               href="https://ticket.zaostock.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] px-3 py-1.5 rounded transition-colors"
+              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] px-3.5 py-1.5 rounded transition-colors"
             >
               RSVP
             </a>
@@ -164,7 +179,23 @@ export default async function TestPage() {
       </header>
 
       {/* Hero */}
-      <section className="relative">
+      <section className="relative overflow-hidden">
+        {/* Hero background photo. Placeholder = past-event WaveWarZ shot.
+            SWAP: drop a hi-res landscape crowd/stage photo at this path (leave
+            headroom at the top for the wordmark) — no code change needed. */}
+        <div className="absolute inset-0 pointer-events-none select-none" aria-hidden>
+          <Image
+            src="/zao/wavewarz-banner.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-[0.45]"
+          />
+          {/* Left-weighted scrim keeps the headline readable; bottom fade blends into the page */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628] via-[#0a1628]/85 to-[#0a1628]/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-[#0a1628]/70" />
+        </div>
         {/* dot pattern bg */}
         <div
           className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -195,42 +226,45 @@ export default async function TestPage() {
           <div className="mt-10">
             <FactStrip facts={FACTS} />
           </div>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="https://ticket.zaostock.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-            >
-              RSVP free
-            </a>
-            <Link
-              href="#pro-ticket"
-              className="border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-            >
-              $50 Pro Ticket
-            </Link>
-            <Link
-              href="/apply"
-              className="border border-white/30 hover:border-[#f5a623] hover:text-[#f5a623] font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-            >
-              Volunteer
-            </Link>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] ml-2">
-              Free to attend / Optional $50 pro ticket supports the festival
-            </span>
+          {/* CTA hierarchy: RSVP free is the single obvious default (solid,
+              larger, glow). Volunteer is the clear secondary. The $50 Pro
+              Ticket is intentionally demoted to a quiet supporting link so a
+              first-time visitor never hesitates between "free" and "$50". */}
+          <div className="mt-8 flex flex-col gap-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://ticket.zaostock.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2.5 bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.18em] px-8 py-4 shadow-[0_6px_28px_rgba(245,166,35,0.35)] hover:shadow-[0_8px_36px_rgba(245,166,35,0.5)] transition-all"
+              >
+                RSVP free
+                <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+              </a>
+              <Link
+                href="/apply"
+                className="border border-white/30 hover:border-[#f5a623] hover:text-[#f5a623] font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
+              >
+                Volunteer
+              </Link>
+            </div>
+            <p className="font-[family-name:var(--font-mono)] text-[11px] text-gray-400 tracking-[0.05em] leading-relaxed">
+              Free to attend.{' '}
+              <Link href="#pro-ticket" className="text-gray-300 underline decoration-white/25 underline-offset-4 hover:text-[#f5a623] hover:decoration-[#f5a623] transition-colors">
+                Or back the festival with an optional $50 Pro Ticket →
+              </Link>
+            </p>
           </div>
           <ScrollEyebrow />
         </div>
       </section>
 
-      {/* TODO[photos]: Source 6-12 high-res shots from past events
-          - ZAO-PALOOZA NYC (Apr 2024) - stage + crowd + cipher
-          - ZAO-CHELLA Miami (Dec 2024) - WaveWarZ battle + ZAO HOUSE residency + visual artists
-          - ZAOville DMV prep (Jul 2026)
-          When curated: reinstate VibesGrid section between "About" and "How We Run It".
-          Also: replace TagMarquee here once lineup confirms (Aug 2026) with actual artist names.
-      */}
+      {/* PHOTO ASSETS: the hero background and the Vibes gallery below both
+          run on real past-event photos in /public/zao. SWAP for hi-res curated
+          shots when available (no code change — just replace the files or extend
+          the VibesGrid list). Wishlist: ZAO-PALOOZA NYC stage+crowd+cipher,
+          ZAO-CHELLA Miami WaveWarZ + residency + visual artists, ZAOville DMV.
+          Also: swap TagMarquee for real artist names once the lineup confirms (Aug 2026). */}
 
       {/* Countdown bar */}
       <section className="border-y border-white/[0.12] bg-[#0d1b2a]/40">
@@ -310,6 +344,20 @@ export default async function TestPage() {
               </dl>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Vibes gallery — real photography from past ZAO events. This is the
+          single biggest "sell the feeling" surface on the page. SWAP the files
+          in /public/zao (or extend the list in VibesGrid) with curated hi-res
+          shots as they come in. */}
+      <section className="my-16 sm:my-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <SectionHeader eyebrow="The Vibe" title="What it actually feels like." />
+          <VibesGrid />
+          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-5">
+            Scenes from past ZAO events — more from Ellsworth this October
+          </p>
         </div>
       </section>
 
