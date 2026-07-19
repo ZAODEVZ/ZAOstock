@@ -23,6 +23,7 @@ export default function ArtistsPage() {
     <EntryPage
       personaSlug="artists"
       personaLabel="Artists"
+      heroImage="/zao/zabal-art.jpeg"
       hero="Visual artists - we are taking interest."
       subhead="ZAOstock is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. We are not locking specifics for the visual side yet. If you do work that could fit - posters, signage, photography, motion, on-site - reach out and we will talk about how to participate."
       youGet={[

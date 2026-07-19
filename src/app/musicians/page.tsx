@@ -23,6 +23,7 @@ export default function MusiciansPage() {
     <EntryPage
       personaSlug="musicians"
       personaLabel="Musicians"
+      heroImage="/zao/wavewarz-zaal.jpg"
       hero="Made music nobody is paying you to make? You are who we built this for."
       subhead="ZAOstock is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. Every artist on stage was discovered through The ZAO, a community of 100+ independent musicians who actually support each other's work."
       youGet={[

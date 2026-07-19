@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
 import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 import { SectionHeader } from '@/components/festival/SectionHeader';
@@ -26,10 +27,16 @@ export interface EntryPageProps {
   ctas: EntryPageCTA[];
   /** Optional final note (e.g. eligibility, deadline) */
   footnote?: string;
+  /**
+   * Optional full-bleed hero photo (path under /public). When set, the eyebrow
+   * + headline sit over the image. SWAP for a real persona shot (e.g. an artist
+   * mid-set for musicians) — no code change needed.
+   */
+  heroImage?: string;
 }
 
 export function EntryPage(props: EntryPageProps) {
-  const { personaSlug, personaLabel, hero, subhead, youGet, weAsk, ctas, footnote } = props;
+  const { personaSlug, personaLabel, hero, subhead, youGet, weAsk, ctas, footnote, heroImage } = props;
 
   return (
     <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-24 sm:pb-12 font-[family-name:var(--font-display)]">
@@ -51,20 +58,49 @@ export function EntryPage(props: EntryPageProps) {
           </Link>
         </header>
 
-        <section className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-20">
-          <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-[#f5a623]">
-            For / {personaLabel}
-          </span>
-          <h1
-            className="mt-4 font-bold tracking-[-0.02em] leading-[1.05]"
-            style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
-          >
-            {hero}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg sm:text-xl text-gray-300 leading-relaxed">
-            {subhead}
-          </p>
-        </section>
+        {heroImage ? (
+          <>
+            {/* Full-bleed persona hero photo with the headline overlaid. */}
+            <div className="relative mt-6 h-[46vh] min-h-[340px] w-full overflow-hidden">
+              <Image src={heroImage} alt="" fill priority sizes="100vw" className="object-cover object-center opacity-[0.6]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-[#0a1628]/25" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/85 via-[#0a1628]/40 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0">
+                <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-8 sm:pb-10">
+                  <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-[#f5a623]">
+                    For / {personaLabel}
+                  </span>
+                  <h1
+                    className="mt-4 font-bold tracking-[-0.02em] leading-[1.05] max-w-4xl"
+                    style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
+                  >
+                    {hero}
+                  </h1>
+                </div>
+              </div>
+            </div>
+            <section className="max-w-5xl mx-auto px-5 sm:px-8 mt-8 sm:mt-10">
+              <p className="max-w-3xl text-lg sm:text-xl text-gray-300 leading-relaxed">
+                {subhead}
+              </p>
+            </section>
+          </>
+        ) : (
+          <section className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-20">
+            <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-[#f5a623]">
+              For / {personaLabel}
+            </span>
+            <h1
+              className="mt-4 font-bold tracking-[-0.02em] leading-[1.05]"
+              style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
+            >
+              {hero}
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg sm:text-xl text-gray-300 leading-relaxed">
+              {subhead}
+            </p>
+          </section>
+        )}
 
         <section className="max-w-7xl mx-auto px-5 sm:px-8 mt-16 sm:mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12]">

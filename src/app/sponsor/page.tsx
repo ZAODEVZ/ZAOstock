@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
 import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 
@@ -103,60 +104,78 @@ export default function SponsorPage() {
       <AnimatedGradient />
       {/* Header */}
       <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold text-white">ZAOstock</h1>
             <p className="text-xs text-gray-400">Sponsor Deck</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <Link
               href="/"
               className="text-xs text-gray-400 hover:text-[#f5a623] transition-colors"
             >
               Festival Page
             </Link>
-            <Link
-              href="/"
+            <a
+              href="https://thezao.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-[#f5a623] hover:text-[#ffd700] transition-colors"
             >
               The ZAO
-            </Link>
+            </a>
           </div>
         </div>
       </header>
 
-      <div className="max-w-2xl mx-auto px-4 py-6 space-y-10">
-        {/* Hero */}
-        <div className="space-y-4">
-          <div className="inline-block rounded-full bg-[#f5a623]/10 px-4 py-1.5 text-sm text-[#f5a623] font-medium border border-[#f5a623]/30">
-            October 3, 2026 - Ellsworth, Maine
+      {/* Full-bleed deck hero — real past-event photo behind the headline.
+          SWAP: a wide crowd/production shot that shows scale sells sponsors
+          harder than any stat. No code change needed. */}
+      <div className="relative h-[44vh] min-h-[320px] w-full overflow-hidden">
+        <Image src="/zao/wavewarz-banner.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-[0.5]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-[#0a1628]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/85 via-[#0a1628]/40 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-8 sm:pb-10 space-y-4">
+            <div className="inline-block rounded-full bg-[#f5a623]/15 px-4 py-1.5 text-sm text-[#f5a623] font-medium border border-[#f5a623]/40 backdrop-blur-sm">
+              October 3, 2026 · Ellsworth, Maine
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05] max-w-3xl">
+              Partner with ZAOstock
+            </h2>
+            <p className="text-gray-200 text-lg leading-relaxed max-w-2xl">
+              A community-built outdoor music festival at the gateway to Acadia National Park.
+              Independent artists. One stage. All day. Tax-deductible.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
-            Partner with ZAOstock
-          </h2>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            A community-built outdoor music festival at the gateway to Acadia National Park.
-            Independent artists. One stage. All day. Tax-deductible.
-          </p>
         </div>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 py-10 space-y-12">
+        {/* (hero moved into the full-bleed band above) */}
 
         {/* The Story */}
-        <section className="space-y-3">
-          <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Why Ellsworth</p>
-          <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
-            <p className="text-sm text-gray-300 leading-relaxed">
+        <section className="grid gap-6 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="text-xs text-[#f5a623] uppercase tracking-wider">Why Ellsworth</p>
+            <p className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
+              Not a fly-in event. A local commitment.
+            </p>
+          </div>
+          <div className="lg:col-span-8 bg-[#0d1b2a] rounded-xl p-5 sm:p-6 border border-white/[0.08] space-y-3">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               The founder bought a house in Ellsworth. This isn&apos;t a fly-in event - it&apos;s a
               local commitment. Year 1 of a multi-year festival built by a community that&apos;s been
               meeting every Monday for 90+ weeks straight.
             </p>
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               Downtown Ellsworth just received National Historic Register designation and is a
               Main Street America Nationally Accredited Community (since Sept 2024). Heart of
               Ellsworth facilitated 28 events in 2025 with $391K in grants and 50+ sponsors. More
               than 30,000 vehicles a day pass through Ellsworth in summer on the only road routes
               to Acadia - which had 4.08 million visitors in 2025, an all-time record.
             </p>
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               ZAOstock is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend - a
               statewide event that drives traffic to every participating town. We&apos;re not
               starting from zero. We&apos;re plugging into existing infrastructure.
@@ -167,7 +186,7 @@ export default function SponsorPage() {
         {/* Credibility Numbers */}
         <section className="space-y-3">
           <p className="text-xs text-gray-400 uppercase tracking-wider px-1">The Numbers</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {CREDIBILITY_STATS.map((stat) => (
               <div
                 key={stat.label}
@@ -183,7 +202,7 @@ export default function SponsorPage() {
         {/* Past Events */}
         <section className="space-y-3">
           <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Track Record</p>
-          <div className="space-y-2">
+          <div className="grid gap-2 sm:grid-cols-2">
             {PAST_PROOF.map((event) => (
               <div key={event.name} className="bg-[#0d1b2a] rounded-xl p-4 border border-white/[0.08]">
                 <p className="font-bold text-white text-sm">{event.name}</p>
@@ -196,9 +215,9 @@ export default function SponsorPage() {
         {/* Sponsor Tracks */}
         <section className="space-y-3">
           <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Three Ways to Partner</p>
-          <div className="space-y-4">
+          <div className="grid gap-4 lg:grid-cols-3 lg:items-start">
             {SPONSOR_TRACKS.map((track) => (
-              <div key={track.track} className="bg-[#0d1b2a] rounded-xl border border-white/[0.08] overflow-hidden">
+              <div key={track.track} className="bg-[#0d1b2a] rounded-xl border border-white/[0.08] overflow-hidden h-full">
                 <div className="px-4 py-3 border-b border-white/[0.06]" style={{ borderLeftWidth: 3, borderLeftColor: track.color }}>
                   <span className="font-bold text-sm text-white">{track.track}</span>
                   <p className="text-[11px] text-gray-400 mt-0.5">{track.subtitle}</p>
@@ -222,20 +241,22 @@ export default function SponsorPage() {
         {/* Two paths */}
         <section className="space-y-3">
           <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Two paths · pick what fits</p>
-          <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 border border-[#f5a623]/30 space-y-4">
-            <div>
-              <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Public · tax-deductible</p>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                Donor or grant. Funds route through Fractured Atlas (501(c)(3)) and New Media Commons (a fiscally sponsored project of Fractured Atlas), then through ENTERACT for production. Tax receipt issued by Fractured Atlas. Standard admin fee 6-8% via Fractured Atlas plus 2% ENTERACT treasury.
-              </p>
+          <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 sm:p-6 border border-[#f5a623]/30 space-y-4">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="sm:border-r border-white/[0.08] sm:pr-6">
+                <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Public · tax-deductible</p>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  Donor or grant. Funds route through Fractured Atlas (501(c)(3)) and New Media Commons (a fiscally sponsored project of Fractured Atlas), then through ENTERACT for production. Tax receipt issued by Fractured Atlas. Standard admin fee 6-8% via Fractured Atlas plus 2% ENTERACT treasury.
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Commercial · sponsor-funded</p>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  Direct sponsorship deal. Funds route through ENTERACT (2% treasury) to production. 50% upfront, 50% before delivery. No tax receipt. Faster, simpler, no fiscal sponsor admin.
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Commercial · sponsor-funded</p>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                Direct sponsorship deal. Funds route through ENTERACT (2% treasury) to production. 50% upfront, 50% before delivery. No tax receipt. Faster, simpler, no fiscal sponsor admin.
-              </p>
-            </div>
-            <p className="text-xs text-gray-400 italic pt-1">
+            <p className="text-xs text-gray-400 italic pt-1 border-t border-white/[0.06]">
               ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit. Eligible initiatives may use the public path for tax-deductible support.
             </p>
           </div>
@@ -244,7 +265,7 @@ export default function SponsorPage() {
         {/* Advisory Board */}
         <section className="space-y-3">
           <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Advisory Board</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {ADVISORS.map((advisor) => (
               <div key={advisor.name} className="bg-[#0d1b2a] rounded-xl p-3 border border-white/[0.08]">
                 <p className="font-medium text-white text-sm">{advisor.name}</p>

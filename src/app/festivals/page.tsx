@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { InstagramEmbed } from './InstagramEmbed';
 
@@ -91,16 +92,29 @@ export default function FestivalsPage() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-5 sm:px-8">
-        {/* Hero */}
-        <section className="pt-14 pb-10">
-          <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.25em] text-[#f5a623]">
-            The series
+      {/* Full-bleed series hero. SWAP the photo for a wide crowd/stage shot
+          that represents the series as a whole (currently a past-event
+          placeholder) — no code change needed. */}
+      <div className="relative h-[42vh] min-h-[300px] w-full overflow-hidden">
+        <Image src="/zao/wavewarz-banner.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-[0.5]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-[#0a1628]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/85 via-[#0a1628]/40 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="max-w-3xl mx-auto px-5 sm:px-8 pb-8">
+            <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.25em] text-[#f5a623]">
+              The series
+            </div>
+            <h1 className="mt-3 text-4xl sm:text-6xl font-bold leading-[1.02] tracking-tight">
+              ZAO Festivals
+            </h1>
           </div>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight">
-            ZAO Festivals
-          </h1>
-          <p className="mt-5 max-w-2xl text-gray-300 leading-relaxed">
+        </div>
+      </div>
+
+      <main className="max-w-3xl mx-auto px-5 sm:px-8">
+        {/* Hero intro */}
+        <section className="pt-10 pb-10">
+          <p className="max-w-2xl text-lg text-gray-300 leading-relaxed">
             ZAO Festivals is The ZAO&apos;s series of community-owned, artist-built music festivals. Free to
             attend, artists paid fairly, and the crowd that funds it owns it. We have thrown them in New York and
             Miami, we are throwing one in the DMV this summer, and our flagship lands in Maine this October.
