@@ -641,9 +641,9 @@ export default async function TestPage() {
               <PastEventCard
                 year="July 2026"
                 name="ZAOville"
-                description="DMV chapter co-hosted with DCoop (founder of The VEC; performed at ZAO-CHELLA Miami 2024, returning for ZAOstock). Cross-promotion across the ZAO Festivals series. Lineup includes PROF!T, ELYVN, and more."
+                description="DMV chapter co-hosted with DCoop (founder of The VEC; performed at ZAO-CHELLA Miami 2024, returning for ZAOstock). Cross-promotion across the ZAO Festivals series. Lineup included PROF!T, ELYVN, and more."
                 hue="emerald"
-                status="upcoming"
+                status="past"
               />
             </TiltCard>
           </div>

@@ -45,8 +45,8 @@ const TYPE_COLOR: Record<Slot['type'], string> = {
 const SERIES = [
   { name: 'ZAO-PALOOZA', place: 'NYC', year: 'Apr 2024' },
   { name: 'ZAO-CHELLA', place: 'Miami', year: 'Dec 2024' },
-  { name: 'ZAOville', place: 'Laurel, MD', year: 'Jul 25 2026', current: true },
-  { name: 'ZAOstock', place: 'Ellsworth ME', year: 'Oct 2026' },
+  { name: 'ZAOville', place: 'Laurel, MD', year: 'Jul 25 2026' },
+  { name: 'ZAOstock', place: 'Ellsworth ME', year: 'Oct 2026', current: true },
 ];
 
 export default function ZAOvillePage() {
@@ -70,7 +70,7 @@ export default function ZAOvillePage() {
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">ZAOville Pool Party</h1>
           <p className="text-sm text-gray-400 leading-relaxed">
             The DMV chapter of the ZAO Festivals series, co-hosted with DCoop (founder of The VEC).
-            Free entry, free drinks - the party pops off at 11:00 AM with a vibe sesh and food, into
+            Free entry, free drinks - the party popped off at 11:00 AM with a vibe sesh and food, into
             open mic, live independent sets, and a DJ night swim to close it out. Cross-promoted
             across the series and feeding directly into ZAOstock.
           </p>
