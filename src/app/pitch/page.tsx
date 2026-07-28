@@ -169,7 +169,7 @@ export default async function PitchPage() {
           </h1>
           <p className="mt-8 max-w-3xl text-lg sm:text-2xl text-gray-300 leading-relaxed">
             ZAOstock 2026 is the fourth chapter in the ZAO Festivals series. ZAO-PALOOZA in NYC broke even. ZAO-CHELLA in
-            Miami brought together 16+ musicians and 100+ visual artists. ZAOville hits the DMV this July. Now we are
+            Miami brought together 16+ musicians and 100+ visual artists. ZAOville hit the DMV this July. Now we are
             taking the model to Ellsworth, Maine - on the road to Acadia, during Maine Craft Weekend.
           </p>
           <div className="mt-10">
@@ -266,9 +266,9 @@ export default async function PitchPage() {
               <PastEventCard
                 year="DMV · Jul 2026"
                 name="ZAOville"
-                description="DMV chapter co-hosted with DCoop (founder of The VEC; performed at CHELLA 2024, returning for ZAOstock). Cross-promotion across the series. Lineup includes PROF!T, ELYVN, and more."
+                description="DMV chapter co-hosted with DCoop (founder of The VEC; performed at CHELLA 2024, returning for ZAOstock). Cross-promotion across the series. Lineup included PROF!T, ELYVN, and more."
                 hue="emerald"
-                status="upcoming"
+                status="past"
               />
             </TiltCard>
           </div>

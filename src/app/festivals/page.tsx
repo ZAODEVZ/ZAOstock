@@ -34,7 +34,7 @@ interface Chapter {
 const SERIES: Chapter[] = [
   { name: 'ZAO-PALOOZA', place: 'New York City', year: 'Apr 2024', note: 'During NFT NYC - 12 artists, the community’s first IRL meetup. Broke even.', href: '#recap', status: 'past' },
   { name: 'ZAO-CHELLA', place: 'Wynwood, Miami', year: 'Dec 2024', note: 'During Art Basel, in Wynwood - 16+ musicians, WaveWarZ LIVE, AR art, cross-community.', href: '#recap', status: 'past' },
-  { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', note: 'Co-hosted with DCoop + The VEC - open mic, live sets, DJ night swim.', href: '/zaoville', status: 'next' },
+  { name: 'ZAOville', place: 'DMV', year: 'Jul 2026', note: 'Co-hosted with DCoop + The VEC - open mic, live sets, DJ night swim.', href: '/zaoville', status: 'past' },
   { name: 'ZAOstock', place: 'Ellsworth, Maine', year: 'Oct 3, 2026', note: 'The flagship - free, all-day, downtown, gateway to Acadia.', href: '/', status: 'flagship' },
 ];
 
@@ -102,8 +102,8 @@ export default function FestivalsPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-gray-300 leading-relaxed">
             ZAO Festivals is The ZAO&apos;s series of community-owned, artist-built music festivals. Free to
-            attend, artists paid fairly, and the crowd that funds it owns it. We have thrown them in New York and
-            Miami, we are throwing one in the DMV this summer, and our flagship lands in Maine this October.
+            attend, artists paid fairly, and the crowd that funds it owns it. We have thrown them in New York,
+            Miami, and the DMV, and our flagship lands in Maine this October.
           </p>
           <p className="mt-3 max-w-2xl text-gray-400 leading-relaxed">
             <span className="text-white font-semibold">ZAO Festivals presents ZAOstock</span> - one umbrella,
