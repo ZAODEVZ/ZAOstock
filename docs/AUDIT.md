@@ -1,6 +1,60 @@
 # ZAO Festivals / ZAOstock — project audit
 
-Compiled 2026-07-17/18. Every finding here was independently confirmed - live curl checks against production, direct code reads, git/deploy history, real `npm audit` and `npm run build` runs. Nothing guessed.
+> **Re-audit 2026-08-09 — event is Sat Oct 3, 2026 (~8 weeks out). See the
+> "2026-08-09 re-audit" section immediately below. The original 2026-07-18
+> record follows it unchanged as the historical baseline.**
+
+---
+
+## 2026-08-09 re-audit + fixes (web repo)
+
+Re-verified every open item from July against the current tree. What changed,
+and what got fixed this session (branch `claude/project-audit-setup-97su1b`):
+
+### Fixed this session
+
+| Area | Was | Fix |
+|---|---|---|
+| `/api/events` temp diagnostic | 500 responses leaked raw `error.message`, `code`, and `resolvedHost` to any caller (a July debugging aid, left in) | Reverted to a plain `{ error: 'Failed to load events' }`; full error stays in server logs only (`src/app/api/events/route.ts`) |
+| Dependency vulns | `npm audit` reported **6** (5 high, 1 moderate): `next` (9 advisories incl. middleware bypass, SSRF, DoS), `sharp`, `nanoid`, `postcss` | `npm audit fix` → patched-version bumps in the lockfile only (`next` 16.3.0, `nanoid` 3.3.18, `postcss` 8.5.26, `sharp` patched). **`npm audit` → 0 vulnerabilities.** Verified with a real `npm run build` |
+| No health endpoint | Nothing to monitor but the raw public routes | Added `GET /api/health` — cheap HEAD/count round-trip to the DB, returns `{ status, db: { ok, host, latencyMs } }` and 503 when the DB is unreachable/misconfigured. Surfaces the connected Supabase host — the exact signal that would have caught the July outage |
+| No uptime monitoring (July's #2 "if you only do three things") | Prod broke silently in July and stayed broken | Added `.github/workflows/uptime.yml` — pings `/api/health` + `/api/events` every 15 min, fails the run (→ GitHub emails admins) on non-200. Optional repo vars `PROD_BASE_URL`, `EXPECTED_DB_HOST` let it also assert prod is pointed at the right Supabase project |
+
+### Resolved on their own since July (dependency drift, no action needed)
+
+- **`ws`/wagmi HIGH DoS (CVSS 7.5)** — `wagmi` is no longer a dependency at
+  all; `ws` is now 8.21.0 (the fix landed in 8.17.1). `viem` remains for the
+  wallet flow. **This blocker is gone.**
+
+### Still open — needs Zaal / live access (cannot be done from a cloud session)
+
+- **Supabase prod env var** — could not be verified this session: the cloud
+  sandbox's network policy blocks `zaostock.com` and `mcp.supabase.com` (403).
+  Confirm with `curl https://zaostock.com/api/health` — a healthy `db.host` of
+  `yjrlaxpjusmrfylumban.supabase.co` means the July fix is in place. If it
+  still shows a different host, apply the fix in the July section below.
+- **Turn on the uptime workflow's guard rail** — set repo variable
+  `EXPECTED_DB_HOST=yjrlaxpjusmrfylumban.supabase.co` (Settings → Secrets and
+  variables → Actions → Variables) so a wrong-database regression fails loudly.
+
+### Still open — deliberately deferred, unchanged reasoning
+
+- **5 `<img>` lint warnings** (BioEditor ×2, TeamRoles, MemberProfileView,
+  TeamMosaic) — still deferred for the July reason: `photo_url` is dynamic
+  user data and `next/image` only allows 5 image hosts; converting risks
+  breaking real team photos from an un-allowlisted host. 0 lint *errors*.
+- **Route-level test coverage** — still only 5 unit-test files (lib utils);
+  the ~40 API routes have no route tests. Fine for a volunteer project, worth
+  knowing before the event.
+
+**Current gate (this branch): `npm audit` 0 vulns · typecheck clean · lint 0
+errors / 5 warnings · 17/17 tests pass · `next build` succeeds.**
+
+---
+
+## Original record — compiled 2026-07-17/18
+
+Every finding here was independently confirmed - live curl checks against production, direct code reads, git/deploy history, real `npm audit` and `npm run build` runs. Nothing guessed.
 
 Two repos:
 - **Web** (`zaostock`, this repo) — zaostock.com, team dashboard, all API routes

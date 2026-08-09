@@ -14,17 +14,10 @@ export async function GET() {
     .order('event_date');
 
   if (error) {
+    // Full error (message + code) goes to the server logs only; the client
+    // gets a plain message so we don't leak schema/connection details.
     console.error('[api/events] Supabase query failed', error);
-    // TEMP diagnostic - real error text in the response so it's visible
-    // without Vercel log access. Reverting to a plain message once the
-    // 2026-07-16 production 500 is diagnosed.
-    let resolvedHost = 'unset';
-    try {
-      resolvedHost = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL || '').hostname;
-    } catch {
-      resolvedHost = 'invalid-url';
-    }
-    return NextResponse.json({ error: 'Failed to load events', debug: error.message, code: error.code, resolvedHost }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to load events' }, { status: 500 });
   }
   return NextResponse.json({ events: data });
 }
