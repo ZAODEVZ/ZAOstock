@@ -52,7 +52,8 @@ Three defects this work fixes:
    are locked." It is now mid-August and no names may be published, so the promise is
    both due and unfulfillable as written.
 2. The ZAOville lineage card describes DCoop as "returning for ZAOstock", which places
-   a named performer at the event in public copy.
+   a named performer at the event in public copy. NOT fixed in this work - see PR 1
+   item 4. The copy is already live, so the choice to pull it belongs to Zaal.
 3. Nothing on the site mentions Black Moon, the after-party, or the 12-6 window at the
    bar.
 
@@ -102,9 +103,10 @@ after-party block, and the footer.
 
    No artist named, no announcement date promised. Promising a date would violate the
    no-other-dates rule. The `Stage` and `Format` rows in that definition list stay.
-4. Remove "returning for ZAOstock" from the ZAOville lineage card. The rest of that
-   card, including the ZAO-CHELLA past-performance credit, stays - it describes a past
-   event, not the ZAOstock lineup.
+4. LEAVE THE ZAOVILLE LINEAGE CARD EXACTLY AS IT IS. Do not remove "returning for
+   ZAOstock". Zaal's decision, 2026-08-10: that name is already public on the site, so
+   removing it and keeping it are both meaningful choices and both are his to make, not
+   the implementer's. Raise it in the PR body as a flagged question and change nothing.
 5. Untouched: Pro Ticket, sponsor tracks, partners, team mosaic, past events, nav,
    `StickyActionBar`, and every other route in the app.
 
