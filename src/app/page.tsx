@@ -14,6 +14,7 @@ import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
 import { ScrollEyebrow } from '@/components/festival/ScrollEyebrow';
 import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 import { TiltCard } from '@/components/festival/TiltCard';
+import { FESTIVAL } from '@/content/festival';
 
 // NOTE (attempted, reverted): switching this to `revalidate = 60` for ISR
 // would cut real database load, but it requires SUPABASE_SERVICE_ROLE_KEY to
@@ -35,12 +36,10 @@ export const metadata: Metadata = {
   },
 };
 
-const FESTIVAL_DATE = '2026-10-03T12:00:00-04:00';
-
 const FACTS = [
-  { label: 'Date', value: 'Oct 3, 2026' },
-  { label: 'Venue', value: 'Franklin St Parklet' },
-  { label: 'Time', value: '12 PM - 6 PM' },
+  { label: 'Date', value: FESTIVAL.shortDate },
+  { label: 'Venue', value: FESTIVAL.shortVenue },
+  { label: 'Time', value: FESTIVAL.window },
   { label: 'Lineup', value: 'Independent Artists' },
 ];
 
@@ -144,7 +143,7 @@ export default async function TestPage() {
               </Link>
             ))}
             <a
-              href="https://ticket.zaostock.com"
+              href={FESTIVAL.rsvpUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] px-3 py-1.5 rounded transition-colors"
@@ -190,14 +189,14 @@ export default async function TestPage() {
             A community-built outdoor music festival in Ellsworth, Maine. Independent artists. One stage. All day.
           </p>
           <p className="mt-3 max-w-2xl text-base sm:text-lg text-[#f5a623] font-medium leading-relaxed">
-            Free to attend. Saturday Oct 3, Ellsworth Maine.
+            {FESTIVAL.admission}. {FESTIVAL.dateLabel}, {FESTIVAL.city}.
           </p>
           <div className="mt-10">
             <FactStrip facts={FACTS} />
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href="https://ticket.zaostock.com"
+              href={FESTIVAL.rsvpUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
@@ -240,7 +239,7 @@ export default async function TestPage() {
               Countdown
             </span>
             <div className="flex-1 min-w-[260px]">
-              <CountdownTimer targetDate={FESTIVAL_DATE} eventName="ZAOstock" />
+              <CountdownTimer targetDate={FESTIVAL.date} eventName="ZAOstock" />
             </div>
           </div>
         </div>
@@ -579,7 +578,7 @@ export default async function TestPage() {
                 RSVP on Luma to lock your spot and stay in the loop on the lineup. Free to attend.
               </p>
               <a
-                href="https://ticket.zaostock.com"
+                href={FESTIVAL.rsvpUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
@@ -654,7 +653,7 @@ export default async function TestPage() {
       <footer className="border-t border-white/[0.12] mt-16">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-wrap items-center justify-between gap-4">
           <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em]">
-            ZAOstock / Oct 03 2026 / Ellsworth ME
+            ZAOstock / {FESTIVAL.shortDate} / {FESTIVAL.city}
           </span>
           <div className="flex items-center gap-5 flex-wrap">
             <Link href="/musicians" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
