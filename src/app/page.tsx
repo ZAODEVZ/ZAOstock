@@ -252,15 +252,11 @@ export default async function TestPage() {
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7">
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                A full day of independent artists with DJs between every act. The full lineup drops August 2026 once final commitments are locked.
+                A full day of independent artists with DJs between every act. The lineup is announced once every set is locked.
               </p>
             </div>
             <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
               <dl className="space-y-4">
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Lineup drops</dt>
-                  <dd className="text-base text-white">August 2026</dd>
-                </div>
                 <div className="flex flex-col gap-1">
                   <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Stage</dt>
                   <dd className="text-base text-white">One stage, all day</dd>
