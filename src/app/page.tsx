@@ -245,136 +245,6 @@ export default async function TestPage() {
         </div>
       </section>
 
-      {/* Lineup teaser */}
-      <section className="my-12 sm:my-16">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="The Lineup" title="Independent artists. One stage." />
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-7">
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                A full day of independent artists with DJs between every act. The lineup is announced once every set is locked.
-              </p>
-            </div>
-            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
-              <dl className="space-y-4">
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Stage</dt>
-                  <dd className="text-base text-white">One stage, all day</dd>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Format</dt>
-                  <dd className="text-base text-white">Live sets with DJs between</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About: 2-col asymmetric */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-7">
-              <SectionHeader eyebrow="About" title="Every car heading to Acadia passes through. Free to listen from the sidewalk." />
-              <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed">
-                <p>
-                  ZAOstock is The ZAO&apos;s flagship IRL music festival. A full-day outdoor showcase at the Franklin
-                  Street Parklet in downtown Ellsworth, Maine. Independent artists perform with DJs between.
-                </p>
-                <p>
-                  Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, ZAOstock brings the decentralized
-                  music community together in the Crossroads of Downeast.
-                </p>
-              </div>
-            </div>
-            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
-              <dl className="space-y-5">
-                {[
-                  { k: 'Location', v: 'Franklin St Parklet, Ellsworth ME' },
-                  { k: 'Series', v: '9th Annual Art of Ellsworth' },
-                  { k: 'Weekend', v: 'Maine Craft Weekend' },
-                ].map((row) => (
-                  <div key={row.k} className="flex flex-col gap-1 pb-4 border-b border-white/[0.08]">
-                    <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
-                      {row.k}
-                    </dt>
-                    <dd className="text-base text-white">{row.v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Manifesto + stats bento */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="How We Run It" title="Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist." />
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.12] border border-white/[0.12]">
-            <StatTile value="27" label="Teammates building this" accent />
-            <StatTile value="100+" label="ZAO community members" />
-            <StatTile value="2" label="Prior festivals (NYC + Miami)" />
-            <StatTile value="501(c)(3)" label="Funding via New Media Commons / Fractured Atlas" />
-          </div>
-        </div>
-      </section>
-
-      {/* Plug in - 3 entry doors */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="How To Plug In" title="Pick a door." />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12] mt-6">
-            <Link
-              href="/musicians"
-              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Musicians</span>
-              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
-                Made music nobody&apos;s paying you to make?
-              </p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Submit for the lineup. 25-minute set, real stage, full recording.
-              </p>
-              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
-                See the door -&gt;
-              </span>
-            </Link>
-            <Link
-              href="/artists"
-              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Artists</span>
-              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
-                Build the visual identity people remember.
-              </p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Posters, signage, installations, motion. Named credit on every surface.
-              </p>
-              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
-                See the door -&gt;
-              </span>
-            </Link>
-            <Link
-              href="/event-organizers"
-              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Organizers</span>
-              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
-                Built a community? Run your own ZAO.
-              </p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Next chapter could be yours - in your city, under the ZAO Festivals umbrella.
-              </p>
-              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
-                See the door -&gt;
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Crossroads of Downeast - location pride */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -443,6 +313,200 @@ export default async function TestPage() {
                 </div>
               </dl>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Volunteer + RSVP combined */}
+      <section id="rsvp" className="my-16 sm:my-24 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <SectionHeader eyebrow="Join In" title="Build the festival or get on the list." />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12]">
+            <div className="bg-[#0d1b2a] p-8 sm:p-10">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">Volunteer</h3>
+                {counts.volunteers > 0 && (
+                  <div className="text-right flex-shrink-0">
+                    <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
+                      {counts.volunteers}
+                    </p>
+                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
+                      Signed up
+                    </p>
+                  </div>
+                )}
+              </div>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Setup, check-in, stage crew, content, teardown - or anything in between. Volunteers get crew shirts
+                and meals on-site.
+              </p>
+              <Link
+                href="/apply"
+                className="inline-block mt-6 border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
+              >
+                Sign up to volunteer
+              </Link>
+            </div>
+            <div className="bg-[#0d1b2a] p-8 sm:p-10">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">RSVP</h3>
+                {counts.rsvps > 0 && (
+                  <div className="text-right flex-shrink-0">
+                    <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
+                      {counts.rsvps}
+                    </p>
+                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
+                      On the list
+                    </p>
+                  </div>
+                )}
+              </div>
+              <p className="text-sm text-gray-400 leading-relaxed mb-5">
+                RSVP on Luma to lock your spot and stay in the loop on the lineup. Free to attend.
+              </p>
+              <a
+                href={FESTIVAL.rsvpUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
+              >
+                RSVP on Luma -&gt;
+              </a>
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-6 mb-3">
+                Or just get notified by email
+              </p>
+              <RSVPForm eventSlug="zao-stock-2026" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lineup teaser */}
+      <section className="my-12 sm:my-16">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <SectionHeader eyebrow="The Lineup" title="Independent artists. One stage." />
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-7">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+                A full day of independent artists with DJs between every act. The lineup is announced once every set is locked.
+              </p>
+            </div>
+            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
+              <dl className="space-y-4">
+                <div className="flex flex-col gap-1">
+                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Stage</dt>
+                  <dd className="text-base text-white">One stage, all day</dd>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Format</dt>
+                  <dd className="text-base text-white">Live sets with DJs between</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Plug in - 3 entry doors */}
+      <section className="my-16 sm:my-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <SectionHeader eyebrow="How To Plug In" title="Pick a door." />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12] mt-6">
+            <Link
+              href="/musicians"
+              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
+            >
+              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Musicians</span>
+              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
+                Made music nobody&apos;s paying you to make?
+              </p>
+              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
+                Submit for the lineup. 25-minute set, real stage, full recording.
+              </p>
+              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
+                See the door -&gt;
+              </span>
+            </Link>
+            <Link
+              href="/artists"
+              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
+            >
+              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Artists</span>
+              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
+                Build the visual identity people remember.
+              </p>
+              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
+                Posters, signage, installations, motion. Named credit on every surface.
+              </p>
+              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
+                See the door -&gt;
+              </span>
+            </Link>
+            <Link
+              href="/event-organizers"
+              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
+            >
+              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Organizers</span>
+              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
+                Built a community? Run your own ZAO.
+              </p>
+              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
+                Next chapter could be yours - in your city, under the ZAO Festivals umbrella.
+              </p>
+              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
+                See the door -&gt;
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* About: 2-col asymmetric */}
+      <section className="my-16 sm:my-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div className="lg:col-span-7">
+              <SectionHeader eyebrow="About" title="Every car heading to Acadia passes through. Free to listen from the sidewalk." />
+              <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed">
+                <p>
+                  ZAOstock is The ZAO&apos;s flagship IRL music festival. A full-day outdoor showcase at the Franklin
+                  Street Parklet in downtown Ellsworth, Maine. Independent artists perform with DJs between.
+                </p>
+                <p>
+                  Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, ZAOstock brings the decentralized
+                  music community together in the Crossroads of Downeast.
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
+              <dl className="space-y-5">
+                {[
+                  { k: 'Location', v: 'Franklin St Parklet, Ellsworth ME' },
+                  { k: 'Series', v: '9th Annual Art of Ellsworth' },
+                  { k: 'Weekend', v: 'Maine Craft Weekend' },
+                ].map((row) => (
+                  <div key={row.k} className="flex flex-col gap-1 pb-4 border-b border-white/[0.08]">
+                    <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
+                      {row.k}
+                    </dt>
+                    <dd className="text-base text-white">{row.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Manifesto + stats bento */}
+      <section className="my-16 sm:my-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <SectionHeader eyebrow="How We Run It" title="Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist." />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.12] border border-white/[0.12]">
+            <StatTile value="27" label="Teammates building this" accent />
+            <StatTile value="100+" label="ZAO community members" />
+            <StatTile value="2" label="Prior festivals (NYC + Miami)" />
+            <StatTile value="501(c)(3)" label="Funding via New Media Commons / Fractured Atlas" />
           </div>
         </div>
       </section>
@@ -549,70 +613,6 @@ export default async function TestPage() {
                   After payment, email info@thezao.com so we can schedule your 1:1.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Volunteer + RSVP combined */}
-      <section id="rsvp" className="my-16 sm:my-24 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Join In" title="Build the festival or get on the list." />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12]">
-            <div className="bg-[#0d1b2a] p-8 sm:p-10">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">Volunteer</h3>
-                {counts.volunteers > 0 && (
-                  <div className="text-right flex-shrink-0">
-                    <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
-                      {counts.volunteers}
-                    </p>
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
-                      Signed up
-                    </p>
-                  </div>
-                )}
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Setup, check-in, stage crew, content, teardown - or anything in between. Volunteers get crew shirts
-                and meals on-site.
-              </p>
-              <Link
-                href="/apply"
-                className="inline-block mt-6 border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-              >
-                Sign up to volunteer
-              </Link>
-            </div>
-            <div className="bg-[#0d1b2a] p-8 sm:p-10">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">RSVP</h3>
-                {counts.rsvps > 0 && (
-                  <div className="text-right flex-shrink-0">
-                    <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
-                      {counts.rsvps}
-                    </p>
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
-                      On the list
-                    </p>
-                  </div>
-                )}
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed mb-5">
-                RSVP on Luma to lock your spot and stay in the loop on the lineup. Free to attend.
-              </p>
-              <a
-                href={FESTIVAL.rsvpUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-              >
-                RSVP on Luma -&gt;
-              </a>
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-6 mb-3">
-                Or just get notified by email
-              </p>
-              <RSVPForm eventSlug="zao-stock-2026" />
             </div>
           </div>
         </div>
