@@ -73,8 +73,12 @@ const SPONSOR_OFFERINGS = [
 ];
 
 const PARTNERS = [
-  { name: 'Heart of Ellsworth', role: 'Local promotion + Maine Craft Weekend coordination' },
+  // Heart of Ellsworth removed 2026-08-14: official-partner status not yet
+  // approved by them. Do not re-add without written confirmation.
   { name: 'Town of Ellsworth', role: 'Parklet venue' },
+  { name: 'Star 97.7', role: 'Local radio promotion' },
+  { name: 'Wallace Events', role: 'Event equipment + tenting' },
+  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage' },
   { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives' },
   { name: 'ENTERACT', role: 'Production + operational support' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface' },

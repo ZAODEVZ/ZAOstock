@@ -64,7 +64,11 @@ const PILLARS: Pillar[] = [
 
 const PARTNERS: Partner[] = [
   { name: 'Town of Ellsworth', role: 'Venue partner — Franklin St Parklet', confirmed: true },
-  { name: 'Heart of Ellsworth', role: 'Local promotion + Maine cultural ties', confirmed: true },
+  // Heart of Ellsworth removed 2026-08-14: official-partner status not yet
+  // approved by them. Do not re-add without written confirmation.
+  { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true },
+  { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
+  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true },
   { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives', confirmed: true },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true },
 ].filter((p) => p.confirmed);

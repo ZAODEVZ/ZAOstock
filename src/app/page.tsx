@@ -98,8 +98,13 @@ const PAST_EVENTS = [
 //   2. poc is a real ZAO team member who owns the relationship
 // Sponsors (paid placements) live in SPONSOR_OFFERINGS, not here.
 const PARTNERS = [
-  { name: 'Heart of Ellsworth', role: 'Local promotion + Maine Craft Weekend coordination', confirmed: true, poc: 'Zaal' },
+  // Heart of Ellsworth is deliberately NOT listed. On the 2026-08-13 call Chesnee
+  // Barney said official-partner status and logo use have to clear internally
+  // first. It appears nowhere until she confirms in writing.
   { name: 'Town of Ellsworth', role: 'Parklet venue', confirmed: true, poc: 'Zaal' },
+  { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
+  { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
+  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
   { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives', confirmed: true, poc: 'FailOften' },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },

@@ -69,7 +69,7 @@ const FAQ = [
   },
   {
     q: 'Who is The ZAO?',
-    a: 'An independent community of musicians and digital creators, active since 2023. Two community events ran so far: ZAO-PALOOZA in NYC, April 2024; ZAO-CHELLA in Miami, December 2024. ZAOville in the DMV is co-hosted with DCoop (founder of The Village Entertainment Collective) in July 2026 - cross-promotion across the series since DCoop performed at ZAO-CHELLA Miami 2024 and returns for ZAOstock. Lineup includes PROF!T, ELYVN, and more. ZAOstock 2026 is the next event - a one-day festival in Ellsworth Maine, part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Co-presented with Heart of Ellsworth and the Town of Ellsworth.',
+    a: 'An independent community of musicians and digital creators, active since 2023. Two community events ran so far: ZAO-PALOOZA in NYC, April 2024; ZAO-CHELLA in Miami, December 2024. ZAOville in the DMV is co-hosted with DCoop (founder of The Village Entertainment Collective) in July 2026 - cross-promotion across the series since DCoop performed at ZAO-CHELLA Miami 2024 and returns for ZAOstock. Lineup includes PROF!T, ELYVN, and more. ZAOstock 2026 is the next event - a one-day festival in Ellsworth Maine, part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Co-presented with the Town of Ellsworth.',
   },
   {
     q: 'How many people show up?',
@@ -191,8 +191,12 @@ export default async function DeckPage() {
         <section className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-2">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Confirmed so far</p>
           <ul className="text-sm text-gray-300 space-y-1">
-            <li>- Heart of Ellsworth - Local promotion + Maine Craft Weekend coordination</li>
+            {/* Heart of Ellsworth removed 2026-08-14: official-partner status not
+                yet approved by them. Do not re-add without written confirmation. */}
             <li>- Town of Ellsworth - Parklet venue</li>
+            <li>- Star 97.7 - Local radio promotion</li>
+            <li>- Wallace Events - Event equipment + tenting</li>
+            <li>- WaveWarZ - Live music-battle format on the ZAOstock stage</li>
             <li>- New Media Commons (via Fractured Atlas) - Fiscal sponsorship infrastructure for eligible initiatives</li>
             <li>- ENTERACT - Production + operational support</li>
           </ul>
