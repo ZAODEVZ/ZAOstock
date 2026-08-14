@@ -171,7 +171,7 @@ export default function DonatePage() {
             Where it goes
           </p>
           <p className="text-base text-gray-200 leading-relaxed">
-            Funds cover the real costs of the day: artist travel and pay, sound and stage production, and the materials it takes to put on a free, all-day festival. Heart of Ellsworth and the Town of Ellsworth help with the venue and local coordination - your contribution is what actually gets artists here and the show running.
+            Funds cover the real costs of the day: artist travel and pay, sound and stage production, and the materials it takes to put on a free, all-day festival. The Town of Ellsworth helps with the venue and local coordination - your contribution is what actually gets artists here and the show running.
           </p>
         </section>
 
