@@ -17,7 +17,7 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 
 - October 3, 2026: Festival day, 12pm to 6pm, afterparty follows
 - June 30, 2026: Partner commitments due for printed materials
-- August 1, 2026: Final lineup public
+- Lineup goes public once every set is locked
 - September 15, 2026: Run-of-show locked, attendee schedule cards printed
 
 ## Pages
@@ -62,7 +62,7 @@ Zaal - zaalp99@gmail.com - lead organizer, ZAO founder, partner and artist outre
 
 ## About The ZAO
 
-The ZAO (ZTalent Artist Organization) is a decentralized music community on Farcaster, Base, and Solana. It functions as a coordination layer for independent musicians: providing infrastructure, events, and collaborative IP production. The ZAO Festivals series so far: ZAO-PALOOZA (NYC, NFT NYC 2024, 12 artists, broke even), ZAO-CHELLA (Miami Wynwood, Art Basel 2024, 16+ musicians, 100+ visual artists, 50+ music communities, ZAO HOUSE residency, live WaveWarZ battle, cipher recorded on-site), the ZAOville DMV chapter in July 2026 co-hosted with DCoop (founder of The Village Entertainment Collective; performed at ZAO-CHELLA, returning for ZAOstock; lineup includes PROF!T, ELYVN, and more), and ZAOstock as the one-day festival in Ellsworth Maine in October 2026.
+The ZAO (ZTalent Artist Organization) is a independent community of musicians and digital creators. It functions as a coordination layer for independent musicians: providing infrastructure, events, and collaborative IP production. The ZAO Festivals series so far: ZAO-PALOOZA (NYC, NFT NYC 2024, 12 artists, broke even), ZAO-CHELLA (Miami Wynwood, Art Basel 2024, 16+ musicians, 100+ visual artists, 50+ music communities, ZAO HOUSE residency, live WaveWarZ battle, cipher recorded on-site), the ZAOville DMV chapter in July 2026 co-hosted with DCoop (founder of The Village Entertainment Collective; performed at ZAO-CHELLA, returning for ZAOstock; lineup includes PROF!T, ELYVN, and more), and ZAOstock as the one-day festival in Ellsworth Maine in October 2026.
 
 More on The ZAO: https://zaoos.com
 `;

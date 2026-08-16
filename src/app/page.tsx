@@ -478,7 +478,7 @@ export default async function TestPage() {
                   Street Parklet in downtown Ellsworth, Maine. Independent artists perform with DJs between.
                 </p>
                 <p>
-                  Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, ZAOstock brings the decentralized
+                  Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, ZAOstock brings The ZAO&apos;s independent
                   music community together in the Crossroads of Downeast.
                 </p>
               </div>
