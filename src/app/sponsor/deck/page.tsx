@@ -194,6 +194,7 @@ export default async function DeckPage() {
             {/* Heart of Ellsworth removed 2026-08-14: official-partner status not
                 yet approved by them. Do not re-add without written confirmation. */}
             <li>- Town of Ellsworth - Parklet venue</li>
+            <li>- Black Moon Public House - Indoor second stage + official after-party</li>
             <li>- Star 97.7 - Local radio promotion</li>
             <li>- Wallace Events - Event equipment + tenting</li>
             <li>- WaveWarZ - Live music-battle format on the ZAOstock stage</li>
