@@ -10,6 +10,7 @@ import { TeamMosaic } from '@/components/festival/TeamMosaic';
 import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
 import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 import { TiltCard } from '@/components/festival/TiltCard';
+import { FESTIVAL } from '@/content/festival';
 
 export const dynamic = 'force-dynamic';
 
@@ -181,7 +182,7 @@ export default async function PitchPage() {
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href="https://ticket.zaostock.com"
+              href={FESTIVAL.rsvpUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
@@ -467,7 +468,7 @@ export default async function PitchPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href="https://ticket.zaostock.com"
+                href={FESTIVAL.rsvpUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-7 py-4 transition-colors"

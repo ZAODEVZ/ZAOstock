@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { SectionHeader } from '@/components/festival/SectionHeader';
+import { FESTIVAL } from '@/content/festival';
 
 export const metadata: Metadata = {
   title: 'Visiting Ellsworth, Maine | ZAOstock',
@@ -168,7 +169,7 @@ export default function EllsworthPage() {
           </p>
           <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://ticket.zaostock.com"
+              href={FESTIVAL.rsvpUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-6 py-3 text-sm transition-colors"

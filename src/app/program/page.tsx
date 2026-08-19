@@ -22,11 +22,11 @@ const PROGRAM: Block[] = [
   { target: '12:00', type: 'DJ', label: 'Doors open', detail: 'Welcome DJ set, crowd arrives, grab your first drink.' },
   { target: '12:15', type: 'MUSIC', label: 'Opening set', detail: 'First artist of the day, 25-30 minutes.' },
   { target: '~12:50', type: 'TALK', label: 'Welcome to ZAOstock', detail: '5-10 minutes. What this is and why we built it.' },
-  { target: '~13:05', type: 'MUSIC', label: 'Artist — TBA', detail: '15-20 minute set. Lineup announces August 2026.' },
+  { target: '~13:05', type: 'MUSIC', label: 'Artist — TBA', detail: '15-20 minute set. Lineup announced once every set is locked.' },
   { target: '~13:35', type: 'TALK', label: 'Music distribution 101', detail: '5-10 minutes. Why digital distribution matters for independent artists, pitched for IRL audience.' },
-  { target: '~13:50', type: 'MUSIC', label: 'Artist — TBA', detail: '15-20 minute set. Lineup announces August 2026.' },
+  { target: '~13:50', type: 'MUSIC', label: 'Artist — TBA', detail: '15-20 minute set. Lineup announced once every set is locked.' },
   { target: '~14:20', type: 'BREAK', label: 'Mid-day break', detail: '15 minutes. Food trucks, bathrooms, mingle.' },
-  { target: '~14:35', type: 'MUSIC', label: 'Artist — TBA', detail: '20-30 minute set. Lineup announces August 2026.' },
+  { target: '~14:35', type: 'MUSIC', label: 'Artist — TBA', detail: '20-30 minute set. Lineup announced once every set is locked.' },
   { target: '~15:10', type: 'BATTLE', label: 'WaveWarZ battle', detail: 'Two artists go head-to-head. Audience decides the winner.' },
   { target: '~15:45', type: 'DJ', label: 'DJ bridge', detail: 'Music keeps going while we reset the stage.' },
   { target: '~16:00', type: 'MUSIC', label: 'Artist set', detail: 'Independent artist set.' },
@@ -109,7 +109,7 @@ export default function ProgramPage() {
         <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Things to know</p>
           <ul className="text-sm text-gray-300 space-y-1.5">
-            <li>- Full lineup announces August 2026.</li>
+            <li>- Full lineup announced once every set is locked.</li>
             <li>- Weather: tent coverage via Wallace Events, rain or shine.</li>
             <li>- Afterparty at Black Moon Public House, walkable downtown.</li>
             <li>- This schedule is a draft. Final version locks September 2026.</li>

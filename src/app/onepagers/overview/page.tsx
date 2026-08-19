@@ -194,7 +194,7 @@ export default async function OverviewOnePager() {
           <p className="mt-4 max-w-2xl text-base text-slate-300 print:text-slate-700">
             A one-day, artist-built music festival in downtown Ellsworth, Maine. Run by{' '}
             <strong className="text-white print:text-slate-900">The ZAO</strong> — a global,
-            decentralized music community. Year 1: relationship over scale.
+            independent music community. Year 1: relationship over scale.
           </p>
         </div>
       </header>
@@ -284,7 +284,7 @@ export default async function OverviewOnePager() {
               </div>
               <p className="mt-2 text-sm leading-relaxed text-slate-300 print:text-slate-700">
                 <strong className="text-white print:text-slate-900">The ZAO</strong> (ZTalent
-                Artist Organization) is a decentralized music community: 100+ members, 30+
+                Artist Organization) is an independent music community: 100+ members, 30+
                 countries, organized around fractals (weekly peer-ranked contribution rounds) and
                 a shared treasury.
               </p>
