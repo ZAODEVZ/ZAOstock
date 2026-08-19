@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 // research doc 1032 (2026-07-11). Refine/expand with exact addresses, links.
 // ---------------------------------------------------------------------------
 
+// Gated - see the section comment below before ever setting this.
+const HOE_VIDEO_URL: string | null = null;
+
 const GETTING_HERE: { mode: string; detail: string }[] = [
   { mode: 'By car', detail: 'About 40 min (30 mi) from Bangor, ~3 hrs (135 mi) from Portland, and ~5 hrs from Boston. Route 1 / Route 1A run right through downtown.' },
   { mode: 'Bangor International (BGR)', detail: 'Nearest major airport, ~40 min away. A direct shuttle bus runs to Ellsworth twice daily (~35 min). Best bet for most travelers.' },
@@ -89,6 +92,33 @@ export default function EllsworthPage() {
             during Maine Craft Weekend.
           </p>
         </section>
+
+        {/* About Ellsworth - Heart of Ellsworth's own org video.
+            DOUBLE GATE, both must clear before HOE_VIDEO_URL is set:
+            1. Chesnee Barney's hold (ZAOOS doc 2279, 2026-08-13): the video is NOT
+               public until Heart of Ellsworth runs its own planned push - their
+               YouTube is mid-migration off an old Gmail.
+            2. A real hosted URL exists (none does yet, for the same reason).
+            When both clear: set the const, done. Copy below is deliberately about
+            the TOWN - Heart of Ellsworth is credited as the video's maker, never
+            framed as a ZAOstock partner (not approved; see doc 2279). */}
+        {HOE_VIDEO_URL ? (
+          <section>
+            <SectionHeader eyebrow="About Ellsworth" title="The town, in its own words." />
+            <p className="text-sm text-gray-400 mb-4">
+              A short film about downtown Ellsworth, made by Heart of Ellsworth.
+            </p>
+            <div className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] overflow-hidden aspect-video">
+              <iframe
+                src={HOE_VIDEO_URL}
+                title="About Ellsworth - a film by Heart of Ellsworth"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </section>
+        ) : null}
 
         {/* Getting here */}
         <section>

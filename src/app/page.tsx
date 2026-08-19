@@ -97,11 +97,14 @@ const PAST_EVENTS = [
 //   1. confirmed === true (locked agreement, not "in conversation")
 //   2. poc is a real ZAO team member who owns the relationship
 // Sponsors (paid placements) live in SPONSOR_OFFERINGS, not here.
-const PARTNERS = [
+// logoSrc is optional: set it only once the file actually exists in public/partners/
+// (Black Moon's logo is incoming from Steve Peer, doc 2295; Star 97.7's not yet requested).
+const PARTNERS: { name: string; role: string; confirmed: boolean; poc: string; logoSrc?: string }[] = [
   // Heart of Ellsworth is deliberately NOT listed. On the 2026-08-13 call Chesnee
   // Barney said official-partner status and logo use have to clear internally
   // first. It appears nowhere until she confirms in writing.
   { name: 'Town of Ellsworth', role: 'Parklet venue', confirmed: true, poc: 'Zaal' },
+  { name: 'Black Moon Public House', role: 'Indoor second stage + official after-party', confirmed: true, poc: 'Zaal' },
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
@@ -553,6 +556,10 @@ export default async function TestPage() {
                     /CFM
                   </span>
                 </div>
+                {p.logoSrc ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- small static logo, matches TeamMosaic's img pattern
+                  <img src={p.logoSrc} alt={`${p.name} logo`} className="h-10 w-auto mb-2 object-contain" />
+                ) : null}
                 <p className="font-bold text-white text-lg tracking-tight">{p.name}</p>
                 <p className="text-xs sm:text-sm text-gray-400 mt-1">{p.role}</p>
                 <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-baseline justify-between gap-2">

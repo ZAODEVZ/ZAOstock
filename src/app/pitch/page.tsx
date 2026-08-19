@@ -77,6 +77,7 @@ const PARTNERS = [
   // Heart of Ellsworth removed 2026-08-14: official-partner status not yet
   // approved by them. Do not re-add without written confirmation.
   { name: 'Town of Ellsworth', role: 'Parklet venue' },
+  { name: 'Black Moon Public House', role: 'Indoor second stage + official after-party' },
   { name: 'Star 97.7', role: 'Local radio promotion' },
   { name: 'Wallace Events', role: 'Event equipment + tenting' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage' },
