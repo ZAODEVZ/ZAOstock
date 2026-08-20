@@ -68,7 +68,7 @@ const SPONSOR_OFFERINGS = [
       'Post-event thank-you feature and recap',
       'Advisory seat for Year 2 planning',
       'Priority placement in 2027',
-      'Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas',
+      'Tax-deductible eligibility pending fiscal-sponsor confirmation',
     ],
   },
 ];
@@ -81,7 +81,9 @@ const PARTNERS = [
   { name: 'Star 97.7', role: 'Local radio promotion' },
   { name: 'Wallace Events', role: 'Event equipment + tenting' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage' },
-  { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives' },
+  // New Media Commons (via Fractured Atlas) removed 2026-08-20: fiscal sponsorship
+  // is IN CONFIRMATION, not confirmed (ZAOOS cards 6386c0c7, e899442e). Do not
+  // re-add until the relationship is confirmed in writing.
   { name: 'ENTERACT', role: 'Production + operational support' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface' },
 ];
@@ -104,7 +106,7 @@ const PLUG_IN_DOORS = [
   },
   {
     label: 'Sponsors',
-    pitch: 'Three tracks (Main Stage / Broadcast / Year-Round). Two funding paths - tax-deductible or commercial.',
+    pitch: 'Three tracks (Main Stage / Broadcast / Year-Round). Commercial packages today; a tax-deductible path is being finalized.',
     href: '/sponsor',
   },
   {
@@ -322,7 +324,7 @@ export default async function PitchPage() {
             <StatTile value="27" label="Teammates building this" accent />
             <StatTile value="100+" label="ZAO community members" />
             <StatTile value="2" label="Prior festivals (NYC + Miami)" />
-            <StatTile value="501(c)(3)" label="Funding infrastructure via NMC / Fractured Atlas" />
+            <StatTile value="2 paths" label="Commercial today; tax-deductible in confirmation" />
           </div>
         </div>
       </section>
@@ -350,7 +352,7 @@ export default async function PitchPage() {
               <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">03 / Sponsors</span>
               <p className="font-bold text-white text-xl tracking-tight mt-3">3 tracks</p>
               <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Main Stage, Broadcast, Year-Round. Two paths: tax-deductible via NMC/Fractured Atlas, or commercial via ENTERACT. Custom packages for local + national.
+                Main Stage, Broadcast, Year-Round. Commercial packages run through ENTERACT today; a tax-deductible path is being finalized with a fiscal sponsor. Custom packages for local + national.
               </p>
             </div>
             <div className="bg-[#0d1b2a] p-6 sm:p-8">
@@ -367,16 +369,16 @@ export default async function PitchPage() {
       {/* Money flow detail */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Two-Path Money Flow" title="Tax-deductible or commercial. Pick the one that fits." />
+          <SectionHeader eyebrow="Two-Path Money Flow" title="Commercial today. Tax-deductible in confirmation." />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12] mt-6">
             <div className="bg-[#0d1b2a] p-7 sm:p-9">
               <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">Public Path</span>
-              <p className="font-bold text-white text-xl tracking-tight mt-3">Tax-deductible donation</p>
+              <p className="font-bold text-white text-xl tracking-tight mt-3">Tax-deductible donation (in confirmation)</p>
               <p className="text-sm sm:text-base text-gray-300 mt-3 leading-relaxed">
-                Donor pays Fractured Atlas (501(c)(3)). FA takes admin (6-8%). Funds flow to New Media Commons (the fiscally sponsored project of FA). NMC routes production funds to ENTERACT (2% treasury fee). ENTERACT executes the production.
+                We are finalizing fiscal sponsorship so donations can be tax-deductible; New Media Commons via Fractured Atlas is the lead candidate. Until that is confirmed, sponsorships run through the commercial path and no tax receipts are issued.
               </p>
               <p className="text-xs text-gray-500 mt-4 leading-relaxed">
-                Sponsor gets a tax receipt. Best for donors who need the deduction.
+                Once confirmed: donor pays the 501(c)(3) fiscal sponsor and gets a tax receipt. Ask us for status before pledging on this path.
               </p>
             </div>
             <div className="bg-[#0d1b2a] p-7 sm:p-9">

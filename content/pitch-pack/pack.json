@@ -1,0 +1,60 @@
+{
+  "updated": "2026-08-20",
+  "festival": {
+    "name": "ZAOstock",
+    "presents": "ZAO Festivals presents ZAOstock",
+    "date": "2026-10-03",
+    "dateLabel": "Saturday, October 3, 2026",
+    "window": "12 PM - 6 PM",
+    "venue": "Franklin Street Parklet",
+    "city": "Ellsworth, Maine",
+    "admission": "Free to attend",
+    "proTicket": {"price": 50, "note": "Optional Pro Ticket supports the festival"},
+    "rsvpUrl": "https://ticket.zaostock.com",
+    "site": "https://zaostock.com",
+    "umbrella": "9th annual Art of Ellsworth / Maine Craft Weekend",
+    "afterParty": {"name": "Black Moon", "note": "next door, 6-8 PM"}
+  },
+  "organizer": {
+    "name": "The ZAO",
+    "meaning": "ZTalent Artist Organization",
+    "what": "Decentralized impact network returning profit margin, data, and IP rights to artists. Music first.",
+    "governanceWeeks": "100+ consecutive weekly sessions",
+    "onchainMembers": 157,
+    "newsletterSubscribers": "500+",
+    "pastEvents": [
+      {"name": "ZAO-PALOOZA", "where": "NYC, NFT NYC 2024"},
+      {"name": "ZAO-CHELLA", "where": "Miami, Art Basel 2024", "note": "first IRL WaveWarZ battle"},
+      {"name": "ZAO-PROS", "where": "ETH Denver 2025"},
+      {"name": "ZAOville", "where": "Laurel MD, Jul 2026"}
+    ]
+  },
+  "wavewarz": {
+    "asOf": "2026-08-20",
+    "source": "https://wavewarz.info/api/public/stats",
+    "battles": 1419,
+    "lifetimeVolumeSol": 901,
+    "lifetimeVolumeUsd": 78838,
+    "artistPayoutsSol": 13.9,
+    "traderClaimsSol": 396,
+    "charityRaisedUsd": 1497
+  },
+  "partners": [
+    {"name": "Black Moon", "role": "Venue next door + official after-party"},
+    {"name": "Star 97.7", "role": "Local radio partner"},
+    {"name": "Wallace Events", "role": "Tents + event infrastructure"},
+    {"name": "WaveWarZ", "role": "Live-traded music battle on stage"}
+  ],
+  "sponsorTiers": {
+    "note": "July ladder, pending Zaal's final numbers (ZAOOS doc 2325 decision 2)",
+    "tiers": [
+      {"name": "Community Partner", "price": 250},
+      {"name": "Artist Sponsor", "price": 500, "note": "Sponsor-an-artist: covers one artist's travel; artist opts in"},
+      {"name": "Platform Sponsor", "price": 1000},
+      {"name": "Presenting Sponsor", "price": 2500}
+    ],
+    "inKind": "Goods and services count at face value toward a tier (lodging, food, printing, gear)"
+  },
+  "contacts": {"email": "info@thezao.com", "pitch": "https://zaostock.com/pitch", "sponsor": "https://zaostock.com/sponsor"},
+  "internal": {"note": "Sponsor leads, outreach tiers and discount authority are NOT in this public pack. ZAOOS docs 2325/2326; partner agents receive them over the token-gated ZAO bus."}
+}
