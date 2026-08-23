@@ -1,0 +1,252 @@
+import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'ZAOstock Team - The Plan',
+  description: 'Everything open for October 3, in one place.',
+  robots: { index: false, follow: false },
+};
+
+// One page for the whole team, so nobody has to hold the state in their head.
+//
+// NOT indexed (robots noindex), but NOT login-gated either - same pattern as
+// /team/help. Anyone with the link can read it, including partners and the
+// city. So it deliberately carries NO money figures, NO vendor pricing, and NO
+// personal contact details. Work and owners only. Keep it that way.
+//
+// Source of truth is the cowork board; this is a curated read of it, refreshed
+// by hand. Card ids are included so a board write can find the row.
+
+type Lane = 'cannot-recover' | 'blocks-announce' | 'promotion' | 'day-of';
+
+interface Item {
+  title: string;
+  owner: string;
+  when: string;
+  card?: string;
+  note?: string;
+  overdue?: boolean;
+}
+
+const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
+  {
+    id: 'cannot-recover',
+    label: 'Cannot be recovered later',
+    why: 'These have a window that closes. Everything else can slip a week; these cannot.',
+    items: [
+      {
+        title: 'The artist roster',
+        owner: 'Zaal',
+        when: 'this week',
+        note: 'Three acts confirmed. More confirmations expected. Contracts, set times, the poster and the reveal all wait on this list.',
+      },
+      {
+        title: 'Event insurance - it is a permit condition, not diligence',
+        owner: 'UNASSIGNED',
+        when: 'was due 21 Aug',
+        card: '89e9da61',
+        overdue: true,
+        note: 'Brokers already researched and ranked. This is a phone call, not a decision.',
+      },
+      {
+        title: 'Sound and PA - confirm what Steve’s offer actually covers',
+        owner: 'Zaal',
+        when: 'was due 1 Aug',
+        card: '7d0cf2b0',
+        overdue: true,
+        note: 'Gear, channel count, setup and strike, operator, power, cancellation. Four backups exist on the record.',
+      },
+      {
+        title: 'Fiscal sponsor replacement',
+        owner: 'UNASSIGNED',
+        when: '26 Aug',
+        card: '6386c0c7',
+        note: 'Sponsor money has nowhere to land until this is chosen.',
+      },
+      {
+        title: 'Artist contracts, carrying the Friday soundcheck clause',
+        owner: 'UNASSIGNED',
+        when: '24 Aug',
+        card: '34ae259d',
+        note: 'Friday night is contractual. Checks happen at whichever stage the act plays.',
+      },
+      {
+        title: 'Local-business baseline - a normal Saturday, before the day',
+        owner: 'Zaal',
+        when: 'before 3 Oct',
+        note: 'After the event you cannot go back and find out what a normal Saturday looked like. Black Moon first.',
+      },
+    ],
+  },
+  {
+    id: 'blocks-announce',
+    label: 'Blocks the announcement',
+    why: 'The lineup reveal is the biggest attention moment of the year. These gate it.',
+    items: [
+      { title: 'Pitch deck v1 - three variants', owner: 'Zaal', when: 'was due 21 Aug', card: '8556d703', overdue: true, note: 'Words are written. Assembly is the remaining step.' },
+      { title: 'Sponsor tiers and discount authority', owner: 'Zaal', when: 'was due 21 Aug', card: 'b80026fc', overdue: true, note: 'Gated on the deck.' },
+      { title: 'Brand kit for ZAOstock and The ZAO, plus print deliverables', owner: 'Samantha', when: '30 Aug', card: '801d6743' },
+      { title: 'The poster', owner: 'Zaal to delegate', when: 'was due 20 Aug', card: '53e3ff3a', overdue: true, note: 'Cannot start until set times exist, which cannot exist until the roster does.' },
+      { title: 'Artist house - Arbor Camp', owner: 'Zaal', when: '24 Aug', card: '9e2ad6a8', note: 'Housing is the remaining nut.' },
+      { title: 'Transport with Bendigo', owner: 'Zaal', when: '15 Sep', card: 'b24c0323' },
+    ],
+  },
+  {
+    id: 'promotion',
+    label: 'Promotion surfaces',
+    why: 'All cheap, all overdue, all independent of each other. Good delegation candidates.',
+    items: [
+      { title: 'Photos onto zaostock.com', owner: 'Zaal', when: 'was due 20 Aug', card: '27dfa999', overdue: true },
+      { title: 'Partner section: Star 97.7 and Black Moon logos', owner: 'Zaal', when: 'was due 20 Aug', card: 'fbcf1d46', overdue: true },
+      { title: 'Black Moon logo onto partner surfaces', owner: 'Zaal', when: 'was due 23 Aug', card: '80cdef1b', overdue: true },
+      { title: 'Facebook event', owner: 'Zaal', when: 'was due 21 Aug', card: 'cc314651', overdue: true },
+      { title: 'Facebook page', owner: 'Zaal', when: 'no date', card: '161567c3' },
+      { title: 'Star 97.7 radio appearance with Paul', owner: 'UNASSIGNED', when: '5 Sep', card: '236edf76' },
+      { title: 'Heart of Ellsworth org video onto the site', owner: 'Zaal', when: '24 Aug', card: 'b090e2bf' },
+      { title: 'Follow up with Colleen', owner: 'Iman', when: 'no date', card: 'f105182b' },
+    ],
+  },
+  {
+    id: 'day-of',
+    label: 'Day-of operations',
+    why: 'Not urgent this week, but each one needs a name against it before late September.',
+    items: [
+      { title: 'First Aid lead - currently doubled onto Zaal, which does not work for a six-hour show', owner: 'Zaal', when: 'no date', card: '71716c06' },
+      { title: 'Stage managers, indoor and outdoor - both unnamed', owner: 'UNASSIGNED', when: 'before 3 Oct' },
+      { title: 'Sound cover for the WaveWarZ block, since Stilo is battling in it', owner: 'UNASSIGNED', when: 'before 3 Oct' },
+      { title: 'Virtual team, 5-10 people in shifts', owner: 'Zaal', when: '26 Aug', card: 'bb2b9326' },
+      { title: 'Fire permit for the fire spinning', owner: 'Zaal', when: 'was due 21 Aug', card: 'c03f74b5', overdue: true },
+      { title: 'LiDAR venue scan for the Decentraland build', owner: 'Zaal', when: 'no date', card: 'ca119cdf' },
+    ],
+  },
+];
+
+const DAY = [
+  { time: '12:00 - 16:00', what: 'Artists, two stages alternating', who: 'Fellenz, Lyons Den, Dcoop, plus more to confirm' },
+  { time: '16:00 - 18:00', what: 'WaveWarZ', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
+  { time: '18:00 - 20:00', what: 'The party, indoors at Black Moon', who: 'Stilo DJing' },
+  { time: '20:00 on', what: 'Local Maine acts', who: 'Brought by Steve' },
+];
+
+const MONDAY = [
+  'Sound: what Steve’s PA offer covers, and a named backup started in parallel',
+  'The city: what form the insurance certificate takes, and whether the Art of Ellsworth exemption covers our permit window',
+  'The 12-4 window is roughly half empty - take up Steve’s standing offer to fill blanks with local acts',
+  'Who covers sound during WaveWarZ, since Stilo is battling in it',
+  'Stage managers for both stages, and splitting First Aid off Zaal',
+  'Who asks Black Moon for the normal-Saturday baseline, and by when',
+];
+
+function Pill({ overdue }: { overdue?: boolean }) {
+  if (!overdue) return null;
+  return (
+    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border border-rose-400/40 bg-rose-400/10 text-rose-300 flex-shrink-0">
+      Overdue
+    </span>
+  );
+}
+
+export default function TeamPlanPage() {
+  return (
+    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-16">
+      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+          <Link href="/team" className="text-xs text-gray-400 hover:text-[#f5a623]">
+            &larr; Team
+          </Link>
+          <span className="text-xs text-gray-500">Oct 3, 2026</span>
+        </div>
+      </header>
+
+      <div className="max-w-3xl mx-auto px-4 py-6 space-y-8">
+        <div className="space-y-3">
+          <p className="inline-block rounded-full bg-[#f5a623]/10 px-3 py-1 text-xs text-[#f5a623] font-medium border border-[#f5a623]/30">
+            Everything open, in one place
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">The Plan</h1>
+          <p className="text-sm text-gray-400 max-w-2xl">
+            Ordered by what cannot be recovered later, not by due date. If you only read one
+            section, read the first one.
+          </p>
+        </div>
+
+        <section className="bg-[#0d1b2a] rounded-xl border border-white/[0.08] overflow-hidden">
+          <p className="text-xs text-[#f5a623] uppercase tracking-wider font-bold px-5 pt-5 pb-3">
+            The day
+          </p>
+          <div className="divide-y divide-white/[0.06]">
+            {DAY.map((d) => (
+              <div key={d.time} className="px-5 py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                <p className="text-sm font-mono font-bold text-white tabular-nums sm:w-32 flex-shrink-0">
+                  {d.time}
+                </p>
+                <div className="min-w-0">
+                  <p className="text-sm text-white">{d.what}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{d.who}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {LANES.map((lane) => (
+          <section key={lane.id} className="space-y-3">
+            <div>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-white">{lane.label}</h2>
+              <p className="text-xs text-gray-500 mt-1 max-w-2xl">{lane.why}</p>
+            </div>
+            <div className="space-y-2">
+              {lane.items.map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-[#0d1b2a] rounded-lg border border-white/[0.08] p-3.5"
+                >
+                  <div className="flex items-start gap-2 flex-wrap">
+                    <p className="text-sm font-medium text-white flex-1 min-w-0">{item.title}</p>
+                    <Pill overdue={item.overdue} />
+                  </div>
+                  {item.note && <p className="text-xs text-gray-500 mt-1.5">{item.note}</p>}
+                  <div className="flex items-center gap-3 mt-2 text-[11px] font-mono">
+                    <span className={item.owner === 'UNASSIGNED' ? 'text-rose-300' : 'text-gray-400'}>
+                      {item.owner}
+                    </span>
+                    <span className="text-gray-600">{item.when}</span>
+                    {item.card && <span className="text-gray-700">{item.card}</span>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <section className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
+          <p className="text-xs text-[#f5a623] uppercase tracking-wider font-bold">
+            What Monday has to settle
+          </p>
+          <ul className="text-sm text-gray-300 space-y-2">
+            {MONDAY.map((m) => (
+              <li key={m} className="flex gap-2">
+                <span className="text-gray-600 flex-shrink-0">-</span>
+                <span>{m}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <p className="text-xs text-gray-600">
+          Six items above have no owner. An unassigned item is not waiting on anybody, which means
+          it is not moving.
+        </p>
+
+        <div className="flex gap-4 text-sm">
+          <Link href="/program" className="text-[#f5a623] hover:text-[#ffd700]">
+            The program
+          </Link>
+          <Link href="/team" className="text-[#f5a623] hover:text-[#ffd700]">
+            Team dashboard
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
