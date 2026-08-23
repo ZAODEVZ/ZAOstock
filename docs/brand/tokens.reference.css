@@ -1,0 +1,138 @@
+/* ZaoStock — 2026 retro festival-poster identity.
+   Sourced from the official ZaoStock 26 event badge. Field Cream page
+   background — light/poster-paper-first, not dark-mode-first. */
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Rubik:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  /* --- color primitives --- */
+  --red-300:#E8735C;
+  --red-500:#D2402A;
+  --red-600:#B93826;
+  --red-700:#9C2F1E;
+
+  --gold-300:#F2D48A;
+  --gold-400:#E5AC3B;
+  --gold-500:#C98F2A;
+  --gold-600:#A8721C;
+
+  --denim-300:#7FA8C7;
+  --denim-400:#2E6494;
+  --denim-500:#245078;
+  --denim-600:#1B3C5C;
+
+  --olive-300:#A4AF6E;
+  --olive-400:#7C8A3D;
+  --olive-500:#636F2F;
+
+  --paper-100:#F2E6D3;
+  --paper-200:#FAF3E6;
+  --ink-950:#241E15;
+  --ink-800: color-mix(in oklch, var(--ink-950) 82%, var(--paper-100));
+  --ink-soft: color-mix(in oklch, var(--ink-950) 62%, var(--paper-100));
+  --white:#FFFFFF;
+  --black:#000000;
+
+  /* --- semantic color --- */
+  --surface-page: var(--paper-100);
+  --surface-page-alt: var(--paper-200);
+  --surface-card: var(--paper-200);
+  --surface-card-hover: color-mix(in oklch, var(--ink-950) 6%, var(--paper-200));
+  --surface-inverse: var(--ink-950);
+  --surface-scrim: color-mix(in oklch, var(--ink-950) 55%, transparent);
+
+  --border-hairline: color-mix(in oklch, var(--ink-950) 60%, transparent);
+  --border-hairline-strong: var(--ink-950);
+
+  --text-primary: var(--ink-950);
+  --text-secondary: var(--ink-soft);
+  --text-muted: color-mix(in oklch, var(--ink-950) 46%, var(--paper-100));
+  --text-inverse: var(--paper-200);
+
+  --accent-gold:var(--gold-400);
+  --accent-gold-hover:var(--gold-500);
+  --accent-gold-press:var(--gold-600);
+  --accent-denim:var(--denim-400);
+  --accent-denim-hover:var(--denim-500);
+  --accent-denim-press:var(--denim-600);
+  --accent-red:var(--red-500);
+  --accent-olive:var(--olive-400);
+
+  --cta-primary-bg:var(--red-500);
+  --cta-primary-bg-hover:var(--red-600);
+  --cta-primary-bg-press:var(--red-700);
+  --cta-primary-text:var(--paper-200);
+
+  --cta-secondary-border:var(--ink-950);
+  --cta-secondary-text:var(--ink-950);
+
+  --link-color:var(--denim-400);
+  --link-color-hover:var(--denim-500);
+
+  --focus-ring: var(--gold-400);
+
+  /* --- type --- */
+  --font-sans:'Rubik',-apple-system,'Segoe UI',sans-serif;
+  --font-display:'Boogaloo','Baloo 2',system-ui,sans-serif;
+  --font-mono:'Space Mono',ui-monospace,'SFMono-Regular',monospace;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+  --weight-heavy:800;
+
+  --size-eyebrow:.75rem;
+  --size-small:.875rem;
+  --size-body:1rem;
+  --size-body-lg:1.125rem;
+  --size-h4:1.375rem;
+  --size-h3:1.75rem;
+  --size-h2:2.5rem;
+  --size-h1:3.5rem;
+  --size-display: clamp(2.75rem, 2rem + 4vw, 5.5rem);
+
+  --lh-tight:1.02;
+  --lh-heading:1.05;
+  --lh-body:1.5;
+
+  --tracking-tight:-0.01em;
+  --tracking-wide:.04em;
+  --tracking-widest:.12em;
+
+  /* --- spacing --- */
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --space-7:48px;
+  --space-8:64px;
+
+  --content-max-width:1200px;
+  --gutter: clamp(20px, 5vw, 64px);
+
+  /* --- shape / depth --- */
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:18px;
+  --radius-pill:999px;
+
+  --border-width-sm:2px;
+  --border-width-md:2.5px;
+  --border-width-lg:3px;
+
+  --shadow-sm: 3px 3px 0 var(--ink-950);
+  --shadow-md: 5px 5px 0 var(--ink-950);
+  --shadow-glow-gold: 0 0 0 3px color-mix(in oklch, var(--gold-400) 45%, transparent);
+
+  --ease-standard: cubic-bezier(.2,.8,.2,1);
+  --duration-fast:120ms;
+  --duration-base:180ms;
+
+  --blur-scrim: 4px;
+
+  /* poster-paper grain — screen-printed feel over surfaces */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.14  0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-opacity: 0.5;
+}
