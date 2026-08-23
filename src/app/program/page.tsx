@@ -4,62 +4,82 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'ZAOstock Program | October 3, 2026',
   description:
-    'Day-of schedule for ZAOstock. Two stages alternating on a 45-minute cadence from noon, then the after-party indoors at Black Moon.',
+    'Day-of schedule for ZAOstock. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.',
   openGraph: {
     title: 'ZAOstock Program',
     description:
-      'Two stages alternating on a 45-minute cadence. The music never stops. October 3, 2026 in Ellsworth, Maine.',
+      'Outdoors from noon, indoors from six. October 3, 2026 in Ellsworth, Maine.',
     url: 'https://zaostock.com/program',
   },
 };
 
-// Source of truth: ZAOOS research doc 2391 (ZAOstock Run of Show v2), which
-// supersedes doc 428. Every value here is a decision from the 2026-08-15 Steve
-// Peer call (doc 2295) or the 2026-08-17 standup (doc 2310):
-//   - two stages, alternating, so there is no gap in the music
-//   - 45-minute cadence, scripted
-//   - main show 12:00-18:00, after-party 18:00-20:00 fully indoors
-// Artists are deliberately unnamed. The roster lives in the `artists` table
-// and is not public until the lineup reveal. Do NOT hand-write names here.
+// Source of truth: ZAOOS research doc 2391 (ZAOstock Run of Show v2).
+//
+// Structure set by Zaal 2026-08-23: everything is OUTDOORS on the Franklin
+// Street parklet until 6pm, then everything moves INDOORS to Black Moon.
+// This replaced the earlier two-stage alternating design - one venue at a
+// time, split by time of day rather than by set.
+//
+// NO ARTIST NAMES on this page. The lineup is not public until the reveal
+// (Zaal, 2026-08-23), so slots stay generic here even where an act is
+// confirmed internally. Do NOT hand-write names in.
 
-type Stage = 'OUT' | 'IN';
+type Venue = 'OUT' | 'IN';
 
-interface Slot {
+interface Block {
   start: string;
   end: string;
-  stage: Stage;
-  n: number;
+  venue: Venue;
+  label: string;
+  detail: string;
 }
 
-const MAIN: Slot[] = [
-  { start: '12:00', end: '12:45', stage: 'OUT', n: 1 },
-  { start: '12:45', end: '13:30', stage: 'IN', n: 2 },
-  { start: '13:30', end: '14:15', stage: 'OUT', n: 3 },
-  { start: '14:15', end: '15:00', stage: 'IN', n: 4 },
-  { start: '15:00', end: '15:45', stage: 'OUT', n: 5 },
-  { start: '15:45', end: '16:30', stage: 'IN', n: 6 },
-  { start: '16:30', end: '17:15', stage: 'OUT', n: 7 },
-  { start: '17:15', end: '18:00', stage: 'IN', n: 8 },
+const BLOCKS: Block[] = [
+  {
+    start: '12:00',
+    end: '16:00',
+    venue: 'OUT',
+    label: 'Live music',
+    detail:
+      'Independent artists back to back on the parklet stage. Lineup announced once every set is locked.',
+  },
+  {
+    start: '16:00',
+    end: '18:00',
+    venue: 'OUT',
+    label: 'WaveWarZ',
+    detail:
+      'Live music battles. Artists go head to head and the audience decides, online and in the street.',
+  },
+  {
+    start: '18:00',
+    end: '20:00',
+    venue: 'IN',
+    label: 'The party',
+    detail:
+      'Everything moves inside to Black Moon Public House, walkable, right next door. DJ set.',
+  },
+  {
+    start: '20:00',
+    end: 'late',
+    venue: 'IN',
+    label: 'Local Maine acts',
+    detail: 'Live music to close the night out, indoors.',
+  },
 ];
 
-const AFTER: { start: string; end: string; label: string }[] = [
-  { start: '18:00', end: '18:40', label: 'Hip-hop crew, open to riff along' },
-  { start: '18:40', end: '19:20', label: 'Live band' },
-  { start: '19:20', end: '20:00', label: 'DJ close' },
-];
-
-const STAGE_META: Record<Stage, { name: string; where: string; cls: string; dot: string }> = {
+const VENUE: Record<Venue, { name: string; where: string; cls: string; bar: string }> = {
   OUT: {
-    name: 'Outdoor',
+    name: 'Outdoors',
     where: 'Franklin Street Parklet',
     cls: 'border-[#f5a623]/40 bg-[#f5a623]/10 text-[#f5a623]',
-    dot: 'bg-[#f5a623]',
+    bar: 'bg-[#f5a623]',
   },
   IN: {
-    name: 'Indoor',
+    name: 'Indoors',
     where: 'Black Moon Public House',
     cls: 'border-rose-400/40 bg-rose-400/10 text-rose-300',
-    dot: 'bg-rose-400',
+    bar: 'bg-rose-400',
   },
 };
 
@@ -80,102 +100,52 @@ export default function ProgramPage() {
           <p className="inline-block rounded-full bg-[#f5a623]/10 px-3 py-1 text-xs text-[#f5a623] font-medium border border-[#f5a623]/30">
             Draft Program
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Two Stages, No Gaps</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Outside, Then In</h1>
           <p className="text-sm text-gray-400 max-w-lg mx-auto">
-            Sets alternate between the outdoor parklet and the room at Black Moon, so while one
-            stage plays the other is already being reset. Forty-five minutes each, straight through
-            from noon.
+            Eight hours in two halves. Live music on Franklin Street from noon, then the whole
+            thing walks next door into Black Moon at six and keeps going.
           </p>
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          {(['OUT', 'IN'] as const).map((s) => (
-            <div key={s} className={`rounded-lg border p-3 ${STAGE_META[s].cls}`}>
-              <p className="text-[10px] font-bold uppercase tracking-wider">{STAGE_META[s].name}</p>
-              <p className="text-xs mt-1 opacity-80">{STAGE_META[s].where}</p>
+          {(['OUT', 'IN'] as const).map((v) => (
+            <div key={v} className={`rounded-lg border p-3 ${VENUE[v].cls}`}>
+              <p className="text-[10px] font-bold uppercase tracking-wider">{VENUE[v].name}</p>
+              <p className="text-xs mt-1 opacity-80">{VENUE[v].where}</p>
             </div>
           ))}
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs text-gray-500 uppercase tracking-wider font-bold px-1">
-            Main show &middot; 12:00 to 18:00
-          </p>
-          {MAIN.map((slot) => {
-            const m = STAGE_META[slot.stage];
+          {BLOCKS.map((b) => {
+            const v = VENUE[b.venue];
             return (
               <div
-                key={slot.n}
-                className={`bg-[#0d1b2a] rounded-lg border border-white/[0.08] p-3 flex items-center gap-3 ${
-                  slot.stage === 'IN' ? 'sm:ml-8' : 'sm:mr-8'
-                }`}
+                key={b.start}
+                className="bg-[#0d1b2a] rounded-lg border border-white/[0.08] p-4 flex items-start gap-3"
               >
-                <span className={`w-1.5 h-8 rounded-full flex-shrink-0 ${m.dot}`} aria-hidden="true" />
-                <div className="flex-shrink-0 w-[92px]">
-                  <p className="text-sm font-mono font-bold text-white tabular-nums">{slot.start}</p>
-                  <p className="text-[10px] font-mono text-gray-500 tabular-nums">to {slot.end}</p>
+                <span
+                  className={`w-1.5 self-stretch rounded-full flex-shrink-0 ${v.bar}`}
+                  aria-hidden="true"
+                />
+                <div className="flex-shrink-0 w-[86px]">
+                  <p className="text-sm font-mono font-bold text-white tabular-nums">{b.start}</p>
+                  <p className="text-[10px] font-mono text-gray-500 tabular-nums">to {b.end}</p>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded border ${m.cls}`}>
-                      {m.name}
+                    <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded border ${v.cls}`}>
+                      {v.name}
                     </span>
-                    <p className="text-sm font-medium text-white">Set {slot.n}</p>
+                    <p className="text-sm font-medium text-white">{b.label}</p>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
-                    45 minutes. Artist announced with the lineup.
-                  </p>
+                  <p className="text-xs text-gray-500 mt-1.5">{b.detail}</p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        <div className="space-y-2">
-          <p className="text-xs text-gray-500 uppercase tracking-wider font-bold px-1">
-            After-party &middot; 18:00 to 20:00 &middot; all indoors
-          </p>
-          {AFTER.map((b) => (
-            <div
-              key={b.start}
-              className="bg-[#0d1b2a] rounded-lg border border-white/[0.08] p-3 flex items-center gap-3 sm:ml-8"
-            >
-              <span className="w-1.5 h-8 rounded-full flex-shrink-0 bg-rose-400" aria-hidden="true" />
-              <div className="flex-shrink-0 w-[92px]">
-                <p className="text-sm font-mono font-bold text-white tabular-nums">{b.start}</p>
-                <p className="text-[10px] font-mono text-gray-500 tabular-nums">to {b.end}</p>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded border ${STAGE_META.IN.cls}`}>
-                    Indoor
-                  </span>
-                  <p className="text-sm font-medium text-white">{b.label}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
-          <p className="text-xs text-[#f5a623] uppercase tracking-wider font-bold">
-            Why it alternates
-          </p>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            One stage plays while the other changes over, so you never stand in front of a stage
-            watching someone coil cables. Walk between the two whenever you like. There is no point
-            in the day where the music stops.
-          </p>
-        </div>
-
-        {/*
-          The lift figure goes here once it exists. See ZAOOS doc 2392: the point
-          of the day is proving what an event like this does for Franklin Street
-          businesses, measured as a normal Saturday against 3 October. The
-          baseline has to be captured BEFORE the event or it is gone.
-          Until there is a real measured number, this block asks attendees to
-          create the thing being measured. Do NOT put an estimated figure here.
-        */}
         <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
           <p className="text-xs text-[#f5a623] uppercase tracking-wider font-bold">
             Spend it in Ellsworth
@@ -191,10 +161,10 @@ export default function ProgramPage() {
         <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Things to know</p>
           <ul className="text-sm text-gray-300 space-y-1.5">
-            <li>- Confirmed so far: Werb and Lyons Den. Full lineup announced once every set is locked.</li>
-            <li>- Which artist plays which slot is assigned, not requested.</li>
+            <li>- Free to attend. Optional Pro Ticket supports the festival.</li>
+            <li>- Full lineup announced once every set is locked.</li>
             <li>- Weather: tent coverage via Wallace Events, rain or shine.</li>
-            <li>- After-party is at Black Moon Public House, walkable downtown.</li>
+            <li>- Black Moon is open through the day, walkable, right next door.</li>
             <li>- This schedule is a draft. Final version locks September 2026.</li>
           </ul>
         </div>
