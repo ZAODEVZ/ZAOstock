@@ -191,7 +191,7 @@ export default function ProgramPage() {
         <div className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-bold">Things to know</p>
           <ul className="text-sm text-gray-300 space-y-1.5">
-            <li>- Full lineup announced once every set is locked.</li>
+            <li>- Confirmed so far: Werb and Lyons Den. Full lineup announced once every set is locked.</li>
             <li>- Which artist plays which slot is assigned, not requested.</li>
             <li>- Weather: tent coverage via Wallace Events, rain or shine.</li>
             <li>- After-party is at Black Moon Public House, walkable downtown.</li>
