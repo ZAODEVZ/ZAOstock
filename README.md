@@ -30,16 +30,38 @@ ZAOstock is the first feature graduate.
 
 ## Public surface
 
+24 public routes. The ones people actually land on:
+
 - `/` - festival landing page
-- `/team` - team dashboard (login with 4-letter code)
+- `/program` - day-of schedule, two stages
+- `/pitch`, `/sponsor`, `/sponsor/deck` - the sponsor conversation
+- `/musicians`, `/musicians/submit`, `/musicians/rider` - the musician funnel
+- `/artists` - call for visual artists
+- `/apply` - volunteer signup
+- `/donate` - donations
+- `/onepagers/overview` - public festival brief
+- `/circles` - the 8 working circles
+- `/cypher` - cypher signup
+- `/ellsworth`, `/acadia`, `/festivals`, `/zaoville`, `/event-organizers`,
+  `/suggest`, `/artist/<slug>`, `/onepagers/<slug>`, `/privacy`
+
+Behind a login:
+
+- `/team` - team dashboard (4-letter code, or wallet)
 - `/team/m/<slug>` - public member profile
 - `/team/help` - dashboard help docs
-- `/onepagers/overview` - public festival brief
-- `/apply` - volunteer signup
-- `/sponsor` - sponsor inquiry
-- `/circles` - the 8 working circles
-- `/program` - day-of schedule
-- `/cypher` - cypher signup
+
+There is also an API surface consumed by the **ZAO Festivals mobile app**, which
+does not live in this repo - see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+before changing any response shape under `/api`.
+
+## Documentation
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) - how the app is put together
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) - setup, pre-push checks, commit style
+- [`docs/CANONICAL-REPO.md`](docs/CANONICAL-REPO.md) - **read this if you found
+  another zaostock repo.** `bettercallzaal/zao-stock` is archived and dead
+- [`docs/brand/`](docs/brand/) - the ZAOstock 26 design system
 
 ## License
 

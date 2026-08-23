@@ -16,18 +16,21 @@ of these throw a clear error at first use if missing, not a silent failure).
 
 ## Before you push
 
-CI runs `typecheck`, `lint`, and `build` on every push/PR to `main` (`.github/workflows/ci.yml`) - but
+CI runs `typecheck`, `lint`, `test`, and `build` on every push/PR to `main` (`.github/workflows/ci.yml`) - but
 run them locally first so you're not waiting on CI to find something obvious:
 
 ```bash
 npm run typecheck
 npm run lint
+npm run test
 npm run build
 ```
 
-There's no automated test suite yet - `tsc` + `eslint` + a real production build are the actual safety
-net right now. If you're touching anything security-sensitive (auth, RLS, the API routes under
-`src/app/api/team/*`), verify the change by hand against the real behavior, not just that it compiles.
+There **is** a test suite now - Vitest, and CI runs it. Add tests with your change rather than
+leaning on `tsc` alone; a type-check proves the code compiles, not that it does the right thing.
+If you're touching anything security-sensitive (auth, RLS, the API routes under
+`src/app/api/team/*`), still verify by hand against the real behavior on top of the tests - the
+suite does not cover every route.
 
 ## Commit style
 
