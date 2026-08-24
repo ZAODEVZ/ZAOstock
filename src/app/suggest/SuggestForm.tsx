@@ -1,9 +1,16 @@
 'use client';
 
+import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { FormsUnavailable } from '@/components/FormsUnavailable';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export function SuggestForm() {
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="send a suggestion" subject="ZAOstock - suggestion" />;
+  }
+
   const router = useRouter();
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');

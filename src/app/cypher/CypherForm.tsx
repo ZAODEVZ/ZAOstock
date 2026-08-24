@@ -1,5 +1,8 @@
 'use client';
 
+import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { FormsUnavailable } from '@/components/FormsUnavailable';
+
 import { useState } from 'react';
 
 const ROLE_OPTIONS = [
@@ -16,6 +19,10 @@ const ROLE_OPTIONS = [
 ];
 
 export function CypherForm() {
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="join the cypher" subject="ZAOstock - cypher signup" />;
+  }
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [socials, setSocials] = useState('');
