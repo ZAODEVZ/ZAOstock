@@ -1,8 +1,16 @@
 'use client';
 
+import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { FormsUnavailable } from '@/components/FormsUnavailable';
+
 import { useState } from 'react';
 
 export function MusicianSubmitForm() {
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="submit your music" subject="ZAOstock - musician submission"
+      include={['Artist or band name', 'City', 'Genre or sound', 'Track or set ideas', 'Links to music, video or socials', 'A short bio', 'Who referred you, if anyone']} />;
+  }
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');

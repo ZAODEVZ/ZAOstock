@@ -1,5 +1,8 @@
 'use client';
 
+import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { FormsUnavailable } from '@/components/FormsUnavailable';
+
 import { useState } from 'react';
 
 interface RoleOption {
@@ -14,6 +17,11 @@ interface ShiftOption {
 }
 
 export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: ShiftOption[] }) {
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="volunteer" subject="ZAOstock - volunteer signup"
+      include={['Your name', 'How to reach you', 'What you would like to help with', 'Which hours on Oct 3 you are free']} />;
+  }
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
