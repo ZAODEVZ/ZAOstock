@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'ZAOstock Partner Deck | Oct 3, 2026',
-  description: 'Partner packages for ZAOstock, a community-built outdoor music festival in Ellsworth, Maine on October 3, 2026. Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas.',
+  description: 'Partner packages for ZAOstock, a community-built outdoor music festival in Ellsworth, Maine on October 3, 2026.',
   openGraph: {
     title: 'ZAOstock Partner Deck',
     description: 'Become a Main Stage, Broadcast, or Year-Round Partner for ZAOstock on Oct 3, 2026.',
@@ -49,7 +49,6 @@ const TRACKS = [
       'Advisory seat for Year 2 planning',
       'Priority placement in 2027',
       'Quarterly collaboration across The ZAO calendar',
-      'Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas',
     ],
   },
 ];
@@ -57,11 +56,11 @@ const TRACKS = [
 const FAQ = [
   {
     q: 'Is this tax-deductible?',
-    a: 'Yes, if you take the public path. ZAO Festivals offers two sponsor paths. Public path: funds route through Fractured Atlas (501(c)(3) public charity) and New Media Commons (a fiscally sponsored project of Fractured Atlas), then through ENTERACT for production. Tax receipt issued by Fractured Atlas. Standard 6-8% admin via FA plus 2% ENTERACT treasury. Net to production around 90-92%.',
+    a: 'No. ZAOstock has no fiscal sponsor, so there is no charitable route and no tax receipt is issued. Sponsorship here is a commercial arrangement - most businesses treat it as a marketing spend and write it off as advertising, which needs no charitable status.',
   },
   {
-    q: 'Can we sponsor without the tax-deductible piece?',
-    a: 'Yes, take the commercial path. Direct sponsorship through ENTERACT (2% treasury), no Fractured Atlas admin fee. Payment is 50% upfront, 50% before delivery. Net to production around 98%. Faster and simpler if you do not need the tax receipt - the trade-off is no charitable deduction.',
+    q: 'How does the money actually flow?',
+    a: 'Direct through ENTERACT (2% treasury). Payment is 50% upfront, 50% before delivery. Net to production around 98%.',
   },
   {
     q: 'What do you do with the funds?',
@@ -85,7 +84,7 @@ const FAQ = [
   },
   {
     q: 'Can we pay in USDC or stablecoins?',
-    a: 'Yes. USDC on Base preferred. Check, wire, or card also fine - tax-deductible support for qualifying initiatives is administered through New Media Commons, a fiscally sponsored project of Fractured Atlas, in coordination with ENTERACT.',
+    a: 'Yes. USDC on Base preferred. Check, wire, or card also fine - all handled through ENTERACT.',
   },
 ];
 
@@ -158,7 +157,7 @@ export default async function DeckPage() {
           <p className="text-xs text-[#f5a623] uppercase tracking-wider font-bold">How to commit</p>
           <ol className="text-sm text-gray-300 space-y-2">
             <li><strong className="text-white">1.</strong> Email Zaal with the track you want (Main Stage / Broadcast / Year-Round) and any custom asks.</li>
-            <li><strong className="text-white">2.</strong> We send a simple partner agreement. Tax docs (W-9 from Fractured Atlas via New Media Commons) follow if you are routing tax-deductible support.</li>
+            <li><strong className="text-white">2.</strong> We send a simple partner agreement. A W-9 follows if your accounts team needs one.</li>
             <li><strong className="text-white">3.</strong> Partner contribution due by September 20 to lock printed materials.</li>
             <li><strong className="text-white">4.</strong> You ship your logo file by September 25 for all merch, stage, and broadcast use.</li>
             <li><strong className="text-white">5.</strong> Oct 3 - you are named on the stage, the broadcast, the website, and the day.</li>
@@ -198,7 +197,6 @@ export default async function DeckPage() {
             <li>- Star 97.7 - Local radio promotion</li>
             <li>- Wallace Events - Event equipment + tenting</li>
             <li>- WaveWarZ - Live music-battle format on the ZAOstock stage</li>
-            <li>- New Media Commons (via Fractured Atlas) - Fiscal sponsorship infrastructure for eligible initiatives</li>
             <li>- ENTERACT - Production + operational support</li>
           </ul>
           <p className="text-[11px] text-gray-500 italic pt-2">

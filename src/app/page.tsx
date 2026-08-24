@@ -73,7 +73,6 @@ const SPONSOR_OFFERINGS = [
       'Post-event thank-you feature and recap',
       'Advisory seat for Year 2 planning',
       'Priority placement in 2027',
-      'Eligible support administered through New Media Commons, a fiscally sponsored project of Fractured Atlas',
     ],
   },
 ];
@@ -108,7 +107,6 @@ const PARTNERS: { name: string; role: string; confirmed: boolean; poc: string; l
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
-  { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives', confirmed: true, poc: 'FailOften' },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
 ].filter((p) => p.confirmed);
@@ -518,7 +516,7 @@ export default async function TestPage() {
             <StatTile value="27" label="Teammates building this" accent />
             <StatTile value="100+" label="ZAO community members" />
             <StatTile value="2" label="Prior festivals (NYC + Miami)" />
-            <StatTile value="501(c)(3)" label="Funding via New Media Commons / Fractured Atlas" />
+            <StatTile value="Oct 3" label="One day, free to attend" />
           </div>
         </div>
       </section>
@@ -639,7 +637,7 @@ export default async function TestPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <SectionHeader eyebrow="Sponsors" title="Three sponsorship tracks. Same level of recognition. Pick by what fits your goals." />
           <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl mb-8">
-            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Two funding paths: a public path for tax-deductible support administered through New Media Commons (a fiscally sponsored project of Fractured Atlas, 501(c)(3)), or a commercial path direct through ENTERACT for sponsors who do not need a tax receipt. Pick the one that fits.
+            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Sponsorship is a commercial arrangement, direct through ENTERACT - a marketing spend rather than a charitable donation, and no tax receipt is issued.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12]">
             {SPONSOR_OFFERINGS.map((g) => (
