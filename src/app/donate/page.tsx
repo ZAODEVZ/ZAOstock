@@ -186,17 +186,16 @@ export default function DonatePage() {
             collection account — contributions go to ZAOstock artist pay and materials, not to an individual.
           </p>
           <p className="text-sm text-gray-300 leading-relaxed">
-            Tax-deductible support is administered through New Media Commons, a fiscally sponsored project of
-            Fractured Atlas (a 501(c)(3) public charity), which issues the tax receipt — the same path our
-            sponsors use. Giving by PayPal or Giveth above is quick, but does not by itself generate a
-            charitable receipt.
+            ZAOstock does not currently have a fiscal sponsor, so contributions are{' '}
+            <span className="text-white font-medium">not tax-deductible</span> and we cannot issue a
+            charitable receipt. Give because you want this to happen in Ellsworth, not for the write-off.
           </p>
           <p className="text-sm text-gray-300 leading-relaxed">
-            Questions, or want a tax-deductible receipt? Email{' '}
+            Questions? Email{' '}
             <a href="mailto:zaal@thezao.com" className="text-[#f5a623] hover:underline font-medium">
               zaal@thezao.com
-            </a>{' '}
-            and we&apos;ll route you through Fractured Atlas.
+            </a>
+            .
           </p>
         </section>
 

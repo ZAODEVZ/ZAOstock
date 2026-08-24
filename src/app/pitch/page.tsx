@@ -68,7 +68,7 @@ const SPONSOR_OFFERINGS = [
       'Post-event thank-you feature and recap',
       'Advisory seat for Year 2 planning',
       'Priority placement in 2027',
-      'Tax-deductible eligibility pending fiscal-sponsor confirmation',
+      'Commercial sponsorship - not a charitable donation, no tax receipt',
     ],
   },
 ];
@@ -81,7 +81,7 @@ const PARTNERS = [
   { name: 'Star 97.7', role: 'Local radio promotion' },
   { name: 'Wallace Events', role: 'Event equipment + tenting' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage' },
-  // New Media Commons (via Fractured Atlas) removed 2026-08-20: fiscal sponsorship
+  // Fractured Atlas / New Media Commons removed 2026-08-20, then ruled OUT entirely
   // is IN CONFIRMATION, not confirmed (ZAOOS cards 6386c0c7, e899442e). Do not
   // re-add until the relationship is confirmed in writing.
   { name: 'ENTERACT', role: 'Production + operational support' },
@@ -106,7 +106,7 @@ const PLUG_IN_DOORS = [
   },
   {
     label: 'Sponsors',
-    pitch: 'Three tracks (Main Stage / Broadcast / Year-Round). Commercial packages today; a tax-deductible path is being finalized.',
+    pitch: 'Three tracks (Main Stage / Broadcast / Year-Round). Commercial packages. No tax-deductible path - ZAOstock has no fiscal sponsor.',
     href: '/sponsor',
   },
   {
@@ -324,7 +324,7 @@ export default async function PitchPage() {
             <StatTile value="27" label="Teammates building this" accent />
             <StatTile value="100+" label="ZAO community members" />
             <StatTile value="2" label="Prior festivals (NYC + Miami)" />
-            <StatTile value="2 paths" label="Commercial today; tax-deductible in confirmation" />
+            <StatTile value="1 path" label="Commercial sponsorship, no tax receipt" />
           </div>
         </div>
       </section>
@@ -352,7 +352,7 @@ export default async function PitchPage() {
               <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">03 / Sponsors</span>
               <p className="font-bold text-white text-xl tracking-tight mt-3">3 tracks</p>
               <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Main Stage, Broadcast, Year-Round. Commercial packages run through ENTERACT today; a tax-deductible path is being finalized with a fiscal sponsor. Custom packages for local + national.
+                Main Stage, Broadcast, Year-Round. Commercial packages run through ENTERACT. There is no tax-deductible path - ZAOstock has no fiscal sponsor. Custom packages for local + national.
               </p>
             </div>
             <div className="bg-[#0d1b2a] p-6 sm:p-8">
@@ -369,16 +369,16 @@ export default async function PitchPage() {
       {/* Money flow detail */}
       <section className="my-16 sm:my-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Two-Path Money Flow" title="Commercial today. Tax-deductible in confirmation." />
+          <SectionHeader eyebrow="Two-Path Money Flow" title="Commercial sponsorship. One path." />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12] mt-6">
             <div className="bg-[#0d1b2a] p-7 sm:p-9">
               <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">Public Path</span>
-              <p className="font-bold text-white text-xl tracking-tight mt-3">Tax-deductible donation (in confirmation)</p>
+              <p className="font-bold text-white text-xl tracking-tight mt-3">No charitable path</p>
               <p className="text-sm sm:text-base text-gray-300 mt-3 leading-relaxed">
-                We are finalizing fiscal sponsorship so donations can be tax-deductible; New Media Commons via Fractured Atlas is the lead candidate. Until that is confirmed, sponsorships run through the commercial path and no tax receipts are issued.
+                ZAOstock has no fiscal sponsor, so no contribution is tax-deductible and no tax receipt is issued. Sponsorship runs through the commercial path only.
               </p>
               <p className="text-xs text-gray-500 mt-4 leading-relaxed">
-                Once confirmed: donor pays the 501(c)(3) fiscal sponsor and gets a tax receipt. Ask us for status before pledging on this path.
+                Sponsor pays ENTERACT directly, 50% upfront and 50% before delivery. No tax receipt - treat it as a marketing spend.
               </p>
             </div>
             <div className="bg-[#0d1b2a] p-7 sm:p-9">

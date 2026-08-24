@@ -70,7 +70,6 @@ const PARTNERS: Partner[] = [
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true },
-  { name: 'New Media Commons (via Fractured Atlas)', role: 'Fiscal sponsorship infrastructure for eligible initiatives', confirmed: true },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true },
 ].filter((p) => p.confirmed);
 
@@ -104,7 +103,6 @@ const SPONSOR_TIERS = [
       'Post-event thank-you feature + recap',
       'Advisory seat for Year 2 planning',
       'Priority placement in 2027',
-      'Eligible support administered through New Media Commons (Fractured Atlas)',
     ],
   },
 ];
@@ -119,7 +117,7 @@ const HOW_TO = [
   {
     role: 'Sponsors',
     detail:
-      '$500+ across 3 tiers. Local + national both welcome. Two paths: tax-deductible (Fractured Atlas / New Media Commons + ENTERACT) or commercial (ENTERACT direct, 50% upfront / 50% before delivery).',
+      '$500+ across 3 tiers. Local + national both welcome. One path: commercial, direct through ENTERACT, 50% upfront and 50% before delivery. Not tax-deductible - ZAOstock has no fiscal sponsor.',
     cta: { label: 'Partner deck', href: '/sponsor/deck' },
   },
   {
@@ -375,7 +373,7 @@ export default async function OverviewOnePager() {
             Sponsorship
           </h2>
           <p className="mt-2 text-sm text-slate-400 print:text-slate-600">
-            Eligible support administered through New Media Commons (Fractured Atlas). Direct-deal with The ZAO.
+            Commercial sponsorship through ENTERACT. Not tax-deductible. Direct-deal with The ZAO.
           </p>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             {SPONSOR_TIERS.map((t) => (

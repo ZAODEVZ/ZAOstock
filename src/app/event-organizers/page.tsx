@@ -26,7 +26,7 @@ export default function EventOrganizersPage() {
       hero="Built a community? Run your own ZAO."
       subhead="ZAOstock is the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next chapter could be yours - in your city, with your community, under the ZAO Festivals umbrella."
       youGet={[
-        'The full ZAOstock playbook - run-of-show, sponsor framework, fiscal sponsorship infrastructure (NMC + Fractured Atlas), finders fee structure, livestream rig, partner template.',
+        'The full ZAOstock playbook - run-of-show, sponsor framework, finders fee structure, livestream rig, partner template.',
         'Access to the 100+ member ZAO music community for booking artists.',
         'Brand co-presentation - your event runs as ZAO-{YourCity} with shared visual identity.',
         'Coaching from Zaal and the team during your first event.',

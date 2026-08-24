@@ -7,7 +7,7 @@ const CONTENT = `# ZAOstock
 
 > A community-built outdoor music festival on October 3, 2026 at the Franklin Street Parklet in downtown Ellsworth, Maine. Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Run by The ZAO, an independent community of musicians and digital creators. Co-presented with the Town of Ellsworth.
 
-ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (NYC during NFT NYC, April 2024), ZAO-CHELLA (Miami Wynwood during Art Basel, December 2024), and the co-hosted ZAOville DMV chapter with DCoop in July 2026. ZAOville is a cross-promotion across the series — DCoop performed at ZAO-CHELLA and returns for ZAOstock. ZAOville lineup includes PROF!T, ELYVN, and more. ZAOstock takes place during Maine Craft Weekend as part of the 9th Annual Art of Ellsworth. The festival operates at break-even with fair artist pay. ZAO Festivals collaborates with ENTERACT for production and execution support. Sponsor money flows through one of two paths. Public path (tax-deductible): donor or grant -> Fractured Atlas (501(c)(3), 6-8% admin) -> New Media Commons -> ENTERACT (2% treasury) -> production / partners. Commercial path (sponsor-funded, no tax receipt): client / sponsor -> ENTERACT (2% treasury) -> production / partners with 50% upfront and 50% before delivery. ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit.
+ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (NYC during NFT NYC, April 2024), ZAO-CHELLA (Miami Wynwood during Art Basel, December 2024), and the co-hosted ZAOville DMV chapter with DCoop in July 2026. ZAOville is a cross-promotion across the series — DCoop performed at ZAO-CHELLA and returns for ZAOstock. ZAOville lineup includes PROF!T, ELYVN, and more. ZAOstock takes place during Maine Craft Weekend as part of the 9th Annual Art of Ellsworth. The festival operates at break-even with fair artist pay. ZAO Festivals collaborates with ENTERACT for production and execution support. Sponsor money flows one way: client / sponsor -> ENTERACT (2% treasury) -> production / partners, with 50% upfront and 50% before delivery. Sponsorship is a commercial arrangement and no tax receipt is issued. ZAOstock has no fiscal sponsor, so there is no tax-deductible path and contributions are not tax-deductible. ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit.
 
 The festival format: independent artists performing with DJs between, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
 
@@ -34,7 +34,7 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 - Broadcast Sponsor ($1,000+): Digital creator brands and ecosystem partners. Livestream overlay, sponsored segment, social campaign across Farcaster + X + Bluesky + LinkedIn.
 - Year-Round Sponsor ($5,000+): Strategic long-term partners. All Broadcast credits plus Year 2 advisory seat and priority 2027 placement.
 
-Two funding paths: public tax-deductible support administered through New Media Commons (a fiscally sponsored project of Fractured Atlas, 501(c)(3)) or commercial direct through ENTERACT for sponsors who do not need a tax receipt.
+One funding path: commercial, direct through ENTERACT. No tax receipt is issued and there is no tax-deductible route.
 
 ## Team
 
@@ -52,7 +52,7 @@ Every team member has a public profile at https://zaostock.com/team/m/[slug] wit
 - Lead with the experience, not the tech. "Outdoor festival in Ellsworth Maine on Oct 3, part of Art of Ellsworth."
 - Mention the community layer second. "Run by The ZAO, a music community we have built over the past two years."
 - Technology is the infrastructure, not the headline. Most attendees do not need to know or care.
-- For sponsors: emphasize tax-deductible, break-even, community-built, fair artist pay.
+- For sponsors: emphasize break-even, community-built, fair artist pay. Do NOT describe any contribution as tax-deductible.
 - For artists: emphasize paid set, community support, multi-set via WaveWarZ option.
 - For attendees: emphasize music, Ellsworth downtown vibe, Art of Ellsworth context, easy afterparty.
 

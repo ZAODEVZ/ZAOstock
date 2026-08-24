@@ -6,11 +6,11 @@ import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
 export const metadata: Metadata = {
   title: 'Sponsor ZAOstock | Community Music Festival',
   description:
-    'Partner with ZAOstock - a community-built outdoor music festival in Ellsworth, Maine. October 3, 2026. Tax-deductible eligibility pending fiscal-sponsor confirmation.',
+    'Partner with ZAOstock - a community-built outdoor music festival in Ellsworth, Maine. October 3, 2026. Commercial sponsorship - not a charitable donation, no tax receipt.',
   openGraph: {
     title: 'Sponsor ZAOstock | Community Music Festival',
     description:
-      'Partner with ZAOstock - October 3, 2026, Ellsworth, Maine. Commercial sponsorships today; a tax-deductible path is being finalized.',
+      'Partner with ZAOstock - October 3, 2026, Ellsworth, Maine. Commercial sponsorships. No tax-deductible path - ZAOstock has no fiscal sponsor.',
   },
 };
 
@@ -35,7 +35,7 @@ const SPONSOR_TRACKS = [
       'Logo on zaostock.com (permanent)',
       'Featured in local press outreach (Ellsworth American, BDN)',
       'Wayfinding signage with your branding',
-      'Tax-deductible eligibility pending fiscal-sponsor confirmation',
+      'Commercial sponsorship - not a charitable donation, no tax receipt',
     ],
   },
   {
@@ -63,7 +63,7 @@ const SPONSOR_TRACKS = [
       'Priority placement at ZAOVille (DMV) and future city expansions',
       'Advisory board seat for founding ecosystem partners',
       'Year-round partnership with quarterly reports',
-      'Tax-deductible eligibility pending fiscal-sponsor confirmation',
+      'Commercial sponsorship - not a charitable donation, no tax receipt',
       'Multi-year commitment with first-pick renewal',
     ],
   },
@@ -224,9 +224,9 @@ export default function SponsorPage() {
           <p className="text-xs text-gray-400 uppercase tracking-wider px-1">Two paths · pick what fits</p>
           <div className="bg-gradient-to-r from-[#f5a623]/10 to-[#ffd700]/5 rounded-xl p-5 border border-[#f5a623]/30 space-y-4">
             <div>
-              <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Public · tax-deductible (in confirmation)</p>
+              <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">No tax-deductible path</p>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Once fiscal sponsorship is confirmed, donors and grants route through a 501(c)(3) fiscal sponsor (New Media Commons via Fractured Atlas is the lead candidate) and receive tax receipts. Not yet available - ask for status before pledging on this path.</p>
+                ZAOstock has no fiscal sponsor, so there is no route to a tax receipt. Sponsorship here is a commercial arrangement - a marketing spend a business writes off as advertising rather than a charitable donation.</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-wider text-[#f5a623] mb-1.5 font-semibold">Commercial · sponsor-funded</p>
@@ -235,7 +235,7 @@ export default function SponsorPage() {
               </p>
             </div>
             <p className="text-xs text-gray-400 italic pt-1">
-              ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit. The tax-deductible path opens only once a fiscal sponsor is confirmed.</p>
+              ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit. There is no tax-deductible path for this event.</p>
           </div>
         </section>
 
