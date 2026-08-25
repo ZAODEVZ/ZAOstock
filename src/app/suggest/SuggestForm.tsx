@@ -7,10 +7,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export function SuggestForm() {
-  if (!PUBLIC_FORMS_ENABLED) {
-    return <FormsUnavailable action="send a suggestion" subject="ZAOstock - suggestion" />;
-  }
-
   const router = useRouter();
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
@@ -19,6 +15,12 @@ export function SuggestForm() {
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sent' | 'error'>('idle');
   const [errMsg, setErrMsg] = useState('');
+
+  // Guard below the hooks, not above: hook order has to be identical on every
+  // render, so an early return above them is a rules-of-hooks error (broke #48).
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="send a suggestion" subject="ZAOstock - suggestion" />;
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
