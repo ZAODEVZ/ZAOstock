@@ -11,3 +11,9 @@ next-env.d.ts
 scripts/team-codes.local.json
 .vercel
 .env*
+
+# gstack browse-tool run logs
+.gstack/
+
+# per-machine agent config, not shared
+.claude/settings.local.json
