@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { FormsUnavailable } from '@/components/FormsUnavailable';
 
 interface RSVPFormProps {
   eventSlug: string;
@@ -11,6 +13,17 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'duplicate'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Guard below the hooks, not above: hook order has to be identical on every
+  // render, so an early return above them is a rules-of-hooks error (broke #48).
+  //
+  // #48 took the four /apply, /cypher, /musicians/submit and /suggest forms off
+  // and missed this one, which is the most visible form on the site - it sits on
+  // the homepage. It kept accepting names and email addresses and discarding
+  // every one of them, exactly the failure FormsUnavailable exists to prevent.
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="get on the list for Oct 3" subject="ZAOstock - RSVP" include={['Your name', 'The email to reach you on']} />;
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
