@@ -17,11 +17,6 @@ interface ShiftOption {
 }
 
 export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: ShiftOption[] }) {
-  if (!PUBLIC_FORMS_ENABLED) {
-    return <FormsUnavailable action="volunteer" subject="ZAOstock - volunteer signup"
-      include={['Your name', 'How to reach you', 'What you would like to help with', 'Which hours on Oct 3 you are free']} />;
-  }
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -33,6 +28,13 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sent' | 'error'>('idle');
   const [errMsg, setErrMsg] = useState<string>('');
+
+  // Guard below the hooks, not above: hook order has to be identical on every
+  // render, so an early return above them is a rules-of-hooks error (broke #48).
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="volunteer" subject="ZAOstock - volunteer signup"
+      include={['Your name', 'How to reach you', 'What you would like to help with', 'Which hours on Oct 3 you are free']} />;
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();

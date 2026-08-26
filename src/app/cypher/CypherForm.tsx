@@ -19,10 +19,6 @@ const ROLE_OPTIONS = [
 ];
 
 export function CypherForm() {
-  if (!PUBLIC_FORMS_ENABLED) {
-    return <FormsUnavailable action="join the cypher" subject="ZAOstock - cypher signup" />;
-  }
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [socials, setSocials] = useState('');
@@ -36,6 +32,12 @@ export function CypherForm() {
   const [editUrl, setEditUrl] = useState('');
   const [publicUrl, setPublicUrl] = useState('');
   const [copied, setCopied] = useState(false);
+
+  // Guard below the hooks, not above: hook order has to be identical on every
+  // render, so an early return above them is a rules-of-hooks error (broke #48).
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="join the cypher" subject="ZAOstock - cypher signup" />;
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();

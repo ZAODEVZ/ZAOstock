@@ -6,11 +6,6 @@ import { FormsUnavailable } from '@/components/FormsUnavailable';
 import { useState } from 'react';
 
 export function MusicianSubmitForm() {
-  if (!PUBLIC_FORMS_ENABLED) {
-    return <FormsUnavailable action="submit your music" subject="ZAOstock - musician submission"
-      include={['Artist or band name', 'City', 'Genre or sound', 'Track or set ideas', 'Links to music, video or socials', 'A short bio', 'Who referred you, if anyone']} />;
-  }
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
@@ -27,6 +22,13 @@ export function MusicianSubmitForm() {
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sent' | 'error'>('idle');
   const [errMsg, setErrMsg] = useState('');
+
+  // Guard below the hooks, not above: hook order has to be identical on every
+  // render, so an early return above them is a rules-of-hooks error (broke #48).
+  if (!PUBLIC_FORMS_ENABLED) {
+    return <FormsUnavailable action="submit your music" subject="ZAOstock - musician submission"
+      include={['Artist or band name', 'City', 'Genre or sound', 'Track or set ideas', 'Links to music, video or socials', 'A short bio', 'Who referred you, if anyone']} />;
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
