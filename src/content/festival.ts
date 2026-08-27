@@ -4,12 +4,26 @@
 // Publication rules locked by Zaal 2026-08-10: Black Moon is publishable as the
 // confirmed after-party; performer names and any date other than Oct 3 are NOT
 // publishable. src/content/festival.test.ts enforces both.
+//
+// Window moved 12-6 -> 11-6 on 2026-08-27. Five confirmed acts do not fit four
+// 45-minute slots, so the parklet opens an hour earlier. This is our intent and
+// it is NOT yet cleared with the City - if the parklet permit caps how early
+// amplified sound starts, this is the value that moves back.
+// See docs/plans/production-plan-2026-10-03.md section 8.
 
 export type AfterParty = {
   name: string;
   note: string;
-  /** Black Moon can also host performances during the main 12-6 window. */
-  hostsPerformances: boolean;
+  /**
+   * Whether Black Moon runs a stage AT THE SAME TIME as the parklet, i.e. a
+   * genuine second simultaneous stage during the outdoor window.
+   *
+   * FALSE since 2026-08-23. The day is one venue at a time: outdoors until 6pm,
+   * then everything moves indoors. Black Moon absolutely does host performances
+   * - it hosts the whole evening from 6 - but not alongside the parklet, and
+   * the public copy must not offer a choice of two rooms.
+   */
+  hostsSimultaneousStage: boolean;
 };
 
 export type Festival = {
@@ -32,12 +46,12 @@ export const FESTIVAL: Festival = {
   venue: 'Franklin Street Parklet',
   shortVenue: 'Franklin St Parklet',
   city: 'Ellsworth, Maine',
-  window: '12 PM - 6 PM',
+  window: '11 AM - 6 PM',
   admission: 'Free to attend',
   rsvpUrl: 'https://ticket.zaostock.com',
   afterParty: {
     name: 'Black Moon',
     note: 'next door',
-    hostsPerformances: true,
+    hostsSimultaneousStage: false,
   },
 };

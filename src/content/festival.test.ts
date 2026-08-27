@@ -13,7 +13,7 @@ describe('FESTIVAL facts', () => {
     expect(FESTIVAL.venue).toBe('Franklin Street Parklet');
     expect(FESTIVAL.shortVenue).toBe('Franklin St Parklet');
     expect(FESTIVAL.city).toBe('Ellsworth, Maine');
-    expect(FESTIVAL.window).toBe('12 PM - 6 PM');
+    expect(FESTIVAL.window).toBe('11 AM - 6 PM');
   });
 
   it('publishes free admission and the RSVP destination', () => {
@@ -21,10 +21,13 @@ describe('FESTIVAL facts', () => {
     expect(FESTIVAL.rsvpUrl).toBe('https://ticket.zaostock.com');
   });
 
-  it('publishes Black Moon as the confirmed after-party that can host performances', () => {
+  it('publishes Black Moon as the confirmed after-party, and NOT as a second simultaneous stage', () => {
     expect(FESTIVAL.afterParty.name).toBe('Black Moon');
     expect(FESTIVAL.afterParty.note).toBe('next door');
-    expect(FESTIVAL.afterParty.hostsPerformances).toBe(true);
+    // One venue at a time, corrected 2026-08-23. If this ever flips back to
+    // true, the homepage starts telling people they can choose between two
+    // rooms during the afternoon, which is the exact claim we removed.
+    expect(FESTIVAL.afterParty.hostsSimultaneousStage).toBe(false);
   });
 
   it('names no performer anywhere in the published facts', () => {

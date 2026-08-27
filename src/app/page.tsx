@@ -302,9 +302,9 @@ export default async function TestPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
             <div className="lg:col-span-7">
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                {FESTIVAL.afterParty.name} is confirmed as the ZAOstock after-party. The bar can also host
-                performances during the {FESTIVAL.window} window, which opens up a second stage there
-                alongside the main stage in the parklet.
+                {FESTIVAL.afterParty.name} is confirmed as the ZAOstock after-party. At six the music
+                stops on the street and the whole thing walks next door, together. A live band takes
+                the room from six, then a DJ closes the night out. One place at a time, all day.
               </p>
             </div>
             <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
@@ -314,8 +314,8 @@ export default async function TestPage() {
                   <dd className="text-base text-white">{FESTIVAL.afterParty.name}, {FESTIVAL.afterParty.note}</dd>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Also hosts</dt>
-                  <dd className="text-base text-white">Performances during {FESTIVAL.window}</dd>
+                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Evening</dt>
+                  <dd className="text-base text-white">Live from 6 PM, then a DJ to close</dd>
                 </div>
               </dl>
             </div>
