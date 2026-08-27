@@ -32,8 +32,8 @@ Three rows, not one, because capture happens at three times:
 | Time | What | Notes |
 |------|------|-------|
 | Fri 2 Oct, soundcheck | Filming and recording night | Stream chain Stage 2 records; a camera on each act's check. Shooter UNSET |
-| Sat, every changeover (11:45, 12:45, 13:45, 14:45, 15:45) | Photo and interview window, 15 minutes | The only quiet slots in the day. Photographer UNSET, interviewer UNSET |
-| Sat 11:00 to 18:00 | Stream recording, local plus ingest | Aziz. Lands on ArDrive, folder UNSET |
+| Sat, every changeover from noon to 16:00, times per the PRODUCTION grid | Photo and interview window, the length of the changeover | The only quiet slots in the day. Photographer UNSET, interviewer UNSET |
+| Sat 12:00 to 18:00 | Stream recording, local plus ingest | Aziz. Lands on ArDrive, folder UNSET |
 
 The grid has no other gap. If interviews need more than the changeovers, they
 come out of the after party or Friday night.

@@ -37,7 +37,7 @@ Doc says it does.
 |-----|---------------|---------|--------|
 | PA owner and crew (Steve Peer, or whoever he sources) | The full outdoor PA must be up and working by Friday night. Setup time is theirs | UNSET | PA still sourcing |
 | Dcoop | Owns the soundcheck. Runs the order, keeps time, holds the artist list | UNSET | Named |
-| Sound operator, outdoor | Runs the desk for every outdoor check. If the Saturday 11:00 to 16:00 operator is a different person from the WaveWarZ operator, both come Friday | UNSET | NEEDS NAME, both |
+| Sound operator, outdoor | Runs the desk for every outdoor check. If the Saturday 12:00 to 16:00 operator is a different person from the WaveWarZ operator, both come Friday | UNSET | NEEDS NAME, both |
 | Sound operator, indoor | Runs the indoor check | UNSET | NEEDS NAME |
 | Each outdoor act, 1 to 5 | Their check, on the outdoor stage | UNSET, per act | Mandatory, in contracts |
 | The four WaveWarZ competitors and the host | Battle mic and playback check, outdoor stage | UNSET | Locked as performers; Friday attendance not recorded |

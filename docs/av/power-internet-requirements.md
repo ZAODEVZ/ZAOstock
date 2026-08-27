@@ -37,7 +37,7 @@ taped across the ground. Who runs and strikes the cable: UNSET.
 ### The exact question for the City
 
 For the CITY lane to place in `docs/drafts/roddy-2026-08-27.md`, on the same
-thread as the 11:00 question. Written to get numbers back, not a yes.
+thread as the permit questions. Written to get numbers back, not a yes.
 
 > On power for the parklet on 3 October: what electrical service is available
 > at the stage and along the parklet, how many circuits, what amperage each,

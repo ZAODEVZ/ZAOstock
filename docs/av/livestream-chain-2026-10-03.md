@@ -93,8 +93,8 @@ intact on disk. `user.ini` backed up before anything touched it.
 From doc 2316 (18 Aug call, Zaal, Iman, Aziz): **12:00 to 18:00 Eastern,
 virtual crew of 5 to 10, any two-hour slot counts.** The deck repeats it as
 "5-10 virtual crew in two-hour shifts across the 12-6 window". Note the
-in-person day now opens at 11:00; whether the stream window moves with it is
-UNSET. Also from that call, not built: a Decentraland mirror of Franklin Street
+in-person day opens at noon (Zaal, 27 Aug), so the window and the doors
+match. Also from that call, not built: a Decentraland mirror of Franklin Street
 from a LiDAR scan (Zaal to get the LiDAR camera, no date), and iPads at Black
 Moon running it. No crew names for the window are on disk beyond Aziz, Ohnahji
 and Motomoto.

@@ -16,8 +16,10 @@ no evidence, and it can be tested from the house.
 runs: Zaal sends the specs, Aziz sends the ingest URL and key. Both are in
 `docs/drafts/aziz-2026-08-27.md`.
 
-**Who is on the call:** Zaal at the desktop, Aziz at the Cloudflare dashboard
-or the Baraza watch page. Nobody else needed.
+**Who runs it:** Aziz, on his own, with the baraza-tv repo (Zaal, 27 Aug:
+Aziz has the repo and runs the pipe test himself). This file is his
+checklist. Zaal at the desktop only if the Ellsworth machine is the one
+pushing; which machine Aziz tests from is UNSET.
 
 **Setup, from `obs/WINDOWS-SETUP.md` section 6:** Service Custom, server the
 rtmps URL, the key in the field. NVENC, CBR 6000 kbps, 1080p30, keyframe 2 s,
@@ -75,8 +77,8 @@ spec, link 5.
 ## Stage 3: the day, Saturday 3 October, 12:00 to 18:00 ET
 
 The virtual window from doc 2316: 12:00 to 18:00 Eastern, crew of 5 to 10,
-any two-hour slot counts. The in-person day opens at 11:00; whether the stream
-opens at 11:00 or 12:00 is UNSET. Aziz owns the stream staying up, Ohnahji
+any two-hour slot counts. Music starts at noon (Zaal, 27 Aug), so the stream
+window and the doors open together at 12:00. Aziz owns the stream staying up, Ohnahji
 owns what is on it. Crew roster for the window: UNSET beyond Aziz, Ohnahji and
 Motomoto (see the identity flag in the chain doc).
 
