@@ -13,8 +13,10 @@ UNSET.
 plan, row 2). Indoor power is Black Moon's house. Parklet power is "the one to
 pin down": how many circuits, what amperage, and where on the parklet they
 are, is unanswered, and the City has not been asked in writing. The outdoor
-stage is standing from the summer concert series, which the City co-funds with
-WERU, so the stage has been powered before; what fed it is not recorded.
+stage is standing from the concert series that shares the parklet (the Doc
+calls it summer in one place and spring in another; the City and WERU fund
+that series, not ZAOstock), so the stage has been powered before; what fed it
+is not recorded.
 
 **What draws power on Saturday.** No wattage on file for any of it; the draw
 is UNSET until Steve's gear list arrives.

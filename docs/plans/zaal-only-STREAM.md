@@ -7,7 +7,7 @@ guessed; every blank stays UNSET until he types it.
 | # | Clock | Type this | Unblocks |
 |---|-------|-----------|----------|
 | 1 | Now, it dates everything | Did the Wed 26 Aug AV meeting happen, and what did it settle: "did not happen" or the answers | `docs/plans/av-spec-2026-10-03.md`, every UNSET cell |
-| 2 | Overdue since 22 Aug | Two ET slots for the 30-minute pipe test with Aziz: "Tue 1 Sep 19:00 or Thu 3 Sep 19:00" shape, his words | `docs/drafts/msg-aziz-2026-08-27.md`, `docs/av/test-plan-obs-rtmp-2026-10-03.md` Stage 1 |
+| 2 | Overdue since 22 Aug | Two ET slots for the 30-minute pipe test with Aziz: "___ or ___, ET", both his to pick | `docs/drafts/msg-aziz-2026-08-27.md`, `docs/av/test-plan-obs-rtmp-2026-10-03.md` Stage 1 |
 | 3 | Before the message goes | Aziz and Motomoto: "one person" or "two" | `docs/drafts/msg-aziz-2026-08-27.md` last paragraph, `docs/plans/people-map-2026-10-03.md` |
 | 4 | Before the pipe test | Topology: "A, OBS to Cloudflare then out" or "B, OBS straight to Restream" or "Aziz picks" | `docs/av/livestream-chain-2026-10-03.md`, `docs/av/fallback-matrix-2026-10-03.md` link 6, `docs/av/power-internet-requirements.md` item 3 |
 | 5 | Next standup | Seven names: sound 11:00 to 16:00 ___; sound WaveWarZ ___; AV cover during Dcoop's set ___; sound indoors ___; indoor changeover at 18:00 ___; photographer ___; video shooter ___ | `docs/plans/av-spec-2026-10-03.md` sections 2 to 4, `docs/av/content-capture-2026-10-03.md`, `docs/av/soundcheck-night-2026-10-02.md` |
