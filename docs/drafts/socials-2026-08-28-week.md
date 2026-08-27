@@ -107,10 +107,10 @@ Angle: the battle block, with the measured numbers. Standard.
 > ZM. WaveWarZ has run 1,452 battles online. On October 3 it runs in the street. Artists go head to head on the ZAOstock stage and the audience decides, in person and online. Franklin Street, Ellsworth. Free. zaostock.com/program
 
 **X GC**
-> ZM. 1,452 battles and 913.9 SOL through WaveWarZ so far, measured thursday. ZAOstock is the first time the format runs on a physical stage with a street crowd voting. the battlers are UNSET for public until zaal confirms them - do not name anyone yet.
+> ZM. 1,452 battles and 913.9 SOL through WaveWarZ so far, measured thursday. ZAOstock puts the format on the parklet stage with a street crowd voting. the battlers are UNSET for public until zaal confirms them - do not name anyone yet.
 
 **Farcaster /zao GC**
-> ZM. WaveWarZ numbers as of thursday: 1,452 battles, 913.9 SOL lifetime. at ZAOstock the battle block runs on the parklet stage with the crowd voting from the sidewalk and the stream voting online. same format, first time on a street. zaostock.com/program
+> ZM. WaveWarZ numbers as of thursday: 1,452 battles, 913.9 SOL lifetime. at ZAOstock the battle block runs on the parklet stage with the crowd voting from the sidewalk and the stream voting online. same format, on a street. zaostock.com/program
 
 **Telegram**
 > ZM. WaveWarZ block at ZAOstock is confirmed - battles on the parklet stage, audience decides. 1,452 battles run so far. zaostock.com/program
@@ -178,7 +178,7 @@ Tags: UNSET x5. Add handles once collected.
 > ZM. Lineup for ZAOstock, Saturday October 3 in Ellsworth, Maine: Werb, Lyons Den, Fellenz, Dcoop and Acadia Rising on the outdoor stage, WaveWarZ battles after, then Black Moon Public House for the evening. Free to attend. Full schedule at zaostock.com/program. If you are coming, drop your city below so we can see who is travelling.
 
 **LinkedIn**
-> ZM. ZAOstock, a free one-day independent music festival in Ellsworth, Maine, announced its lineup today: Werb, Lyons Den, Fellenz, Dcoop and Acadia Rising, plus a live run of WaveWarZ, the online music-battle format that has run 1,452 battles and now plays out on a physical stage for the first time.
+> ZM. ZAOstock, a free one-day independent music festival in Ellsworth, Maine, announced its lineup today: Werb, Lyons Den, Fellenz, Dcoop and Acadia Rising, plus a live run of WaveWarZ, the online music-battle format that has run 1,452 battles and plays out live on the parklet stage.
 >
 > The day runs on the Franklin Street Parklet until six and then moves next door into Black Moon Public House. It is produced by ZAO Festivals, the events arm of The ZAO, as part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, with seven local and ecosystem partners giving time, venue and infrastructure rather than cash.
 >

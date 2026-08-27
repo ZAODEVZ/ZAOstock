@@ -42,7 +42,7 @@ FOR RELEASE 1 SEPTEMBER 2026
 ELLSWORTH, MAINE - ZAOstock, a free one-day music festival on the Franklin
 Street Parklet, has announced its lineup for Saturday 3 October 2026.
 
-Five independent artists play the outdoor stage through the afternoon, with a
+Five independent artists play the outdoor stage through the day, with a
 DJ covering every changeover: **[HOLD - Werb, Lyons Den, Fellenz, Dcoop, Acadia
 Rising - confirm spellings and that all five hold on 1 Sep]**. Werb and Lyons
 Den were announced earlier this summer.

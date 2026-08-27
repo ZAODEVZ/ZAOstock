@@ -91,8 +91,8 @@ number the town gets out of it
 > Hi Gabe,
 >
 > I run The ZAO, an independent music community with members in twenty-plus
-> countries. Our last two festivals were in New York and Miami. The next one
-> is on Franklin Street in Ellsworth on Saturday 3 October, because I live
+> countries. Our festivals have run in New York and Miami. The next one is
+> on Franklin Street in Ellsworth on Saturday 3 October, because I live
 > here now and this is where I wanted to bring it.
 >
 > ZAOstock is free, outdoors on the parklet until six, and then the whole
@@ -122,7 +122,7 @@ number the town gets out of it
 | Claim | Source |
 |---|---|
 | The ZAO, 20+ countries | `src/app/onepagers/overview/page.tsx` PILLARS[1] |
-| Last two festivals New York and Miami | `docs/sponsor/deck-2026-10-03.md` slide 3; `src/app/llms.txt/route.ts` |
+| Festivals in New York and Miami | `docs/sponsor/deck-2026-10-03.md` slide 3; `src/app/llms.txt/route.ts` |
 | Zaal lives in Ellsworth | deck slide 4 ("bought a house here") |
 | Free, outdoors until six, then Black Moon | `src/content/festival.ts`; `src/app/program/page.tsx` |
 | 9th Annual Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486` |

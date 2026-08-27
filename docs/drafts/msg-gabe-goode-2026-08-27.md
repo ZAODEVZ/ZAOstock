@@ -17,8 +17,8 @@ number the town gets out of it
 Hi Gabe,
 
 I run The ZAO, an independent music community with members in twenty-plus
-countries. Our last two festivals were in New York and Miami. The next one is
-on Franklin Street in Ellsworth on Saturday 3 October, because I live here now
+countries. Our festivals have run in New York and Miami. The next one is on
+Franklin Street in Ellsworth on Saturday 3 October, because I live here now
 and this is where I wanted to bring it.
 
 ZAOstock is free, outdoors on the parklet until six, and then the whole street
