@@ -8,7 +8,9 @@
 // Window moved 12-6 -> 11-6 on 2026-08-27. Five confirmed acts do not fit four
 // 45-minute slots, so the parklet opens an hour earlier. This is our intent and
 // it is NOT yet cleared with the City - if the parklet permit caps how early
-// amplified sound starts, this is the value that moves back.
+// amplified sound starts, this is the value that moves back. Roddy Ehrlenbach
+// (City of Ellsworth Parks/Rec, the parklet contact) is the person who answers
+// it, and as of 2026-08-27 the question has not been sent (city lane owns it).
 // See docs/plans/production-plan-2026-10-03.md section 8.
 
 export type AfterParty = {

@@ -23,13 +23,18 @@ export const metadata: Metadata = {
 // NO ARTIST NAMES on this page. The lineup is not public until the reveal
 // (Zaal, 2026-08-23), so slots stay generic here even where an act is
 // confirmed internally. Do NOT hand-write names in. That covers the band
-// Black Moon is underwriting for the indoor block too - it is booked and it is
-// named in docs/plans/production-plan-2026-10-03.md, but it stays off this page
-// until the reveal like every other act.
+// Black Moon offered to underwrite for the indoor block too - it is PROPOSED,
+// not booked (see below), and it is named in
+// docs/plans/production-plan-2026-10-03.md, but it stays off this page until
+// the reveal like every other act.
 //
 // Doors moved noon -> 11:00 on 2026-08-26. On Steve Peer's 45-minute/15-minute
 // cadence, noon to four is exactly four slots and five acts are confirmed for
 // the day, so the day opens an hour earlier rather than dropping an act.
+// 11:00 is INTENT, NOT CLEARED with the City. Roddy Ehrlenbach (City of
+// Ellsworth Parks/Rec) answers whether the parklet permit caps how early
+// amplified sound starts; as of 2026-08-27 it has not been asked (city lane owns it).
+// If he says later, src/content/festival.ts moves and this page follows.
 //
 // The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
 // acts). A single 6-9 booking replaces both.
@@ -39,6 +44,10 @@ export const metadata: Metadata = {
 // ONLY. Nobody has confirmed which are booked. So this page says "in booking"
 // and commits to neither an act nor a downbeat. Do not upgrade this wording
 // without a confirmation you can point at.
+//
+// That includes the changeover DJ. Aquavantes is one of the four, so the daytime
+// block must not promise a DJ in every gap - the gaps are uncovered until Steve
+// confirms him. Tag ledger for every act: production plan, section 2.
 
 type Venue = 'OUT' | 'IN';
 
@@ -57,7 +66,7 @@ const BLOCKS: Block[] = [
     venue: 'OUT',
     label: 'Live music',
     detail:
-      'Independent artists back to back on the parklet stage, 45 minutes each with a DJ covering every changeover. Lineup announced once every set is locked.',
+      'Independent artists back to back on the parklet stage, 45 minutes each with short changeovers between sets. Lineup announced once every set is locked.',
   },
   {
     start: '16:00',
@@ -73,7 +82,7 @@ const BLOCKS: Block[] = [
     venue: 'IN',
     label: 'The after party',
     detail:
-      'Everything moves inside to Black Moon Public House, walkable, right next door. Live music for the evening, in booking.',
+      'Everything moves inside to Black Moon Public House, walkable, right next door. Live music for the evening, in booking - no act or start time confirmed yet.',
   },
   {
     start: '21:00',
@@ -179,6 +188,10 @@ export default function ProgramPage() {
           <ul className="text-sm text-gray-300 space-y-1.5">
             <li>- Free to attend. Optional Pro Ticket supports the festival.</li>
             <li>- Full lineup announced once every set is locked.</li>
+            <li>
+              - The 11 AM start is our intent and is with the City of Ellsworth for confirmation. If
+              it moves, it moves later, not earlier.
+            </li>
             <li>- Weather: tent coverage via Wallace Events, rain or shine.</li>
             <li>- Black Moon is open through the day, walkable, right next door.</li>
             <li>- This schedule is a draft. Final version locks September 2026.</li>

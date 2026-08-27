@@ -12,7 +12,7 @@ is on the gated team page at `/team/plan`.
 
 | Area | Who | What it covers |
 |------|-----|----------------|
-| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve also MCs part of the day |
+| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve also MCs part of the day. Every act on Steve's list (The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek) is PROPOSED, not booked, as of 27 Aug |
 | Design and assets | Paper and Candy | Poster, partner logos, site wireframes, photo gallery. Candy holds the brand kit and the print list |
 | Music and AV | Dcoop | Artist liaison, set schedule, Friday soundcheck, sound backups, fire spinning |
 | Livestream and virtual | **Ohnahji and Aziz, split** | See below |
@@ -66,7 +66,7 @@ name before late September.
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
 | First Aid lead | Still doubled onto Zaal. Flagged impossible in July - eight hours, and it needs current certification |
-| Changeover cover | One stage means the gaps are audible. Cannot be Stilo. Steve's DJ is the intended fix, pending his answer on the 11:45 to 6 window |
+| Changeover cover, 11:45 to 18:00 | **A real gap, not a pending detail.** One stage means six audible 15-minute gaps. Cannot be Stilo. Steve's DJ (Aquavantes) is the intended fix and, per Zaal 27 Aug, is PROPOSED ONLY like the rest of Steve's four - nobody has booked him. The question is drafted in `docs/drafts/steve-followup-2026-08-27.md`. If the answer is no, this is ours to fill. See production plan section 8 |
 
 ---
 
@@ -80,6 +80,6 @@ Prof and Thy Revolution. Recorded 24 August. Not a gap to fill.
 
 - ZAOstock people map, finalised 24 August 2026
 - Orchestrator relay, 27 August 2026, carrying Zaal's standing verdict on the
-  livestream split
+  livestream split, and his 11:58 verdict that Steve's four acts are proposed only
 - `people/Aziz.md` and `people/Ohnahji.md`, for which half each already runs
 - Standup, 24 August 2026
