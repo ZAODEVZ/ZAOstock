@@ -58,19 +58,19 @@ surface audit found the loop here once already.
 | Path:line | What it says | Verdict |
 |---|---|---|
 | `agents/Zaal.md:83` | "ZAOstock has NO fiscal sponsor ... Fractured Atlas is OUT; the earlier rule here said to credit them and it was wrong" | CORRECT |
-| `agents/Zaal.md:71` | "Strategic counsel: FailOften (fiscal sponsor mechanics)" | **WRONG** - describes FailOften's role as fiscal-sponsor mechanics. Contradicts line 83 of the same file. Outside write-set - request filed |
+| `agents/Zaal.md:71` | "Strategic counsel: FailOften (fiscal sponsor mechanics)" | **FIXED `c33e583`** - was WRONG (described FailOften's role as fiscal-sponsor mechanics, contradicting line 83). Now ENTERACT and the commercial path |
 | `agents/FailOften.md:14` | correction note: NO fiscal sponsor, Fractured Atlas is out | CORRECT |
-| `agents/FailOften.md:23` | Current focus: "Fractured Atlas fiscal sponsorship for ZAOstock + ZAO Festivals" | **WRONG** - a live bullet under "Current focus", not struck, nine lines below the correction note. An agent loading this file is told FailOften currently works on it. Outside write-set - request filed |
+| `agents/FailOften.md:23` | Current focus: "Fractured Atlas fiscal sponsorship for ZAOstock + ZAO Festivals" | **FIXED `c33e583`** - was WRONG (a live bullet under "Current focus", unstruck, nine lines below the correction note). Now struck with the date |
 | `agents/FailOften.md:36` | struck line + "STRUCK 2026-08-27 - ZAOstock has no fiscal sponsor" | RECORD OF THE KILL |
-| `agents/FailOften.md:53` | "anything touching Fractured Atlas terms or sponsor wording escalates to you" | Stale but harmless - an escalation rule about wording that no longer exists. Suggest trimming to "sponsor wording". Outside write-set |
-| `agents/FailOften.md:66` | Hard rule: "Fractured Atlas wording must always run by you before any sponsor-facing publication" | Stale but harmless for the same reason. There is no Fractured Atlas wording to run by anyone. Outside write-set |
-| `agents/TEMPLATE.md:16` | example self-summary: "...handles ZAOstock fiscal-sponsor mechanics with Fractured Atlas" | **WRONG** - it is the example sentence every new agent file is built from. The next agent file created from this template re-seeds the claim. Outside write-set - request filed |
+| `agents/FailOften.md:53` | "anything touching Fractured Atlas terms or sponsor wording escalates to you" | **FIXED `c33e583`** - now "sponsor wording", old text quoted |
+| `agents/FailOften.md:66` | Hard rule: "Fractured Atlas wording must always run by you before any sponsor-facing publication" | **FIXED `c33e583`** - now sponsor-facing wording, with the no-fiscal-sponsor rule stated, old text quoted |
+| `agents/TEMPLATE.md:16` | example self-summary: "...handles ZAOstock fiscal-sponsor mechanics with Fractured Atlas" | **FIXED `c33e583`** - was WRONG (the example sentence every new agent file is built from). Now "co-builds ZAO Festivals strategy with Zaal" |
 
 ## Docs - `docs/` - one WRONG (a template that goes to artists)
 
 | Path:line | What it says | Verdict |
 |---|---|---|
-| `docs/music/artist-deal-memo-template.md:87` | "ZAOstock carries event liability insurance via the production partner (ENTERACT) and Fractured Atlas COI for the venue" | **WRONG on two counts.** No Fractured Atlas COI exists or will. And no event liability policy is bound yet at all (see `docs/permits/status-2026-08-27.md` row 4). This is a deal memo that goes to artists. Outside write-set - request filed |
+| `docs/music/artist-deal-memo-template.md:87` | "ZAOstock carries event liability insurance via the production partner (ENTERACT) and Fractured Atlas COI for the venue" | **FIXED `c33e583`** - was WRONG on two counts (no Fractured Atlas COI exists, and no policy is bound yet). Now: arranged through a broker as a City permit condition, no fiscal sponsor, with a dated correction note |
 | `docs/sponsor/finders-fee-structure.md:46` | "Corrected 2026-08-27 ... ZAOstock has no fiscal sponsor, so there is no such path" | CORRECT |
 | `docs/sponsor/finders-fee-structure.md:50` | "Rewritten 2026-08-27. ZAOstock has no fiscal sponsor" | CORRECT |
 | `docs/sponsor/deck-2026-10-03.md:235` | "no fiscal sponsor, so nothing here may say tax-deductible" | CORRECT |
@@ -105,9 +105,11 @@ priority.
 | `.handoffs/DONE.md:238` | commit `6979739` "proposed-only + fiscal sponsor across all surfaces" | CORRECT |
 | `.handoffs/DONE.md:256-258` | the audit note: "every tax-deductible string in src/ is a correct negation" and the Zaal.md hard-rule story | CORRECT |
 
-## The four that need a hand outside this lane
+## The four that needed a hand outside this lane - CLOSED `c33e583`
 
-In order of blast radius:
+The orchestrator extended this lane's write-set to exactly these four files on
+2026-08-27 and all four are fixed. Kept as the record of what was wrong, in
+order of blast radius:
 
 1. `docs/music/artist-deal-memo-template.md:87` - asserts a Fractured Atlas COI
    and an insurance policy that does not exist, in a document that goes to
@@ -119,8 +121,8 @@ In order of blast radius:
 4. `agents/Zaal.md:71` - "FailOften (fiscal sponsor mechanics)", contradicting
    line 83 of the same file.
 
-Plus one card: `src/app/team/plan/page.tsx:60` "Fiscal sponsor replacement" is a
-task whose answer is NONE.
+Plus one card, STILL OPEN for another lane: `src/app/team/plan/page.tsx:60`
+"Fiscal sponsor replacement" is a task whose answer is NONE.
 
 **Pattern, carried from the 27 Aug audit:** if a tax-deductible claim reappears,
 look for an instruction file or a template, not a typo. Three of the four live
