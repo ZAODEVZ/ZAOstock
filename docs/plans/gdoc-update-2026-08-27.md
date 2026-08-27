@@ -157,11 +157,15 @@ The indoor changeover line is now wrong in its detail.
 ```
 **Event insurance** - **Zaal** - *talking to a contact at a local bank on**** Tue Aug 2****5*
 ```
-**Replacement:**
+**Replacement (updated Aug 27 - the broker now has a name):**
 ```
-**Event insurance** - **Zaal** - ***the Tue Aug 25 bank conversation is unrecorded***
+**Event insurance** - **Zaal** - **broker identified, intro email owed Fri Aug 28**
 
-*The two things that call was for are still not written down anywhere: **the coverage amount the city needs**, and **whether the City of Ellsworth must be named as additional insured**. A broker cannot quote without both, and it gates the fire performance.*
+**John Jagger, United Insurance** - johnjagger@unitedinsurance.net. *Referred by Laurel on the Heart of Ellsworth promotions committee, via a commercial lender. This replaces the untracked Aug 25 bank conversation.*
+
+*The intro email is drafted and waiting at* `docs/drafts/email-john-jagger-2026-08-27.md`*. It leads on the two things the quote depends on: **the coverage amount the City of Ellsworth requires**, and **whether the City must be named as additional insured**. A broker cannot quote properly without both, and it gates the fire performance.*
+
+***The email is blocked on one number: expected attendance****. It is the single figure that moves an event policy, and it is the same figure deck slide 4 is blocked on. Answering it once clears both. Zaal's "4,000 of 8,000" is an awareness goal and must not go to an underwriter as an attendance projection.*
 ```
 
 ---

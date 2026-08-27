@@ -221,3 +221,59 @@ Not resolved unilaterally, because that lane is parked and handed off, and
 rewriting a handed-off lane's docs to satisfy a constraint it never saw is how
 two lanes end up fighting. Whoever owns the rule should say which wins - the
 skill's no-blank-dates rule or UNSET. Flagged, not fixed.
+
+---
+
+# ZAOSTOCK 1/3, 2/3, 3/3 - 2026-08-27
+
+Branch `ws/production-plan-1003-0826`. **Not pushed.** Writes only to
+`~/Desktop/repos/zaostock`.
+
+| # | Deliverable | Path | Commit |
+|---|---|---|---|
+| 1/3 | Sponsor pitch deck | `docs/sponsor/deck-2026-10-03.md` | `cb13c82` |
+| 2/3 | Surface audit | `docs/plans/surface-audit-2026-08-27.md` | `c354a93` |
+| 3/3 | Google Doc edit list | `docs/plans/gdoc-update-2026-08-27.md` | `e74529f` |
+
+Plus, from Zaal's typed verdicts: `6979739` (proposed-only + fiscal sponsor
+across all surfaces) and `4fcfbed` (broker email, Candy agenda).
+
+**Status:** all three delivered. **Verification target:** `tsc --noEmit` clean,
+full suite 31 passed, WaveWarZ figures re-pulled live 2026-08-27 15:47 UTC.
+
+**Files touched:** `src/app/program/page.tsx`, `src/app/page.tsx`,
+`src/app/team/plan/page.tsx`, `src/content/festival.ts` + test,
+`src/app/layout.tsx`, `src/app/pitch/page.tsx`, `agents/Zaal.md`,
+`agents/FailOften.md`, `docs/music/artist-outreach-templates.md`,
+`docs/sponsor/finders-fee-structure.md`, `docs/sponsor/deck-2026-10-03.md`,
+`docs/sponsor/slide-9-tier-ladder.md`,
+`docs/sponsor/slide-9-candy-meeting-2026-08-27.md`,
+`docs/drafts/email-john-jagger-2026-08-27.md`, `docs/plans/*`.
+
+## Notes the orchestrator should ingest
+
+- **The fiscal-sponsor claim was a loop, not a bug.** PR #49's site fix held -
+  every `tax-deductible` string in `src/` is a correct negation. But
+  `agents/Zaal.md` carried a hard rule reading *"Always credit Fractured Atlas as
+  ZAOstock's fiscal sponsor (501c3)"*. That is an instruction, so every agent
+  reading it was told to put the claim back. Four live offenders off-site, now
+  fixed. **If it reappears, look for an instruction file, not a typo.**
+- **Steve's four acts being proposals changes two load-bearing things**, not just
+  a label. DJ Aquavantes covers every changeover, so the changeovers are
+  currently uncovered; and North Creek is the whole indoor evening, so the
+  evening has no secured act. Production plan open item 4 was rewritten from
+  "6:00 or 6:30" to "which of the four are booked".
+- **Seven UNSET fields on slide 9, not eight.** The eighth match was a status
+  header.
+- **One number unblocks three things:** expected attendance. It blocks the
+  broker email, deck slide 4, and the City conversation.
+- **Socials: nothing exists on disk.** No draft for the 1 September reveal, which
+  is the biggest attention moment of the year. Marked UNVERIFIED rather than
+  written blind - a lineup post needs a lineup.
+
+## Ready and waiting on Zaal typing in this pane
+
+`/quick-grill` is queued on the five unnamed roles - sound for the WaveWarZ
+block, AV cover during Dcoop's set, stage manager, First Aid lead, indoor
+changeover at 6 - then the remaining Zaal-only items, four at a time,
+recommended first. His typed words become `ZAOSTOCK-VERDICT` lines below.
