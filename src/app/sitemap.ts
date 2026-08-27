@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/circles',
     '/zaoville',
     '/privacy',
+    '/press',
   ];
 
   return routes.map((path) => ({
