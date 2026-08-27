@@ -1,5 +1,16 @@
 # Google Doc update list - 2026-08-27
 
+> **APPLIED. All ten edits are live in the Google Doc as of ~15:5x on 2026-08-27.**
+> This file is now a record of what was changed, not a queue of work.
+>
+> **One correction was made on the way in:** edit 1 said "Wednesday Aug 27". Aug 27
+> 2026 is a **Thursday** - Oct 3 is a Saturday and Aug 29 is the Saturday five
+> weeks before it. Corrected here so nobody re-applies the wrong weekday. The
+> 37-day count was right.
+>
+> **The snapshot this was built from is now stale.** Ask the orchestrator for a
+> fresh read before writing the next edit list.
+
 Targeted edits for doc `1B78AVonJS3-bXXdHMYJ-M2LruujQjZhcONT-vAO0Jko`.
 
 **The doc is not rewritten.** Each edit below gives the **exact existing
@@ -28,7 +39,7 @@ out. It is now **37 days out**.
 ```
 **Replacement:**
 ```
-*Updated Wednesday Aug 27, 2026. Oct 3 is 37 days out.*
+*Updated Thursday Aug 27, 2026. Oct 3 is 37 days out.*
 ```
 Meetings tab carries `*Updated Monday Aug 24, 2026.*` with no day count - update
 the date there too, leave the rest.

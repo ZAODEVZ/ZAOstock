@@ -1,3 +1,15 @@
+> # STALE - DO NOT DIFF AGAINST THIS FILE
+>
+> **The ten edits in `gdoc-update-2026-08-27.md` were applied live to the Google
+> Doc at ~15:5x on 2026-08-27.** This snapshot is the state BEFORE those edits,
+> so every paragraph the edit list touched no longer matches the live doc.
+>
+> It is kept as the record of what the doc said on Aug 24, and for matching the
+> verbatim "existing" blocks in the edit list. **It is not a current read.**
+>
+> **Before building another edit list, ask the orchestrator for a fresh read.**
+> Diffing against this file will re-propose edits that are already in.
+
 # Start Here
 
 # START HERE
