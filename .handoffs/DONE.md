@@ -332,3 +332,5 @@ ZAOSTOCK-MARKETING R2 4/4 press kit - `docs/marketing/press-kit.md` - the conten
 # ZAOSTOCK-MARKETING R3 - 2026-08-27 - converged, stopped
 
 ZAOSTOCK-MARKETING R3 done - `docs/plans/zaal-only-MARKETING.md`: 12 ranked lines + 9 under "later". Six paste-ready messages, all DO NOT SEND: `docs/drafts/msg-candy-2026-08-27.md`, `msg-eric-`, `msg-gabe-goode-`, `msg-town-of-ellsworth-`, `msg-enteract-`, `msg-web3metal-`. Two UNSET in the Candy message (quantity, whether 11:00 prints); recipient UNSET for the Town, ENTERACT and Web3Metal messages. Both R3 paths sit outside the R1 write-set and were written because R3 names them explicitly in the same brief.
+
+ZAOSTOCK-MARKETING MERGE-READY bettercallzaal/lane-marketing-0827 5 commits, conflicts: none. tsc clean, vitest 31/31, security-reviewer clean, review pass fixed five copy contradictions (0f74fef). Base ws/production-plan-1003-0826 = origin at 118f127; rebase was a no-op. Not pushed.
