@@ -62,8 +62,13 @@ before it was cleared, so it is the first thing to re-check.
    the lineup API, the public forms and reading the roster.
 2. Does this event have any fiscal sponsor, or none. Nothing may say
    tax-deductible until it is settled.
-3. Deck slide 9 - now a two-word pick, A / B / C plus the early-close date.
-   Ladder is written and waiting.
+3. Deck slide 9 - **every figure is UNSET.** A draft proposing a $2,500 top tier
+   and an early-close of Friday 11 September was killed on 27 Aug: Zaal has
+   never named a tier price or a close date, and the draft's "doc 2326" source
+   does not contain those numbers. `docs/sponsor/slide-9-tier-ladder.md` now
+   holds the shape of the decision only. Slide 9 stays blocked, and blocked is
+   correct. Do not re-derive a ladder from the deck words or the audit doc -
+   both of those figures are the same unvalidated set.
 4. Deck slide 4 - the attendance claim. "4,000 of 8,000 Ellsworth" is his own
    goal and defensible; a projected attendance is not.
 5. Are Steve's four acts booked or proposed. He sent a run of show including
@@ -74,7 +79,23 @@ before it was cleared, so it is the first thing to re-check.
 7. Insurance - card `89e9da61`, no owner, a permit condition the City asked for
    on 17 Aug. Broker not agent.
 
-Items 3 and 5 moved on 27 Aug. Items 1 and 2 have the widest blast radius.
+Item 5 moved on 27 Aug. Item 3 moved and was then reverted to blocked. Items 1
+and 2 have the widest blast radius.
+
+## A failure mode this lane produced twice, worth naming
+
+Both on 27 Aug, in different repos: a provenance claim was inherited from a
+draft and repeated without checking whether the cited source says it.
+
+1. Slide 9 prices attributed to Zaal "per doc 2326". Doc 2326 does not contain
+   them.
+2. `hermes-agent` described as "OpenMatter's template per doc 1659-v5". Doc 1659
+   resolves to two documents and neither says it.
+
+The second was caught before it shipped. The first was not, and reached a
+recommendation. **A number or claim whose cited source does not support it is
+worse than one with no source, because it reads as settled.** Check the line
+before repeating the citation.
 
 ## Deliberately not done
 
