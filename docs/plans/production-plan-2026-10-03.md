@@ -75,13 +75,20 @@ Your cadence, 45 on and 15 off, applied straight through.
 
 | Time | What | Notes |
 |------|------|-------|
-| 18:00 - 21:00 | North Creek | The after party you are underwriting. One block, three hours |
+| 18:00 - 21:00 | The after party | One block, three hours. **In booking** - see below |
 | 21:00 - close | DJ set to close | |
 
-The 18:00 start is ours, not yours. Whether North Creek takes the stage at 18:00
-with the room walking in behind them, or at 18:30 after a half hour of the room
-filling, is **unconfirmed and waiting on you.** The public schedule commits to
-the block and deliberately does not print a downbeat until you say which.
+**The bigger question comes before the downbeat.** On our side, all four acts
+from your draft - The Crown Vics, DJ Aquavantes, The Somes Sound and North Creek
+- are recorded as **proposed, not booked.** Nobody here can tell which of them
+you have actually secured, and we have been building a grid that assumed all
+four. So the first ask is simply: which are booked, and which are still being
+asked?
+
+Once North Creek is confirmed, the 18:00 start is ours, not yours - whether they
+take the stage at 18:00 with the room walking in behind them, or at 18:30 after
+the room fills. The public schedule commits to the block, says "in booking", and
+prints no downbeat until both answers land.
 
 Two notes on that grid.
 
@@ -123,7 +130,7 @@ Everything on your list, with an owner and where it stands.
 | 3 | $20 gift certificates for performers | Steve | Confirmed, count open | The $20 is your figure. The headcount is **UNSET** - we owe it to you, and we will not guess at it, because the roster it comes from is not readable right now. Date we get it to you by: **UNSET** |
 | 4 | Dressing room and bathroom, Black Moon basement | Steve | Confirmed | Performers only, not a hangout. Understood and we will enforce it. See wristbands below |
 | 5 | One porta potty, city parking lot | Steve | Confirmed | See open item 2. One is not enough for a street event and you already said so |
-| 6 | North Creek, after party 6-9pm indoor | Steve | Confirmed, underwritten | Now the anchor of the indoor block. See open item 4 |
+| 6 | North Creek, after party 6-9pm indoor | Steve | **PROPOSED, not confirmed** | You offered to underwrite it, and on our side all four acts from your draft are still proposals rather than bookings. See open item 4 |
 | 7 | Indoor and outdoor PA | Steve | Sourcing | The one thing everything else waits on. See open item 1 and 5 |
 | 8 | DJ on the outdoor stage, gap fill | Steve | Confirmed, one plus backup | This is what makes 45/15 work. Window needs stretching to 6pm |
 | 9 | Hosting part of the day | Steve | Offered 17 August, undefined | Tell us which part you want and it is yours |
@@ -182,18 +189,31 @@ hangout. Proposal: we buy them and bring them, you tell us who gets one. Our
 count is the performer headcount from item 3 above plus about six crew. Confirm
 that works and whether you want your own staff carrying one too.
 
-**4. North Creek, and the one thing we need from you: does it start at 6:00 or 6:30?**
-Thank you for underwriting this. It does change one thing. Our run of show had a
-DJ set from 6 to 8 and local acts after. North Creek at 6 to 9 is better than
-both, so it now takes the whole evening as a single block and our DJ closes the
-night from 9.
+**4. Your four acts: which are booked, and which are still being asked?**
+This is the one that changes the most if the answer is "still being asked", so
+it is worth being blunt rather than polite about it.
 
-The only open piece is the downbeat. A straight 6:00 start means the band is
-already playing as the crowd walks in from the street, which is a good look and
-gives the room no dead air. A 6:30 start gives everyone half an hour to get a
-drink and the band a fuller room to open to. Both work for us and it is your
-booking, so you call it. Until you do, the public schedule says 6 to 9 and does
-not print a start time.
+The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek. Our grid has been
+built as though all four are booked. On our side they are recorded as proposals.
+Two of them carry real weight: **DJ Aquavantes covers every changeover**, which
+is the thing that makes a 45-and-15 day work at all, and **North Creek is the
+whole indoor evening**. If either is a lead rather than a booking, we need to
+know this week, not in September.
+
+Thank you for offering to underwrite North Creek - that is a genuinely generous
+thing and it is why the evening is now one three-hour block instead of a DJ set
+and a scramble.
+
+Two follow-ons once you have answered:
+
+- Does The Somes Sound provide the indoor PA, or only their own gear for their
+  own set? Those are very different things.
+- If North Creek is confirmed, does it start at 6:00 or 6:30? A 6:00 downbeat
+  means they are already playing as the street walks in. 6:30 gives everyone a
+  drink first and a fuller room. Both work for us; it is your booking.
+
+Until the first question is answered the public schedule says "in booking",
+names no act and prints no start time.
 
 ---
 

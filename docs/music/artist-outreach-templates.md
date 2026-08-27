@@ -71,11 +71,8 @@ What we offer:
 
 Production:
 The festival operates at break-even. ZAO Festivals collaborates with
-ENTERACT for production support. Eligible public funding is administered
-through New Media Commons (a fiscally sponsored project of Fractured Atlas,
-501(c)(3)) for sponsors who want tax-deductible recognition. We are happy
-to share full production details + insurance / safety documentation as we
-move forward.
+ENTERACT for production support. We are happy to share full production
+details + insurance / safety documentation as we move forward.
 
 Would [Artist Name] be open to a brief intro call to discuss? Happy to
 work around their schedule.

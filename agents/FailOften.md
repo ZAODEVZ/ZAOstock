@@ -9,7 +9,9 @@ last-validated: 2026-05-06
 
 # FailOften — agent context
 
-> _Stub. Needs FailOften to fill in (or Zaal to draft on his behalf and ask for confirmation). Top priority because FailOften owns Fractured Atlas fiscal sponsorship mechanics for ZAOstock._
+> _Stub. Needs FailOften to fill in (or Zaal to draft on his behalf and ask for confirmation)._
+>
+> **Corrected 2026-08-27: ZAOstock has NO fiscal sponsor.** Fractured Atlas is out. This file previously said FailOften owns ZAOstock's Fractured Atlas fiscal-sponsorship mechanics - there are none to own. Nothing may say tax-deductible.
 
 ## Who you are (one line)
 
@@ -31,12 +33,12 @@ _Fill in: one sentence summary._
 ## Background that matters
 
 - ENTERACT creative agency
-- ZAOstock fiscal-sponsor relationship lives through Fractured Atlas (the 501c3) — FailOften owns the mechanics
+- ~~ZAOstock fiscal-sponsor relationship lives through Fractured Atlas (the 501c3)~~ **STRUCK 2026-08-27 - ZAOstock has no fiscal sponsor**
 - _add more context_
 
 ## Skills + lanes
 
-- Fiscal sponsor structure, creative-agency ops, _fill in others_
+- Creative-agency ops, _fill in others_. (Fiscal-sponsor structure removed - ZAOstock has none.)
 
 ## What the bot should NEVER do in your voice
 

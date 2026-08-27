@@ -32,10 +32,13 @@ export const metadata: Metadata = {
 // the day, so the day opens an hour earlier rather than dropping an act.
 //
 // The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
-// acts). Black Moon is underwriting a single 6-9 booking that replaces both.
-// The 18:00 start is OURS, not theirs - whether the band takes the stage at
-// 18:00 or 18:30 is unconfirmed with Steve as of 2026-08-26, so this page
-// commits only to the block, not to a downbeat.
+// acts). A single 6-9 booking replaces both.
+//
+// IN BOOKING, NOT BOOKED (Zaal, 2026-08-27). All four acts from Steve's draft -
+// The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek - are PROPOSED
+// ONLY. Nobody has confirmed which are booked. So this page says "in booking"
+// and commits to neither an act nor a downbeat. Do not upgrade this wording
+// without a confirmation you can point at.
 
 type Venue = 'OUT' | 'IN';
 
@@ -70,7 +73,7 @@ const BLOCKS: Block[] = [
     venue: 'IN',
     label: 'The after party',
     detail:
-      'Everything moves inside to Black Moon Public House, walkable, right next door. A live band for the evening, underwritten by the bar.',
+      'Everything moves inside to Black Moon Public House, walkable, right next door. Live music for the evening, in booking.',
   },
   {
     start: '21:00',

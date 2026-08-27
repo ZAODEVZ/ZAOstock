@@ -167,9 +167,9 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
 // confirmed acts instead of four. Full reasoning and Steve's supply list live in
 // docs/plans/production-plan-2026-10-03.md.
 const DAY = [
-  { time: '11:00 - 16:00', what: 'Artists, outdoors on the parklet. 45 min sets, 15 min changeovers, DJ in every gap', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising. Five acts, five slots' },
+  { time: '11:00 - 16:00', what: 'Artists, outdoors on the parklet. 45 min sets, 15 min changeovers, DJ in every gap', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising - five CONFIRMED, five slots. The changeover DJ (Aquavantes) is PROPOSED ONLY, so the gaps are not covered yet' },
   { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
-  { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. North Creek, underwritten by the bar', who: 'North Creek. 18:00 or 18:30 downbeat UNCONFIRMED with Steve' },
+  { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. IN BOOKING - no confirmed act', who: 'North Creek PROPOSED ONLY (Zaal 27 Aug), along with Crown Vics, DJ Aquavantes, The Somes Sound. Downbeat 18:00 or 18:30 also unconfirmed' },
   { time: '21:00 on', what: 'DJ to close, indoors', who: 'Stilo DJing, moved off the old 18:00-20:00 block' },
 ];
 
