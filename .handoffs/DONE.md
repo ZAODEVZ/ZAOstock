@@ -106,3 +106,71 @@ before repeating the citation.
 - **`src/lib/lineup-fallback.ts` left empty.** It needs five fields per artist
   copied from the real roster, the roster is unreachable, and its own header
   says never to invent them. The endpoint keeps returning an honest 503.
+
+---
+
+# 2026-08-27 - relay handled. Three of four items were already done; one was killed
+
+ZAOstock resumed at priority two. Branch `ws/production-plan-1003-0826`, ten
+commits, **not pushed.**
+
+## Status of the four requested items
+
+| # | Item | State |
+|---|---|---|
+| 1 | Ohnahji + Aziz split applied to the people map | **Already done** - commit `1586705`, `docs/plans/people-map-2026-10-03.md`. Closes the 08-20 flag |
+| 2 | Slide-9 tier ladder, three options with prices and an early-close date | **NOT DONE - deliberately.** See below |
+| 3 | /program North Creek 6-9 block | **Already done** - commit `ef53e3a`. Block is `18:00-21:00`, single entry, no printed downbeat |
+| 4 | Fold baraza.md's five next steps into the ZAOstock list | **Done now** - commit `c737aae` |
+
+## Item 2 was not rebuilt, and this is why
+
+The relay asks for the priced ladder that **the orchestrator killed a few hours
+earlier**, in its own words: *"I KILLED it. Zaal has never named a tier price or
+a close date; that was a machine inventing a decision. Treat any figure on slide
+9 as unset until his typed text says otherwise. Blocked items stay blocked."*
+
+Commit `34fd718` carried out that kill. Rebuilding the ladder now would undo the
+most recent instruction from the same source, and would reproduce the exact
+failure it was killed for.
+
+Reading it as a stale replay rather than a reversal, because the wording is
+identical to the earlier relay and items 1 and 3 in it were also already
+complete. **If Zaal has since typed actual numbers, send them and the ladder
+takes ten minutes.** Absent that, slide 9 stays blocked.
+
+`docs/sponsor/slide-9-tier-ladder.md` holds the shape of the decision - the five
+tier names, the benefits ladder, the no-fiscal-sponsor constraint, the sourced
+bank prospects - with eight fields marked UNSET.
+
+## Item 4 - what the baraza fold changed
+
+The two lists were the same job. Aziz owns the rig-and-Restream half of the
+livestream split, and the Baraza TV OBS build is that rig. A new **Livestream**
+group in `/team/plan` carries all five next steps, three marked overdue - the
+test was due **22 August** and has slipped five days.
+
+The one that matters: **Aziz's rtmps ingest URL and stream key.** The baraza lane
+proved the encode path end to end (h264_nvenc, CBR 6000k, 1080p30, keyframe 2s,
+verified with ffprobe), which leaves his ingest endpoint as the **only untested
+link in the chain.** Nothing local substitutes.
+
+---
+
+# ZAAL-ONLY ITEMS - one line each
+
+1. **Steve Peer: does North Creek start at 6:00 or 6:30?** Draft written verbatim in production plan section 8; until he answers, no downbeat is printed anywhere.
+2. **City of Ellsworth: does the parklet permit cap an 11:00 start?** Draft written; 11:00 is live on public surfaces and NOT cleared, and `FESTIVAL.window` is the single value that moves.
+3. **Aziz: the rtmps ingest URL + stream key.** Overdue since 22 Aug, the only untested link in a livestream chain that is otherwise proven.
+4. **Aziz: send him the Windows desktop specs** so he releases the plugin list - doc 2316 recorded this trade backwards and cost three days; Zaal owes specs, Aziz owes plugins plus the URL.
+5. **Relay the Motomoto plugin answer** - worked out weeks ago, never sent: Advanced Scene Switcher only, the rest ship in OBS 28+ or are machine deps.
+6. **Slide 9: type five prices, a discount percentage and a date** - nothing else unblocks the deck, and no agent may infer them.
+7. **Is Supabase `yjrlaxpjusmrfylumban` in the org upgraded to Pro?** One look at billing; blocks the lineup API, the public forms and the roster.
+8. **Does this event have any fiscal sponsor, or none?** Nothing may say tax-deductible until it is settled.
+9. **Insurance owner** - card `89e9da61`, still nobody, and it is a permit condition the City asked for on 17 Aug. Broker, not agent.
+10. **Are Steve's four acts booked or proposed?** He sent a run of show including them and nobody has confirmed which.
+11. **Deck slide 4 attendance claim** - "4,000 of 8,000 Ellsworth" is his own goal and defensible; a projected attendance is not.
+12. **The Google Doc `1B78AVonJS3...`** - he wants that one updated, not a new one; no credential yet, and browser automation is barred after it corrupted tabs.
+
+Items 1-5 are this week. Items 7 and 8 have the widest blast radius. Item 6 is
+the one where an agent already guessed once and was killed for it.
