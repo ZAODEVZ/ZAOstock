@@ -40,7 +40,7 @@ What it costs us, and I want to be straight about both:
   never stopped. With one stage there is a real 15-minute gap between every act.
   Your DJ is the fix, and that is the single most useful thing on your list.
 - **Black Moon takes no daytime footfall by default,** because everyone is
-  outside from noon to six. That hits your bar percentage and it hits the
+  outside from eleven to six. That hits your bar percentage and it hits the
   local-lift number we said we would measure. The idea from 15 August of putting
   the stream up on screens inside is still the right fix and it is on us to
   build it.
@@ -56,14 +56,16 @@ Your cadence, 45 on and 15 off, applied straight through.
 | Time | What | Notes |
 |------|------|-------|
 | 06:00 | Load-in and stage set | Outdoor stage is already standing from the summer concert series, so nothing is being built |
-| 10:00 | Line checks | Acts checked Friday night, this is a confirm only |
-| 12:00 - 12:45 | Set 1 | 45 min |
+| 09:30 | Line checks | Acts checked Friday night, this is a confirm only |
+| 11:00 - 11:45 | Set 1 | 45 min. Doors |
+| 11:45 - 12:00 | Changeover, DJ | |
+| 12:00 - 12:45 | Set 2 | 45 min |
 | 12:45 - 13:00 | Changeover, DJ | |
-| 13:00 - 13:45 | Set 2 | 45 min |
+| 13:00 - 13:45 | Set 3 | 45 min |
 | 13:45 - 14:00 | Changeover, DJ | |
-| 14:00 - 14:45 | Set 3 | 45 min |
+| 14:00 - 14:45 | Set 4 | 45 min |
 | 14:45 - 15:00 | Changeover, DJ | |
-| 15:00 - 15:45 | Set 4 | 45 min |
+| 15:00 - 15:45 | Set 5 | 45 min |
 | 15:45 - 16:00 | Changeover, DJ | Battle stage reset |
 | 16:00 - 17:45 | WaveWarZ | Live music battles, our artists, our MC. Audience decides |
 | 17:45 - 18:00 | DJ plays out, crowd walks | |
@@ -73,23 +75,36 @@ Your cadence, 45 on and 15 off, applied straight through.
 
 | Time | What | Notes |
 |------|------|-------|
-| 18:00 - 18:30 | Room fills | House music, food and drink |
-| 18:30 - 21:00 | North Creek | The after party you are underwriting |
+| 18:00 - 21:00 | North Creek | The after party you are underwriting. One block, three hours |
 | 21:00 - close | DJ set to close | |
+
+The 18:00 start is ours, not yours. Whether North Creek takes the stage at 18:00
+with the room walking in behind them, or at 18:30 after a half hour of the room
+filling, is **unconfirmed and waiting on you.** The public schedule commits to
+the block and deliberately does not print a downbeat until you say which.
 
 Two notes on that grid.
 
-**Your DJ window.** You said noon to 5:30. The grid above needs him from 12:45
-to 6, because the last changeover before WaveWarZ is at 3:45 and the battles
-still want music going in and out of them. Call it noon to 6 and we will talk
-about whether he is on the same PA the acts are using.
+**We open at 11:00, not noon.** This is the one change we made to your cadence
+and it is worth a line on why. Noon to four on 45/15 is exactly four slots, and
+we hold five confirmed acts for the day. Rather than drop an act or push one
+indoors where it does not belong, the parklet opens an hour earlier and the day
+runs five slots into WaveWarZ at four. Everything downstream of four is
+untouched. If an 11:00 street start is a problem for you or for the block, say
+so and we will look again.
 
-**Five acts, four slots.** Noon to four on a 45/15 grid gives exactly four
-slots. We currently hold five confirmed acts for the day. One of them needs a
-home: either we open the parklet at 11:00 and run a fifth slot, or that act goes
-into the indoor block. That is our call, not yours, and we will have the answer
-before the Monday standup. If you want a fifth slot filled locally, your offer
-from 15 August still stands with us and we would take it.
+**Your DJ window.** You said noon to 5:30. The grid above needs him from 11:45
+to 6, because the first changeover is at 11:45, the last one before WaveWarZ is
+at 3:45, and the battles still want music going in and out of them. Call it 11:45
+to 6 and we will talk about whether he is on the same PA the acts are using.
+
+**The daytime is now full.** Worth saying plainly, because we have been asking
+you the opposite. Under the old two-stage design the day needed roughly twice
+the sets and we were about half short. One venue at a time plus the 11:00 open
+means five slots and five acts, and the daytime is booked. Your standing offer
+from 15 August to fill blanks with local acts is now our reserve rather than a
+need, and it is genuinely useful as a reserve, because we have no spare if
+somebody drops in September.
 
 **Names.** Two of the confirmed acts are already public. The rest stay off
 anything published until the reveal on 1 September, so this document keeps the
@@ -167,12 +182,18 @@ hangout. Proposal: we buy them and bring them, you tell us who gets one. Our
 count is the performer headcount from item 3 above plus about six crew. Confirm
 that works and whether you want your own staff carrying one too.
 
-**4. North Creek at 6-9 versus our 6-8 block.**
+**4. North Creek, and the one thing we need from you: does it start at 6:00 or 6:30?**
 Thank you for underwriting this. It does change one thing. Our run of show had a
-DJ set from 6 to 8 and local acts after. North Creek at 6 to 9 is better, so
-here is what we propose: the room fills from 6 to 6:30, North Creek runs 6:30 to
-9, and our DJ closes the night from 9. Say the word if North Creek needs a
-straight 6 o'clock start and we will move the fill window.
+DJ set from 6 to 8 and local acts after. North Creek at 6 to 9 is better than
+both, so it now takes the whole evening as a single block and our DJ closes the
+night from 9.
+
+The only open piece is the downbeat. A straight 6:00 start means the band is
+already playing as the crowd walks in from the street, which is a good look and
+gives the room no dead air. A 6:30 start gives everyone half an hour to get a
+drink and the band a fuller room to open to. Both work for us and it is your
+booking, so you call it. Until you do, the public schedule says 6 to 9 and does
+not print a start time.
 
 ---
 
@@ -185,7 +206,7 @@ straight 6 o'clock start and we will move the fill window.
 | Mid September | Latest-safe date for PA confirmation, to be set with Steve |
 | 26 September | Final performer headcount to Black Moon |
 | Friday 2 October | Soundcheck night, outside and inside |
-| Saturday 3 October | 6am load-in, noon doors, close late |
+| Saturday 3 October | 6am load-in, 11:00 doors, close late |
 
 ---
 

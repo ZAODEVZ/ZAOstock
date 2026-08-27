@@ -4,11 +4,11 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'ZAOstock Program | October 3, 2026',
   description:
-    'Day-of schedule for ZAOstock. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.',
+    'Day-of schedule for ZAOstock. Outdoors on Franklin Street from eleven, then indoors at Black Moon from six.',
   openGraph: {
     title: 'ZAOstock Program',
     description:
-      'Outdoors from noon, indoors from six. October 3, 2026 in Ellsworth, Maine.',
+      'Outdoors from eleven, indoors from six. October 3, 2026 in Ellsworth, Maine.',
     url: 'https://zaostock.com/program',
   },
 };
@@ -22,7 +22,20 @@ export const metadata: Metadata = {
 //
 // NO ARTIST NAMES on this page. The lineup is not public until the reveal
 // (Zaal, 2026-08-23), so slots stay generic here even where an act is
-// confirmed internally. Do NOT hand-write names in.
+// confirmed internally. Do NOT hand-write names in. That covers the band
+// Black Moon is underwriting for the indoor block too - it is booked and it is
+// named in docs/plans/production-plan-2026-10-03.md, but it stays off this page
+// until the reveal like every other act.
+//
+// Doors moved noon -> 11:00 on 2026-08-26. On Steve Peer's 45-minute/15-minute
+// cadence, noon to four is exactly four slots and five acts are confirmed for
+// the day, so the day opens an hour earlier rather than dropping an act.
+//
+// The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
+// acts). Black Moon is underwriting a single 6-9 booking that replaces both.
+// The 18:00 start is OURS, not theirs - whether the band takes the stage at
+// 18:00 or 18:30 is unconfirmed with Steve as of 2026-08-26, so this page
+// commits only to the block, not to a downbeat.
 
 type Venue = 'OUT' | 'IN';
 
@@ -36,12 +49,12 @@ interface Block {
 
 const BLOCKS: Block[] = [
   {
-    start: '12:00',
+    start: '11:00',
     end: '16:00',
     venue: 'OUT',
     label: 'Live music',
     detail:
-      'Independent artists back to back on the parklet stage. Lineup announced once every set is locked.',
+      'Independent artists back to back on the parklet stage, 45 minutes each with a DJ covering every changeover. Lineup announced once every set is locked.',
   },
   {
     start: '16:00',
@@ -53,18 +66,18 @@ const BLOCKS: Block[] = [
   },
   {
     start: '18:00',
-    end: '20:00',
+    end: '21:00',
     venue: 'IN',
-    label: 'The party',
+    label: 'The after party',
     detail:
-      'Everything moves inside to Black Moon Public House, walkable, right next door. DJ set.',
+      'Everything moves inside to Black Moon Public House, walkable, right next door. A live band for the evening, underwritten by the bar.',
   },
   {
-    start: '20:00',
+    start: '21:00',
     end: 'late',
     venue: 'IN',
-    label: 'Local Maine acts',
-    detail: 'Live music to close the night out, indoors.',
+    label: 'DJ to close',
+    detail: 'Music until the room empties, indoors.',
   },
 ];
 
@@ -102,7 +115,7 @@ export default function ProgramPage() {
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Outside, Then In</h1>
           <p className="text-sm text-gray-400 max-w-lg mx-auto">
-            Eight hours in two halves. Live music on Franklin Street from noon, then the whole
+            A full day in two halves. Live music on Franklin Street from eleven, then the whole
             thing walks next door into Black Moon at six and keeps going.
           </p>
         </div>

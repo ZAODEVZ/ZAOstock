@@ -112,7 +112,7 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
     why: 'Not urgent this week, but each one needs a name against it before late September.',
     items: [
       { title: 'First Aid lead - currently doubled onto Zaal, which does not work for a six-hour show', owner: 'Zaal', when: 'no date', card: '71716c06' },
-      { title: 'Stage managers, indoor and outdoor - both unnamed', owner: 'UNASSIGNED', when: 'before 3 Oct' },
+      { title: 'Stage managers, parklet and Black Moon - both unnamed. Sequential, not simultaneous, so one person could cover both', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Sound cover for the WaveWarZ block, since Stilo is battling in it', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Virtual team, 5-10 people in shifts', owner: 'Zaal', when: '26 Aug', card: 'bb2b9326' },
       { title: 'Fire permit for the fire spinning', owner: 'Zaal', when: 'was due 21 Aug', card: 'c03f74b5', overdue: true },
@@ -121,19 +121,23 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
   },
 ];
 
+// One venue at a time, not two stages alternating - corrected 23 Aug. Doors
+// moved to 11:00 on 26 Aug so the 45/15 cadence gives five slots for the five
+// confirmed acts instead of four. Full reasoning and Steve's supply list live in
+// docs/plans/production-plan-2026-10-03.md.
 const DAY = [
-  { time: '12:00 - 16:00', what: 'Artists, two stages alternating', who: 'Fellenz, Lyons Den, Dcoop, plus more to confirm' },
-  { time: '16:00 - 18:00', what: 'WaveWarZ', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
-  { time: '18:00 - 20:00', what: 'The party, indoors at Black Moon', who: 'Stilo DJing' },
-  { time: '20:00 on', what: 'Local Maine acts', who: 'Brought by Steve' },
+  { time: '11:00 - 16:00', what: 'Artists, outdoors on the parklet. 45 min sets, 15 min changeovers, DJ in every gap', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising. Five acts, five slots' },
+  { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
+  { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. North Creek, underwritten by the bar', who: 'North Creek. 18:00 or 18:30 downbeat UNCONFIRMED with Steve' },
+  { time: '21:00 on', what: 'DJ to close, indoors', who: 'Stilo DJing, moved off the old 18:00-20:00 block' },
 ];
 
 const MONDAY = [
   'Sound: what Steve’s PA offer covers, and a named backup started in parallel',
   'The city: what form the insurance certificate takes, and whether the Art of Ellsworth exemption covers our permit window',
-  'The 12-4 window is roughly half empty - take up Steve’s standing offer to fill blanks with local acts',
+  'The daytime is FULL, not half empty - one venue at a time plus an 11:00 open gives five slots and we hold five acts. Steve’s offer to fill blanks is now a reserve, not a need',
   'Who covers sound during WaveWarZ, since Stilo is battling in it',
-  'Stage managers for both stages, and splitting First Aid off Zaal',
+  'Stage manager for the parklet and one for Black Moon after six, and splitting First Aid off Zaal',
   'Who asks Black Moon for the normal-Saturday baseline, and by when',
 ];
 
