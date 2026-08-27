@@ -170,7 +170,7 @@ const DAY = [
   { time: '12:00 doors, sets 12:05 - 15:45', what: 'Artists, outdoors on the parklet. Changeovers are the MC plus sponsor spots - NO DJ (Zaal 27 Aug)', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising confirmed. Steve\u2019s three acts PROPOSED until he confirms. Running order is Zaal\u2019s plan, not public. Per production ros-v3' },
   { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
   { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. IN BOOKING - no confirmed act', who: 'North Creek PROPOSED ONLY (Zaal 27 Aug), along with Crown Vics, DJ Aquavantes, The Somes Sound. Downbeat 18:00 or 18:30 also unconfirmed' },
-  { time: '21:00 on', what: 'DJ to close, indoors', who: 'Stilo DJing, moved off the old 18:00-20:00 block' },
+  { time: '21:00 on', what: 'DJ to close, indoors', who: 'Stilo DJing - CONFIRMED on our side, per the message from the DJ (gdoc snapshot 27 Aug). Moved off the old 18:00-20:00 block' },
 ];
 
 const MONDAY = [
