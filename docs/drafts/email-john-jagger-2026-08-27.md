@@ -42,9 +42,14 @@ against all the exposures, at the best price.
 - **What happens:** live music sets on a stage that is already standing from the
   City's summer concert series, plus live music battles in the late afternoon.
 - **Expected attendance: UNSET**
-- **Fire performance:** one act involves fire spinning. The fire permit is
-  pending with the City. I am flagging it up front because I assume it changes
-  the quote, and I would rather you price it correctly than discover it later.
+- **Fire performance:** one act involves fire spinning. The performer is
+  seeking the open-flame permit from the fire department directly. I understand
+  standard event liability policies exclude open-flame performance, and that the
+  performer normally carries his own fire-performer policy and issues a
+  certificate naming the event and the City as additional insureds. Tell me if
+  that is the right structure, or if you would rather the event policy carry it.
+  I am flagging it up front because I would rather you price it correctly than
+  discover it later.
 
 **Two specific things I need, and they are the reason I am writing rather than
 just asking for a number:**
@@ -113,3 +118,10 @@ performance.
 - `docs/plans/production-plan-2026-10-03.md` - site, hours, the 6pm move
 - `docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md` - the two questions the
   City conversation exists to answer
+- `~/Documents/ZAO OS V1/research/business/1045-zaostock-event-insurance-liability/README.md`
+  section 3.6 - Roddy's 17 Aug email (the City needs a copy; the City covers
+  the parklet structure only), and the performer-carries-own-COI structure for
+  fire. Fire line reworded 2026-08-27 (CITY lane): "pending with the City" had
+  no filing date behind it; "seeking from the fire department" is what the
+  record supports
+- `docs/permits/status-2026-08-27.md` - permit status, every UNSET, evidence

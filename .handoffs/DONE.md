@@ -277,3 +277,32 @@ full suite 31 passed, WaveWarZ figures re-pulled live 2026-08-27 15:47 UTC.
 block, AV cover during Dcoop's set, stage manager, First Aid lead, indoor
 changeover at 6 - then the remaining Zaal-only items, four at a time,
 recommended first. His typed words become `ZAOSTOCK-VERDICT` lines below.
+
+---
+
+# ZAOSTOCK-CITY - 2026-08-27
+
+Branch `bettercallzaal/lane-city-0827` (the orca worktree's name; the handoff
+said `ws/lane-city-0827` - same base `118f127` on `ws/production-plan-1003-0826`).
+**Not pushed.** Writes only inside the CITY write-set plus these lines.
+
+ZAOSTOCK-CITY 1/4 permit status page - `docs/permits/status-2026-08-27.md`. Four rows (parklet permit, 11:00 amplified start, fire permit, insurance certificate), owner, dates, evidence path per row, every unknown marked UNSET (26 markers). Primary source for the certificate condition is Roddy's email 2026-08-17 11:43 (doc 1045 section 3.6). The 25 Aug "paperwork is with the city" confirmation exists only in the stale gdoc snapshot; channel unknown.
+ZAOSTOCK-CITY 2/4 John Jagger email - `docs/drafts/email-john-jagger-2026-08-27.md`. Still blocked on expected attendance (UNSET). Additional-insured line was already there. Fire line reworked: "pending with the City" had no filing date behind it; now "seeking from the fire department", and asks the broker whether performer-carries-own-COI is the right structure (doc 1045 3.6). Doc 1045 and the status page added as sources.
+ZAOSTOCK-CITY 3/4 Roddy draft - `docs/drafts/roddy-2026-08-27.md`. Asks the 11:00 amplified-sound question (and the cut-off), the three certificate specifics the broker needs (coverage amount, additional insured wording, form and deadline), the fire-performer COI, the Ch.14 umbrella and surety bond, and the liability release. Supersedes Draft 2 in the production plan. No figures Zaal has not typed. Roddy's address deliberately not in the repo.
+ZAOSTOCK-CITY 4/4 fiscal sponsor grep - `docs/permits/fiscal-sponsor-grep-2026-08-27.md`. 73 hits in 22 files, every one classified. Site code: all correct negations, PR #49 held. Four live WRONG lines, all outside this write-set - see requests below.
+
+## Requests outside the CITY write-set (another lane owns these)
+
+1. `docs/music/artist-deal-memo-template.md:87` - says ZAOstock carries event liability insurance via ENTERACT "and Fractured Atlas COI for the venue". No Fractured Atlas COI exists, and no policy is bound yet. This goes to artists. Replace with: insurance is being arranged; artist COI requests handled on request once bound.
+2. `agents/TEMPLATE.md:16` - the example self-summary still reads "handles ZAOstock fiscal-sponsor mechanics with Fractured Atlas". Every new agent file is built from it. Swap the example.
+3. `agents/FailOften.md:23` - live "Current focus" bullet "Fractured Atlas fiscal sponsorship for ZAOstock + ZAO Festivals", unstruck, nine lines below the correction note. Strike it. Lines 53 and 66 (escalation rules about Fractured Atlas wording) are stale but harmless; trim to "sponsor wording" when touching the file.
+4. `agents/Zaal.md:71` - "Strategic counsel: FailOften (fiscal sponsor mechanics)" contradicts line 83 of the same file. Drop the parenthetical.
+5. `src/app/team/plan/page.tsx:60` - card `6386c0c7` "Fiscal sponsor replacement" - the answer is NONE; the card's premise is stale. Close it or retitle to the commercial-path decision.
+6. Low priority: one dated line at the top of `docs/meetings/failoften-agenda-may2026.md` saying its fiscal-sponsor premise died 2026-08-23.
+
+## Zaal-only, from this lane
+
+- **Expected attendance** - one number, UNSET. Unblocks the broker email, deck slide 4 and the City conversation.
+- **Send the Roddy draft** (or Draft 2 from the production plan, if already sent, then only section 2 of the new one). 11:00 is live on public surfaces and not cleared.
+- **Was the fire permit actually filed?** The record has Dcoop's route from 17 Aug and no filing date. If Dcoop has emailed the fire department, the date goes in the status page row 3.
+- **Did the 25 Aug Roddy confirmation come by email?** If so, the thread is where the certificate and the 11:00 question go.
