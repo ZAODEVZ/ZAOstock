@@ -322,3 +322,15 @@ ZAOSTOCK-STREAM R3 3/3 Fallback matrix: `docs/av/fallback-matrix-2026-10-03.md`.
 
 - **CITY lane, `docs/drafts/roddy-2026-08-27.md`:** add the power paragraph from `docs/av/power-internet-requirements.md` section 1, "The exact question for the City", to the Roddy thread. It is written as a blockquote to paste. One paragraph, asks for numbers and for whether a generator is allowed.
 - **PRODUCTION lane:** the Friday run sheet proposes a check order and needs a start time and act order from Dcoop; the production plan's Friday row can point at `docs/av/soundcheck-night-2026-10-02.md`.
+
+## ZAOSTOCK-STREAM Round 4 - 2026-08-27, 19:0x - converged, stopped
+
+ZAOSTOCK-STREAM R4 done. (1) `docs/plans/zaal-only-STREAM.md`: twelve lines, ranked by clock, one typable each, file cited per line; four are due now (did the 26 Aug meeting happen, two test slots, Aziz = Motomoto or not, topology A or B), one at standup (seven names in one line), the rest before Fri 2 Oct. (2) `docs/drafts/msg-aziz-2026-08-27.md`: one message, specs out, ingest URL and key, plugin confirm, v2 export and the Camera path, topology question, test-slot proposal with the slots UNSET, Motomoto relay as the last paragraph with a cut-if-two note. DO NOT SEND. Supersedes `docs/drafts/aziz-2026-08-27.md`. No new documents this round.
+
+## Request for CITY, verbatim, for `docs/drafts/roddy-2026-08-27.md`
+
+Paste on the same thread as the 11:00 question. Source `docs/av/power-internet-requirements.md` section 1.
+
+> On power for the parklet on 3 October: what electrical service is available at the stage and along the parklet, how many circuits, what amperage each, and where the outlets or panel are? The summer concert series ran on something and we would like to run on the same. If there is a City electrician or a contact who knows the panel, a name is enough. And if the service is not sufficient for a full PA, monitors, backline and lighting through to 18:00, is a generator allowed on the parklet, and is there a noise or placement condition on one?
+
+The internet half is not a City question; it goes to Black Moon and Heart of Ellsworth and is on Zaal's list, lines 6 and 7.
