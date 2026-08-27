@@ -120,7 +120,7 @@ Everything on your list, with an owner and where it stands.
 |---|------|-------|--------|------|
 | 1 | Bottled spring water, both stages | Steve | Confirmed | With one stage at a time, this is the parklet until 6 and the bar after. Same water, half the simultaneous logistics |
 | 2 | Electricity, both stages | Steve | Confirmed | Parklet power is the one to pin down. Indoor power is your house |
-| 3 | $20 gift certificates for performers | Steve | Confirmed, count open | We owe you a headcount. Working number is about 20 including acts, battlers, DJs and MC. Final count by 26 September |
+| 3 | $20 gift certificates for performers | Steve | Confirmed, count open | The $20 is your figure. The headcount is **UNSET** - we owe it to you, and we will not guess at it, because the roster it comes from is not readable right now. Date we get it to you by: **UNSET** |
 | 4 | Dressing room and bathroom, Black Moon basement | Steve | Confirmed | Performers only, not a hangout. Understood and we will enforce it. See wristbands below |
 | 5 | One porta potty, city parking lot | Steve | Confirmed | See open item 2. One is not enough for a street event and you already said so |
 | 6 | North Creek, after party 6-9pm indoor | Steve | Confirmed, underwritten | Now the anchor of the indoor block. See open item 4 |
@@ -203,8 +203,8 @@ not print a start time.
 |------|------|
 | 1 September | Lineup reveal |
 | 3 September | Musician submission cutoff. Anything not in gets swapped |
-| Mid September | Latest-safe date for PA confirmation, to be set with Steve |
-| 26 September | Final performer headcount to Black Moon |
+| **UNSET** | Latest-safe date for PA confirmation. To be set with Steve, and it is a real gate: after it we start the backup whether or not the PA is confirmed |
+| **UNSET** | Final performer headcount to Black Moon |
 | Friday 2 October | Soundcheck night, outside and inside |
 | Saturday 3 October | 6am load-in, 11:00 doors, close late |
 

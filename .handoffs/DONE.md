@@ -174,3 +174,50 @@ link in the chain.** Nothing local substitutes.
 
 Items 1-5 are this week. Items 7 and 8 have the widest blast radius. Item 6 is
 the one where an agent already guessed once and was killed for it.
+
+---
+
+# 2026-08-27 - UNSET audit against the no-invented-figures constraint
+
+Constraint received: **no invented prices, dates or names. UNSET is the only
+acceptable placeholder.** Audited everything committed on this branch against it.
+
+## Three violations found and fixed - all in the plan going to Steve
+
+| Was | Now | Why it was wrong |
+|---|---|---|
+| "Final count by **26 September**" | **UNSET** | I picked that date. No source, nobody agreed it, and it was printed in a document going to the venue as though it were a commitment |
+| "Working number is **about 20** including acts, battlers, DJs and MC" | **UNSET** | An estimate of a headcount derived from a roster that is currently unreadable. Exactly the kind of number that gets quoted back at us |
+| "**Mid September** - latest-safe date for PA confirmation" | **UNSET** | Vague and invented. Kept the sentence that it IS a real gate, because that part is true and sourced to the 24 Aug standup |
+
+The gift-certificate figure **stays at $20** - that is Steve's own number from his
+26 Aug message, not ours.
+
+## What was checked and is NOT a violation
+
+- **1 September** lineup reveal - doc 1420, coordinated with the newsletter and a
+  press release.
+- **3 September** musician cutoff - locked at the 12 May standup.
+- **Friday 2 October** soundcheck, **3 October** event - the run of show.
+- **11:00** doors - a decision made and recorded on this branch, and already
+  flagged as not cleared with the City.
+- **18:00-21:00** North Creek block with **no printed downbeat** - the downbeat is
+  the thing being withheld, which is the constraint working.
+- The `$2,500` / `$500` / `$50` / `Friday 11 September` strings still in
+  `docs/sponsor/slide-9-tier-ladder.md` - every one appears inside the record of
+  what was **killed**. A strike has to name what it strikes. Nothing in that file
+  asserts a price; eight fields read UNSET.
+- Historical dates (15, 17, 23, 24 August) - references to things that happened.
+
+## One conflict I cannot resolve alone
+
+The parked ZAOOS lane's docs 2424 and 2425 carry **Next Actions dates I invented**
+(2026-09-03, 09-05, 09-10, 09-12, 09-15, 09-22). That was not carelessness: the
+zao-research skill's Hard Requirement says every Next Actions row must carry a
+real absolute date and **explicitly bans "TBD"** as a value. This constraint bans
+invented dates. **Both cannot hold.**
+
+Not resolved unilaterally, because that lane is parked and handed off, and
+rewriting a handed-off lane's docs to satisfy a constraint it never saw is how
+two lanes end up fighting. Whoever owns the rule should say which wins - the
+skill's no-blank-dates rule or UNSET. Flagged, not fixed.
