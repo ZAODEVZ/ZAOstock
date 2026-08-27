@@ -277,3 +277,32 @@ full suite 31 passed, WaveWarZ figures re-pulled live 2026-08-27 15:47 UTC.
 block, AV cover during Dcoop's set, stage manager, First Aid lead, indoor
 changeover at 6 - then the remaining Zaal-only items, four at a time,
 recommended first. His typed words become `ZAOSTOCK-VERDICT` lines below.
+
+---
+
+# ZAOSTOCK-MARKETING - 2026-08-27
+
+Branch `bettercallzaal/lane-marketing-0827` (the handoff named it
+`ws/lane-marketing-0827`; the worktree was already on this name at the same
+HEAD as `ws/production-plan-1003-0826`, so it was used). **Not pushed.**
+
+ZAOSTOCK-MARKETING 1/4 partner logo tracker - `docs/marketing/partner-logos.md` - nine rows (six in, three due Fri 29 Aug, COC Concertz UNDECIDED), three ask drafts, DO NOT SEND. Zero logo files exist in `public/partners/`; the six are in Drive only.
+ZAOSTOCK-MARKETING 2/4 poster checklist - `docs/marketing/poster-checklist-2026-09-01.md` - five confirmed + WaveWarZ block, four proposed acts marked DO NOT PRINT, opening hour UNSET for print (not City-cleared), print day/size/quantity/printer/cost UNSET.
+ZAOSTOCK-MARKETING 3/4 press status - `docs/marketing/press-2026-08-27.md` - Local Network tab has ONE press outlet (The Ellsworth American, Gabe Goode, never contacted). The gdoc's "press kit at zaostock.com/press" points at a route that does not exist in `src/app/`.
+ZAOSTOCK-MARKETING 4/4 socials calendar - `docs/drafts/socials-2026-08-28-week.md` - seven days, ZM voice, no times of day, every post sourced. Two hard holds: 1 Sep reveal needs Zaal to confirm five names + spellings on the day (handles UNSET); 3 Sep cutoff post needs forms live, fallback provided.
+ZAOSTOCK-MARKETING extra - `docs/drafts/press-release-2026-09-01.md` - reveal press release skeleton, two quote lines UNSET, hold lines on names/forms/hour. In write-set (`docs/drafts/press-*.md`), not in today's four.
+
+## Requests outside this lane's write-set (SITE lane, `src/app/page.tsx`)
+
+- ZAOSTOCK-MARKETING request -> SITE: add Bomb Squad to the PARTNERS array (resolved a partner 24 Aug per gdoc; owner Dcoop; role "crew, content and merch"). COC Concertz only if Zaal decides it is a partner.
+- ZAOSTOCK-MARKETING request -> SITE: Black Moon role text "Indoor second stage + official after-party" is two-stage language dropped 23 Aug. Suggest "Indoor evening + official after-party".
+- ZAOSTOCK-MARKETING request -> SITE: set `logoSrc` per partner once files land in `public/partners/` (MARKETING drops the files; needs Drive access this worktree does not have).
+- ZAOSTOCK-MARKETING request -> SITE: decide whether `/press` should exist. The gdoc tells The Ellsworth American to look there. Contents are listed in `docs/marketing/press-2026-08-27.md`.
+
+## Zaal-only, from this lane
+
+1. Is COC Concertz a ZAOstock partner - yes or no. Gates the poster strip and the site list.
+2. Who at the Town of Ellsworth gets the logo ask. Roddy is the permits contact and belongs to the CITY lane.
+3. Does 11:00 print on the poster before the City answers. Recommend no.
+4. One spelling each: Lyons Den / Lionsden, Dcoop / DCoop, Fellenz / Tom Fellenz.
+5. On 1 Sep: are the five names still the five. The roster is unreadable and the count has moved three times in four days.
