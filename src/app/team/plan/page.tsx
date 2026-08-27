@@ -114,7 +114,7 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
       { title: 'First Aid lead - currently doubled onto Zaal, which does not work for a six-hour show', owner: 'Zaal', when: 'no date', card: '71716c06' },
       { title: 'Stage managers, parklet and Black Moon - both unnamed. Sequential, not simultaneous, so one person could cover both', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Sound cover for the WaveWarZ block, since Stilo is battling in it', owner: 'UNASSIGNED', when: 'before 3 Oct' },
-      { title: 'Virtual team, 5-10 people in shifts', owner: 'Zaal', when: '26 Aug', card: 'bb2b9326' },
+      { title: 'Livestream and virtual - SPLIT, no longer one lead. Aziz owns the rig and Restream, Ohnahji owns scheduling and guests. Motomoto in the crew, does not lead a half', owner: 'Aziz + Ohnahji', when: 'closed 27 Aug', card: 'bb2b9326', note: 'Supersedes the 24 Aug call that virtual has no lead deliberately. Which half goes to which is read from the vault, not from Zaal - one word flips it. See docs/plans/people-map-2026-10-03.md.' },
       { title: 'Fire permit for the fire spinning', owner: 'Zaal', when: 'was due 21 Aug', card: 'c03f74b5', overdue: true },
       { title: 'LiDAR venue scan for the Decentraland build', owner: 'Zaal', when: 'no date', card: 'ca119cdf' },
     ],
