@@ -20,6 +20,8 @@ all seven.
 | Fact | File |
 |---|---|
 | Saturday 3 October, Franklin Street Parklet, Ellsworth, free | `src/content/festival.ts` |
+| Music starts at noon | Zaal, typed 27 Aug 19:3x, relayed by the orchestrator |
+| WaveWarZ battlers may be named: Stilo, Jango, Lui, Quan; Hurricane MC | Zaal, typed 27 Aug 19:3x; roster at `src/app/team/plan/page.tsx` DAY[1] |
 | Outdoors until six, then Black Moon next door, DJ to close | `src/app/program/page.tsx` BLOCKS |
 | Werb and Lyons Den confirmed, public | `src/app/page.tsx:397,404` |
 | Five confirmed acts total (names gated until 1 Sep) | `src/app/team/plan/page.tsx` DAY[0] |
@@ -36,9 +38,9 @@ all seven.
 
 ## Facts this week must NOT use
 
-- **An opening hour.** 11 AM is on the site as intent and is not cleared with
-  the City (`src/content/festival.ts` comment). Say "until six", never "from
-  eleven".
+- **Any hour other than noon and six.** Music starts at noon (Zaal, typed 27 Aug 19:3x).
+  `src/content/festival.ts` still reads 11 AM until SITE moves it; never quote
+  the site's hour.
 - **Any of the four proposed acts** (The Crown Vics, DJ Aquavantes, The Somes
   Sound, North Creek). Zaal 2026-08-27.
 - **Attendance, budget, sponsor tiers, prices.** All UNSET.
@@ -80,8 +82,8 @@ Hold: if the roster count changes before Friday, "three more" changes with it.
 
 Angle: one venue at a time. Outdoors, then next door. Standard.
 
-**Firefly** - 218 chars
-> ZM. ZAOstock runs one stage at a time. Outdoors on the Franklin Street Parklet until six, then the whole thing walks next door into Black Moon and keeps going. One crowd, one street, one bar. Free. zaostock.com/program
+**Firefly** - 228 chars
+> ZM. ZAOstock runs one stage at a time. Outdoors on the Franklin Street Parklet from noon until six, then the whole thing walks next door into Black Moon and keeps going. One crowd, one street, one bar. Free. zaostock.com/program
 
 **Farcaster /zao GC**
 > ZM. the ZAOstock day, in one line: parklet until six, Black Moon after six, DJ to close. we dropped the second simultaneous stage on purpose - a street with 200 people on it looks full, two rooms with 100 each look empty. zaostock.com/program
@@ -103,11 +105,11 @@ production plan section 4 (tent); `src/app/page.tsx:486` (Art of Ellsworth).
 
 Angle: the battle block, with the measured numbers. Standard.
 
-**Firefly** - 227 chars
-> ZM. WaveWarZ has run 1,452 battles online. On October 3 it runs in the street. Artists go head to head on the ZAOstock stage and the audience decides, in person and online. Franklin Street, Ellsworth. Free. zaostock.com/program
+**Firefly** - 240 chars
+> ZM. WaveWarZ has run 1,452 battles online. On October 3 it runs in the street: Stilo, Jango, Lui and Quan battling, Hurricane on the mic, and the audience decides, in person and online. Franklin Street, Ellsworth. Free. zaostock.com/program
 
 **X GC**
-> ZM. 1,452 battles and 913.9 SOL through WaveWarZ so far, measured thursday. ZAOstock puts the format on the parklet stage with a street crowd voting. the battlers are UNSET for public until zaal confirms them - do not name anyone yet.
+> ZM. 1,452 battles and 913.9 SOL through WaveWarZ so far, measured thursday. ZAOstock puts the format on the parklet stage with a street crowd voting. stilo, jango, lui and quan are battling, hurricane is on the mic. tag them if you know them.
 
 **Farcaster /zao GC**
 > ZM. WaveWarZ numbers as of thursday: 1,452 battles, 913.9 SOL lifetime. at ZAOstock the battle block runs on the parklet stage with the crowd voting from the sidewalk and the stream voting online. same format, on a street. zaostock.com/program
@@ -120,10 +122,8 @@ Sources: `docs/sponsor/deck-2026-10-03.md:154-155` (figures, measured
 BLOCKS[1]; `docs/plans/production-plan-2026-10-03.md` section 4 (WaveWarZ
 confirmed, ZAO supplies it).
 
-Hold: the battler names (Stilo, Jango, Lui, Quan, Hurricane MC) are on the
-gated team page with no PROPOSED tag but the roster is unreadable. **UNSET for
-public until Zaal types them.** The X GC line says so on purpose so nobody in
-the GC posts them.
+Battlers cleared for public (Zaal, typed 27 Aug 19:3x): Stilo, Jango, Lui, Quan
+battling; Hurricane MCing. Roster line: `src/app/team/plan/page.tsx` DAY[1].
 
 ---
 
@@ -160,8 +160,8 @@ Image: the poster's digital version if Candy has it; otherwise
 
 Announcement size. All seven platforms.
 
-**Firefly** - 233 chars
-> ZM. The ZAOstock lineup. Werb. Lyons Den. Fellenz. Dcoop. Acadia Rising. Plus WaveWarZ live in the street. Saturday October 3, Franklin Street Parklet, Ellsworth, Maine. Outdoors until six, then Black Moon. Free. zaostock.com/program
+**Firefly** - 243 chars
+> ZM. The ZAOstock lineup. Werb. Lyons Den. Fellenz. Dcoop. Acadia Rising. Plus WaveWarZ live in the street. Saturday October 3, Franklin Street Parklet, Ellsworth, Maine. Outdoors from noon until six, then Black Moon. Free. zaostock.com/program
 
 Tags: UNSET x5. Add handles once collected.
 
@@ -197,12 +197,9 @@ plan section 4 (tent); gdoc Start Here (ZAO Festivals, events arm of The ZAO);
 `src/app/musicians/page.tsx:10` ("music nobody is paying you to make" - the
 X GC line paraphrases the site's own copy).
 
-Spellings: "Dcoop" per the team page; the site also has "DCoop"
-(`src/app/page.tsx:681`). "Fellenz" vs "Tom Fellenz": UNSET, the act decides.
-"Lyons Den" per the site; the gdoc also writes "Lionsden". Zaal picks before
-posting.
+Spellings confirmed (Zaal, typed 27 Aug 19:3x): Lyons Den, Dcoop, Fellenz.
 
-Not in any of these posts, deliberately: an opening hour, the four proposed
+Not in any of these posts, deliberately: the four proposed
 acts, the evening act, attendance, sponsors, Heart of Ellsworth, a /press link.
 
 ---
@@ -280,9 +277,9 @@ Source: Tuesday's post; nothing new claimed.
 |---|---|---|---|
 | Fri 28 Aug | Two public names, reveal date | Firefly, X GC, FC GC, TG | roster count |
 | Sat 29 Aug | One venue at a time | Firefly, FC GC, Discord, FB | none |
-| Sun 30 Aug | WaveWarZ, measured numbers | Firefly, X GC, FC GC, TG | battler names UNSET |
+| Sun 30 Aug | WaveWarZ, measured numbers, battlers named | Firefly, X GC, FC GC, TG | none - battlers cleared 27 Aug |
 | Mon 31 Aug | Eve of reveal | Firefly, X GC, FC GC | none |
-| Tue 1 Sep | **Reveal** | all seven | **Zaal confirms five names + spellings on the day; handles UNSET; image UNSET** |
+| Tue 1 Sep | **Reveal** | all seven | **Zaal confirms five names on the day (spellings settled); handles UNSET; image UNSET** |
 | Wed 2 Sep | Seven partners, no cash | Firefly, FC GC, LinkedIn | Bomb Squad / COC Concertz |
 | Thu 3 Sep | Submission cutoff | Firefly, FC GC, TG | **forms must be live; fallback provided** |
 

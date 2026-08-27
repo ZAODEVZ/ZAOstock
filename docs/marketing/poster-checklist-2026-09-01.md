@@ -19,18 +19,18 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | Item | Status | Source | Note |
 |---|---|---|---|
 | Werb | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404` | Public since before the reveal. Spelling as on site |
-| Lyons Den | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404` | Same. "Lyons Den" on the site; the gdoc also writes "Lions / Lionsden" - **spelling to confirm with the act** |
-| Fellenz | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Tom Fellenz. Poster form of the name (Tom Fellenz vs Fellenz): UNSET, ask the act |
-| Dcoop | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Site also writes "DCoop" (`src/app/page.tsx:681`). **One spelling, confirm with Dcoop** |
+| Lyons Den | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404` | Spelling confirmed: Lyons Den (Zaal 27 Aug) |
+| Fellenz | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Fellenz (Zaal 27 Aug) |
+| Dcoop | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Dcoop (Zaal 27 Aug) |
 | Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | |
-| WaveWarZ block | **HAVE** - confirmed block, 4 to 6 outdoors | `docs/plans/production-plan-2026-10-03.md` section 4; `src/app/program/page.tsx` BLOCKS[1] | Print as a block. Battler names (Stilo, Jango, Lui, Quan; Hurricane MCing) are on the gated team page with no PROPOSED tag, but the roster database is unreadable - **confirm each battler with Zaal before naming them on print** |
+| WaveWarZ block | **HAVE** - confirmed block, 4 to 6 outdoors | `docs/plans/production-plan-2026-10-03.md` section 4; `src/app/program/page.tsx` BLOCKS[1] | Print as a block with the names. Battlers cleared for public (Zaal, typed 27 Aug 19:3x): Stilo, Jango, Lui, Quan; Hurricane MCing |
 | The Crown Vics | **DO NOT PRINT** | Zaal 2026-08-27, `docs/plans/surface-audit-2026-08-27.md` | Proposed only |
 | DJ Aquavantes | **DO NOT PRINT** | same | Proposed only. Also the changeover DJ, so "DJs between every act" is a claim about a role, not a name |
 | The Somes Sound | **DO NOT PRINT** | same | Proposed only |
 | North Creek | **DO NOT PRINT** | same | Proposed only. The evening block prints as "after party at Black Moon", no act |
 | Set order / set times | **DO NOT PRINT** | production plan section 2 | No downbeat is printed anywhere until Steve answers; set order is not fixed. Poster carries names, not a schedule |
 | Roster still five on print day | **BLOCKED - Zaal** | gdoc Links and Assets "Data we cannot see" | "The artist count has already moved three times in four days." Five is the count on the gated page as of 27 Aug. Re-confirm the morning the file goes to print |
-| Name spellings and how each act wants to be credited | **UNSET** | gdoc "What we are missing" | "One usable photo per act, plus how they want their name spelled." Not collected |
+| Name spellings | **HAVE** - Lyons Den, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Werb and Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
 
 ## 2. The fixed facts
 
@@ -42,7 +42,7 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | Admission | **HAVE** | Free to attend | `src/content/festival.ts` |
 | Series line | **HAVE** | Part of the 9th Annual Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486,495` |
 | Rain or shine | **HAVE** | Tent coverage, Wallace Events | production plan section 4 |
-| Start time | **UNSET for print** | 11:00 is on the site as our intent and is **not cleared with the City** | `src/content/festival.ts` comment; production plan section 8 | If the parklet permit caps amplified sound start, this moves. Print "until 6, then Black Moon" without an opening hour, or print 11 only after the City answers. Zaal's call. CITY lane holds the Roddy draft |
+| Start time | **HAVE** | **Music starts at noon. Print noon.** | Zaal, typed 27 Aug 19:3x | The 11:00 question is gone. `src/content/festival.ts` still reads 11 AM - 6 PM; SITE and PRODUCTION lanes move it back (request in DONE.md). Knock-on for PRODUCTION: noon on 45/15 is four slots for five confirmed acts |
 | End of outdoor block | **HAVE** | 6 PM | `src/content/festival.ts` |
 | URL | **HAVE** | zaostock.com | site |
 | RSVP URL | **HAVE** | ticket.zaostock.com | `src/content/festival.ts` rsvpUrl | Whether to print it, or a QR, is UNSET |
@@ -88,8 +88,8 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 
 1. Fri 29 Aug - the three logos land in Drive (or do not, and the strip prints
    with six and a decision on COC Concertz).
-2. Before the file locks - Zaal re-confirms the five names, the spellings, and
-   whether 11:00 prints.
+2. Before the file locks - Zaal re-confirms the five names are still five.
+   Spellings and the noon start are settled (27 Aug 19:3x).
 3. Sat 30 Aug - Candy's brand kit and print deliverables (card 801d6743).
 4. Tue 1 Sep - reveal. The poster's digital version is the reveal image if it
    is ready; if not, the reveal uses the badge and text.

@@ -1,13 +1,13 @@
 # Message - Zaal to Gabe Goode, Production Manager, The Ellsworth American
 
-**DO NOT SEND.** Paste-ready. Consolidated from
+**DO NOT SEND tonight** - Zaal sends tomorrow, 28 Aug, after the website is updated (his words, 27 Aug 19:3x). Paste-ready. Consolidated from
 `docs/drafts/press-ellsworth-american-2026-08-27.md`, where every claim is
 sourced and the holds are listed. Drafted 2026-08-27. Contact details are in
 the CRM, not here.
 
 Holds before sending: no /press page exists yet (do not link it); no photo
 beyond the badge; no lineup names beyond Werb and Lyons Den until 1 Sep; no
-attendance figure; no opening hour.
+attendance figure. Start time is noon (Zaal, typed 27 Aug 19:3x).
 
 ---
 
@@ -21,7 +21,7 @@ countries. Our festivals have run in New York and Miami. The next one is on
 Franklin Street in Ellsworth on Saturday 3 October, because I live here now
 and this is where I wanted to bring it.
 
-ZAOstock is free, outdoors on the parklet until six, and then the whole street
+ZAOstock is free, outdoors on the parklet from noon until six, and then the whole street
 walks next door into Black Moon for the evening. It sits inside the 9th Annual
 Art of Ellsworth during Maine Craft Weekend. Independent artists through the
 day, then two hours of WaveWarZ, a live music-battle format where two artists

@@ -16,11 +16,9 @@ Ellsworth American or anyone else without Zaal.
 1. **The five names.** Confirmed on the gated team page as of 27 Aug. The
    roster database is unreadable and the count has moved three times in four
    days. Zaal re-confirms the morning of 1 Sep.
-2. **Spellings.** Lyons Den / Lionsden, Dcoop / DCoop, Fellenz / Tom Fellenz all
-   appear on disk. One spelling each, from the act.
-3. **The opening hour.** 11 AM is our intent and is not cleared with the City.
-   The draft below says "until six" and no opening hour. If the City clears it,
-   add it.
+2. **Spellings settled** (Zaal, typed 27 Aug 19:3x): Lyons Den, Dcoop, Fellenz.
+3. **Music starts at noon** (Zaal, typed 27 Aug 19:3x). The draft says noon. The site's
+   `festival.ts` still reads 11 AM until SITE moves it back.
 4. **Quote lines** are UNSET. Two are marked. Zaal writes his own; a Black Moon
    quote needs Steve Peer's words, not ours.
 5. **Attendance, budget, sponsor names:** none appear. Do not add.
@@ -42,14 +40,14 @@ FOR RELEASE 1 SEPTEMBER 2026
 ELLSWORTH, MAINE - ZAOstock, a free one-day music festival on the Franklin
 Street Parklet, has announced its lineup for Saturday 3 October 2026.
 
-Five independent artists play the outdoor stage through the day, with a
-DJ covering every changeover: **[HOLD - Werb, Lyons Den, Fellenz, Dcoop, Acadia
-Rising - confirm spellings and that all five hold on 1 Sep]**. Werb and Lyons
+Five independent artists play the outdoor stage from noon, with a DJ
+covering every changeover: **[HOLD - Werb, Lyons Den, Fellenz, Dcoop, Acadia
+Rising - confirm all five hold on 1 Sep]**. Werb and Lyons
 Den were announced earlier this summer.
 
 From four to six the street turns into WaveWarZ, a live music-battle format
 where artists go head to head and the audience decides, in the street and
-online.
+online. Stilo, Jango, Lui and Quan battle, with Hurricane on the mic.
 
 At six, everything moves next door into Black Moon Public House for the
 evening, with live music indoors and a DJ closing the night.
@@ -84,6 +82,8 @@ Contact: Zaal Panthaki, info@thezao.com
 | Claim | Source |
 |---|---|
 | Free, Saturday 3 October 2026, Franklin Street Parklet, Ellsworth | `src/content/festival.ts` |
+| Music starts at noon | Zaal, typed 27 Aug 19:3x |
+| Battlers Stilo, Jango, Lui, Quan; Hurricane MC | Zaal, typed 27 Aug 19:3x; `src/app/team/plan/page.tsx` DAY[1] |
 | Five confirmed acts, names | `src/app/team/plan/page.tsx` DAY[0]; Werb and Lyons Den public at `src/app/page.tsx:397` |
 | DJ covering every changeover | `src/app/program/page.tsx` BLOCKS[0] (a role, not a named DJ) |
 | WaveWarZ 4-6, audience decides | `src/app/program/page.tsx` BLOCKS[1]; `docs/plans/production-plan-2026-10-03.md` section 4 |

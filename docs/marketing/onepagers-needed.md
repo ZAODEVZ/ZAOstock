@@ -28,7 +28,7 @@ No sponsor amounts unless Zaal states them; no fabricated attendance.
 | Slug | Where | Audience | State | Note |
 |---|---|---|---|---|
 | `overview` | `src/app/onepagers/overview/page.tsx` - **hard-coded**, not from the DB | Anyone, public | Live at zaostock.com/onepagers/overview | Carries stale facts, listed below. SITE-lane fix |
-| `roddy-parks-rec` | Supabase, per the skill ("the seed pager") | Roddy, Parks and Rec, City of Ellsworth | **UNVERIFIED** - the DB is 503 and the skill file is older than several corrections | If it exists, it predates the single-venue correction (23 Aug) and the 11:00 open |
+| `roddy-parks-rec` | Supabase, per the skill ("the seed pager") | Roddy, Parks and Rec, City of Ellsworth | **UNVERIFIED** - the DB is 503 and the skill file is older than several corrections | If it exists, it predates the single-venue correction (23 Aug) |
 | anything else in the DB | Supabase | | **UNVERIFIED** | `zaostock.com/onepagers` as a guest shows "No published one-pagers yet". `listOnePagers().catch(() => [])` swallows the 503, so that message means either "none public" or "database down" - indistinguishable from outside |
 
 ### The overview page is out of date
@@ -37,7 +37,7 @@ No sponsor amounts unless Zaal states them; no fabricated attendance.
 
 | Line | Says | True | Owner |
 |---|---|---|---|
-| 154 | `12pm — late` | Outdoor window on the site is 11 AM - 6 PM (our intent, not City-cleared); evening at Black Moon | SITE |
+| 154 | `12pm — late` | Music starts at noon (Zaal, typed 27 Aug 19:3x), so the hour is right again; `src/content/festival.ts` reads 11 AM and must move back to noon | SITE |
 | 67 | Black Moon "Indoor second stage + official after-party" | One venue at a time since 23 Aug | SITE |
 | 76-116 | Three sponsor tiers at $500+ / $1,000+ / $5,000+ | Deck slide 9: **every tier price is UNSET**, five tier names, not three (`docs/sponsor/deck-2026-10-03.md`). The same three figures are in `src/app/llms.txt/route.ts` | SITE, after Zaal says whether the old three-tier ladder was ever his |
 | 96 | "Newsletter credit (400+ editions)" | Deck says 500+ subscribers, marked VERIFY; edition count unsourced | SITE |
@@ -100,7 +100,7 @@ can see.
 |---|---|
 | Slug | `city-ellsworth` |
 | Audience | Roddy, Director of Parks, Recreation and Facilities, City of Ellsworth. Explicitly not Cara Romano (gdoc Local Network) |
-| Purpose | Not the permit - that is filed and with the City (gdoc, Roddy confirmed 25 Aug). The open questions: does the parklet permit cap an 11:00 amplified start; vendor rules (allowed, fee, permit, cap); parklet capacity; power circuits; load-in; noise cut-off; insurance certificate form and deadline; Art of Ellsworth umbrella vs the Chapter 14 45-day notice (production plan section 8, gdoc Local Network) |
+| Purpose | Not the permit - that is filed and with the City (gdoc, Roddy confirmed 25 Aug). The open questions (the 11:00 one is gone - music starts at noon, Zaal 27 Aug): vendor rules (allowed, fee, permit, cap); parklet capacity; power circuits; load-in; noise cut-off; insurance certificate form and deadline; Art of Ellsworth umbrella vs the Chapter 14 45-day notice (production plan section 8, gdoc Local Network) |
 | State | A draft message to Roddy is a **CITY-lane** deliverable (`docs/drafts/roddy-2026-08-27.md`, their write-set). A one-pager for him would duplicate it. Recommend: no city one-pager until the CITY lane's draft is sent and answered |
 | Blocked on | CITY lane |
 

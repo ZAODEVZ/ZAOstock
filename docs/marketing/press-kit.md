@@ -18,8 +18,8 @@ Written 2026-08-27 (Thursday). Lane: MARKETING.
   would rather import them than repeat them, the strings match.
 - Two sections have a hold and must not render before the date on them: the
   lineup (1 September) and WaveWarZ figures (re-pull before publishing).
-- No opening hour appears in this file on purpose. 11 AM is on the site as our
-  intent and is not City-cleared. Do not add it here.
+- Music starts at noon (Zaal, typed 27 Aug 19:3x). `src/content/festival.ts` still
+  reads 11 AM - 6 PM; SITE moves it back to noon. This file says noon.
 - Contact address is `info@thezao.com`. The overview one-pager uses
   `zaal@thezao.com` and llms.txt uses a Gmail address; MARKETING has flagged
   the mismatch and Zaal picks one. Until then, this file uses the address the
@@ -36,8 +36,8 @@ Free to attend.**
 ## In one paragraph
 
 ZAOstock is a free, one-day, artist-built music festival on Franklin Street in
-downtown Ellsworth, Maine. Independent artists play the outdoor parklet stage
-through the day with a DJ covering every changeover, then two hours of
+downtown Ellsworth, Maine. From noon, independent artists play the outdoor
+parklet stage with a DJ covering every changeover, then two hours of
 WaveWarZ, a live music-battle format where two artists go head to head and the
 audience decides. At six the whole street walks next door into Black Moon
 Public House for the evening. It is part of the 9th Annual Art of Ellsworth
@@ -52,6 +52,7 @@ countries.
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
 | Cost | Free to attend |
+| Music starts | Noon |
 | Format | Independent artists outdoors, DJ between sets, WaveWarZ live battles, then indoors at Black Moon with a DJ to close |
 | Weather | Rain or shine, under tent cover from Wallace Events |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
@@ -61,10 +62,11 @@ countries.
 
 ## The day
 
-- **Outdoors, Franklin Street Parklet, until six.** Independent artists back
+- **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back, 45-minute sets, a DJ in every changeover.
-- **WaveWarZ, four to six, outdoors.** Live music battles. Artists go head to
-  head and the audience decides, in the street and online.
+- **WaveWarZ, four to six, outdoors.** Live music battles. Stilo, Jango, Lui
+  and Quan go head to head, Hurricane on the mic, and the audience decides, in
+  the street and online.
 - **Six onward, indoors at Black Moon Public House.** Live music for the
   evening, then a DJ until the room empties.
 
@@ -154,6 +156,8 @@ info@thezao.com
 | Claim | Source |
 |---|---|
 | Date, venue, free, Black Moon next door | `src/content/festival.ts` |
+| Music starts at noon | Zaal, typed 27 Aug 19:3x |
+| Battlers and MC | Zaal, typed 27 Aug 19:3x; `src/app/team/plan/page.tsx` DAY[1] |
 | The day, one venue at a time, WaveWarZ four to six, DJ to close | `src/app/program/page.tsx` BLOCKS |
 | Tent, Wallace Events | `docs/plans/production-plan-2026-10-03.md` section 4 |
 | Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486,495` |

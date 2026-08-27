@@ -53,7 +53,7 @@ Notes on the rows:
   resolved as a partner on 24 Aug and is also not on the site list. So the site
   is two partners behind the doc. Whether COC Concertz is a ZAOstock partner is
   a decision nobody has made - the gdoc's own words: "Add it, or decide it is
-  not a ZAOstock partner." **UNSET until Zaal says.**
+  not a ZAOstock partner." **UNSET - Zaal, 27 Aug 19:3x: stays UNDECIDED.**
 - **Zero files in the repo.** `public/partners/` holds only a README naming two
   expected files (`black-moon.png`, `star-977.png`). The six Drive files have
   not been copied over. Copying them is a marketing-lane write

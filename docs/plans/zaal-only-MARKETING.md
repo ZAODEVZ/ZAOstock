@@ -8,11 +8,11 @@ today.
 | # | By | Question | Unblocks |
 |---|---|---|---|
 | 1 | Fri 29 Aug | Who at the Town of Ellsworth gets the logo ask - a name? | `docs/drafts/msg-town-of-ellsworth-2026-08-27.md`, `docs/marketing/partner-logos.md` Ask 1 |
-| 2 | Fri 29 Aug | COC Concertz on the partner list - yes/no? (The Aug 24 standup logged "Add COC Concertz to the site partner list - Zaal - Aug 29"; the Links tab still says undecided) | poster partner strip, press release partner line, Wed 2 Sep post, SITE request |
+| 2 | Fri 29 Aug | **STILL OPEN** (Zaal 27 Aug 19:3x: stays UNDECIDED) - COC Concertz on the partner list - yes/no? (The Aug 24 standup logged "Add COC Concertz to the site partner list - Zaal - Aug 29"; the Links tab still says undecided) | poster partner strip, press release partner line, Wed 2 Sep post, SITE request |
 | 3 | Fri 29 Aug | Send the pitch to Gabe Goode this week - yes/no? | `docs/drafts/msg-gabe-goode-2026-08-27.md`; a preview timed to 1 Sep needs it before then |
-| 4 | Sat 30 Aug | May the WaveWarZ battlers be named publicly (Stilo, Jango, Lui, Quan, Hurricane) - yes/no? | Sun 30 Aug socials, poster WaveWarZ block |
-| 5 | Sat 30 Aug | Does 11:00 print on the poster before the City answers - yes/no? | `docs/marketing/poster-checklist-2026-09-01.md` section 2 |
-| 6 | Sat 30 Aug | One spelling each: Lyons Den or Lionsden; Dcoop or DCoop; Fellenz or Tom Fellenz - three names? | poster, 1 Sep socials, press release |
+| 4 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: yes** - May the WaveWarZ battlers be named publicly (Stilo, Jango, Lui, Quan, Hurricane)? | Sun 30 Aug socials, poster WaveWarZ block |
+| 5 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: music starts at noon, print noon; the 11:00 question is gone** - Does 11:00 print on the poster? | `docs/marketing/poster-checklist-2026-09-01.md` section 2 |
+| 6 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: Lyons Den, Dcoop, Fellenz** - One spelling each? | poster, 1 Sep socials, press release |
 | 7 | Sat 30 Aug | Poster quantity - a number? (Candy prints week of 1 Sep; no figure exists) | `docs/drafts/msg-candy-2026-08-27.md`, poster checklist section 5 |
 | 8 | Mon 31 Aug | Slide 9: five tier prices, the discount percentage, the close date - seven fields? | `docs/marketing/onepagers-needed.md` sponsor pager, poster sponsor strip, deck |
 | 9 | Mon 31 Aug | One press contact address: info@thezao.com, zaal@thezao.com, or the Gmail - a name? | `docs/marketing/press-kit.md`, press pitch, press release |
@@ -32,4 +32,4 @@ today.
 - Print ticket.zaostock.com or a QR on the poster - yes/no (poster checklist section 2).
 - Poster print day, size and cost - Candy's inputs first; Zaal approves the cost as a number (poster checklist section 5).
 
-Not on this list because they are not Zaal's: artist handles and photos (from the acts), the three logos themselves (from the partners), Candy's vector source and print day (Candy), whether the parklet permit caps 11:00 (City, via the CITY lane), the Supabase 503 (SITE).
+Not on this list because they are not Zaal's: artist handles and photos (from the acts), the three logos themselves (from the partners), Candy's vector source and print day (Candy), the Supabase 503 (SITE).

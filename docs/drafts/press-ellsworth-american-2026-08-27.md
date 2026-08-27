@@ -29,8 +29,7 @@ before the copy.
    and a headcount is not.
 5. **Never**: the WERU / $7,500 spring concert series figures (not ours), a
    tax-deductible line (no fiscal sponsor), Heart of Ellsworth as a partner
-   (not confirmed in writing), the four proposed acts, an 11 AM start (not
-   City-cleared).
+   (not confirmed in writing), the four proposed acts.
 6. **Interview offers** below are Zaal only. Any artist interview needs the
    artist's yes first.
 
@@ -95,7 +94,7 @@ number the town gets out of it
 > on Franklin Street in Ellsworth on Saturday 3 October, because I live
 > here now and this is where I wanted to bring it.
 >
-> ZAOstock is free, outdoors on the parklet until six, and then the whole
+> ZAOstock is free, outdoors on the parklet from noon until six, and then the whole
 > street walks next door into Black Moon for the evening. It sits inside the
 > 9th Annual Art of Ellsworth during Maine Craft Weekend. Independent artists
 > through the day, then two hours of WaveWarZ, a live music-battle format where
@@ -124,7 +123,7 @@ number the town gets out of it
 | The ZAO, 20+ countries | `src/app/onepagers/overview/page.tsx` PILLARS[1] |
 | Festivals in New York and Miami | `docs/sponsor/deck-2026-10-03.md` slide 3; `src/app/llms.txt/route.ts` |
 | Zaal lives in Ellsworth | deck slide 4 ("bought a house here") |
-| Free, outdoors until six, then Black Moon | `src/content/festival.ts`; `src/app/program/page.tsx` |
+| Free, outdoors from noon until six, then Black Moon | `src/content/festival.ts`; `src/app/program/page.tsx`; noon per Zaal, typed 27 Aug 19:3x |
 | 9th Annual Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486` |
 | WaveWarZ format, audience decides | `src/app/program/page.tsx` BLOCKS[1] |
 | The measurement, Black Moon first | `docs/plans/production-plan-2026-10-03.md` section 7 |
@@ -132,6 +131,6 @@ number the town gets out of it
 | Werb and Lyons Den public | `src/app/page.tsx:397` |
 | info@thezao.com | deck slide 12; `docs/drafts/email-john-jagger-2026-08-27.md` |
 
-Deliberately not in the email: an opening hour, a headcount, sponsor tiers,
+Deliberately not in the email: a headcount, sponsor tiers,
 the four proposed acts, the number of confirmed artists (five - true, but it
 invites "who" before the 1st).

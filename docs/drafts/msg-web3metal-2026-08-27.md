@@ -1,6 +1,6 @@
 # Message - Zaal to Web3Metal (logo)
 
-**DO NOT SEND.** Paste-ready. Consolidated from
+**DO NOT SEND tonight** - Zaal sends tomorrow, 28 Aug, after the website is updated (his words, 27 Aug 19:3x). Paste-ready. Consolidated from
 `docs/marketing/partner-logos.md` Ask 3, rewritten to go to Web3Metal
 directly. Shawn owns the relationship; Zaal can send this or hand it to Shawn.
 Drafted 2026-08-27. Recipient name at Web3Metal: not on any surface this lane

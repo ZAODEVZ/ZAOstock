@@ -1,6 +1,6 @@
 # Message - Zaal to ENTERACT (logo)
 
-**DO NOT SEND.** Paste-ready. Consolidated from
+**DO NOT SEND tonight** - Zaal sends tomorrow, 28 Aug, after the website is updated (his words, 27 Aug 19:3x). Paste-ready. Consolidated from
 `docs/marketing/partner-logos.md` Ask 2, rewritten to go to ENTERACT directly.
 FailOften owns the relationship; Zaal can send this himself or hand it to
 FailOften to send in his own words. Drafted 2026-08-27. Recipient name at

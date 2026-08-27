@@ -1,6 +1,6 @@
 # Message - Zaal to the Town of Ellsworth (logo)
 
-**DO NOT SEND.** Paste-ready once the recipient is named. Consolidated from
+**DO NOT SEND tonight** - Zaal sends tomorrow, 28 Aug, after the website is updated (his words, 27 Aug 19:3x). Paste-ready once the recipient is named. Consolidated from
 `docs/marketing/partner-logos.md` Ask 1. Drafted 2026-08-27.
 
 Recipient: **UNSET** (`docs/plans/zaal-only-MARKETING.md` line 1). Roddy is
