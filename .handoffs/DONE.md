@@ -277,3 +277,25 @@ full suite 31 passed, WaveWarZ figures re-pulled live 2026-08-27 15:47 UTC.
 block, AV cover during Dcoop's set, stage manager, First Aid lead, indoor
 changeover at 6 - then the remaining Zaal-only items, four at a time,
 recommended first. His typed words become `ZAOSTOCK-VERDICT` lines below.
+
+---
+
+# ZAOSTOCK-STREAM lane - 2026-08-27
+
+Branch `bettercallzaal/lane-stream-0827` (the orchestrator's worktree branch;
+the brief named it `ws/lane-stream-0827`), off `ws/production-plan-1003-0826`
+at `118f127`. Committed, not pushed.
+
+ZAOSTOCK-STREAM DONE (1) AV spec: `docs/plans/av-spec-2026-10-03.md`. Every line of the Doc's AV LIST tab as a WHAT / OWNER / BACKUP table, plus what the repo and vault already record (Dcoop's monitors, Bomb Squad's lights, Fellenz's interface answer, the measured desktop, the 11:00 open). Every blank is UNSET with the person on record to fill it. Zero owners, counts, prices or dates invented. Nine things it cannot close, listed in section 9.
+ZAOSTOCK-STREAM DONE (2) Livestream chain: `docs/av/livestream-chain-2026-10-03.md`. Ten links, source to indoor mirror. Proven: the desktop and the encoder (ffmpeg h264_nvenc 6000 CBR 1080p30, ffprobe-verified 20 Aug). THE untested link: Aziz's rtmps ingest URL and key, owed since 22 Aug. Restream is in Zaal's verdict but its position in the chain is nowhere on disk; two topologies fit, written out as A and B for Aziz to pick.
+ZAOSTOCK-STREAM DONE (3) Aziz draft: `docs/drafts/aziz-2026-08-27.md`. The six measured specs, what is already installed, the three asks (ingest URL and key, plugin list confirm, Baraza_TV_v2.json export plus the Camera media path), the topology question, and the Motomoto plugin answer folded in. Test date left UNSET for Zaal. Not sent.
+ZAOSTOCK-STREAM DONE (4) Baraza read: PR #5 `Build-Africa-DAO/baraza-tv` is OPEN, still DRAFT, zero reviews, zero comments, last touched 2026-08-18T14:38:07Z (measured via `gh pr view` today). Aziz has not answered its two asks. The desktop lane's 20 Aug gaps 1 to 6 live in the vault handoff, not in the PR. Oct 3 virtual window per doc 2316: 12:00 to 18:00 ET, crew of 5 to 10 in two-hour slots; whether it moves with the 11:00 open is UNSET. Both written into the chain doc.
+
+## Flags for the orchestrator
+
+- **Aziz and Motomoto: one person or two?** Doc 2316 (CRM finding, Craig track `azizmotomoto`) says one. `docs/plans/people-map-2026-10-03.md` lists Motomoto as a separate crew member who does not lead a half. Not resolved here; the Aziz draft carries a note on which paragraph to cut if they are two. The people map is outside this lane's write-set; if they are one, that file needs a line changed.
+- **The 26 Aug AV meeting has no record on disk.** The spec is written as if it did not happen. If it did, its answers go into the UNSET cells.
+- **The Doc's "Thursday Aug 26" is not a date.** 26 Aug 2026 is a Wednesday. The spec says so; the gdoc edit list (`docs/plans/gdoc-update-2026-08-27.md`, edit 7) may want the same correction. Outside this lane.
+- **Restream's place in the chain is a decision nobody has made**, and it changes whether Aziz's ingest is even in the Oct 3 path. Asked of Aziz in the draft; Zaal can also just answer it.
+- `src/app/live/**` was in the write-set; nothing in the four tasks needed a page, so nothing was created there.
+- `docs/drafts/aziz-2026-08-27.md` is outside the write-set globs but named verbatim in task 3 of the brief, so it was written.
