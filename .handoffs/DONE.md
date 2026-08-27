@@ -334,3 +334,9 @@ Paste on the same thread as the 11:00 question. Source `docs/av/power-internet-r
 > On power for the parklet on 3 October: what electrical service is available at the stage and along the parklet, how many circuits, what amperage each, and where the outlets or panel are? The summer concert series ran on something and we would like to run on the same. If there is a City electrician or a contact who knows the panel, a name is enough. And if the service is not sufficient for a full PA, monitors, backline and lighting through to 18:00, is a generator allowed on the parklet, and is there a noise or placement condition on one?
 
 The internet half is not a City question; it goes to Black Moon and Heart of Ellsworth and is on Zaal's list, lines 6 and 7.
+
+## ZAOSTOCK-STREAM verify round - 2026-08-27, 19:0x
+
+ZAOSTOCK-STREAM MERGE-READY bettercallzaal/lane-stream-0827 6 commits, conflicts: none. tsc exit 0; vitest 7 files, 31 passed. /secure: one MEDIUM, Aziz's origin-machine media path in three files of a public repo, redacted in all three; no secrets, no keys, no performer names, no PII. /review: three consistency fixes in my own files (example slot dates that read as proposals removed from the Zaal-only list; the concert series named as the Doc names it; the old Aziz draft headed SUPERSEDED). Rebase onto ws/production-plan-1003-0826: already up to date, local and origin both at 118f127.
+
+- **Outside my write-set, same redaction owed:** the same origin-machine path appears verbatim in `~/zao-vault/handoffs/baraza.md` (private vault, lower risk) and in the body of the ask on baraza-tv PR #5 and possibly `obs/WINDOWS-SETUP.md` on that branch (public repo, Build-Africa-DAO). Whoever next touches the baraza lane should redact it there.

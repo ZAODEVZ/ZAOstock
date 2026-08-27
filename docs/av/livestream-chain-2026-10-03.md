@@ -72,8 +72,8 @@ What is still broken or missing:
   which the repo does not ship. Zero overlap with `Baraza_Live.json`. Macros
   deliberately not imported. The automation layer is inert until Aziz exports
   `Baraza_TV_v2.json`.
-- Gap 4: the single VLC source, "Camera", points at
-  `E:/Wethemmedia/CARD 1/MAH07583.MP4`, an origin-machine path. PLAYOUT scene
+- Gap 4: the single VLC source, "Camera", points at an absolute media path on
+  Aziz's origin machine (path withheld here, repo is public). PLAYOUT scene
   shows black until repointed.
 - Gap 3: `baraza-obs-launch.bat` fails on the `^` continuations inside the
   quoted PowerShell block, on every machine. Start OBS normally;
