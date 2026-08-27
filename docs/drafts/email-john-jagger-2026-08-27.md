@@ -41,7 +41,7 @@ against all the exposures, at the best price.
   **their own liquor permit**, not ours.
 - **What happens:** live music sets on a stage that is already standing from the
   City's summer concert series, plus live music battles in the late afternoon.
-- **Expected attendance: UNSET**
+- **Expected attendance:** 200-250 in person, and around 1,000 online (the online side does not touch the site)
 - **Fire performance:** one act involves fire spinning. The performer is
   seeking the open-flame permit from the fire department directly. I understand
   standard event liability policies exclude open-flame performance, and that the
@@ -81,12 +81,13 @@ info@thezao.com
 
 ---
 
-## Before this sends - one field
+## Before this sends - one field, now filled
 
-**Expected attendance is UNSET and a broker cannot quote without it.** It is the
-single number that moves an event policy, and Zaal has not typed one. Note this
-is the *same* figure slide 4 of the deck is blocked on, so answering it once
-unblocks both.
+**Expected attendance was the one blocker and Zaal typed it 2026-08-27 19:3x:
+200-250 in person, around 1,000 online.** The in-person figure is the one that
+moves an event policy; the online figure is stated so the broker is not
+surprised by it later. The same number unblocks deck slide 4. **Nothing sends
+tonight** - the paste-ready version is `docs/drafts/msg-john-jagger-2026-08-27.md`.
 
 His stated *awareness* goal has been "4,000 of the 8,000 people in Ellsworth".
 That is a goal, not an attendance projection, and it must not be handed to an

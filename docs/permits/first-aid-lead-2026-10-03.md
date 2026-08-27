@@ -34,7 +34,7 @@ container.
 | First-aid kit | Doc 1071 recommended buying a Red Cross 25-person kit outright, action due 2026-07-24. Bought: **UNSET** |
 | AED | **UNSET** - doc 1071 priced a one-day AED rental as an option, not a decision |
 | Station location on the parklet | **UNSET** - depends on the site map, which depends on Roddy's load-in and power answers |
-| In place by | Doors are 11:00 (not cleared) so **10:30**; if doors move to noon, 11:30. PRODUCTION sets it |
+| In place by | Music starts at noon (Zaal, 19:3x), so **11:30** by the doc 1032 standard. PRODUCTION confirms |
 
 ## 3. Where a certified volunteer comes from
 
@@ -69,7 +69,8 @@ Roddy should be copied or told so the City hears it once.
 > Hello - my name is Zaal Panthaki and I am one of the organisers of ZAOstock, a
 > free one-day music festival on Saturday 3 October at the Franklin Street
 > Parklet, part of the Art of Ellsworth weekend. Outdoors from late morning
-> until six, then indoors at Black Moon Public House. Expected attendance: UNSET.
+> until six, then indoors at Black Moon Public House. We expect 200 to 250
+> people in person over the day.
 > The parklet permit is with Roddy Ehrlenbach at Parks and Recreation.
 >
 > Two questions for the department:
@@ -89,8 +90,9 @@ Roddy should be copied or told so the City hears it once.
 >
 > Thank you - happy to come by the station.
 
-**Before this sends:** "Expected attendance: UNSET" is literal. Zaal types the
-number or removes the line. Nothing else in the draft is a figure.
+**Before this sends:** the attendance figure is Zaal's, typed 2026-08-27
+19:3x (200-250 in person; the 1,000 online is not the Fire Department's
+concern). Nothing else in the draft is a figure. Nothing sends tonight.
 
 **Chamber line** (to add to the Peter Farragher intro, if the Fire Department
 does not produce a person):
@@ -104,7 +106,7 @@ does not produce a person):
 - Whether he stays First Aid lead (no, per every doc since July) and who takes it
 - Whether the Fire Department ask goes now or after Roddy answers the umbrella
   question. Doc 1070's point is that they are the same review, so now
-- The attendance number, again
+- ~~The attendance number~~ - typed 19:3x, 200-250 in person
 
 ## Sources
 

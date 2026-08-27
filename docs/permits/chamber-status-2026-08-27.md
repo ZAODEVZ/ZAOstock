@@ -30,8 +30,8 @@ as competent: the deck, a clear ask, and the right name.
   write to the Chamber when the deck exists. A deck with UNSET on the money
   slide can go to the Chamber as a one-pager without slide 9, or wait. Zaal's
   call; flagged, not made.
-- **The attendance number.** The same figure that blocks the broker and slide 4
-  is the first thing a Chamber member asks.
+- ~~The attendance number~~ - typed 19:3x: 200-250 in person / 1,000 online.
+  It is the first thing a Chamber member asks, and now there is an answer.
 - **The vendor answer from Roddy.** Before the food ask goes.
 
 ## Privacy

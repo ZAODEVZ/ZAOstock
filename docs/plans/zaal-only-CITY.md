@@ -4,8 +4,8 @@ Every UNSET or decision in the CITY lane's files that only Zaal can settle.
 Deduplicated, ranked by clock. Each line is answerable by typing a number, a
 name, or yes/no. The file each answer unblocks is at the end of the line.
 
-1. **Expected attendance - type a number.** Unblocks `docs/drafts/msg-john-jagger-2026-08-27.md` (the broker cannot quote), deck slide 4, the Fire Department ask, and the City conversation. Clock: the broker intro was owed Fri 28 Aug.
-2. **Send the Roddy message - yes/no.** 11:00 is live on public surfaces and not cleared. `docs/drafts/msg-roddy-2026-08-27.md` unblocks `docs/permits/status-2026-08-27.md` rows 1, 2 and 4, the rain plan, and the food page.
+1. ~~Expected attendance~~ **ANSWERED 19:3x: 200-250 in person / 1,000 online.** Filled into the broker email, the Fire Department draft and every page. The broker email is now unblocked; nothing sends tonight.
+2. **Send the Roddy message - yes/no (not tonight).** The 11:00 question is gone (noon, as permitted, 19:3x); what remains is the certificate specifics, the noise cut-off, the site and power questions. `docs/drafts/msg-roddy-2026-08-27.md` unblocks `docs/permits/status-2026-08-27.md` rows 1 and 4, the rain plan, and the food page.
 3. **Is a food vendor on the parklet wanted at all - yes/no.** The State's temporary-licence deadline is Thu 3 Sep; only already-licensed local restaurants are in reach after that. Unblocks `docs/permits/food-vendor-2026-10-03.md` and the Chamber messages.
 4. **Send the Fire Department ask - yes/no.** It is the same review as the permit and it is where the first-aider comes from. `docs/permits/first-aid-lead-2026-10-03.md` section 4.
 5. **Was the fire permit application actually filed - type the date, or no.** `docs/permits/status-2026-08-27.md` row 3.

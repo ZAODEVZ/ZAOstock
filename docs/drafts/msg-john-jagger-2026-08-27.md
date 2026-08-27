@@ -2,9 +2,9 @@
 
 **DO NOT SEND. Paste-ready once one field is typed. Zaal sends.** This is the
 consolidated form of `docs/drafts/email-john-jagger-2026-08-27.md`, which keeps
-the reasoning and the fallbacks. **Blocked on expected attendance: UNSET.** The
-one number moves an event policy; "4,000 of 8,000 Ellsworth" is an awareness
-goal and must not go to an underwriter as a projection.
+the reasoning and the fallbacks. **No longer blocked: Zaal typed the attendance
+2026-08-27 19:3x (200-250 in person / 1,000 online). Nothing sends tonight.**
+"4,000 of 8,000 Ellsworth" is an awareness goal and stays out of it.
 
 - **To:** johnjagger@unitedinsurance.net
 - **From:** info@thezao.com
@@ -37,7 +37,7 @@ The event, so you can scope it:
   own liquor permit, not ours.
 - What happens: live music sets on a stage that is already standing from the
   City's summer concert series, plus live music battles in the late afternoon.
-- Expected attendance: UNSET
+- Expected attendance: 200-250 in person, and around 1,000 online (the online side does not touch the site)
 - Fire performance: one act involves fire spinning. The performer is seeking the
   open-flame permit from the fire department directly. I understand standard
   event liability policies exclude open-flame performance, and that the
@@ -79,8 +79,8 @@ info@thezao.com
 
 ## Before sending
 
-- Replace "Expected attendance: UNSET" with the number (zaal-only line 1), or
-  the message does not go.
+- The attendance line carries Zaal's typed figure (19:3x). Nothing else to
+  fill.
 - If Roddy has already answered the coverage amount or the additional-insured
   question, put his answer in place of question 1 or 2.
 - No budget figure, no fallback broker names, no sponsor context - see the
