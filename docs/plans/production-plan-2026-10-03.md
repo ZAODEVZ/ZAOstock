@@ -224,6 +224,94 @@ the only thing on the whole board whose window shuts permanently on 3 October.
 
 ---
 
+## 8. Blocked
+
+Two answers we do not hold, and neither is ours to make. Everything else in this
+document is decided.
+
+**The 11:00 open is the piece that moves.** It is the newest decision here, it is
+the only one that touches the City, and it is the only one whose knock-ons are
+contained: pull it back to noon and the day loses a slot, one act needs a home,
+and Steve's DJ window returns to the noon start he originally offered. Nothing
+after 16:00 moves either way. So if something has to give, this gives. The
+North Creek downbeat is a smaller question and it does not cascade at all.
+
+Working section. Neither draft below is part of the note that goes to Steve.
+
+### Draft 1 - to Steve Peer, Black Moon
+
+> Steve - one question and then the evening is locked.
+>
+> North Creek has the whole 6 to 9 block now. That is better than what we had, so
+> the DJ set we had at 6 to 8 moves to 9 and closes the night out.
+>
+> The only thing I need from you is the downbeat. Two ways to run it and I think
+> they are both good, so it is your call:
+>
+> 6:00 - the band is already playing when the crowd walks in off the street at
+> six. No dead air, and the handoff from outside to inside feels like one event
+> instead of two.
+>
+> 6:30 - everyone gets half an hour to get a drink and find a spot, and North
+> Creek opens to a full room instead of a filling one.
+>
+> Whichever you pick, tell me and it goes on the schedule. Until you do we are
+> printing "6 to 9" and no start time, because I would rather leave it blank than
+> guess and have you correct it later.
+>
+> One other thing while I have you: the day now opens at 11 rather than noon, so
+> we can fit all five confirmed acts before WaveWarZ at four. That means your DJ
+> is wanted from about 11:45 rather than noon, and through to six rather than
+> 5:30, because the battles want music going in and out of them too. Does that
+> still work for him and the backup?
+
+### Draft 2 - to Roddy, City of Ellsworth
+
+> Hi Roddy - one scheduling question, and I would rather ask before we print
+> anything than after.
+>
+> We had the Franklin Street Parklet running noon to six on 3 October. We now
+> want to open at 11:00 instead. The reason is straightforward: we have five
+> confirmed acts, each set is 45 minutes with a 15 minute changeover, and noon to
+> four only fits four of them. Starting an hour earlier fits all five and nothing
+> after four moves. The street clears at six either way and the evening goes
+> indoors at Black Moon.
+>
+> So: does the parklet permit, or anything under the Art of Ellsworth umbrella,
+> cap how early amplified sound can start on the street? If there is an hours
+> condition or a noise window we should be working inside, tell me what it is and
+> we will build the day around it rather than ask for an exception. Eleven is our
+> preference, not a requirement.
+>
+> Two things still open from your side that I want to keep moving on the same
+> thread:
+>
+> - The insurance certificate you asked for on the 17th. What form does the City
+>   need it in, and by when? We are working with a local broker and a date turns
+>   our guess into a deadline.
+> - The 45 day notice to the Police Chief under Chapter 14. That window closed on
+>   19 August if it applied to us standalone. Does the Art of Ellsworth umbrella
+>   cover our permit window, so that it never applied? This has been open since
+>   July and I think you can settle it in a sentence.
+>
+> Thanks - happy to come by rather than do this over email if that is easier.
+
+### Status
+
+| Question | Who answers | Blocks | State |
+|----------|-------------|--------|-------|
+| North Creek downbeat, 6:00 or 6:30 | Steve Peer | The printed evening start. Nothing else | Unsent |
+| Does the permit cap an 11:00 start | City of Ellsworth | The 11:00 open, and with it the fifth slot | Unsent |
+| Insurance certificate form and deadline | City of Ellsworth | A permit condition | Asked 17 Aug, unanswered |
+| Art of Ellsworth umbrella versus the Ch.14 45 day notice | City of Ellsworth | Whether a closed window applied to us | Open since July |
+
+Until both top answers land, the public schedule prints the 6 to 9 block with no
+downbeat, and 11:00 stays on the page as our intent. If the City comes back with
+an hours condition, 11:00 moves and section 2 gets rebuilt around whatever the
+real earliest start is.
+
+---
+
 ## Sources
 
 - Single-venue correction, 23 August 2026, and the rebuilt public schedule at
