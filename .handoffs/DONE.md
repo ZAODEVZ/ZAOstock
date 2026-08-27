@@ -277,3 +277,57 @@ full suite 31 passed, WaveWarZ figures re-pulled live 2026-08-27 15:47 UTC.
 block, AV cover during Dcoop's set, stage manager, First Aid lead, indoor
 changeover at 6 - then the remaining Zaal-only items, four at a time,
 recommended first. His typed words become `ZAOSTOCK-VERDICT` lines below.
+- 2026-08-27 15:5x ORCHESTRATOR: applied all 10 gdoc edits to 1B78AVonJS3 via Docs connector; snapshot in docs/plans is now STALE - next gdoc-update must diff against a fresh read. Dateline corrected to Thursday.
+
+---
+
+# ZAOSTOCK-DECK updated - 2026-08-27 evening
+
+Commit `3f3dead`. Branch `ws/production-plan-1003-0826`. **Not pushed. Nothing
+sent.** Grill stood down - Zaal AFK, resumes tomorrow from PRODUCTION's
+`ros-5min` file.
+
+## Deck changes
+
+| Change | Detail |
+|---|---|
+| Slide 5 grid | **12:00 - 16:00**, four daytime slots. 11:00 withdrawn |
+| Slide 5 | "a DJ covering every changeover" **deleted** - that DJ is Aquavantes, one of the four proposed acts |
+| Slide 5 | Tent coverage rain or shine (Wallace Events) added |
+| Slide 4 | **UNBLOCKED** - 200-250 in person, ~1,000 online. No longer `[BLOCKED]` |
+| Slide 6 | WaveWarZ battlers named: Stilo, Jango, Lui, Quan, Hurricane on the mic |
+| Pre-print blockers | Was two items, now one - the permit-cap question died with 11:00. Only the three missing partner logos remain |
+| Zaal's list | Was seven fields, now **six**, all on slide 9 |
+| Slide 9 | **UNSET**, unchanged |
+
+## Also done, outside the deck - flagging because it crossed lanes
+
+**The public site was still on 11:00.** PRODUCTION reverted the docs and does not
+touch `src/`; the 11:00 change was mine in `cc07ce7`, so I reverted it in the
+same commit: `FESTIVAL.window` and its test, the schema.org `startDate`,
+`/pitch`, `/program` grid + metadata + hero, `/team/plan`.
+
+If a site lane is already on this, we have touched the same files on different
+branches - worth checking before either merges.
+
+**The John Jagger insurance email is no longer blocked.** Attendance was its one
+missing field. It now gives the underwriter **200-250 on site** and names the
+~1,000 online separately as explicitly *not* additional bodies on the ground, so
+a later marketing mention is pre-disclosed. The "4,000 of 8,000" awareness goal
+is deliberately kept out - it is not an attendance projection and would
+misrepresent the risk.
+
+## The one thing nobody has resolved
+
+**Noon to four on a 45/15 cadence is four slots. Five acts are confirmed.**
+
+The 11:00 open existed to solve exactly this and it is now withdrawn, so the
+problem is back and unowned. Neither the deck nor the site pretends otherwise -
+the deck states the day without a per-slot roster count, and both reverted source
+files carry a comment saying the tradeoff is live and belongs to the production
+lane. **Options are shorter sets, a later WaveWarZ start, or one act moving into
+the indoor block.** Not decided here.
+
+## Verification
+
+`tsc --noEmit` clean. Full suite **31 passed**.
