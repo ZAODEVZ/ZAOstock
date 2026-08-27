@@ -308,3 +308,30 @@ ZAOSTOCK-CITY 4/4 fiscal sponsor grep - `docs/permits/fiscal-sponsor-grep-2026-0
 - **Did the 25 Aug Roddy confirmation come by email?** If so, the thread is where the certificate and the 11:00 question go.
 
 ZAOSTOCK-CITY 5/4 fiscal-sponsor fixes, write-set extended by the orchestrator to exactly four files. `docs/music/artist-deal-memo-template.md:87` now says insurance is being arranged through a broker as a permit condition, no fiscal sponsor, no Fractured Atlas COI, with a dated correction note. `agents/Zaal.md:71` FailOften's counsel is ENTERACT and the commercial path. `agents/FailOften.md` line 23 struck, lines 53 and 66 reworded to sponsor wording with the old text quoted. `agents/TEMPLATE.md:16` example self-summary no longer seeds the claim. Requests 1-4 above are closed; request 5 (`src/app/team/plan/page.tsx:60`, card `6386c0c7`) and 6 (the May agenda banner) stay open for another lane.
+
+---
+
+# ZAOSTOCK-CITY R2 - 2026-08-27 - rain, food, first aid, Chamber
+
+Same branch, same write-set (all four pages under `docs/permits/`; the two new
+drafts live inside their pages because `docs/drafts/` is limited to roddy-* and
+the Jagger email). **Not pushed.**
+
+ZAOSTOCK-CITY R2 1/4 rain plan, permit side - `docs/permits/rain-plan-2026-10-03.md`. No rain date exists (3 Oct is fixed inside Art of Ellsworth / Maine Craft Weekend). "Tent coverage via Wallace, rain or shine" has been public since May with no scope in writing and no City approval on record. Site Lead = Zaal is the only decision on record; thresholds (doc 1032) and the 7/3/24-hour cadence (doc 1040 - Sat 26 Sep, Wed 30 Sep, Fri 2 Oct) are research, adopted: UNSET. Black Moon posted occupancy: UNSET. New question for Roddy: is the concert-series tent (Thursdays through 1 Oct, same parklet) still up on 3 Oct and can we use it. Schedule side left to PRODUCTION.
+ZAOSTOCK-CITY R2 2/4 food - `docs/permits/food-vendor-2026-10-03.md`. Two problems: crew (review item 7) and an audience vendor. Crew: Black Moon certificates confirmed, but $20 (Steve, 26 Aug, production plan) and about $25 (Aug 3 recap / Katina) both on record - which is current: UNSET. Vendor: UNSET; City side (allowed, fee, permit, cap) is Roddy's unreached 24 Aug question; State side has a real date - Maine DHHS temporary food licence must be filed by Thu 3 Sep 2026 for any vendor without a licence, so only already-licensed local restaurants are in reach. Chamber ask drafted to Peter Farragher, section 3.
+ZAOSTOCK-CITY R2 3/4 first aid lead - `docs/permits/first-aid-lead-2026-10-03.md`. Chapter 14 has no first-aid clause; the Fire Chief may require fire/EMS presence at our expense inside the same Mass Gathering review (doc 1070), which only binds if the umbrella exemption fails - doc 1070 reads that it probably does. Standby EMS if required: $1,500-2,000+ (doc 1070 range) against about $1.5K on hand. Mutual-aid confirmation due 15 Aug: not done. Certification named on record: none. Source order: Ellsworth Fire Department, Heart of Ellsworth, the Chamber, the hospital, the standup. Ask drafted to the Fire Department, section 4, with a one-line Chamber add-on.
+ZAOSTOCK-CITY R2 4/4 Chamber status - `docs/permits/chamber-status-2026-08-27.md`. Peter Farragher (Member Services), Kaitlen Workman (Director of Operations), Heather (role and surname UNSET, "ask when writing"). All three "new", uncontacted, no follow-up date as of the 25 Aug CRM check; not re-read today. Owed: the deck and a specific ask, same day to all three. Trigger "the moment the deck exists" is half-met - deck in markdown, slide 9 UNSET. Is The ZAO a member of the Ellsworth Area Chamber (Zaal's membership on record is Bar Harbor): UNSET.
+
+## Requests outside the CITY write-set
+
+7. PRODUCTION: Black Moon posted occupancy (one number from Steve or Katina), and the day-of go/no-go time once the 11:00 answer lands.
+8. SITE: a weather-policy line stated up front, not one bullet on `/program` - doc 1040 shows every comparable Maine event does this.
+9. Whoever holds the CRM: re-read the three Chamber rows and Kaitlen/Peter/Heather follow-up dates; the status page is the 25 Aug state.
+
+## Zaal-only, from R2
+
+- Adopt or replace the weather cadence and thresholds, and name a second decision-maker.
+- Which gift-certificate figure is current, $20 or $25.
+- Is a food vendor wanted at all. If yes, Roddy's vendor question goes in the next message to him.
+- Send the Fire Department ask (attendance line is literally UNSET in it).
+- Does the deck go to the Chamber with slide 9 blank, or wait.
