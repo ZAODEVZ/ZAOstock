@@ -4,11 +4,11 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'ZAOstock Program | October 3, 2026',
   description:
-    'Day-of schedule for ZAOstock. Outdoors on Franklin Street from eleven, then indoors at Black Moon from six.',
+    'Day-of schedule for ZAOstock. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.',
   openGraph: {
     title: 'ZAOstock Program',
     description:
-      'Outdoors from eleven, indoors from six. October 3, 2026 in Ellsworth, Maine.',
+      'Outdoors from noon, indoors from six. October 3, 2026 in Ellsworth, Maine.',
     url: 'https://zaostock.com/program',
   },
 };
@@ -28,13 +28,11 @@ export const metadata: Metadata = {
 // docs/plans/production-plan-2026-10-03.md, but it stays off this page until
 // the reveal like every other act.
 //
-// Doors moved noon -> 11:00 on 2026-08-26. On Steve Peer's 45-minute/15-minute
-// cadence, noon to four is exactly four slots and five acts are confirmed for
-// the day, so the day opens an hour earlier rather than dropping an act.
-// 11:00 is INTENT, NOT CLEARED with the City. Roddy Ehrlenbach (City of
-// Ellsworth Parks/Rec) answers whether the parklet permit caps how early
-// amplified sound starts; as of 2026-08-27 it has not been asked (city lane owns it).
-// If he says later, src/content/festival.ts moves and this page follows.
+// DOORS ARE NOON. An 11:00 open was on this page for part of 2026-08-27 (five
+// confirmed acts do not fit four 45/15 slots from noon); Zaal reverted it the
+// same evening: music starts at noon, and the fifth act's placement is decided
+// in the production plan (section 2), not by moving doors. The 11:00 question
+// to the City was withdrawn unsent. src/content/festival.ts carries the window.
 //
 // The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
 // acts). A single 6-9 booking replaces both.
@@ -61,7 +59,7 @@ interface Block {
 
 const BLOCKS: Block[] = [
   {
-    start: '11:00',
+    start: '12:00',
     end: '16:00',
     venue: 'OUT',
     label: 'Live music',
@@ -127,7 +125,7 @@ export default function ProgramPage() {
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Outside, Then In</h1>
           <p className="text-sm text-gray-400 max-w-lg mx-auto">
-            A full day in two halves. Live music on Franklin Street from eleven, then the whole
+            A full day in two halves. Live music on Franklin Street from noon, then the whole
             thing walks next door into Black Moon at six and keeps going.
           </p>
         </div>
@@ -188,10 +186,6 @@ export default function ProgramPage() {
           <ul className="text-sm text-gray-300 space-y-1.5">
             <li>- Free to attend. Optional Pro Ticket supports the festival.</li>
             <li>- Full lineup announced once every set is locked.</li>
-            <li>
-              - The 11 AM start is our intent and is with the City of Ellsworth for confirmation. If
-              it moves, it moves later, not earlier.
-            </li>
             <li>- Weather: tent coverage via Wallace Events, rain or shine.</li>
             <li>- Black Moon is open through the day, walkable, right next door.</li>
             <li>- This schedule is a draft. Final version locks September 2026.</li>

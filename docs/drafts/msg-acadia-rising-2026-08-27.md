@@ -12,10 +12,11 @@ doc), so whichever lands first wins. No figures in this message.
 Sen - one question for the run of show.
 
 The day is built on 45-minute sets with 15-minute changeovers, outdoors on the
-Franklin Street Parklet between 11 and 4. The working plan had Acadia Rising
+Franklin Street Parklet between noon and 4. The working plan had Acadia Rising
 pencilled at 30 minutes because nobody had asked you. Is 45 right for you and
-Women with Rhythm, or is 30 your set? Either works - if it is 30 the day just
-gains a little slack - I only need the real number so the grid is true.
+Women with Rhythm, or is 30 your set? Either works - we hold five acts for four
+slots, so the real numbers decide how the afternoon is cut - I only need the
+true one.
 
 Two things worth knowing now: soundcheck is Friday 2 October, the night before,
 and it is mandatory for everyone playing; and the changeovers are 15 minutes

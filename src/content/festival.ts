@@ -5,13 +5,13 @@
 // confirmed after-party; performer names and any date other than Oct 3 are NOT
 // publishable. src/content/festival.test.ts enforces both.
 //
-// Window moved 12-6 -> 11-6 on 2026-08-27. Five confirmed acts do not fit four
-// 45-minute slots, so the parklet opens an hour earlier. This is our intent and
-// it is NOT yet cleared with the City - if the parklet permit caps how early
-// amplified sound starts, this is the value that moves back. Roddy Ehrlenbach
-// (City of Ellsworth Parks/Rec, the parklet contact) is the person who answers
-// it, and as of 2026-08-27 the question has not been sent (city lane owns it).
-// See docs/plans/production-plan-2026-10-03.md section 9.
+// Window is 12-6. It was moved to 11-6 for part of 2026-08-27 to fit five
+// confirmed acts into 45-minute slots, and Zaal reverted it the same evening:
+// MUSIC STARTS AT NOON. That is a decision on our side, not a City condition,
+// so the 11:00 question to Roddy Ehrlenbach (City of Ellsworth Parks/Rec) was
+// withdrawn before it was sent. The fifth act's placement is an open decision
+// in docs/plans/production-plan-2026-10-03.md section 2; it does not change
+// this value. `date` at 12:00 matches the doors.
 
 export type AfterParty = {
   name: string;
@@ -48,7 +48,7 @@ export const FESTIVAL: Festival = {
   venue: 'Franklin Street Parklet',
   shortVenue: 'Franklin St Parklet',
   city: 'Ellsworth, Maine',
-  window: '11 AM - 6 PM',
+  window: '12 PM - 6 PM',
   admission: 'Free to attend',
   rsvpUrl: 'https://ticket.zaostock.com',
   afterParty: {

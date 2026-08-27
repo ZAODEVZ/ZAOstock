@@ -58,7 +58,8 @@ inference from what each already runs. One word flips it.
 ## Roles still with nobody in them
 
 The map is what makes these visible. None blocks anything today; all five need a
-name before late September.
+name before late September. **Zaal, 27 August: names wait - these are not being
+asked this week.** They stay listed so the gap stays visible.
 
 | Role | Why it is open |
 |------|----------------|
@@ -66,7 +67,7 @@ name before late September.
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
 | First Aid lead | Still doubled onto Zaal. Flagged impossible in July - eight hours, and it needs current certification |
-| Changeover cover, 11:45 to 18:00 | **A real gap, not a pending detail.** One stage means six audible 15-minute gaps. Cannot be Stilo. Steve's DJ (Aquavantes) is the intended fix and, per Zaal 27 Aug, is PROPOSED ONLY like the rest of Steve's four - nobody has booked him. The question is drafted in `docs/drafts/steve-followup-2026-08-27.md`. If the answer is no, this is ours to fill. See production plan section 9, and the per-slot fallback in 8.6 |
+| Changeover cover, 12:45 to 18:00 | **A real gap, not a pending detail.** One stage means five audible 15-minute gaps. Cannot be Stilo. Steve's DJ (Aquavantes) is the intended fix and, per Zaal 27 Aug, is PROPOSED ONLY like the rest of Steve's four - nobody has booked him. The question is drafted in `docs/drafts/steve-followup-2026-08-27.md`. If the answer is no, this is ours to fill. See production plan section 9, and the per-slot fallback in 8.6 |
 
 ---
 

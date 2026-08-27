@@ -2,8 +2,8 @@
 
 **DO NOT SEND.** Paste-ready once Zaal says yes (zaal-only list, line 1).
 Consolidates the 26 August plan reply that was on the clipboard (corrected:
-the day now opens at 11, not noon, and the DJ is asked about rather than
-"locked in") with `docs/drafts/steve-followup-2026-08-27.md` and the crew meal
+the DJ is asked about rather than "locked in"; the noon open in that reply
+stands - Zaal reverted the 11:00 idea on 27 August) with `docs/drafts/steve-followup-2026-08-27.md` and the crew meal
 question from production plan 8.7. Only figure in it is Steve's own $20.
 
 - **To:** Steve Peer
@@ -19,16 +19,13 @@ handled, and I do not take it lightly. Wristbands for performers is a great
 call; we will have them.
 
 The full schedule is attached, built on your cadence: 45-minute sets,
-15-minute changeovers, one stage at a time. Two things in it changed since we
+15-minute changeovers, one stage at a time. One thing in it changed since we
 last spoke, and then four questions.
 
 **What changed.** We are running the day as one flow, not two simultaneous
 stages: outdoors at the Franklin Street Parklet until 6, then everything moves
 into Black Moon for the evening. One crowd, one PA crew at a time, and we never
-need both systems live at once. And the parklet now opens at 11 rather than
-noon - we hold five confirmed acts and noon to four only fits four of them at
-45 and 15. The 11 start is still with the City, so if it moves it moves later,
-not earlier.
+need both systems live at once. Music starts at noon, as you had it.
 
 **1. Of the four acts on your list, which are booked and which are still being
 asked?** The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek. On our
@@ -59,10 +56,10 @@ performers and are not on your certificates. If there is a simple way to feed
 them at Black Moon on our tab, tell me what it looks like; if not, we sort it
 separately and it is not your problem.
 
-One rider on question 1: if the DJ is booked, the grid wants him from about
-11:45 to 6 rather than noon to 5:30, because the day opens at 11 and the
-battles want music going in and out of them too. Does that still work for him
-and the backup?
+One rider on question 1: if the DJ is booked, the grid wants him from noon
+through to 6 rather than 5:30, because the battles want music going in and out
+of the voting windows and the play-out at 6 is what walks everyone next door.
+Does that still work for him and the backup?
 
 Everything else you asked about - the PA handoff at 6, porta potty count and
 an accessible unit, wristbands - is in the attached plan with what we think

@@ -17,12 +17,11 @@ Ellsworth and I want to make sure we are asking you the right thing, because
 it is a specific job rather than a set.
 
 **The job.** The day runs outdoors on the Franklin Street Parklet on one stage,
-45-minute sets with 15-minute changeovers, from 11 to 4, then WaveWarZ live
+45-minute sets with 15-minute changeovers, from noon to 4, then WaveWarZ live
 battles from 4 to 6. What we need from you is the gaps: music in every
-changeover so the street never goes quiet - six of them between about 11:45
-and 6 - plus the short voting windows inside the battles, and the play-out at
+changeover so the street never goes quiet - between 12:45 and 6 - plus the short voting windows inside the battles, and the play-out at
 6 as everyone walks next door to Black Moon. Same PA the bands are on, and
-you would be checked on it around 10:30 that morning. Soundcheck the night
+you would be checked on it around 11 that morning. Soundcheck the night
 before, Friday October 2, is mandatory for everyone on the bill.
 
 **Two questions.**
