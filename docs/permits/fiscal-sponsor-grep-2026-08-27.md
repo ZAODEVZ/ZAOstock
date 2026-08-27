@@ -77,7 +77,7 @@ surface audit found the loop here once already.
 | `docs/sponsor/slide-9-tier-ladder.md:52-53` | "There is no fiscal sponsor. Nothing on slide 9, or any ZAOstock surface, may say tax-deductible" | CORRECT |
 | `docs/sponsor/slide-9-tier-ladder.md:122` | source line "Fiscal sponsor status per Zaal, 2026-08-23" | CORRECT |
 | `docs/sponsor/slide-9-candy-meeting-2026-08-27.md:67` | "Nothing says tax-deductible. There is no fiscal sponsor" | CORRECT |
-| `docs/plans/surface-audit-2026-08-27.md:7,26-28,34,43-44,56-57,64,66,101,103` | the 27 Aug audit itself: every row is a negation, a FIXED record, or a HISTORY tag | CORRECT (12 hits) |
+| `docs/plans/surface-audit-2026-08-27.md:7,26-28,34,43-44,56-57,64,66,101,103` | the 27 Aug audit itself: every row is a negation, a FIXED record, or a HISTORY tag | CORRECT (13 hits) |
 | `docs/plans/gdoc-update-2026-08-27.md:193,204,208,241` | edit list for the Google Doc: the claim is dead, four off-site places fixed, source line | CORRECT (4 hits) |
 | `docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md:85` | "ZAOstock has no fiscal sponsor. No contribution is tax-deductible" | CORRECT |
 | `docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md:630-632` | "Is there a fiscal sponsor for this event, or none? Fractured Atlas is out. Until this is settled..." | OPEN-NOW-ANSWERED. The snapshot is already marked stale (`118f127`); the gdoc edit list carries the answer. No action |
