@@ -11,7 +11,7 @@
 // amplified sound starts, this is the value that moves back. Roddy Ehrlenbach
 // (City of Ellsworth Parks/Rec, the parklet contact) is the person who answers
 // it, and as of 2026-08-27 the question has not been sent (city lane owns it).
-// See docs/plans/production-plan-2026-10-03.md section 8.
+// See docs/plans/production-plan-2026-10-03.md section 9.
 
 export type AfterParty = {
   name: string;

@@ -62,7 +62,8 @@ Your cadence, 45 on and 15 off, applied straight through.
 |------|------|-------|
 | 06:00 | Load-in and stage set | Outdoor stage is already standing from the summer concert series, so nothing is being built |
 | 09:30 | Line checks | Acts checked Friday night, this is a confirm only |
-| 11:00 - 11:45 | Set 1 | 45 min. Doors. **11:00 is our intent and is not cleared with the City** - Roddy Ehrlenbach answers it, see section 8 |
+| 10:00 - 11:00 | Site ready: First Aid, signage, merch if allowed, DJ check, stage manager's walk | Who, per line: section 8.3 |
+| 11:00 - 11:45 | Set 1 | 45 min. Doors. **11:00 is our intent and is not cleared with the City** - Roddy Ehrlenbach answers it, see section 9 |
 | 11:45 - 12:00 | Changeover | Cover **UNSET** - DJ Aquavantes PROPOSED, not booked |
 | 12:00 - 12:45 | Set 2 | 45 min |
 | 12:45 - 13:00 | Changeover | Cover **UNSET** - DJ Aquavantes PROPOSED, not booked |
@@ -73,15 +74,15 @@ Your cadence, 45 on and 15 off, applied straight through.
 | 15:00 - 15:45 | Set 5 | 45 min |
 | 15:45 - 16:00 | Changeover | Battle stage reset. Cover **UNSET** - same DJ, same status |
 | 16:00 - 17:45 | WaveWarZ | Live music battles, our artists, our MC. Audience decides |
-| 17:45 - 18:00 | Play-out, crowd walks | Cover **UNSET** - same DJ, same status |
-| 18:00 | Outdoor stage down | Strike begins |
+| 17:45 - 18:00 | Result, play-out, crowd walks | **Stilo DJs the transition out of WaveWarZ** (standup 24 Aug). Minute by minute in section 8.5 |
+| 18:00 | Outdoor stage down | Strike begins. Who, and by when the street is clear: section 8.10 |
 
 ### Indoors - Black Moon Public House
 
 | Time | What | Notes |
 |------|------|-------|
 | 18:00 - 21:00 | The after party | One block, three hours. **IN BOOKING** - North Creek PROPOSED, no act confirmed, no downbeat printed. See open item 4 |
-| 21:00 - close | DJ set to close | Our DJ, confirmed on our side. Moved here from the old 18:00 slot when the evening became one live block |
+| 21:00 - close | DJ set to close | Our DJ, confirmed on our side. Moved here from the old 18:00 slot when the evening became one live block. "Close" has no time yet: section 8.10 |
 
 ### Every act, by status
 
@@ -94,12 +95,12 @@ where already public; the rest stay generic until 1 September.
 | Slot | Act | Tag | Source |
 |------|-----|-----|--------|
 | Set 1-5, 11:00-15:45 | Five acts, two already public (Werb, Lyons Den), three held for the reveal | **Confirmed** | Lineup confirmations, PR #45; roster on the team page |
-| 16:00-17:45 | Four battlers and the MC | **WaveWarZ** | Our block, our roster |
+| 16:00-17:45 | Four battlers and the MC | **WaveWarZ** | Our block, our roster. The voting-window interludes want a DJ too, and it cannot be one of the battlers |
 | Every changeover, 11:45-18:00 | DJ Aquavantes | **PROPOSED** | Steve's draft; Zaal 27 Aug: proposed only |
 | Daytime reserve | The Crown Vics | **PROPOSED** | Steve's draft; Zaal 27 Aug |
 | Indoor, unplaced | The Somes Sound | **PROPOSED** | Steve's draft; Zaal 27 Aug. Also the open PA question |
 | 18:00-21:00 | North Creek | **PROPOSED** | Steve's draft; Zaal 27 Aug. Block is IN BOOKING |
-| 21:00-close | Our DJ | **Confirmed** on our side | The DJ's own message, gdoc snapshot 27 Aug |
+| 21:00-close, and the 17:55-18:15 transition | Our DJ | **Confirmed** on our side | The DJ's own message, gdoc snapshot 27 Aug; transition decided at the 24 Aug standup |
 
 **The bigger question comes before the downbeat.** On our side, all four acts
 from your draft - The Crown Vics, DJ Aquavantes, The Somes Sound and North Creek
@@ -268,7 +269,173 @@ the only thing on the whole board whose window shuts permanently on 3 October.
 
 ---
 
-## 8. Blocked
+## 8. Ten gaps from the 24 August review, folded in
+
+The IMPROVEMENTS tab of the working doc read the whole day end to end on
+24 August and listed ten things that break. Each is now either a row in this
+plan or a decision marked **UNSET** with the person who makes it. Nothing here
+invents a figure; where the review's own numbers are quoted, they are cited.
+
+### 8.1 Five-minute changeovers are not real - DONE, with one rule still open
+
+The grid in section 2 already runs 15-minute changeovers, so the review's first
+point is answered. What it also said still stands: **the outdoor block has zero
+slack.** Five 45-minute sets and five 15-minute gaps fill 11:00 to 16:00 exactly,
+and WaveWarZ starts at 16:00 regardless. An act that runs eight minutes over does
+not cost eight minutes; it eats the next changeover and cascades.
+
+| Decision | Who | State |
+|----------|-----|-------|
+| Overrun rule: an act that runs over loses the time from its own changeover, and the next act still starts on the grid | Stage manager, enforced from the side of stage | **Proposed** - not agreed by anyone yet |
+| Shared backline that stays up all day (one kit, one set of amps, acts swap guitars and pedals only) | Dcoop, music and AV lead. Every act has to agree | **UNSET.** The AV spec (`docs/plans/av-spec-2026-10-03.md`, STREAM lane) is where the real setup and strike numbers land; decide from that, not by guess |
+
+### 8.2 Rain - the schedule side
+
+The permit side (what the parklet permit allows in rain, what the City needs to
+know) is the CITY lane's, at `docs/permits/rain-plan-2026-10-03.md`. This is
+the schedule side: what moves, when the call is made, and who makes it.
+
+| Weather | What happens to the day | State |
+|---------|-------------------------|-------|
+| Light rain | The day runs as printed. Tent coverage from Wallace Events is already confirmed, rain or shine (section 4) | Real - the tent is the plan |
+| Rain heavy enough that the PA or the tent is unsafe, or wind | The outdoor block moves inside Black Moon and the day runs one room from open to close. Which acts still play and how long is the stage manager's call on the day, inside whatever the room holds | **UNSET** - Black Moon's capacity for a daytime crowd is Steve's number, and it is not written anywhere on our side |
+| Threshold that triggers the move | **UNSET** | Nobody has set one. The review's own words: improvising at 8am with artists already travelling is the bad version |
+| Who makes the call | **UNSET** - proposed: Zaal and Steve together, because it moves a crowd into Steve's building | Not agreed |
+| By when | **UNSET** - proposed: the evening before, at the Friday soundcheck, with a second look at 08:00 Saturday | Not agreed |
+
+Wallace Events is listed for equipment and tenting, so the tent conversation is
+a scope conversation with an existing partner, not a new relationship.
+
+### 8.3 Before 11:00 - the morning block, with names where they exist
+
+The review said the run of show started as if the site assembled itself. Section
+2 already carries 06:00 load-in and 09:30 line checks. This is the rest of the
+morning, and who.
+
+| Time | What | Who | State |
+|------|------|-----|-------|
+| 06:00 | Load-in. The outdoor stage is already standing (summer concert series), so this is PA, backline, tent, signage and tables | Load-in crew: ZAO, being named this week (section 4). PA arrival time is Steve's, on the spec (open item 1) | Crew **UNSET** |
+| 06:00 - 09:30 | PA set and power. Which parklet circuits, and vehicle access for load-in, are both on Roddy's list and unanswered | Sound operator for 11:00-16:00: **UNSET** | Gated on the City's answer and the PA spec |
+| 09:30 | Line checks, confirm only - acts were checked Friday night | Sound operator | As section 2 |
+| 10:00 | First Aid position set, signage up, wayfinding street-to-bar in place | First Aid lead: **UNSET** (people map). Signage: ZAO | First Aid lead is one of the five unnamed roles |
+| 10:00 | Merch table, if a vendor row exists at all. Whether the parklet allows a vendor, the fee and the cap were the Aug 24 agenda block Roddy was not there for | **UNSET** until the City answers | On Roddy's list |
+| 10:30 | DJ arrives and is checked on the same PA - if he is booked | Steve's DJ, PROPOSED | See section 2 |
+| 10:45 | Stage manager's walk: every act's arrival confirmed, the overrun rule said out loud | Stage manager: **UNSET** | One of the five unnamed roles |
+| 11:00 | Doors. Set 1 | | Intent, not City-cleared - section 9 |
+
+### 8.4 Light in the 16:00-18:00 block
+
+WaveWarZ is the most photographed and the most streamed two hours of the day,
+and it runs into the last of the daylight. In Ellsworth on 3 October the sun is
+down shortly after 18:00 and civil dusk follows within the half hour - that is
+my arithmetic from the date and the latitude, not a typed figure, so confirm
+the minute before the AV spec locks. The final at 17:30 is in low sun; the
+result and the walk at 17:55 are in dusk.
+
+| Item | Who | State |
+|------|-----|-------|
+| Stage lighting for 16:00-18:00, at minimum front wash on the battlers and the host | **UNSET.** Bomb Squad did lights at ZAOville and has gear (working doc, AV List); nobody has asked them for 3 October | Proposed, not asked |
+| Power for lighting, on top of the PA | Goes on the AV spec (STREAM lane) and on Roddy's circuits question | Gated |
+| Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked | Unverified |
+
+### 8.5 The 18:00 move - the mechanism, minute by minute
+
+The review's words: the entire audience has to physically relocate, and if it is
+quiet they scatter. Fifteen minutes was written down; nothing else was. This is
+the fifteen minutes.
+
+| Time | What | Who | State |
+|------|------|-----|-------|
+| 17:30 - 17:55 | The final. The MC tells the room, once, that the night continues next door at six | Hurricane, host mic | Hurricane is the WaveWarZ host on our roster |
+| 17:55 - 18:00 | Result announced. The MC walks the crowd: "next door, now, the music is already on". Music plays out on the outdoor PA | Hurricane on the mic; **Stilo DJs the transition out of WaveWarZ** - decided at the 24 Aug standup, he travels for it | Stilo confirmed on our side; note he is battling until 17:55, so his play-out starts when the result does |
+| 18:00 | Outdoor PA strike begins. Nothing is playing outside from here | Whoever strikes the outdoor rig - open item 1, **UNSET** | Gated on the PA answer |
+| 18:00 - 18:15 | Music inside is already playing when the first people reach the door. Source must be the house system, not the outdoor PA, because that is being struck | Stilo on the house PA, or the house DJ setup if it exists - the AV List has this line blank | Stilo proposed for this by the 24 Aug decision; the DJ setup is **UNSET** |
+| 18:00 - 18:15 | Somebody at Black Moon's door, wristbands or lanyards checked for the basement only, everyone else straight in | **UNSET** - proposed Steve or Katina, it is their door | Not agreed |
+| 18:00 - 18:15 | Somebody on the street between the two buildings pointing, so nobody drifts to their car | **UNSET** - a crew name, not a performer | Not named |
+| 18:15 or 18:30 | The live block starts, if North Creek is booked. Otherwise Stilo holds the room (8.6) | Steve's answer, drafted in `docs/drafts/steve-followup-2026-08-27.md` | PROPOSED |
+| The mic handoff | Hurricane's last words outside are the first words inside: the host mic goes off with the outdoor PA, and a house mic is live indoors before the crowd arrives. If Steve MCs the evening, this is where he takes over - his MC scope has been agreed in principle since 17 Aug and never defined | Steve's MC scope: **UNSET** | Ask Steve which part of the day he wants (section 3, row 9) |
+
+Signage for the walk sits in section 4 under "to build".
+
+### 8.6 An act does not show - the answer per slot
+
+Written down so it is not improvised in week 39. The order of fallbacks is
+proposed, not agreed.
+
+| Slot | If it falls through | Then |
+|------|---------------------|------|
+| Set 1, 11:00 | Open at noon instead. That is the slot the City may take away anyway (section 9), so losing it costs the least | Nothing downstream moves |
+| Set 2-5 | First: Steve's DJ extends into the slot, if he is booked. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the DJ, or silence, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
+| WaveWarZ, a battler drops | The bracket shape is Stilo and Hurricane's to overwrite; with three competitors it still runs. The block stays 16:00-18:00 | Their call |
+| The changeover DJ is not booked | Every gap is silent until a name is found. Fallback: the MC on the mic, playback from a phone into the desk. This is the gap section 4 marks UNCOVERED | **UNSET** |
+| 18:00-21:00, North Creek not booked | Stilo's DJ set opens at 18:00 and holds the room, which is exactly what he was doing on the 17 Aug version of the evening. The block prints as in booking until Steve answers | Real fallback - Stilo is confirmed on our side |
+| 21:00-close DJ | The house system plays out. Steve and Katina close the bar on their own hours | |
+
+### 8.7 Nobody eats
+
+A ten-hour day for crew, a long one for artists, and no break in the grid. The
+review's own point: the Black Moon gift certificates exist for exactly this and
+are not tied to a time.
+
+| Who | When | What | State |
+|-----|------|------|-------|
+| Performers | After their own set, at Black Moon, which is open through the day | The $20 gift certificate (Steve's figure, section 3 row 3). Count **UNSET** | The meal window per act is now written: the hour after they come off |
+| Crew running the day | In shifts during sets, never during a changeover. The stage manager writes the rota on the morning | **UNSET** - a crew meal is not a gift certificate, and no vendor and no budget exist for it | Vendor **UNSET**; what a parklet food vendor needs from the City and the Chamber is the CITY lane's (their Round 2, item 2) |
+| WaveWarZ battlers and host | Before 16:00, because 16:00-18:00 has no gap long enough | Same certificates | |
+| Stilo | Between 18:15 and 21:00 - he is on at 17:55 and again at 21:00 | Same | |
+
+The ZAOville debrief carries a different meal figure. It is not this event's,
+it was not typed for this plan, and it is not used here.
+
+### 8.8 The daytime audience
+
+The day sits inside Art of Ellsworth and Maine Craft Weekend, which bring a
+family and craft-fair crowd through the middle of the day. The review did not
+ask for a lineup change; it asked that the choice be made on purpose.
+
+| Decision | Who | State |
+|----------|-----|-------|
+| Whether sets 1 and 2 (11:00-12:45) are placed with that crowd in mind, or the running order is by other logic | Dcoop, set schedule, with Zaal | **UNSET** |
+| The MC names Art of Ellsworth and Maine Craft Weekend at the 11:00 open and at every changeover, and points people to the craft fair and the shops - this is the "spend it in Ellsworth" line the public page already carries | Whoever holds the mic 11:00-16:00: **UNSET** | Proposed. Costs nothing, decides nothing about the lineup |
+| Whether Steve's MC slot is the daytime, which would put a local voice on the family crowd | Steve | Tied to his undefined MC scope |
+
+### 8.9 Content capture, in the run of show
+
+Farming footage was the stated strategy from 3 August and it appeared nowhere in
+the day. The STREAM lane writes what is recorded, by whom and where it lands
+(ArDrive); this plan writes **when**. The two rows are meant to match.
+
+| Time | Moment | Note |
+|------|--------|------|
+| 10:45 | The empty stage and the street, before doors | The before shot for the local-lift story |
+| 11:00 | Doors, the first crowd on Franklin Street | |
+| Each set, first song | One clip per act | The set clock runs regardless |
+| Each changeover | The interview window. 15 minutes, the act that just came off, one question | The only crew who would shoot is also performing - shooter **UNSET** |
+| 16:00-18:00 | WaveWarZ, all of it, and the light problem in 8.4 is this row's problem | The most photographed two hours |
+| 17:55-18:15 | The walk. The one shot that shows one venue at a time working | |
+| 18:15 | The room, full or filling | |
+| Close | The last song | |
+
+Local recording of the stream as well as the stream itself, so a dropout does
+not lose the day, is on the AV List and is STREAM's row.
+
+### 8.10 The night has an end
+
+"To late" was the last line of the grid. This is what closes it.
+
+| Item | Who | State |
+|------|-----|-------|
+| Last call | Black Moon, on their licence hours | **UNSET** - Steve's number, not ours |
+| Music off indoors | Same clock | **UNSET** |
+| Noise cut-off, if any applies indoors from the City side | Roddy's list - it was the Aug 24 agenda block he was not on the call for | Unasked |
+| Outdoor strike complete - PA, backline, tent, tables, signage off the parklet | Strike crew: ZAO, being named. Deadline **UNSET**: the City may want the street back by a time, which is on Roddy's list | Gated |
+| ZAO gear out of Black Moon | Load-out crew, same night or morning after: **UNSET** | |
+| Who locks up | Black Moon. Steve or Katina - it is their building | Real, and not ours to assign |
+| Who does the last walk of the parklet for anything left | Stage manager: **UNSET** | |
+
+---
+
+## 9. Blocked
 
 Three answers we do not hold, and none is ours to make. Everything else in this
 document is decided.
@@ -378,3 +545,6 @@ real earliest start is.
 - Steve Peer, Black Moon Public House, messages of 15 August, 17 August and
   26 August 2026
 - Lineup confirmations per PR #45
+- IMPROVEMENTS tab, "Review of the run of show, Aug 24", and the AV List tab,
+  from `docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`
+- ZAOstock standup, 24 August 2026: Stilo DJs the transition out of WaveWarZ

@@ -12,7 +12,7 @@ but it goes out in Zaal's name and only when he says so.
   **proposed, not booked**. Our grid was built as if all four were in. Two of
   them carry real weight: the DJ covers every changeover on a one-stage day,
   and North Creek is the whole indoor evening.
-- **Supersedes:** Draft 1 in section 8 of
+- **Supersedes:** Draft 1 in section 9 of
   `docs/plans/production-plan-2026-10-03.md`, which asked only for the North
   Creek downbeat and assumed the booking.
 
@@ -75,7 +75,7 @@ Zaal
 
 | Answer | Unblocks | Where it lands |
 |--------|----------|----------------|
-| Which are booked | Changeover cover on every gap (or a ZAO fallback), the indoor evening, the act tags across every surface | Production plan section 2 ledger and section 8; people map changeover row; `/team/plan` DAY block |
+| Which are booked | Changeover cover on every gap (or a ZAO fallback), the indoor evening, the act tags across every surface | Production plan section 2 ledger and section 9; people map changeover row; `/team/plan` DAY block |
 | Somes Sound PA | The indoor PA sourcing line (open item 1), and whether the 6pm PA handoff is one system or two | Production plan open item 1 |
 | 6:00 or 6:30 | The printed evening downbeat on `/program`. Nothing else | `src/app/program/page.tsx` indoor block |
 

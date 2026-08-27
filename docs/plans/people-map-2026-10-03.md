@@ -66,7 +66,7 @@ name before late September.
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
 | First Aid lead | Still doubled onto Zaal. Flagged impossible in July - eight hours, and it needs current certification |
-| Changeover cover, 11:45 to 18:00 | **A real gap, not a pending detail.** One stage means six audible 15-minute gaps. Cannot be Stilo. Steve's DJ (Aquavantes) is the intended fix and, per Zaal 27 Aug, is PROPOSED ONLY like the rest of Steve's four - nobody has booked him. The question is drafted in `docs/drafts/steve-followup-2026-08-27.md`. If the answer is no, this is ours to fill. See production plan section 8 |
+| Changeover cover, 11:45 to 18:00 | **A real gap, not a pending detail.** One stage means six audible 15-minute gaps. Cannot be Stilo. Steve's DJ (Aquavantes) is the intended fix and, per Zaal 27 Aug, is PROPOSED ONLY like the rest of Steve's four - nobody has booked him. The question is drafted in `docs/drafts/steve-followup-2026-08-27.md`. If the answer is no, this is ours to fill. See production plan section 9, and the per-slot fallback in 8.6 |
 
 ---
 
