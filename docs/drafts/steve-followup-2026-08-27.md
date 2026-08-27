@@ -1,5 +1,7 @@
 # Draft message - Zaal to Steve Peer, Black Moon Public House
 
+**SUPERSEDED 27 Aug, Round 3** by `docs/drafts/msg-steve-peer-2026-08-27.md`, which folds these three questions into one consolidated message. Kept for the record.
+
 **DO NOT SEND.** Draft only. Nothing in it is a figure, so nothing is UNSET,
 but it goes out in Zaal's name and only when he says so.
 
