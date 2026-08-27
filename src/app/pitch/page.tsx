@@ -228,7 +228,7 @@ export default async function PitchPage() {
               <dl className="space-y-5">
                 {[
                   { k: 'Date', v: 'Saturday October 3, 2026' },
-                  { k: 'Time', v: '11 AM - 6 PM Eastern' },
+                  { k: 'Time', v: '12 PM - 6 PM Eastern' },
                   { k: 'Location', v: 'Franklin St Parklet, Ellsworth Maine' },
                   { k: 'Series', v: '9th Annual Art of Ellsworth' },
                   { k: 'Weekend', v: 'Maine Craft Weekend' },

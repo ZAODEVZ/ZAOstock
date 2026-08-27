@@ -44,7 +44,7 @@ const eventJsonLd = {
   '@type': 'MusicEvent',
   name: 'ZAOstock 2026',
   description: 'A free, one-day, artist-built music festival in downtown Ellsworth, Maine. Run by The ZAO.',
-  startDate: '2026-10-03T11:00:00-04:00',
+  startDate: '2026-10-03T12:00:00-04:00',
   endDate: '2026-10-03T18:00:00-04:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',

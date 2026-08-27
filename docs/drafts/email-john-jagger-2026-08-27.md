@@ -1,7 +1,7 @@
 # Draft email - Zaal to John Jagger, United Insurance
 
-**DO NOT SEND.** Draft only. One field is UNSET and the email should not go
-without it - see below.
+**DO NOT SEND.** Draft only - Zaal sends. **No longer blocked:** the attendance
+figure it was missing was typed on 2026-08-27.
 
 - **To:** johnjagger@unitedinsurance.net
 - **From:** Zaal Panthaki, info@thezao.com
@@ -34,14 +34,16 @@ against all the exposures, at the best price.
 **The event, so you can scope it:**
 
 - **Site:** the Franklin Street Parklet, the City-owned parklet in downtown
-  Ellsworth. Outdoors, from late morning until 6pm.
+  Ellsworth. Outdoors, from noon until 6pm.
 - **Then indoors:** at 6pm the whole event moves next door into Black Moon
   Public House and finishes there. One venue at a time, never both at once.
 - **Alcohol** is served only inside Black Moon and at their beer garden, under
   **their own liquor permit**, not ours.
 - **What happens:** live music sets on a stage that is already standing from the
   City's summer concert series, plus live music battles in the late afternoon.
-- **Expected attendance: UNSET**
+- **Expected attendance: 200 to 250 people on site.** There is also an online
+  audience of roughly 1,000 watching a stream, which I mention only so the
+  number is not a surprise later - it is not additional people on the ground.
 - **Fire performance:** one act involves fire spinning. The fire permit is
   pending with the City. I am flagging it up front because I assume it changes
   the quote, and I would rather you price it correctly than discover it later.
@@ -76,16 +78,21 @@ info@thezao.com
 
 ---
 
-## Before this sends - one field
+## Before this sends
 
-**Expected attendance is UNSET and a broker cannot quote without it.** It is the
-single number that moves an event policy, and Zaal has not typed one. Note this
-is the *same* figure slide 4 of the deck is blocked on, so answering it once
-unblocks both.
+**Nothing is blocked.** Attendance was the one missing field and Zaal typed it on
+2026-08-27: **200-250 in person, about 1,000 online.**
 
-His stated *awareness* goal has been "4,000 of the 8,000 people in Ellsworth".
-That is a goal, not an attendance projection, and it must not be handed to an
-underwriter as one.
+Two things the draft does deliberately with those numbers. It gives the
+underwriter **200-250** as the on-site figure, because that is the only one that
+represents bodies on a street. And it names the online audience separately, in a
+sentence that says it is not additional people on the ground - an underwriter who
+later reads "1,000" somewhere in our marketing should find it already disclosed
+and already explained.
+
+**Not in the email:** the "4,000 of the 8,000 people in Ellsworth" awareness
+goal. It is a goal about the town hearing of the event, not a projection of who
+turns up, and handing it to an underwriter would misrepresent the risk.
 
 ## Deliberately not in the email
 

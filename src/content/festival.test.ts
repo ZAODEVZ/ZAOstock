@@ -13,7 +13,7 @@ describe('FESTIVAL facts', () => {
     expect(FESTIVAL.venue).toBe('Franklin Street Parklet');
     expect(FESTIVAL.shortVenue).toBe('Franklin St Parklet');
     expect(FESTIVAL.city).toBe('Ellsworth, Maine');
-    expect(FESTIVAL.window).toBe('11 AM - 6 PM');
+    expect(FESTIVAL.window).toBe('12 PM - 6 PM');
   });
 
   it('publishes free admission and the RSVP destination', () => {
