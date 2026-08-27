@@ -306,3 +306,25 @@ ZAOSTOCK-MARKETING extra - `docs/drafts/press-release-2026-09-01.md` - reveal pr
 3. Does 11:00 print on the poster before the City answers. Recommend no.
 4. One spelling each: Lyons Den / Lionsden, Dcoop / DCoop, Fellenz / Tom Fellenz.
 5. On 1 Sep: are the five names still the five. The roster is unreadable and the count has moved three times in four days.
+
+# ZAOSTOCK-MARKETING R2 - 2026-08-27
+
+Same branch, `bettercallzaal/lane-marketing-0827`. **Not pushed.**
+
+ZAOSTOCK-MARKETING R2 1/4 press pitch - `docs/drafts/press-ellsworth-american-2026-08-27.md` - three story angles (a global community picked Ellsworth because the founder lives here; the town gets a published before/after number; WaveWarZ decided by the crowd in the street), the email, every claim sourced. DO NOT SEND. Six holds, first of which is that /press does not exist yet.
+ZAOSTOCK-MARKETING R2 2/4 one-pagers - `docs/marketing/onepagers-needed.md` - exists: `overview` only, hard-coded, with six stale facts listed. DB-backed list UNVERIFIED (503 is swallowed into "No published one-pagers yet"). zaoos.com unreachable from the sandbox. Missing: sponsor (blocked on the same seven fields as the deck), partner (fully sourced, unblocked, recommended first), venue (the production plan already is it), city (CITY lane's Roddy draft covers it). Two table names and two domains; canonical one UNSET.
+ZAOSTOCK-MARKETING R2 3/4 merch - `docs/marketing/merch-2026-08-03.md` - decided 3 Aug: print-on-demand, zero stock, samples plus QR, Shopify backup (Prof), Eric for samples (Zaal). Owed: Eric re-reach and the Shopify store, both with no later record. Changed since: the merch TABLE depends on the City's vendor answer (Aug 24, unreached). Eleven UNSET fields in one table.
+ZAOSTOCK-MARKETING R2 4/4 press kit - `docs/marketing/press-kit.md` - the content for `/press`, publishable below the rule, SITE notes above it. No opening hour, no tiers, no attendance, no tax language. Two HOLD sections (lineup until 1 Sep; WaveWarZ figure re-pull).
+
+## Requests outside this lane's write-set (SITE lane)
+
+- ZAOSTOCK-MARKETING R2 request -> SITE: build `/press` from `docs/marketing/press-kit.md`. The rule-line splits SITE notes from rendered content.
+- ZAOSTOCK-MARKETING R2 request -> SITE: `src/app/onepagers/overview/page.tsx` carries `12pm — late` (line 154), "Indoor second stage" (67), three priced sponsor tiers $500/$1,000/$5,000 (76-116, also in `src/app/llms.txt/route.ts`), "400+ editions" (96), and six partners not seven. The tier prices conflict with the deck's all-UNSET slide 9 - do not delete or keep without Zaal saying whether that old ladder was ever his.
+- ZAOSTOCK-MARKETING R2 request -> SITE: `listOnePagers().catch(() => [])` turns a Supabase 503 into "No published one-pagers yet". Consider surfacing the failure so a guest-view check means something.
+
+## Zaal-only, from R2
+
+1. One press/contact address. Three are live: info@thezao.com (deck, broker email), zaal@thezao.com (overview one-pager), a Gmail address (llms.txt). Press kit uses info@thezao.com until told otherwise.
+2. Were the $500 / $1,000 / $5,000 sponsor tiers on the live site ever yours? If not, they are the same class of invented figure as the killed slide 9 ladder and are live on two public surfaces.
+3. Which one-pager table is canonical - `stock_onepagers` (ZAO OS skill) or `onepagers` (this repo)?
+4. Eric the printer and the Shopify store: any movement since 3 Aug? Nothing on disk says so.
