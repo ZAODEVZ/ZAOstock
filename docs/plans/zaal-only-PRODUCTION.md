@@ -20,16 +20,17 @@ Fellenz; Stilo 18:00-19:30 then one of Steve's acts closes; Werb not fully
 confirmed; Lyons Den not in the order. 21:2x: Lyons Den fourth after Dcoop;
 changeovers mixed 5 and 10. 22:0x: Steve in, Roddy in, fire performance
 confirmed by the City. 22:3x: Crown Vics and Steve's own set 20:00-22:00 booked;
-Somes Sound, North Creek, Aquavantes out; fire act is Dcoop; Steve message dropped.
+Somes Sound, North Creek, Aquavantes out; fire act is Dcoop; Steve message dropped. 28 Aug 05:0x: Stilo 18:00-20:00,
+no gap; fire time and place are Dcoop's to say.
 
 ## Now
 
-1. The 19:30-20:00 half hour between Stilo and Steve: **Fellenz's indoor 30 / Stilo runs on / Steve starts early / other** - production plan section 2, open item 4, `ros-5min` Q6.
+1. Indoor PA for Stilo's 18:00-20:00 and Steve's 20:00-22:00: **house system / brought in (whose)** - production plan open item 1; the Somes Sound answer went with them.
 2. The 5/10 changeover assignment - PROPOSED as 10 after Crown Vics, 5 after Sen, 5 after Dcoop, 10 after Lyons Den: **yes / swap (say which)** - production plan section 2, `ros-5min` Q1.
 3. Werb, not fully confirmed, wanted for WaveWarZ: **WaveWarZ / a set in the open stretch / out** - section 2; the site already shows him unconfirmed.
 4. Fellenz lands 14:35-15:05 on the new order: **fine / hold him to 15:00** - section 2, `ros-5min` Q2.
 5. The open stretch, about 40 minutes at 15:05-15:45: **JANGO / Jadyn / Hurricane / Werb / leave it to the MC** - one fits - section 2, `ros-5min` Q5.
-6. Indoor PA for Stilo's set and Steve's 8-10: **house system / brought in (whose)** - open item 1; the Somes Sound answer went with them.
+6. Fellenz's "30 min indoors late" (24 Aug): the evening now has no gap - **drop it / a place** - `ros-5min` Q26.
 7. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - section 6, open item 1.
 8. Performer headcount for Black Moon's $20 certificates, and the date you will send it: **a number and a date** - section 3 row 3, 8.7.
 9. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
@@ -39,7 +40,7 @@ Somes Sound, North Creek, Aquavantes out; fire act is Dcoop; Steve message dropp
 
 ## Later
 
-- Dcoop's fire performance (confirmed by Roddy, act Dcoop): placed, PROPOSED, on the 17:55-18:15 walk between the buildings at sunset - **yes / elsewhere (a time)** - production plan 8.5, `ros-5min` Q21.
+- Dcoop's fire performance: time and place are Dcoop's to say (your 05:0x) - nothing for you until he answers; the ask is in his draft.
 
 - The 5-minute intro at noon: who speaks and what is said: **a name (waits) and a line** - `ros-5min` Q7.
 - A separate sponsor mic break on top of the spots in every gap: **yes / no** - probably moot.
