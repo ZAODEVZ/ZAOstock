@@ -60,7 +60,7 @@ const BLOCKS: Block[] = [
     venue: 'OUT',
     label: 'Live music',
     detail:
-      'Independent artists back to back on the parklet stage, 45 minutes each. Lineup announced once every set is locked.',
+      'Independent artists back to back on the parklet stage. Lineup and set times announced once every set is locked.',
   },
   {
     start: '16:00',
