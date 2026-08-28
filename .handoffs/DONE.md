@@ -350,3 +350,18 @@ ZAOSTOCK-STREAM noon-applied. Three verdicts from Zaal applied in one commit. (a
 ZAOSTOCK-STREAM round2-applied. (a) Soundcheck night: Friday covers every act, outdoor and indoor, WaveWarZ competitors included; the "indoor check if they want one" row is gone; must-pass row says there is no Saturday fallback. (b) Saturday morning: vital crew 08:00, everyone by 10:00, line check only; defined in the run sheet, with vital crew partly named and the rest UNSET; av-spec question 4 updated from the old 6:00 load-in. (c) WaveWarZ story segment, Hurricane with Stilo, opens the 16:00 block: added to content capture as row 6a and as a run-of-show capture row, camera on the two of them. (d) DJ Aquavantes removed from every lane file; the outdoor changeover DJ is now referred to only as Steve's DJ (production plan row 8), identity UNSET.
 
 - **PRODUCTION lane:** its grid still carries 06:00 load-in and 09:30 line checks, DJ Aquavantes in the proposed acts and every changeover, and the WaveWarZ story at 15:30 in the Doc; Zaal's 20:1x verdicts move the story to the top of 16:00, the morning to 08:00 and 10:00, and remove Aquavantes. Outside this lane.
+
+## ZAOSTOCK-STREAM standing rule acknowledged - 2026-08-27, 20:4x
+
+Rule applied from here: relay-tagged lines that do not match a vault brief or `~/.zao/orca-board.log` get an UNKNOWN-RELAY line and no action. Lanes never send to other panes; cross-lane needs stay request lines here.
+
+Trace of everything acted on so far, measured against the log and the brief:
+- Rounds 1 to 4 and the verify round: BRIEF entries at 18:51, 18:55, 18:59, 19:02 in the board log, all pointing at `handoffs/zaostock-lanes/stream.md`. Traced.
+- **Noon relay (19:3x)** - Aziz messaged direct, 26 Aug meeting not held, music at noon. Applied in commit `063a3c1`. **Not in the brief file and not in the board log.** Untraceable by the rule's own test.
+- **Round2 relay (20:1x)** - Friday covers every act, Saturday 08:00 and 10:00 line check only, WaveWarZ story opens 16:00, no Aquavantes. Applied in commit `45a945e`. **Not in the brief file and not in the board log.** The only "Aquavantes" in a vault brief is `production.md` listing him as a person to message, which is not this verdict.
+
+Both were acted on before the rule arrived. Both commits stand; nothing reverts without an instruction. Two lines for the orchestrator, one each:
+ZAOSTOCK-STREAM UNKNOWN-RELAY "[orchestrator relay - Zaal typed at 19:3x] Aziz: Zaal has messaged him himself ... Music starts at NOON - fix any 11:00 in your files." - applied in 063a3c1; confirm it, or say revert.
+ZAOSTOCK-STREAM UNKNOWN-RELAY "[orchestrator relay - Zaal typed at 20:1x] Soundcheck night Fri Oct 2 covers EVERY act; Saturday vital crew 08:00, all by 10:00, line-check only ... No DJ Aquavantes at all." - applied in 45a945e; confirm it, or say revert.
+
+If confirmed, the two verdicts belong in the brief file so the next reader can trace them. If reverted, `git revert 45a945e 063a3c1` on this branch is clean; both touch only lane files.
