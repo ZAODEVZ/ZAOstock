@@ -2,12 +2,11 @@
 
 **DO NOT SEND. Paste-ready. Zaal sends.** Consolidates the 25 August
 sponsorship intro (`~/.zao/clipboard/clip-20260825-124802-zaostock-local-network-outreach.html`
-section 2), the food ask (`docs/permits/food-vendor-2026-10-03.md` section 3) and
-the first-aid line (`docs/permits/first-aid-lead-2026-10-03.md` section 4) into
-one message. Contact details are in the CRM, not here. Send the same day as
+section 2), and the food ask (`docs/permits/food-vendor-2026-10-03.md` section 3) into
+one message. The first-aid line was removed 20:2x (no first-aid person wanted). Contact details are in the CRM, not here. Send the same day as
 Kaitlen Workman and Heather.
 
-**Subject:** ZAOstock, Oct 3 - a free downtown festival, and three small asks
+**Subject:** ZAOstock, Oct 3 - a free downtown festival, and two small asks
 
 ---
 
@@ -19,7 +18,7 @@ Moon Public House at six. It runs inside the 9th annual Art of Ellsworth and
 Maine Craft Weekend.
 
 I am writing to the Chamber before I write to any business, because I would
-rather start at the front door than cold-call. Three asks, all small:
+rather start at the front door than cold-call. Two asks, both small:
 
 1. **Sponsors.** We are putting together local sponsorship for the day. Is there
    a good way to share what we are doing with Chamber members, and who locally
@@ -34,10 +33,6 @@ rather start at the front door than cold-call. Three asks, all small:
    food-service licence needs nothing extra from the State; one without would
    need a temporary licence filed by 3 September, so I am asking now. I am
    confirming the City's side of vendors on the parklet with Roddy this week.
-
-3. **A certified first-aider.** We need one on the parklet for the day. If any
-   member business has someone with a current First Aid / CPR card who would
-   stand with us, I would be glad of the introduction.
 
 Thank you - and if the Chamber has a form or a process for any of this, point me
 at it and I will follow it.
@@ -54,6 +49,7 @@ info@thezao.com
   in the first line. It is not on record; the membership on record is Bar
   Harbor.
 - Ask 2 goes only if a vendor is wanted (zaal-only line 3).
-- Ask 3 goes only if the Fire Department has not produced a person.
+- The earlier ask 3 (a certified first-aider) is gone: Zaal, 20:2x, no
+  dedicated first-aid person. Do not re-add it.
 - No figure in this message is one Zaal has not typed; the only date is the
   State's 30-day rule.

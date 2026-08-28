@@ -17,8 +17,8 @@ festival on Saturday 3 October at the Franklin Street Parklet, moving into Black
 Moon Public House at six. It runs inside the 9th annual Art of Ellsworth and
 Maine Craft Weekend.
 
-I have written to Peter on the member side about sponsors, a food spot on the
-parklet and a first-aider. My question for you is the operational one: does the
+I have written to Peter on the member side about sponsors and a food spot on
+the parklet. My question for you is the operational one: does the
 Chamber co-promote member and community events - a listing, a newsletter
 mention, a members' email - and if so, what do you need from us and by when? We
 have a press kit at zaostock.com/press and a poster printing the week of
