@@ -72,14 +72,14 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
 
   if (status === 'sent') {
     return (
-      <div className="bg-gradient-to-br from-emerald-500/15 via-emerald-500/5 to-transparent rounded-xl p-6 border border-emerald-500/30 space-y-3 text-center">
-        <p className="text-xs uppercase tracking-wider text-emerald-400 font-bold">You are in</p>
-        <h2 className="text-xl font-bold text-white">Thanks, {name || 'friend'}.</h2>
-        <p className="text-sm text-gray-300">
+      <div className="zs-alert zs-alert--success">
+        <p className="text-xs uppercase tracking-wider text-olive-500 font-bold">You are in</p>
+        <h2 className="text-xl font-bold text-ink-950">Thanks, {name || 'friend'}.</h2>
+        <p className="text-sm text-ink-950">
           Your signup landed in the ZAOstock team dashboard. A team lead will reach out within a few days with shift details and a crew kickoff message.
         </p>
-        <p className="text-xs text-gray-500">
-          Questions before then? DM Zaal on Farcaster.
+        <p className="text-xs text-ink-muted">
+          Questions before then? Email info@thezao.com.
         </p>
       </div>
     );
@@ -88,7 +88,7 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
   const selectedRole = roles.find((r) => r.value === roleInterest);
 
   return (
-    <form onSubmit={submit} className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-4">
+    <form onSubmit={submit} className="zs-form">
       <input
         type="text"
         tabIndex={-1}
@@ -100,7 +100,7 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       />
 
       <div className="space-y-1.5">
-        <label htmlFor="apply-name" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Your name</label>
+        <label htmlFor="apply-name" className="zs-label">Your name</label>
         <input
           id="apply-name"
           required
@@ -109,12 +109,12 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
           onChange={(e) => setName(e.target.value)}
           placeholder="First Last or handle"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="apply-email" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Email</label>
+        <label htmlFor="apply-email" className="zs-label">Email</label>
         <input
           id="apply-email"
           required
@@ -125,46 +125,46 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
           placeholder="you@example.com"
           maxLength={200}
           aria-describedby={status === 'error' ? 'apply-error' : undefined}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="apply-phone" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Phone (optional)</label>
+        <label htmlFor="apply-phone" className="zs-label">Phone (optional)</label>
         <input
           id="apply-phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Day-of only, so we can reach you fast"
           maxLength={50}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="apply-role" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Where do you want to plug in?</label>
+        <label htmlFor="apply-role" className="zs-label">Where do you want to plug in?</label>
         <select
           id="apply-role"
           value={roleInterest}
           onChange={(e) => setRoleInterest(e.target.value)}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         >
           {roles.map((r) => (
             <option key={r.value} value={r.value}>{r.label}</option>
           ))}
         </select>
         {selectedRole && (
-          <p className="text-[11px] text-gray-500 italic">{selectedRole.hint}</p>
+          <p className="text-[11px] text-ink-muted italic">{selectedRole.hint}</p>
         )}
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="apply-shift" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Shift preference</label>
+        <label htmlFor="apply-shift" className="zs-label">Shift preference</label>
         <select
           id="apply-shift"
           value={shiftInterest}
           onChange={(e) => setShiftInterest(e.target.value)}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         >
           {shifts.map((s) => (
             <option key={s.value} value={s.value}>{s.label}</option>
@@ -173,7 +173,7 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="apply-message" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Anything else? (optional)</label>
+        <label htmlFor="apply-message" className="zs-label">Anything else? (optional)</label>
         <textarea
           id="apply-message"
           value={message}
@@ -181,36 +181,36 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
           placeholder="Skills, availability caveats, who referred you, why you want to help"
           rows={4}
           maxLength={1000}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30 resize-none"
+          className="zs-input"
         />
       </div>
 
-      <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+      <label className="zs-check">
         <input
           type="checkbox"
           checked={briefOptIn}
           onChange={(e) => setBriefOptIn(e.target.checked)}
-          className="mt-0.5 accent-[#f5a623]"
+          className="mt-0.5 accent-red-600"
         />
-        <span className="text-xs text-gray-300">
+        <span className="text-xs text-ink-950">
           Send me the weekly ZAOstock build log - what moved, what needs hands, one thing you can help with.
-          <span className="block text-[10px] text-gray-500 mt-0.5">Uncheck to skip. One email a week, cancel anytime.</span>
+          <span className="block text-[10px] text-ink-muted mt-0.5">Uncheck to skip. One email a week, cancel anytime.</span>
         </span>
       </label>
 
       <button
         type="submit"
         disabled={busy || !name.trim() || !email.trim()}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-3 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
+        className="zs-btn zs-btn--primary w-full"
       >
         {busy ? 'Sending...' : 'Sign me up'}
       </button>
 
       {status === 'error' && (
-        <p id="apply-error" role="alert" className="text-xs text-red-400 text-center">{errMsg || 'Something went wrong. Try again.'}</p>
+        <p id="apply-error" role="alert" className="zs-error">{errMsg || 'Something went wrong. Try again.'}</p>
       )}
 
-      <p className="text-[11px] text-gray-500 text-center">
+      <p className="text-[11px] text-ink-muted text-center">
         We reach out within a few days. No commitment until you say yes to a specific shift.
       </p>
     </form>

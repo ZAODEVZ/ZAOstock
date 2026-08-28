@@ -130,3 +130,135 @@ h1, h2, h3, h4 {
     display: none !important;
   }
 }
+
+/* Form classes for the client-side forms (Field / Input / Alert from DESIGN.md
+   as plain classes, so the form components keep their logic untouched). */
+@layer components {
+  .zs-form {
+    background: var(--color-paper-200);
+    border: 2px solid var(--color-ink-950);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-hard);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .zs-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+  .zs-input {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-ink-950);
+    background: var(--color-paper-100);
+    border: 2px solid var(--color-ink-950);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+  }
+  .zs-input::placeholder {
+    color: var(--color-ink-muted);
+  }
+  .zs-input:focus {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+  .zs-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .zs-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--color-paper-100);
+    border: 2px solid var(--color-ink-950);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    cursor: pointer;
+    color: var(--color-ink-950);
+    font-size: 0.875rem;
+  }
+  .zs-check input {
+    accent-color: var(--color-red-600);
+    margin-top: 3px;
+  }
+  .zs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 13px 26px;
+    border-radius: var(--radius-pill);
+    border: 2.5px solid var(--color-ink-950);
+    box-shadow: var(--shadow-hard);
+    cursor: pointer;
+    transition: transform 120ms var(--ease-poster), box-shadow 120ms var(--ease-poster), background-color 180ms var(--ease-poster);
+  }
+  .zs-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+  .zs-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-hard), var(--shadow-focus);
+  }
+  .zs-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-hard);
+  }
+  .zs-btn--primary {
+    background: var(--color-red-600);
+    color: var(--color-paper-200);
+  }
+  .zs-btn--primary:hover:not(:disabled) {
+    background: var(--color-red-700);
+  }
+  .zs-btn--secondary {
+    background: var(--color-paper-200);
+    color: var(--color-ink-950);
+  }
+  .zs-btn--secondary:hover:not(:disabled) {
+    background: var(--color-paper-100);
+  }
+  .zs-alert {
+    border: 2px solid var(--color-ink-950);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-hard);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .zs-alert--success {
+    background: var(--color-olive-400);
+    color: var(--color-ink-950);
+  }
+  .zs-alert--warning {
+    background: var(--color-gold-500);
+    color: var(--color-ink-950);
+  }
+  .zs-error {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-red-700);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .zs-btn { transition: none; }
+    .zs-btn:active { transform: none; }
+  }
+}
