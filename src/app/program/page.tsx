@@ -27,12 +27,16 @@ export const metadata: Metadata = {
 // named in docs/plans/production-plan-2026-10-03.md, but it stays off this page
 // until the reveal like every other act.
 //
-// Doors moved noon -> 11:00 on 2026-08-26 and BACK to noon on 2026-08-27, when
-// Zaal locked "music starts at NOON". The 11:00 open is withdrawn. Do not
-// reintroduce it.
+// Doors are NOON. The 11:00 open was proposed 2026-08-26 and withdrawn
+// 2026-08-27 when Zaal locked "music starts at NOON". Do not reintroduce it.
 //
-// What it was solving is still open: noon to four on a 45/15 cadence is four
-// slots and five acts are confirmed. The production lane owns that.
+// Run of show v3 (PRODUCTION, 2026-08-27):
+//   - BLOCKS start is '12:00' = DOORS. Live sets run from 12:05.
+//   - There is NO DJ (Zaal, 2026-08-27 20:0x). Changeovers are the MC plus
+//     sponsor spots - do not write a DJ back into the daytime.
+//   - Steve's three acts are PROPOSED until he confirms them.
+//   - The running order is Zaal's plan and is NOT public.
+//   - Do not print set lengths, a set count, or any act name here.
 //
 // The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
 // acts). A single 6-9 booking replaces both.
@@ -60,7 +64,7 @@ const BLOCKS: Block[] = [
     venue: 'OUT',
     label: 'Live music',
     detail:
-      'Independent artists back to back on the parklet stage. Lineup and set times announced once every set is locked.',
+      'Independent artists on the parklet stage from 12:05, with our MC and our partners between sets. Lineup announced once every set is locked.',
   },
   {
     start: '16:00',

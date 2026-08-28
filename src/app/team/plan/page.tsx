@@ -111,7 +111,7 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
     label: 'Day-of operations',
     why: 'Not urgent this week, but each one needs a name against it before late September.',
     items: [
-      { title: 'First Aid lead - currently doubled onto Zaal, which does not work for a six-hour show', owner: 'Zaal', when: 'no date', card: '71716c06' },
+      { title: 'First Aid contact + kit, no dedicated person', owner: 'Zaal', when: 'no date', card: '71716c06' },
       { title: 'Stage managers, parklet and Black Moon - both unnamed. Sequential, not simultaneous, so one person could cover both', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Sound cover for the WaveWarZ block, since Stilo is battling in it', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Livestream and virtual - SPLIT, no longer one lead. Aziz owns the rig and Restream, Ohnahji owns scheduling and guests. Motomoto in the crew, does not lead a half', owner: 'Aziz + Ohnahji', when: 'closed 27 Aug', card: 'bb2b9326', note: 'Supersedes the 24 Aug call that virtual has no lead deliberately. Which half goes to which is read from the vault, not from Zaal - one word flips it. See docs/plans/people-map-2026-10-03.md.' },
@@ -167,7 +167,7 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
 // confirmed acts instead of four. Full reasoning and Steve's supply list live in
 // docs/plans/production-plan-2026-10-03.md.
 const DAY = [
-  { time: '12:00 - 16:00', what: 'Artists, outdoors on the parklet. SLOT COUNT + SET LENGTH HELD pending production ros-v3', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising - five CONFIRMED. Noon start locked by Zaal 27 Aug; the 45/15 four-slot cadence predates his 20:0x order and is superseded. Changeover DJ (Aquavantes) PROPOSED ONLY' },
+  { time: '12:00 doors, sets 12:05 - 15:45', what: 'Artists, outdoors on the parklet. Changeovers are the MC plus sponsor spots - NO DJ (Zaal 27 Aug)', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising confirmed. Steve\u2019s three acts PROPOSED until he confirms. Running order is Zaal\u2019s plan, not public. Per production ros-v3' },
   { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
   { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. IN BOOKING - no confirmed act', who: 'North Creek PROPOSED ONLY (Zaal 27 Aug), along with Crown Vics, DJ Aquavantes, The Somes Sound. Downbeat 18:00 or 18:30 also unconfirmed' },
   { time: '21:00 on', what: 'DJ to close, indoors', who: 'Stilo DJing, moved off the old 18:00-20:00 block' },
@@ -181,6 +181,7 @@ const MONDAY = [
   'Stage manager for the parklet and one for Black Moon after six, and splitting First Aid off Zaal',
   'Who asks Black Moon for the normal-Saturday baseline, and by when',
   'Livestream: has Aziz sent the rtmps ingest URL and key? Everything else in the OBS rig is proven and this is the only untested link',
+  'Sound cover for the WaveWarZ block - still nobody, and Stilo cannot do it because he is battling in it',
 ];
 
 function Pill({ overdue }: { overdue?: boolean }) {
