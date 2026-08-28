@@ -28,7 +28,7 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 
 - [ZAOstock overview](https://zaostock.com): Festival info, countdown, team, partners, past events, RSVP
 - [Day-of program](https://zaostock.com/program): Draft schedule with music, talks, and WaveWarZ battles
-- [Partner deck](https://zaostock.com/sponsor/deck): Three partner tracks, FAQ, how to commit
+- [Sponsor](https://zaostock.com/sponsor): why, who we are, five packages (prices on request), sponsor an artist, next step
 - [Volunteer signup](https://zaostock.com/apply): Sign up to volunteer in setup, check-in, stage crew, content, teardown, and other roles
 - [Team dashboard login](https://zaostock.com/team): 4-letter code access for the organizing team (27 members across operations, design, music, finance, livestream, and content)
 
