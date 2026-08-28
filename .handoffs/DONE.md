@@ -363,3 +363,46 @@ has to close, and the failure mode is a grid that silently drops an act.
 
 Everything else in the feed stands and was left untouched. Verification:
 `tsc --noEmit` clean, full suite 31 passed.
+
+---
+
+# ZAOSTOCK-PARTNERS - COC Concertz added, 2026-08-27 20:3x
+
+Commit below `98345f6`. **Not pushed.** Schedule slide untouched, still HELD.
+
+**COC Concertz** confirmed as a ZAOstock partner (Zaal, 20:3x). Added to:
+
+- `docs/sponsor/deck-2026-10-03.md` slide 8 - now lists eight confirmed partners
+- `src/app/page.tsx` `PARTNERS` - the public grid
+
+Spelled **COC Concertz**: space between the words, z on the end. Role is
+"Virtual concert series" - a partnership, not a ZAO sub-brand, per doc 2325.
+Nothing more specific claimed, because nothing more specific was said.
+
+## Two problems it surfaced
+
+**1. Black Moon was still "Indoor second stage" in the site's partner data.**
+The 23 August second-stage correction reached the After Hours prose and missed
+the array behind the partner grid. Now "Indoor venue from 6pm + official
+after-party". **Data behind a component is a surface too** - that is twice now
+the same wrong claim has survived a sweep by living in an array rather than in
+prose.
+
+**2. My slide 8 named Heart of Ellsworth as host partner, with their 28-events
+and 50+ sponsors figures. That was wrong and is removed.** The site's partner
+array carries an explicit comment excluding them: on 2026-08-13 Chesnee Barney
+said official-partner status and logo use must clear internally first, and it has
+not. I printed on a sponsor deck the exact claim the website refuses to make.
+
+The replacement note gives the distinction, not just the ban: **"part of Art of
+Ellsworth" is true and is about the event. "Heart of Ellsworth is our partner" is
+a claim about an organisation that has not agreed to it.**
+
+Worth the orchestrator's attention because it is the second unconfirmed-partner
+claim to reach an outward-facing draft from me today, and the guard that caught
+it was a code comment, not a doc.
+
+**Logos:** none of the eight has supplied one. Three outstanding, due Friday
+29 August.
+
+Verification: `tsc --noEmit` clean, full suite 31 passed.
