@@ -68,10 +68,9 @@ Notes on the rows:
   first. It appears nowhere until she confirms in writing
   (`src/app/page.tsx:102-104`). Do not ask them for a logo.
 - Owners for rows 7-9 are from the gdoc Partners section (Team and Roles tab).
-  The Town of Ellsworth contact for the logo specifically is **UNSET** - Roddy
-  owns the parklet permits and the CITY lane owns every Roddy draft
-  (`docs/drafts/roddy-*.md`), so the Town ask below is written to "the Town
-  contact" and Zaal picks the recipient.
+  The Town of Ellsworth logo ask goes to Roddy, as one line in Zaal's next
+  text to him (Zaal, tapped 28 Aug 05:0x). The CITY lane owns the Roddy drafts; this is one
+  sentence riding along, not a draft.
 
 ## What the three logos unblock, in order
 
@@ -85,27 +84,14 @@ Notes on the rows:
 Three drafts. Same spec in each, tone matched to the relationship. Zaal decides
 channel (email, text, in person). Nothing here has been sent.
 
-### Ask 1 - Town of Ellsworth (owner: Zaal; recipient: UNSET)
+### Ask 1 - Town of Ellsworth (owner: Zaal; recipient: Roddy)
 
-> Hi [Town contact - UNSET],
->
-> Quick asset request for ZAOstock on 3 October. We are printing the festival
-> poster the week of 1 September and building the sponsor backdrop for the
-> parklet stage, and both carry the partner logos. The Town of Ellsworth is on
-> that strip as our venue partner.
->
-> Could you send the Town's logo in vector (SVG, EPS or PDF) if one exists, or
-> a high-resolution PNG on a transparent background if not? A colour version
-> and a plain black or white version would both help, since the backdrop is
-> single-colour print.
->
-> If there is a usage guideline for the Town seal versus a wordmark, or a
-> particular version you would rather we use, tell me and we will use that one.
->
-> We need it by Friday 29 August to make the print date. Thank you - and thank
-> you again for the parklet.
->
-> Zaal
+Zaal, tapped 28 Aug 05:0x: the ask goes to **Roddy** as one line inside Zaal's next text
+to him - not a separate message. The line:
+
+> One more while I have you - could you send me the Town of Ellsworth logo, vector or a transparent PNG, by Friday? It goes on the ZAOstock poster partner strip and the stage backdrop, printing the week of the 1st.
+
+The longer email draft that stood here is withdrawn; `docs/drafts/msg-town-of-ellsworth-2026-08-27.md` is removed.
 
 ### Ask 2 - ENTERACT (owner: FailOften)
 
@@ -149,7 +135,7 @@ Written **from Zaal to Shawn**, same reasoning.
 
 | Item | Owner | State |
 |---|---|---|
-| Town of Ellsworth logo | Zaal | DUE Fri 29 Aug, recipient UNSET |
+| Town of Ellsworth logo | Zaal | DUE Fri 29 Aug - one line to Roddy in his next text (05:0x) |
 | ENTERACT logo | FailOften | DUE Fri 29 Aug |
 | Web3Metal logo | Shawn | DUE Fri 29 Aug |
 | Is COC Concertz a ZAOstock partner | Zaal | **YES** - Zaal, typed 27 Aug 20:3x. Role line and site poc still UNSET |
