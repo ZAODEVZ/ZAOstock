@@ -7,7 +7,7 @@ the CRM, not here.
 
 Holds before sending: no /press page exists yet (do not link it); no photo
 beyond the badge; no lineup names beyond Lyons Den until 1 Sep (Werb is not fully confirmed as of 27 Aug 20:4x); no
-attendance figure. Start time is noon (Zaal, typed 27 Aug 19:3x).
+attendance figure in the email by choice - Zaal typed 200-250 in person / 1,000 online at 19:3x, so the figure exists if Gabe asks. Start time is noon (Zaal, typed 27 Aug 19:3x).
 
 ---
 
@@ -30,7 +30,7 @@ play head to head and the crowd picks the winner.
 Two things I think make it a story rather than a listing. First, we are
 measuring what a free festival does for downtown - an ordinary Saturday
 against 3 October, published combined across the businesses that take part,
-Black Moon first. Second, the lineup goes public on 1 September, with two
+Black Moon first. Second, the lineup goes public on 1 September, with one
 name already out: Lyons Den.
 
 I am in Ellsworth and happy to sit down any day that suits. If a preview

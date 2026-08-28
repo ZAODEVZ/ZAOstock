@@ -17,7 +17,7 @@ today.
 | 8 | Mon 31 Aug | Slide 9: five tier prices, the discount percentage, the close date - seven fields? | `docs/marketing/onepagers-needed.md` sponsor pager, poster sponsor strip, deck |
 | 9 | Mon 31 Aug | One press contact address: info@thezao.com, zaal@thezao.com, or the Gmail - a name? | `docs/marketing/press-kit.md`, press pitch, press release |
 | 10 | Tue 1 Sep | On the morning: are the four names still the four - yes/no? | 1 Sep socials, press release, poster file |
-| 11 | This week | Attendance or awareness figure, and which it is - a number? | press kit "if asked", sponsor pager, deck slide 4, broker email |
+| 11 | This week | **ANSWERED 27 Aug 19:3x: 200-250 in person, 1,000 online** (daily note, Grill round 4) - Attendance figure? | press kit "if asked", sponsor pager, deck slide 4, broker email |
 | 12 | This week | Were the live $500 / $1,000 / $5,000 sponsor tiers ever yours - yes/no? | `docs/marketing/onepagers-needed.md`, SITE request on `/onepagers/overview` and `llms.txt` |
 
 ## Added 27 Aug 20:4x, from the running order v2
