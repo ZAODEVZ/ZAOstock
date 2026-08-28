@@ -7,7 +7,7 @@ import path from 'node:path';
 // server bundle. Stub it so the module loads under vitest.
 vi.mock('server-only', () => ({}));
 const { loadPressKit, PLACEHOLDER_MARKDOWN } = await import('./press-kit');
-const { FESTIVAL } = await import('@/content/festival');
+const { SITE } = await import('@/content/site');
 
 describe('press kit loader', () => {
   it('serves the placeholder when docs/marketing/press-kit.md is absent', () => {
@@ -40,7 +40,8 @@ describe('press kit placeholder', () => {
 
   it('carries the published facts', () => {
     expect(PLACEHOLDER_MARKDOWN).toContain('Saturday, October 3, 2026');
-    expect(PLACEHOLDER_MARKDOWN).toContain(FESTIVAL.window);
+    expect(PLACEHOLDER_MARKDOWN).toContain(SITE.windowLabel);
+    expect(PLACEHOLDER_MARKDOWN).toContain('Noon');
     expect(PLACEHOLDER_MARKDOWN).toContain('Franklin Street Parklet');
     expect(PLACEHOLDER_MARKDOWN).toContain('Free to attend');
     expect(PLACEHOLDER_MARKDOWN).toContain('info@thezao.com');

@@ -2,6 +2,7 @@ import 'server-only';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { FESTIVAL } from '@/content/festival';
+import { PARTNERS, SITE } from '@/content/site';
 
 // The /press page renders docs/marketing/press-kit.md. MARKETING owns that
 // file; this module only finds it. Until it lands, the page renders the
@@ -18,18 +19,8 @@ export const PRESS_KIT_PATH = path.join(process.cwd(), 'docs', 'marketing', 'pre
 
 export const PRESS_CONTACT = 'info@thezao.com';
 
-// Same eight names as the homepage PARTNERS list (src/app/page.tsx), which
-// gates on confirmed === true. If that list changes, change this one.
-export const CONFIRMED_PARTNERS = [
-  'Town of Ellsworth',
-  'Black Moon Public House',
-  'Star 97.7',
-  'Wallace Events',
-  'WaveWarZ',
-  'COC Concertz',
-  'ENTERACT',
-  'Web3Metal',
-] as const;
+// The same list the homepage renders; one source, src/content/site.ts.
+export const CONFIRMED_PARTNERS: readonly string[] = PARTNERS.map((p) => p.name);
 
 export const PLACEHOLDER_MARKDOWN = `# ZAOstock 2026 press kit
 
@@ -42,7 +33,7 @@ fact or marked **UNSET**.
 | | |
 |---|---|
 | What | A free, one-day, artist-built music festival in downtown Ellsworth, Maine. Run by The ZAO |
-| When | ${FESTIVAL.dateLabel}, ${FESTIVAL.window} |
+| When | ${FESTIVAL.dateLabel}, ${SITE.windowLabel} |
 | Where | ${FESTIVAL.venue}, ${FESTIVAL.city} |
 | After | ${FESTIVAL.afterParty.name}, ${FESTIVAL.afterParty.note}, from 6 PM |
 | Admission | ${FESTIVAL.admission} |

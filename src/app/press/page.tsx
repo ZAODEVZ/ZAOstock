@@ -1,15 +1,17 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { loadPressKit, PRESS_CONTACT } from '@/lib/press-kit';
+import { loadPressKit } from '@/lib/press-kit';
+import { SITE } from '@/content/site';
+import { SiteShell, Section, Eyebrow, Badge, Button } from '@/components/poster';
 
 // Static: the markdown is read once at build time, so a redeploy is what
-// publishes a new press-kit.md. Nothing here touches the database.
+// publishes a new docs/marketing/press-kit.md. Everything above that file's
+// first `---` is MARKETING's instructions and is not rendered.
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Press | ZAOstock',
+  title: 'Press',
   description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
   openGraph: {
     title: 'Press | ZAOstock',
@@ -18,54 +20,111 @@ export const metadata: Metadata = {
   },
 };
 
+/** MARKETING's file carries instructions above a `---` line and a Sources block below a second one. Render only the middle. */
+function publishable(markdown: string): string {
+  const parts = markdown.split(/\n---\n/);
+  const middle = parts.length >= 3 ? parts.slice(1, -1).join('\n---\n') : parts.length === 2 ? parts[1] : markdown;
+  // Whole-paragraph italic parentheticals are MARKETING's notes to SITE, not copy.
+  return middle.replace(/^\*\([\s\S]*?\)\*\s*$/gm, '').trim();
+}
+
+type Segment = { markdown: string; hold?: string };
+
+/**
+ * The kit carries two HOLD blocks (the lineup until 1 September, the WaveWarZ
+ * figure until re-pulled). Split them out so they render inside a real
+ * <details>, closed by default, and cannot ship open by accident. SITE removes
+ * this on the day. react-markdown escapes raw HTML, so the wrapper is JSX.
+ */
+function splitHolds(markdown: string): Segment[] {
+  const markers: Array<{ re: RegExp; label: string }> = [
+    { re: /\*\*HOLD until 1 September\.\*\*[\s\S]*?(?=\n## |$)/, label: 'Held until 1 September' },
+    { re: /\*\*HOLD - re-pull before publishing\.\*\*[^\n]*/, label: 'Re-pull before publishing' },
+  ];
+  let segments: Segment[] = [{ markdown }];
+  for (const m of markers) {
+    segments = segments.flatMap((seg) => {
+      if (seg.hold) return [seg];
+      const match = seg.markdown.match(m.re);
+      if (!match || match.index === undefined) return [seg];
+      const before = seg.markdown.slice(0, match.index);
+      const after = seg.markdown.slice(match.index + match[0].length);
+      return [{ markdown: before }, { markdown: match[0].trim(), hold: m.label }, { markdown: after }];
+    });
+  }
+  return segments.filter((s) => s.markdown.trim().length > 0);
+}
+
 export default function PressPage() {
   const kit = loadPressKit();
+  const segments = kit.source === 'file' ? splitHolds(publishable(kit.markdown)) : [{ markdown: kit.markdown }];
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-16">
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-xs text-gray-400 hover:text-[#f5a623]">
-            &larr; ZAOstock
-          </Link>
-          <span className="text-xs text-gray-500">Press</span>
+    <SiteShell>
+      <Section first className="pt-12 sm:pt-16">
+        <div className="max-w-[760px]">
+          <Eyebrow tone="denim">Press</Eyebrow>
+          {kit.source === 'placeholder' ? (
+            <div className="mt-3">
+              <Badge tone="gold">Placeholder - full kit coming</Badge>
+            </div>
+          ) : null}
+          <article className="press-body mt-4 text-base text-ink-950">
+            {segments.map((seg, i) =>
+              seg.hold ? (
+                <details key={i}>
+                  <summary>{seg.hold}</summary>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{seg.markdown}</ReactMarkdown>
+                </details>
+              ) : (
+                <ReactMarkdown key={i} remarkPlugins={[remarkGfm]}>
+                  {seg.markdown}
+                </ReactMarkdown>
+              ),
+            )}
+          </article>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href={SITE.badge.src} external variant="secondary" size="sm">
+              Badge, colour (PNG)
+            </Button>
+            <Button href="/brand/logos/zaostock26_badge_bw_final.png" external variant="secondary" size="sm">
+              Badge, black and white (PNG)
+            </Button>
+            <Button href={`mailto:${SITE.contact}`} external variant="primary" size="sm">
+              Press contact
+            </Button>
+          </div>
         </div>
-      </header>
-
-      <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
-        {kit.source === 'placeholder' && (
-          <p className="text-xs text-[#f5a623] uppercase tracking-wider font-bold">
-            Placeholder - full kit coming
-          </p>
-        )}
-
-        <article className="press-body text-sm leading-relaxed text-gray-300">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{kit.markdown}</ReactMarkdown>
-        </article>
-
-        <p className="text-xs text-gray-500">
-          Press contact: <a href={`mailto:${PRESS_CONTACT}`} className="text-[#f5a623] underline">{PRESS_CONTACT}</a>
-        </p>
-      </div>
+      </Section>
 
       <style>{`
-        .press-body h1 { font-size: 1.75rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
-        .press-body h2 { font-size: 1.125rem; font-weight: 700; color: #f5a623; margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        .press-body h3 { font-size: 1rem; font-weight: 700; color: #fbbf24; margin-top: 1rem; margin-bottom: 0.4rem; }
-        .press-body p { margin-bottom: 0.75rem; }
-        .press-body ul, .press-body ol { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+        .press-body h1 { font-family: var(--font-display); font-weight: 400; font-size: 2.75rem; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 1rem; text-wrap: balance; }
+        @media (min-width: 640px) { .press-body h1 { font-size: 3.5rem; } }
+        .press-body h2 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.05; letter-spacing: -0.01em; margin: 2rem 0 0.75rem; text-wrap: balance; }
+        @media (min-width: 640px) { .press-body h2 { font-size: 2.5rem; } }
+        .press-body h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.75rem; line-height: 1.1; margin: 1.5rem 0 0.5rem; }
+        .press-body p { margin: 0 0 0.75rem; max-width: 65ch; color: var(--color-ink-950); }
+        .press-body p:first-of-type { font-size: 1.125rem; color: var(--color-ink-secondary); }
+        .press-body ul, .press-body ol { margin: 0 0 0.75rem 1.25rem; max-width: 65ch; }
         .press-body ul { list-style: disc; }
         .press-body ol { list-style: decimal; }
         .press-body li { margin-bottom: 0.25rem; }
-        .press-body strong { color: #fff; font-weight: 700; }
-        .press-body code { background: #0d1b2a; padding: 1px 6px; border-radius: 3px; font-size: 0.85em; color: #c7d2fe; }
-        .press-body blockquote { border-left: 3px solid rgba(245, 166, 35, 0.5); padding-left: 1rem; margin: 1rem 0; color: #cbd5e1; font-style: italic; }
-        .press-body a { color: #f5a623; text-decoration: underline; }
-        .press-body table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.9em; }
-        .press-body th { background: rgba(245, 166, 35, 0.1); color: #f5a623; padding: 6px 8px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
-        .press-body td { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
-        .press-body hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0; }
+        .press-body strong { font-weight: 700; }
+        .press-body em { color: var(--color-ink-secondary); }
+        .press-body a { color: var(--color-denim-400); text-decoration: underline; text-underline-offset: 4px; }
+        .press-body a:hover { color: var(--color-denim-500); }
+        .press-body code { font-family: var(--font-mono); font-size: 0.875em; background: var(--color-paper-200); border: 1px solid rgba(36, 30, 21, 0.6); border-radius: 4px; padding: 1px 6px; }
+        .press-body table { width: 100%; border: 1px solid rgba(36, 30, 21, 0.6); border-radius: 14px; border-collapse: separate; border-spacing: 0; overflow: hidden; margin: 1rem 0; font-size: 0.875rem; }
+        .press-body thead:empty, .press-body th:empty { display: none; }
+        .press-body th { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-muted); text-align: left; padding: 10px 20px; border-bottom: 1px solid rgba(36, 30, 21, 0.6); }
+        .press-body td { padding: 10px 20px; border-top: 1px solid rgba(36, 30, 21, 0.6); vertical-align: top; }
+        .press-body tr:first-child td { border-top: 0; }
+        .press-body td:first-child { font-weight: 700; color: var(--color-ink-muted); letter-spacing: 0.04em; white-space: nowrap; }
+        .press-body td:last-child { font-weight: 600; }
+        .press-body details { background: var(--color-paper-200); border: 2px solid var(--color-ink-950); border-radius: 14px; padding: 12px 20px; margin: 1rem 0; box-shadow: var(--shadow-hard); }
+        .press-body summary { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gold-600); cursor: pointer; }
+        .press-body hr { border: 0; border-top: 1px solid rgba(36, 30, 21, 0.6); margin: 1.5rem 0; }
       `}</style>
-    </div>
+    </SiteShell>
   );
 }
