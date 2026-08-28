@@ -6,7 +6,9 @@ the DJ is asked about rather than "locked in"; the noon open in that reply
 stands - Zaal reverted the 11:00 idea on 27 August) with `docs/drafts/steve-followup-2026-08-27.md` and the crew meal
 question from production plan 8.7. Only figure in it is Steve's own $20.
 Revised after Q16 (27 Aug, late): no DJ - the DJ rider is gone and the list is
-three acts.
+three acts. Re-checked 21:1x against the daily: noon, ~30-minute sets, no DJ,
+sponsor spots, first aid as contact plus kit, evening = Stilo then Steve's
+closer - all consistent. Attendance is not in this message on purpose.
 
 - **To:** Steve Peer
 - **Channel:** the thread carrying the 15, 17 and 26 August messages
@@ -20,8 +22,9 @@ underwrite North Creek for the after party - that is a huge part of the day
 handled, and I do not take it lightly. Wristbands for performers is a great
 call; we will have them.
 
-The full schedule is attached, built on your cadence as the frame: 15-minute
-changeovers, one stage at a time, and I am fixing each set's length per act. One thing in it changed since we
+The full schedule is attached: one stage at a time, sets of about 30 minutes
+from 12:05 in an order we have set, the MC and our sponsor spots in every
+changeover. One thing in it changed since we
 last spoke, and then four questions.
 
 **What changed.** We are running the day as one flow, not two simultaneous
@@ -59,7 +62,7 @@ figure we are working to; I owe you the headcount and will send it with a date
 rather than a guess. Two things around it: performers will eat at Black Moon
 in the hour after they come off, so the certificates land through the
 afternoon rather than all at once - does that work for the kitchen? And the
-crew running the day (stage, sound, first aid, about six people) are not
+crew running the day (stage, sound, about six people) are not
 performers and are not on your certificates. If there is a simple way to feed
 them at Black Moon on our tab, tell me what it looks like; if not, we sort it
 separately and it is not your problem.

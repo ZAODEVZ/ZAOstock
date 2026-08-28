@@ -3,6 +3,8 @@
 **WITHDRAWN 27 August, late (Q16): there is no DJ on the day.** Zaal's call. Do
 not send this in any form. Steve is told in `msg-steve-peer-2026-08-27.md`.
 Kept for the record only.
+The body below is STALE against the 27 Aug verdicts (45-minute sets, four
+acts, a DJ) and is deliberately not corrected - it must never be sent.
 
 **DO NOT SEND.** Paste-ready once Zaal says yes - but **send this after
 Steve answers booked-which, or send it through Steve**, because Aquavantes is

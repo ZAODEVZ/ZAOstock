@@ -1,31 +1,27 @@
 # Message - Zaal to Acadia Rising (Sen Wilde, with Women with Rhythm)
 
-**ON HOLD 27 Aug, grill round 2: Zaal types the set length per act himself.** The
-set-length question below is moot until his lengths land; the other questions
-(AV cover, backline, soundcheck) still stand. Do not send as written.
-
-**DO NOT SEND.** Paste-ready once Zaal says yes. Confirmed act; set length is
-the only open item. Dcoop is also asking (he owns the answer on the working
-doc), so whichever lands first wins. No figures in this message.
+**DO NOT SEND.** Paste-ready once Zaal says yes. Confirmed act. Re-checked
+27 Aug 21:1x: Zaal's 20:4x order puts Acadia Rising second, about 30 minutes,
+so this is a confirmation, not a question. Dcoop is told the same. No figures
+beyond Zaal's own times.
 
 - **To:** Sen Wilde
 - **Channel:** whichever thread carries the booking
 
 ---
 
-Sen - one question for the run of show.
+Sen - one thing to confirm for the run of show.
 
-The day is built on 45-minute sets with 15-minute changeovers, outdoors on the
-Franklin Street Parklet between noon and 4. The working plan had Acadia Rising
-pencilled at 30 minutes because nobody had asked you. Is 45 right for you and
-Women with Rhythm, or is 30 your set? Either works - we hold five acts for four
-slots, so the real numbers decide how the afternoon is cut - I only need the
-true one.
+The day runs outdoors on the Franklin Street Parklet from noon to four, one
+stage, sets of about 30 minutes with the MC between them. You are second on:
+Acadia Rising around 12:50 to 13:20, after the opener. Does 30 work for you
+and Women with Rhythm, and is 12:50 fine? If either is wrong, say so now
+rather than at soundcheck.
 
 Two things worth knowing now: soundcheck is Friday 2 October, the night before,
-and it is mandatory for everyone playing; and the changeovers are 15 minutes
-on a shared stage, so if you have backline needs beyond guitars and pedals,
-tell me and Dcoop so we can plan the swap.
+and it is mandatory for everyone playing; and the changeovers are short on a
+shared stage, so if you have backline needs beyond guitars and pedals, tell me
+and Dcoop so we can plan the swap.
 
 Thanks - looking forward to it.
 
