@@ -7,7 +7,9 @@ withdrawn, and one confirmed act no longer has a slot. Later that night, Q16 of
 the run-of-show grill: **there is no DJ.** Changeovers are the MC plus sponsor
 spots. Steve's list was then three proposed acts, not four - and at 22:3x it
 resolved: **The Crown Vics 12:05 and Steve's own set 20:00-22:00 are booked;
-The Somes Sound, North Creek and DJ Aquavantes are out of the plan.** Grill round 2 (20:1x):
+The Somes Sound, North Creek and DJ Aquavantes are out of the plan.** Then
+28 August, 05:0x: **Stilo runs 18:00-20:00 straight into Steve** - the evening
+has no gap; and **the fire slot is Dcoop's to say** - no proposal from us. Grill round 2 (20:1x):
 the 06:00 call is gone - crew is on site Friday night for soundcheck, vital crew
 08:00 Saturday, everyone by 10:00; Friday covers every act and Saturday is
 line-check only, into the contracts; the WaveWarZ story segment exists, at
@@ -136,8 +138,7 @@ and the public page prints "sets from 12:05" with no count.
 
 | Time | What | Notes |
 |------|------|-------|
-| 18:00 - 19:30 | Stilo DJ set | **Decided** (Zaal, 20:0x). Our DJ, confirmed on our side. Music is already on when the first person reaches the door |
-| 19:30 - 20:00 | **UNSET** | Nothing booked (Zaal, 22:3x). PROPOSED: Fellenz's 30 minutes indoors, agreed 24 Aug and never placed. Otherwise Stilo runs on |
+| 18:00 - 20:00 | Stilo DJ set | **Decided** (Zaal, 28 Aug 05:0x): straight through to Steve at 20:00. Our DJ, confirmed on our side. Music is already on when the first person reaches the door |
 | 20:00 - 22:00 | Steve's own set | **BOOKED** - Zaal, 22:3x: "just the set I said going from 8-10" |
 | 22:00 - close | Close per Black Moon licence | Time **UNSET** - section 8.10 |
 
@@ -159,17 +160,16 @@ where already public; the rest stay generic until 1 September.
 | 12:05-12:35, opening | The Crown Vics | **Confirmed** - booked, Steve's act | Zaal, 22:3x: "he has his Crown Vics at start" |
 | - | The Somes Sound, North Creek, DJ Aquavantes | **OUT** - not proposed, gone | Zaal, 22:3x |
 | 20:00-22:00 | Steve's own set | **Confirmed** - booked | Zaal, 22:3x |
-| 17:55 play-out and 18:00-19:30 indoors | Stilo, our DJ | **Confirmed** on our side; slot decided by Zaal 20:0x | The DJ's own message; the 24 Aug standup; Zaal 20:0x |
-| 19:30-20:00 | Fellenz, 30 minutes indoors | **PROPOSED** placement of a 24 Aug agreement | The hole between Stilo and Steve; Zaal decides |
+| 17:55 play-out and 18:00-20:00 indoors | Stilo, our DJ | **Confirmed** on our side; 18:00-20:00 decided by Zaal 05:0x | The DJ's own message; the 24 Aug standup; Zaal 20:0x and 05:0x |
 
 **The booking question is answered.** Zaal spoke to you on 27 August: The Crown
 Vics open the day at 12:05 and your own set closes it from 8 to 10, both
 booked. The Somes Sound, North Creek and the DJ are out of the plan. Nothing
 below treats any of them as pending.
 
-The evening is set: Stilo's DJ set opens the room at 18:00 and runs to 19:30,
-your own set is 8 to 10, and the half hour between is ours to fill - Fellenz's
-30 minutes indoors is the proposal. Close is your licence.
+The evening is set: Stilo's DJ set opens the room at 18:00 and runs to 20:00,
+your own set is 8 to 10, and Stilo now runs straight through to 8 - no gap.
+Close is your licence.
 
 Two notes on that grid.
 
@@ -178,7 +178,7 @@ Two notes on that grid.
 noon. That is now a decision on our side, not a question for the City. What it
 costs is the fifth slot, and the four ways of absorbing that are listed under
 the grid above. None of them touches you except the first, which would put one
-of our confirmed acts on your stage in the half hour between Stilo and you.
+of our confirmed acts on your stage at the top of the evening, before Stilo.
 
 **No DJ.** You offered one for the changeovers, noon to 5:30, and thank you.
 We have decided to run the gaps differently: the MC and sponsor spots fill
@@ -211,13 +211,40 @@ on his list are still proposals per act until he confirms each one.
 |---|------|-------|--------|------|
 | 1 | Bottled spring water, both stages | Steve | Confirmed | With one stage at a time, this is the parklet until 6 and the bar after. Same water, half the simultaneous logistics |
 | 2 | Electricity, both stages | Steve | Confirmed | Parklet power is the one to pin down. Indoor power is your house |
-| 3 | $20 gift certificates for performers | Steve | Confirmed, count open | The $20 is your figure. The headcount is **UNSET** - we owe it to you, and we will not guess at it, because the roster it comes from is not readable right now. Date we get it to you by: **UNSET** |
+| 3 | $20 gift certificates for performers | Steve | Confirmed; count **PROPOSED** | The $20 is your figure (it stands - Zaal, 28 Aug). The headcount below is counted from our ledger and people map, and it is proposed for Zaal's approval, not yet agreed. Date we get it to you by: **UNSET** |
 | 4 | Dressing room and bathroom, Black Moon basement | Steve | Confirmed | Performers only, not a hangout. Understood and we will enforce it. See wristbands below |
 | 5 | One porta potty, city parking lot | Steve | Confirmed | See open item 2. One is not enough for a street event and you already said so |
-| 6 | Your own set, 20:00-22:00 | Steve | **BOOKED** - Zaal, 27 Aug 22:3x | North Creek, The Somes Sound and the DJ are out of the plan on both sides. The night is Stilo 6 to 7:30, a half hour we are filling, then you 8 to 10 |
+| 6 | Your own set, 20:00-22:00 | Steve | **BOOKED** - Zaal, 27 Aug 22:3x | North Creek, The Somes Sound and the DJ are out of the plan on both sides. The night is Stilo 6 to 8, then you 8 to 10 |
 | 7 | Indoor and outdoor PA | Steve | Sourcing | The one thing everything else waits on. See open item 1 and 5 |
 | 8 | DJ on the outdoor stage, gap fill | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. The changeovers are the MC plus sponsor spots, and Stilo plays out at six. No DJ on the day |
+| 3a | **The headcount, counted (PROPOSED, 28 Aug 05:1x)** | ZAO | Awaiting Zaal | See the list under this table |
 | 9 | Hosting part of the day | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. Our own crew holds the mic all day, outside and in. If you want a moment on it at six to welcome the room, it is yours |
+
+### The certificate headcount, counted
+
+Counted from the section 2 ledger (confirmed acts only) and the people map
+(named crew), plus the six unnamed crew the plan already assumes. **PROPOSED**
+for Zaal's approval. No band size is invented: where an act is a group, its
+size is UNSET and it is counted as a line, not a number.
+
+| Who | People | Basis |
+|-----|--------|-------|
+| Dcoop | 1 | Confirmed act; also fire; also AV lead |
+| Fellenz | 1 | Confirmed act, closes the outdoor block. Same person as the advisor line in the people map - counted once |
+| Lyons Den | 1 | Confirmed act, fourth |
+| Acadia Rising - Sen with Women with Rhythm | **UNSET** (group) | Confirmed act, second. Size not on disk |
+| The Crown Vics | **UNSET** (group) | Booked, opens at 12:05. **Flag: this is Steve's own act - does he certificate his own band?** |
+| WaveWarZ: Stilo, Jango, Lui, Quan, Hurricane | 5 | Our battle roster and host (ledger tag WaveWarZ, not Confirmed - counted, flagged) |
+| Named crew on the day: Zaal, Paper, Candy | 3 | People map |
+| Named virtual crew: Aziz, Ohnahji, Motomoto | 3, **on site UNSET** | People map. They run the stream; whether they are in Ellsworth or remote is not on disk |
+| Unnamed crew | 6 | Stage manager, two sound operators, AV cover for Dcoop's set, First Aid contact, street pointer/shooter - the "about six crew" the plan has assumed since open item 3 |
+| **Excluded** | - | Steve's own set (his certificates), Werb (not fully confirmed), the dream acts (not asked), Katina and Steve (hosts) |
+
+**Proposed number: 20 people plus two groups of UNSET size** (Acadia Rising,
+The Crown Vics). At Steve's $20 that is $400 for the 20, plus $20 a head for
+the two groups once their sizes land. If the three virtual crew are remote,
+it is 17 plus the groups. Wristbands and lanyards (open item 3): the same
+list.
 
 ---
 
@@ -228,8 +255,8 @@ on his list are still proposals per act until he confirms each one.
 | Artists, booking and contracts | ZAO | In progress, cutoff 3 September |
 | Mandatory soundcheck night, Friday 2 October | ZAO | Confirmed, going into artist contracts as: **Friday covers every act; Saturday morning is line-check only** (Zaal, 27 Aug). Checks happen at whichever stage the act actually plays, so Friday runs outside and inside. Crew is on site Friday night |
 | WaveWarZ, 4-6pm, including its MC | ZAO | Confirmed |
-| Tent coverage, rain or shine | Wallace Events | Confirmed partner |
-| **Fire performance - Dcoop** | ZAO | **CONFIRMED by the City** (Roddy, via Zaal 27 August) and **the act is Dcoop**, in addition to his 13:20 music set (Zaal, 22:3x). Slot PROPOSED: on the walk, 17:55-18:15, Franklin Street between the two buildings, at sunset (8.5) |
+| Tent coverage, rain or shine | Wallace Events | **Confirmed and up** - Zaal, 28 Aug 05:1x |
+| **Fire performance - Dcoop** | ZAO | **CONFIRMED by the City** (Roddy, via Zaal 27 August) and **the act is Dcoop**, in addition to his 13:20 music set (Zaal, 22:3x). **Time and place: Dcoop to say** (Zaal, 28 Aug 05:0x) - no proposal from us; asked in his draft |
 | Event insurance certificate for the City | ZAO | In progress with a local broker. Permit condition, we own it |
 | City permit and Art of Ellsworth coordination | ZAO | **Roddy is in** - Zaal, 27 August. Paperwork with the City; the certificate form and deadline, circuits, vehicle access and the vendor question still need his answers (city lane) |
 | Stage manager, load-in and strike crew | ZAO | Names wait (Zaal, 27 Aug) |
@@ -258,9 +285,10 @@ that is fine too, we just need to know now.
 
 Alongside that, the scope: gear list, channel count, who sets up and who
 strikes, who operates, what power it needs, price, and what happens if it falls
-through. We also need a date by which it is confirmed, so that if it is not, we
-start a backup that day rather than a week later. We are not asking you to
-guarantee anything, we are asking for the date.
+through. The date is set: **Friday 11 September** is the latest-safe date for the PA to
+be confirmed, yours or ours. If it is not confirmed by then, we start the
+backup that day rather than a week later. We are not asking you to guarantee
+anything; we are telling you the gate, so it is a shared one.
 
 **2. Porta potties, count and a handicap unit.**
 You are covering one at the city parking lot and suggested one or two more,
@@ -289,8 +317,7 @@ evening:
 - Close: whatever your licence says. We print nothing after 10 until you tell
   us the hour.
 
-The half hour between Stilo and you, 7:30 to 8, is ours to fill and we will
-tell you what goes there.
+Stilo runs 6 to 8 and hands straight to you.
 
 ---
 
@@ -300,10 +327,12 @@ tell you what goes there.
 |------|------|
 | 1 September | Lineup reveal |
 | 3 September | Musician submission cutoff. Anything not in gets swapped |
-| **UNSET** | Latest-safe date for PA confirmation. To be set with Steve, and it is a real gate: after it we start the backup whether or not the PA is confirmed |
-| **UNSET** | Final performer headcount to Black Moon |
-| Friday 2 October | Soundcheck night, every act, outside and inside. Crew on site. Saturday is line-check only |
-| Saturday 3 October | Vital crew 08:00, everyone by 10:00, noon doors, close late |
+| **Friday 11 September** | Latest-safe date for the PA to be confirmed - Steve's rig or ours (Zaal, 28 Aug 05:3x). A real gate: after it the backup starts whether or not the PA is confirmed |
+| **UNSET** | Final performer headcount to Black Moon. The count is proposed in section 3 (20 plus two groups); the date is not |
+| Saturday 26 September | Weather check 1, Zaal and Steve (8.2) |
+| Wednesday 30 September | Weather check 2, Zaal and Steve |
+| Friday 2 October | Soundcheck night, every act, outside and inside. Crew on site. Saturday is line-check only. **Weather check 3 and the rain call**, Zaal and Steve |
+| Saturday 3 October | 08:00 re-look on the weather (8.2). Vital crew 08:00, everyone by 10:00, noon doors, close late |
 
 ---
 
@@ -352,11 +381,11 @@ the schedule side: what moves, when the call is made, and who makes it.
 
 | Weather | What happens to the day | State |
 |---------|-------------------------|-------|
-| Light rain | The day runs as printed. Tent coverage from Wallace Events is already confirmed, rain or shine (section 4) | Real - the tent is the plan |
+| Light rain | The day runs as printed. Tent coverage from Wallace Events is confirmed and up (Zaal, 28 Aug) | Real - the tent is the plan |
 | Rain heavy enough that the PA or the tent is unsafe, or wind | The outdoor block moves inside Black Moon and the day runs one room from open to close. Which acts still play and how long is the stage manager's call on the day, inside whatever the room holds | **UNSET** - Black Moon's capacity for a daytime crowd is Steve's number, and it is not written anywhere on our side |
-| Threshold that triggers the move | **UNSET** | Nobody has set one. The review's own words: improvising at 8am with artists already travelling is the bad version |
-| Who makes the call | Zaal and Steve together, because it moves a crowd into Steve's building | **YES** - Zaal, 27 August. Steve has not been asked yet |
-| By when | The evening before, at the Friday soundcheck, with a second look at 08:00 Saturday | **YES** - Zaal, 27 August |
+| What triggers the move | No number. Zaal and Steve judge it together at each dated check below | **Closed** - Zaal, 28 Aug 05:3x: the decision structure is the checks, not a threshold |
+| Who makes the call | Zaal and Steve together, because it moves a crowd into Steve's building | **YES** - Zaal, 27 August, restated 28 August 05:3x |
+| When | Weather checks on **Saturday 26 September**, **Wednesday 30 September**, and **Friday 2 October** at the soundcheck, where the call is made; a re-look at **08:00 Saturday** | **YES** - Zaal, 28 August 05:3x. Section 8.2 is closed |
 
 Wallace Events is listed for equipment and tenting, so the tent conversation is
 a scope conversation with an existing partner, not a new relationship.
@@ -392,7 +421,7 @@ result and the walk at 17:55 are in dusk.
 |------|-----|-------|
 | Stage lighting for 16:00-18:00, at minimum front wash on the battlers and the host | **UNSET.** Bomb Squad did lights at ZAOville and has gear (working doc, AV List); nobody has asked them for 3 October | Proposed, not asked |
 | Power for lighting, on top of the PA | Goes on the AV spec (STREAM lane) and on Roddy's circuits question | Gated |
-| Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked. If the fire performance is on the walk (8.5), it is its own light | Unverified |
+| Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked. The fire performance's time and place are Dcoop's to say | Unverified |
 
 ### 8.5 The 18:00 move - the mechanism, minute by minute
 
@@ -403,13 +432,12 @@ the fifteen minutes.
 | Time | What | Who | State |
 |------|------|-----|-------|
 | 17:30 - 17:55 | The final. The MC tells the room, once, that the night continues next door at six | Hurricane, host mic | Hurricane is the WaveWarZ host on our roster |
-| 17:55 - 18:00 | Result announced. The MC walks the crowd: "next door, now, the music is already on". Music plays out on the outdoor PA. **Dcoop's fire performance starts on the street** | Hurricane on the mic; **Stilo DJs the transition out of WaveWarZ** - decided at the 24 Aug standup, he travels for it. Fire: **Dcoop** (Zaal, 22:3x) | Stilo confirmed on our side; the fire performance is confirmed by the City (Roddy, 27 Aug) and its placement here is **PROPOSED** - it is the spectacle the walk was missing, and sunset is 18:12 |
+| 17:55 - 18:00 | Result announced. The MC walks the crowd: "next door, now, the music is already on". Music plays out on the outdoor PA | Hurricane on the mic; **Stilo DJs the transition out of WaveWarZ** - decided at the 24 Aug standup, he travels for it | Stilo confirmed on our side; note he is battling until 17:55, so his play-out starts when the result does |
 | 18:00 | Outdoor PA strike begins. Nothing is playing outside from here | Whoever strikes the outdoor rig - open item 1, **UNSET** | Gated on the PA answer |
-| 18:00 - 18:15 | Music inside is already playing when the first people reach the door - **Stilo's DJ set, 18:00-19:30, decided** (Zaal 20:0x). Source must be the house system, not the outdoor PA, because that is being struck | Stilo, on the house PA or his controller into it - the AV List has this line blank | The DJ setup is **UNSET** |
+| 18:00 - 18:15 | Music inside is already playing when the first people reach the door - **Stilo's DJ set, 18:00-20:00, decided** (Zaal 20:0x, 05:0x). Source must be the house system, not the outdoor PA, because that is being struck | Stilo, on the house PA or his controller into it - the AV List has this line blank | The DJ setup is **UNSET** |
 | 18:00 - 18:15 | Somebody at Black Moon's door, wristbands or lanyards checked for the basement only, everyone else straight in | **UNSET** - proposed Steve or Katina, it is their door | Not agreed |
-| 18:00 - 18:15 | The fire performance on the walk between the two buildings; the crowd follows it to Black Moon's door. Somebody on the street pointing as well, so nobody drifts to their car | Fire: **Dcoop**. Pointer: **UNSET** - a crew name, not a performer | Placement PROPOSED. Fire on a public street at the move: the fire permit is the city lane's and Roddy has said yes |
-| 19:30 - 20:00 | UNSET - Fellenz's indoor 30 PROPOSED; otherwise Stilo runs on | Zaal | Not decided |
-| 20:00 | Steve's own set, to 22:00 | Steve - BOOKED (Zaal, 22:3x) | Decided |
+| 18:00 - 18:15 | Somebody on the street between the two buildings pointing, so nobody drifts to their car | **UNSET** - a crew name, not a performer | Not named |
+| 20:00 | Steve's own set, to 22:00. Stilo hands straight over | Steve - BOOKED (Zaal, 22:3x) | Decided |
 | The mic handoff | Hurricane's last words outside are the first words inside: the host mic goes off with the outdoor PA, and a house mic is live indoors before the crowd arrives. ZAO crew holds the mic all day (Zaal, 27 Aug) - the evening MC is ours, name UNSET. Steve may welcome the room if he wants to | Evening MC: **UNSET** | Not Steve |
 
 Signage for the walk sits in section 4 under "to build".
@@ -424,7 +452,7 @@ proposed, not agreed.
 | Any daytime slot | First: the next act comes up early if it is ready, and the MC holds the room with sponsor spots until it is. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the MC, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
 | WaveWarZ, a battler drops | The bracket shape is Stilo and Hurricane's to overwrite; with three competitors it still runs. The block stays 16:00-18:00 | Their call |
 | The MC is not there | Every gap is silent. Fallback: Zaal on the mic, sponsor spots read from the sheet. There is no DJ to fall back to (Zaal, 27 Aug) | MC name waits |
-| 19:30-20:00 stays empty | Stilo's DJ set runs on to 20:00 and hands to Steve | Real fallback - Stilo is confirmed on our side |
+| Stilo cannot do 18:00-20:00 | The house system plays until Steve; the MC holds the room | The evening has no other live act before 20:00 |
 | The open stretch 15:05-15:45 stays empty | The MC and sponsor spots hold it, and WaveWarZ can start its story early if Stilo and Hurricane want the time | Costs nothing |
 
 ### 8.7 Nobody eats
@@ -435,11 +463,11 @@ are not tied to a time.
 
 | Who | When | What | State |
 |-----|------|------|-------|
-| Performers | After their own set, at Black Moon, which is open through the day | The $20 gift certificate (Steve's figure, section 3 row 3). Count **UNSET** | The meal window per act is now written: the hour after they come off |
+| Performers | After their own set, at Black Moon, which is open through the day | The $20 gift certificate (Steve's figure, section 3 row 3). Count PROPOSED in section 3: 20 plus two groups | The meal window per act is now written: the hour after they come off |
 | Crew running the day | In shifts during sets, never during a changeover. The stage manager writes the rota on the morning | **UNSET** - a crew meal is not a gift certificate, and no vendor and no budget exist for it | Vendor **UNSET**; what a parklet food vendor needs from the City and the Chamber is the CITY lane's (their Round 2, item 2) |
 | WaveWarZ battlers and host | Before 16:00, because 16:00-18:00 has no gap long enough | Same certificates | |
-| Stilo | Before 16:00 or after 19:30 (20:00 if he holds the hole) - he battles at 16:00 and DJs 17:55-19:30 | Same | |
-| Dcoop, twice | After his 13:50 finish, and before the 17:55 fire slot | Same | He plays and he spins fire |
+| Stilo | Before 16:00 or after 20:00 - he battles at 16:00 and DJs 17:55-20:00 | Same | |
+| Dcoop, twice | After his 13:50 finish, and around the fire slot he names | Same | He plays and he spins fire |
 
 The ZAOville debrief carries a different meal figure. It is not this event's,
 it was not typed for this plan, and it is not used here.
@@ -500,7 +528,7 @@ document is decided.
 **Steve's acts are settled** (22:3x): The Crown Vics at 12:05 and Steve's own
 set 20:00-22:00 are booked, the other three are out. What is left of that
 thread is the indoor PA (house or brought in) and the licence hour, both
-Steve's, and the 19:30-20:00 half hour, which is ours.
+Steve's. Stilo runs 18:00-20:00 into Steve; there is no gap.
 
 **The 11:00 open moved, and it moved on our side.** Zaal ruled on the evening of
 27 August that music starts at noon, before the City was ever asked. The
@@ -583,9 +611,9 @@ open items at the end still stand. The live message is the city lane's
 | Question | Who answers | Blocks | State |
 |----------|-------------|--------|-------|
 | Which of Steve's acts are booked | - | - | **ANSWERED** 22:3x: Crown Vics and Steve's own set booked; the other three out. Steve message dropped, handled verbally |
-| 19:30-20:00 | Zaal | The printed evening between the DJ set and Steve | **UNSET** - Fellenz's indoor 30 PROPOSED |
+| The evening | - | - | **SETTLED** 05:0x: Stilo 18:00-20:00, Steve 20:00-22:00, no gap |
 | Does the permit cap an 11:00 start | - | Nothing any more | **WITHDRAWN** - music starts at noon, Zaal 27 August. Never sent |
-| The fire performance | Roddy (yes), Dcoop (the act) | Its slot | **CONFIRMED**, act Dcoop (22:3x); slot on the walk PROPOSED |
+| The fire performance | Dcoop | Its time and place | **Dcoop to say** (Zaal, 05:0x). Confirmed by the City; act Dcoop; asked in `msg-dcoop-2026-08-27.md` |
 | The open stretch 15:05-15:45: Werb or one dream act | Zaal | The afternoon's last 40 minutes, the poster | **UNSET** - section 2 |
 | Which gaps are the 10s | Zaal | Ten minutes either way | **PROPOSED** - first and last; his to swap |
 | Changeover cover, 12:45 to 16:00 | The MC plus sponsor spots - decided, no DJ | Every 15-minute gap between sets | **Decided.** MC name waits |
@@ -628,4 +656,10 @@ in booking either way.
   22:0x (logged 22:15): Steve in, Roddy in, fire performance confirmed.
   22:3x (logged 22:59): Crown Vics 12:05 and Steve's set 20:00-22:00 booked; Somes
   Sound, North Creek, Aquavantes out; 19:30-20:00 UNSET; Dcoop is the fire act;
-  the Steve message dropped, handled verbally
+  the Steve message dropped, handled verbally.
+  28 Aug 05:0x (logged 05:09): Stilo 18:00-20:00, no gap; the fire slot is Dcoop's
+  to say, no proposal.
+  28 Aug 05:1x (logged): $20 stands; headcount counted and proposed; Wallace tent
+  confirmed and up.
+  28 Aug 05:3x (logged): PA gate Friday 11 September; rain call structure closed -
+  Zaal and Steve, checks 26 Sep / 30 Sep / 2 Oct, 08:00 Sat re-look

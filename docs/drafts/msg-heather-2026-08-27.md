@@ -35,5 +35,6 @@ info@thezao.com
 
 - Do not guess her role or surname. If Peter or Kaitlen names her first, rewrite
   the opening and drop the question.
-- If The ZAO is a Chamber member (zaal-only line 9), say so.
+- Chamber membership: NO (Zaal, 28 Aug 05:3x). No membership line; stays as
+  written. The business entity, if asked, is BetterCallZaal.
 - No figures in the message.

@@ -58,5 +58,6 @@ without it.
 
 ## Who fills this in
 
-Zaal asks Steve or Katina the two questions. Aziz confirms which feed. The
-screen and device owner is UNSET until Black Moon answers.
+Zaal asks Black Moon himself whether we can use their TV and wifi (Zaal, 28
+Aug); the question is his and the answer is UNSET. Aziz confirms which feed.
+The screen and device owner is UNSET until Black Moon answers.

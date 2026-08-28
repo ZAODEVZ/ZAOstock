@@ -111,15 +111,16 @@ export default function PressPage() {
         .press-body li { margin-bottom: 0.25rem; }
         .press-body strong { font-weight: 700; }
         .press-body em { color: var(--color-ink-secondary); }
-        .press-body a { color: var(--color-denim-400); text-decoration: underline; text-underline-offset: 4px; }
+        .press-body a { color: var(--color-denim-400); text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+        .press-body table { display: block; overflow-x: auto; max-width: 100%; }
         .press-body a:hover { color: var(--color-denim-500); }
-        .press-body code { font-family: var(--font-mono); font-size: 0.875em; background: var(--color-paper-200); border: 1px solid rgba(36, 30, 21, 0.6); border-radius: 4px; padding: 1px 6px; }
+        .press-body code { font-family: var(--font-mono); font-size: 0.875em; background: var(--color-paper-200); border: 1px solid rgba(36, 30, 21, 0.6); border-radius: 4px; padding: 1px 6px; overflow-wrap: anywhere; }
         .press-body table { width: 100%; border: 1px solid rgba(36, 30, 21, 0.6); border-radius: 14px; border-collapse: separate; border-spacing: 0; overflow: hidden; margin: 1rem 0; font-size: 0.875rem; }
         .press-body thead:empty, .press-body th:empty { display: none; }
         .press-body th { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-muted); text-align: left; padding: 10px 20px; border-bottom: 1px solid rgba(36, 30, 21, 0.6); }
         .press-body td { padding: 10px 20px; border-top: 1px solid rgba(36, 30, 21, 0.6); vertical-align: top; }
         .press-body tr:first-child td { border-top: 0; }
-        .press-body td:first-child { font-weight: 700; color: var(--color-ink-muted); letter-spacing: 0.04em; white-space: nowrap; }
+        .press-body td:first-child { font-weight: 700; color: var(--color-ink-muted); letter-spacing: 0.04em; }
         .press-body td:last-child { font-weight: 600; }
         .press-body details { background: var(--color-paper-200); border: 2px solid var(--color-ink-950); border-radius: 14px; padding: 12px 20px; margin: 1rem 0; box-shadow: var(--shadow-hard); }
         .press-body summary { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gold-600); cursor: pointer; }

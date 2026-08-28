@@ -1181,3 +1181,209 @@ ZAOSTOCK-PRODUCTION ros-v6 REQUEST for DECK (schedule slide) - CHANGED: evening 
 ZAOSTOCK-PRODUCTION CLOSE (convention 10, fourth time): shipped as above. Held - nothing off disk; no pending relays, no monitors; open questions in zaal-only-PRODUCTION.md (line 1 the 19:30 half hour) and ros-5min Q1-Q33; no /handoff bundle. Branch bettercallzaal/lane-production-0827, worktree ~/orca/workspaces/zaostock/lane-production-0827, base ws/production-plan-1003-0826 @ 118f127, 28 commits ahead after this line's commit, tree clean, NOT pushed. Known red: festival.test.ts:16 (SITE's). Ready to close.
 - ZAOSTOCK-SITE program-v6 (relay traced: board 23:03 "RELAY DECK+SITE ros-v6"): applied to every evening line in this write-set. `src/content/site.ts` DAY - which the homepage "The day" list renders - now reads `6 - 7:30 PM` DJ set as the street walks in, and `8 - 10 PM` live set hosted by Black Moon; nothing printed for 7:30-8 or after 10; "live music to close, in booking" is gone. `/team/plan` evening rows: 18:00-19:30 DJ set (unchanged), 19:30-20:00 UNSET half hour with nothing public, 20:00-22:00 live set hosted by Black Moon with Steve's act unnamed (name not on disk) and Crown Vics unnamed publicly until 1 Sept, nothing after 22:00 until the licence hour is typed. No act name added to any public surface. tsc clean, vitest 45/45. `src/app/program/page.tsx` NOT edited - fourth ask, same answer: outside this write-set per site.md line 2, unchanged since 18:51; on the fold it still prints the 18:00-21:00 after-party and 21:00 DJ blocks. NOTE for MARKETING: `docs/marketing/press-kit.md` "The day" and "Format" lines still say "then live music to close"; the /press route renders that file as written.
 - ZAOSTOCK-SITE program-v6 (addendum): PRODUCTION has closed its lane and `src/app/program/page.tsx` on the new fold still prints "45 minutes each", the 18:00-21:00 after party and the 21:00 DJ - ros-v3, v4 and v6 never reached it. The exact edit is drafted as `docs/drafts/program-ros-v6-2026-08-27.patch` (ros-v3 daytime sentence, ros-v6 evening blocks, comment rewritten, no act name): `git apply --check` passes against this tree and tsc is clean with it applied, then reverted. One command applies it; the file stays untouched here until someone with the write-set says so. Branch rebased onto the moved fold (6f0d200): 3 ahead, 0 behind, tsc clean, 45/45.
+
+# ZAOSTOCK-CITY - 2026-08-28 05:1x round (log 05:14 "CITY outreach-list + Wallace + FireDept hold")
+
+Fresh branch `bettercallzaal/lane-city-0828` off `origin/main` `02634fe` (PR #56 merged; nothing from the 0827 branch was outside main). **Not pushed.**
+
+ZAOSTOCK-CITY outreach-list. NEW `docs/outreach/ellsworth-businesses-2026-08-28.md`: 44 rows - every Ellsworth business named on disk (venues and restaurants, eight lodgings, four bank prospects plus the deck's example flagged as not a lead, press, the HoE poster-distribution spots, the hospital, partners and services) with the ask (SPONSOR / FOOD / VENUE / PROMO), contact if on disk (names and roles only) else UNSET, and three templates (sponsor, food spot, cross-promo), plain voice, DO NOT SEND. The three Chamber messages unchanged. Wallace tent: CONFIRMED and up now - `docs/permits/rain-plan-2026-10-03.md` section 1 closed, tent is a fact; zaal-only line 11 answered. Fire Department ask: HELD, waiting on Dcoop confirming his fire slot - banner on the draft, status row 3 and zaal-only line 4 say so. zaal-only line 3 (food vendor) answered as "all businesses". Nothing sent, nothing pushed, nothing left the machine.
+ZAOSTOCK-CITY requests: whoever holds the CRM - diff the outreach list against the 1,198 rows; PRODUCTION - Dcoop's fire-slot confirmation unblocks the Fire Department ask.
+
+## ZAOSTOCK-CITY CLOSE (convention 10) - 2026-08-28, 05:3x
+ZAOSTOCK-CITY CLOSE. Branch `bettercallzaal/lane-city-0828` off `origin/main`, one commit, not pushed. Held: nothing off disk. Today, in order: Zaal sends the Jagger email first; then picks rows from the outreach list; Fire Department waits on Dcoop; Arbor Camp waits on a name and a headcount. Resume: `claude --resume a757a231-9af1-40f0-be9b-9b02184f756f` in this worktree. Safe to close.
+
+ZAOSTOCK-CITY chamber-weather (log 05:24). Chamber membership NO - "BetterCallZaal is the biz": `docs/permits/chamber-status-2026-08-27.md` names BetterCallZaal as the business entity; the three Chamber messages unchanged in body, their notes say no membership line. Weather: cadence Sat 26 Sep / Wed 30 Sep / Fri 2 Oct ADOPTED; second decision-maker STEVE PEER with Zaal; `docs/permits/rain-plan-2026-10-03.md` section 3 closed (thresholds stay the doc 1032 working rule, not separately adopted). zaal-only lines 9 and 12 answered. Nothing sent. Request: PRODUCTION - Steve now shares the rain call; the ros should say so.
+
+## ZAOSTOCK-CITY CLOSE (convention 10) - 2026-08-28, 05:4x
+ZAOSTOCK-CITY CLOSE. Branch `bettercallzaal/lane-city-0828`, two commits off `origin/main`, not pushed. Held: nothing off disk. Open on `docs/plans/zaal-only-CITY.md`: the gift-certificate figure (7), the deck-to-Chamber timing (8), a first-aid contact's name (10), Dcoop's policy and fire slot (13), Arbor Camp name and headcount (14). Resume: `claude --resume a757a231-9af1-40f0-be9b-9b02184f756f`. Safe to close.
+# ZAOSTOCK-MARKETING - 2026-08-28, friday-batch
+
+Branch: **`bettercallzaal/lane-marketing-0828`**, fresh off `origin/main` at `02634fe` (PR #56 merged; all 15 of yesterday's lane commits are in main via the fold). Old branch `bettercallzaal/lane-marketing-0827` is fully merged and left in place. Not pushed.
+
+ZAOSTOCK-MARKETING friday-batch - Zaal 05:0x. (1) Gabe Goode pitch: CLEARED TO SEND with today's batch; final-checked against ros-v7 (noon, no DJ in changeovers, Stilo opens indoors, Steve's set closes, fire confirmed) - the body contradicts nothing, header updated, Zaal sends. (2) Town of Ellsworth logo: one line for Roddy written into `docs/marketing/partner-logos.md` Ask 1, to ride in Zaal's next text; `docs/drafts/msg-town-of-ellsworth-2026-08-27.md` removed. (3) Werb: unchanged, not confirmed in writing; zaal-only line 13 notes Zaal asks him today. (4) New branch as above. Files touched: `docs/drafts/msg-gabe-goode-2026-08-27.md`, `docs/marketing/partner-logos.md`, `docs/plans/zaal-only-MARKETING.md`, `docs/drafts/msg-town-of-ellsworth-2026-08-27.md` (deleted). Nothing sends from this lane.
+ZAOSTOCK-MARKETING CLOSE (convention 10, step 1) - Held: nothing off disk. Open for Zaal, 4 of 15: slide 9 fields, the 31 Aug confirmed-in-writing list, the live tier prices question, Werb and Sen written yes. Branch `bettercallzaal/lane-marketing-0828`, 1 commit ahead of `origin/main`, clean, never pushed. Closing.
+## ZAOSTOCK-STREAM verdicts-0828 - 2026-08-28, 05:2x
+
+ZAOSTOCK-STREAM verdicts-0828. Relay traced (board log 05:19). Fresh branch `bettercallzaal/lane-stream-0828` off `origin/main` (`02634fe`, which already carries every lane file from the overnight fold, identical to my last commit). Four verdicts applied: (1) topology: chain doc section retitled "the 28 August test runs BOTH", decided by the test not a person; test plan Stage 1 rewritten as today's test, run B (straight to Restream, needs nothing from anyone) first, run A (via Aziz's ingest) when the key arrives, on both boxes, results log has a row per run. (2) Destinations: candidate table added to the chain doc, one row per Restream-supported destination with the handle on disk (X WaveWarZ, YouTube @zaofestivals, Twitch wavewarzofficial the only Twitch handle on disk, Facebook and LinkedIn zaofestivals, Kick none, TikTok and Instagram RTMP only, custom RTMP for Cloudflare, Farcaster not a destination); login holder UNSET on every row. (3) Encode box: chain link 3 and fallback link 3 now carry desktop and laptop as two candidates, the loser is the winner's backup; laptop specs UNSET. (4) Black Moon TV and wifi: indoor mirror and Zaal-only line 7 say the question is Zaal's, answer UNSET. Zaal-only lines 4, 9, 10 updated to what is still typable (test results, Twitch account, login holders, laptop specs). Files: `docs/av/livestream-chain-2026-10-03.md`, `docs/av/test-plan-obs-rtmp-2026-10-03.md`, `docs/av/fallback-matrix-2026-10-03.md`, `docs/av/indoor-mirror-2026-10-03.md`, `docs/av/power-internet-requirements.md`, `docs/plans/zaal-only-STREAM.md`.
+
+ZAOSTOCK-STREAM CLOSE (convention 10), reopen closed. Branch `bettercallzaal/lane-stream-0828`, 1 commit on `origin/main` `02634fe`, never pushed, nothing held off disk. The old branch `bettercallzaal/lane-stream-0827` is fully in main and can be deleted by whoever tidies branches.
+
+ZAOSTOCK-STREAM gear-after-test - 2026-08-28 05:3x. Relay traced (board log 05:24). `docs/plans/av-spec-2026-10-03.md` section 6: the audio interface row and the cameras (ATEM) row stay UNSET with the gate "decide after the 28 Aug OBS test". `docs/plans/zaal-only-STREAM.md` line 8 carries the same gate. Same branch, one more commit; still closed.
+## PRODUCTION lane - 28 Aug 05:0x, ros-v7 - branch bettercallzaal/lane-production-0828 off origin/main @ 02634fe, commit 16463c6
+
+ZAOSTOCK-PRODUCTION ros-v7 (relay matched: orca-board.log 05:09 "RELAY PRODUCTION ros-v7"; PR #56 verified merged - my previous head f62cbe7 is an ancestor of origin/main; fresh branch bettercallzaal/lane-production-0828, same worktree): (1) fire = ask Dcoop: the 17:55-18:15 walk proposal is removed from the grid, 8.5, 8.4, the ledger, section 9 and the ROS; section 4 row and ROS Q21 read "time and place: Dcoop to say"; msg-dcoop's fire paragraph is an open question with no time or place. (2) Stilo 18:00-20:00 straight into Steve at 20:00: the 19:30-20:00 row is deleted everywhere, the Fellenz-indoors proposal for it is withdrawn (ROS Q26 and zaal-only 6 now ask only whether his indoor 30 is still wanted), 8.6/8.7 follow. zaal-only line 1 is the indoor PA. Tables intact; vitest green on this branch (the window assertion was flipped by SITE in the fold). Files: production plan, people map, zaal-only, ros-5min v7, msg-dcoop.
+ZAOSTOCK-PRODUCTION ros-v7 REQUEST for SITE (/program) - public evening line CHANGES: 18:00-20:00 "DJ set" and 20:00-22:00 "Live set, hosted by Black Moon"; nothing between (there is no between) and nothing after 22:00 until the licence hour is typed. No names. Daytime unchanged. No fire on the page.
+ZAOSTOCK-PRODUCTION ros-v7 REQUEST for DECK (schedule slide) - CHANGES: evening reads "DJ set 6-8, live set 8-10 hosted by Black Moon". Everything else as ros-v6. No fire on the slide until Dcoop names a time and place.
+ZAOSTOCK-PRODUCTION CLOSE (convention 10, fifth time): shipped as above. Held - nothing off disk; no pending relays, no monitors; open questions in zaal-only-PRODUCTION.md and ros-5min Q1-Q33; no /handoff bundle. Branch bettercallzaal/lane-production-0828 in worktree ~/orca/workspaces/zaostock/lane-production-0827, base origin/main @ 02634fe, 2 commits ahead after this line's commit, tree clean, NOT pushed. The old branch bettercallzaal/lane-production-0827 is fully merged and can be deleted. Ready to close.
+
+## PRODUCTION lane - 28 Aug 05:1x, headcount - commit 8f95603
+
+ZAOSTOCK-PRODUCTION headcount (relay matched: orca-board.log 05:1x): counted from the section 2 ledger and the people map, PROPOSED in plan section 3 (row 3 status, new row 3a, and a counted table under the supply list): Dcoop 1, Fellenz 1, Lyons Den 1, WaveWarZ roster 5 (Stilo, Jango, Lui, Quan, Hurricane - ledger tag is WaveWarZ not Confirmed, counted and flagged), named crew 3 (Zaal, Paper, Candy), named virtual crew 3 (Aziz, Ohnahji, Motomoto - on site UNSET), unnamed crew 6 (the "about six" since open item 3) = **20 people, plus two groups of UNSET size** (Acadia Rising with Women with Rhythm; The Crown Vics). Excluded: Steve's own set, Werb, dream acts, hosts. At Steve's :  plus  a head for the groups; 17 plus groups if the virtual crew are remote. Two flags for Zaal in zaal-only line 8: The Crown Vics are Steve's own band; are the virtual three on site. The send-by date stays UNSET (section 6). Wallace tent confirmed and up: section 4 row, 8.2, ROS Q11 answered. Tables intact. No public change - nothing for SITE or DECK.
+ZAOSTOCK-PRODUCTION CLOSE (convention 10, sixth time): shipped as above. Held - nothing off disk. Branch bettercallzaal/lane-production-0828, base origin/main @ 02634fe, 4 commits ahead after this line's commit, tree clean, NOT pushed. Ready to close.
+
+## PRODUCTION lane - 28 Aug 05:3x, pa-deadline - commit be8760d
+
+ZAOSTOCK-PRODUCTION pa-deadline (relay matched: orca-board.log 05:3x): (1) Friday 11 September is in plan section 6 as the latest-safe PA date (Steve's rig or ours) and in open item 1 as a shared gate stated to Steve - after it the backup starts regardless. (2) 8.2 closed: caller Zaal + Steve; weather checks Sat 26 Sep, Wed 30 Sep, Fri 2 Oct at the soundcheck where the call is made, 08:00 Sat re-look; the three checks are rows in the section 6 dates table. No numeric threshold was typed, so the trigger row reads "their judgment at each dated check" - closed, not UNSET. zaal-only line 7 answered; its residue is "tell Steve the gate". The 11 September date is also the CITY lane's concern for the insurance certificate and the Fire Dept hold only if they choose to align - flagged, not asserted. Tables intact. No public change - nothing for SITE or DECK.
+ZAOSTOCK-PRODUCTION CLOSE (convention 10, seventh time): shipped as above. Held - nothing off disk. Branch bettercallzaal/lane-production-0828, base origin/main @ 02634fe, 7 commits ahead after this line's commit, tree clean, NOT pushed. Ready to close.
+- ZAOSTOCK-SITE program-v7 (relay traced: board 05:12 "RELAY DECK+SITE ros-v7"; PR #56 merged at 09:09Z as 02634fe): fresh branch `bettercallzaal/lane-site-0828` off origin/main, which already carries the whole redesign. Applied to every evening line in this write-set: `src/content/site.ts` DAY (the homepage list) now `6 - 8 PM` DJ set and `8 - 10 PM` live set hosted by Black Moon, nothing between or after; `/team/plan` 18:00-20:00 DJ set (Stilo, two hours, no gap) and 20:00-22:00 live set, act unnamed; homepage comment. No 7:30 / 19:30 remains outside PRODUCTION's files. tsc clean, vitest 45/45. `src/app/program/page.tsx` on main still prints "45 minutes each", 18:00-21:00 after party and 21:00 DJ - still outside this write-set; the ros-v6 draft patch is replaced by `docs/drafts/program-ros-v7-2026-08-28.patch`, `git apply --check` clean against 02634fe and tsc clean with it applied, then reverted.
+---
+
+# ZAOSTOCK-DECK schedule-v7 - 2026-08-28
+
+Fresh branch **`ws/deck-0828`** off `origin/main` @ `02634fe`, now that PR #56 is
+merged. **Not pushed.** Write-set: `docs/sponsor/deck-2026-10-03.md` only.
+
+| Time | Slide |
+|---|---|
+| 12:00 | Doors, and a short welcome |
+| from 12:05 | Live sets, with our MC between them |
+| 16:00 - 18:00 | WaveWarZ, opening with the WaveWarZ story |
+| 18:00 | Everyone walks next door, together |
+| 18:00 - 20:00 | DJ set |
+| 20:00 - 22:00 | Live set, hosted by Black Moon |
+
+**v7 closes the gap v6 had.** The DJ runs to 20:00 instead of 19:30, so the
+evening is one continuous block from six with no unexplained half hour.
+
+**One silence remains, still defended in the note:** nothing after 22:00. Open in
+the run of show, not the end of the night.
+
+**No fire on the slide.** Verified - `grep -i fire` returns nothing. The note now
+says it must not be added until Dcoop names a time and a place. It sits in the
+older fact sheet, which is why it needed saying: a fact-sheet entry is not a
+schedule item until it has a slot.
+
+## The branch move nearly cost three versions of work - read this one
+
+**PR #56 folded this deck at its v4 state.** My v6 commit was never in it - only
+2 commits were unmerged and that was one of them.
+
+So branching clean off `origin/main` and applying only v7's one-line evening
+change, which is exactly what the instruction describes, **would have silently
+reverted:**
+
+- v5's sharper sponsor line, on slides 5 **and** 11
+- v6's evening and the printed-silence speaker note
+- the City of Ellsworth naming
+- the updated sources line
+
+Handled by cherry-picking `e3a763f` onto the new branch before applying v7. Clean,
+no conflicts.
+
+**The general shape, worth a convention line:** after a fold, "start a fresh
+branch off origin/main" is only safe once you have checked that the fold actually
+captured your lane's latest work. Here it did not, and nothing in the merge or
+the relay said so. **Diff your file against `origin/main` before you branch, not
+after.**
+
+## Still open from yesterday
+
+- **ZAOSTOCK-DECK -> SITE:** Town vs City of Ellsworth in the website `PARTNERS`
+  array. Deck says City. One-word revert if Town is deliberate.
+- Slide 9 remains **UNSET**, six fields, for the Candy meeting.
+- The John Jagger insurance email is unblocked and unsent.
+
+# ZAOSTOCK-CITY - 2026-08-28 Forward round (brief mtime 07:12, log 07:12)
+
+Branch `bettercallzaal/lane-city-0828-fwd` off `origin/main` `02634fe`, with the two unfolded 0828 commits cherry-picked (`57b0daf`, `814bc8e`) because the round builds from `docs/outreach/ellsworth-businesses-2026-08-28.md`, which is not in main yet. **Not pushed.**
+
+ZAOSTOCK-CITY outreach-msgs. 20 paste-ready messages in `docs/outreach/msgs/`, one per business, filled from the three templates with one business-specific paragraph where the disk gave a reason for one: 6 Ellsworth lodgings (sponsor, room-block paragraph), 3 venues (The Grand cross-promo plus overflow line; Fogtown sponsor plus the Friday-night and food asks; Woodlawn cross-promo), 7 food spots (food template), 4 banks (sponsor; Machias and Franklin get one line each from the record). Contact line UNSET on every one except Fogtown (Joy Cartwright named, address UNSET). All DO NOT SEND. `docs/outreach/msgs/TRACKER.md`: business, ask, channel, status - every row DRAFTED, not sent. Excluded from the 20 and said so in the tracker: Arbor Camp (own draft), the Chamber three, Black Moon (in), press (25 Aug clipboard), the poster spots, the two non-Ellsworth lodgings. Nothing sent, nothing left the machine.
+
+## ZAOSTOCK-CITY CLOSE (convention 10) - 2026-08-28, 07:3x
+ZAOSTOCK-CITY CLOSE. Branch `bettercallzaal/lane-city-0828-fwd`, three commits off `origin/main`, not pushed; supersedes `bettercallzaal/lane-city-0828` (same two commits plus this round). Held: nothing off disk. Resume: `claude --resume a757a231-9af1-40f0-be9b-9b02184f756f`. Safe to close.
+## PRODUCTION lane - Forward round - 2026-08-28 07:2x, branch bettercallzaal/lane-production-0828-forward off origin/main @ 02634fe, commit f97ed4e
+
+ZAOSTOCK-PRODUCTION forward-1 (brief matched: orca-board.log 07:12 BRIEF term_47301b19 <- production.md): (1) docs/acts/crown-vics-, acadia-rising-, dcoop-, lyons-den-, fellenz-2026-10-03.md - one memo per confirmed act from the deal-memo template and the v7 plan: slot, length, position, before/after, the 10/5/5/10 changeovers (proposed), overrun rule YES, shared backline undecided, Friday 2 Oct soundcheck mandatory, Saturday line-check only, the  certificate line; fee / travel / merch / contact / dates UNSET; the template's stale lines (Friday date, 25-min sets, "DJs run between sets", 10-12 day-of soundcheck) NOT carried; all DO NOT SEND. Steve's own 20:00 set has no memo (his act, his terms). (2) docs/plans/run-sheet-2026-10-03.md - one page, every handoff, mic-holder in bold (daytime MC -> Hurricane at 15:45 -> host mic off with the outdoor PA and the house mic live before the crowd arrives -> Stilo hands to the house at 20:00), roles not names, the five enforced rules, fire "Dcoop to say". (3) docs/plans/standup-2026-08-31-agenda.md - five lines mapped to zaal-only line numbers; names excluded by rule. Tables intact.
+ZAOSTOCK-PRODUCTION FOLD ORDER, please: origin/main is still 02634fe. bettercallzaal/lane-production-0828 (ros-v7, headcount, PA gate, 7 commits) is NOT folded, and forward-1 is built from its facts. Fold 0828 first, then 0828-forward (it touches only new files: docs/acts/*, run-sheet, agenda, plus DONE.md - no conflict with 0828 except DONE.md appends). If 0828 is dropped instead, forward-1's facts are ahead of the plan on main and should be held.
+ZAOSTOCK-PRODUCTION CLOSE (convention 10): shipped as above. Held - nothing off disk. Two unfolded branches in worktree ~/orca/workspaces/zaostock/lane-production-0827: bettercallzaal/lane-production-0828 (7 ahead of origin/main) and bettercallzaal/lane-production-0828-forward (2 ahead after this line's commit, currently checked out). Tree clean, NOT pushed, nothing sent. Ready to close.
+## ZAOSTOCK-STREAM run-sheet - 2026-08-28, 07:2x
+
+ZAOSTOCK-STREAM run-sheet. Relay traced (board log 07:12 BRIEF). Fresh branch `bettercallzaal/lane-stream-0828-runsheet` off `origin/main` `02634fe`; my two 05:xx commits live in `ws/fold-2026-08-28` (PR #57), so this branch adds only two new files and cannot conflict with the fold. (1) `docs/av/stream-run-sheet-2026-10-03.md`: the stream as a show against ros-5min v7 (read from the fold branch, since main still has v6): eleven named scenes, a before-stream cue list from Friday to 11:55, a cue per ros row from 12:00 to 18:10 with on-screen, cue, owner (Aziz rig / Ohnahji show) and the ros question it waits on, a fault table, three two-hour virtual crew slots all UNSET, and a section saying the indoor evening is a second rig, UNSET. One PROPOSED item: go live on the pre-show card at 11:50. (2) `docs/av/obs-test-results-2026-08-28.md`: mirrors the clipboard prompt field for field: ten-line verdict block, locked settings, a destinations table with the handles on disk (Twitch account still unnamed), a runs table with the prompt's exact numbers (sustained kbps, dropped %, CPU, GPU, disconnects, phone viewer), local recording per run, and where the verdict copies to. No keys anywhere, and the file says so.
+
+- **PRODUCTION lane:** the run sheet reads Q7, Q8, Q16, Q18, Q19, Q20 from the ros as its own open cues; when those get answered the sheet's rows change, so a line in the ros pointing at `docs/av/stream-run-sheet-2026-10-03.md` would keep them together.
+- **Whoever runs the desktop test:** write into `docs/av/obs-test-results-2026-08-28.md` if the zaostock repo is on the box; it is the same shape as the prompt's own instructions.
+# ZAOSTOCK-MARKETING - 2026-08-28, Forward round: the Sep 1 reveal kit
+
+Branch **`bettercallzaal/lane-marketing-0828-reveal`**, fresh off `origin/main` at `02634fe`. (`bettercallzaal/lane-marketing-0828` with the friday-batch commit `220e626` is separate and awaits the fold.) Not pushed.
+
+ZAOSTOCK-MARKETING reveal-kit 1/3 - `docs/marketing/reveal-2026-09-01/`: `README.md` (the rule, the two holds, every fact with its source, the order on the day), `posts.md` (all seven platforms in the socials voice, `[CONFIRMED-LIST]` placeholder, Firefly budget 210 chars fixed text), `poster-captions.md` (alt text, short / medium / long, Candy credit line), `press-release-final.md` (final except the list and two quote holds; three pre-send checks: forms, /press, partner count), `more-to-come.md` (the line in the form each surface uses). No act name is hard-coded anywhere in the folder.
+ZAOSTOCK-MARKETING reveal-kit 2/3 - `docs/marketing/onepagers/sponsor.md`: the LOCAL sponsor one-pager in the /onepager skill structure; five tier prices, discount and close date UNSET; scale 200-250 / 1,000 per Zaal; no tax language except the negation. Not inserted anywhere - canonical table still UNSET.
+ZAOSTOCK-MARKETING reveal-kit 3/3 - `docs/marketing/partner-logo-strip-spec.md`: nine slots in `site.ts` order with Bomb Squad ninth, file rules (SVG preferred, PNG 400px transparent, under 60 KB), render rules matched to DESIGN.md (48px / 40px height-locked, Card, InfoStrip breakpoints, colour as supplied, text-tile fallback), the print strip rules for Candy kept separate.
+ZAOSTOCK-MARKETING request -> SITE: add Bomb Squad to `src/content/site.ts` PARTNERS (role "crew, content and merch", poc Dcoop, per the gdoc); then render the logo box per the strip spec keyed on `logoSrc`.
+ZAOSTOCK-MARKETING flag -> DESIGN: `docs/design/redesign-2026-08-28.md` line 78-79 specs `partners: [...]` as "the seven plus Heart of Ellsworth as host partner", and Home section 2 says "live sets with a DJ in every changeover". Both contradict the record: Heart of Ellsworth appears nowhere until confirmed in writing (`site.ts` comment, 13 Aug call), and there is no DJ in the changeovers (Zaal, 27 Aug, Q16). SITE's `site.ts` already has it right; the spec text should follow.
+ZAOSTOCK-MARKETING CLOSE (convention 10, step 1) - Held: nothing off disk. Open for Zaal, 4 of 15: slide 9 fields, the 31 Aug confirmed-in-writing list, the live tier prices question, Werb and Sen written yes. Two lane branches unfolded: `-0828` (1 commit) and `-0828-reveal` (1 commit), both clean, never pushed. Closing.
+
+ZAOSTOCK-PRODUCTION FOLD-ORDER RESOLVED (orchestrator, 28 Aug): lane-production-0828 has been in ws/fold-2026-08-28 (PR #57) since 05:5x and forward-1 was folded on top of it (45/45, tsc clean). Nothing to redo. origin/main moves when Zaal merges #57. Lane closed.
+---
+
+# ZAOSTOCK-DESIGN deck-html - 2026-08-28 07:2x, Forward round
+
+Relay matched: board log line 4442, "2026-08-28 07:12 BRIEF ... design.md".
+
+**Branch:** `ws/lane-design-deck-0828`, fresh off `origin/main` at `02634fe`
+(the overnight fold). Not pushed. Write-set: `docs/sponsor/deck-2026-10-03.html`
+plus this file.
+
+| Deliverable | State | Where |
+|---|---|---|
+| The sponsor deck as a designed HTML artifact | DONE | `docs/sponsor/deck-2026-10-03.html`, 40 KB, self-contained |
+| Wednesday design-meeting prep | Already on main | `docs/design/meeting-2026-09-02.md`, folded overnight from the 0827 lane |
+
+## What the deck file is
+
+- Rendered from `docs/sponsor/deck-2026-10-03.md` **as it is on origin/main**
+  (ros-v4 schedule, COC Concertz as the eighth partner, Heart of Ellsworth
+  struck, slide 4 unblocked), not from my lane's older copy. The words are the
+  deck's; only the layout is new.
+- DESIGN.md's system throughout: Boogaloo, Rubik, Space Mono from Google Fonts;
+  paper ground, ink text, red-500 stats, red-600 buttons, gold shadow on the
+  slide frame, grain at 0.35, hard offsets, no gradients, no motion beyond a
+  button press. Zero old-brand hex.
+- One `<section>` per slide, twelve, plus an appendix page marked "not for the
+  room" carrying the six Zaal fields, the logo and image gaps, and how the
+  file was made. `[SWAP]`, `[BLOCKED]` and `[CUT FROM LOCAL]` render as pill
+  tags on the slide head; slide 7 also carries a dashed "remove before
+  presenting" card.
+- **UNSET is visible:** nine `mark.unset` chips (seven on slide 9, one on
+  slide 10, one on slide 12), gold-300 fill, red dashed border, a hollow box
+  glyph so they survive greyscale print. The toolbar counts them live. Two
+  `mark.verify` chips on the newsletter count and the WaveWarZ figures.
+- **Print-friendly:** `@page letter landscape`, one slide per page, toolbar
+  hidden, shadows off, notes hidden unless the "Speaker notes" toggle is on
+  before printing. Speaker notes are `<details>` per slide on screen.
+- Badge from `public/brand/logos/zaostock26_badge_official.png` by relative
+  path; works opened from disk in the repo. Candy credited on slide 1.
+- Two-column slides collapse under 960px; the partner grid goes 2-up.
+
+## Verification
+
+- HTML parser pass: no unclosed or mismatched tags. 13 sections, 12 notes
+  blocks, 9 UNSET marks, 2 VERIFY marks, 0 occurrences of any old-brand hex or
+  "Fractured"; the three strings "45-minute", "tax-deductible" and "Heart of
+  Ellsworth is our" appear only inside do-not-say speaker notes. Badge file
+  exists at the referenced path.
+- **Visual render: UNSET.** gstack browse restarted mid-`goto` and returned a
+  blank page for the local file (0 sections, 5 KB screenshots); the orphan
+  browse server from another session (pid 4840, port shared) is the likely
+  cause. Three tries; stopped per the rule. Open the file in any browser to
+  see it; nothing in it needs a server.
+
+## Request lines
+
+- **DECK:** the production plan on main (updated overnight) now records The
+  Crown Vics 12:05 and Steve's own set 20:00-22:00 as booked, and the evening
+  as Stilo's DJ set 18:00-19:30 then one of Steve's acts to close. Deck slide 5
+  still prints "DJ set" and "live music to close, in booking" and the note "no
+  act is described as confirmed anywhere in this deck". If the deck md
+  changes, the HTML follows it; I did not change either.
+- **SITE / whoever prints:** re-pull the WaveWarZ figures and the newsletter
+  count the day it prints; both chips say so.
+- **Anyone with a working browser:** open the HTML once and say whether the
+  slide frames fit a landscape letter page with notes off. Untested here.
+
+## ZAOSTOCK-DESIGN CLOSE - 2026-08-28 07:2x
+
+`ws/lane-design-deck-0828`, ahead of `origin/main` by this commit only, not
+pushed, tree clean apart from `node_modules`. Nothing held, nothing sent.
+- ZAOSTOCK-SITE redesign /press (Forward round, 375): the real `docs/marketing/press-kit.md` on main renders through the route; at 375 the page scrolled horizontally to 414px because the fast-facts table pinned its first column to nowrap and the asset paths in code could not break. Fixed: table scrolls inside its own container, code and links wrap anywhere, first column wraps. scrollWidth at 375 now 375. Homepage at 375 re-verified on this branch: 375, no overflow.
+- ZAOSTOCK-SITE redesign Forward round sweep (Fri 07:2x brief): checked every public route on origin/main against docs/design/redesign-2026-08-28.md - all 19 are on the shell (EntryPage carries it for /musicians, /artists, /event-organizers; /onepagers/overview is tokens-only by spec; /pitch and /sponsor/deck are redirects). Partner strip: eight text tiles including COC Concertz, logos only when a file lands in public/partners/ (still none). Contact: `grep zaal@thezao.com|zaalp99@gmail src` outside /team returns nothing on main. Mobile review at 375, pinned viewport, every route: scrollWidth 375 on all 19 (only /press failed, fixed above); hamburger opens seven links with aria-expanded true. Not rebuilt and not mine: `/program` - `docs/drafts/program-ros-v7-2026-08-28.patch` applies cleanly to main. Branch `bettercallzaal/lane-site-0828` off origin/main 02634fe.

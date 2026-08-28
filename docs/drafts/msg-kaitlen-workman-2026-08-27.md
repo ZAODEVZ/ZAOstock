@@ -35,6 +35,7 @@ info@thezao.com
 ## Before sending
 
 - Same-day rule with Peter and Heather.
-- If The ZAO is a Chamber member (zaal-only line 9), say so in the first line.
+- Chamber membership: NO (Zaal, 28 Aug 05:3x). No membership line; stays as
+  written. The business entity, if asked, is BetterCallZaal.
 - The poster date (week of 1 Sep) is on record from the Local Network tab; no
   other figure is in the message.

@@ -105,17 +105,19 @@ which does not need internet at all.
 **What is known.** Aziz owns the rig and Restream (Zaal, 26 Aug). Zaal's
 weekday stream already goes to Twitch, YouTube and X through Restream. The
 deck says no platform name goes public until the stream has run once. The
-Baraza pipe is Cloudflare Stream Live. Nobody has said whether Oct 3 goes OBS
-to Cloudflare then out, or OBS to Restream direct (topologies A and B in
-`docs/av/livestream-chain-2026-10-03.md`).
+Baraza pipe is Cloudflare Stream Live. Zaal, 28 Aug: both topologies get
+tested today, repeatedly, by him; no verdict until the test says (A and B in
+`docs/av/livestream-chain-2026-10-03.md`). Destinations named the same day: X
+on the WaveWarZ account, YouTube on the ZAO channel, Twitch, and as many more
+as the test can include; candidate table in the chain doc.
 
 **What is needed:** a topology, a destination list with the account for each,
 an operator for the stream side (Aziz) and for chat and the show side
 (Ohnahji), and one full run before Friday 2 October. All UNSET except the two
 names.
 
-**The question.** Already in `docs/drafts/aziz-2026-08-27.md`. Zaal can also
-just answer it: which platforms, which accounts.
+**The question.** Answered in part on 28 Aug (platforms above). Still open:
+which Twitch account, and who holds each login.
 
 ### If there is no answer by Friday 2 October
 
@@ -129,4 +131,4 @@ fallback, not a decision, and it should be written down as one if it happens.
 |------|-----|---------|----------|-----------------|
 | Parklet power | Circuits, amperage, location, generator allowed | Roddy, via the CITY lane's draft | Generator | UNSET: size, source, price, permit |
 | Internet outdoors | Does wifi reach the stage; measure upload there | Black Moon, Heart of Ellsworth; Zaal measures | Bonded cellular or Starlink plus hotspot | UNSET: coverage, device, price |
-| Where the stream goes | Topology and destinations | Aziz, or Zaal in one line | Zaal's existing Restream destinations | Exists; not a decision |
+| Where the stream goes | Topology: today's test, both. Destinations: X (WaveWarZ), YouTube (ZAO), Twitch, plus as many as possible | Zaal runs the test; logins UNSET | Zaal's existing Restream destinations | Named 28 Aug; not yet streamed to |

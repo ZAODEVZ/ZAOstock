@@ -171,9 +171,8 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
 const DAY = [
   { time: '12:00 doors, sets 12:05 - 15:45', what: 'Artists, outdoors on the parklet. Changeovers are the MC plus partner spots - no DJ (Zaal 27 Aug 20:0x). Running order per ros-v4', who: 'Fellenz, Lyons Den, Dcoop, Acadia Rising - four CONFIRMED. Werb NOT fully confirmed (Zaal 27 Aug 20:4x), wanted for WaveWarZ. Four slots at noon start; running order is Zaal’s plan and not public' },
   { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
-  { time: '18:00 - 19:30', what: 'DJ set, indoors at Black Moon - our DJ, decided (ros-v4, 27 Aug)', who: 'Stilo DJing - CONFIRMED on our side, per the message from the DJ (gdoc snapshot 27 Aug). Moved up from the old 21:00 close' },
-  { time: '19:30 - 20:00', what: 'UNSET half hour (ros-v6). Nothing printed publicly', who: 'Open question, zaal-only-PRODUCTION line 1' },
-  { time: '20:00 - 22:00', what: 'Live set, hosted by Black Moon (ros-v6). Public copy carries no act name until 1 Sept', who: 'Steve’s act - name not on disk. Crown Vics booked, unnamed publicly until 1 Sept. After 22:00 nothing until the licence hour is typed' },
+  { time: '18:00 - 20:00', what: 'DJ set, indoors at Black Moon - our DJ, decided (ros-v7, 28 Aug)', who: 'Stilo DJing - CONFIRMED on our side, per the message from the DJ (gdoc snapshot 27 Aug). Two hours, no gap before the live set' },
+  { time: '20:00 - 22:00', what: 'Live set, hosted by Black Moon (ros-v7). Public copy carries no act name until 1 Sept', who: 'Steve’s act - name not on disk. Crown Vics booked, unnamed publicly until 1 Sept. After 22:00 nothing until the licence hour is typed' },
 ];
 
 const MONDAY = [
