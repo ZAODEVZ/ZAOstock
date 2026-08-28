@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
-import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
-import { SectionHeader } from '@/components/festival/SectionHeader';
+import { SITE, SERIES } from '@/content/site';
+import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
+
+// One component, three personas (/musicians, /artists, /event-organizers).
+// Rebuilt on the poster shell per docs/design/redesign-2026-08-28.md route 5.
 
 export interface EntryPageCTA {
   label: string;
@@ -10,7 +11,7 @@ export interface EntryPageCTA {
 }
 
 export interface EntryPageProps {
-  /** "musicians", "artists", "event-organizers" - shown as eyebrow + slug */
+  /** "musicians", "artists", "event-organizers" */
   personaSlug: string;
   /** Display label for the persona, e.g. "Musicians" */
   personaLabel: string;
@@ -18,141 +19,98 @@ export interface EntryPageProps {
   hero: string;
   /** One-line subhead under the hero */
   subhead: string;
-  /** "What you get" bullet list */
+  /** "If you plug in" list */
   youGet: string[];
-  /** "What we ask" bullet list */
+  /** "In return" list */
   weAsk: string[];
+  /** Optional facts strip for this persona */
+  facts?: ReadonlyArray<{ term: string; detail: string }>;
   /** Action CTAs at bottom of page */
   ctas: EntryPageCTA[];
   /** Optional final note (e.g. eligibility, deadline) */
   footnote?: string;
 }
 
+const DOORS = [
+  { slug: 'musicians', label: 'Musicians', href: '/musicians', line: 'Submit for the lineup.' },
+  { slug: 'artists', label: 'Visual artists', href: '/artists', line: 'Posters, motion, signage.' },
+  { slug: 'event-organizers', label: 'Organizers', href: '/event-organizers', line: 'Host the next one in 2027.' },
+] as const;
+
+function List({ items }: { items: string[] }) {
+  return (
+    <ul className="list-none m-0 p-0 flex flex-col gap-3">
+      {items.map((item, i) => (
+        <li key={i} className="flex gap-3 text-base text-ink-950">
+          <span className="font-mono text-eyebrow font-bold text-denim-400 pt-1.5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function EntryPage(props: EntryPageProps) {
-  const { personaSlug, personaLabel, hero, subhead, youGet, weAsk, ctas, footnote } = props;
+  const { personaSlug, personaLabel, hero, subhead, youGet, weAsk, facts, ctas, footnote } = props;
+  const others = DOORS.filter((d) => d.slug !== personaSlug);
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-24 sm:pb-12 font-[family-name:var(--font-display)]">
-      <NoiseOverlay />
-      <AnimatedGradient />
+    <SiteShell>
+      <Section first className="pt-12 sm:pt-16">
+        <div className="max-w-[760px]">
+          <Eyebrow tone="denim">For {personaLabel}</Eyebrow>
+          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">{hero}</h1>
+          <p className="text-lg text-ink-secondary measure m-0">{subhead}</p>
+        </div>
+      </Section>
 
-      <div className="relative">
-        <header className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-bold text-lg tracking-tight">
-              ZAO<span className="text-[#f5a623]">stock</span>
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-gray-400 hover:text-white transition-colors"
-          >
-            ← Home
-          </Link>
-        </header>
+      {facts && facts.length > 0 ? (
+        <Section>
+          <SectionHeader eyebrow="The facts" title="What is settled, and what is not." className="mb-6" />
+          <BorderedList rows={facts} className="max-w-[760px]" />
+        </Section>
+      ) : null}
 
-        <section className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-20">
-          <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.22em] text-[#f5a623]">
-            For / {personaLabel}
-          </span>
-          <h1
-            className="mt-4 font-bold tracking-[-0.02em] leading-[1.05]"
-            style={{ fontSize: 'clamp(2.25rem, 6vw, 4.5rem)' }}
-          >
-            {hero}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg sm:text-xl text-gray-300 leading-relaxed">
-            {subhead}
-          </p>
-        </section>
-
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 mt-16 sm:mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12]">
-            <div className="bg-[#0d1b2a] p-7 sm:p-9">
-              <SectionHeader eyebrow="What you get" title="If you plug in" />
-              <ul className="space-y-3 text-base text-gray-200 leading-relaxed">
-                {youGet.map((item, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="text-[#f5a623] flex-shrink-0">→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-[#0d1b2a] p-7 sm:p-9">
-              <SectionHeader eyebrow="What we ask" title="In return" />
-              <ul className="space-y-3 text-base text-gray-200 leading-relaxed">
-                {weAsk.map((item, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="text-[#f5a623] flex-shrink-0">→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <Section>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHeader eyebrow="What you get" title="If you plug in" className="mb-5" />
+            <List items={youGet} />
           </div>
-        </section>
+          <div>
+            <SectionHeader eyebrow="What we ask" title="In return" className="mb-5" />
+            <List items={weAsk} />
+          </div>
+        </div>
+      </Section>
 
-        <section className="max-w-5xl mx-auto px-5 sm:px-8 mt-16 sm:mt-24">
-          <SectionHeader eyebrow="How to plug in" title="Pick a door" align="center" />
-          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mt-6">
-            {ctas.map((cta, i) => (
-              <Link
-                key={i}
-                href={cta.href}
-                className={
-                  cta.primary
-                    ? 'inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-7 py-4 text-base transition-colors font-[family-name:var(--font-mono)] uppercase tracking-[0.14em]'
-                    : 'inline-block border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-bold rounded-lg px-7 py-4 text-base transition-colors font-[family-name:var(--font-mono)] uppercase tracking-[0.14em]'
-                }
-              >
-                {cta.label}
-              </Link>
-            ))}
-          </div>
-          {footnote ? (
-            <p className="text-center mt-8 text-sm text-gray-500 leading-relaxed max-w-2xl mx-auto">
-              {footnote}
-            </p>
-          ) : null}
-        </section>
-
-        <footer className="max-w-7xl mx-auto px-5 sm:px-8 mt-24 sm:mt-32 pt-10 border-t border-white/[0.06]">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-xs text-gray-500 leading-relaxed">
-              ZAOstock is one chapter in the ZAO Festivals series. Past chapters: ZAO-PALOOZA NYC (2024), ZAO-CHELLA Miami (2024). Built by The ZAO, a community of 100+ independent musicians.
-            </p>
-            <div className="flex gap-4 text-[11px] font-[family-name:var(--font-mono)] uppercase tracking-[0.18em] text-gray-500">
-              <Link href="/musicians" className={`hover:text-white transition-colors ${personaSlug === 'musicians' ? 'text-[#f5a623]' : ''}`}>
-                Musicians
-              </Link>
-              <Link href="/artists" className={`hover:text-white transition-colors ${personaSlug === 'artists' ? 'text-[#f5a623]' : ''}`}>
-                Artists
-              </Link>
-              <Link href="/event-organizers" className={`hover:text-white transition-colors ${personaSlug === 'event-organizers' ? 'text-[#f5a623]' : ''}`}>
-                Organizers
-              </Link>
-              <Link href="/" className="hover:text-white transition-colors">
-                ← Home
-              </Link>
-            </div>
-          </div>
-          <div className="mt-6 pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-gray-500">
-            <p>
-              Questions? Email{' '}
-              <a
-                href="mailto:info@thezao.com"
-                className="text-[#f5a623] hover:text-[#ffd700] transition-colors"
-              >
-                info@thezao.com
-              </a>
-            </p>
-            <p className="font-[family-name:var(--font-mono)] uppercase tracking-[0.18em] text-[10px] text-gray-600">
-              Onward to October
-            </p>
-          </div>
-        </footer>
-      </div>
-    </div>
+      <Section>
+        <SectionHeader eyebrow="How to plug in" title="Pick a door." className="mb-6" />
+        <div className="flex flex-wrap gap-3 mb-8">
+          {ctas.map((cta, i) => (
+            <Button key={i} href={cta.href} external={cta.href.startsWith('mailto:')} variant={cta.primary ? 'primary' : 'secondary'} size="lg">
+              {cta.label}
+            </Button>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[760px]">
+          {others.map((d) => (
+            <Card key={d.slug} href={d.href} interactive>
+              <Eyebrow className="mb-2">For {d.label.toLowerCase()}</Eyebrow>
+              <p className="font-sans font-extrabold text-h4 text-ink-950 m-0">{d.line}</p>
+              <span className="inline-block mt-3 text-sm text-denim-400 font-semibold underline underline-offset-4">See the door</span>
+            </Card>
+          ))}
+        </div>
+        {footnote ? <p className="text-sm text-ink-muted measure mt-8 m-0">{footnote}</p> : null}
+        <p className="text-sm text-ink-secondary mt-6 m-0">
+          Questions:{' '}
+          <a href={`mailto:${SITE.contact}`} className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
+            {SITE.contact}
+          </a>
+          . ZAOstock is one chapter in the ZAO Festivals series: {SERIES.map((s) => s.name).join(', ')}.
+        </p>
+      </Section>
+    </SiteShell>
   );
 }

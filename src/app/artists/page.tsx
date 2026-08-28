@@ -32,6 +32,7 @@ export default function ArtistsPage() {
       ]}
       weAsk={[
         'Show us what you make. Portfolio, links, samples - whatever lives where.',
+        'Anything printed follows the ZAOstock 26 identity by Samantha "Candy" of CandyToyBox: the badge, the palette, the poster hand.',
         'Be patient. We are working out what we can actually offer before we commit to anything.',
         'Be honest about what you want in return so we can be honest about what we can do.',
       ]}
