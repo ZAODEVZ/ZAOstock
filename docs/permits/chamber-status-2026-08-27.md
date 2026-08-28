@@ -8,10 +8,11 @@ follow-up date (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md:700-728`;
 `~/zao-vault/projects/zaostock-local-network.md`). The CRM has not been re-read
 today; the state below is the 25 Aug state, and anything since is **UNSET**.
 
-**Is The ZAO a member of this Chamber?** Zaal's Chamber membership on record is
-the **Bar Harbor** Chamber of Commerce (`~/zao-vault/notes/bio.md:90`;
-`docs/outreach/hotel-sponsor-may13.md:128`). Ellsworth Area Chamber membership:
-**UNSET.** It changes the opening line of every message below.
+**Chamber membership: NO** (Zaal, tapped 2026-08-28 05:3x: "BetterCallZaal is the biz"). The
+business entity behind ZAOstock for the Chamber's purposes is **BetterCallZaal**,
+not a member of the Ellsworth Area Chamber. Zaal's only Chamber membership on
+record is the **Bar Harbor** Chamber of Commerce (`~/zao-vault/notes/bio.md:90`).
+The three messages carry no membership line and stay as written.
 
 **What "owed" means here:** nothing has been promised to any of them, because
 nothing has been sent. "Owed" is what we owe them before the first message reads
