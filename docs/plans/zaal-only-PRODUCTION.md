@@ -18,7 +18,8 @@ named contact plus a kit. All confirmed 20:46 (RETRO-LOG + the daily). Also from
 daily: 5-minute intro at noon; ~30 per act, order Crown Vics / Sen / Dcoop /
 Fellenz; Stilo 18:00-19:30 then one of Steve's acts closes; Werb not fully
 confirmed; Lyons Den not in the order. 21:2x: Lyons Den fourth after Dcoop;
-changeovers mixed 5 and 10.
+changeovers mixed 5 and 10. 22:0x: Steve in, Roddy in, fire performance
+confirmed by the City.
 
 ## Now
 
@@ -37,10 +38,11 @@ changeovers mixed 5 and 10.
 
 ## Later
 
+- The fire performance (confirmed by Roddy): placed, PROPOSED, on the 17:55-18:15 walk between the buildings at sunset - **yes / elsewhere (a time)** - production plan 8.5, `ros-5min` Q21. Performer: **a name** (Dcoop's remit; none on disk).
+
 - The 5-minute intro at noon: who speaks and what is said: **a name (waits) and a line** - `ros-5min` Q7.
 - A separate sponsor mic break on top of the spots in every gap: **yes / no** - probably moot.
 
-- Where does the fire spinning go: **a time, or none** - Dcoop's remit, fire permit filed, no slot anywhere. `ros-5min` Q27.
 - First Aid named contact: **a name** - production plan 8.3, section 4; CITY holds the permit side.
 - Fellenz's "30 min indoors late" from 24 Aug: **still wanted, and where in the evening** - `ros-5min` Q26.
 

@@ -12,11 +12,11 @@ is on the gated team page at `/team/plan`.
 
 | Area | Who | What it covers |
 |------|-----|----------------|
-| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve does not MC - ZAO crew holds the mic all day (Zaal, 27 Aug). Every act on Steve's list (The Crown Vics, The Somes Sound, North Creek) is PROPOSED until Steve confirms. DJ Aquavantes is off the day - no DJ (Zaal, 27 Aug) |
+| Venue and logistics - **Black Moon is in** (Zaal, 27 Aug) | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve does not MC - ZAO crew holds the mic all day (Zaal, 27 Aug). Every act on Steve's list (The Crown Vics, The Somes Sound, North Creek) is PROPOSED until Steve confirms. DJ Aquavantes is off the day - no DJ (Zaal, 27 Aug) |
 | Design and assets | Paper and Candy | Poster, partner logos, site wireframes, photo gallery. Candy holds the brand kit and the print list |
-| Music and AV | Dcoop | Artist liaison, set schedule, Friday soundcheck, sound backups, fire spinning |
+| Music and AV | Dcoop | Artist liaison, set schedule, Friday soundcheck, sound backups, fire spinning - **confirmed by the City 27 Aug**, performer UNSET, placed (proposed) on the 18:00 walk |
 | Livestream and virtual | **Ohnahji and Aziz, split** | See below |
-| Outreach, partners, money, city | Zaal | Sponsors, permits, insurance, Heart of Ellsworth, local promo |
+| Outreach, partners, money, city | Zaal | Sponsors, permits, insurance, Heart of Ellsworth, local promo. **Roddy is in** (27 Aug); the certificate, circuits, vehicle access and vendor answers are still owed |
 | Advisors | Tom Fellenz, event ops and brand. Ted Horton, insurance | |
 
 ---

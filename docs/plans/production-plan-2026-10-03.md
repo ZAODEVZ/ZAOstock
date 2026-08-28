@@ -25,7 +25,10 @@ rule here is 15 (one question back to him); the evening is **Stilo's DJ set
 and wanted for WaveWarZ; Lyons Den is confirmed and not in the order. Then,
 21:2x: **Lyons Den is fourth, after Dcoop**, and **the changeovers are mixed -
 5 for some, 10 where the event gets talked about.** Which gaps are the 10s is
-proposed below; the 5/10 split itself is Zaal's.
+proposed below; the 5/10 split itself is Zaal's. And 22:0x, Zaal: "Talked to
+Steve and Roddy today, both are in. We can do fire spinning, Roddy confirmed."
+**Black Moon is in. The City is in. The fire performance is confirmed.** The
+acts on Steve's list stay proposed per act until he says otherwise.
 
 Steve, this is the whole day on paper, built on the cadence you proposed:
 45/15 as the frame, 15-minute changeovers with the MC and sponsor spots in the
@@ -200,7 +203,9 @@ goes to you, or it goes after 1 September.
 
 ## 3. What Black Moon supplies
 
-Everything on your list, with an owner and where it stands.
+**Steve is in** - Zaal talked to him on 27 August. The partnership is confirmed;
+what follows is the list, with an owner and where each item stands. The acts
+on his list are still proposals per act until he confirms each one.
 
 | # | Item | Owner | Status | Note |
 |---|------|-------|--------|------|
@@ -224,8 +229,9 @@ Everything on your list, with an owner and where it stands.
 | Mandatory soundcheck night, Friday 2 October | ZAO | Confirmed, going into artist contracts as: **Friday covers every act; Saturday morning is line-check only** (Zaal, 27 Aug). Checks happen at whichever stage the act actually plays, so Friday runs outside and inside. Crew is on site Friday night |
 | WaveWarZ, 4-6pm, including its MC | ZAO | Confirmed |
 | Tent coverage, rain or shine | Wallace Events | Confirmed partner |
+| **Fire performance** | ZAO, Dcoop's remit | **CONFIRMED by the City** - Roddy, via Zaal 27 August. Placement PROPOSED: on the walk, 17:55-18:15, on Franklin Street between the two buildings, at sunset (8.5). Performer: **UNSET** - no name on disk |
 | Event insurance certificate for the City | ZAO | In progress with a local broker. Permit condition, we own it |
-| City permit and Art of Ellsworth coordination | ZAO | In progress |
+| City permit and Art of Ellsworth coordination | ZAO | **Roddy is in** - Zaal, 27 August. Paperwork with the City; the certificate form and deadline, circuits, vehicle access and the vendor question still need his answers (city lane) |
 | Stage manager, load-in and strike crew | ZAO | Names wait (Zaal, 27 Aug) |
 | First Aid | ZAO | **No dedicated person** (Zaal, 27 Aug: "it's small"). A named contact - UNSET - plus a prepared kit on site. The permit side of first aid is the CITY lane's |
 | **Changeover cover, 12:45 to 16:00** | **The MC, plus sponsor spots** | **Decided** (Zaal, 27 Aug): no DJ. Four gaps, 15 minutes each, on one stage, filled by the MC introducing, thanking partners and repeating the 6pm move. The MC's name waits (people map). Sponsor spot copy is the sponsor deck's to write |
@@ -396,7 +402,7 @@ result and the walk at 17:55 are in dusk.
 |------|-----|-------|
 | Stage lighting for 16:00-18:00, at minimum front wash on the battlers and the host | **UNSET.** Bomb Squad did lights at ZAOville and has gear (working doc, AV List); nobody has asked them for 3 October | Proposed, not asked |
 | Power for lighting, on top of the PA | Goes on the AV spec (STREAM lane) and on Roddy's circuits question | Gated |
-| Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked | Unverified |
+| Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked. If the fire performance is on the walk (8.5), it is its own light | Unverified |
 
 ### 8.5 The 18:00 move - the mechanism, minute by minute
 
@@ -407,11 +413,11 @@ the fifteen minutes.
 | Time | What | Who | State |
 |------|------|-----|-------|
 | 17:30 - 17:55 | The final. The MC tells the room, once, that the night continues next door at six | Hurricane, host mic | Hurricane is the WaveWarZ host on our roster |
-| 17:55 - 18:00 | Result announced. The MC walks the crowd: "next door, now, the music is already on". Music plays out on the outdoor PA | Hurricane on the mic; **Stilo DJs the transition out of WaveWarZ** - decided at the 24 Aug standup, he travels for it | Stilo confirmed on our side; note he is battling until 17:55, so his play-out starts when the result does |
+| 17:55 - 18:00 | Result announced. The MC walks the crowd: "next door, now, the music is already on". Music plays out on the outdoor PA. **The fire performance starts on the street** | Hurricane on the mic; **Stilo DJs the transition out of WaveWarZ** - decided at the 24 Aug standup, he travels for it. Fire: performer **UNSET** | Stilo confirmed on our side; the fire performance is confirmed by the City (Roddy, 27 Aug) and its placement here is **PROPOSED** - it is the spectacle the walk was missing, and sunset is 18:12 |
 | 18:00 | Outdoor PA strike begins. Nothing is playing outside from here | Whoever strikes the outdoor rig - open item 1, **UNSET** | Gated on the PA answer |
 | 18:00 - 18:15 | Music inside is already playing when the first people reach the door - **Stilo's DJ set, 18:00-19:30, decided** (Zaal 20:0x). Source must be the house system, not the outdoor PA, because that is being struck | Stilo, on the house PA or his controller into it - the AV List has this line blank | The DJ setup is **UNSET** |
 | 18:00 - 18:15 | Somebody at Black Moon's door, wristbands or lanyards checked for the basement only, everyone else straight in | **UNSET** - proposed Steve or Katina, it is their door | Not agreed |
-| 18:00 - 18:15 | Somebody on the street between the two buildings pointing, so nobody drifts to their car | **UNSET** - a crew name, not a performer | Not named |
+| 18:00 - 18:15 | The fire performance on the walk between the two buildings; the crowd follows it to Black Moon's door. Somebody on the street pointing as well, so nobody drifts to their car | Fire: **UNSET** performer, Dcoop's remit. Pointer: **UNSET** - a crew name, not a performer | Placement PROPOSED. Fire on a public street at the move: the fire permit is the city lane's and Roddy has said yes |
 | 19:30 | One of Steve's acts closes the night, if booked. Otherwise Stilo holds the room (8.6) | Steve's answer, drafted in `docs/drafts/msg-steve-peer-2026-08-27.md` | PROPOSED |
 | The mic handoff | Hurricane's last words outside are the first words inside: the host mic goes off with the outdoor PA, and a house mic is live indoors before the crowd arrives. ZAO crew holds the mic all day (Zaal, 27 Aug) - the evening MC is ours, name UNSET. Steve may welcome the room if he wants to | Evening MC: **UNSET** | Not Steve |
 
@@ -588,6 +594,7 @@ open items at the end still stand. The live message is the city lane's
 | Which of the three acts are booked | Steve Peer | The whole indoor evening, the indoor PA, whether The Crown Vics is a reserve or a name | Drafted in `docs/drafts/msg-steve-peer-2026-08-27.md`, unsent |
 | Which act closes from 19:30, and is 19:30 right | Steve Peer | The printed closer. Stilo 18:00-19:30 is decided regardless | In `msg-steve-peer-2026-08-27.md`, unsent |
 | Does the permit cap an 11:00 start | - | Nothing any more | **WITHDRAWN** - music starts at noon, Zaal 27 August. Never sent |
+| The fire performance | Roddy Ehrlenbach | Whether it happens at all | **CONFIRMED** - Zaal, 27 August 22:0x. Placement and performer still ours |
 | The open stretch 15:05-15:45: Werb or one dream act | Zaal | The afternoon's last 40 minutes, the poster | **UNSET** - section 2 |
 | Which gaps are the 10s | Zaal | Ten minutes either way | **PROPOSED** - first and last; his to swap |
 | Changeover cover, 12:45 to 16:00 | The MC plus sponsor spots - decided, no DJ | Every 15-minute gap between sets | **Decided.** MC name waits |
@@ -626,4 +633,5 @@ in booking either way.
   full record in `~/zao-vault/daily/2026-08-27.md`: 5-minute intro; ~30 per act;
   the 20:4x order; 5-minute changeover assumption; Stilo 18:00-19:30 then one
   of Steve's acts; Werb not fully confirmed; Lyons Den not in the order.
-  21:2x (logged 21:27): Lyons Den fourth after Dcoop; changeovers mixed 5/10
+  21:2x (logged 21:27): Lyons Den fourth after Dcoop; changeovers mixed 5/10.
+  22:0x (logged 22:15): Steve in, Roddy in, fire performance confirmed
