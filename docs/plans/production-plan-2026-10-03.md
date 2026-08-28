@@ -428,7 +428,7 @@ proposed, not agreed.
 | WaveWarZ, a battler drops | The bracket shape is Stilo and Hurricane's to overwrite; with three competitors it still runs. The block stays 16:00-18:00 | Their call |
 | The MC is not there | Every gap is silent. Fallback: Zaal on the mic, sponsor spots read from the sheet. There is no DJ to fall back to (Zaal, 27 Aug) | MC name waits |
 | The closing act from 19:30 is not booked | Stilo's DJ set runs on past 19:30 and holds the room. The closer prints as in booking until Steve answers | Real fallback - Stilo is confirmed on our side |
-| The open stretch 14:50-16:00 stays empty | The MC and sponsor spots hold it, and WaveWarZ can start its story early if Stilo and Hurricane want the time | Costs nothing |
+| The open stretch 15:05-15:45 stays empty | The MC and sponsor spots hold it, and WaveWarZ can start its story early if Stilo and Hurricane want the time | Costs nothing |
 
 ### 8.7 Nobody eats
 
