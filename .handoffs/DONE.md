@@ -1282,3 +1282,12 @@ after.**
   array. Deck says City. One-word revert if Town is deliberate.
 - Slide 9 remains **UNSET**, six fields, for the Candy meeting.
 - The John Jagger insurance email is unblocked and unsent.
+
+# ZAOSTOCK-CITY - 2026-08-28 Forward round (brief mtime 07:12, log 07:12)
+
+Branch `bettercallzaal/lane-city-0828-fwd` off `origin/main` `02634fe`, with the two unfolded 0828 commits cherry-picked (`57b0daf`, `814bc8e`) because the round builds from `docs/outreach/ellsworth-businesses-2026-08-28.md`, which is not in main yet. **Not pushed.**
+
+ZAOSTOCK-CITY outreach-msgs. 20 paste-ready messages in `docs/outreach/msgs/`, one per business, filled from the three templates with one business-specific paragraph where the disk gave a reason for one: 6 Ellsworth lodgings (sponsor, room-block paragraph), 3 venues (The Grand cross-promo plus overflow line; Fogtown sponsor plus the Friday-night and food asks; Woodlawn cross-promo), 7 food spots (food template), 4 banks (sponsor; Machias and Franklin get one line each from the record). Contact line UNSET on every one except Fogtown (Joy Cartwright named, address UNSET). All DO NOT SEND. `docs/outreach/msgs/TRACKER.md`: business, ask, channel, status - every row DRAFTED, not sent. Excluded from the 20 and said so in the tracker: Arbor Camp (own draft), the Chamber three, Black Moon (in), press (25 Aug clipboard), the poster spots, the two non-Ellsworth lodgings. Nothing sent, nothing left the machine.
+
+## ZAOSTOCK-CITY CLOSE (convention 10) - 2026-08-28, 07:3x
+ZAOSTOCK-CITY CLOSE. Branch `bettercallzaal/lane-city-0828-fwd`, three commits off `origin/main`, not pushed; supersedes `bettercallzaal/lane-city-0828` (same two commits plus this round). Held: nothing off disk. Resume: `claude --resume a757a231-9af1-40f0-be9b-9b02184f756f`. Safe to close.
