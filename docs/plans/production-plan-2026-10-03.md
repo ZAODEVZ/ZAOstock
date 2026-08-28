@@ -285,9 +285,10 @@ that is fine too, we just need to know now.
 
 Alongside that, the scope: gear list, channel count, who sets up and who
 strikes, who operates, what power it needs, price, and what happens if it falls
-through. We also need a date by which it is confirmed, so that if it is not, we
-start a backup that day rather than a week later. We are not asking you to
-guarantee anything, we are asking for the date.
+through. The date is set: **Friday 11 September** is the latest-safe date for the PA to
+be confirmed, yours or ours. If it is not confirmed by then, we start the
+backup that day rather than a week later. We are not asking you to guarantee
+anything; we are telling you the gate, so it is a shared one.
 
 **2. Porta potties, count and a handicap unit.**
 You are covering one at the city parking lot and suggested one or two more,
@@ -326,10 +327,12 @@ Stilo runs 6 to 8 and hands straight to you.
 |------|------|
 | 1 September | Lineup reveal |
 | 3 September | Musician submission cutoff. Anything not in gets swapped |
-| **UNSET** | Latest-safe date for PA confirmation. To be set with Steve, and it is a real gate: after it we start the backup whether or not the PA is confirmed |
+| **Friday 11 September** | Latest-safe date for the PA to be confirmed - Steve's rig or ours (Zaal, 28 Aug 05:3x). A real gate: after it the backup starts whether or not the PA is confirmed |
 | **UNSET** | Final performer headcount to Black Moon. The count is proposed in section 3 (20 plus two groups); the date is not |
-| Friday 2 October | Soundcheck night, every act, outside and inside. Crew on site. Saturday is line-check only |
-| Saturday 3 October | Vital crew 08:00, everyone by 10:00, noon doors, close late |
+| Saturday 26 September | Weather check 1, Zaal and Steve (8.2) |
+| Wednesday 30 September | Weather check 2, Zaal and Steve |
+| Friday 2 October | Soundcheck night, every act, outside and inside. Crew on site. Saturday is line-check only. **Weather check 3 and the rain call**, Zaal and Steve |
+| Saturday 3 October | 08:00 re-look on the weather (8.2). Vital crew 08:00, everyone by 10:00, noon doors, close late |
 
 ---
 
@@ -380,9 +383,9 @@ the schedule side: what moves, when the call is made, and who makes it.
 |---------|-------------------------|-------|
 | Light rain | The day runs as printed. Tent coverage from Wallace Events is confirmed and up (Zaal, 28 Aug) | Real - the tent is the plan |
 | Rain heavy enough that the PA or the tent is unsafe, or wind | The outdoor block moves inside Black Moon and the day runs one room from open to close. Which acts still play and how long is the stage manager's call on the day, inside whatever the room holds | **UNSET** - Black Moon's capacity for a daytime crowd is Steve's number, and it is not written anywhere on our side |
-| Threshold that triggers the move | **UNSET** | Nobody has set one. The review's own words: improvising at 8am with artists already travelling is the bad version |
-| Who makes the call | Zaal and Steve together, because it moves a crowd into Steve's building | **YES** - Zaal, 27 August. Steve has not been asked yet |
-| By when | The evening before, at the Friday soundcheck, with a second look at 08:00 Saturday | **YES** - Zaal, 27 August |
+| What triggers the move | No number. Zaal and Steve judge it together at each dated check below | **Closed** - Zaal, 28 Aug 05:3x: the decision structure is the checks, not a threshold |
+| Who makes the call | Zaal and Steve together, because it moves a crowd into Steve's building | **YES** - Zaal, 27 August, restated 28 August 05:3x |
+| When | Weather checks on **Saturday 26 September**, **Wednesday 30 September**, and **Friday 2 October** at the soundcheck, where the call is made; a re-look at **08:00 Saturday** | **YES** - Zaal, 28 August 05:3x. Section 8.2 is closed |
 
 Wallace Events is listed for equipment and tenting, so the tent conversation is
 a scope conversation with an existing partner, not a new relationship.
@@ -657,4 +660,6 @@ in booking either way.
   28 Aug 05:0x (logged 05:09): Stilo 18:00-20:00, no gap; the fire slot is Dcoop's
   to say, no proposal.
   28 Aug 05:1x (logged): $20 stands; headcount counted and proposed; Wallace tent
-  confirmed and up
+  confirmed and up.
+  28 Aug 05:3x (logged): PA gate Friday 11 September; rain call structure closed -
+  Zaal and Steve, checks 26 Sep / 30 Sep / 2 Oct, 08:00 Sat re-look

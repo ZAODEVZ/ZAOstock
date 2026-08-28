@@ -22,7 +22,8 @@ changeovers mixed 5 and 10. 22:0x: Steve in, Roddy in, fire performance
 confirmed by the City. 22:3x: Crown Vics and Steve's own set 20:00-22:00 booked;
 Somes Sound, North Creek, Aquavantes out; fire act is Dcoop; Steve message dropped. 28 Aug 05:0x: Stilo 18:00-20:00,
 no gap; fire time and place are Dcoop's to say. 05:1x: $20 stands; headcount counted
-and proposed; Wallace tent confirmed and up.
+and proposed; Wallace tent confirmed and up. 05:3x: PA gate Friday 11 September; rain call
+structure closed with three dated checks.
 
 ## Now
 
@@ -32,7 +33,7 @@ and proposed; Wallace tent confirmed and up.
 4. Fellenz lands 14:35-15:05 on the new order: **fine / hold him to 15:00** - section 2, `ros-5min` Q2.
 5. The open stretch, about 40 minutes at 15:05-15:45: **JANGO / Jadyn / Hurricane / Werb / leave it to the MC** - one fits - section 2, `ros-5min` Q5.
 6. Fellenz's "30 min indoors late" (24 Aug): the evening now has no gap - **drop it / a place** - `ros-5min` Q26.
-7. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - section 6, open item 1.
+7. (answered 05:3x: PA gate is Friday 11 September; rain call closed - checks 26 Sep, 30 Sep, 2 Oct, 08:00 Sat re-look.) Still yours from the same thread: **tell Steve the 11 September gate - yes / you already have** - open item 1.
 8. The certificate headcount, counted in production plan section 3: **20 people plus two groups (Acadia Rising, The Crown Vics) of UNSET size - approve / a different number**, and two flags: do The Crown Vics (Steve's own band) get Steve's certificates, and are Aziz, Ohnahji and Motomoto on site? Plus **the date** you send it to Steve.
 9. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
 10. The WaveWarZ story at 16:00, Hurricane with Stilo: **length in minutes** - `ros-5min` Q16.
