@@ -13,8 +13,8 @@ Ellsworth American or anyone else without Zaal.
 
 ## Holds before this can go
 
-1. **The names.** Four confirmed as of Zaal, typed 27 Aug 20:4x: Lyons Den (flagged - not in
-   Zaal's running order), Dcoop, Fellenz, Acadia Rising. Werb is out until
+1. **The names.** Four confirmed as of Zaal, typed 27 Aug 20:4x: Lyons Den (placed after Dcoop in
+   the running order, Zaal, typed 27 Aug 21:2x), Dcoop, Fellenz, Acadia Rising. Werb is out until
    confirmed; Sen is in the order but not confirmed for print. The
    roster database is unreadable and the count has moved three times in four
    days. Zaal re-confirms the morning of 1 Sep.

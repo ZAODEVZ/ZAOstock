@@ -20,10 +20,9 @@ Written 2026-08-27 (Thursday). Lane: MARKETING.
   lineup (1 September) and WaveWarZ figures (re-pull before publishing).
 - Music starts at noon (Zaal, typed 27 Aug 19:3x). `src/content/festival.ts` still
   reads 11 AM - 6 PM; SITE moves it back to noon. This file says noon.
-- Contact address is `info@thezao.com`. The overview one-pager uses
-  `zaal@thezao.com` and llms.txt uses a Gmail address; MARKETING has flagged
-  the mismatch and Zaal picks one. Until then, this file uses the address the
-  deck and the broker email use.
+- Contact address is `info@thezao.com` - settled by Zaal, typed 27 Aug 21:2x. The overview
+  one-pager (`zaal@thezao.com`) and llms.txt (a Gmail address) should move to
+  it; SITE request logged.
 - Do not add sponsor tiers, prices, attendance, or the words tax-deductible.
 
 ---

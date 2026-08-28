@@ -13,9 +13,9 @@ today.
 | 4 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: yes** - May the WaveWarZ battlers be named publicly (Stilo, Jango, Lui, Quan, Hurricane)? | Sun 30 Aug socials, poster WaveWarZ block |
 | 5 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: music starts at noon, print noon; the 11:00 question is gone** - Does 11:00 print on the poster? | `docs/marketing/poster-checklist-2026-09-01.md` section 2 |
 | 6 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: Lyons Den, Dcoop, Fellenz** - One spelling each? | poster, 1 Sep socials, press release |
-| 7 | Sat 30 Aug | Poster quantity - a number? (Candy prints week of 1 Sep; no figure exists) | `docs/drafts/msg-candy-2026-08-27.md`, poster checklist section 5 |
+| 7 | Sat 30 Aug | **ANSWERED 27 Aug 21:2x: 100** - Poster quantity? | `docs/drafts/msg-candy-2026-08-27.md`, poster checklist section 5 |
 | 8 | Mon 31 Aug | Slide 9: five tier prices, the discount percentage, the close date - seven fields? | `docs/marketing/onepagers-needed.md` sponsor pager, poster sponsor strip, deck |
-| 9 | Mon 31 Aug | One press contact address: info@thezao.com, zaal@thezao.com, or the Gmail - a name? | `docs/marketing/press-kit.md`, press pitch, press release |
+| 9 | Mon 31 Aug | **ANSWERED 27 Aug 21:2x: info@thezao.com** - One press contact address? | `docs/marketing/press-kit.md`, press pitch, press release |
 | 10 | Tue 1 Sep | On the morning: are the four names still the four - yes/no? | 1 Sep socials, press release, poster file |
 | 11 | This week | **ANSWERED 27 Aug 19:3x: 200-250 in person, 1,000 online** (daily note, Grill round 4) - Attendance figure? | press kit "if asked", sponsor pager, deck slide 4, broker email |
 | 12 | This week | Were the live $500 / $1,000 / $5,000 sponsor tiers ever yours - yes/no? | `docs/marketing/onepagers-needed.md`, SITE request on `/onepagers/overview` and `llms.txt` |
@@ -25,7 +25,7 @@ today.
 | # | By | Question | Unblocks |
 |---|---|---|---|
 | 13 | Sat 30 Aug | Werb: confirmed for print - yes/no? (He is on the live site as confirmed) | poster, 1 Sep socials, press release, SITE flag |
-| 14 | Sat 30 Aug | Lyons Den: playing, and where - he is not in your running order - yes/no? | poster checklist row, press release |
+| 14 | Sat 30 Aug | **ANSWERED 27 Aug 21:2x: yes, after Dcoop** - Lyons Den: playing, and where? | poster checklist row, press release |
 | 15 | Sat 30 Aug | Sen: confirmed for print - yes/no? | poster, press release, 1 Sep socials |
 
 ## Later

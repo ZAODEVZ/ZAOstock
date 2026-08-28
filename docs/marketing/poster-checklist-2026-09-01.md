@@ -20,7 +20,7 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | Item | Status | Source | Note |
 |---|---|---|---|
 | Werb | **DO NOT PRINT** until confirmed | Zaal, typed 27 Aug 20:4x | **Not fully confirmed** - Zaal wants him for WaveWarZ. Still named as confirmed on the live site (`src/app/page.tsx:397,404`); SITE flagged. Back to HAVE the moment Zaal says confirmed |
-| Lyons Den | **HAVE** - confirmed, already public, **FLAG** | `src/app/page.tsx:397,404`; Zaal, typed 27 Aug 20:4x | Keeps printing as confirmed on Zaal's instruction, but he is **not in the 20:4x running order** (Crown Vics / Sen / Dcoop / Fellenz). **Question for Zaal: is Lyons Den playing, and where?** Spelling confirmed: Lyons Den |
+| Lyons Den | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404`; Zaal, typed 27 Aug 21:2x | Placed in the running order after Dcoop at 21:2x; the 20:4x flag is closed. Spelling confirmed: Lyons Den |
 | Fellenz | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Fellenz (Zaal 27 Aug) |
 | Dcoop | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Dcoop (Zaal 27 Aug) |
 | Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Lane observation, not a Zaal verdict: also absent from the 20:4x order. Worth the same question as Lyons Den |
@@ -35,7 +35,7 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | Roster still four on print day | **BLOCKED - Zaal** | gdoc Links and Assets "Data we cannot see" | "The artist count has already moved three times in four days." Five is the count on the gated page as of 27 Aug. Re-confirm the morning the file goes to print |
 | Name spellings | **HAVE** - Lyons Den, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
 
-## 1b. The running order, as Zaal typed it - v2 (Zaal, typed 27 Aug 20:4x)
+## 1b. The running order, as Zaal typed it - v3 (Zaal, typed 27 Aug 21:2x: Lyons Den added after Dcoop)
 
 Noted for context. **Not for print** - the poster carries names, not times,
 and PRODUCTION owns the grid: take times from its ros-v2 when it lands.
@@ -46,13 +46,14 @@ Supersedes the 20:0x order.
 | 1 | The Crown Vics, ~30 min | **DO NOT PRINT** - proposed until Steve confirms |
 | 2 | Sen, ~30 min | **UNSET** - confirm with Zaal |
 | 3 | Dcoop, ~30 min | yes |
-| 4 | Fellenz, ~30 min | yes |
+| 4 | Lyons Den, ~30 min (Zaal, typed 27 Aug 21:2x) | yes |
+| 5 | Fellenz, ~30 min | yes |
 | then | WaveWarZ - Stilo, Jango, Lui, Quan; Hurricane MC | names yes |
 | if time | JANGO, Jadyn, Hurricane - "dream additions" | **DO NOT PRINT** |
 | evening | Stilo DJ indoors, then one of Steve's acts to close (20:0x) | Stilo yes; closer **DO NOT PRINT** |
 
-Not in this order but still printing as confirmed: **Lyons Den** (Zaal: keep
-printing, flagged) and **Acadia Rising** (lane observation). **Werb** is out of
+Not in this order but still printing as confirmed: **Acadia Rising** (lane
+observation). Lyons Den was added to the order at 21:2x. **Werb** is out of
 the order and out of print until confirmed. No DJ Aquavantes anywhere.
 
 ## 2. The fixed facts
@@ -100,7 +101,7 @@ the order and out of print until confirmed. No DJ Aquavantes anywhere.
 |---|---|---|
 | Print day | **UNSET** | "Week of 1 September." The gdoc calls the exact date "the most useful date nobody has yet" |
 | Size(s) | **UNSET** | |
-| Quantity | **UNSET** | |
+| Quantity | **HAVE** - 100 | Zaal, typed 27 Aug 21:2x |
 | Printer | **UNSET** | The 3 Aug call notes name Eric, a local Ellsworth merch printer, for merch samples - not for the poster. Do not assume |
 | Cost | **UNSET** | No figure exists on disk. Budget memory: do not cite old numbers |
 | Distribution | **PARTIAL** | Zaal has "3-4 in-person boards" to post on (gdoc, 3 Aug call). Board list UNSET. The maker space was named as one place |
@@ -112,7 +113,7 @@ the order and out of print until confirmed. No DJ Aquavantes anywhere.
 1. Fri 29 Aug - the three logos land in Drive (or do not, and the strip prints
    with six).
 2. Before the file locks - Zaal re-confirms the four names are still four, and
-   answers the Werb, Lyons Den and Sen questions in section 1.
+   answers the Werb and Sen questions in section 1 (Lyons Den placed 21:2x).
    Spellings and the noon start are settled (27 Aug 19:3x).
 3. Sat 30 Aug - Candy's brand kit and print deliverables (card 801d6743).
 4. Tue 1 Sep - reveal. The poster's digital version is the reveal image if it
