@@ -1226,3 +1226,59 @@ ZAOSTOCK-PRODUCTION CLOSE (convention 10, sixth time): shipped as above. Held - 
 ZAOSTOCK-PRODUCTION pa-deadline (relay matched: orca-board.log 05:3x): (1) Friday 11 September is in plan section 6 as the latest-safe PA date (Steve's rig or ours) and in open item 1 as a shared gate stated to Steve - after it the backup starts regardless. (2) 8.2 closed: caller Zaal + Steve; weather checks Sat 26 Sep, Wed 30 Sep, Fri 2 Oct at the soundcheck where the call is made, 08:00 Sat re-look; the three checks are rows in the section 6 dates table. No numeric threshold was typed, so the trigger row reads "their judgment at each dated check" - closed, not UNSET. zaal-only line 7 answered; its residue is "tell Steve the gate". The 11 September date is also the CITY lane's concern for the insurance certificate and the Fire Dept hold only if they choose to align - flagged, not asserted. Tables intact. No public change - nothing for SITE or DECK.
 ZAOSTOCK-PRODUCTION CLOSE (convention 10, seventh time): shipped as above. Held - nothing off disk. Branch bettercallzaal/lane-production-0828, base origin/main @ 02634fe, 7 commits ahead after this line's commit, tree clean, NOT pushed. Ready to close.
 - ZAOSTOCK-SITE program-v7 (relay traced: board 05:12 "RELAY DECK+SITE ros-v7"; PR #56 merged at 09:09Z as 02634fe): fresh branch `bettercallzaal/lane-site-0828` off origin/main, which already carries the whole redesign. Applied to every evening line in this write-set: `src/content/site.ts` DAY (the homepage list) now `6 - 8 PM` DJ set and `8 - 10 PM` live set hosted by Black Moon, nothing between or after; `/team/plan` 18:00-20:00 DJ set (Stilo, two hours, no gap) and 20:00-22:00 live set, act unnamed; homepage comment. No 7:30 / 19:30 remains outside PRODUCTION's files. tsc clean, vitest 45/45. `src/app/program/page.tsx` on main still prints "45 minutes each", 18:00-21:00 after party and 21:00 DJ - still outside this write-set; the ros-v6 draft patch is replaced by `docs/drafts/program-ros-v7-2026-08-28.patch`, `git apply --check` clean against 02634fe and tsc clean with it applied, then reverted.
+---
+
+# ZAOSTOCK-DECK schedule-v7 - 2026-08-28
+
+Fresh branch **`ws/deck-0828`** off `origin/main` @ `02634fe`, now that PR #56 is
+merged. **Not pushed.** Write-set: `docs/sponsor/deck-2026-10-03.md` only.
+
+| Time | Slide |
+|---|---|
+| 12:00 | Doors, and a short welcome |
+| from 12:05 | Live sets, with our MC between them |
+| 16:00 - 18:00 | WaveWarZ, opening with the WaveWarZ story |
+| 18:00 | Everyone walks next door, together |
+| 18:00 - 20:00 | DJ set |
+| 20:00 - 22:00 | Live set, hosted by Black Moon |
+
+**v7 closes the gap v6 had.** The DJ runs to 20:00 instead of 19:30, so the
+evening is one continuous block from six with no unexplained half hour.
+
+**One silence remains, still defended in the note:** nothing after 22:00. Open in
+the run of show, not the end of the night.
+
+**No fire on the slide.** Verified - `grep -i fire` returns nothing. The note now
+says it must not be added until Dcoop names a time and a place. It sits in the
+older fact sheet, which is why it needed saying: a fact-sheet entry is not a
+schedule item until it has a slot.
+
+## The branch move nearly cost three versions of work - read this one
+
+**PR #56 folded this deck at its v4 state.** My v6 commit was never in it - only
+2 commits were unmerged and that was one of them.
+
+So branching clean off `origin/main` and applying only v7's one-line evening
+change, which is exactly what the instruction describes, **would have silently
+reverted:**
+
+- v5's sharper sponsor line, on slides 5 **and** 11
+- v6's evening and the printed-silence speaker note
+- the City of Ellsworth naming
+- the updated sources line
+
+Handled by cherry-picking `e3a763f` onto the new branch before applying v7. Clean,
+no conflicts.
+
+**The general shape, worth a convention line:** after a fold, "start a fresh
+branch off origin/main" is only safe once you have checked that the fold actually
+captured your lane's latest work. Here it did not, and nothing in the merge or
+the relay said so. **Diff your file against `origin/main` before you branch, not
+after.**
+
+## Still open from yesterday
+
+- **ZAOSTOCK-DECK -> SITE:** Town vs City of Ellsworth in the website `PARTNERS`
+  array. Deck says City. One-word revert if Town is deliberate.
+- Slide 9 remains **UNSET**, six fields, for the Candy meeting.
+- The John Jagger insurance email is unblocked and unsent.
