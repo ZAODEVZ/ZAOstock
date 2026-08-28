@@ -1,6 +1,6 @@
 # Message - Zaal to Gabe Goode, Production Manager, The Ellsworth American
 
-**DO NOT SEND tonight** - Zaal sends tomorrow, 28 Aug, after the website is updated (his words, 27 Aug 19:3x). Paste-ready. Consolidated from
+**CLEARED TO SEND** - Zaal, tapped 28 Aug 05:0x: yes, with today's batch. Zaal sends it himself; this lane sends nothing. Final-checked 28 Aug against ros-v7 (music at noon; no DJ in the changeovers; Stilo's DJ set opens the indoor block; Steve's own set closes; fire performance confirmed, Dcoop's): the body names none of the evening acts and no DJ, says noon and the six o'clock walk, so nothing contradicts. Paste-ready. Consolidated from
 `docs/drafts/press-ellsworth-american-2026-08-27.md`, where every claim is
 sourced and the holds are listed. Drafted 2026-08-27. Contact details are in
 the CRM, not here.
