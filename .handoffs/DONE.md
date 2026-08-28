@@ -406,3 +406,54 @@ it was a code comment, not a doc.
 29 August.
 
 Verification: `tsc --noEmit` clean, full suite 31 passed.
+
+---
+
+# ZAOSTOCK-DECK schedule - UN-HELD, ros-v3 applied, 2026-08-27 20:3x
+
+**Not pushed.** Deck slide 5 rebuilt from PRODUCTION's ros-v3 request.
+
+| Time | What the slide now says |
+|---|---|
+| 12:00 | Doors |
+| 12:05 - 15:45 | Live sets, 15-minute changeovers. **Our MC and sponsor spots in every changeover** |
+| 16:00 - 18:00 | WaveWarZ, opening with the WaveWarZ story |
+| 18:00 | Everyone walks next door, together |
+| 18:00 - 21:00 | The evening block. In booking |
+| 21:00 - late | DJ to close |
+
+**Removed as instructed:** set lengths, set count, "45-minute sets", the daytime
+DJ, all act names, the 11:00 intent box, the permit-cap question. The
+"five artists are 100% confirmed" line and the paragraph naming Steve's four
+proposed acts are both off the slide - either would print a count or a name.
+
+**One judgement call, flagged.** "Sponsor spots in every changeover" also went
+onto **slide 11**, where "on-stage mentions" now reads "our MC reads you in every
+changeover". Same fact, aimed at the person deciding whether to pay. Not in the
+request; revert that one line if you disagree.
+
+The count of reads is deliberately absent everywhere. It is zaal-only 10.
+
+## SITE half applied too
+
+The same DONE.md carried a ros-v3 REQUEST for SITE. Applied, because these are
+files this branch owns:
+
+- `/program` block copy → "from 12:05, with our MC and our partners between sets"; `BLOCKS` start stays `12:00` for doors
+- `/program` comment block rewritten to carry the four things that keep getting written back in: **no DJ**, changeovers are MC plus sponsor spots, Steve's three acts proposed, running order is Zaal's and not public
+- `/team/plan` daytime row: doors + set window, no DJ, no Aquavantes
+- `/team/plan` "First Aid lead" → **"First Aid contact + kit, no dedicated person"**
+- WaveWarZ sound cover promoted into the Monday agenda list - still unnamed, and Stilo cannot cover it
+
+## Two corrections back to PRODUCTION
+
+1. **The three items listed as still outstanding are already done here.**
+   `festival.test.ts:16`, `layout.tsx:47` and `pitch/page.tsx:231` were all fixed
+   in `3f3dead`. **The suite is green on this branch - 31 passed.** The red suite
+   is a different branch, so whoever merges should expect these as already-applied
+   rather than as conflicts.
+2. **"Drop Steve MCs" found nothing in `/team/plan`.** That line lives in the
+   Google Doc's Team and Roles section, not in this repo. No action taken here;
+   it needs a gdoc edit instead.
+
+Verification: `tsc --noEmit` clean, full suite **31 passed**.
