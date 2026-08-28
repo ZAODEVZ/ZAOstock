@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { SuggestForm } from './SuggestForm';
+import { SiteShell, Section, Eyebrow, Badge, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
-  title: 'Suggestions | ZAOstock',
+  title: 'Suggestions',
   description: 'Drop a suggestion for ZAOstock. Anyone can submit. We credit the contributors.',
   openGraph: {
     title: 'Suggestions | ZAOstock',
@@ -15,22 +15,30 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-async function getPublic() {
-  const supabase = getSupabaseAdmin();
-  const { data } = await supabase
-    .from('suggestions')
-    .select('id, name, suggestion, status, created_at')
-    .neq('status', 'archived')
-    .order('created_at', { ascending: false })
-    .limit(80);
-  return data || [];
+type Suggestion = { id: string; name: string | null; suggestion: string; status: string; created_at: string };
+
+/** Null when the database is unreachable, so the page can say so instead of throwing. */
+async function getPublic(): Promise<Suggestion[] | null> {
+  try {
+    const supabase = getSupabaseAdmin();
+    const { data, error } = await supabase
+      .from('suggestions')
+      .select('id, name, suggestion, status, created_at')
+      .neq('status', 'archived')
+      .order('created_at', { ascending: false })
+      .limit(80);
+    if (error) return null;
+    return (data as Suggestion[]) || [];
+  } catch {
+    return null;
+  }
 }
 
-const STATUS_COLOR: Record<string, string> = {
-  new: 'bg-gray-500/10 text-gray-400 border-gray-500/30',
-  reviewing: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
-  actioned: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-  wontfix: 'bg-red-500/10 text-red-400 border-red-500/30',
+const STATUS_TONE: Record<string, 'outline' | 'denim' | 'gold'> = {
+  new: 'outline',
+  reviewing: 'denim',
+  actioned: 'gold',
+  wontfix: 'outline',
 };
 
 function formatDate(iso: string): string {
@@ -41,61 +49,41 @@ export default async function SuggestPage() {
   const suggestions = await getPublic();
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-12">
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-xs text-gray-400 hover:text-[#f5a623]">
-            &larr; ZAOstock
-          </Link>
-          <span className="text-xs text-gray-500">Suggestion Box</span>
+    <SiteShell>
+      <Section first className="pt-12 sm:pt-16">
+        <div className="max-w-[760px]">
+          <Eyebrow tone="denim">Suggestion box</Eyebrow>
+          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Drop an idea.</h1>
+          <p className="text-lg text-ink-secondary measure m-0">Anyone can submit. Good ideas get credited and actioned. The team reviews every entry.</p>
         </div>
-      </header>
+      </Section>
 
-      <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
-        <div className="text-center space-y-2">
-          <p className="inline-block rounded-full bg-[#f5a623]/10 px-3 py-1 text-xs text-[#f5a623] font-medium border border-[#f5a623]/30">
-            Drop an idea
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Suggestion Box</h1>
-          <p className="text-sm text-gray-400 max-w-lg mx-auto">
-            Anyone can submit. Great ideas get credited and actioned. The team reviews every entry.
-          </p>
+      <Section>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-16 items-start">
+          <SuggestForm />
+          <div>
+            <SectionHeader eyebrow="Recent" title="What people have suggested." className="mb-5" />
+            {suggestions === null ? (
+              <p className="text-sm text-ink-muted m-0">The list reads from the database, which is unavailable right now. Suggestions still reach the team by email.</p>
+            ) : suggestions.length === 0 ? (
+              <p className="text-sm text-ink-muted m-0">No suggestions yet. Be the first.</p>
+            ) : (
+              <ul className="list-none m-0 p-0 flex flex-col gap-3">
+                {suggestions.map((s) => (
+                  <li key={s.id} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                    <div className="flex items-center gap-2 flex-wrap mb-2">
+                      <Badge tone={STATUS_TONE[s.status] || 'outline'}>{s.status}</Badge>
+                      <span className="font-mono text-eyebrow text-ink-muted">{formatDate(s.created_at)}</span>
+                      {s.name ? <span className="font-mono text-eyebrow text-ink-secondary">by {s.name}</span> : null}
+                    </div>
+                    <p className="text-sm text-ink-950 whitespace-pre-wrap m-0">{s.suggestion}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-
-        <SuggestForm />
-
-        <section className="space-y-3">
-          <p className="text-xs text-gray-500 uppercase tracking-wider px-1">Recent submissions</p>
-          {suggestions.length === 0 ? (
-            <div className="bg-[#0d1b2a] rounded-xl p-6 border border-white/[0.08] text-center">
-              <p className="text-sm text-gray-500">No suggestions yet. Be the first.</p>
-            </div>
-          ) : (
-            <div className="space-y-2">
-              {suggestions.map((s) => (
-                <div key={s.id} className="bg-[#0d1b2a] rounded-lg border border-white/[0.06] p-4 space-y-2">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border uppercase ${STATUS_COLOR[s.status] || STATUS_COLOR.new}`}>
-                      {s.status}
-                    </span>
-                    <span className="text-[10px] text-gray-500">{formatDate(s.created_at)}</span>
-                    {s.name && (
-                      <span className="text-[10px] text-[#f5a623]">by {s.name}</span>
-                    )}
-                  </div>
-                  <p className="text-sm text-gray-200 whitespace-pre-wrap">{s.suggestion}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        <div className="text-center">
-          <Link href="/" className="text-sm text-[#f5a623] hover:text-[#ffd700]">
-            Back to ZAOstock
-          </Link>
-        </div>
-      </div>
-    </div>
+      </Section>
+    </SiteShell>
   );
 }

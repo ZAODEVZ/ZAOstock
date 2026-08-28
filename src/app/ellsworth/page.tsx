@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { SectionHeader } from '@/components/festival/SectionHeader';
+import { SiteShell, Eyebrow, Button, SectionHeader } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 
 export const metadata: Metadata = {
@@ -67,26 +67,15 @@ const GOOD_TO_KNOW: { label: string; detail: string }[] = [
 
 export default function EllsworthPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-16">
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-xs text-gray-400 hover:text-[#f5a623] transition-colors">
-            &larr; ZAOstock
-          </Link>
-          <span className="text-xs text-gray-500">Oct 3, 2026</span>
-        </div>
-      </header>
-
-      <div className="max-w-2xl mx-auto px-4 py-8 space-y-12">
+    <SiteShell>
+      <div className="wrap max-w-[860px] py-10 sm:py-14 space-y-12">
         {/* Hero */}
         <section className="space-y-3">
-          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-[#f5a623] tracking-[0.2em]">
-            Plan your weekend
-          </p>
-          <h1 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold tracking-tight">
+          <Eyebrow tone="denim">Plan your weekend</Eyebrow>
+          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">
             Ellsworth, Maine
           </h1>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="text-lg text-ink-secondary measure m-0">
             Crossroads of Downeast Maine and the gateway to Acadia National Park. Home to ZAOstock on
             October 3, 2026 at the Franklin Street Parklet, as part of the 9th Annual Art of Ellsworth
             during Maine Craft Weekend.
@@ -104,11 +93,11 @@ export default function EllsworthPage() {
             framed as a ZAOstock partner (not approved; see doc 2279). */}
         {HOE_VIDEO_URL ? (
           <section>
-            <SectionHeader eyebrow="About Ellsworth" title="The town, in its own words." />
-            <p className="text-sm text-gray-400 mb-4">
+            <SectionHeader className="mb-5" eyebrow="About Ellsworth" title="The town, in its own words." />
+            <p className="text-base text-ink-secondary mb-4 measure">
               A short film about downtown Ellsworth, made by Heart of Ellsworth.
             </p>
-            <div className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] overflow-hidden aspect-video">
+            <div className="rounded-md border-2 border-ink-950 bg-paper-200 overflow-hidden aspect-video shadow-hard">
               <iframe
                 src={HOE_VIDEO_URL}
                 title="About Ellsworth - a film by Heart of Ellsworth"
@@ -122,12 +111,12 @@ export default function EllsworthPage() {
 
         {/* Getting here */}
         <section>
-          <SectionHeader eyebrow="Getting here" title="How to reach Ellsworth." />
+          <SectionHeader className="mb-5" eyebrow="Getting here" title="How to reach Ellsworth." />
           <div className="space-y-3">
             {GETTING_HERE.map((g) => (
-              <div key={g.mode} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{g.mode}</div>
-                <p className="text-sm text-gray-400 mt-1">{g.detail}</p>
+              <div key={g.mode} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{g.mode}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{g.detail}</p>
               </div>
             ))}
           </div>
@@ -135,12 +124,12 @@ export default function EllsworthPage() {
 
         {/* Where to stay */}
         <section>
-          <SectionHeader eyebrow="Where to stay" title="Beds near the venue." />
+          <SectionHeader className="mb-5" eyebrow="Where to stay" title="Beds near the venue." />
           <div className="space-y-3">
             {STAY.map((s) => (
-              <div key={s.name} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{s.name}</div>
-                <p className="text-sm text-gray-400 mt-1">{s.note}</p>
+              <div key={s.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{s.name}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{s.note}</p>
               </div>
             ))}
           </div>
@@ -148,12 +137,12 @@ export default function EllsworthPage() {
 
         {/* Eat & drink */}
         <section>
-          <SectionHeader eyebrow="Eat & drink" title="Where to refuel." />
+          <SectionHeader className="mb-5" eyebrow="Eat & drink" title="Where to refuel." />
           <div className="space-y-3">
             {EAT.map((e) => (
-              <div key={e.name} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{e.name}</div>
-                <p className="text-sm text-gray-400 mt-1">{e.note}</p>
+              <div key={e.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{e.name}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{e.note}</p>
               </div>
             ))}
           </div>
@@ -161,18 +150,18 @@ export default function EllsworthPage() {
 
         {/* Things to do */}
         <section>
-          <SectionHeader eyebrow="Things to do" title="Make a weekend of it." />
+          <SectionHeader className="mb-5" eyebrow="Things to do" title="Make a weekend of it." />
           <div className="space-y-3">
             {DO.map((d) => (
-              <div key={d.name} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{d.name}</div>
-                <p className="text-sm text-gray-400 mt-1">{d.note}</p>
+              <div key={d.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{d.name}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{d.note}</p>
               </div>
             ))}
           </div>
           <Link
             href="/acadia"
-            className="mt-3 inline-block text-sm text-[#f5a623] hover:text-[#ffd700] transition-colors"
+            className="mt-4 inline-block text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500"
           >
             Full ZAO Guide to Acadia National Park &rarr;
           </Link>
@@ -180,41 +169,36 @@ export default function EllsworthPage() {
 
         {/* Good to know */}
         <section>
-          <SectionHeader eyebrow="Good to know" title="Before you come." />
+          <SectionHeader className="mb-5" eyebrow="Good to know" title="Before you come." />
           <div className="space-y-3">
             {GOOD_TO_KNOW.map((g) => (
-              <div key={g.label} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{g.label}</div>
-                <p className="text-sm text-gray-400 mt-1">{g.detail}</p>
+              <div key={g.label} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{g.label}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{g.detail}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="rounded-xl border border-[#f5a623]/30 bg-[#f5a623]/5 p-6 text-center">
-          <h2 className="text-xl font-bold">Coming to ZAOstock?</h2>
-          <p className="text-sm text-gray-300 mt-2">
-            October 3, 2026 - Franklin Street Parklet, Ellsworth, Maine. Free to attend.
+        <section className="grain bg-paper-200 border-2 border-ink-950 rounded-md p-6 shadow-hard">
+          <h2 className="font-display font-normal text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2 m-0">Coming to ZAOstock?</h2>
+          <p className="text-base text-ink-secondary mt-2 m-0">
+            {FESTIVAL.dateLabel}. {FESTIVAL.venue}, {FESTIVAL.city}. {FESTIVAL.admission}, music from noon.
           </p>
-          <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={FESTIVAL.rsvpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-6 py-3 text-sm transition-colors"
-            >
-              RSVP on Luma
-            </a>
-            <Link
-              href="/"
-              className="border border-white/20 hover:border-[#f5a623]/50 rounded-lg px-6 py-3 text-sm transition-colors"
-            >
-              Festival home
-            </Link>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Button href={FESTIVAL.rsvpUrl} external>
+              RSVP free
+            </Button>
+            <Button href="/program" variant="secondary">
+              The program
+            </Button>
+            <Button href="/acadia" variant="ghost">
+              The Acadia guide
+            </Button>
           </div>
         </section>
       </div>
-    </div>
+    </SiteShell>
   );
 }

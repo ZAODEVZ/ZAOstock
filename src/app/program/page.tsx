@@ -22,7 +22,30 @@ export const metadata: Metadata = {
 //
 // NO ARTIST NAMES on this page. The lineup is not public until the reveal
 // (Zaal, 2026-08-23), so slots stay generic here even where an act is
-// confirmed internally. Do NOT hand-write names in.
+// confirmed internally. Do NOT hand-write names in. That covers the band
+// Black Moon offered to underwrite for the indoor block too - it is PROPOSED,
+// not booked (see below), and it is named in
+// docs/plans/production-plan-2026-10-03.md, but it stays off this page until
+// the reveal like every other act.
+//
+// DOORS ARE NOON. An 11:00 open was on this page for part of 2026-08-27 (five
+// confirmed acts do not fit four 45/15 slots from noon); Zaal reverted it the
+// same evening: music starts at noon, and the fifth act's placement is decided
+// in the production plan (section 2), not by moving doors. The 11:00 question
+// to the City was withdrawn unsent. src/content/festival.ts carries the window.
+//
+// The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
+// acts). A single 6-9 booking replaces both.
+//
+// IN BOOKING, NOT BOOKED (Zaal, 2026-08-27). All four acts from Steve's draft -
+// The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek - are PROPOSED
+// ONLY. Nobody has confirmed which are booked. So this page says "in booking"
+// and commits to neither an act nor a downbeat. Do not upgrade this wording
+// without a confirmation you can point at.
+//
+// That includes the changeover DJ. Aquavantes is one of the four, so the daytime
+// block must not promise a DJ in every gap - the gaps are uncovered until Steve
+// confirms him. Tag ledger for every act: production plan, section 2.
 
 type Venue = 'OUT' | 'IN';
 
@@ -41,7 +64,7 @@ const BLOCKS: Block[] = [
     venue: 'OUT',
     label: 'Live music',
     detail:
-      'Independent artists back to back on the parklet stage. Lineup announced once every set is locked.',
+      'Independent artists back to back on the parklet stage, 45 minutes each with short changeovers between sets. Lineup announced once every set is locked.',
   },
   {
     start: '16:00',
@@ -53,18 +76,18 @@ const BLOCKS: Block[] = [
   },
   {
     start: '18:00',
-    end: '20:00',
+    end: '21:00',
     venue: 'IN',
-    label: 'The party',
+    label: 'The after party',
     detail:
-      'Everything moves inside to Black Moon Public House, walkable, right next door. DJ set.',
+      'Everything moves inside to Black Moon Public House, walkable, right next door. Live music for the evening, in booking - no act or start time confirmed yet.',
   },
   {
-    start: '20:00',
+    start: '21:00',
     end: 'late',
     venue: 'IN',
-    label: 'Local Maine acts',
-    detail: 'Live music to close the night out, indoors.',
+    label: 'DJ to close',
+    detail: 'Music until the room empties, indoors.',
   },
 ];
 
@@ -102,7 +125,7 @@ export default function ProgramPage() {
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Outside, Then In</h1>
           <p className="text-sm text-gray-400 max-w-lg mx-auto">
-            Eight hours in two halves. Live music on Franklin Street from noon, then the whole
+            A full day in two halves. Live music on Franklin Street from noon, then the whole
             thing walks next door into Black Moon at six and keeps going.
           </p>
         </div>

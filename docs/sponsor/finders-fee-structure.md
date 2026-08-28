@@ -41,13 +41,21 @@ Zaal brings a connection. You volunteer to be the named POC + run the relationsh
 
 ## Fee timing
 
-Fees are recognized when funds are received by ZAO Festivals (or the appropriate fiscal infrastructure for tax-deductible support). Paid out within 14 days of receipt.
+Fees are recognized when funds are received by ZAO Festivals. Paid out within 14 days of receipt.
 
-## How this fits with fiscal sponsorship
+> **Corrected 2026-08-27.** This line used to route funds through "the appropriate fiscal infrastructure for tax-deductible support". ZAOstock has no fiscal sponsor, so there is no such path and nothing here is tax-deductible.
 
-These finders + management fees are **separate project costs** built into the event budget. They are NOT pulled from the New Media Commons / Fractured Atlas overhead. NMC overhead is the cost of legal and fiscal infrastructure (no profit going to anyone). Our team fees are a separate budget line. Both add up and are accounted for cleanly per-deal.
+## How this fits with the money flow
 
-When a live sponsor lead lands, we map the per-deal flow: gross amount → NMC infrastructure cost → ZAO Festivals project budget → finders/management fees → remaining for festival production (artists, vendors, venue). This is on a per-deal basis to make sure the math works for everyone.
+> **Rewritten 2026-08-27. ZAOstock has no fiscal sponsor.** The previous version of
+> this section routed every sponsor dollar through New Media Commons / Fractured
+> Atlas overhead. That path does not exist.
+
+These finders + management fees are **separate project costs** built into the event budget, and they are a distinct line from production spend.
+
+When a live sponsor lead lands, the per-deal flow is: gross amount → ZAO Festivals project budget → finders/management fees → remaining for festival production (artists, vendors, venue). Per-deal, so the math is checked each time.
+
+**Percentages are UNSET.** The 10 / 15 / up to 25 ladder is a proposal, not a decision - Zaal on the Aug 24 standup: *"None of that's formalized or finalized."*
 
 ## Caps and edge cases
 

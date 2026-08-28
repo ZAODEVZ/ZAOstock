@@ -42,6 +42,13 @@ export default function EventOrganizersPage() {
         { label: 'Schedule a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAOstock%20Event%20Organizer%20Intro', primary: true },
         { label: 'Ask about hosting a city', href: 'mailto:info@thezao.com?subject=ZAOstock%20City%20Host%20Inquiry' },
       ]}
+      facts={[
+        { term: 'ZAO-PALOOZA', detail: 'New York City, during NFT NYC, 2024' },
+        { term: 'ZAO-CHELLA', detail: 'Miami, Wynwood, during Art Basel, December 2024' },
+        { term: 'ZAOville', detail: 'Laurel, Maryland, July 2026' },
+        { term: 'ZAOstock', detail: 'Ellsworth, Maine, 3 October 2026 - the first in Maine' },
+        { term: 'Next', detail: '2027, your city' },
+      ]}
       footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (NYC, NFT NYC, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both proved the model."
     />
   );

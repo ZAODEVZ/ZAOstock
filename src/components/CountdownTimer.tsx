@@ -55,10 +55,10 @@ export function CountdownTimer({ targetDate, eventName }: CountdownTimerProps) {
   if (!targetDate) {
     return (
       <div className="text-center py-8">
-        <p className="text-2xl sm:text-3xl font-bold text-[#f5a623]">
+        <p className="text-2xl sm:text-3xl font-bold text-gold-600">
           Date Announcement Coming Soon
         </p>
-        <p className="text-gray-400 mt-2 text-sm">{eventName} date will be revealed shortly</p>
+        <p className="text-ink-muted mt-2 text-sm">{eventName} date will be revealed shortly</p>
       </div>
     );
   }
@@ -66,7 +66,7 @@ export function CountdownTimer({ targetDate, eventName }: CountdownTimerProps) {
   if (!mounted) {
     return (
       <div className="text-center py-8">
-        <p className="text-gray-400 text-sm">Loading countdown...</p>
+        <p className="text-ink-muted text-sm">Loading countdown...</p>
       </div>
     );
   }
@@ -74,7 +74,7 @@ export function CountdownTimer({ targetDate, eventName }: CountdownTimerProps) {
   if (!timeLeft) {
     return (
       <div className="text-center py-8">
-        <p className="text-2xl sm:text-3xl font-bold text-[#f5a623]">{eventName} is here!</p>
+        <p className="text-2xl sm:text-3xl font-bold text-gold-600">{eventName} is here!</p>
       </div>
     );
   }
@@ -91,10 +91,10 @@ export function CountdownTimer({ targetDate, eventName }: CountdownTimerProps) {
       <div className="flex justify-center gap-3 sm:gap-6">
         {units.map((unit) => (
           <div key={unit.label} className="flex flex-col items-center">
-            <span className="text-3xl sm:text-5xl font-bold text-[#f5a623] tabular-nums">
+            <span className="text-3xl sm:text-5xl font-bold text-gold-600 tabular-nums">
               {String(unit.value).padStart(2, '0')}
             </span>
-            <span className="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">
+            <span className="text-xs sm:text-sm text-ink-muted mt-1 uppercase tracking-wider">
               {unit.label}
             </span>
           </div>

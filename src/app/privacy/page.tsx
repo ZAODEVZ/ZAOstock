@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Privacy | ZAOstock',
@@ -13,27 +13,20 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-16">
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-xs text-gray-400 hover:text-[#f5a623]">
-            &larr; ZAOstock
-          </Link>
-          <span className="text-xs text-gray-500">Privacy</span>
-        </div>
-      </header>
-
-      <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
+    <SiteShell>
+      <Section first className="pt-12 sm:pt-16">
+      <div className="max-w-[760px] space-y-8">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight">Privacy</h1>
-          <p className="text-sm text-gray-400">
+          <Eyebrow tone="denim">Privacy</Eyebrow>
+          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">Privacy</h1>
+          <p className="text-lg text-ink-secondary measure">
             Plain language, no legal boilerplate. This is what ZAOstock actually collects and what happens to it.
           </p>
         </div>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-[#f5a623]">What we collect</h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <h2 className="font-display font-normal text-h3 text-ink-950">What we collect</h2>
+          <p className="text-base text-ink-950 leading-relaxed measure">
             If you RSVP, apply to volunteer, sign up for the cypher, submit an artist form, or fill out an
             artist rider, we collect what you actually type into that form - typically your name and email,
             sometimes a phone number, social links, or a message. We don&apos;t collect anything beyond what
@@ -44,8 +37,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-[#f5a623]">What it&apos;s used for</h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <h2 className="font-display font-normal text-h3 text-ink-950">What it&apos;s used for</h2>
+          <p className="text-base text-ink-950 leading-relaxed measure">
             Coordinating the event - confirming your RSVP, reaching out about a volunteer shift, following up
             on an artist submission, or reviewing a suggestion. It goes into ZAOstock&apos;s own team
             dashboard, visible to the small volunteer team running the event. We don&apos;t sell it, rent it,
@@ -54,8 +47,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-[#f5a623]">The mobile app &amp; push notifications</h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <h2 className="font-display font-normal text-h3 text-ink-950">The mobile app &amp; push notifications</h2>
+          <p className="text-base text-ink-950 leading-relaxed measure">
             If you&apos;re a signed-in team member using the ZAO Festivals app and you allow notifications, we
             store a device push token so we can notify you about tasks assigned to you. It&apos;s tied to your
             team account, not shared with anyone outside the team, and only used to send you notifications about
@@ -64,8 +57,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-[#f5a623]">Where it lives</h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <h2 className="font-display font-normal text-h3 text-ink-950">Where it lives</h2>
+          <p className="text-base text-ink-950 leading-relaxed measure">
             In a Supabase-hosted database used to run this site and its team dashboard. Access is
             restricted to the site&apos;s own backend - team members log in separately, and it&apos;s not a
             publicly browsable database.
@@ -73,10 +66,10 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-[#f5a623]">Removing your info</h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <h2 className="font-display font-normal text-h3 text-ink-950">Removing your info</h2>
+          <p className="text-base text-ink-950 leading-relaxed measure">
             Email{' '}
-            <a href="mailto:info@thezao.com?subject=ZAOstock%20data%20request" className="text-[#f5a623] hover:text-[#ffd700] underline">
+            <a href="mailto:info@thezao.com?subject=ZAOstock%20data%20request" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               info@thezao.com
             </a>{' '}
             and we&apos;ll remove what you submitted. This is a small, volunteer-run community event, not a
@@ -84,13 +77,8 @@ export default function PrivacyPage() {
             what we have on file, just ask.
           </p>
         </section>
-
-        <div className="text-center pt-4">
-          <Link href="/" className="text-sm text-[#f5a623] hover:text-[#ffd700]">
-            Back to ZAOstock
-          </Link>
-        </div>
       </div>
-    </div>
+      </Section>
+    </SiteShell>
   );
 }

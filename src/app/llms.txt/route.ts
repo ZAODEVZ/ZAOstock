@@ -9,13 +9,17 @@ const CONTENT = `# ZAOstock
 
 ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (NYC during NFT NYC, April 2024), ZAO-CHELLA (Miami Wynwood during Art Basel, December 2024), and the co-hosted ZAOville DMV chapter with DCoop in July 2026. ZAOville is a cross-promotion across the series — DCoop performed at ZAO-CHELLA and returns for ZAOstock. ZAOville lineup includes PROF!T, ELYVN, and more. ZAOstock takes place during Maine Craft Weekend as part of the 9th Annual Art of Ellsworth. The festival operates at break-even with fair artist pay. ZAO Festivals collaborates with ENTERACT for production and execution support. Sponsor money flows one way: client / sponsor -> ENTERACT (2% treasury) -> production / partners, with 50% upfront and 50% before delivery. Sponsorship is a commercial arrangement and no tax receipt is issued. ZAOstock has no fiscal sponsor, so there is no tax-deductible path and contributions are not tax-deductible. ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit.
 
-The festival format: independent artists performing with DJs between, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
+The festival format: independent artists performing with our MC and our partners between sets, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
+
+## Confirmed partners
+
+Town of Ellsworth (parklet venue), Black Moon Public House (indoor stage and official after-party), Star 97.7 (local radio), Wallace Events (equipment and tenting), WaveWarZ (live music-battle format), COC Concertz (community partnership, monthly virtual concerts), ENTERACT (production and operational support), Web3Metal (partnership integration and community surface). Heart of Ellsworth is not a listed partner until they confirm in writing.
 
 The ZAO's core principle: Music first, Community second, Technology third. The festival leads with the music experience. The ZAO are digital creators focused on helping musicians and other artists with distribution and support.
 
 ## Key dates
 
-- October 3, 2026: Festival day, 12pm to 6pm, afterparty follows
+- October 3, 2026: Festival day. Music from noon on the Franklin Street Parklet until six, then everyone walks next door to Black Moon Public House for the evening. One venue at a time
 - June 30, 2026: Partner commitments due for printed materials
 - Lineup goes public once every set is locked
 - September 15, 2026: Run-of-show locked, attendee schedule cards printed
@@ -24,7 +28,7 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 
 - [ZAOstock overview](https://zaostock.com): Festival info, countdown, team, partners, past events, RSVP
 - [Day-of program](https://zaostock.com/program): Draft schedule with music, talks, and WaveWarZ battles
-- [Partner deck](https://zaostock.com/sponsor/deck): Three partner tracks, FAQ, how to commit
+- [Sponsor](https://zaostock.com/sponsor): why, who we are, five packages (prices on request), sponsor an artist, next step
 - [Volunteer signup](https://zaostock.com/apply): Sign up to volunteer in setup, check-in, stage crew, content, teardown, and other roles
 - [Team dashboard login](https://zaostock.com/team): 4-letter code access for the organizing team (27 members across operations, design, music, finance, livestream, and content)
 
@@ -58,7 +62,7 @@ Every team member has a public profile at https://zaostock.com/team/m/[slug] wit
 
 ## Contact
 
-Zaal - zaalp99@gmail.com - lead organizer, ZAO founder, partner and artist outreach
+Zaal - info@thezao.com - lead organizer, ZAO founder, partner and artist outreach
 
 ## About The ZAO
 

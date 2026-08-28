@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 // Source of truth is the cowork board; this is a curated read of it, refreshed
 // by hand. Card ids are included so a board write can find the row.
 
-type Lane = 'cannot-recover' | 'blocks-announce' | 'promotion' | 'day-of';
+type Lane = 'cannot-recover' | 'blocks-announce' | 'promotion' | 'day-of' | 'livestream';
 
 interface Item {
   title: string;
@@ -111,30 +111,79 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
     label: 'Day-of operations',
     why: 'Not urgent this week, but each one needs a name against it before late September.',
     items: [
-      { title: 'First Aid lead - currently doubled onto Zaal, which does not work for a six-hour show', owner: 'Zaal', when: 'no date', card: '71716c06' },
-      { title: 'Stage managers, indoor and outdoor - both unnamed', owner: 'UNASSIGNED', when: 'before 3 Oct' },
+      { title: 'First Aid contact + kit, no dedicated person (Zaal, 27 Aug)', owner: 'Zaal', when: 'no date', card: '71716c06' },
+      { title: 'Stage managers, parklet and Black Moon - both unnamed. Sequential, not simultaneous, so one person could cover both', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Sound cover for the WaveWarZ block, since Stilo is battling in it', owner: 'UNASSIGNED', when: 'before 3 Oct' },
-      { title: 'Virtual team, 5-10 people in shifts', owner: 'Zaal', when: '26 Aug', card: 'bb2b9326' },
+      { title: 'Livestream and virtual - SPLIT, no longer one lead. Aziz owns the rig and Restream, Ohnahji owns scheduling and guests. Motomoto in the crew, does not lead a half', owner: 'Aziz + Ohnahji', when: 'closed 27 Aug', card: 'bb2b9326', note: 'Supersedes the 24 Aug call that virtual has no lead deliberately. Which half goes to which is read from the vault, not from Zaal - one word flips it. See docs/plans/people-map-2026-10-03.md.' },
       { title: 'Fire permit for the fire spinning', owner: 'Zaal', when: 'was due 21 Aug', card: 'c03f74b5', overdue: true },
       { title: 'LiDAR venue scan for the Decentraland build', owner: 'Zaal', when: 'no date', card: 'ca119cdf' },
     ],
   },
+  {
+    id: 'livestream',
+    label: 'Livestream - the Baraza OBS rig',
+    why: 'This was tracked as its own lane and it is not one. Aziz owns the rig half of our livestream split, and the Baraza TV OBS build IS that rig. Its blockers are ZAOstock blockers. Source: ~/zao-vault/handoffs/baraza.md, and the test slipped its 22 Aug date.',
+    items: [
+      {
+        title: 'Aziz: the rtmps ingest URL + stream key (Cloudflare Live Input) - THE blocker',
+        owner: 'Zaal to chase Aziz',
+        when: 'was due 22 Aug',
+        card: '654b9aba',
+        overdue: true,
+        note: 'Nothing local substitutes. The encode path is proven end to end - h264_nvenc CBR 6000k 1080p30 verified with ffprobe - so the ONLY untested link left is Aziz\u2019s ingest endpoint. If one thing gets chased this week, this is it.',
+      },
+      {
+        title: 'Zaal: send Aziz the Windows desktop specs',
+        owner: 'Zaal',
+        when: 'was due 22 Aug',
+        overdue: true,
+        note: 'Aziz\u2019s own words: "If you can send me the specs for your device, I can share with you some plugins that you will need." Doc 2316 recorded this exchange BACKWARDS and cost three days of both sides waiting. Zaal owes specs; Aziz owes the plugin list and the ingest URL. Do not re-litigate the direction.',
+      },
+      {
+        title: 'Relay the plugin answer to Motomoto - already worked out, never sent',
+        owner: 'Zaal',
+        when: 'was due 22 Aug',
+        overdue: true,
+        note: 'The only true third-party plugin is Advanced Scene Switcher. obs-websocket v5 and Browser Source ship inside OBS 28+. 64-bit VLC and Python 3.12 + requirements.txt are machine deps, not plugins. Do not re-derive this - relay it.',
+      },
+      {
+        title: 'Aziz: export Baraza_TV_v2.json from the origin machine',
+        owner: 'Zaal to chase Aziz',
+        when: 'before any test',
+        note: 'The repo does not ship the v2 scene collection, and baraza-obs-launch.bat forces that collection name in user.ini, which breaks on a fresh machine. Now known to gate the whole macro layer, not just scene parity. The ask is already in baraza-tv PR #5.',
+      },
+      {
+        title: 'Run the 10-minute test, then mark baraza-tv PR #5 ready for review',
+        owner: 'Zaal + Aziz',
+        when: 'after the ingest URL lands',
+        note: 'Per obs/WINDOWS-SETUP.md section 7, confirming playback on Aziz\u2019s Cloudflare side. PR #5 goes ready-for-review once Zaal approves the ask-Aziz framing. Two smaller fixes ride along: repoint the "Camera" VLC source off the dead E:/ card path, and the ADVSS reader path fix so the dashboard panel stops reading configFound:false.',
+      },
+    ],
+  },
 ];
 
+// One venue at a time, not two stages alternating - corrected 23 Aug. Doors
+// were moved to 11:00 on 26 Aug for a fifth 45/15 slot; Zaal reverted that on
+// 27 Aug: MUSIC STARTS AT NOON. 12:00-16:00 at 45/15 is four slots; four acts
+// confirmed, Werb not fully (20:4x). No DJ - the MC and partner spots cover
+// changeovers (20:0x). Full reasoning and Steve's supply list live in
+// docs/plans/production-plan-2026-10-03.md.
 const DAY = [
-  { time: '12:00 - 16:00', what: 'Artists, two stages alternating', who: 'Fellenz, Lyons Den, Dcoop, plus more to confirm' },
-  { time: '16:00 - 18:00', what: 'WaveWarZ', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
-  { time: '18:00 - 20:00', what: 'The party, indoors at Black Moon', who: 'Stilo DJing' },
-  { time: '20:00 on', what: 'Local Maine acts', who: 'Brought by Steve' },
+  { time: '12:00 doors, sets 12:05 - 15:45', what: 'Artists, outdoors on the parklet. Changeovers are the MC plus partner spots - no DJ (Zaal 27 Aug 20:0x). Running order per ros-v4', who: 'Fellenz, Lyons Den, Dcoop, Acadia Rising - four CONFIRMED. Werb NOT fully confirmed (Zaal 27 Aug 20:4x), wanted for WaveWarZ. Four slots at noon start; running order is Zaal’s plan and not public' },
+  { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
+  { time: '18:00 - 19:30', what: 'DJ set, indoors at Black Moon - our DJ, decided (ros-v4, 27 Aug)', who: 'Stilo DJing - CONFIRMED on our side, per the message from the DJ (gdoc snapshot 27 Aug). Moved up from the old 21:00 close' },
+  { time: '19:30 - 20:00', what: 'UNSET half hour (ros-v6). Nothing printed publicly', who: 'Open question, zaal-only-PRODUCTION line 1' },
+  { time: '20:00 - 22:00', what: 'Live set, hosted by Black Moon (ros-v6). Public copy carries no act name until 1 Sept', who: 'Steve’s act - name not on disk. Crown Vics booked, unnamed publicly until 1 Sept. After 22:00 nothing until the licence hour is typed' },
 ];
 
 const MONDAY = [
   'Sound: what Steve’s PA offer covers, and a named backup started in parallel',
   'The city: what form the insurance certificate takes, and whether the Art of Ellsworth exemption covers our permit window',
-  'The 12-4 window is roughly half empty - take up Steve’s standing offer to fill blanks with local acts',
+  'The daytime is FULL, not half empty - one venue at a time from noon gives four slots; four acts confirmed and Werb in confirmation. Steve’s offer to fill blanks is a reserve, not a need',
   'Who covers sound during WaveWarZ, since Stilo is battling in it',
-  'Stage managers for both stages, and splitting First Aid off Zaal',
+  'Stage manager for the parklet and one for Black Moon after six',
   'Who asks Black Moon for the normal-Saturday baseline, and by when',
+  'Livestream: has Aziz sent the rtmps ingest URL and key? Everything else in the OBS rig is proven and this is the only untested link',
 ];
 
 function Pill({ overdue }: { overdue?: boolean }) {

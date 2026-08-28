@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { SectionHeader } from '@/components/festival/SectionHeader';
+import { SiteShell, Eyebrow, Button, SectionHeader } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 
 export const metadata: Metadata = {
@@ -52,26 +51,15 @@ const GOOD_TO_KNOW: { label: string; detail: string }[] = [
 
 export default function AcadiaPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-16">
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/ellsworth" className="text-xs text-gray-400 hover:text-[#f5a623] transition-colors">
-            &larr; Visiting Ellsworth
-          </Link>
-          <span className="text-xs text-gray-500">Oct 3, 2026</span>
-        </div>
-      </header>
-
-      <div className="max-w-2xl mx-auto px-4 py-8 space-y-12">
+    <SiteShell>
+      <div className="wrap max-w-[860px] py-10 sm:py-14 space-y-12">
         {/* Hero */}
         <section className="space-y-3">
-          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-[#f5a623] tracking-[0.2em]">
-            ZAO Guide
-          </p>
-          <h1 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold tracking-tight">
+          <Eyebrow tone="denim">ZAO Guide</Eyebrow>
+          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">
             Acadia National Park
           </h1>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="text-lg text-ink-secondary measure m-0">
             Ellsworth is the gateway - Acadia is about 25 miles away. Whether you have an
             afternoon or a few extra days around ZAOstock, here&apos;s what&apos;s actually worth doing,
             what needs a reservation, and what to skip.
@@ -80,12 +68,12 @@ export default function AcadiaPage() {
 
         {/* Getting in */}
         <section>
-          <SectionHeader eyebrow="Getting in" title="Plan the logistics first." />
+          <SectionHeader className="mb-5" eyebrow="Getting in" title="Plan the logistics first." />
           <div className="space-y-3">
             {GETTING_IN.map((g) => (
-              <div key={g.label} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{g.label}</div>
-                <p className="text-sm text-gray-400 mt-1">{g.detail}</p>
+              <div key={g.label} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{g.label}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{g.detail}</p>
               </div>
             ))}
           </div>
@@ -93,12 +81,12 @@ export default function AcadiaPage() {
 
         {/* Must-see */}
         <section>
-          <SectionHeader eyebrow="Must-see" title="5 spots, ranked." />
+          <SectionHeader className="mb-5" eyebrow="Must-see" title="5 spots, ranked." />
           <div className="space-y-3">
             {MUST_SEE.map((m) => (
-              <div key={m.name} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{m.name}</div>
-                <p className="text-sm text-gray-400 mt-1">{m.note}</p>
+              <div key={m.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{m.name}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{m.note}</p>
               </div>
             ))}
           </div>
@@ -106,21 +94,21 @@ export default function AcadiaPage() {
 
         {/* Excursions */}
         <section>
-          <SectionHeader eyebrow="Staying a few extra days?" title="Multi-day excursion plan." />
-          <p className="text-sm text-gray-400 mb-4">
+          <SectionHeader className="mb-5" eyebrow="Staying a few extra days?" title="Multi-day excursion plan." />
+          <p className="text-base text-ink-secondary mb-4 measure">
             Ranked for a mixed group of varying fitness - musicians and attendees, not a hiking club.
             Suggested framing for 3 days: Day 1 downtown Ellsworth, Day 2 Ocean Path + Jordan Pond +
             Cadillac sunset, Day 3 Schoodic loop drive or the boat cruise.
           </p>
           <div className="space-y-3">
             {EXCURSIONS.map((e) => (
-              <div key={e.name} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
+              <div key={e.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <div className="font-semibold text-white">{e.name}</div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#f5a623] font-mono flex-shrink-0">{e.difficulty}</span>
+                  <div className="font-sans font-extrabold text-ink-950">{e.name}</div>
+                  <span className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-gold-600 shrink-0">{e.difficulty}</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">{e.time}</p>
-                <p className="text-sm text-gray-400 mt-1">{e.note}</p>
+                <p className="font-mono text-eyebrow text-ink-muted mt-1 m-0">{e.time}</p>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{e.note}</p>
               </div>
             ))}
           </div>
@@ -128,41 +116,36 @@ export default function AcadiaPage() {
 
         {/* Good to know */}
         <section>
-          <SectionHeader eyebrow="Good to know" title="Weather and timing." />
+          <SectionHeader className="mb-5" eyebrow="Good to know" title="Weather and timing." />
           <div className="space-y-3">
             {GOOD_TO_KNOW.map((g) => (
-              <div key={g.label} className="rounded-xl border border-white/[0.08] bg-[#0d1b2a] p-4">
-                <div className="font-semibold text-white">{g.label}</div>
-                <p className="text-sm text-gray-400 mt-1">{g.detail}</p>
+              <div key={g.label} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
+                <div className="font-sans font-extrabold text-ink-950">{g.label}</div>
+                <p className="text-sm text-ink-secondary mt-1 m-0">{g.detail}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="rounded-xl border border-[#f5a623]/30 bg-[#f5a623]/5 p-6 text-center">
-          <h2 className="text-xl font-bold">Coming to ZAOstock?</h2>
-          <p className="text-sm text-gray-300 mt-2">
-            October 3, 2026 - Franklin Street Parklet, Ellsworth, Maine. Free to attend.
+        <section className="grain bg-paper-200 border-2 border-ink-950 rounded-md p-6 shadow-hard">
+          <h2 className="font-display font-normal text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2 m-0">Coming to ZAOstock?</h2>
+          <p className="text-base text-ink-secondary mt-2 m-0">
+            {FESTIVAL.dateLabel}. {FESTIVAL.venue}, {FESTIVAL.city}. {FESTIVAL.admission}, music from noon.
           </p>
-          <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={FESTIVAL.rsvpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-6 py-3 text-sm transition-colors"
-            >
-              RSVP on Luma
-            </a>
-            <Link
-              href="/ellsworth"
-              className="border border-white/20 hover:border-[#f5a623]/50 rounded-lg px-6 py-3 text-sm transition-colors"
-            >
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Button href={FESTIVAL.rsvpUrl} external>
+              RSVP free
+            </Button>
+            <Button href="/program" variant="secondary">
+              The program
+            </Button>
+            <Button href="/ellsworth" variant="ghost">
               Visiting Ellsworth
-            </Link>
+            </Button>
           </div>
         </section>
       </div>
-    </div>
+    </SiteShell>
   );
 }
