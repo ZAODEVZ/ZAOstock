@@ -99,9 +99,10 @@ from the earlier version: it no longer asks for a person.
 > kit; and we are looking at an AED. It is a small event and we are not planning
 > a medical post - if you think we should, say so.
 >
-> One of our acts involves fire spinning; the performer is applying for the
-> open-flame permit with you separately and brings his own extinguisher and
-> water. Mentioning it so it is not a surprise in the same file.
+> One of our acts involves fire spinning - Roddy at Parks and Recreation has
+> confirmed it - and the performer is handling the open-flame paperwork with you
+> separately and brings his own extinguisher and water. Mentioning it so it is
+> not a surprise in the same file.
 >
 > Thank you - happy to come by the station.
 

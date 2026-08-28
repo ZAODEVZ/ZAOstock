@@ -42,8 +42,9 @@ against all the exposures, at the best price.
 - **What happens:** live music sets on a stage that is already standing from the
   City's summer concert series, plus live music battles in the late afternoon.
 - **Expected attendance:** 200-250 in person, and around 1,000 online (the online side does not touch the site)
-- **Fire performance:** one act involves fire spinning. The performer is
-  seeking the open-flame permit from the fire department directly. I understand
+- **Fire performance:** one act involves fire spinning, and the City has
+  confirmed it can go ahead. The performer is handling the fire department's
+  open-flame paperwork directly. I understand
   standard event liability policies exclude open-flame performance, and that the
   performer normally carries his own fire-performer policy and issues a
   certificate naming the event and the City as additional insureds. Tell me if
@@ -51,18 +52,15 @@ against all the exposures, at the best price.
   I am flagging it up front because I would rather you price it correctly than
   discover it later.
 
-**Two specific things I need, and they are the reason I am writing rather than
-just asking for a number:**
+**One thing I know and one thing I need, and they are the reason I am writing
+rather than just asking for a number:**
 
-1. **What coverage amount does the City of Ellsworth require** for an event on
+1. **The City of Ellsworth must be named as an additional insured** on the
+   policy for the day. That is confirmed with the City; a certificate naming
+   them is what they need from us as a condition of the parklet permit.
+2. **What coverage amount does the City of Ellsworth require** for an event on
    the parklet? If you have worked with the City before you may already know; if
    not, I can ask them directly and come back to you.
-2. **Does the City of Ellsworth need to be named as an additional insured** on
-   the policy?
-
-I ask because the City needs a copy of the certificate as a condition of the
-permit, and I have been told a broker cannot quote properly without both
-answers.
 
 Beyond general liability, I would want the parklet event itself, the performers
 and their equipment, and any vendors covered. I have been advised that general
@@ -80,6 +78,13 @@ ZAOstock / ZAO Festivals
 info@thezao.com
 
 ---
+
+## Updated 2026-08-27 22:2x - two City facts folded in
+
+Zaal talked to Roddy on 27 Aug: fire spinning is confirmed by the City, and the
+City of Ellsworth must be named as additional insured for the day. Question 2
+became a statement; the coverage amount is the only question left. This email
+is the first send tomorrow. Paste-ready copy: `docs/drafts/msg-john-jagger-2026-08-27.md`.
 
 ## Before this sends - one field, now filled
 
