@@ -21,7 +21,8 @@ confirmed; Lyons Den not in the order. 21:2x: Lyons Den fourth after Dcoop;
 changeovers mixed 5 and 10. 22:0x: Steve in, Roddy in, fire performance
 confirmed by the City. 22:3x: Crown Vics and Steve's own set 20:00-22:00 booked;
 Somes Sound, North Creek, Aquavantes out; fire act is Dcoop; Steve message dropped. 28 Aug 05:0x: Stilo 18:00-20:00,
-no gap; fire time and place are Dcoop's to say.
+no gap; fire time and place are Dcoop's to say. 05:1x: $20 stands; headcount counted
+and proposed; Wallace tent confirmed and up.
 
 ## Now
 
@@ -32,7 +33,7 @@ no gap; fire time and place are Dcoop's to say.
 5. The open stretch, about 40 minutes at 15:05-15:45: **JANGO / Jadyn / Hurricane / Werb / leave it to the MC** - one fits - section 2, `ros-5min` Q5.
 6. Fellenz's "30 min indoors late" (24 Aug): the evening now has no gap - **drop it / a place** - `ros-5min` Q26.
 7. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - section 6, open item 1.
-8. Performer headcount for Black Moon's $20 certificates, and the date you will send it: **a number and a date** - section 3 row 3, 8.7.
+8. The certificate headcount, counted in production plan section 3: **20 people plus two groups (Acadia Rising, The Crown Vics) of UNSET size - approve / a different number**, and two flags: do The Crown Vics (Steve's own band) get Steve's certificates, and are Aziz, Ohnahji and Motomoto on site? Plus **the date** you send it to Steve.
 9. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
 10. The WaveWarZ story at 16:00, Hurricane with Stilo: **length in minutes** - `ros-5min` Q16.
 11. Sponsor spots in the two 10-minute gaps: **how many each, and live by the MC / recorded stings / both** - section 2, 8.6; copy is the sponsor deck's.
