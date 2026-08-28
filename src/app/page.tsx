@@ -11,7 +11,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionH
 //
 // Overrides relayed to SITE on 2026-08-27 that beat the spec: Lyons Den is
 // the only public act (Werb not fully confirmed, 20:4x); no changeover DJ
-// (20:0x); DJ set 6-7:30 then a live set 8-10 hosted by Black Moon (ros-v6); no attendance
+// (20:0x); DJ set 6-8 then a live set 8-10 hosted by Black Moon (ros-v7); no attendance
 // figure on the site (19:3x).
 
 export const metadata: Metadata = {
