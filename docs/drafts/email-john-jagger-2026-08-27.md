@@ -34,7 +34,7 @@ against all the exposures, at the best price.
 **The event, so you can scope it:**
 
 - **Site:** the Franklin Street Parklet, the City-owned parklet in downtown
-  Ellsworth. Outdoors, from late morning until 6pm.
+  Ellsworth. Outdoors, from noon until 6pm.
 - **Then indoors:** at 6pm the whole event moves next door into Black Moon
   Public House and finishes there. One venue at a time, never both at once.
 - **Alcohol** is served only inside Black Moon and at their beer garden, under
