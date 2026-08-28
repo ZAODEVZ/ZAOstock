@@ -391,3 +391,27 @@ Relay matched: board log "2026-08-27 21:14 RELAY ... DESIGN close".
 Stopped for the night.
 
 CLOSE addendum 21:2x: this lane's browse server and headless Chromium are gone. A gstack browse server (pid 4840, started 21:07:58, ppid 1) and a `next dev --webpack -p 3117` in the `lane-site-0827` worktree are running; both started after this lane's last browser call and belong to another session, so they were left alone. The `browse stop` CLI cannot reach 4840 ("Server crashed twice in a row - aborting"); whoever owns it should `kill 4840` when done.
+
+## ZAOSTOCK-DESIGN meeting-prep - 2026-08-27 21:3x
+
+Relay matched: board log "2026-08-27 21:27 RELAY 21:2x verdicts to
+PRODUCTION/MARKETING/STREAM/DESIGN".
+
+- **Written:** `docs/design/meeting-2026-09-02.md`. Pre-reads, the seven
+  human decisions from DESIGN.md's agent-default list with a recommended
+  answer each, the two UNSET (ICM brand boxes; the OG image), the screenshot
+  situation and the ask to capture before SITE's shell deploys, the twelve-step
+  order with the two questions worth asking, and the eight Zaal fields.
+- **UNSET in the doc:** meeting time, length and attendees beyond Zaal.
+  Suggested 45 minutes with Candy and the SITE driver.
+- **Request line for the orchestrator:** the calendar draft should carry the
+  four pre-read paths so people arrive having seen the previews rendered.
+- **Request line for whoever has a working Chrome:** the before screenshots,
+  six routes at three widths, into `docs/design/before/`, before SITE deploys
+  the shell. After that deploy there is no before.
+
+## ZAOSTOCK-DESIGN CLOSE (second) - 2026-08-27 21:3x
+
+Branch `bettercallzaal/lane-design-0827`, now 25 ahead / 0 behind
+`origin/main` after this commit, not pushed, tree clean apart from the
+untracked `node_modules` symlink. Nothing held. Stopped for the night.
