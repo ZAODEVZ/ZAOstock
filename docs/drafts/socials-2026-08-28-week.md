@@ -30,7 +30,7 @@ all seven.
 | Musician submission cutoff 3 September | production plan section 6, locked at the 12 May standup (`docs/standup/2026-05-12-tue-recap.md:36`) |
 | WaveWarZ block, audience decides, in the street and online | `src/app/program/page.tsx` BLOCKS[1] |
 | WaveWarZ: 1,452 battles, 913.9 SOL lifetime, measured 2026-08-27 15:47 UTC | `docs/sponsor/deck-2026-10-03.md:154-155` |
-| Seven partners, time and skill, no cash | `src/app/page.tsx:101-112, 546-548` |
+| Seven partners on the site, time and skill, no cash; COC Concertz is the eighth | `src/app/page.tsx:101-112, 546-548`; Zaal, typed 27 Aug 20:3x |
 | Tent, rain or shine, Wallace Events | production plan section 4 |
 | 9th Annual Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486` |
 | Every car to Acadia passes through; free to listen from the sidewalk | `src/app/page.tsx:261,479` |
@@ -181,7 +181,7 @@ Tags: UNSET x5. Add handles once collected.
 **LinkedIn**
 > ZM. ZAOstock, a free one-day independent music festival in Ellsworth, Maine, announced its lineup today: Werb, Lyons Den, Fellenz, Dcoop and Acadia Rising, plus a live run of WaveWarZ, the online music-battle format that has run 1,452 battles and plays out live on the parklet stage.
 >
-> The day runs on the Franklin Street Parklet until six and then moves next door into Black Moon Public House. It is produced by ZAO Festivals, the events arm of The ZAO, as part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, with seven local and ecosystem partners giving time, venue and infrastructure rather than cash.
+> The day runs on the Franklin Street Parklet until six and then moves next door into Black Moon Public House. It is produced by ZAO Festivals, the events arm of The ZAO, as part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, with eight local and ecosystem partners giving time, venue and infrastructure rather than cash.
 >
 > Saturday October 3. Free.
 >
@@ -210,14 +210,14 @@ acts, the evening act, attendance, sponsors, Heart of Ellsworth, a /press link.
 Angle: who is already in, no cash. Standard. Also the day after the reveal, so
 a natural quote of Tuesday's post.
 
-**Firefly** - 236 chars
-> ZM. Seven partners are giving ZAOstock time, venue and infrastructure, and none of it is cash. Town of Ellsworth, Black Moon, Star 97.7, Wallace Events, WaveWarZ, ENTERACT, Web3Metal. That is how a free festival gets built. zaostock.com
+**Firefly** - 250 chars
+> ZM. Eight partners are giving ZAOstock time, venue and infrastructure, and none of it is cash. Town of Ellsworth, Black Moon, Star 97.7, Wallace Events, WaveWarZ, ENTERACT, Web3Metal, COC Concertz. That is how a free festival gets built. zaostock.com
 
 **Farcaster /zao GC**
-> ZM. partner list for ZAOstock as it stands on the site: Town of Ellsworth (the parklet), Black Moon (the evening), Star 97.7 (radio), Wallace Events (the tent), WaveWarZ (the battles), ENTERACT (production), Web3Metal (community). every one is time and skill, no money changed hands. if you run something in downeast maine and want on this list, reply.
+> ZM. partner list for ZAOstock as it stands on the site: Town of Ellsworth (the parklet), Black Moon (the evening), Star 97.7 (radio), Wallace Events (the tent), WaveWarZ (the battles), ENTERACT (production), Web3Metal (community), COC Concertz (community partnership). every one is time and skill, no money changed hands. if you run something in downeast maine and want on this list, reply.
 
 **LinkedIn**
-> ZM. A free festival is a stack of partners. ZAOstock on October 3 in Ellsworth, Maine has seven so far, and the deal with each is the same: time, venue or infrastructure, not money. The Town of Ellsworth provides the parklet. Black Moon Public House hosts the evening. Star 97.7 carries it on air. Wallace Events puts up the tent. WaveWarZ brings the battle format. ENTERACT covers production. Web3Metal brings a community surface.
+> ZM. A free festival is a stack of partners. ZAOstock on October 3 in Ellsworth, Maine has eight so far, and the deal with each is the same: time, venue or infrastructure, not money. The Town of Ellsworth provides the parklet. Black Moon Public House hosts the evening. Star 97.7 carries it on air. Wallace Events puts up the tent. WaveWarZ brings the battle format. ENTERACT covers production. Web3Metal brings a community surface. COC Concertz is a community partnership.
 >
 > Each has a confirmed agreement and a named point of contact on our side. Sponsorship is a separate track and it is open.
 >
@@ -229,10 +229,9 @@ Sources: `src/app/page.tsx:101-112` (names, roles, confirmed flags),
 not a tier claim).
 
 Hold: **Bomb Squad** was resolved a partner on 24 Aug but is not on the site
-list, and **COC Concertz** is undecided (`docs/marketing/partner-logos.md`). This
-post names the seven on the site. If the SITE lane adds Bomb Squad before
-Wednesday, "seven" becomes "eight" and the name goes in. Do not add COC
-Concertz without Zaal.
+list. **COC Concertz** is a partner (Zaal, typed 27 Aug 20:3x) and is named here. If the
+SITE lane adds Bomb Squad before Wednesday, "eight" becomes "nine" and the
+name goes in.
 
 ---
 
@@ -281,7 +280,7 @@ Source: Tuesday's post; nothing new claimed.
 | Sun 30 Aug | WaveWarZ, measured numbers, battlers named | Firefly, X GC, FC GC, TG | none - battlers cleared 27 Aug |
 | Mon 31 Aug | Eve of reveal | Firefly, X GC, FC GC | none |
 | Tue 1 Sep | **Reveal** | all seven | **Zaal confirms five names on the day (spellings settled); handles UNSET; image UNSET** |
-| Wed 2 Sep | Seven partners, no cash | Firefly, FC GC, LinkedIn | Bomb Squad / COC Concertz |
+| Wed 2 Sep | Eight partners, no cash | Firefly, FC GC, LinkedIn | Bomb Squad only |
 | Thu 3 Sep | Submission cutoff | Firefly, FC GC, TG | **forms must be live; fallback provided** |
 
 ## What this calendar does not cover, and who owns it

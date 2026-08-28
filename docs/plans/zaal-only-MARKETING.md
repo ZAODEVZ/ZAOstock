@@ -8,7 +8,7 @@ today.
 | # | By | Question | Unblocks |
 |---|---|---|---|
 | 1 | Fri 29 Aug | Who at the Town of Ellsworth gets the logo ask - a name? | `docs/drafts/msg-town-of-ellsworth-2026-08-27.md`, `docs/marketing/partner-logos.md` Ask 1 |
-| 2 | Fri 29 Aug | **STILL OPEN** (Zaal 27 Aug 19:3x: stays UNDECIDED) - COC Concertz on the partner list - yes/no? (The Aug 24 standup logged "Add COC Concertz to the site partner list - Zaal - Aug 29"; the Links tab still says undecided) | poster partner strip, press release partner line, Wed 2 Sep post, SITE request |
+| 2 | Fri 29 Aug | **ANSWERED 27 Aug 20:3x: yes, COC Concertz is on the partner list** - COC Concertz on the partner list? (The Aug 24 standup logged "Add COC Concertz to the site partner list - Zaal - Aug 29"; the Links tab still says undecided) | poster partner strip, press release partner line, Wed 2 Sep post, SITE request |
 | 3 | Fri 29 Aug | Send the pitch to Gabe Goode this week - yes/no? | `docs/drafts/msg-gabe-goode-2026-08-27.md`; a preview timed to 1 Sep needs it before then |
 | 4 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: yes** - May the WaveWarZ battlers be named publicly (Stilo, Jango, Lui, Quan, Hurricane)? | Sun 30 Aug socials, poster WaveWarZ block |
 | 5 | Sat 30 Aug | **ANSWERED 27 Aug 19:3x: music starts at noon, print noon; the 11:00 question is gone** - Does 11:00 print on the poster? | `docs/marketing/poster-checklist-2026-09-01.md` section 2 |

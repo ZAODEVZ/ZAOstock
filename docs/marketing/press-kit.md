@@ -101,9 +101,11 @@ agreement and a named point of contact on the ZAO team.
 - WaveWarZ - the live music-battle format
 - ENTERACT - production and operational support
 - Web3Metal - partnership integration and community surface
+- COC Concertz - community partnership
 
-*(SITE: mirror `src/app/page.tsx` PARTNERS so this list cannot drift. Add Bomb
-Squad when it is added there.)*
+*(SITE: mirror `src/app/page.tsx` PARTNERS so this list cannot drift. COC
+Concertz is a partner per Zaal, typed 27 Aug 20:3x; add it and Bomb Squad there. "Community
+partnership" is from `src/app/llms.txt/route.ts`; the role line is otherwise UNSET.)*
 
 ## The ZAO
 

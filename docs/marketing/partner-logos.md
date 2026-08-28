@@ -39,7 +39,7 @@ Status values: **IN** (file exists in Drive per the 24 Aug standup) · **DUE**
 | 3 | Wallace Events | Equipment + tenting | Zaal | **IN** (2 versions) | yes | no | no | n/a |
 | 4 | WaveWarZ | Live music-battle format | Zaal | **IN** | yes | no | no | n/a |
 | 5 | Bomb Squad | Crew, content, merch | Dcoop | **IN** (2 versions) | yes | no | no - **not in the site PARTNERS array** | n/a |
-| 6 | COC Concertz | **UNDECIDED** - not on the site list | UNSET | **IN** | yes | no | no | n/a |
+| 6 | COC Concertz | **IS a partner** (Zaal, typed 27 Aug 20:3x) - role line UNSET; not yet on the site list | UNSET | **IN** | yes | no | no - SITE request in DONE.md | n/a |
 | 7 | Town of Ellsworth | Parklet venue | Zaal | **DUE Fri 29 Aug** | no | no | no | yes, below |
 | 8 | ENTERACT | Production + operational support | FailOften | **DUE Fri 29 Aug** | no | no | no | yes, below |
 | 9 | Web3Metal | Partnership integration + community surface | Shawn | **DUE Fri 29 Aug** | no | no | no | yes, below |
@@ -51,9 +51,8 @@ Notes on the rows:
   (`src/app/page.tsx:101-112` has seven names: Town of Ellsworth, Black Moon,
   Star 97.7, Wallace Events, WaveWarZ, ENTERACT, Web3Metal). Bomb Squad was
   resolved as a partner on 24 Aug and is also not on the site list. So the site
-  is two partners behind the doc. Whether COC Concertz is a ZAOstock partner is
-  a decision nobody has made - the gdoc's own words: "Add it, or decide it is
-  not a ZAOstock partner." **UNSET - Zaal, 27 Aug 19:3x: stays UNDECIDED.**
+  is two partners behind the doc. **COC Concertz IS a ZAOstock partner** (Zaal, typed 27 Aug 20:3x), which
+  settles the question the gdoc left open; its role line on the site is UNSET.
 - **Zero files in the repo.** `public/partners/` holds only a README naming two
   expected files (`black-moon.png`, `star-977.png`). The six Drive files have
   not been copied over. Copying them is a marketing-lane write
@@ -153,9 +152,9 @@ Written **from Zaal to Shawn**, same reasoning.
 | Town of Ellsworth logo | Zaal | DUE Fri 29 Aug, recipient UNSET |
 | ENTERACT logo | FailOften | DUE Fri 29 Aug |
 | Web3Metal logo | Shawn | DUE Fri 29 Aug |
-| Is COC Concertz a ZAOstock partner | Zaal | UNSET |
+| Is COC Concertz a ZAOstock partner | Zaal | **YES** - Zaal, typed 27 Aug 20:3x. Role line and site poc still UNSET |
 | Copy the six Drive files into `public/partners/` | MARKETING lane, needs Drive access | not done |
-| Set `logoSrc` on each partner card, add Bomb Squad (and COC Concertz if yes), fix Black Moon role text | SITE lane | requested in DONE.md |
+| Set `logoSrc` on each partner card, add Bomb Squad and COC Concertz, fix Black Moon role text | SITE lane | requested in DONE.md |
 | Backdrop print vendor and lead time | UNSET | UNSET |
 
 ## Sources

@@ -83,7 +83,7 @@ No DJ Aquavantes anywhere.
 | Item | Status | Source |
 |---|---|---|
 | Black Moon, Star 97.7, Wallace Events, WaveWarZ, Bomb Squad | **HAVE** in Drive, not in repo | `docs/marketing/partner-logos.md` |
-| COC Concertz | **UNSET** - logo in Drive, partner status undecided | same |
+| COC Concertz | **HAVE** in Drive - partner confirmed (Zaal, typed 27 Aug 20:3x) | same |
 | Town of Ellsworth, ENTERACT, Web3Metal | **BLOCKED** - due Fri 29 Aug | same |
 | Heart of Ellsworth | **DO NOT PRINT** | `src/app/page.tsx:102-104` - no logo use until confirmed in writing |
 | Sponsor logos | **NONE** | `docs/sponsor/slide-9-tier-ladder.md` | No sponsor is signed; every tier price is UNSET. Nothing to print. If "Presenting" and "Platform" tiers promise "logo on the poster" (`docs/sponsor/deck-2026-10-03.md:216-217`), a sponsor signed after print does not get it - the deck's early-close date is constrained by this print, and that date is UNSET |
@@ -104,7 +104,7 @@ No DJ Aquavantes anywhere.
 ## 6. The order things have to happen in
 
 1. Fri 29 Aug - the three logos land in Drive (or do not, and the strip prints
-   with six and a decision on COC Concertz).
+   with six).
 2. Before the file locks - Zaal re-confirms the five names are still five.
    Spellings and the noon start are settled (27 Aug 19:3x).
 3. Sat 30 Aug - Candy's brand kit and print deliverables (card 801d6743).

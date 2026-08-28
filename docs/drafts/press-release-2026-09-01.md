@@ -59,9 +59,9 @@ events arm of The ZAO.
 **[QUOTE - Zaal - UNSET]**
 
 Partners giving time, venue and infrastructure include the Town of Ellsworth,
-Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, ENTERACT and
-Web3Metal. **[HOLD - add Bomb Squad if it is on the site list by 1 Sep; add COC
-Concertz only if Zaal decides it is a partner]**
+Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, ENTERACT,
+Web3Metal and COC Concertz. **[HOLD - add Bomb Squad if it is on the site list
+by 1 Sep]** *(COC Concertz confirmed a partner by Zaal, typed 27 Aug 20:3x.)*
 
 **[QUOTE - Black Moon, Steve Peer's own words or none - UNSET]**
 
