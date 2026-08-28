@@ -102,9 +102,9 @@ typed; the only date is the State's 30-day rule.
 
 ## 4. The question to Roddy that unlocks this page
 
-Already on Roddy's list from 24 Aug and not in `docs/drafts/roddy-2026-08-27.md`
-(kept out deliberately to keep that message short): vendors on the parklet -
-allowed, fee, permit, cap. It goes in the next message to him or in person.
+Already on Roddy's list from 24 Aug: vendors on the parklet - allowed, fee,
+permit, cap. The written Roddy message is dropped (handled verbally 27 Aug), so
+this goes in Zaal's next conversation with him.
 
 ## Sources
 
