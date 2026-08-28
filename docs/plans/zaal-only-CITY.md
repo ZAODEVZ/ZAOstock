@@ -12,10 +12,10 @@ name, or yes/no. The file each answer unblocks is at the end of the line.
 6. ~~Did Roddy's 25 Aug confirmation come by email~~ - moot, you talked to him 27 Aug (22:2x).
 7. **Black Moon gift certificates: $20 or $25 - type one.** Steve's 26 Aug message says $20; the Aug 3 recap says about $25. `docs/permits/food-vendor-2026-10-03.md` section 1.
 8. **Send the three Chamber messages now with slide 9 blank, or wait for the prices - now/wait.** `docs/permits/chamber-status-2026-08-27.md`; the three `docs/drafts/msg-*-2026-08-27.md` Chamber files.
-9. **Is The ZAO a member of the Ellsworth Area Chamber - yes/no.** Your membership on record is Bar Harbor. Changes the first line of all three Chamber messages.
+9. ~~Is The ZAO a member of the Ellsworth Area Chamber~~ **ANSWERED 28 Aug 05:3x: NO - "BetterCallZaal is the biz".** No membership line in the Chamber messages.
 10. **First-aid contact - type a name.** Not a lead (your call, 20:2x): the one person who knows where the kit is and calls EMS. `docs/permits/first-aid-lead-2026-10-03.md` section 1.
 11. ~~Is the Wallace Events tent confirmed~~ **ANSWERED 28 Aug 05:1x: confirmed, up now.**
-12. **Weather: adopt the 26 Sep / 30 Sep / 2 Oct check cadence and name a second decision-maker - yes/no plus a name.** `docs/permits/rain-plan-2026-10-03.md` section 3.
+12. ~~Weather cadence and second decision-maker~~ **ANSWERED 28 Aug 05:3x: 26 Sep / 30 Sep / 2 Oct adopted; Steve Peer with Zaal.** Rain plan section 3 closed.
 
 13. **Dcoop: does he carry his own fire-performer policy - yes/no.** The Jagger email says you are asking him. `docs/permits/status-2026-08-27.md` row 3.
 14. **Arbor Camp: a name to write to, and how many artists need beds - type a name and a number.** `docs/drafts/msg-arbor-camp-2026-08-27.md` goes with no name on it until then.
