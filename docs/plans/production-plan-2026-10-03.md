@@ -1,14 +1,5 @@
 # ZAOstock production plan - Saturday 3 October 2026
 
-> **PROVENANCE WARNING (27 Aug, 20:5x).** Everything in this file attributed to
-> "Zaal, 27 Aug 19:3x / 20:0x / 20:1x / 20:2x" or to "Q16" - music starts at noon,
-> no DJ, the Crown Vics and Fellenz times, Acadia Rising second, Steve not MC,
-> First Aid as contact plus kit, crew Friday / 08:00 / 10:00 - arrived as
-> relay-tagged lines that match **no vault brief and no orca-board.log entry**.
-> Per the 20:45 standing rule they are UNVERIFIED. The 11:58 verdicts (Steve's
-> acts proposed, livestream split) and the vault-brief rounds are not affected.
-> Confirm or revert via the orchestrator; recipe in `.handoffs/DONE.md`.
-
 Ellsworth, Maine. Written 26 August 2026, 38 days out. Updated 27 August after
 Zaal's verdict that every act on Steve's list is proposed, not booked, and again
 that evening when he ruled that **music starts at noon** - the 11:00 open is
@@ -24,7 +15,14 @@ round 3 (20:2x), with his 20:0x order relayed: The Crown Vics 12:05-12:35 and
 Fellenz 15:00-15:45 are typed; "maybe Sen after Crown Vics" makes Acadia Rising
 the proposed second act; the rest of the order is his to type, not ours to
 guess by energy; Steve does not MC - ZAO crew holds the mic all day; First Aid
-is a named contact plus a kit, not a dedicated person.
+is a named contact plus a kit, not a dedicated person. All of the above was
+confirmed by the orchestrator's 20:46 RETRO-LOG and the record in
+`~/zao-vault/daily/2026-08-27.md`, which also carries what the relays had
+dropped: a 5-minute intro at noon; **about 30 minutes per act** in the order
+Crown Vics / Sen / Dcoop / Fellenz; Zaal assumes 5-minute changeovers where the
+rule here is 15 (one question back to him); the evening is **Stilo's DJ set
+18:00-19:30, then one of Steve's acts to close**; Werb is not fully confirmed
+and wanted for WaveWarZ; Lyons Den is confirmed and not in the order.
 
 Steve, this is the whole day on paper, built on the cadence you proposed:
 45/15 as the frame, 15-minute changeovers with the MC and sponsor spots in the
@@ -79,9 +77,9 @@ What it costs us, and I want to be straight about both:
 
 ## 2. The schedule
 
-Your cadence, 45 on and 15 off, is the frame. **Set lengths are UNSET** - Zaal
-types them per act, and the set rows below move when he does. Changeovers stay
-at 15.
+Your cadence gave us the frame; the sets are now **about 30 minutes each**, in
+Zaal's order. Changeovers are shown at 15, which is our rule; Zaal is assuming
+5, and that is the one open question that moves every time below.
 
 ### Outdoors - Franklin Street Parklet
 
@@ -90,42 +88,39 @@ at 15.
 | Friday night | Soundcheck, every act, outside and inside. Crew on site | Contract line. Nothing is built Saturday morning |
 | 08:00 | Vital crew on site (Zaal, 27 Aug) | PA power-up, line checks only |
 | 10:00 | Everyone on site | First Aid, signage, merch if allowed, MC check, stage manager's walk - section 8.3 |
-| 12:00 - 12:05 | Open on the mic | Implied by Zaal's 12:05 downbeat. What is said, and by whom: UNSET. Music starts at noon |
-| 12:05 - 12:35 | The Crown Vics | 30 min - **Zaal's typed order, 27 Aug 20:0x.** The act is PROPOSED: Steve confirms the booking; the slot is our plan, not a booking |
-| 12:35 - 12:50 | Changeover | MC plus sponsor spots |
-| 12:50 - | Acadia Rising | **PROPOSED order** - Zaal: "maybe Sen after Crown Vics". Length UNSET |
-| - 14:45 | Werb, Lyons Den, Dcoop | Order **UNSET** - Zaal types it, and not by energy. Lengths UNSET. Two changeovers of 15 between them, MC plus sponsor spots |
-| 14:45 - 15:00 | Changeover | MC plus sponsor spots |
-| 15:00 - 15:45 | Fellenz | 45 min - **Zaal's typed order.** Closes the outdoor block, as agreed 24 Aug |
-| 15:45 - 16:00 | Changeover | Battle stage reset. MC plus sponsor spots, handing to Hurricane |
+| 12:00 - 12:05 | Intro on the mic | 5 minutes - Zaal. Welcome, Art of Ellsworth, the 6pm move, First Aid, sponsors. Who speaks: ZAO crew, name waits |
+| 12:05 - 12:35 | 1. The Crown Vics | 30 - **Zaal's order.** The act is PROPOSED: Steve confirms the booking; the slot is our plan |
+| 12:35 - 12:50 | Changeover | MC plus sponsor spots. Shown at 15; Zaal assumes 5 - **UNSET**, his call |
+| 12:50 - 13:20 | 2. Acadia Rising (Sen) | ~30 - Zaal's order |
+| 13:20 - 13:35 | Changeover | MC plus sponsor spots |
+| 13:35 - 14:05 | 3. Dcoop | ~30 - Zaal's order. AV cover during his set: name waits |
+| 14:05 - 14:20 | Changeover | MC plus sponsor spots |
+| 14:20 - 14:50 | 4. Fellenz | ~30 per the 20:4x order, or 15:00-15:45 per 20:0x - **UNSET**, Zaal. Ends before WaveWarZ either way |
+| 14:50 - 16:00 | **Open stretch** | About 70 minutes on these numbers, 100 on 5-minute changeovers. Zaal's dream if time: JANGO, Jadyn, Hurricane. Lyons Den (confirmed, not in the order) and Werb (not fully confirmed, wanted for WaveWarZ) have no row yet - **UNSET**. MC plus sponsor spots hold whatever stays empty. Battle stage reset inside the last 15 |
 | 16:00 - 17:45 | WaveWarZ | Opens with the WaveWarZ story, Hurricane with Stilo (Zaal, 27 Aug: it exists, inside the block). Length UNSET. Then the battles, our artists, our MC. Audience decides |
 | 17:45 - 18:00 | Result, play-out, crowd walks | **Stilo DJs the transition out of WaveWarZ** (standup 24 Aug). Minute by minute in section 8.5 |
 | 18:00 | Outdoor stage down | Strike begins. Who, and by when the street is clear: section 8.10 |
 
-**What does not fit, in Zaal's own numbers.** With The Crown Vics at
-12:05-12:35 and Fellenz at 15:00-15:45 typed, the middle of the day is
-12:50 to 14:45: **115 minutes** for four acts (Acadia Rising, Werb, Lyons Den,
-Dcoop) and three 15-minute changeovers. That is 70 minutes of music across
-four sets, 17 or 18 minutes each - shorter than anyone plays. Something gives,
-and it is our decision, not yours - **UNSET**, Zaal:
+**The afternoon is no longer over-full - it has an open stretch.** On Zaal's
+20:4x numbers (about 30 minutes per act, four acts in his order) the last
+ordered act ends at 14:50 with 15-minute changeovers, or 14:20 with the
+5-minute ones he is assuming. That leaves 70 to 100 minutes before WaveWarZ at
+16:00. Three things want it, none decided - **UNSET**, Zaal:
 
-1. **One of the four opens the evening** indoors at 18:15 or 18:30. That
-   also gives the in-booking block a confirmed act while North Creek is a
-   proposal. Three sets in 115 minutes with two changeovers is 85 minutes of
-   music, 28 each.
-2. **The Crown Vics slot is a proposal.** If Steve does not confirm them,
-   12:05-12:50 returns to the block: 160 minutes for four acts and three
-   changeovers, 115 of music, 28 each.
-3. **Ten-minute changeovers on a shared backline** (8.1) returns 15 minutes.
-4. **Set lengths as typed.** Zaal fixes each set; if the typed numbers fit,
-   this paragraph deletes itself.
+1. **Lyons Den**, confirmed and not in the order.
+2. **Werb**, not fully confirmed, and wanted for WaveWarZ rather than a set.
+3. **The dream, if time:** JANGO, Jadyn, Hurricane - none asked, and two of
+   them are already inside WaveWarZ.
+
+Until he places them, the MC and sponsor spots hold the stretch, and the
+public page prints "sets from 12:05" with no count.
 
 ### Indoors - Black Moon Public House
 
 | Time | What | Notes |
 |------|------|-------|
-| 18:00 - 21:00 | The after party | One block, three hours. **IN BOOKING** - North Creek PROPOSED, no act confirmed, no downbeat printed. See open item 4 |
-| 21:00 - close | DJ set to close | Our DJ, confirmed on our side. Moved here from the old 18:00 slot when the evening became one live block. "Close" has no time yet: section 8.10 |
+| 18:00 - 19:30 | Stilo DJ set | **Decided** (Zaal, 20:0x). Our DJ, confirmed on our side. Music is already on when the first person reaches the door |
+| 19:30 - close | One of your acts closes the night | **IN BOOKING** - North Creek, The Somes Sound or The Crown Vics, all PROPOSED until you confirm. Which, and from when, is open item 4. "Close" has no time yet: section 8.10 |
 
 ### Every act, by status
 
@@ -137,13 +132,17 @@ where already public; the rest stay generic until 1 September.
 
 | Slot | Act | Tag | Source |
 |------|-----|-----|--------|
-| Fellenz 15:00-15:45 (typed); Acadia Rising second (proposed order); Werb, Lyons Den, Dcoop in an order Zaal types | Five confirmed acts, two already public (Werb, Lyons Den) | **Confirmed** | Lineup confirmations, PR #45. Lengths UNSET except Fellenz's 45. Whether all five fit outdoors is the question above |
+| 12:50 Acadia Rising, 13:35 Dcoop, 14:20 Fellenz (~30 each, Zaal's order) | Three confirmed acts in the order | **Confirmed** | Lineup confirmations, PR #45; the order and lengths from Zaal, 20:4x |
+| No row yet | Lyons Den | **Confirmed**, unplaced | Zaal's order omits him - question back to Zaal |
+| No row yet | Werb | **Not fully confirmed** (Zaal, 20:4x). Wanted for WaveWarZ | Was public as confirmed; the site has already pulled that |
+| Open stretch, if time | JANGO, Jadyn, Hurricane | **PROPOSED** by Zaal, not asked | The dream, 20:4x |
 | 16:00-17:45 | Four battlers and the MC | **WaveWarZ** | Our block, our roster. The voting-window interludes are Hurricane plus sponsor spots - no DJ |
 | Every changeover, 12:45-16:00 | The MC plus sponsor spots - no DJ | **Decided** (Zaal, 27 Aug, Q16) | DJ Aquavantes is not on the day. MC name waits |
 | 12:05-12:35, in Zaal's typed order | The Crown Vics | **PROPOSED** | Steve's draft; Steve confirms the booking. The slot is Zaal's plan, not a booking |
 | Indoor, unplaced | The Somes Sound | **PROPOSED** | Steve's draft; Zaal 27 Aug. Also the open PA question |
-| 18:00-21:00 | North Creek | **PROPOSED** | Steve's draft; Steve confirms. Block is IN BOOKING |
-| 21:00-close, and the 17:55-18:15 transition | Our DJ | **Confirmed** on our side | The DJ's own message, gdoc snapshot 27 Aug; transition decided at the 24 Aug standup |
+| Closing act, from 19:30 | North Creek | **PROPOSED** | Steve's draft; Steve confirms. Block is IN BOOKING |
+| 17:55 play-out and 18:00-19:30 indoors | Stilo, our DJ | **Confirmed** on our side; slot decided by Zaal 20:0x | The DJ's own message; the 24 Aug standup; Zaal 20:0x |
+| 19:30-close | One of Steve's three | **PROPOSED** | Zaal 20:0x: one of Steve's acts closes; Steve confirms which |
 
 **The bigger question comes before the downbeat.** On our side the three acts
 left from your draft - The Crown Vics, The Somes Sound and North Creek - are
@@ -152,10 +151,10 @@ side, so he is no longer a question.) Nobody here can tell which of the three
 you have actually secured. So the first ask is simply: which are booked, and
 which are still being asked?
 
-Once North Creek is confirmed, the 18:00 start is ours, not yours - whether they
-take the stage at 18:00 with the room walking in behind them, or at 18:30 after
-the room fills. The public schedule commits to the block, says "in booking", and
-prints no downbeat until both answers land.
+The evening's shape is decided on our side: Stilo's DJ set opens the room at
+18:00 and runs to 19:30, and one of your acts closes the night from there. The
+public schedule commits to that shape, says "in booking" for the closer, and
+names nobody until you confirm.
 
 Two notes on that grid.
 
@@ -181,7 +180,7 @@ we have acts for - the opposite problem to a blank. Your standing offer from 15 
 with local acts is now our reserve rather than a need, and it is genuinely
 useful as a reserve, because we have no spare if somebody drops in September.
 
-**Names.** Two of the confirmed acts are already public. The rest stay off
+**Names.** One of the confirmed acts (Lyons Den) is already public; Werb was, and is now shown as unconfirmed. The rest stay off
 anything published until the reveal on 1 September. This working copy carries
 names in the grid because the order is being built; strip them before this
 goes to you, or it goes after 1 September.
@@ -199,7 +198,7 @@ Everything on your list, with an owner and where it stands.
 | 3 | $20 gift certificates for performers | Steve | Confirmed, count open | The $20 is your figure. The headcount is **UNSET** - we owe it to you, and we will not guess at it, because the roster it comes from is not readable right now. Date we get it to you by: **UNSET** |
 | 4 | Dressing room and bathroom, Black Moon basement | Steve | Confirmed | Performers only, not a hangout. Understood and we will enforce it. See wristbands below |
 | 5 | One porta potty, city parking lot | Steve | Confirmed | See open item 2. One is not enough for a street event and you already said so |
-| 6 | North Creek, after party 6-9pm indoor | Steve | **PROPOSED, not confirmed** | You offered to underwrite it, and on our side all three acts from your draft are still proposals rather than bookings. See open item 4 |
+| 6 | North Creek, after party indoor | Steve | **PROPOSED, not confirmed** | You offered to underwrite it. The evening is now Stilo's DJ set 18:00-19:30 and then one of your acts to close from 19:30 - which one, and whether it is booked, is open item 4 |
 | 7 | Indoor and outdoor PA | Steve | Sourcing | The one thing everything else waits on. See open item 1 and 5 |
 | 8 | DJ on the outdoor stage, gap fill | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. The changeovers are the MC plus sponsor spots, and Stilo plays out at six. No DJ on the day |
 | 9 | Hosting part of the day | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. Our own crew holds the mic all day, outside and in. If you want a moment on it at six to welcome the room, it is yours |
@@ -260,17 +259,17 @@ hangout. Proposal: we buy them and bring them, you tell us who gets one. Our
 count is the performer headcount from item 3 above plus about six crew. Confirm
 that works and whether you want your own staff carrying one too.
 
-**4. Your three acts: which are booked, and which are still being asked?**
+**4. Your three acts: which are booked, and which of them closes the night?**
 This is the one that changes the most if the answer is "still being asked", so
 it is worth being blunt rather than polite about it.
 
 The Crown Vics, The Somes Sound, North Creek. (Your DJ is off the day on our
-side - see section 2 - so he is not in this question.) Our grid has been built
-as though they are booked. On our side they are recorded as proposals. One of
-them carries the whole evening: **North Creek is the 6 to 9 block.** If it is a
-lead rather than a booking, we need to know this week, not in September. Where
-The Crown Vics sit in the day, if anywhere, is our plan and not a booking
-either way.
+side - see section 2 - so he is not in this question.) On our side all three
+are recorded as proposals. The evening is now Stilo's DJ set from 6 to 7:30 and
+then **one of your acts closes the night from 7:30** - we need to know which,
+whether it is booked, and if 7:30 is right for them. The Crown Vics also hold
+a 12:05 slot in our afternoon order; that is our plan, not a booking, and if
+they are not confirmed the slot returns to the open stretch.
 
 Thank you for offering to underwrite North Creek - that is a genuinely generous
 thing and it is why the evening is now one three-hour block instead of a DJ set
@@ -280,12 +279,11 @@ Two follow-ons once you have answered:
 
 - Does The Somes Sound provide the indoor PA, or only their own gear for their
   own set? Those are very different things.
-- If North Creek is confirmed, does it start at 6:00 or 6:30? A 6:00 downbeat
-  means they are already playing as the street walks in. 6:30 gives everyone a
-  drink first and a fuller room. Both work for us; it is your booking.
+- Whichever act closes: is 7:30 right for them, or later? Stilo holds the room
+  until they are ready either way.
 
-Until the first question is answered the public schedule says "in booking",
-names no act and prints no start time.
+Until the first question is answered the public schedule says "in booking"
+for the closer, names no act, and prints 7:30 only as when Stilo's set ends.
 
 ---
 
@@ -399,10 +397,10 @@ the fifteen minutes.
 | 17:30 - 17:55 | The final. The MC tells the room, once, that the night continues next door at six | Hurricane, host mic | Hurricane is the WaveWarZ host on our roster |
 | 17:55 - 18:00 | Result announced. The MC walks the crowd: "next door, now, the music is already on". Music plays out on the outdoor PA | Hurricane on the mic; **Stilo DJs the transition out of WaveWarZ** - decided at the 24 Aug standup, he travels for it | Stilo confirmed on our side; note he is battling until 17:55, so his play-out starts when the result does |
 | 18:00 | Outdoor PA strike begins. Nothing is playing outside from here | Whoever strikes the outdoor rig - open item 1, **UNSET** | Gated on the PA answer |
-| 18:00 - 18:15 | Music inside is already playing when the first people reach the door. Source must be the house system, not the outdoor PA, because that is being struck | Stilo on the house PA, or the house DJ setup if it exists - the AV List has this line blank | Stilo proposed for this by the 24 Aug decision; the DJ setup is **UNSET** |
+| 18:00 - 18:15 | Music inside is already playing when the first people reach the door - **Stilo's DJ set, 18:00-19:30, decided** (Zaal 20:0x). Source must be the house system, not the outdoor PA, because that is being struck | Stilo, on the house PA or his controller into it - the AV List has this line blank | The DJ setup is **UNSET** |
 | 18:00 - 18:15 | Somebody at Black Moon's door, wristbands or lanyards checked for the basement only, everyone else straight in | **UNSET** - proposed Steve or Katina, it is their door | Not agreed |
 | 18:00 - 18:15 | Somebody on the street between the two buildings pointing, so nobody drifts to their car | **UNSET** - a crew name, not a performer | Not named |
-| 18:15 or 18:30 | The live block starts, if North Creek is booked. Otherwise Stilo holds the room (8.6) | Steve's answer, drafted in `docs/drafts/steve-followup-2026-08-27.md` | PROPOSED |
+| 19:30 | One of Steve's acts closes the night, if booked. Otherwise Stilo holds the room (8.6) | Steve's answer, drafted in `docs/drafts/msg-steve-peer-2026-08-27.md` | PROPOSED |
 | The mic handoff | Hurricane's last words outside are the first words inside: the host mic goes off with the outdoor PA, and a house mic is live indoors before the crowd arrives. ZAO crew holds the mic all day (Zaal, 27 Aug) - the evening MC is ours, name UNSET. Steve may welcome the room if he wants to | Evening MC: **UNSET** | Not Steve |
 
 Signage for the walk sits in section 4 under "to build".
@@ -418,8 +416,8 @@ proposed, not agreed.
 | Any daytime slot, once the fit is resolved | First: the next act comes up early if it is ready, and the MC holds the room with sponsor spots until it is. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the MC, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
 | WaveWarZ, a battler drops | The bracket shape is Stilo and Hurricane's to overwrite; with three competitors it still runs. The block stays 16:00-18:00 | Their call |
 | The MC is not there | Every gap is silent. Fallback: Zaal on the mic, sponsor spots read from the sheet. There is no DJ to fall back to (Zaal, 27 Aug) | MC name waits |
-| 18:00-21:00, North Creek not booked | Stilo's DJ set opens at 18:00 and holds the room, which is exactly what he was doing on the 17 Aug version of the evening. The block prints as in booking until Steve answers | Real fallback - Stilo is confirmed on our side |
-| 21:00-close DJ | The house system plays out. Steve and Katina close the bar on their own hours | |
+| The closing act from 19:30 is not booked | Stilo's DJ set runs on past 19:30 and holds the room. The closer prints as in booking until Steve answers | Real fallback - Stilo is confirmed on our side |
+| The open stretch 14:50-16:00 stays empty | The MC and sponsor spots hold it, and WaveWarZ can start its story early if Stilo and Hurricane want the time | Costs nothing |
 
 ### 8.7 Nobody eats
 
@@ -432,7 +430,7 @@ are not tied to a time.
 | Performers | After their own set, at Black Moon, which is open through the day | The $20 gift certificate (Steve's figure, section 3 row 3). Count **UNSET** | The meal window per act is now written: the hour after they come off |
 | Crew running the day | In shifts during sets, never during a changeover. The stage manager writes the rota on the morning | **UNSET** - a crew meal is not a gift certificate, and no vendor and no budget exist for it | Vendor **UNSET**; what a parklet food vendor needs from the City and the Chamber is the CITY lane's (their Round 2, item 2) |
 | WaveWarZ battlers and host | Before 16:00, because 16:00-18:00 has no gap long enough | Same certificates | |
-| Stilo | Between 18:15 and 21:00 - he is on at 17:55 and again at 21:00 | Same | |
+| Stilo | Before 16:00 or after 19:30 - he battles at 16:00 and DJs 17:55-19:30 | Same | |
 
 The ZAOville debrief carries a different meal figure. It is not this event's,
 it was not typed for this plan, and it is not used here.
@@ -476,7 +474,7 @@ not lose the day, is on the AV List and is STREAM's row.
 | Item | Who | State |
 |------|-----|-------|
 | Last call | Black Moon, on their licence hours | **UNSET** - Steve's number, not ours |
-| Music off indoors | Same clock | **UNSET** |
+| Music off indoors | Same clock. The closing act's end is the night's end | **UNSET** |
 | Noise cut-off, if any applies indoors from the City side | Roddy's list - it was the Aug 24 agenda block he was not on the call for | Unasked |
 | Outdoor strike complete - PA, backline, tent, tables, signage off the parklet | Strike crew: ZAO, being named. Deadline **UNSET**: the City may want the street back by a time, which is on Roddy's list | Gated |
 | ZAO gear out of Black Moon | Load-out crew, same night or morning after: **UNSET** | |
@@ -491,10 +489,9 @@ Three answers we do not hold, and none is ours to make. Everything else in this
 document is decided.
 
 **Which of Steve's three acts are booked** is the one that moves the most. It is
-asked, with its two follow-ons (does The Somes Sound bring the indoor PA; does
-North Creek open at 6:00 or 6:30), in
-`docs/drafts/steve-followup-2026-08-27.md`. Until it is answered the changeover
-cover is a gap on this plan, not a detail.
+asked, with its two follow-ons (does The Somes Sound bring the indoor PA; which
+act closes the night from 19:30, and is 19:30 right), in
+`docs/drafts/msg-steve-peer-2026-08-27.md`.
 
 **The 11:00 open moved, and it moved on our side.** Zaal ruled on the evening of
 27 August that music starts at noon, before the City was ever asked. The
@@ -578,15 +575,17 @@ open items at the end still stand. The live message is the city lane's
 | Question | Who answers | Blocks | State |
 |----------|-------------|--------|-------|
 | Which of the three acts are booked | Steve Peer | The whole indoor evening, the indoor PA, whether The Crown Vics is a reserve or a name | Drafted in `docs/drafts/msg-steve-peer-2026-08-27.md`, unsent |
-| North Creek downbeat, 6:00 or 6:30 | Steve Peer | The printed evening start. Nothing else. Only matters once the row above says booked | Folded into the same draft, unsent |
+| Which act closes from 19:30, and is 19:30 right | Steve Peer | The printed closer. Stilo 18:00-19:30 is decided regardless | In `msg-steve-peer-2026-08-27.md`, unsent |
 | Does the permit cap an 11:00 start | - | Nothing any more | **WITHDRAWN** - music starts at noon, Zaal 27 August. Never sent |
-| Where the fifth confirmed act plays | Zaal | The daytime grid, or the indoor opener | **UNSET** - four options in section 2 |
+| The open stretch 14:50-16:00: Lyons Den, Werb, the dream acts | Zaal | The afternoon's last hour, the poster | **UNSET** - section 2 |
+| Changeovers 5 or 15 | Zaal | Every time after 12:35 | **UNSET** - he assumes 5, the rule is 15 |
 | Changeover cover, 12:45 to 16:00 | The MC plus sponsor spots - decided, no DJ | Every 15-minute gap between sets | **Decided.** MC name waits |
 | Insurance certificate form and deadline | City of Ellsworth | A permit condition | Asked 17 Aug, unanswered |
 | Art of Ellsworth umbrella versus the Ch.14 45 day notice | City of Ellsworth | Whether a closed window applied to us | Open since July |
 
-Until the top answers land, the public schedule prints noon to six outdoors, the
-6 to 9 block as in booking with no downbeat, and promises no DJ anywhere. Which act moves, if one does, changes nothing public until it is decided:
+Until the top answers land, the public schedule prints noon to six outdoors,
+sets from 12:05 with no count, a DJ set 18:00-19:30 inside, and the closer as
+in booking with no name. Which act moves, if one does, changes nothing public until it is decided:
 the daytime block is "live music noon to four" either way, and the evening is
 in booking either way.
 
@@ -612,4 +611,7 @@ in booking either way.
   covers every act; the WaveWarZ story is at 16:00; set lengths UNSET per act.
   Grill round 3 (20:2x) and the 20:0x order: Crown Vics 12:05-12:35, Fellenz
   15:00-15:45, Acadia Rising second (maybe); Zaal types the rest; Steve does not
-  MC; First Aid is a contact plus a kit
+  MC; First Aid is a contact plus a kit. Confirmed 20:46 (RETRO-LOG) with the
+  full record in `~/zao-vault/daily/2026-08-27.md`: 5-minute intro; ~30 per act;
+  the 20:4x order; 5-minute changeover assumption; Stilo 18:00-19:30 then one
+  of Steve's acts; Werb not fully confirmed; Lyons Den not in the order

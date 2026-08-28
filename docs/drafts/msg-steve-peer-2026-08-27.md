@@ -32,7 +32,7 @@ need both systems live at once. Music starts at noon, as you had it.
 **1. Of the acts on your list, which are booked and which are still being
 asked?** The Crown Vics, The Somes Sound, North Creek. On our side all three
 are recorded as proposals, because nobody here has a yes from any of them that
-we can point at. North Creek is the whole 6 to 9 block, so if it is a lead
+we can point at. One of them is the close of the night, so if that one is a lead
 rather than a booking I need to know this week, so we can cover the evening
 ourselves rather than find out at soundcheck. One line per act is plenty:
 booked, asked, or not yet asked.
@@ -47,10 +47,12 @@ for their own set?** If it is a house-capable PA, that answers most of our
 indoor sound question. If it is their rig for their set, the indoor PA is still
 open. Either is fine; I need to know which.
 
-**3. If North Creek is booked - 6:00 or 6:30?** Your call. 6:00 means they are
-already playing when the street walks in. 6:30 gives everyone a drink first and
-a full room. Until I hear, we are printing "6 to 9, in booking" with no act and
-no start time.
+**3. The evening, and which of your acts closes it.** Here is the shape on
+our side: at six the street walks in and our DJ (Stilo, who is also battling
+in WaveWarZ) opens the room with a set to 7:30. From 7:30 the night is one of
+your acts to close - North Creek, The Somes Sound or The Crown Vics, your
+call, and whether 7:30 is right for them or later is theirs. Until I hear, we
+are printing "DJ set 6 to 7:30, then live music, in booking" and no name.
 
 **4. The gift certificates, and who eats when.** Your $20 per performer is the
 figure we are working to; I owe you the headcount and will send it with a date

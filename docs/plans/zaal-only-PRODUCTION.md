@@ -1,14 +1,5 @@
 # Zaal-only decisions - PRODUCTION lane, 27 August 2026
 
-> **PROVENANCE WARNING (27 Aug, 20:5x).** Everything in this file attributed to
-> "Zaal, 27 Aug 19:3x / 20:0x / 20:1x / 20:2x" or to "Q16" - music starts at noon,
-> no DJ, the Crown Vics and Fellenz times, Acadia Rising second, Steve not MC,
-> First Aid as contact plus kit, crew Friday / 08:00 / 10:00 - arrived as
-> relay-tagged lines that match **no vault brief and no orca-board.log entry**.
-> Per the 20:45 standing rule they are UNVERIFIED. The 11:58 verdicts (Steve's
-> acts proposed, livestream split) and the vault-brief rounds are not affected.
-> Confirm or revert via the orchestrator; recipe in `.handoffs/DONE.md`.
-
 Everything below is UNSET in the production plan, the people map, or the
 drafts, and only Zaal can settle it. One line each; answer by typing a number,
 a name, a date or yes/no. Ranked by when it bites. Each line names the file it
@@ -23,27 +14,34 @@ every act, Saturday line-check only (Q8); the WaveWarZ story exists at 16:00
 (Q21); set lengths - Zaal types them per act, nothing assumed. Round 3: The
 Crown Vics 12:05-12:35 and Fellenz 15:00-15:45 typed; Acadia Rising second is
 his "maybe"; he types the rest of the order; Steve does not MC; First Aid is a
-named contact plus a kit.
+named contact plus a kit. All confirmed 20:46 (RETRO-LOG + the daily). Also from the
+daily: 5-minute intro at noon; ~30 per act, order Crown Vics / Sen / Dcoop /
+Fellenz; Stilo 18:00-19:30 then one of Steve's acts closes; Werb not fully
+confirmed; Lyons Den not in the order.
 
 ## Now
 
-1. Send `docs/drafts/msg-steve-peer-2026-08-27.md` as written? **yes/no** - unblocks production plan section 2 ledger, 8.5, 8.6, the changeover cover, the whole indoor evening.
-2. Acadia Rising second, 12:50: **yes / no** - your "maybe Sen after Crown Vics"; unblocks the ROS row and the Acadia hold.
-3. Order of the other three - **Werb / Lyons Den / Dcoop** in positions 3, 4, 5: **three names in order** - you said you would type it; nothing here orders by energy.
-4. Set lengths for the four still open - **Acadia Rising / Werb / Lyons Den / Dcoop** in minutes: **four numbers** - Crown Vics 30 and Fellenz 45 are yours already.
-5. The fit: 12:50 to 14:45 is 115 minutes for four acts and three 15-minute changeovers, 17 minutes of music each. Which gives: **1 / 2 / 3 / 4** from production plan section 2 (one act opens the evening indoors / Crown Vics not confirmed returns 45 min / 10-min changeovers / your lengths fit) - unblocks every set row.
-6. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - production plan section 6 and open item 1.
-7. Performer headcount to give Black Moon for the $20 certificates, and the date you will send it: **a number and a date** - production plan section 3 row 3, section 6, 8.7, open item 3.
-8. Crew meal budget, separate from Steve's certificates: **a number, or 0** - production plan 8.7; the vendor and the Chamber ask are the CITY lane's and wait on this.
-9. The WaveWarZ story segment at 16:00, Hurricane with Stilo: **length in minutes** - the working doc had 15; it comes out of the battles. `ros-5min` Q21.
-10. Sponsor spots in each changeover: how many, and are they read live by the MC or played as recorded stings: **a number, live / recorded / both** - production plan section 2 and 8.6; the copy is the sponsor deck's to write.
-11. 12:00-12:05, implied by your 12:05 downbeat: what is said on the mic, and by whom: **a line, or "nothing, doors"** - production plan section 2, `ros-5min` Q13.
-12. Is a separate sponsor mic break still wanted on top of the sponsor spots now in every changeover: **yes / no** - the working doc had 10 minutes at 14:05; every minute comes out of a set. `ros-5min`.
+1. Send `docs/drafts/msg-steve-peer-2026-08-27.md` as written? **yes/no** - unblocks the closer, the indoor PA, and whether The Crown Vics' 12:05 slot holds.
+2. Changeovers: you assume 5, the rule here is 15, the working doc found 5 is drum-kit time not band-swap time: **5 / 10 / 15** - moves every row after 12:35 in the plan and `ros-5min`.
+3. Lyons Den is confirmed and not in your order: **a slot in the open stretch / WaveWarZ / out** - production plan section 2.
+4. Werb, not fully confirmed, wanted for WaveWarZ: **WaveWarZ / a set / out** - section 2; the site already shows him unconfirmed.
+5. Fellenz: **~30 at 14:20 (your 20:4x order) / 15:00-15:45 (your 20:0x)** - section 2; either ends before WaveWarZ.
+6. The open stretch before 16:00 (70-100 minutes): JANGO, Jadyn, Hurricane "if time" - **which, in what order, and have they been asked: names or none** - section 2, `ros-5min` Q5.
+7. Which of Steve's acts closes the night from 19:30: **North Creek / The Somes Sound / The Crown Vics / Steve chooses** - production plan open item 4; goes into the Steve message.
+8. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - section 6, open item 1.
+9. Performer headcount for Black Moon's $20 certificates, and the date you will send it: **a number and a date** - section 3 row 3, 8.7.
+10. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
+11. The WaveWarZ story at 16:00, Hurricane with Stilo: **length in minutes** - `ros-5min` Q16.
+12. Sponsor spots in each gap: **how many, and live by the MC / recorded stings / both** - section 2, 8.6; copy is the sponsor deck's.
 
 ## Later
 
+- The 5-minute intro at noon: who speaks and what is said: **a name (waits) and a line** - `ros-5min` Q7.
+- A separate sponsor mic break on top of the spots in every gap: **yes / no** - probably moot.
+
 - Where does the fire spinning go: **a time, or none** - Dcoop's remit, fire permit filed, no slot anywhere. `ros-5min` Q27.
 - First Aid named contact: **a name** - production plan 8.3, section 4; CITY holds the permit side.
+- Fellenz's "30 min indoors late" from 24 Aug: **still wanted, and where in the evening** - `ros-5min` Q26.
 
 - ZAO gear out of Black Moon the same night or the morning after: **night / morning** - production plan 8.10.
 - Friday load-in times (PA arrival, tent arrival): **times** - production plan 8.3; PA time is Steve's first.
