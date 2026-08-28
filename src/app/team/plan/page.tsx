@@ -169,7 +169,7 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
 // changeovers (20:0x). Full reasoning and Steve's supply list live in
 // docs/plans/production-plan-2026-10-03.md.
 const DAY = [
-  { time: '12:00 - 16:00', what: 'Artists, outdoors on the parklet. 45 min sets, 15 min changeovers, our MC plus partner spots between sets - no DJ (Zaal 27 Aug 20:0x)', who: 'Fellenz, Lyons Den, Dcoop, Acadia Rising - four CONFIRMED. Werb NOT fully confirmed (Zaal 27 Aug 20:4x), wanted for WaveWarZ. Four slots at noon start; running order is Zaal’s plan and not public' },
+  { time: '12:00 doors, sets 12:05 - 15:45', what: 'Artists, outdoors on the parklet. Changeovers are the MC plus partner spots - no DJ (Zaal 27 Aug 20:0x). Running order per ros-v4', who: 'Fellenz, Lyons Den, Dcoop, Acadia Rising - four CONFIRMED. Werb NOT fully confirmed (Zaal 27 Aug 20:4x), wanted for WaveWarZ. Four slots at noon start; running order is Zaal’s plan and not public' },
   { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
   { time: '18:00 - 19:30', what: 'DJ set, indoors at Black Moon - our DJ, decided (ros-v4, 27 Aug)', who: 'Stilo DJing - CONFIRMED on our side, per the message from the DJ (gdoc snapshot 27 Aug). Moved up from the old 21:00 close' },
   { time: '19:30 - late', what: 'Live music to close, indoors. IN BOOKING - no confirmed act', who: 'North Creek PROPOSED ONLY (Zaal 27 Aug), along with Crown Vics and The Somes Sound - Steve’s three, until he confirms' },
