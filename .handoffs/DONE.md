@@ -1191,3 +1191,8 @@ ZAOSTOCK-CITY requests: whoever holds the CRM - diff the outreach list against t
 
 ## ZAOSTOCK-CITY CLOSE (convention 10) - 2026-08-28, 05:3x
 ZAOSTOCK-CITY CLOSE. Branch `bettercallzaal/lane-city-0828` off `origin/main`, one commit, not pushed. Held: nothing off disk. Today, in order: Zaal sends the Jagger email first; then picks rows from the outreach list; Fire Department waits on Dcoop; Arbor Camp waits on a name and a headcount. Resume: `claude --resume a757a231-9af1-40f0-be9b-9b02184f756f` in this worktree. Safe to close.
+
+ZAOSTOCK-CITY chamber-weather (log 05:24). Chamber membership NO - "BetterCallZaal is the biz": `docs/permits/chamber-status-2026-08-27.md` names BetterCallZaal as the business entity; the three Chamber messages unchanged in body, their notes say no membership line. Weather: cadence Sat 26 Sep / Wed 30 Sep / Fri 2 Oct ADOPTED; second decision-maker STEVE PEER with Zaal; `docs/permits/rain-plan-2026-10-03.md` section 3 closed (thresholds stay the doc 1032 working rule, not separately adopted). zaal-only lines 9 and 12 answered. Nothing sent. Request: PRODUCTION - Steve now shares the rain call; the ros should say so.
+
+## ZAOSTOCK-CITY CLOSE (convention 10) - 2026-08-28, 05:4x
+ZAOSTOCK-CITY CLOSE. Branch `bettercallzaal/lane-city-0828`, two commits off `origin/main`, not pushed. Held: nothing off disk. Open on `docs/plans/zaal-only-CITY.md`: the gift-certificate figure (7), the deck-to-Chamber timing (8), a first-aid contact's name (10), Dcoop's policy and fire slot (13), Arbor Camp name and headcount (14). Resume: `claude --resume a757a231-9af1-40f0-be9b-9b02184f756f`. Safe to close.

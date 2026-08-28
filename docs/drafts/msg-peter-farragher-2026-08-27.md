@@ -45,9 +45,9 @@ info@thezao.com
 
 ## Before sending
 
-- If The ZAO is a member of the Ellsworth Area Chamber (zaal-only line 9), say so
-  in the first line. It is not on record; the membership on record is Bar
-  Harbor.
+- Chamber membership: NO (Zaal, 28 Aug 05:3x - "BetterCallZaal is the biz").
+  No membership line; the message stays as written. The business entity, if
+  they ask, is BetterCallZaal.
 - Ask 2 goes only if a vendor is wanted (zaal-only line 3).
 - The earlier ask 3 (a certified first-aider) is gone: Zaal, 20:2x, no
   dedicated first-aid person. Do not re-add it.
