@@ -14,22 +14,23 @@ Ohnahji owns what is on it.
 |---|------|------------|---------|-------|-------|
 | 1 | Source, audio | Main outs of the on-site desk into an audio interface, or the desk's own USB out (Fellenz, 24 Aug) | No. Desk is UNSET (Steve's PA) | Steve for the desk, UNSET for the interface | No interface owned or bought |
 | 2 | Source, video | Cameras at the parklet. Count and operators UNSET. Archived plan named an ATEM switcher from a prior ZAO event, UNVERIFIED | No | UNSET | Phones as backup, per the archived plan |
-| 3 | Streaming computer | Zaal's Windows desktop, Ellsworth. Ryzen 5 3600, GTX 1660 (NVENC, Turing), 16 GB, Win 10 Pro 22H2, OBS 32.2.1 | Yes, as a machine. Specs measured 20 Aug | Aziz (rig), Zaal (hardware) | It is a desktop; where it sits on the day is UNSET |
+| 3 | Streaming computer | Two candidates, both stay until today's test decides (Zaal, 28 Aug): (a) the Windows desktop at home, Ryzen 5 3600, GTX 1660 (NVENC, Turing), 16 GB, Win 10 Pro 22H2, OBS 32.2.1, specs measured 20 Aug; (b) a laptop, specs UNSET, OBS install UNSET | (a) yes, as a machine; (b) no | Aziz (rig), Zaal (hardware and the test) | Which box goes to the parklet, or whether the feed comes to the house, is what the 28 Aug test settles |
 | 4 | Encoder | OBS, h264_nvenc, CBR 6000 kbps, 1920x1080, 30 fps, keyframe 2 s, AAC 160 kbps 48 kHz, FLV | **Yes.** ffmpeg at exactly these settings, 10.1 s, 7,908,052 bytes, ~6.3 Mbps, verified with ffprobe, 20 Aug | Aziz | Everything up to the network hop |
 | 5 | Uplink | Internet at the parklet | **No. Untested by anyone.** Zaal's house: 948 Mbps up, Fidium fiber, measured 20 Aug. That is not the parklet | UNSET | A 6 Mbps stream is 0.6 percent of the house link; the parklet has no number at all |
 | 6 | **Ingest** | **Aziz's rtmps ingest URL and stream key** (Cloudflare Live Input, per baraza-tv `STREAMING-BACKEND.md` and `obs/WINDOWS-SETUP.md` section 6) | **No. THE untested link.** Owed by Aziz since the 22 Aug test date | Aziz | Nothing local substitutes. If one thing gets chased, this |
-| 7 | Restream | In Zaal's own verdict ("Aziz = rig + Restream"). Zaal's account already runs the weekday stream to Twitch, YouTube, X | Account exists. Its place in this chain is UNSET, see below | Aziz | Two topologies fit the facts, section 2 |
-| 8 | Destinations | Platforms and accounts for ZAOstock | **No. None recorded anywhere for this event** | Aziz, Zaal for accounts | Deck slide 7 note: no platform name public until the stream has run once |
+| 7 | Restream | In Zaal's own verdict ("Aziz = rig + Restream"). Zaal's account already runs the weekday stream to Twitch, YouTube, X | Account exists. Its place in this chain is decided by today's test, both topologies run (Zaal, 28 Aug) | Aziz, Zaal runs the test | Section 2 |
+| 8 | Destinations | Zaal, 28 Aug: X on the WaveWarZ account, YouTube on the ZAO channel, Twitch, and "as many places as we can include in the stream test". Candidate list in section 3 | No. Named, not yet streamed to | Aziz, Zaal for logins | Deck slide 7 note still holds: no platform name public until the stream has run once |
 | 9 | Recording | Local OBS record on the desktop, and/or Cloudflare Stream Live recording at the ingest | No. Neither configured | Aziz | The Doc wants local capture so a dropout does not lose the day |
 | 10 | Indoor mirror | Screens inside Black Moon showing the outdoor stream | No. "To build" in the production plan | ZAO, no name | Needs links 1 to 8 first |
 
 Proven links: 3 and 4. Untested links: 1, 2, 5, 6, 8, 9, 10. Link 7 exists but
 is unplaced. The one that gates a test of everything downstream is **link 6**.
 
-## Two topologies fit what is on disk, and nobody has picked one
+## Two topologies, and the 28 August test runs BOTH
 
-Restream is in Zaal's verdict. Cloudflare is in the Baraza rig. Where they sit
-relative to each other is not recorded. Either:
+Zaal, 28 Aug 05:2x: **test both today, repeatedly; Zaal runs the desktop test
+himself; no verdict until the test says.** So this section is the two things
+being tested, not a choice waiting on anyone. Either:
 
 **A. OBS to Cloudflare, Cloudflare fans out.**
 OBS -> rtmps Cloudflare Live Input (Aziz) -> Cloudflare Live Outputs (raw RTMP
@@ -43,8 +44,31 @@ not in the path. Simpler, and the archived `zaostream` research assumed it, but
 it drops the Baraza watch page and Aziz's ingest is then not the link being
 tested.
 
-This is Aziz's call with Zaal; it is asked in `docs/drafts/aziz-2026-08-27.md`.
-Until it is answered, the destinations column stays UNSET.
+Decided by the test, not by a person. Results go in the test plan's log, one
+row per topology per run. Until a run passes, neither is the Oct 3 path.
+
+## Destinations: candidates for the 28 August test
+
+Zaal's verdict names three and says to add every place we can. "Login on
+record" below means a handle for that platform is written somewhere on disk
+(vault, repo); it does not mean a password is anywhere, and who holds the
+login is UNSET on every row until Zaal says.
+
+| Destination | Restream supports it | Account | Handle on disk | Login holder |
+|-------------|----------------------|---------|----------------|--------------|
+| X | Yes | WaveWarZ account (Zaal, 28 Aug) | `x.com/WaveWarZ` | UNSET |
+| YouTube | Yes | ZAO channel (Zaal, 28 Aug) | `youtube.com/@zaofestivals` | UNSET |
+| Twitch | Yes | Account not named by Zaal; the only Twitch handle on disk is `twitch.tv/wavewarzofficial`; Zaal's weekday stream also goes to Twitch on an account not recorded | see left | UNSET |
+| Facebook | Yes, page or profile | `facebook.com/zaofestivals` | yes | UNSET |
+| LinkedIn | Yes, personal or company | `linkedin.com/company/zaofestivals`, `linkedin.com/in/zaalp` | yes | UNSET |
+| Kick | Yes | No handle on disk | no | UNSET |
+| TikTok, Instagram | Via RTMP key only | No handle on disk for live | no | UNSET |
+| Custom RTMP | Yes | Aziz's Cloudflare Live Input (topology A), or the Baraza watch page as a second output under topology B | n/a | Aziz |
+| Farcaster | Not a Restream destination | Post the live link there instead (socials rule: via Firefly) | n/a | n/a |
+
+What the test should try: every row with a handle on disk that Zaal can log
+into this morning. What it must not do: create accounts, or name a platform
+publicly before a run passes.
 
 ## The Baraza rig, status read 27 August
 
@@ -111,9 +135,10 @@ plugin relay is a second message or the same one.
 
 ## What unblocks a full test, in order
 
-1. Aziz: rtmps ingest URL and stream key (link 6). Zaal sends the specs first;
-   that is the trade Aziz named on 18 Aug.
-2. Aziz: which topology, A or B (link 7 and 8).
+1. Aziz: rtmps ingest URL and stream key (link 6), needed for topology A only;
+   topology B can run this morning without it.
+2. The 28 Aug test: both topologies, both boxes, every destination with a
+   login; results in the test plan log. Zaal runs it.
 3. Aziz: `Baraza_TV_v2.json` export (macros), and the "Camera" media path.
 4. Zaal: internet at the parklet, a measured number (link 5).
 5. Steve: which desk, so link 1 can be bought or borrowed.

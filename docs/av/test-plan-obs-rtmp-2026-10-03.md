@@ -5,21 +5,28 @@ Written 27 August 2026. Three stages, each with its own pass criteria. Stage
 until Zaal types one. Chain and link numbers refer to
 `docs/av/livestream-chain-2026-10-03.md`.
 
-## Stage 1: the bare pipe, ten minutes, remote
+## Stage 1: the pipe, today 28 August, both topologies, both boxes
 
-**What is tested:** link 6 only. OBS on the Ellsworth desktop pushes to Aziz's
-Cloudflare Live Input and Aziz sees it play. Nothing about cameras, the
-parklet, macros or destinations. That is deliberate: this is the one link with
-no evidence, and it can be tested from the house.
+Rewritten to Zaal's 28 Aug 05:2x verdict: **test both topologies today,
+repeatedly; Zaal runs the desktop test himself; encode box is either the
+laptop or the desktop at home, decided by the test; destinations are X on the
+WaveWarZ account, YouTube on the ZAO channel, Twitch, and as many others as
+can be included.**
 
-**When:** UNSET. Needs 30 minutes with both people online. The trade before it
-runs: Zaal sends the specs, Aziz sends the ingest URL and key. Both are in
-`docs/drafts/aziz-2026-08-27.md`.
+**What is tested:** links 3, 4, 6, 7 and 8 from the house. Not cameras, not
+the parklet, not macros. Two runs minimum:
+- **Run B first** (OBS straight to Restream): needs nothing from anyone.
+  Proves the encoder, the Restream account, and every destination with a
+  login. Do this one before anything else.
+- **Run A** (OBS to Aziz's Cloudflare Live Input, then out): needs the
+  ingest URL and key from Aziz. If they have not arrived, A waits and B is
+  still a complete result for today.
+- Repeat each on the other box if both boxes are available.
 
-**Who runs it:** Aziz, on his own, with the baraza-tv repo (Zaal, 27 Aug:
-Aziz has the repo and runs the pipe test himself). This file is his
-checklist. Zaal at the desktop only if the Ellsworth machine is the one
-pushing; which machine Aziz tests from is UNSET.
+**When:** today, 28 August. Time UNSET. Each run is ten minutes plus setup.
+
+**Who runs it:** Zaal, at the desktop or the laptop, on his own. Aziz is
+needed only for run A (the ingest, and a look at the Cloudflare side after).
 
 **Setup, from `obs/WINDOWS-SETUP.md` section 6:** Service Custom, server the
 rtmps URL, the key in the field. NVENC, CBR 6000 kbps, 1080p30, keyframe 2 s,
@@ -121,7 +128,10 @@ time someone other than Zaal may be at the machine.
 
 | Stage | Date | Sustained kbps | Dropped frames | Pass | Notes |
 |-------|------|----------------|----------------|------|-------|
-| 1 | UNSET | | | | |
+| 1, run B, desktop | 2026-08-28 | | | | destinations reached: |
+| 1, run B, laptop | 2026-08-28 | | | | |
+| 1, run A, desktop | 2026-08-28 or when the ingest arrives | | | | |
+| 1, run A, laptop | | | | | |
 | 2 | 2026-10-02 | | | | |
 | 3 | 2026-10-03 | | | | |
 
