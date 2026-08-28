@@ -22,6 +22,7 @@ are UNSET.
 | 4 | Video, the day, for socials | Short clips per act, the WaveWarZ battles, the 18:00 move | UNSET. "The one crew who would do it is also performing" is Dcoop | ArDrive | No shooter |
 | 5 | Interviews | Artists and partners between sets. Needs a window in the run of show and a quiet spot | UNSET | ArDrive | No window exists in the current grid |
 | 6 | WaveWarZ battles, clean | Isolated recording of each battle, because these are the most reusable clips of the year | Stream recording covers it if the stream is on the battle; a separate camera is UNSET | ArDrive | Depends on the stream |
+| 6a | The WaveWarZ story segment | Hurricane with Stilo, opening the 16:00 block (Zaal, 27 Aug): what WaveWarZ is, why it exists, who is competing, how voting works in the street and online. The one piece of the day that explains the product to a stranger, so it is the clip that gets reused most | Stream recording, plus a camera close on the two of them if one exists; UNSET | ArDrive, and cut for socials the same week | Stream must be on it; segment is at the top of 16:00 |
 | 7 | Attendee photos | The push server and photo gallery Paper and the dev built | Attendees | Paper's gallery | Demo-ready per the Doc; URL not written down |
 
 ## The row for the run of show
@@ -33,6 +34,7 @@ Three rows, not one, because capture happens at three times:
 |------|------|-------|
 | Fri 2 Oct, soundcheck | Filming and recording night | Stream chain Stage 2 records; a camera on each act's check. Shooter UNSET |
 | Sat, every changeover from noon to 16:00, times per the PRODUCTION grid | Photo and interview window, the length of the changeover | The only quiet slots in the day. Photographer UNSET, interviewer UNSET |
+| Sat 16:00, top of the block | WaveWarZ story, Hurricane with Stilo, captured clean | Camera on the two of them, not the stage wide; the most reused clip of the year |
 | Sat 12:00 to 18:00 | Stream recording, local plus ingest | Aziz. Lands on ArDrive, folder UNSET |
 
 The grid has no other gap. If interviews need more than the changeovers, they

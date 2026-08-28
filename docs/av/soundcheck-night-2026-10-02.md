@@ -6,8 +6,10 @@ and nothing else; everything the Doc does not say is UNSET here, not guessed.
 No performer names in this file: the repo is public and the lineup reveal is
 1 September. Acts are numbered as in the production plan grid.
 
-**What the Doc says, verbatim in substance:**
+**What the Doc says, verbatim in substance, plus Zaal on 27 Aug (20:1x):**
 1. Mandatory for everyone playing, and it goes into the artist contracts.
+   Zaal: Friday covers **every act**, outdoor and indoor, WaveWarZ competitors
+   included. No act gets its first check on Saturday.
 2. Checks happen at whichever stage the act actually plays, so the night runs
    outside and inside.
 3. The outdoor stage is already standing from the summer concert series;
@@ -41,9 +43,9 @@ Doc says it does.
 | Sound operator, indoor | Runs the indoor check | UNSET | NEEDS NAME |
 | Each outdoor act, 1 to 5 | Their check, on the outdoor stage | UNSET, per act | Mandatory, in contracts |
 | The four WaveWarZ competitors and the host | Battle mic and playback check, outdoor stage | UNSET | Locked as performers; Friday attendance not recorded |
-| The DJ covering changeovers | Confirm the DJ rig plugs into the outdoor PA and what plays during the 18:00 walk | UNSET | DJ proposed only (Steve's list) |
+| The DJ covering changeovers | Confirm the DJ rig plugs into the outdoor PA and what plays during the 18:00 walk | UNSET | Steve's DJ, one plus backup (production plan row 8); who, UNSET |
 | The 18:15 DJ set | Indoor DJ check, the one thing the Doc requires indoors | UNSET | Set confirmed by the artist |
-| Steve's crew and the evening act | Indoor check if they want one; both proposed, not booked | UNSET | Proposed |
+| Steve's crew and the evening act | Indoor check, mandatory like every other act (Zaal, 27 Aug); both still proposed, not booked | UNSET | Proposed as acts; Friday attendance is not optional once booked |
 | Aziz | Stream chain end to end, Stage 2 of the test plan | UNSET, remote or on site UNSET | Named |
 | Camera operator | Filming night, and the video half of Stage 2 | UNSET | Nobody |
 | Zaal | Everything above that has no name, and the parklet internet measurement | UNSET | |
@@ -84,16 +86,22 @@ night, not Saturday morning.
 | Full outdoor PA, every input, every monitor | Doc | Backups on record: college AV, Katina's Nextdoor route, Dcoop's monitors, Dcoop buying gear |
 | Streaming chain end to end | Doc | Stream runs on whatever passed; anything after the failed link is dropped for Saturday |
 | Indoor rig enough for the DJ set | Doc | The 18:15 set plays on its own gear, if the artist brings any; UNSET |
-| Every act checked | Doc, mandatory in contracts | An unchecked act gets a line check in its changeover slot, which the grid has no slack for |
+| Every act checked, every stage | Doc, and Zaal 27 Aug: every act | There is no Saturday fallback. Saturday morning is line check only, not a soundcheck; an act that missed Friday plays unchecked |
 | Parklet upload speed written down | AV spec link 5 | Stream at 720p or not at all; see the fallback matrix |
 | Local recording proven | Content capture | Cloudflare recording if topology A; else nothing is captured |
 | Indoor screen shows the stream | Indoor mirror | Black Moon has no daytime mirror; the footfall fix is lost |
 
-## What Friday is not
+## What Friday is not, and what Saturday morning is
 
 Not the setup night. Load-in, vendor setup, First Aid position, merch table
-and signage are the Saturday 06:00 block, which cannot be written until the
+and signage are Saturday morning, which cannot be fully written until the
 City answers on vehicle access and load-in times (Improvements tab, item 3).
+
+Saturday morning, per Zaal (27 Aug): **vital crew on site 08:00, everyone by
+10:00, line check only.** Line check means every input from Friday is heard
+again through the PA, nothing is re-mixed, and no act does a soundcheck. Who
+counts as vital crew: the PA owner and operator, Dcoop, Aziz or whoever runs
+the stream desk, Zaal; the rest UNSET. The PRODUCTION grid carries the times.
 
 ## Who fills this in
 
