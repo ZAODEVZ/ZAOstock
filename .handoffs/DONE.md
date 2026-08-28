@@ -331,3 +331,35 @@ the indoor block.** Not decided here.
 ## Verification
 
 `tsc --noEmit` clean. Full suite **31 passed**.
+
+---
+
+# ZAOSTOCK-DECK schedule HELD - 2026-08-27 20:3x
+
+Commit `1e3b4b1`-adjacent (see `git log -1`). **Not pushed.**
+
+**Held, waiting on PRODUCTION's ros-v3 request.** No time was changed and none
+was guessed.
+
+The four-slot 45/15 cadence had already shipped to three surfaces before the hold
+arrived, so each now marks it held rather than asserting it:
+
+| Surface | State |
+|---|---|
+| `docs/sponsor/deck-2026-10-03.md` slide 5 | `[HELD]` box. Times left exactly as they were |
+| `src/app/program/page.tsx` (public) | Was "45 minutes each". Now "lineup and set times announced once every set is locked" - true under any ros-v3 |
+| `src/app/team/plan/page.tsx` (gated) | Slot count and set length marked HELD, with the reason |
+
+**Separated explicitly on the deck slide so ros-v3 does not have to re-litigate
+settled things.** Still true and NOT held: one venue at a time · music starts at
+noon · WaveWarZ 16:00-18:00 outdoors · the 18:00 move indoors · 18:00-21:00
+evening block in booking, no named act, no downbeat · DJ to close from 21:00 ·
+free to attend · rain or shine. **Held:** daytime slot count, set length,
+changeover length. That is the first row of the table and nothing else.
+
+**Still unresolved and now formally nobody's:** five confirmed acts against a
+daytime window whose slot count is held. Whatever ros-v3 says, that arithmetic
+has to close, and the failure mode is a grid that silently drops an act.
+
+Everything else in the feed stands and was left untouched. Verification:
+`tsc --noEmit` clean, full suite 31 passed.
