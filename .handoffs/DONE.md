@@ -1314,3 +1314,74 @@ ZAOSTOCK-MARKETING flag -> DESIGN: `docs/design/redesign-2026-08-28.md` line 78-
 ZAOSTOCK-MARKETING CLOSE (convention 10, step 1) - Held: nothing off disk. Open for Zaal, 4 of 15: slide 9 fields, the 31 Aug confirmed-in-writing list, the live tier prices question, Werb and Sen written yes. Two lane branches unfolded: `-0828` (1 commit) and `-0828-reveal` (1 commit), both clean, never pushed. Closing.
 
 ZAOSTOCK-PRODUCTION FOLD-ORDER RESOLVED (orchestrator, 28 Aug): lane-production-0828 has been in ws/fold-2026-08-28 (PR #57) since 05:5x and forward-1 was folded on top of it (45/45, tsc clean). Nothing to redo. origin/main moves when Zaal merges #57. Lane closed.
+---
+
+# ZAOSTOCK-DESIGN deck-html - 2026-08-28 07:2x, Forward round
+
+Relay matched: board log line 4442, "2026-08-28 07:12 BRIEF ... design.md".
+
+**Branch:** `ws/lane-design-deck-0828`, fresh off `origin/main` at `02634fe`
+(the overnight fold). Not pushed. Write-set: `docs/sponsor/deck-2026-10-03.html`
+plus this file.
+
+| Deliverable | State | Where |
+|---|---|---|
+| The sponsor deck as a designed HTML artifact | DONE | `docs/sponsor/deck-2026-10-03.html`, 40 KB, self-contained |
+| Wednesday design-meeting prep | Already on main | `docs/design/meeting-2026-09-02.md`, folded overnight from the 0827 lane |
+
+## What the deck file is
+
+- Rendered from `docs/sponsor/deck-2026-10-03.md` **as it is on origin/main**
+  (ros-v4 schedule, COC Concertz as the eighth partner, Heart of Ellsworth
+  struck, slide 4 unblocked), not from my lane's older copy. The words are the
+  deck's; only the layout is new.
+- DESIGN.md's system throughout: Boogaloo, Rubik, Space Mono from Google Fonts;
+  paper ground, ink text, red-500 stats, red-600 buttons, gold shadow on the
+  slide frame, grain at 0.35, hard offsets, no gradients, no motion beyond a
+  button press. Zero old-brand hex.
+- One `<section>` per slide, twelve, plus an appendix page marked "not for the
+  room" carrying the six Zaal fields, the logo and image gaps, and how the
+  file was made. `[SWAP]`, `[BLOCKED]` and `[CUT FROM LOCAL]` render as pill
+  tags on the slide head; slide 7 also carries a dashed "remove before
+  presenting" card.
+- **UNSET is visible:** nine `mark.unset` chips (seven on slide 9, one on
+  slide 10, one on slide 12), gold-300 fill, red dashed border, a hollow box
+  glyph so they survive greyscale print. The toolbar counts them live. Two
+  `mark.verify` chips on the newsletter count and the WaveWarZ figures.
+- **Print-friendly:** `@page letter landscape`, one slide per page, toolbar
+  hidden, shadows off, notes hidden unless the "Speaker notes" toggle is on
+  before printing. Speaker notes are `<details>` per slide on screen.
+- Badge from `public/brand/logos/zaostock26_badge_official.png` by relative
+  path; works opened from disk in the repo. Candy credited on slide 1.
+- Two-column slides collapse under 960px; the partner grid goes 2-up.
+
+## Verification
+
+- HTML parser pass: no unclosed or mismatched tags. 13 sections, 12 notes
+  blocks, 9 UNSET marks, 2 VERIFY marks, 0 occurrences of any old-brand hex or
+  "Fractured"; the three strings "45-minute", "tax-deductible" and "Heart of
+  Ellsworth is our" appear only inside do-not-say speaker notes. Badge file
+  exists at the referenced path.
+- **Visual render: UNSET.** gstack browse restarted mid-`goto` and returned a
+  blank page for the local file (0 sections, 5 KB screenshots); the orphan
+  browse server from another session (pid 4840, port shared) is the likely
+  cause. Three tries; stopped per the rule. Open the file in any browser to
+  see it; nothing in it needs a server.
+
+## Request lines
+
+- **DECK:** the production plan on main (updated overnight) now records The
+  Crown Vics 12:05 and Steve's own set 20:00-22:00 as booked, and the evening
+  as Stilo's DJ set 18:00-19:30 then one of Steve's acts to close. Deck slide 5
+  still prints "DJ set" and "live music to close, in booking" and the note "no
+  act is described as confirmed anywhere in this deck". If the deck md
+  changes, the HTML follows it; I did not change either.
+- **SITE / whoever prints:** re-pull the WaveWarZ figures and the newsletter
+  count the day it prints; both chips say so.
+- **Anyone with a working browser:** open the HTML once and say whether the
+  slide frames fit a landscape letter page with notes off. Untested here.
+
+## ZAOSTOCK-DESIGN CLOSE - 2026-08-28 07:2x
+
+`ws/lane-design-deck-0828`, ahead of `origin/main` by this commit only, not
+pushed, tree clean apart from `node_modules`. Nothing held, nothing sent.
