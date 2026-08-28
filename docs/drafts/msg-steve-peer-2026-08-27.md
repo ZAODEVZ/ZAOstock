@@ -1,4 +1,9 @@
-# Message - Zaal to Steve Peer, Black Moon Public House
+# Message - Zaal to Steve Peer, Black Moon Public House - SUPERSEDED
+
+**SUPERSEDED 27 August 22:3x.** Zaal spoke to Steve in person today and settled
+it: The Crown Vics open at 12:05 and Steve's own set is 20:00-22:00, both
+booked; The Somes Sound, North Creek and the DJ are out. Nothing below should
+be sent. Kept for the record.
 
 **DO NOT SEND.** Paste-ready once Zaal says yes (zaal-only list, line 1).
 Consolidates the 26 August plan reply that was on the clipboard (corrected:
