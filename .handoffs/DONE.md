@@ -277,3 +277,81 @@ full suite 31 passed, WaveWarZ figures re-pulled live 2026-08-27 15:47 UTC.
 block, AV cover during Dcoop's set, stage manager, First Aid lead, indoor
 changeover at 6 - then the remaining Zaal-only items, four at a time,
 recommended first. His typed words become `ZAOSTOCK-VERDICT` lines below.
+
+---
+
+# ZAOSTOCK-DESIGN 3/3 - 2026-08-27, DESIGN lane
+
+**Branch:** `bettercallzaal/lane-design-0827` (the brief named
+`ws/lane-design-0827`; the worktree was created on this name and the lane
+stayed on it). **Not pushed.** Write-set respected: `DESIGN.md`,
+`docs/design/**`, `public/design/**`, plus this file.
+
+| # | Deliverable | State | Where |
+|---|---|---|---|
+| 1 | `/design-consultation`: system, font and colour preview pages, DESIGN.md | DONE | `DESIGN.md`; `public/design/fonts.html`; `public/design/colors.html` |
+| 2 | Page-by-page redesign spec, every route, build order | DONE | `docs/design/redesign-2026-08-28.md` |
+| 3 | `/design-review` before-state on the live site | DONE_WITH_CONCERNS: audit and grades delivered, **screenshots UNSET** | `docs/design/before/design-review-2026-08-27.md`; attempts log in `docs/design/before/README.md` |
+
+## What the consultation found
+
+- **A design system already exists.** Candy (CandyToyBox) delivered the
+  ZAOstock 26 retro-poster rebrand on 21 Aug: tokens, badge, icons, a PDF and a
+  working reference homepage. `docs/brand/README.md` names it the source of
+  truth and says the live site is the old brand and the two must not mix. So
+  DESIGN.md adopts it wholesale and closes its gaps (web type scale, grid,
+  motion, no dark mode for Oct 3, three contrast fixes) instead of proposing a
+  competing system 37 days out.
+- **Her reference homepage's copy is wrong and must not be copied:** a
+  501(c)(3) via Fractured Atlas, a 12-9 PM window, `WebOMetal`, `ZaoStock`,
+  PALOOZA as a "local park pop-up". Visual system yes, words no.
+- **Three of her token defaults fail WCAG AA** when measured: paper on red-500
+  4.2:1 (button), 62% ink 4.3:1 (secondary), 46% ink 2.8:1 (eyebrows). Raised
+  to red-600, 70%, 66%. Flagged as agent defaults for Zaal and Candy.
+- **ICM brand boxes: UNSET.** Both `useicm.com` URLs timed out from curl and
+  WebFetch; `useicm.com/` itself times out. Nothing from them is in any file.
+
+## What the audit found (D+ overall, AI slop C)
+
+- The live site still sells the **pre-23-August two-stage day** ("opens up a
+  second stage there alongside the main", `12 PM - 6 PM`) - none of the
+  one-venue or noon commits are on `main`. Meanwhile this branch's
+  `festival.ts` says `11 AM`, also wrong since 19:3x today.
+- `/sponsor` and `/sponsor/deck` say 795 battles and 90+ sessions; the deck
+  says 1,452 and 100+. `/musicians` says 200-400 / 1K+; Zaal locked 200-250 /
+  1,000. `/sponsor/deck` and `/pitch` price tiers the deck killed.
+- **`/press` is a 404** and the Ellsworth American has been pointed at it.
+- **Zero `<img>` on thirteen routes.** The badge is not on the site.
+- **Zero partner logos on disk**, not three missing. `public/partners/` is a
+  README.
+- The homepage would not reach idle in three renderers, two of them the user's
+  own Chrome. Recorded as F-010, not explained away.
+
+## Screenshots: why UNSET
+
+gstack browse's server dies after loading zaostock.com (works on example.com);
+Playwright MCP has no bridge extension installed; Claude-in-Chrome timed out at
+45s on `/` and `/program` (`Runtime.evaluate timed out`, `Script injection
+timed out`). Local `next dev` panics on the worktree's `node_modules` symlink
+under Turbopack and 500s under webpack for want of env. Full log with verbatim
+errors in `docs/design/before/README.md`. The audit was done from served HTML
+of 13 routes instead; two categories (interaction, responsive) are marked not
+measured rather than graded.
+
+## For the orchestrator
+
+- **SITE's first commit is the shell** (tokens via `@theme`, three fonts via
+  `next/font`, Header, Footer, twelve primitives, `festival.ts` extended).
+  Then `/`, `/program`, `/press`, `/sponsor`. Order and per-route facts are in
+  the spec.
+- **Merge order matters:** the press kit lives on the marketing branch; the
+  spec cites it by path. Marketing merges before SITE builds `/press`.
+- **Eight fields for Zaal** are at the bottom of the spec: prices, the fifth
+  act's slot now that noon leaves four, set length (20/25/45 all on disk),
+  Pro Ticket keep-or-drop, the contact address, naming ENTERACT as payment
+  route, advisor names.
+- The Chrome tab this lane opened on zaostock.com is closed (second
+  `tabs_close_mcp` reported it no longer exists).
+
+Verified: every fact in the three documents traces to a file path or a
+"Zaal, 27 Aug" line; `grep -c UNSET` DESIGN.md 2, spec 12. No pushes.
