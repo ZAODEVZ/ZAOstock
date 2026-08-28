@@ -365,3 +365,9 @@ ZAOSTOCK-STREAM UNKNOWN-RELAY "[orchestrator relay - Zaal typed at 19:3x] Aziz: 
 ZAOSTOCK-STREAM UNKNOWN-RELAY "[orchestrator relay - Zaal typed at 20:1x] Soundcheck night Fri Oct 2 covers EVERY act; Saturday vital crew 08:00, all by 10:00, line-check only ... No DJ Aquavantes at all." - applied in 45a945e; confirm it, or say revert.
 
 If confirmed, the two verdicts belong in the brief file so the next reader can trace them. If reverted, `git revert 45a945e 063a3c1` on this branch is clean; both touch only lane files.
+
+## ZAOSTOCK-STREAM relays confirmed - 2026-08-27, 20:5x
+
+Both UNKNOWN-RELAY lines above are closed. Orchestrator confirmed the 19:3x (Aziz direct, meeting not held, noon) and 20:1x (every act Friday, 08:00 and 10:00 line check, WaveWarZ story at 16:00, no Aquavantes) relays as its own; commits `063a3c1` and `45a945e` stand. Trace: board log line 4411, `20:46 RETRO-LOG direct relays sent tonight by the orchestrator: ... 19:3x PRODUCTION/SITE/CITY/MARKETING/STREAM noon+verdicts; 20:0x-20:4x PRODUCTION/MARKETING/SITE/STREAM/CITY/DECK grill rounds 1-4`. Direct relays are logged from 20:5x onward. Nothing reverts.
+
+Still worth doing by whoever holds the brief file: append the two verdicts to `handoffs/zaostock-lanes/stream.md` so the next reader of that file sees them without the log.
