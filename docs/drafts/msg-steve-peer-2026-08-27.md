@@ -20,8 +20,8 @@ underwrite North Creek for the after party - that is a huge part of the day
 handled, and I do not take it lightly. Wristbands for performers is a great
 call; we will have them.
 
-The full schedule is attached, built on your cadence: 45-minute sets,
-15-minute changeovers, one stage at a time. One thing in it changed since we
+The full schedule is attached, built on your cadence as the frame: 15-minute
+changeovers, one stage at a time, and I am fixing each set's length per act. One thing in it changed since we
 last spoke, and then four questions.
 
 **What changed.** We are running the day as one flow, not two simultaneous

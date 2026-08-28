@@ -9,24 +9,30 @@ unblocks. Steve's, the City's and Dcoop's questions are in their own drafts.
 (11:00 withdrawn); rain call is Zaal + Steve at Friday soundcheck with an 08:00
 Saturday re-look, yes; overrun rule, yes; names for open roles wait; **no DJ**
 (Q16) - changeovers are the MC plus sponsor spots, the Aquavantes message is
-withdrawn.
+withdrawn; crew Friday night, 08:00 vital, 10:00 everyone (Q1); Friday covers
+every act, Saturday line-check only (Q8); the WaveWarZ story exists at 16:00
+(Q21); set lengths - Zaal types them per act, nothing assumed.
 
 ## Now
 
 1. Send `docs/drafts/msg-steve-peer-2026-08-27.md` as written? **yes/no** - unblocks production plan section 2 ledger, 8.5, 8.6, the changeover cover, the whole indoor evening.
-2. The fifth confirmed act, which has no daytime slot at noon-to-four: **1 / 2 / 3 / 4** from production plan section 2 (opens the evening indoors / shorter sets / 10-min changeovers on shared backline / reserve) - unblocks the grid, the poster order, and the indoor block.
-3. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - production plan section 6 and open item 1.
-4. Performer headcount to give Black Moon for the $20 certificates, and the date you will send it: **a number and a date** - production plan section 3 row 3, section 6, 8.7, open item 3.
-5. Which part of the day to offer Steve as MC: **daytime noon-16:00 / the 18:00 handoff / evening / none** - production plan section 3 row 9, 8.5, 8.8; one line in the Steve message if you pick one.
-6. Crew meal budget, separate from Steve's certificates: **a number, or 0** - production plan 8.7; the vendor and the Chamber ask are the CITY lane's and wait on this.
-7. Send the Dcoop and Acadia Rising set-length messages: **yes/no** - `docs/drafts/msg-dcoop-2026-08-27.md`, `msg-acadia-rising-2026-08-27.md`; their answers decide whether option 2 above is even possible.
-8. Sponsor spots in each changeover: how many, and are they read live by the MC or played as recorded stings: **a number, live / recorded / both** - production plan section 2 and 8.6; the copy is the sponsor deck's to write.
-9. Is there a spoken event intro on the mic at noon, and how long: **0 / 5 / 10 / 15 minutes** - the working doc had 15; the noon grid has none, and every minute comes out of a set. Production plan 8.8, `docs/plans/ros-5min-2026-10-03.md`.
-10. Is a separate sponsor mic break still wanted on top of the sponsor spots now in every changeover: **yes / no** - the working doc had 10 minutes at 14:05; every minute comes out of a set. `ros-5min`.
-11. Where does the fire spinning go: **a time, or none** - it is on Dcoop's remit and the fire permit is filed, and it has no slot anywhere in the day. `ros-5min`.
-12. ZAO gear out of Black Moon the same night or the morning after: **night / morning** - production plan 8.10.
+2. Set length per act, five numbers in minutes - **Werb / Fellenz / Lyons Den / Dcoop / Acadia Rising** - you said you would type them; nothing assumes 30 or 45 until you do. Unblocks the whole daytime grid, the ROS times, and whether line 3 is even a question.
+3. If the five typed lengths plus four 15-minute changeovers exceed 240: the fifth act goes **1 / 3 / 4** from production plan section 2 (opens the evening indoors / 10-min changeovers on shared backline / reserve).
+4. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - production plan section 6 and open item 1.
+5. Performer headcount to give Black Moon for the $20 certificates, and the date you will send it: **a number and a date** - production plan section 3 row 3, section 6, 8.7, open item 3.
+6. Which part of the day to offer Steve as MC: **daytime noon-16:00 / the 18:00 handoff / evening / none** - production plan section 3 row 9, 8.5, 8.8; one line in the Steve message if you pick one.
+7. Crew meal budget, separate from Steve's certificates: **a number, or 0** - production plan 8.7; the vendor and the Chamber ask are the CITY lane's and wait on this.
+8. The WaveWarZ story segment at 16:00, Hurricane with Stilo: **length in minutes** - the working doc had 15; it comes out of the battles. `ros-5min` Q21.
+9. Sponsor spots in each changeover: how many, and are they read live by the MC or played as recorded stings: **a number, live / recorded / both** - production plan section 2 and 8.6; the copy is the sponsor deck's to write.
+10. Is there a spoken event intro on the mic at noon, and how long: **0 / 5 / 10 / 15 minutes** - the working doc had 15; the noon grid has none, and every minute comes out of a set. Production plan 8.8, `docs/plans/ros-5min-2026-10-03.md`.
+11. Is a separate sponsor mic break still wanted on top of the sponsor spots now in every changeover: **yes / no** - the working doc had 10 minutes at 14:05; every minute comes out of a set. `ros-5min`.
+12. Where does the fire spinning go: **a time, or none** - it is on Dcoop's remit and the fire permit is filed, and it has no slot anywhere in the day. `ros-5min`.
 
 ## Later
+
+- ZAO gear out of Black Moon the same night or the morning after: **night / morning** - production plan 8.10.
+- Friday load-in times (PA arrival, tent arrival): **times** - production plan 8.3; PA time is Steve's first.
+- Act call time Saturday: **a time** - production plan 8.3, contracts.
 
 - Ask Bomb Squad for lighting 16:00-18:00: **yes/no** - production plan 8.4; Dcoop holds that relationship.
 - Place sets 1 and 2 for the Art of Ellsworth family crowd, or run the order by other logic: **yes/no** - production plan 8.8, with Dcoop.
