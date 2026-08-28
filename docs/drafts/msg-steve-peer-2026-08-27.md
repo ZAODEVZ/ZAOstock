@@ -5,6 +5,8 @@ Consolidates the 26 August plan reply that was on the clipboard (corrected:
 the DJ is asked about rather than "locked in"; the noon open in that reply
 stands - Zaal reverted the 11:00 idea on 27 August) with `docs/drafts/steve-followup-2026-08-27.md` and the crew meal
 question from production plan 8.7. Only figure in it is Steve's own $20.
+Revised after Q16 (27 Aug, late): no DJ - the DJ rider is gone and the list is
+three acts.
 
 - **To:** Steve Peer
 - **Channel:** the thread carrying the 15, 17 and 26 August messages
@@ -27,14 +29,18 @@ stages: outdoors at the Franklin Street Parklet until 6, then everything moves
 into Black Moon for the evening. One crowd, one PA crew at a time, and we never
 need both systems live at once. Music starts at noon, as you had it.
 
-**1. Of the four acts on your list, which are booked and which are still being
-asked?** The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek. On our
-side all four are recorded as proposals, because nobody here has a yes from any
-of them that we can point at. Two of them hold the day up: your DJ is what
-covers every changeover on a single stage, and North Creek is the whole 6 to 9
-block. If either is a lead rather than a booking I need to know this week, so
-we can cover it ourselves rather than find out at soundcheck. One line per act
-is plenty: booked, asked, or not yet asked.
+**1. Of the acts on your list, which are booked and which are still being
+asked?** The Crown Vics, The Somes Sound, North Creek. On our side all three
+are recorded as proposals, because nobody here has a yes from any of them that
+we can point at. North Creek is the whole 6 to 9 block, so if it is a lead
+rather than a booking I need to know this week, so we can cover the evening
+ourselves rather than find out at soundcheck. One line per act is plenty:
+booked, asked, or not yet asked.
+
+And one thing to say plainly rather than let it drift: **we are not going to
+use a DJ for the changeovers after all.** Thank you for offering one. We have
+decided the gaps between sets are the MC and our sponsor spots, and Stilo
+plays the crowd out at six. So please do not hold your DJ for us.
 
 **2. The Somes Sound - do they provide the indoor PA, or only their own gear
 for their own set?** If it is a house-capable PA, that answers most of our
@@ -56,10 +62,6 @@ performers and are not on your certificates. If there is a simple way to feed
 them at Black Moon on our tab, tell me what it looks like; if not, we sort it
 separately and it is not your problem.
 
-One rider on question 1: if the DJ is booked, the grid wants him from noon
-through to 6 rather than 5:30, because the battles want music going in and out
-of the voting windows and the play-out at 6 is what walks everyone next door.
-Does that still work for him and the backup?
 
 Everything else you asked about - the PA handoff at 6, porta potty count and
 an accessible unit, wristbands - is in the attached plan with what we think

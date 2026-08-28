@@ -1,4 +1,8 @@
-# Message - Zaal to DJ Aquavantes
+# Message - Zaal to DJ Aquavantes - WITHDRAWN
+
+**WITHDRAWN 27 August, late (Q16): there is no DJ on the day.** Zaal's call. Do
+not send this in any form. Steve is told in `msg-steve-peer-2026-08-27.md`.
+Kept for the record only.
 
 **DO NOT SEND.** Paste-ready once Zaal says yes - but **send this after
 Steve answers booked-which, or send it through Steve**, because Aquavantes is

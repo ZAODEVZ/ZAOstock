@@ -12,7 +12,7 @@ is on the gated team page at `/team/plan`.
 
 | Area | Who | What it covers |
 |------|-----|----------------|
-| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve also MCs part of the day. Every act on Steve's list (The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek) is PROPOSED, not booked, as of 27 Aug |
+| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve also MCs part of the day. Every act on Steve's list (The Crown Vics, The Somes Sound, North Creek) is PROPOSED until Steve confirms. DJ Aquavantes is off the day - no DJ (Zaal, 27 Aug) |
 | Design and assets | Paper and Candy | Poster, partner logos, site wireframes, photo gallery. Candy holds the brand kit and the print list |
 | Music and AV | Dcoop | Artist liaison, set schedule, Friday soundcheck, sound backups, fire spinning |
 | Livestream and virtual | **Ohnahji and Aziz, split** | See below |
@@ -67,7 +67,7 @@ asked this week.** They stay listed so the gap stays visible.
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
 | First Aid lead | Still doubled onto Zaal. Flagged impossible in July - eight hours, and it needs current certification |
-| Changeover cover, 12:45 to 18:00 | **A real gap, not a pending detail.** One stage means five audible 15-minute gaps. Cannot be Stilo. Steve's DJ (Aquavantes) is the intended fix and, per Zaal 27 Aug, is PROPOSED ONLY like the rest of Steve's four - nobody has booked him. The question is drafted in `docs/drafts/steve-followup-2026-08-27.md`. If the answer is no, this is ours to fill. See production plan section 9, and the per-slot fallback in 8.6 |
+| MC, noon to 16:00 - every changeover | **Now load-bearing.** Zaal, 27 Aug (Q16): there is no DJ; the four 15-minute changeovers are the MC plus sponsor spots. That makes the daytime MC the person who holds the street between every act. Cannot be Stilo. Steve MCs part of the day, scope undefined. Name waits (Zaal). See production plan section 2 and 8.6 |
 
 ---
 
