@@ -20,7 +20,7 @@ _Fill in: one sentence summary._
 ## Current focus
 
 - ENTERACT creative agency operations
-- Fractured Atlas fiscal sponsorship for ZAOstock + ZAO Festivals
+- ~~Fractured Atlas fiscal sponsorship for ZAOstock + ZAO Festivals~~ **STRUCK 2026-08-27 - ZAOstock has no fiscal sponsor. Sponsorship runs the commercial path through ENTERACT only**
 - _other current items_
 
 ## Voice + tone
@@ -50,7 +50,7 @@ _Fill in: one sentence summary._
 
 - **Where to reach**: DM @failoften on TG
 - **Response window**: _fill in_
-- **Decision triggers**: anything touching Fractured Atlas terms or sponsor wording escalates to you immediately
+- **Decision triggers**: anything touching sponsor wording escalates to you immediately. (Was "Fractured Atlas terms or sponsor wording" - there are no Fractured Atlas terms, corrected 2026-08-27.)
 
 ## Relationships in the team
 
@@ -63,4 +63,4 @@ _Fill in: one sentence summary._
 
 ## Hard rules
 
-- Fractured Atlas wording must always run by you before any sponsor-facing publication.
+- Sponsor-facing wording must always run by you before publication. Nothing may say tax-deductible or name a fiscal sponsor - ZAOstock has none. (Was "Fractured Atlas wording must always run by you" - corrected 2026-08-27.)

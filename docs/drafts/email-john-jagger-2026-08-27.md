@@ -41,12 +41,15 @@ against all the exposures, at the best price.
   **their own liquor permit**, not ours.
 - **What happens:** live music sets on a stage that is already standing from the
   City's summer concert series, plus live music battles in the late afternoon.
-- **Expected attendance: 200 to 250 people on site.** There is also an online
-  audience of roughly 1,000 watching a stream, which I mention only so the
-  number is not a surprise later - it is not additional people on the ground.
-- **Fire performance:** one act involves fire spinning. The fire permit is
-  pending with the City. I am flagging it up front because I assume it changes
-  the quote, and I would rather you price it correctly than discover it later.
+- **Expected attendance:** 200-250 in person, and around 1,000 online (the online side does not touch the site)
+- **Fire performance:** one act involves fire spinning. The performer is
+  seeking the open-flame permit from the fire department directly. I understand
+  standard event liability policies exclude open-flame performance, and that the
+  performer normally carries his own fire-performer policy and issues a
+  certificate naming the event and the City as additional insureds. Tell me if
+  that is the right structure, or if you would rather the event policy carry it.
+  I am flagging it up front because I would rather you price it correctly than
+  discover it later.
 
 **Two specific things I need, and they are the reason I am writing rather than
 just asking for a number:**
@@ -78,10 +81,13 @@ info@thezao.com
 
 ---
 
-## Before this sends
+## Before this sends - one field, now filled
 
-**Nothing is blocked.** Attendance was the one missing field and Zaal typed it on
-2026-08-27: **200-250 in person, about 1,000 online.**
+**Expected attendance was the one blocker and Zaal typed it 2026-08-27 19:3x:
+200-250 in person, around 1,000 online.** The in-person figure is the one that
+moves an event policy; the online figure is stated so the broker is not
+surprised by it later. The same number unblocks deck slide 4. **Nothing sends
+tonight** - the paste-ready version is `docs/drafts/msg-john-jagger-2026-08-27.md`.
 
 Two things the draft does deliberately with those numbers. It gives the
 underwriter **200-250** as the on-site figure, because that is the only one that
@@ -120,3 +126,10 @@ performance.
 - `docs/plans/production-plan-2026-10-03.md` - site, hours, the 6pm move
 - `docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md` - the two questions the
   City conversation exists to answer
+- `~/Documents/ZAO OS V1/research/business/1045-zaostock-event-insurance-liability/README.md`
+  section 3.6 - Roddy's 17 Aug email (the City needs a copy; the City covers
+  the parklet structure only), and the performer-carries-own-COI structure for
+  fire. Fire line reworded 2026-08-27 (CITY lane): "pending with the City" had
+  no filing date behind it; "seeking from the fire department" is what the
+  record supports
+- `docs/permits/status-2026-08-27.md` - permit status, every UNSET, evidence

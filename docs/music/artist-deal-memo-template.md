@@ -84,7 +84,8 @@ For Year 3 (2027) and beyond, ZAOstock targets a guaranteed performance fee stru
 
 ## Insurance + safety
 
-- ZAOstock carries event liability insurance via the production partner (ENTERACT) and Fractured Atlas COI for the venue.
+- ZAOstock is arranging its own event liability insurance through a local broker; the City of Ellsworth requires a copy as a condition of the parklet permit. ZAOstock has no fiscal sponsor, so there is no Fractured Atlas certificate and no tax-deductible path.
+  > *Corrected 2026-08-27.* This line used to say ZAOstock "carries event liability insurance via the production partner (ENTERACT) and Fractured Atlas COI for the venue". Neither was true: no policy is bound yet, and there is no fiscal sponsor. Status lives in `docs/permits/status-2026-08-27.md`.
 - The artist is responsible for their own gear insurance. ZAOstock provides reasonable security for the stage area but does not insure private equipment.
 - If the artist requires a Certificate of Insurance for their own paperwork, request via email and we will arrange.
 
