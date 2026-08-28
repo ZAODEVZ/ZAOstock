@@ -150,9 +150,9 @@ export function BorderedList({ rows, className, mono }: { rows: ReadonlyArray<{ 
   return (
     <dl className={cx('border border-ink-950/60 rounded-md overflow-hidden m-0', className)}>
       {rows.map((row, i) => (
-        <div key={i} className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 px-5 py-3 text-sm border-t border-ink-950/60 first:border-t-0">
-          <dt className={cx('text-ink-muted font-bold tracking-[0.04em] m-0 shrink-0', mono && 'font-mono tabular')}>{row.term}</dt>
-          <dd className="text-ink-950 font-semibold m-0 sm:text-right">{row.detail}</dd>
+        <div key={i} className="grid grid-cols-1 sm:grid-cols-[minmax(140px,auto)_1fr] gap-1 sm:gap-6 px-5 py-3 text-sm border-t border-ink-950/60 first:border-t-0">
+          <dt className={cx('text-ink-muted font-bold tracking-[0.04em] m-0', mono && 'font-mono tabular')}>{row.term}</dt>
+          <dd className="text-ink-950 font-semibold m-0">{row.detail}</dd>
         </div>
       ))}
     </dl>
