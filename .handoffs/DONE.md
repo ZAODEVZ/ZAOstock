@@ -584,3 +584,45 @@ Werb, Lyons Den" fact row, from PR #45. That file is in SITE's write-set, not
 mine, so I have not touched it. **Someone should decide whether the deck rule
 extends to the site**, because right now a sponsor could read the deck saying the
 lineup is announced 1 September and then find two names on the homepage.
+
+---
+
+# ZAOSTOCK-DECK request line CLOSED - 2026-08-27 end of day
+
+**The Werb-on-homepage flag is resolved.** SITE fixed it on its own worktree,
+commits `57654c1` and `dd9b145` on `ws/lane-site-0827`. No action for DECK.
+
+The request line above stands as answered - do not re-raise it tomorrow.
+
+**One correction to the record, because it changes where to look next time.** The
+stale read was not `main-2`. It was `~/Desktop/repos/zaostock` on
+`ws/production-plan-1003-0826` - this lane's own branch, which does not carry
+SITE's commits. `main-2` is the archived `bettercallzaal/zao-stock` clone and this
+lane has never read or written it.
+
+**The general shape, worth keeping:** a lane cannot see another lane's fixes,
+because each works in its own worktree on its own branch. So "X is still wrong on
+surface Y" is only ever true *on this branch* until the branches meet. Request
+lines about another lane's files should say which branch was read. This one did
+not, and that is why it cost a round trip.
+
+## Standing down
+
+Nothing further tonight unless a request line names DECK.
+
+**State:** branch `ws/production-plan-1003-0826`, **31 commits ahead of
+`origin/main`, not pushed.** Working tree clean apart from untracked `.claude/`.
+`tsc --noEmit` clean, full suite 31 passed.
+
+**Open for tomorrow, in order:**
+
+1. **Zaal's grill** resumes from PRODUCTION's `ros-5min` file - five unnamed roles
+   first, then the remaining Zaal-only items, four at a time.
+2. **Slide 9 stays UNSET** - six fields, decided in the Candy meeting. Agenda is
+   at `docs/sponsor/slide-9-candy-meeting-2026-08-27.md`.
+3. **The John Jagger insurance email is unblocked and unsent** -
+   `docs/drafts/email-john-jagger-2026-08-27.md`. Zaal sends.
+4. **The write-set breach is unadjudicated.** Nine files owned by other lanes,
+   listed above, not reverted because several are load-bearing and correct.
+   Recommendation stands: leave them, let PRODUCTION and SITE rebase.
+5. **This lane still has no brief** under `~/zao-vault/handoffs/zaostock-lanes/`.
