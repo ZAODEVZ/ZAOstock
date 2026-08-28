@@ -12,7 +12,7 @@ is on the gated team page at `/team/plan`.
 
 | Area | Who | What it covers |
 |------|-----|----------------|
-| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve also MCs part of the day. Every act on Steve's list (The Crown Vics, The Somes Sound, North Creek) is PROPOSED until Steve confirms. DJ Aquavantes is off the day - no DJ (Zaal, 27 Aug) |
+| Venue and logistics | Steve Peer and Katina, Black Moon | Sound and PA, the indoor half from 6pm, beer garden, gift certificates, headcount. Steve does not MC - ZAO crew holds the mic all day (Zaal, 27 Aug). Every act on Steve's list (The Crown Vics, The Somes Sound, North Creek) is PROPOSED until Steve confirms. DJ Aquavantes is off the day - no DJ (Zaal, 27 Aug) |
 | Design and assets | Paper and Candy | Poster, partner logos, site wireframes, photo gallery. Candy holds the brand kit and the print list |
 | Music and AV | Dcoop | Artist liaison, set schedule, Friday soundcheck, sound backups, fire spinning |
 | Livestream and virtual | **Ohnahji and Aziz, split** | See below |
@@ -66,8 +66,8 @@ asked this week.** They stay listed so the gap stays visible.
 | Sound during WaveWarZ | Stilo is battling in it. He cannot do both |
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
-| First Aid lead | Still doubled onto Zaal. Flagged impossible in July - eight hours, and it needs current certification |
-| MC, noon to 16:00 - every changeover | **Now load-bearing.** Zaal, 27 Aug (Q16): there is no DJ; the four 15-minute changeovers are the MC plus sponsor spots. That makes the daytime MC the person who holds the street between every act. Cannot be Stilo. Steve MCs part of the day, scope undefined. Name waits (Zaal). See production plan section 2 and 8.6 |
+| First Aid contact | **No dedicated person** - Zaal, 27 Aug: "it's small". A named contact (UNSET) plus a prepared kit. The permit side is the CITY lane's. The July "eight hours, certified" framing is retired |
+| MC, noon to 16:00 - every changeover | **Now load-bearing.** Zaal, 27 Aug (Q16): there is no DJ; the four 15-minute changeovers are the MC plus sponsor spots. That makes the daytime MC the person who holds the street between every act. Cannot be Stilo. Not Steve - ZAO crew holds the mic all day, and both MC names (daytime, evening) are UNSET (Zaal, 27 Aug). Names wait. See production plan section 2 and 8.6 |
 
 ---
 

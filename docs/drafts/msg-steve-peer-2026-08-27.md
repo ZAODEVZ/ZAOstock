@@ -76,7 +76,7 @@ Zaal
 ## Not in this message, deliberately
 
 - No headcount, no dates other than 3 October, no prices beyond Steve's own $20.
-- Steve's MC scope (production plan section 3 row 9) - add one line if Zaal
-  picks a part of the day for him (zaal-only list, line 10).
+- Steve as MC: NONE (Zaal, 27 Aug). ZAO crew holds the mic. Not said in the
+  message unless Zaal wants it said; the plan's row 9 carries it.
 - The normal-Saturday takings question (section 7) - a separate, gentler ask,
   not bundled with a list of questions.

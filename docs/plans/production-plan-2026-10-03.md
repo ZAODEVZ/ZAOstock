@@ -10,7 +10,12 @@ the 06:00 call is gone - crew is on site Friday night for soundcheck, vital crew
 08:00 Saturday, everyone by 10:00; Friday covers every act and Saturday is
 line-check only, into the contracts; the WaveWarZ story segment exists, at
 16:00 inside the block; and **every daytime set length is UNSET until Zaal
-types it per act** - the 45/15 grid below is the frame, not the answer.
+types it per act** - the 45/15 grid below is the frame, not the answer. Grill
+round 3 (20:2x), with his 20:0x order relayed: The Crown Vics 12:05-12:35 and
+Fellenz 15:00-15:45 are typed; "maybe Sen after Crown Vics" makes Acadia Rising
+the proposed second act; the rest of the order is his to type, not ours to
+guess by energy; Steve does not MC - ZAO crew holds the mic all day; First Aid
+is a named contact plus a kit, not a dedicated person.
 
 Steve, this is the whole day on paper, built on the cadence you proposed:
 45/15 as the frame, 15-minute changeovers with the MC and sponsor spots in the
@@ -76,34 +81,35 @@ at 15.
 | Friday night | Soundcheck, every act, outside and inside. Crew on site | Contract line. Nothing is built Saturday morning |
 | 08:00 | Vital crew on site (Zaal, 27 Aug) | PA power-up, line checks only |
 | 10:00 | Everyone on site | First Aid, signage, merch if allowed, MC check, stage manager's walk - section 8.3 |
-| 12:00 - 12:45 | Set 1 | Length **UNSET** - Zaal types per act; 45 is the frame. Doors. **Music starts at noon** - Zaal, 27 August. The 11:00 open is withdrawn |
-| 12:45 - 13:00 | Changeover | MC plus sponsor spots. No DJ (Zaal, 27 Aug). MC name waits |
-| 13:00 - 13:45 | Set 2 | Length **UNSET** - Zaal types per act; 45 is the frame |
-| 13:45 - 14:00 | Changeover | MC plus sponsor spots |
-| 14:00 - 14:45 | Set 3 | Length **UNSET** - Zaal types per act; 45 is the frame |
+| 12:00 - 12:05 | Open on the mic | Implied by Zaal's 12:05 downbeat. What is said, and by whom: UNSET. Music starts at noon |
+| 12:05 - 12:35 | The Crown Vics | 30 min - **Zaal's typed order, 27 Aug 20:0x.** The act is PROPOSED: Steve confirms the booking; the slot is our plan, not a booking |
+| 12:35 - 12:50 | Changeover | MC plus sponsor spots |
+| 12:50 - | Acadia Rising | **PROPOSED order** - Zaal: "maybe Sen after Crown Vics". Length UNSET |
+| - 14:45 | Werb, Lyons Den, Dcoop | Order **UNSET** - Zaal types it, and not by energy. Lengths UNSET. Two changeovers of 15 between them, MC plus sponsor spots |
 | 14:45 - 15:00 | Changeover | MC plus sponsor spots |
-| 15:00 - 15:45 | Set 4 | Length **UNSET** - Zaal types per act; 45 is the frame |
+| 15:00 - 15:45 | Fellenz | 45 min - **Zaal's typed order.** Closes the outdoor block, as agreed 24 Aug |
 | 15:45 - 16:00 | Changeover | Battle stage reset. MC plus sponsor spots, handing to Hurricane |
 | 16:00 - 17:45 | WaveWarZ | Opens with the WaveWarZ story, Hurricane with Stilo (Zaal, 27 Aug: it exists, inside the block). Length UNSET. Then the battles, our artists, our MC. Audience decides |
 | 17:45 - 18:00 | Result, play-out, crowd walks | **Stilo DJs the transition out of WaveWarZ** (standup 24 Aug). Minute by minute in section 8.5 |
 | 18:00 | Outdoor stage down | Strike begins. Who, and by when the street is clear: section 8.10 |
 
-**Four slots on the frame, five confirmed acts.** On 45 and 15, noon to four is
-exactly four sets, and we hold five. Whether that is really a problem depends
-on the set lengths, which Zaal is typing per act - **UNSET** until then, and
-nothing below assumes 30 or 45 for anyone. If the typed lengths fit five sets
-and four changeovers into 240 minutes, there is no fifth-act question. If they
-do not, where the fifth act goes is our decision, not yours - **UNSET**, Zaal.
-The options on our table, in the order we like them:
+**What does not fit, in Zaal's own numbers.** With The Crown Vics at
+12:05-12:35 and Fellenz at 15:00-15:45 typed, the middle of the day is
+12:50 to 14:45: **115 minutes** for four acts (Acadia Rising, Werb, Lyons Den,
+Dcoop) and three 15-minute changeovers. That is 70 minutes of music across
+four sets, 17 or 18 minutes each - shorter than anyone plays. Something gives,
+and it is our decision, not yours - **UNSET**, Zaal:
 
-1. **It opens the evening.** The fifth confirmed act takes 18:15 or 18:30 inside
-   Black Moon. That also gives the indoor block a confirmed act while North
-   Creek is still a proposal, which is the bigger problem anyway.
-2. **The typed lengths decide it.** Five sets plus four 15-minute changeovers
-   must total 240; the lengths say whether they do.
-3. **Ten-minute changeovers on a shared backline** (8.1). Buys 20 minutes.
-4. **One act to reserve**, first call if anyone drops. Nobody wants to be told
-   this, so it is last.
+1. **One of the four opens the evening** indoors at 18:15 or 18:30. That
+   also gives the in-booking block a confirmed act while North Creek is a
+   proposal. Three sets in 115 minutes with two changeovers is 85 minutes of
+   music, 28 each.
+2. **The Crown Vics slot is a proposal.** If Steve does not confirm them,
+   12:05-12:50 returns to the block: 160 minutes for four acts and three
+   changeovers, 115 of music, 28 each.
+3. **Ten-minute changeovers on a shared backline** (8.1) returns 15 minutes.
+4. **Set lengths as typed.** Zaal fixes each set; if the typed numbers fit,
+   this paragraph deletes itself.
 
 ### Indoors - Black Moon Public House
 
@@ -122,10 +128,10 @@ where already public; the rest stay generic until 1 September.
 
 | Slot | Act | Tag | Source |
 |------|-----|-----|--------|
-| Sets 1-4 on the frame, 12:00-15:45, and possibly a fifth | Five acts, two already public (Werb, Lyons Den), three held for the reveal | **Confirmed** | Lineup confirmations, PR #45; roster on the team page. Set lengths UNSET (Zaal types per act); the fifth act's placement follows from them |
+| Fellenz 15:00-15:45 (typed); Acadia Rising second (proposed order); Werb, Lyons Den, Dcoop in an order Zaal types | Five confirmed acts, two already public (Werb, Lyons Den) | **Confirmed** | Lineup confirmations, PR #45. Lengths UNSET except Fellenz's 45. Whether all five fit outdoors is the question above |
 | 16:00-17:45 | Four battlers and the MC | **WaveWarZ** | Our block, our roster. The voting-window interludes are Hurricane plus sponsor spots - no DJ |
 | Every changeover, 12:45-16:00 | The MC plus sponsor spots - no DJ | **Decided** (Zaal, 27 Aug, Q16) | DJ Aquavantes is not on the day. MC name waits |
-| Daytime reserve, or a slot if Zaal places him | The Crown Vics | **PROPOSED** | Steve's draft; Steve confirms. Any position in the order is Zaal's plan, not a booking |
+| 12:05-12:35, in Zaal's typed order | The Crown Vics | **PROPOSED** | Steve's draft; Steve confirms the booking. The slot is Zaal's plan, not a booking |
 | Indoor, unplaced | The Somes Sound | **PROPOSED** | Steve's draft; Zaal 27 Aug. Also the open PA question |
 | 18:00-21:00 | North Creek | **PROPOSED** | Steve's draft; Steve confirms. Block is IN BOOKING |
 | 21:00-close, and the 17:55-18:15 transition | Our DJ | **Confirmed** on our side | The DJ's own message, gdoc snapshot 27 Aug; transition decided at the 24 Aug standup |
@@ -161,14 +167,15 @@ rather than assume.
 **The daytime is full, and then some.** Worth saying plainly, because we have
 been asking you the opposite. Under the old two-stage design the day needed
 roughly twice the sets and we were about half short. One venue at a time from
-noon means four slots and we hold five confirmed acts, so there is no blank to
-fill - the opposite problem. Your standing offer from 15 August to fill blanks
+noon, with your Crown Vics at 12:05 and Fellenz at 15:00, leaves less room than
+we have acts for - the opposite problem to a blank. Your standing offer from 15 August to fill blanks
 with local acts is now our reserve rather than a need, and it is genuinely
 useful as a reserve, because we have no spare if somebody drops in September.
 
 **Names.** Two of the confirmed acts are already public. The rest stay off
-anything published until the reveal on 1 September, so this document keeps the
-slots generic. You will get the names-attached version directly.
+anything published until the reveal on 1 September. This working copy carries
+names in the grid because the order is being built; strip them before this
+goes to you, or it goes after 1 September.
 
 ---
 
@@ -186,7 +193,7 @@ Everything on your list, with an owner and where it stands.
 | 6 | North Creek, after party 6-9pm indoor | Steve | **PROPOSED, not confirmed** | You offered to underwrite it, and on our side all three acts from your draft are still proposals rather than bookings. See open item 4 |
 | 7 | Indoor and outdoor PA | Steve | Sourcing | The one thing everything else waits on. See open item 1 and 5 |
 | 8 | DJ on the outdoor stage, gap fill | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. The changeovers are the MC plus sponsor spots, and Stilo plays out at six. No DJ on the day |
-| 9 | Hosting part of the day | Steve | Offered 17 August, undefined | Tell us which part you want and it is yours |
+| 9 | Hosting part of the day | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. Our own crew holds the mic all day, outside and in. If you want a moment on it at six to welcome the room, it is yours |
 
 ---
 
@@ -200,7 +207,8 @@ Everything on your list, with an owner and where it stands.
 | Tent coverage, rain or shine | Wallace Events | Confirmed partner |
 | Event insurance certificate for the City | ZAO | In progress with a local broker. Permit condition, we own it |
 | City permit and Art of Ellsworth coordination | ZAO | In progress |
-| Stage manager, load-in and strike crew, first aid | ZAO | Being named this week |
+| Stage manager, load-in and strike crew | ZAO | Names wait (Zaal, 27 Aug) |
+| First Aid | ZAO | **No dedicated person** (Zaal, 27 Aug: "it's small"). A named contact - UNSET - plus a prepared kit on site. The permit side of first aid is the CITY lane's |
 | **Changeover cover, 12:45 to 16:00** | **The MC, plus sponsor spots** | **Decided** (Zaal, 27 Aug): no DJ. Four gaps, 15 minutes each, on one stage, filled by the MC introducing, thanking partners and repeating the 6pm move. The MC's name waits (people map). Sponsor spot copy is the sponsor deck's to write |
 | Wristbands and lanyards | ZAO, proposed | See open item 3 |
 | Signage and wayfinding, street to bar | ZAO | To build |
@@ -350,9 +358,9 @@ crew is on site at 08:00 and everyone by 10:00.
 | Friday, time UNSET | Load-in: PA, backline, tent, signage, tables. Soundcheck, every act, outside and inside | Crew on site (names wait). PA arrival is Steve's, on the spec (open item 1). Which parklet circuits, and vehicle access for load-in, are on Roddy's list | Friday times **UNSET**; gated on the City's answer and the PA spec |
 | 08:00 Saturday | Vital crew on site. PA power-up | Sound operator: name waits | Decided (Zaal) |
 | 08:00 - 10:00 | Line checks, confirm only - every act was checked Friday | Sound operator | Contract line |
-| 10:00 | Everyone on site. First Aid position set, signage up, wayfinding street-to-bar in place | First Aid lead: name waits. Signage: ZAO | Decided (Zaal) |
+| 10:00 | Everyone on site. First Aid kit in position with its named contact on site, signage up, wayfinding street-to-bar in place | First Aid contact: UNSET. Signage: ZAO | Decided (Zaal): no dedicated First Aid person |
 | 10:00 | Merch table, if a vendor row exists at all. Whether the parklet allows a vendor, the fee and the cap were the Aug 24 agenda block Roddy was not there for | **UNSET** until the City answers | On Roddy's list |
-| 11:00 | MC mic check, sponsor spot scripts on the desk | MC: name waits. Scripts: sponsor deck | No DJ on the day |
+| 11:00 | MC mic check, sponsor spot scripts on the desk | MC: ZAO crew, name UNSET (Zaal: not Steve). Scripts: sponsor deck | No DJ on the day |
 | 11:30 | Stage manager's walk: every act's arrival confirmed, the overrun rule said out loud | Stage manager: name waits | Act call time **UNSET** |
 | 12:00 | Doors. Set 1 | | Music starts at noon - Zaal, 27 August |
 
@@ -386,7 +394,7 @@ the fifteen minutes.
 | 18:00 - 18:15 | Somebody at Black Moon's door, wristbands or lanyards checked for the basement only, everyone else straight in | **UNSET** - proposed Steve or Katina, it is their door | Not agreed |
 | 18:00 - 18:15 | Somebody on the street between the two buildings pointing, so nobody drifts to their car | **UNSET** - a crew name, not a performer | Not named |
 | 18:15 or 18:30 | The live block starts, if North Creek is booked. Otherwise Stilo holds the room (8.6) | Steve's answer, drafted in `docs/drafts/steve-followup-2026-08-27.md` | PROPOSED |
-| The mic handoff | Hurricane's last words outside are the first words inside: the host mic goes off with the outdoor PA, and a house mic is live indoors before the crowd arrives. If Steve MCs the evening, this is where he takes over - his MC scope has been agreed in principle since 17 Aug and never defined | Steve's MC scope: **UNSET** | Ask Steve which part of the day he wants (section 3, row 9) |
+| The mic handoff | Hurricane's last words outside are the first words inside: the host mic goes off with the outdoor PA, and a house mic is live indoors before the crowd arrives. ZAO crew holds the mic all day (Zaal, 27 Aug) - the evening MC is ours, name UNSET. Steve may welcome the room if he wants to | Evening MC: **UNSET** | Not Steve |
 
 Signage for the walk sits in section 4 under "to build".
 
@@ -397,8 +405,8 @@ proposed, not agreed.
 
 | Slot | If it falls through | Then |
 |------|---------------------|------|
-| Any daytime slot, while the fifth act is unplaced | The fifth confirmed act takes it. This is the one fallback that costs nothing | The fit problem in section 2 solves itself for that day |
-| Any daytime slot, once the fifth act is placed | First: the next act comes up early if it is ready, and the MC holds the room with sponsor spots until it is. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the MC, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
+| Any daytime slot, while the fit in section 2 is unresolved | The act that did not fit takes it. This is the one fallback that costs nothing | The fit problem solves itself for that day |
+| Any daytime slot, once the fit is resolved | First: the next act comes up early if it is ready, and the MC holds the room with sponsor spots until it is. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the MC, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
 | WaveWarZ, a battler drops | The bracket shape is Stilo and Hurricane's to overwrite; with three competitors it still runs. The block stays 16:00-18:00 | Their call |
 | The MC is not there | Every gap is silent. Fallback: Zaal on the mic, sponsor spots read from the sheet. There is no DJ to fall back to (Zaal, 27 Aug) | MC name waits |
 | 18:00-21:00, North Creek not booked | Stilo's DJ set opens at 18:00 and holds the room, which is exactly what he was doing on the 17 Aug version of the evening. The block prints as in booking until Steve answers | Real fallback - Stilo is confirmed on our side |
@@ -428,9 +436,9 @@ ask for a lineup change; it asked that the choice be made on purpose.
 
 | Decision | Who | State |
 |----------|-----|-------|
-| Whether sets 1 and 2 (from noon; times move with the typed lengths) are placed with that crowd in mind, or the running order is by other logic | Dcoop, set schedule, with Zaal | **UNSET** |
-| The MC names Art of Ellsworth and Maine Craft Weekend at the noon open and at every changeover, and points people to the craft fair and the shops - this is the "spend it in Ellsworth" line the public page already carries | Whoever holds the mic 11:00-16:00: **UNSET** | Proposed. Costs nothing, decides nothing about the lineup |
-| Whether Steve's MC slot is the daytime, which would put a local voice on the family crowd | Steve | Tied to his undefined MC scope |
+| The running order | Zaal types it himself (27 Aug, Q17) - not by energy, and not by us. The Crown Vics first and Fellenz last are typed; Acadia Rising second is his "maybe" | Waiting on Zaal |
+| The MC names Art of Ellsworth and Maine Craft Weekend at the noon open and at every changeover, and points people to the craft fair and the shops - this is the "spend it in Ellsworth" line the public page already carries | The daytime MC, ZAO crew: **UNSET** | Proposed. Costs nothing, decides nothing about the lineup |
+| Who holds the daytime mic | ZAO crew, not Steve (Zaal, 27 Aug). Name UNSET | Names wait |
 
 ### 8.9 Content capture, in the run of show
 
@@ -569,7 +577,7 @@ open items at the end still stand. The live message is the city lane's
 | Art of Ellsworth umbrella versus the Ch.14 45 day notice | City of Ellsworth | Whether a closed window applied to us | Open since July |
 
 Until the top answers land, the public schedule prints noon to six outdoors, the
-6 to 9 block as in booking with no downbeat, and promises no DJ anywhere. The fifth act's placement changes nothing public until it is made:
+6 to 9 block as in booking with no downbeat, and promises no DJ anywhere. Which act moves, if one does, changes nothing public until it is decided:
 the daytime block is "live music noon to four" either way, and the evening is
 in booking either way.
 
@@ -592,4 +600,7 @@ in booking either way.
   night, Q16: no DJ, changeovers are MC plus sponsor spots; Steve's remaining
   acts stay PROPOSED until he confirms; any order is Zaal's plan, not a booking.
   Grill round 2 (20:1x): crew Friday night, 08:00 vital, 10:00 everyone; Friday
-  covers every act; the WaveWarZ story is at 16:00; set lengths UNSET per act
+  covers every act; the WaveWarZ story is at 16:00; set lengths UNSET per act.
+  Grill round 3 (20:2x) and the 20:0x order: Crown Vics 12:05-12:35, Fellenz
+  15:00-15:45, Acadia Rising second (maybe); Zaal types the rest; Steve does not
+  MC; First Aid is a contact plus a kit
