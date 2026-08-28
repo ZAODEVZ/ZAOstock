@@ -75,6 +75,9 @@ not ours to assume.
 
 ## 5. Draft - the ask to the Fire Department
 
+> **HELD - WAITING ON DCOOP.** Zaal, 28 Aug 05:1x: this goes only AFTER Dcoop
+> confirms his fire slot. Until then it is not sent and not scheduled.
+
 **DO NOT SEND. Nothing sends tonight.** Goes to the Ellsworth Fire Department's
 public contact (in doc 1070), with Roddy told so the City hears it once. Reworked
 from the earlier version: it no longer asks for a person.
