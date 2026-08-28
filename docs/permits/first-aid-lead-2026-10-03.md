@@ -100,9 +100,9 @@ from the earlier version: it no longer asks for a person.
 > a medical post - if you think we should, say so.
 >
 > One of our acts involves fire spinning - Roddy at Parks and Recreation has
-> confirmed it - and the performer is handling the open-flame paperwork with you
-> separately and brings his own extinguisher and water. Mentioning it so it is
-> not a surprise in the same file.
+> confirmed it. The performer is Dcoop, who also plays a set; he is handling the
+> open-flame paperwork with you separately and brings his own extinguisher and
+> water. Mentioning it so it is not a surprise in the same file.
 >
 > Thank you - happy to come by the station.
 

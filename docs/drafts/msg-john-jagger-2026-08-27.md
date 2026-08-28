@@ -41,14 +41,14 @@ The event, so you can scope it:
   City's summer concert series, plus live music battles in the late afternoon.
 - Expected attendance: 200-250 in person, and around 1,000 online (the online side does not touch the site)
 - Fire performance: one act involves fire spinning, and the City has confirmed
-  it can go ahead. The performer is handling the fire department's open-flame
-  paperwork directly. I understand standard
-  event liability policies exclude open-flame performance, and that the
-  performer normally carries his own fire-performer policy and issues a
-  certificate naming the event and the City as additional insureds. Tell me if
-  that is the right structure, or if you would rather the event policy carry it.
-  I am flagging it up front because I would rather you price it correctly than
-  discover it later.
+  it can go ahead. The performer is Dcoop, who is also on the bill with his own
+  set; he is handling the fire department's open-flame paperwork directly. I
+  understand standard event liability policies exclude open-flame performance
+  and that the performer normally carries his own fire-performer policy naming
+  the event and the City as additional insureds. I am asking Dcoop whether he
+  carries one. Tell me whether you need that certificate from him, or whether
+  you would rather the event policy carry it. I am flagging it up front because
+  I would rather you price it correctly than discover it later.
 
 One thing I know and one thing I need, and they are the reason I am writing
 rather than just asking for a number:
