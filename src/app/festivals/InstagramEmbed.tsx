@@ -40,7 +40,7 @@ export function InstagramEmbed({ urls }: InstagramEmbedProps) {
           className="instagram-media"
           data-instgrm-permalink={url}
           data-instgrm-version="14"
-          style={{ background: '#0a1628', border: 0, margin: 0, maxWidth: 540, width: '100%' }}
+          style={{ background: '#FAF3E6', border: 0, margin: 0, maxWidth: 540, width: '100%' }}
         />
       ))}
     </div>

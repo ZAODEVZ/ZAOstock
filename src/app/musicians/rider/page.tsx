@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { RiderForm } from './RiderForm';
+import { SITE } from '@/content/site';
+import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Artist Rider · ZAOstock',
@@ -16,46 +18,32 @@ export const metadata: Metadata = {
 
 export default function RiderPage() {
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-16">
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/musicians" className="text-xs text-gray-400 hover:text-[#f5a623]">
-            &larr; Musicians
-          </Link>
-          <span className="text-xs text-gray-500">Performance Rider</span>
-        </div>
-      </header>
-
-      <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
-        <div className="space-y-3">
-          <p className="inline-block rounded-full bg-[#f5a623]/10 px-3 py-1 text-xs text-[#f5a623] font-medium border border-[#f5a623]/30">
-            Confirmed artists
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Performance &amp; Participation Rider
-          </h1>
-          <p className="text-sm text-gray-400 leading-relaxed">
-            Thanks for being part of the lineup. This is the official rider and information packet.
-            Complete the sections that apply so we can run a smooth, organized event for everyone.
-            If you haven&apos;t been confirmed yet, start at{' '}
-            <Link href="/musicians/submit" className="text-[#f5a623] hover:underline">
+    <SiteShell>
+      <Section first className="pt-12 sm:pt-16">
+        <div className="max-w-[760px]">
+          <Eyebrow tone="denim">Confirmed artists</Eyebrow>
+          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Performance and participation rider.</h1>
+          <p className="text-lg text-ink-secondary measure m-0">
+            Thanks for being part of the lineup. This is the official rider and information packet. Complete the sections that apply. If you have not been confirmed yet, start at{' '}
+            <Link href="/musicians/submit" className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
               /musicians/submit
             </Link>{' '}
             instead.
           </p>
         </div>
-
-        <RiderForm />
-
-        <p className="text-[11px] text-gray-600 leading-relaxed border-t border-white/[0.08] pt-4">
-          The host is not responsible for lost, stolen, or damaged property. Questions about your
-          rider? Email{' '}
-          <a href="mailto:info@thezao.com" className="text-gray-400 hover:text-[#f5a623]">
-            info@thezao.com
-          </a>
-          .
-        </p>
-      </div>
-    </div>
+      </Section>
+      <Section>
+        <div className="max-w-[760px]">
+          <RiderForm />
+          <p className="text-sm text-ink-muted mt-6 m-0">
+            The host is not responsible for lost, stolen or damaged property. Questions about your rider: email{' '}
+            <a href={`mailto:${SITE.contact}`} className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
+              {SITE.contact}
+            </a>
+            .
+          </p>
+        </div>
+      </Section>
+    </SiteShell>
   );
 }

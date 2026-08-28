@@ -59,8 +59,8 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   if (status === 'success') {
     return (
       <div className="text-center py-2">
-        <p className="text-[#f5a623] font-bold">You&apos;re on the list!</p>
-        <p className="text-sm text-gray-400 mt-1">We&apos;ll notify you when there&apos;s news.</p>
+        <p className="text-red-600 font-bold">You&apos;re on the list!</p>
+        <p className="text-sm text-ink-muted mt-1">We&apos;ll notify you when there&apos;s news.</p>
       </div>
     );
   }
@@ -68,8 +68,8 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   if (status === 'duplicate') {
     return (
       <div className="text-center py-2">
-        <p className="text-[#f5a623] font-medium">You&apos;ve already RSVPed!</p>
-        <p className="text-sm text-gray-400 mt-1">We have your info &mdash; stay tuned.</p>
+        <p className="text-red-600 font-medium">You&apos;ve already RSVPed!</p>
+        <p className="text-sm text-ink-muted mt-1">We have your info &mdash; stay tuned.</p>
       </div>
     );
   }
@@ -86,7 +86,7 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
           onChange={(e) => setName(e.target.value)}
           required
           aria-required="true"
-          className="flex-1 bg-[#0a1628] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/50"
+          className="zs-input"
         />
         <label htmlFor="rsvp-email" className="sr-only">Email address</label>
         <input
@@ -98,18 +98,18 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
           required
           aria-required="true"
           aria-describedby={status === 'error' ? 'rsvp-error' : undefined}
-          className="flex-1 bg-[#0a1628] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/50"
+          className="zs-input"
         />
       </div>
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-4 py-2.5 text-sm transition-colors disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
+        className="zs-btn zs-btn--primary w-full"
       >
         {status === 'loading' ? 'Submitting...' : 'RSVP'}
       </button>
       {status === 'error' && (
-        <p id="rsvp-error" role="alert" className="text-red-400 text-xs text-center">{errorMsg}</p>
+        <p id="rsvp-error" role="alert" className="text-red-700 text-xs text-center">{errorMsg}</p>
       )}
     </form>
   );

@@ -1,16 +1,25 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
-// Dedicated, branded ZAOstock social card. Generated at the root so every
-// route inherits it (unless a page sets its own openGraph.images).
-export const alt = 'ZAOstock 2026 - a one-day artist-built music festival in Ellsworth, Maine';
+// The badge on paper at 1200x630, per docs/design/redesign-2026-08-28.md. Every
+// route inherits it unless a page sets its own openGraph.images. Rendered once
+// at build; the mono badge (86 KB) keeps the response small.
+export const alt = 'ZAOstock 2026: a free, one-day, artist-built music festival in Ellsworth, Maine. Saturday 3 October 2026.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const BG = '#0a1628';
-const FG = '#e2e8f0';
-const ACCENT = '#f5a623';
+const PAPER = '#F2E6D3';
+const CARD = '#FAF3E6';
+const INK = '#241E15';
+const RED = '#D2402A';
+const GOLD = '#A8721C';
+const DENIM = '#2E6494';
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const badge = await readFile(path.join(process.cwd(), 'public', 'brand', 'logos', 'zaostock26_badge_official.png'));
+  const badgeSrc = `data:image/png;base64,${badge.toString('base64')}`;
+
   return new ImageResponse(
     (
       <div
@@ -18,55 +27,64 @@ export default function OpengraphImage() {
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column',
+          alignItems: 'center',
           justifyContent: 'space-between',
-          background: BG,
-          backgroundImage: `radial-gradient(circle at 80% 0%, rgba(245,166,35,0.18), transparent 45%)`,
-          padding: 72,
-          fontFamily: 'sans-serif',
+          background: PAPER,
+          padding: '56px 72px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: INK,
         }}
       >
-        {/* Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 72,
-              height: 72,
-              borderRadius: 16,
-              background: ACCENT,
-              color: BG,
-              fontSize: 48,
-              fontWeight: 700,
-            }}
-          >
-            Z
+        <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 680 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: DENIM }}>
+            Community music festival · Ellsworth, Maine
           </div>
-          <div style={{ color: FG, fontSize: 30, letterSpacing: 2, opacity: 0.85 }}>
-            THE ZAO
+          <div style={{ display: 'flex', fontSize: 132, fontWeight: 800, lineHeight: 1, marginTop: 18, letterSpacing: -3 }}>
+            <span style={{ color: INK }}>ZAO</span>
+            <span style={{ color: GOLD }}>stock</span>
+          </div>
+          <div style={{ fontSize: 30, marginTop: 22, lineHeight: 1.3, color: '#625A4E' }}>
+            A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine.
+          </div>
+          <div style={{ display: 'flex', gap: 10, marginTop: 30 }}>
+            {['Sat 3 Oct 2026', 'Franklin St Parklet', 'Music from noon', 'Free'].map((t) => (
+              <div
+                key={t}
+                style={{
+                  display: 'flex',
+                  padding: '8px 14px',
+                  border: `2px solid ${INK}`,
+                  borderRadius: 999,
+                  background: CARD,
+                  fontSize: 17,
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                {t}
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* Title block */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', fontSize: 132, fontWeight: 700, color: FG, lineHeight: 1 }}>
-            ZAO<span style={{ color: ACCENT }}>stock</span>
-          </div>
-          <div style={{ display: 'flex', marginTop: 24, fontSize: 40, color: FG, opacity: 0.9 }}>
-            A one-day artist-built music festival
-          </div>
-        </div>
-
-        {/* Footer details */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 28, fontSize: 32, color: ACCENT }}>
-          <span style={{ display: 'flex' }}>October 3, 2026</span>
-          <span style={{ display: 'flex', color: FG, opacity: 0.5 }}>·</span>
-          <span style={{ display: 'flex', color: FG, opacity: 0.9 }}>Downtown Ellsworth, Maine</span>
+        <div
+          style={{
+            display: 'flex',
+            width: 360,
+            height: 450,
+            borderRadius: 18,
+            border: `3px solid ${INK}`,
+            boxShadow: `8px 8px 0 ${INK}`,
+            background: RED,
+            overflow: 'hidden',
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- satori needs a plain img */}
+          <img src={badgeSrc} alt="" width={360} height={450} style={{ objectFit: 'cover' }} />
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }

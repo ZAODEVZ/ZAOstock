@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/musicians/rider',
     '/artists',
     '/event-organizers',
-    '/pitch',
     '/apply',
     '/suggest',
     '/donate',
@@ -20,13 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/acadia',
     '/festivals',
     '/sponsor',
-    '/sponsor/deck',
     '/team',
     '/onepagers/overview',
     '/cypher',
     '/circles',
     '/zaoville',
     '/privacy',
+    '/press',
   ];
 
   return routes.map((path) => ({

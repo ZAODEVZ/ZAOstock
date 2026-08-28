@@ -62,9 +62,9 @@ export function SuggestForm() {
 
   if (status === 'sent') {
     return (
-      <div className="bg-gradient-to-br from-emerald-500/15 via-emerald-500/5 to-transparent rounded-xl p-6 border border-emerald-500/30 text-center">
-        <p className="text-xs uppercase tracking-wider text-emerald-400 font-bold">Thanks</p>
-        <p className="text-sm text-gray-300 mt-2">
+      <div className="zs-alert zs-alert--success">
+        <p className="text-xs uppercase tracking-wider text-olive-500 font-bold">Thanks</p>
+        <p className="text-sm text-ink-950 mt-2">
           Suggestion submitted. The team sees it in the dashboard. Refreshing the list now.
         </p>
       </div>
@@ -72,7 +72,7 @@ export function SuggestForm() {
   }
 
   return (
-    <form onSubmit={submit} className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-3">
+    <form onSubmit={submit} className="zs-form">
       <input
         type="text"
         tabIndex={-1}
@@ -90,7 +90,7 @@ export function SuggestForm() {
           onChange={(e) => setName(e.target.value)}
           placeholder="Your name (optional)"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
         <label htmlFor="suggest-contact" className="sr-only">Contact (optional)</label>
         <input
@@ -99,7 +99,7 @@ export function SuggestForm() {
           onChange={(e) => setContact(e.target.value)}
           placeholder="Contact (optional)"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
       <label htmlFor="suggest-text" className="sr-only">Your suggestion</label>
@@ -113,16 +113,16 @@ export function SuggestForm() {
         aria-describedby={status === 'error' ? 'suggest-error' : undefined}
         rows={4}
         maxLength={2000}
-        className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30 resize-none"
+        className="zs-input"
       />
       <button
         type="submit"
         disabled={busy || !suggestion.trim()}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-2.5 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
+        className="zs-btn zs-btn--primary w-full"
       >
         {busy ? 'Sending...' : 'Drop suggestion'}
       </button>
-      {status === 'error' && <p id="suggest-error" role="alert" className="text-xs text-red-400 text-center">{errMsg}</p>}
+      {status === 'error' && <p id="suggest-error" role="alert" className="zs-error">{errMsg}</p>}
     </form>
   );
 }

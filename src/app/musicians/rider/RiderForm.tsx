@@ -13,14 +13,14 @@ interface UploadedTrack {
 }
 
 const INPUT =
-  'w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30';
-const LABEL = 'text-xs text-gray-400 uppercase tracking-wider font-bold';
+  'w-full bg-paper-100 border border-ink-950/60 rounded px-3 py-2.5 text-sm text-ink-950  focus:outline-none focus:border-ink-950';
+const LABEL = 'text-xs text-ink-muted uppercase tracking-wider font-bold';
 
 function Section({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
   return (
-    <section className="space-y-4 border-t border-white/[0.08] pt-6">
-      <h2 className="text-sm font-bold text-white flex items-center gap-2">
-        <span className="text-[#f5a623] font-mono text-xs">{String(n).padStart(2, '0')}</span>
+    <section className="space-y-4 border-t border-ink-950/60 pt-6">
+      <h2 className="text-sm font-bold text-ink-950 flex items-center gap-2">
+        <span className="text-red-600 font-mono text-xs">{String(n).padStart(2, '0')}</span>
         {title}
       </h2>
       {children}
@@ -187,19 +187,19 @@ export function RiderForm() {
   if (status === 'sent') {
     return (
       <div className="space-y-5">
-        <div className="bg-[#0d1b2a] rounded-xl p-6 border border-[#f5a623]/40 space-y-3">
-          <p className="text-lg font-bold text-[#f5a623]">Rider received.</p>
-          <p className="text-sm text-gray-300 leading-relaxed">
+        <div className="bg-paper-200 rounded-xl p-6 border border-ink-950 space-y-3">
+          <p className="text-lg font-bold text-red-600">Rider received.</p>
+          <p className="text-sm text-ink-950 leading-relaxed">
             Thanks. The music team has your responses. If you requested any schedule or equipment
             changes, someone will follow up at the email you gave us.
           </p>
         </div>
 
         {slug && token ? (
-          <div className="bg-[#0d1b2a] rounded-xl p-6 border border-white/[0.08] space-y-4">
+          <div className="zs-form">
             <div>
-              <p className="text-sm font-bold text-white">Upload your backing tracks</p>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+              <p className="text-sm font-bold text-ink-950">Upload your backing tracks</p>
+              <p className="text-xs text-ink-muted mt-1 leading-relaxed">
                 Optional but preferred. Add each track in set order, labeled with the artist and song
                 name. Up to 500 MB per file. For larger zipped sets, paste a link in the rider above or
                 reach out to DCoop.
@@ -211,10 +211,10 @@ export function RiderForm() {
                 {uploads.map((u, i) => (
                   <li
                     key={i}
-                    className="flex items-center justify-between text-xs bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2"
+                    className="flex items-center justify-between text-xs bg-paper-100 border border-ink-950/60 rounded px-3 py-2"
                   >
-                    <span className="text-gray-200 truncate">{u.filename}</span>
-                    <span className="text-gray-500 ml-3 shrink-0">
+                    <span className="text-ink-950 truncate">{u.filename}</span>
+                    <span className="text-ink-muted ml-3 shrink-0">
                       {(u.size / 1024 / 1024).toFixed(1)} MB
                     </span>
                   </li>
@@ -231,10 +231,10 @@ export function RiderForm() {
                 const f = e.target.files?.[0];
                 if (f) handleUpload(f);
               }}
-              className="block w-full text-xs text-gray-400 file:mr-3 file:rounded file:border-0 file:bg-[#f5a623] file:px-3 file:py-2 file:text-xs file:font-bold file:text-black hover:file:bg-[#ffd700] disabled:opacity-50"
+              className="block w-full text-xs text-ink-muted file:mr-3 file:rounded file:border-0 file:bg-gold-400 file:px-3 file:py-2 file:text-xs file:font-bold file:text-ink-950 hover:file:bg-gold-500 disabled:opacity-50"
             />
-            {uploading ? <p className="text-xs text-gray-400">Uploading...</p> : null}
-            {uploadErr ? <p className="text-xs text-rose-400">{uploadErr}</p> : null}
+            {uploading ? <p className="text-xs text-ink-muted">Uploading...</p> : null}
+            {uploadErr ? <p className="text-xs text-red-700">{uploadErr}</p> : null}
           </div>
         ) : null}
       </div>
@@ -257,13 +257,13 @@ export function RiderForm() {
       <Section n={1} title="Artist information">
         <div className="space-y-1.5">
           <label htmlFor="rider-name" className={LABEL}>
-            Artist / band name <span className="text-[#f5a623]">*</span>
+            Artist / band name <span className="text-red-600">*</span>
           </label>
           <input id="rider-name" type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="What you go by on a stage" className={INPUT} />
         </div>
         <div className="space-y-1.5">
           <label htmlFor="rider-email" className={LABEL}>
-            Email <span className="text-[#f5a623]">*</span>
+            Email <span className="text-red-600">*</span>
           </label>
           <input id="rider-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@somewhere.com" className={INPUT} />
         </div>
@@ -287,7 +287,7 @@ export function RiderForm() {
 
       {/* 02 Schedule */}
       <Section n={2} title="Performance schedule">
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           Set times are assigned by event management and may shift slightly. All artists are expected
           to arrive by the designated arrival time. Requests for adjustments are considered if
           submitted before the deadline.
@@ -300,8 +300,8 @@ export function RiderForm() {
               onClick={() => setScheduleResp(v)}
               className={`rounded border px-3 py-2.5 text-sm font-medium transition-colors ${
                 scheduleResp === v
-                  ? 'border-[#f5a623]/50 bg-[#f5a623]/10 text-[#f5a623]'
-                  : 'border-white/[0.08] bg-[#0a1628] text-gray-300 hover:border-white/20'
+                  ? 'border-ink-950 bg-gold-400 text-red-600'
+                  : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
               }`}
             >
               {v === 'accepted' ? 'ACCEPTED' : 'Request a change'}
@@ -318,7 +318,7 @@ export function RiderForm() {
 
       {/* 03 Equipment */}
       <Section n={3} title="Equipment check">
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           We provide DJ sound management, wireless + headset mics, and stage monitors. Outside of
           essentials, artists provide their own equipment. Flag anything vital or needing conversion
           (vocal modulators, guitars, DI, anything not listed).
@@ -331,8 +331,8 @@ export function RiderForm() {
               onClick={() => setEquipResp(v)}
               className={`rounded border px-3 py-2.5 text-sm font-medium transition-colors ${
                 equipResp === v
-                  ? 'border-[#f5a623]/50 bg-[#f5a623]/10 text-[#f5a623]'
-                  : 'border-white/[0.08] bg-[#0a1628] text-gray-300 hover:border-white/20'
+                  ? 'border-ink-950 bg-gold-400 text-red-600'
+                  : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
               }`}
             >
               {v === 'accepted' ? 'ACCEPTED' : 'Additional needs'}
@@ -349,7 +349,7 @@ export function RiderForm() {
 
       {/* 04 Backing tracks */}
       <Section n={4} title="Audio & backing tracks">
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           Paste links to your set tracks (labeled in order with artist + song). You can also upload
           files directly after you submit this rider.
         </p>
@@ -359,9 +359,9 @@ export function RiderForm() {
 
       {/* 05 Merch */}
       <Section n={5} title="Merchandise">
-        <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+        <label className="zs-check">
           <input type="checkbox" checked={merchSelling} onChange={(e) => setMerchSelling(e.target.checked)} className="mt-1" />
-          <span className="text-sm text-gray-200">I plan to sell merchandise</span>
+          <span className="text-sm text-ink-950">I plan to sell merchandise</span>
         </label>
         {merchSelling ? (
           <div className="space-y-4 pl-1">
@@ -379,8 +379,8 @@ export function RiderForm() {
                     onClick={() => setMerchTable(v)}
                     className={`rounded border px-3 py-2.5 text-sm font-medium transition-colors ${
                       merchTable === v
-                        ? 'border-[#f5a623]/50 bg-[#f5a623]/10 text-[#f5a623]'
-                        : 'border-white/[0.08] bg-[#0a1628] text-gray-300 hover:border-white/20'
+                        ? 'border-ink-950 bg-gold-400 text-red-600'
+                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
                     }`}
                   >
                     {v === 'need_table' ? 'Need table space' : 'Providing my own'}
@@ -392,7 +392,7 @@ export function RiderForm() {
               <label htmlFor="rider-merch-manager" className={LABEL}>Who is managing your merch?</label>
               <input id="rider-merch-manager" type="text" value={merchManager} onChange={(e) => setMerchManager(e.target.value)} placeholder="You, or someone on your team" className={INPUT} />
             </div>
-            <p className="text-[11px] text-gray-600 leading-relaxed">
+            <p className="text-[11px] text-ink-muted leading-relaxed">
               Selling merch? Arrive before 2 PM to secure a spot. The host is not responsible for
               lost, stolen, or damaged merchandise.
             </p>
@@ -402,13 +402,13 @@ export function RiderForm() {
 
       {/* 06 Interview */}
       <Section n={6} title="Pre-show artist interview">
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           Optional featured interview (facilitated by DCoop) for event promo, artist spotlights, and
           social content.
         </p>
-        <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+        <label className="zs-check">
           <input type="checkbox" checked={interview} onChange={(e) => setInterview(e.target.checked)} className="mt-1" />
-          <span className="text-sm text-gray-200">Yes, I&apos;m interested in an interview</span>
+          <span className="text-sm text-ink-950">Yes, I&apos;m interested in an interview</span>
         </label>
         {interview ? (
           <div className="space-y-4 pl-1">
@@ -422,8 +422,8 @@ export function RiderForm() {
                     onClick={() => setInterviewFormat(v)}
                     className={`rounded border px-2 py-2.5 text-xs font-medium transition-colors ${
                       interviewFormat === v
-                        ? 'border-[#f5a623]/50 bg-[#f5a623]/10 text-[#f5a623]'
-                        : 'border-white/[0.08] bg-[#0a1628] text-gray-300 hover:border-white/20'
+                        ? 'border-ink-950 bg-gold-400 text-red-600'
+                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
                     }`}
                   >
                     {v === 'in_person' ? 'In-person' : v === 'virtual' ? 'Virtual' : 'Either'}
@@ -441,13 +441,13 @@ export function RiderForm() {
 
       {/* 07 Retreat */}
       <Section n={7} title="Artist retreat & growth session">
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           Optional collaborative session (facilitated by DCoop) to build relationships, share
           resources, and strengthen the local music community. In-person is preferred.
         </p>
-        <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+        <label className="zs-check">
           <input type="checkbox" checked={retreat} onChange={(e) => setRetreat(e.target.checked)} className="mt-1" />
-          <span className="text-sm text-gray-200">Yes, I&apos;m interested in the retreat</span>
+          <span className="text-sm text-ink-950">Yes, I&apos;m interested in the retreat</span>
         </label>
         {retreat ? (
           <div className="space-y-4 pl-1">
@@ -461,8 +461,8 @@ export function RiderForm() {
                     onClick={() => setRetreatFormat(v)}
                     className={`rounded border px-2 py-2.5 text-xs font-medium transition-colors ${
                       retreatFormat === v
-                        ? 'border-[#f5a623]/50 bg-[#f5a623]/10 text-[#f5a623]'
-                        : 'border-white/[0.08] bg-[#0a1628] text-gray-300 hover:border-white/20'
+                        ? 'border-ink-950 bg-gold-400 text-red-600'
+                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
                     }`}
                   >
                     {v === 'in_person' ? 'In-person' : v === 'virtual' ? 'Virtual' : 'Either'}
@@ -480,31 +480,31 @@ export function RiderForm() {
 
       {/* 08 Acknowledgement */}
       <Section n={8} title="Artist acknowledgement">
-        <p className="text-xs text-gray-400 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           By checking below and submitting, I acknowledge I have read and understand this rider and
           agree to abide by the event guidelines. I grant approved event staff permission to capture
           and use photography, video, livestream clips, and recap content from the event. I retain
           ownership of my original music and intellectual property. I understand this event is
           designed to foster genuine community and collaboration.
         </p>
-        <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+        <label className="zs-check">
           <input type="checkbox" checked={acknowledged} onChange={(e) => setAcknowledged(e.target.checked)} className="mt-1" />
-          <span className="text-sm text-gray-200">I have read and agree to the above.</span>
+          <span className="text-sm text-ink-950">I have read and agree to the above.</span>
         </label>
         <div className="space-y-1.5">
           <label htmlFor="rider-signature" className={LABEL}>
-            Type your name to sign <span className="text-[#f5a623]">*</span>
+            Type your name to sign <span className="text-red-600">*</span>
           </label>
           <input id="rider-signature" type="text" value={signature} onChange={(e) => setSignature(e.target.value)} placeholder="Your full name" className={INPUT} />
         </div>
       </Section>
 
-      {status === 'error' ? <p className="text-sm text-rose-400">{errMsg || 'Something went wrong. Try again.'}</p> : null}
+      {status === 'error' ? <p className="text-sm text-red-700">{errMsg || 'Something went wrong. Try again.'}</p> : null}
 
       <button
         type="submit"
         disabled={busy}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:bg-[#f5a623]/40 text-black font-bold rounded-lg px-4 py-3 text-sm transition-colors"
+        className="zs-btn zs-btn--primary w-full"
       >
         {busy ? 'Submitting...' : 'Submit rider'}
       </button>

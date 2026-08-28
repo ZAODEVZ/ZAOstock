@@ -1,747 +1,238 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { CountdownTimer } from '@/components/CountdownTimer';
-import { RSVPForm } from './RSVPForm';
-import { getPublicMembers, getStockCounts, type PublicMember } from '@/lib/members';
-import { FactStrip } from '@/components/festival/FactStrip';
-import { SectionHeader } from '@/components/festival/SectionHeader';
-import { StatTile } from '@/components/festival/StatTile';
-import { TierPanel } from '@/components/festival/TierPanel';
-import { PastEventCard } from '@/components/festival/PastEventCard';
-import { StickyActionBar } from '@/components/festival/StickyActionBar';
-import { TeamMosaic } from '@/components/festival/TeamMosaic';
-import { NoiseOverlay } from '@/components/festival/NoiseOverlay';
-import { ScrollEyebrow } from '@/components/festival/ScrollEyebrow';
-import { AnimatedGradient } from '@/components/festival/AnimatedGradient';
-import { TiltCard } from '@/components/festival/TiltCard';
 import { FESTIVAL } from '@/content/festival';
+import { SITE, DAY, PUBLIC_LINEUP, WAVEWARZ, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
+import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList } from '@/components/poster';
 
-// NOTE (attempted, reverted): switching this to `revalidate = 60` for ISR
-// would cut real database load, but it requires SUPABASE_SERVICE_ROLE_KEY to
-// be available at BUILD time (Next tries to statically prerender the page),
-// not just request time. Couldn't verify locally whether Vercel's build step
-// has that var in scope for this project - reverted to force-dynamic rather
-// than risk breaking a real deploy. Worth revisiting with a real Vercel-
-// connected build test.
-export const dynamic = 'force-dynamic';
+// The one link that goes in the email. Seven sections, in the order
+// docs/design/redesign-2026-08-28.md sets, and no eighth. Reads nothing from
+// the database, so it prerenders and needs no env to render.
+//
+// Overrides relayed to SITE on 2026-08-27 that beat the spec: Lyons Den is
+// the only public act (Werb not fully confirmed, 20:4x); no changeover DJ
+// (20:0x); DJ set from six then live music to close (ros-v4); no attendance
+// figure on the site (19:3x).
 
 export const metadata: Metadata = {
-  title: 'ZAOstock | Community Music Festival',
+  title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
   description:
-    'A community-built outdoor music festival in Ellsworth, Maine. October 3, 2026 at the Franklin Street Parklet. Independent artists. One stage. All day. Free to attend.',
+    'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026. Independent artists, one stage, music from noon.',
   openGraph: {
-    title: 'ZAOstock | Community Music Festival',
-    description: 'A community-built outdoor music festival in Ellsworth, Maine. October 3, 2026.',
+    title: 'ZAOstock 2026',
+    description: 'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026.',
     url: 'https://zaostock.com',
   },
 };
 
-const FACTS = [
-  { label: 'Date', value: FESTIVAL.shortDate },
-  { label: 'Venue', value: FESTIVAL.shortVenue },
-  { label: 'Time', value: FESTIVAL.window },
-  { label: 'Lineup', value: 'Independent Artists' },
-];
+const STRIP = [
+  { label: 'Date', value: 'Sat 3 Oct 2026' },
+  { label: 'Place', value: FESTIVAL.shortVenue },
+  { label: 'Music from', value: SITE.musicFrom },
+  { label: 'Cost', value: 'Free' },
+] as const;
 
-const SPONSOR_OFFERINGS = [
+const DOORS = [
   {
-    category: 'Main Stage Sponsor',
-    number: '01',
-    items: [
-      'Named credit on stage banner and signage',
-      'Booth or table space on-site',
-      'Welcome bag inclusion',
-      'Live verbal credit during the event',
-      'Co-presented in all printed materials',
-    ],
+    eyebrow: 'For musicians',
+    title: 'Made music nobody is paying you to make?',
+    body: 'Submit for the lineup. A real stage, a real crowd, a full recording of your set.',
+    href: '/musicians',
   },
   {
-    category: 'Broadcast Sponsor',
-    number: '02',
-    items: [
-      'Named credit on festival website with backlink',
-      'Livestream overlay credit',
-      'Sponsored segment plus interview feature',
-      'Social campaign across Farcaster, X, and Bluesky',
-      'Newsletter credit (400+ editions)',
-    ],
+    eyebrow: 'For visual artists',
+    title: 'Build the visual identity people remember.',
+    body: 'Posters, motion, signage. Named credit on every surface it appears on.',
+    href: '/artists',
   },
   {
-    category: 'Year-Round Sponsor',
-    number: '03',
-    items: [
-      'Post-event thank-you feature and recap',
-      'Advisory seat for Year 2 planning',
-      'Priority placement in 2027',
-    ],
+    eyebrow: 'For volunteers',
+    title: 'Build the day with us.',
+    body: 'Setup, check-in, stage crew, content, teardown. On-site gear and a meal.',
+    href: '/apply',
   },
-];
+] as const;
 
-const PAST_EVENTS = [
-  {
-    year: 'NYC · Apr 2024',
-    name: 'ZAO-PALOOZA',
-    description: 'Community meet-up during NFT NYC. 12 artists. Volunteer-organized in six weeks. Broke even.',
-    hue: 'rose' as const,
-  },
-  {
-    year: 'Miami · Dec 2024',
-    name: 'ZAO-CHELLA',
-    description: 'Showcase in Wynwood during Art Basel. 16+ musicians, 100+ visual artists, 50+ music communities. ZAO HOUSE artist residency. Live WaveWarZ battle, cipher recorded on-site.',
-    hue: 'indigo' as const,
-  },
-];
-
-// PARTNER GATING RULES (strict): a partner may appear here only if
-//   1. confirmed === true (locked agreement, not "in conversation")
-//   2. poc is a real ZAO team member who owns the relationship
-// Sponsors (paid placements) live in SPONSOR_OFFERINGS, not here.
-// logoSrc is optional: set it only once the file actually exists in public/partners/
-// (Black Moon's logo is incoming from Steve Peer, doc 2295; Star 97.7's not yet requested).
-const PARTNERS: { name: string; role: string; confirmed: boolean; poc: string; logoSrc?: string }[] = [
-  // Heart of Ellsworth is deliberately NOT listed. On the 2026-08-13 call Chesnee
-  // Barney said official-partner status and logo use have to clear internally
-  // first. It appears nowhere until she confirms in writing.
-  { name: 'Town of Ellsworth', role: 'Parklet venue', confirmed: true, poc: 'Zaal' },
-  { name: 'Black Moon Public House', role: 'Indoor venue from 6pm + official after-party', confirmed: true, poc: 'Zaal' },
-  { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
-  { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
-  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
-  { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
-  { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
-  // Confirmed by Zaal 2026-08-27. Spelling is 'COC Concertz' - space, and a z.
-  { name: 'COC Concertz', role: 'Virtual concert series', confirmed: true, poc: 'Zaal' },
-].filter((p) => p.confirmed);
-
-const NAV = [
-  { href: '/festivals', label: 'ZAO Festivals' },
-  { href: '/program', label: 'Program' },
-  { href: '/musicians', label: 'Musicians' },
-  { href: '/artists', label: 'Artists' },
-  { href: '/apply', label: 'Volunteer' },
-  { href: '/donate', label: 'Donate' },
-  { href: '/sponsor/deck', label: 'Partner' },
-];
-
-export default async function TestPage() {
-  const [publicMembers, counts] = await Promise.all([getPublicMembers(), getStockCounts()]);
-  const typedMembers: PublicMember[] = publicMembers;
-
+export default function HomePage() {
   return (
-    <div className="min-h-[100dvh] bg-[#0a1628] text-white pb-24 sm:pb-12 font-[family-name:var(--font-display)]">
-      <NoiseOverlay />
-      <AnimatedGradient />
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-md border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-baseline gap-3">
-            <Link href="/" className="font-bold text-base tracking-tight">ZAOstock</Link>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em] hidden sm:inline">
-              / Oct 03 2026
-            </span>
-          </div>
-          <nav className="flex items-center gap-5">
-            {NAV.map((n) => (
-              <Link
-                key={n.href}
-                href={n.href}
-                className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-gray-400 hover:text-[#f5a623] transition-colors hidden sm:inline"
-              >
-                {n.label}
-              </Link>
-            ))}
-            <a
-              href={FESTIVAL.rsvpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] px-3 py-1.5 rounded transition-colors"
-            >
-              RSVP
-            </a>
-            <a
-              href="https://thezao.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-[#f5a623] hover:text-[#ffd700] transition-colors hidden sm:inline"
-            >
-              The ZAO
-            </a>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero */}
-      <section className="relative">
-        {/* dot pattern bg */}
-        <div
-          className="absolute inset-0 opacity-[0.07] pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(rgba(245,166,35,0.6) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-12 sm:pt-20 pb-10">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-[2px] w-8 bg-[#f5a623]" />
-            <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase text-[#f5a623] tracking-[0.25em]">
-              Community Music Festival / Year 1
-            </span>
-          </div>
-          <h1
-            className="font-bold tracking-[-0.04em] leading-[0.85]"
-            style={{ fontSize: 'clamp(4rem, 14vw, 11rem)' }}
-          >
-            ZAO<span className="text-[#f5a623]">stock</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-base sm:text-xl text-gray-300 leading-relaxed">
-            A community-built outdoor music festival in Ellsworth, Maine. Independent artists. One stage. All day.
-          </p>
-          <p className="mt-3 max-w-2xl text-base sm:text-lg text-[#f5a623] font-medium leading-relaxed">
-            {FESTIVAL.admission}. {FESTIVAL.dateLabel}, {FESTIVAL.city}.
-          </p>
-          <div className="mt-10">
-            <FactStrip facts={FACTS} />
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href={FESTIVAL.rsvpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-            >
-              RSVP free
-            </a>
-            <Link
-              href="#pro-ticket"
-              className="border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-            >
-              $50 Pro Ticket
-            </Link>
-            <Link
-              href="/apply"
-              className="border border-white/30 hover:border-[#f5a623] hover:text-[#f5a623] font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-            >
-              Volunteer
-            </Link>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] ml-2">
-              Free to attend / Optional $50 pro ticket supports the festival
-            </span>
-          </div>
-          <ScrollEyebrow />
-        </div>
-      </section>
-
-      {/* TODO[photos]: Source 6-12 high-res shots from past events
-          - ZAO-PALOOZA NYC (Apr 2024) - stage + crowd + cipher
-          - ZAO-CHELLA Miami (Dec 2024) - WaveWarZ battle + ZAO HOUSE residency + visual artists
-          - ZAOville DMV prep (Jul 2026)
-          When curated: reinstate VibesGrid section between "About" and "How We Run It".
-          Also: replace TagMarquee here once lineup confirms (Aug 2026) with actual artist names.
-      */}
-
-      {/* Countdown bar */}
-      <section className="border-y border-white/[0.12] bg-[#0d1b2a]/40">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-6">
-          <div className="flex items-center justify-between gap-6 flex-wrap">
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em]">
-              Countdown
-            </span>
-            <div className="flex-1 min-w-[260px]">
-              <CountdownTimer targetDate={FESTIVAL.date} eventName="ZAOstock" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Crossroads of Downeast - location pride */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Where" title="Crossroads of Downeast Maine - gateway to Acadia." />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
-            <div className="lg:col-span-5 space-y-4">
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                Ellsworth sits at the gateway to Acadia National Park. Four million people drove through in 2025. Downtown just received National Historic Register designation.
-              </p>
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                The Heart of Ellsworth ran 28 events in 2025 with 50+ sponsors. The infrastructure is here; we are plugging into it.
-              </p>
-              <dl className="grid grid-cols-2 gap-x-6 gap-y-3 pt-4 border-t border-white/[0.08]">
-                <FactRow label="Visitors / yr" value="4M+" />
-                <FactRow label="Status" value="Historic Register" />
-                <FactRow label="Host series" value="Art of Ellsworth" />
-                <FactRow label="Year" value="9th annual" />
-              </dl>
-            </div>
-            <div className="lg:col-span-7 relative overflow-hidden border border-white/[0.12] bg-[#0d1b2a] aspect-[4/3] lg:aspect-auto group">
-              {/* Stylized location panel - gradient backdrop */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1a4d3a]/60 via-[#0d1b2a] to-[#0a1628] transition-transform duration-700 group-hover:scale-105">
-                <div className="absolute inset-0 opacity-[0.08]" style={{
-                  backgroundImage: 'radial-gradient(circle at 30% 40%, rgba(245,166,35,0.4) 0, transparent 50%), radial-gradient(circle at 70% 70%, rgba(244,63,94,0.3) 0, transparent 50%)',
-                }} />
-              </div>
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.25em] text-[#f5a623]">Ellsworth · Maine</p>
-                <p
-                  className="font-bold text-white tracking-tight mt-1"
-                  style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 0.9 }}
-                >
-                  Franklin St Parklet
-                </p>
-                <p className="text-sm text-gray-300 mt-2 max-w-md">
-                  Where every car heading to Acadia National Park passes through.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* After Hours */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="After Hours" title={`${FESTIVAL.afterParty.name}, ${FESTIVAL.afterParty.note}.`} />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
-            <div className="lg:col-span-7">
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                {FESTIVAL.afterParty.name} is confirmed as the ZAOstock after-party. At six the music
-                stops on the street and the whole thing walks next door, together. A live band takes
-                the room from six, then a DJ closes the night out. One place at a time, all day.
-              </p>
-            </div>
-            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
-              <dl className="space-y-4">
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">After-party</dt>
-                  <dd className="text-base text-white">{FESTIVAL.afterParty.name}, {FESTIVAL.afterParty.note}</dd>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Evening</dt>
-                  <dd className="text-base text-white">Live from 6 PM, then a DJ to close</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Volunteer + RSVP combined */}
-      <section id="rsvp" className="my-16 sm:my-24 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Join In" title="Build the festival or get on the list." />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.12] border border-white/[0.12]">
-            <div className="bg-[#0d1b2a] p-8 sm:p-10">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">Volunteer</h3>
-                {counts.volunteers > 0 && (
-                  <div className="text-right flex-shrink-0">
-                    <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
-                      {counts.volunteers}
-                    </p>
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
-                      Signed up
-                    </p>
-                  </div>
-                )}
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Setup, check-in, stage crew, content, teardown - or anything in between. Volunteers get crew shirts
-                and meals on-site.
-              </p>
-              <Link
-                href="/apply"
-                className="inline-block mt-6 border border-[#f5a623] text-[#f5a623] hover:bg-[#f5a623] hover:text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-              >
-                Sign up to volunteer
-              </Link>
-            </div>
-            <div className="bg-[#0d1b2a] p-8 sm:p-10">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="font-bold text-2xl sm:text-3xl tracking-tight">RSVP</h3>
-                {counts.rsvps > 0 && (
-                  <div className="text-right flex-shrink-0">
-                    <p className="font-bold text-[#f5a623] text-3xl sm:text-4xl leading-none tabular-nums">
-                      {counts.rsvps}
-                    </p>
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-2">
-                      On the list
-                    </p>
-                  </div>
-                )}
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed mb-5">
-                RSVP on Luma to lock your spot and stay in the loop on the lineup. Free to attend.
-              </p>
-              <a
-                href={FESTIVAL.rsvpUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors"
-              >
-                RSVP on Luma -&gt;
-              </a>
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-6 mb-3">
-                Or just get notified by email
-              </p>
-              <RSVPForm eventSlug="zao-stock-2026" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Lineup teaser */}
-      <section className="my-12 sm:my-16">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="The Lineup" title="Independent artists. One stage." />
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-7">
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                A full day of independent artists with DJs between every act. Werb and Lyons Den are confirmed. The rest of the lineup is announced once every set is locked.
-              </p>
-            </div>
-            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
-              <dl className="space-y-4">
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Confirmed so far</dt>
-                  <dd className="text-base text-white">Werb, Lyons Den</dd>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Stage</dt>
-                  <dd className="text-base text-white">One stage, all day</dd>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Format</dt>
-                  <dd className="text-base text-white">Live sets with DJs between</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Plug in - 3 entry doors */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="How To Plug In" title="Pick a door." />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12] mt-6">
-            <Link
-              href="/musicians"
-              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Musicians</span>
-              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
-                Made music nobody&apos;s paying you to make?
-              </p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Submit for the lineup. 25-minute set, real stage, full recording.
-              </p>
-              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
-                See the door -&gt;
-              </span>
-            </Link>
-            <Link
-              href="/artists"
-              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Artists</span>
-              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
-                Build the visual identity people remember.
-              </p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Posters, signage, installations, motion. Named credit on every surface.
-              </p>
-              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
-                See the door -&gt;
-              </span>
-            </Link>
-            <Link
-              href="/event-organizers"
-              className="group bg-[#0d1b2a] hover:bg-[#0f1f33] p-6 sm:p-8 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">For Organizers</span>
-              <p className="font-bold text-white text-lg sm:text-xl tracking-tight mt-3 group-hover:text-[#f5a623] transition-colors">
-                Built a community? Run your own ZAO.
-              </p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">
-                Next chapter could be yours - in your city, under the ZAO Festivals umbrella.
-              </p>
-              <span className="inline-block mt-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[#f5a623]">
-                See the door -&gt;
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About: 2-col asymmetric */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-7">
-              <SectionHeader eyebrow="About" title="Every car heading to Acadia passes through. Free to listen from the sidewalk." />
-              <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed">
-                <p>
-                  ZAOstock is The ZAO&apos;s flagship IRL music festival. A full-day outdoor showcase at the Franklin
-                  Street Parklet in downtown Ellsworth, Maine. Independent artists perform with DJs between.
-                </p>
-                <p>
-                  Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, ZAOstock brings The ZAO&apos;s independent
-                  music community together in the Crossroads of Downeast.
-                </p>
-              </div>
-            </div>
-            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
-              <dl className="space-y-5">
-                {[
-                  { k: 'Location', v: 'Franklin St Parklet, Ellsworth ME' },
-                  { k: 'Series', v: '9th Annual Art of Ellsworth' },
-                  { k: 'Weekend', v: 'Maine Craft Weekend' },
-                ].map((row) => (
-                  <div key={row.k} className="flex flex-col gap-1 pb-4 border-b border-white/[0.08]">
-                    <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
-                      {row.k}
-                    </dt>
-                    <dd className="text-base text-white">{row.v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Manifesto + stats bento */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="How We Run It" title="Built by 27 teammates, the local Ellsworth crew, and the artists who want this to exist." />
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.12] border border-white/[0.12]">
-            <StatTile value="27" label="Teammates building this" accent />
-            <StatTile value="100+" label="ZAO community members" />
-            <StatTile value="2" label="Prior festivals (NYC + Miami)" />
-            <StatTile value="Oct 3" label="One day, free to attend" />
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section id="team" className="my-16 sm:my-24 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="The Team" title="Built by these people." />
-          {typedMembers.length > 0 ? (
-            <>
-              <TeamMosaic members={typedMembers} />
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em] mt-5">
-                Tap any name for full bio + links
-              </p>
-            </>
-          ) : (
-            <p className="text-gray-400 text-sm max-w-xl">
-              A volunteer crew across operations, music, design, finance, livestream, and content. Full roster coming soon.
+    <SiteShell>
+      {/* 1. Hero */}
+      <Section first className="pt-12 sm:pt-16 pb-12 sm:pb-24">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px] lg:gap-16 items-center">
+          <div>
+            <Eyebrow tone="denim">Community music festival · Ellsworth, Maine</Eyebrow>
+            <h1 className="font-display font-normal text-display m-0 mt-3.5 mb-4 text-ink-950">
+              ZAO<span className="text-gold-600">stock</span>
+            </h1>
+            <p className="text-lg text-ink-secondary max-w-[620px] m-0 mb-1.5">
+              A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine.
             </p>
-          )}
-        </div>
-      </section>
-
-      {/* Partners */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Partners" title="Partners give time and skill. No cash." />
-          <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl mb-8">
-            Partners give time, venue, and infrastructure - not money. Each one has a confirmed agreement and a dedicated point of contact on the ZAO team. Sponsorship tracks below.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12]">
-            {PARTNERS.map((p) => (
-              <div key={p.name} className="bg-[#0d1b2a] p-6">
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-[#f5a623]">
-                    Confirmed
-                  </span>
-                  <span className="font-[family-name:var(--font-mono)] text-[10px] text-gray-400">
-                    /CFM
-                  </span>
-                </div>
-                {p.logoSrc ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- small static logo, matches TeamMosaic's img pattern
-                  <img src={p.logoSrc} alt={`${p.name} logo`} className="h-10 w-auto mb-2 object-contain" />
-                ) : null}
-                <p className="font-bold text-white text-lg tracking-tight">{p.name}</p>
-                <p className="text-xs sm:text-sm text-gray-400 mt-1">{p.role}</p>
-                <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-baseline justify-between gap-2">
-                  <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
-                    POC
-                  </span>
-                  <span className="text-sm text-white font-medium">{p.poc}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pro Ticket */}
-      <section id="pro-ticket" className="my-16 sm:my-24 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Pro Ticket" title="Free to attend. The first round of crowdfunding starts now." />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
-            <div className="lg:col-span-7 space-y-4">
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                ZAOstock is free for anyone who wants to show up. The first round of crowdfunding starts now - we are
-                asking 20 people for $50 each, the next $1,000 toward making ZAOstock happen. Everyone who chips in gets
-                a Pro Ticket. Funds go straight into artist pay and production.
-              </p>
-              <ul className="space-y-3 text-base text-gray-200 leading-relaxed">
-                <li className="flex gap-3">
-                  <span className="text-[#f5a623] flex-shrink-0">-&gt;</span>
-                  <span>$50 supports the festival - artist fees, materials, production costs.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-[#f5a623] flex-shrink-0">-&gt;</span>
-                  <span>A 1:1 with someone on the ZAO team before the event.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-[#f5a623] flex-shrink-0">-&gt;</span>
-                  <span>We help you find a real way to get involved - the door that fits.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-[#f5a623] flex-shrink-0">-&gt;</span>
-                  <span>Pro Ticket holders are credited as supporters on the festival page.</span>
-                </li>
-              </ul>
+            <p className="text-lg font-bold text-ink-950 max-w-[620px] m-0 mb-7">
+              Independent artists. One stage. Music from noon.
+            </p>
+            <InfoStrip items={STRIP} className="mb-8" />
+            <div className="flex flex-wrap gap-3">
+              <Button href={FESTIVAL.rsvpUrl} external size="lg">
+                RSVP free
+              </Button>
+              <Button href="/program" variant="secondary" size="lg">
+                See the program
+              </Button>
             </div>
-            <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
-              <div className="bg-[#0d1b2a] border border-[#f5a623]/30 p-6 sm:p-8">
-                <div className="flex items-baseline justify-between gap-3">
-                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-[#f5a623]">Pro Ticket</p>
-                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.22em] text-gray-400">20 spots only</p>
-                </div>
-                <p className="font-bold text-white text-4xl sm:text-5xl tracking-tight mt-2">$50</p>
-                <p className="text-sm text-gray-400 mt-3 leading-relaxed">
-                  Round 1 goal: 20 people, $1,000. Send $50 to thezao.eth or via PayPal.
-                </p>
-                <Link
-                  href="/donate"
-                  className="inline-block mt-6 bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-4 transition-colors w-full text-center"
-                >
-                  Get the Pro Ticket
-                </Link>
-                <p className="text-xs text-gray-400 mt-4 leading-relaxed text-center">
-                  Send $50 to thezao.eth or paypal.com/paypalme/zaalpanthaki.<br />
-                  After payment, email info@thezao.com so we can schedule your 1:1.
-                </p>
-              </div>
+            <p className="mt-3.5 text-[13px] text-ink-muted m-0">{SITE.weather}</p>
+          </div>
+          <Image
+            src={SITE.badge.src}
+            alt={SITE.badge.alt}
+            width={SITE.badge.width}
+            height={SITE.badge.height}
+            sizes="(min-width: 1024px) 360px, 320px"
+            priority
+            className="w-full max-w-[320px] mx-auto lg:max-w-none rounded-lg border-[2.5px] border-ink-950 shadow-hard-lg"
+          />
+        </div>
+      </Section>
+
+      {/* 2. The day */}
+      <Section id="day">
+        <TwoUp>
+          <SectionHeader
+            eyebrow="The day"
+            title="Outside, then in."
+            lede="One venue at a time. At six the whole street walks next door."
+          />
+          <div className="flex flex-col gap-4">
+            <BorderedList
+              mono
+              rows={DAY.map((d) => ({
+                term: d.time,
+                detail: (
+                  <span>
+                    <span className="block">{d.where}</span>
+                    <span className="block text-ink-secondary font-normal">{d.what}</span>
+                  </span>
+                ),
+              }))}
+            />
+            <Link href="/program" className="text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500 self-start">
+              The full program
+            </Link>
+          </div>
+        </TwoUp>
+      </Section>
+
+      {/* 3. Lineup */}
+      <Section id="lineup">
+        <TwoUp>
+          <SectionHeader
+            eyebrow="The lineup"
+            title="Independent artists. One stage."
+            lede={`${PUBLIC_LINEUP.join(' and ')} ${PUBLIC_LINEUP.length === 1 ? 'is' : 'are'} confirmed. The full lineup is announced on ${SITE.lineupRevealLabel}.`}
+          />
+          <div className="flex flex-col gap-4">
+            <BorderedList
+              rows={[
+                { term: 'Confirmed so far', detail: PUBLIC_LINEUP.join(', ') },
+                { term: 'WaveWarZ', detail: `${WAVEWARZ.battlers.join(', ')}. ${WAVEWARZ.mc} on the mic` },
+                { term: 'Between sets', detail: 'Our MC and our partners' },
+              ]}
+            />
+            <div>
+              <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>
             </div>
           </div>
-        </div>
-      </section>
+        </TwoUp>
+      </Section>
 
-      {/* Sponsorship */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Sponsors" title="Three sponsorship tracks. Same level of recognition. Pick by what fits your goals." />
-          <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl mb-8">
-            No Gold / Silver / Bronze. Sponsors fund the festival in exchange for named credit and on-site presence. Custom packages available for local Ellsworth businesses, digital creator brands, and ecosystem brands. Sponsorship is a commercial arrangement, direct through ENTERACT - a marketing spend rather than a charitable donation, and no tax receipt is issued.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.12] border border-white/[0.12]">
-            {SPONSOR_OFFERINGS.map((g) => (
-              <TierPanel key={g.category} category={g.category} number={g.number} items={g.items} />
-            ))}
+      {/* 4. Why Ellsworth */}
+      <Section id="ellsworth">
+        <TwoUp>
+          <div className="flex flex-col gap-6">
+            <SectionHeader
+              eyebrow="Why Ellsworth"
+              title="Every car heading to Acadia passes through."
+              lede={`Over four million people drove through in 2025. ${ELLSWORTH.historic} Part of the ${SITE.series} during ${SITE.weekend}.`}
+            />
+            <div className="flex flex-wrap gap-10">
+              <Stat value={ELLSWORTH.driveThrough.value} label={ELLSWORTH.driveThrough.label} />
+              <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
+            </div>
           </div>
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border border-white/[0.12] bg-[#0d1b2a] p-5">
-            <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase text-gray-400 tracking-[0.18em]">
-              Full deck on request / start the conversation
-            </span>
-            <Link
-              href="/sponsor"
-              className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] px-6 py-3 transition-colors"
-            >
-              Become a sponsor
-            </Link>
-          </div>
+          <Card className="p-0">
+            <div className="flex items-center justify-center bg-paper-100 py-6 border-b-2 border-ink-950">
+              <Image src={SITE.icons.lighthouse} alt="" width={220} height={220} style={{ height: 110, width: 'auto' }} />
+            </div>
+            <div className="p-5">
+              <Eyebrow>Ellsworth · Maine</Eyebrow>
+              <p className="font-sans font-extrabold text-lg text-ink-950 m-0 mt-1.5 mb-1">{FESTIVAL.shortVenue}</p>
+              <p className="text-[13px] text-ink-muted m-0">Downtown, at the gateway to Acadia National Park.</p>
+              <Link href="/ellsworth" className="inline-block mt-3 text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
+                Getting here
+              </Link>
+            </div>
+          </Card>
+        </TwoUp>
+      </Section>
+
+      {/* 5. Doors */}
+      <Section id="doors">
+        <SectionHeader eyebrow="How to plug in" title="Pick a door." className="mb-6" />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {DOORS.map((d) => (
+            <Card key={d.href} href={d.href} interactive>
+              <Eyebrow className="mb-2.5">{d.eyebrow}</Eyebrow>
+              <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0 mb-2.5">{d.title}</h3>
+              <p className="text-sm text-ink-secondary m-0 mb-3.5">{d.body}</p>
+              <span className="text-sm text-denim-400 font-semibold underline underline-offset-4">See the door</span>
+            </Card>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Past + upcoming */}
-      <section className="my-16 sm:my-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <SectionHeader eyebrow="Lineage" title="What came before. What's next." />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PAST_EVENTS.map((e) => (
-              <TiltCard key={e.name}>
-                <PastEventCard
-                  year={e.year}
-                  name={e.name}
-                  description={e.description}
-                  hue={e.hue}
-                  status="past"
-                />
-              </TiltCard>
-            ))}
-            <TiltCard>
-              <PastEventCard
-                year="July 2026"
-                name="ZAOville"
-                description="DMV chapter co-hosted with DCoop (founder of The VEC; performed at ZAO-CHELLA Miami 2024, returning for ZAOstock). Cross-promotion across the ZAO Festivals series. Lineup included PROF!T, ELYVN, and more."
-                hue="emerald"
-                status="past"
-              />
-            </TiltCard>
-          </div>
+      {/* 6. Partners and sponsors */}
+      <Section id="partners">
+        <SectionHeader
+          eyebrow="Partners"
+          title="Partners give time, venue and infrastructure."
+          lede="Each has a confirmed agreement and a named point of contact on the ZAO team."
+          className="mb-6"
+        />
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 list-none m-0 p-0">
+          {PARTNERS.map((p) => (
+            <li key={p.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4.5 py-4">
+              <p className="font-sans font-bold text-sm text-ink-950 m-0">{p.name}</p>
+              {p.role !== 'UNSET' ? <p className="text-[13px] text-ink-muted m-0 mt-0.5">{p.role}</p> : null}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <p className="text-base text-ink-secondary m-0 measure">Sponsors put money behind a named artist or the day. Talk to us.</p>
+          <Button href="/sponsor" variant="secondary">
+            Sponsor ZAOstock
+          </Button>
         </div>
-      </section>
+      </Section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/[0.12] mt-16">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-wrap items-center justify-between gap-4">
-          <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.2em]">
-            ZAOstock / {FESTIVAL.shortDate} / {FESTIVAL.city}
-          </span>
-          <div className="flex items-center gap-5 flex-wrap">
-            <Link href="/musicians" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Musicians
-            </Link>
-            <Link href="/artists" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Artists
-            </Link>
-            <Link href="/zaoville" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              ZAOville
-            </Link>
-            <Link href="/event-organizers" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Organizers
-            </Link>
-            <Link href="/ellsworth" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Visit Ellsworth
-            </Link>
-            <Link href="/acadia" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Acadia Guide
-            </Link>
-            <Link href="/onepagers/overview" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Overview deck
-            </Link>
-            <Link href="/team" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Team login
-            </Link>
-            <Link href="/privacy" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 hover:text-[#f5a623] tracking-[0.18em] transition-colors">
-              Privacy
-            </Link>
-            <a href="https://thezao.com" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-[#f5a623] hover:text-[#ffd700] tracking-[0.18em] transition-colors">
-              The ZAO
-            </a>
-          </div>
+      {/* 7. Where it comes from */}
+      <Section id="series">
+        <SectionHeader eyebrow="Where it comes from" title="What came before." lede="ZAOstock is the first in Maine." className="mb-6" />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {SERIES.map((e, i) => (
+            <Card key={e.name} className="p-0">
+              <div className={['h-3 border-b-2 border-ink-950', i === 0 ? 'bg-red-500' : i === 1 ? 'bg-denim-400' : 'bg-olive-400'].join(' ')} />
+              <div className="p-5">
+                <Eyebrow>{e.when}</Eyebrow>
+                <p className="font-sans font-extrabold text-base text-ink-950 m-0 mt-1.5">{e.name}</p>
+                <p className="text-[13px] text-ink-secondary m-0 mt-1">{e.place}</p>
+                <p className="text-[13px] text-ink-muted m-0 mt-1.5">{e.note}</p>
+              </div>
+            </Card>
+          ))}
         </div>
-      </footer>
-
-      <StickyActionBar />
-    </div>
-  );
-}
-
-function FactRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">
-        {label}
-      </dt>
-      <dd className="text-base text-white font-medium mt-0.5">{value}</dd>
-    </div>
+        <Link href="/festivals" className="inline-block mt-6 text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
+          The ZAO Festivals series
+        </Link>
+      </Section>
+    </SiteShell>
   );
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { SiteShell } from '@/components/poster';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { listOnePagers } from '@/lib/onepagers';
 
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 const STATUS_COLOR: Record<string, string> = {
-  draft: 'bg-slate-700 text-slate-200',
-  review: 'bg-amber-500/20 text-amber-300 border border-amber-500/30',
-  final: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30',
-  sent: 'bg-blue-500/20 text-blue-300 border border-blue-500/30',
-  archived: 'bg-slate-800 text-slate-500',
+  draft: 'bg-paper-100 text-ink-950',
+  review: 'bg-gold-300 text-gold-600 border border-ink-950/60',
+  final: 'bg-olive-300 text-olive-500 border border-ink-950/60',
+  sent: 'bg-denim-300 text-denim-500 border border-ink-950/60',
+  archived: 'bg-paper-100 text-ink-muted',
 };
 
 export default async function OnePagersPage() {
@@ -27,22 +28,23 @@ export default async function OnePagersPage() {
     : all.filter((p) => p.visibility === 'public' && p.slug === 'overview');
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10 text-slate-100">
+    <SiteShell>
+    <main className="mx-auto max-w-4xl px-4 py-10 text-ink-950">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-amber-400">One-Pagers</h1>
-        <p className="mt-2 max-w-2xl text-sm text-slate-400">
-          Briefing docs for sponsors, partners, venues, and city contacts. Each is a single page meant to be printed, emailed, or shared. Drafted via Claude <code className="rounded bg-slate-900 px-1 py-0.5 text-xs">/onepager</code> skill or DM the team bot. Edited inline below.
+        <h1 className="text-3xl font-bold text-gold-600">One-Pagers</h1>
+        <p className="mt-2 max-w-2xl text-sm text-ink-muted">
+          Briefing docs for sponsors, partners, venues, and city contacts. Each is a single page meant to be printed, emailed, or shared. Drafted via Claude <code className="rounded bg-paper-200 px-1 py-0.5 text-xs">/onepager</code> skill or DM the team bot. Edited inline below.
         </p>
       </header>
 
       {!session && (
-        <div className="mb-6 rounded-lg border border-amber-500/30 bg-amber-500/5 px-4 py-3 text-sm text-amber-200">
+        <div className="mb-6 rounded-lg border border-ink-950/60 bg-gold-300 px-4 py-3 text-sm text-gold-600">
           You&apos;re viewing as a guest - only public one-pagers are listed. <a href="/team" className="underline">Sign in</a> to see internal drafts.
         </div>
       )}
 
       {visible.length === 0 ? (
-        <div className="rounded-xl border border-white/10 bg-slate-900/40 p-8 text-center text-sm text-slate-400">
+        <div className="rounded-xl border border-ink-950/60 bg-paper-200 p-8 text-center text-sm text-ink-muted">
           No published one-pagers yet — check back soon.
         </div>
       ) : (
@@ -51,15 +53,15 @@ export default async function OnePagersPage() {
             <Link
               key={p.slug}
               href={`/onepagers/${p.slug}`}
-              className="group block rounded-xl border border-white/10 bg-slate-900/40 p-5 transition hover:border-amber-500/40 hover:bg-slate-900/60"
+              className="group block rounded-xl border border-ink-950/60 bg-paper-200 p-5 transition hover:border-ink-950/60 hover:bg-paper-200"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h2 className="text-lg font-bold text-white group-hover:text-amber-300">{p.title}</h2>
-                  <p className="mt-1 text-sm text-slate-400">For: {p.audience}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-300">{p.purpose}</p>
+                  <h2 className="text-lg font-bold text-ink-950 group-hover:text-gold-600">{p.title}</h2>
+                  <p className="mt-1 text-sm text-ink-muted">For: {p.audience}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-950">{p.purpose}</p>
                   {p.meeting_date && (
-                    <p className="mt-2 text-xs text-amber-300">
+                    <p className="mt-2 text-xs text-gold-600">
                       Meeting: {p.meeting_date}
                       {p.meeting_location ? ` · ${p.meeting_location}` : ''}
                     </p>
@@ -73,9 +75,9 @@ export default async function OnePagersPage() {
                   >
                     {p.status}
                   </span>
-                  <span className="text-[10px] text-slate-500">v{p.version}</span>
+                  <span className="text-[10px] text-ink-muted">v{p.version}</span>
                   {p.visibility === 'public' && (
-                    <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] text-emerald-300">
+                    <span className="rounded-full border border-ink-950/60 bg-olive-300 px-2 py-0.5 text-[10px] text-olive-500">
                       public
                     </span>
                   )}
@@ -86,5 +88,6 @@ export default async function OnePagersPage() {
         </div>
       )}
     </main>
+    </SiteShell>
   );
 }

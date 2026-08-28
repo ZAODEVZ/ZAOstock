@@ -85,46 +85,46 @@ export function CypherForm() {
 
   if (status === 'sent') {
     return (
-      <div className="bg-gradient-to-br from-emerald-500/15 via-emerald-500/5 to-transparent rounded-xl p-6 border border-emerald-500/30 space-y-4">
+      <div className="zs-alert zs-alert--success">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-wider text-emerald-400 font-bold">You are in</p>
-          <h2 className="text-xl font-bold text-white mt-1">Thanks, {name || 'friend'}.</h2>
-          <p className="text-sm text-gray-300 mt-2">
+          <p className="text-xs uppercase tracking-wider text-olive-500 font-bold">You are in</p>
+          <h2 className="text-xl font-bold text-ink-950 mt-1">Thanks, {name || 'friend'}.</h2>
+          <p className="text-sm text-ink-950 mt-2">
             Your cypher signup landed in the ZAOstock music team dashboard. DCoop or someone from the music crew will reach out with logistics.
           </p>
         </div>
 
         {editUrl && (
-          <div className="bg-[#0a1628] border border-[#f5a623]/30 rounded-lg p-4 space-y-3">
+          <div className="bg-paper-200 border-2 border-ink-950 rounded-sm p-4 space-y-3">
             <div className="text-center">
-              <p className="text-xs uppercase tracking-wider text-[#f5a623] font-bold">Next step: earn your first ZAOfestivals Point</p>
-              <p className="text-xs text-gray-300 mt-1">
+              <p className="text-xs uppercase tracking-wider text-red-600 font-bold">Next step: earn your first ZAOfestivals Point</p>
+              <p className="text-xs text-ink-950 mt-1">
                 Claim your artist profile, add a bio, earn 1 point. Complete the contributor path to be eligible to work the event on Oct 3.
               </p>
             </div>
             <div className="flex flex-col gap-2">
               <a
                 href={editUrl}
-                className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-4 py-2.5 text-sm transition-colors text-center"
+                className="zs-btn zs-btn--primary w-full"
               >
                 Claim + edit my profile -&gt;
               </a>
               <button
                 onClick={copyEdit}
-                className="text-xs text-gray-400 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] rounded px-3 py-2 transition-colors"
+                className="zs-btn zs-btn--secondary w-full"
               >
                 {copied ? 'Copied!' : 'Copy the private edit link'}
               </button>
             </div>
-            <p className="text-[10px] text-gray-500 text-center">
+            <p className="text-[10px] text-ink-muted text-center">
               Save this link. Anyone with it can edit your page. Your public page is{' '}
-              {publicUrl && <a href={publicUrl} className="text-[#f5a623] hover:text-[#ffd700]">{publicUrl}</a>}
+              {publicUrl && <a href={publicUrl} className="text-red-600 hover:text-denim-500">{publicUrl}</a>}
             </p>
           </div>
         )}
 
-        <p className="text-[11px] text-gray-500 text-center">
-          Questions? DM Zaal on Farcaster.
+        <p className="text-[11px] text-ink-muted text-center">
+          Questions? Email info@thezao.com.
         </p>
       </div>
     );
@@ -133,7 +133,7 @@ export function CypherForm() {
   const needsCustomRole = roleSelect === 'Other';
 
   return (
-    <form onSubmit={submit} className="bg-[#0d1b2a] rounded-xl p-5 border border-white/[0.08] space-y-4">
+    <form onSubmit={submit} className="zs-form">
       <input
         type="text"
         tabIndex={-1}
@@ -145,46 +145,46 @@ export function CypherForm() {
       />
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Name or artist handle</label>
+        <label className="zs-label">Name or artist handle</label>
         <input
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="How the cypher track will credit you"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Email (optional)</label>
+        <label className="zs-label">Email (optional)</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="We follow up here"
           maxLength={200}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Socials or music links</label>
+        <label className="zs-label">Socials or music links</label>
         <input
           value={socials}
           onChange={(e) => setSocials(e.target.value)}
           placeholder="X, Farcaster, Spotify, SoundCloud, website"
           maxLength={500}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">What do you bring to the cypher?</label>
+        <label className="zs-label">What do you bring to the cypher?</label>
         <select
           value={roleSelect}
           onChange={(e) => setRoleSelect(e.target.value)}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         >
           {ROLE_OPTIONS.map((r) => (
             <option key={r.value} value={r.value}>{r.label}</option>
@@ -196,37 +196,37 @@ export function CypherForm() {
             onChange={(e) => setRoleCustom(e.target.value)}
             placeholder="Tell us exactly what you bring"
             maxLength={200}
-            className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+            className="zs-input"
             required
           />
         )}
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs text-gray-400 uppercase tracking-wider font-bold">Anything else? (optional)</label>
+        <label className="zs-label">Anything else? (optional)</label>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Genre, references, other artists you want to work with, equipment you bring, anything else"
           rows={4}
           maxLength={1000}
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30 resize-none"
+          className="zs-input"
         />
       </div>
 
       <button
         type="submit"
         disabled={busy || !name.trim() || (needsCustomRole && !roleCustom.trim())}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:opacity-50 text-black font-bold rounded-lg px-4 py-3 text-sm transition-colors"
+        className="zs-btn zs-btn--primary w-full"
       >
         {busy ? 'Sending...' : 'I want in on the cypher'}
       </button>
 
       {status === 'error' && (
-        <p className="text-xs text-red-400 text-center">{errMsg || 'Something went wrong. Try again.'}</p>
+        <p className="zs-error">{errMsg || 'Something went wrong. Try again.'}</p>
       )}
 
-      <p className="text-[11px] text-gray-600 text-center">
+      <p className="text-[11px] text-ink-muted text-center">
         The music team reaches out within a few days with the pre-event coordination thread.
       </p>
     </form>

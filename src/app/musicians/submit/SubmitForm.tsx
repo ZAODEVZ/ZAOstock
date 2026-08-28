@@ -82,12 +82,12 @@ export function MusicianSubmitForm() {
 
   if (status === 'sent') {
     return (
-      <div className="bg-[#0d1b2a] rounded-xl p-6 border border-[#f5a623]/40 space-y-3">
-        <p className="text-lg font-bold text-[#f5a623]">Submission received.</p>
-        <p className="text-sm text-gray-300 leading-relaxed">
+      <div className="zs-alert zs-alert--success">
+        <p className="text-lg font-bold text-red-600">Submission received.</p>
+        <p className="text-sm text-ink-950 leading-relaxed">
           Thanks. The music team reviews every submission. Expect a follow-up at the email you gave us within a few days.
         </p>
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <p className="text-xs text-ink-muted leading-relaxed">
           Final materials (clean MP3s, artwork, technical rider) are not needed yet. We will ask for them once you are confirmed. The hard cutoff for final materials is September 3, 2026 (one month before the festival).
         </p>
       </div>
@@ -107,8 +107,8 @@ export function MusicianSubmitForm() {
       />
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-name" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
-          Artist name or band <span className="text-[#f5a623]">*</span>
+        <label htmlFor="submit-name" className="zs-label">
+          Artist name or band <span className="text-red-600">*</span>
         </label>
         <input
           id="submit-name"
@@ -118,13 +118,13 @@ export function MusicianSubmitForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="What you go by on a stage"
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-email" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
-          Email <span className="text-[#f5a623]">*</span>
+        <label htmlFor="submit-email" className="zs-label">
+          Email <span className="text-red-600">*</span>
         </label>
         <input
           id="submit-email"
@@ -134,37 +134,37 @@ export function MusicianSubmitForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@somewhere.com"
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5a623] focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label htmlFor="submit-city" className="text-xs text-gray-400 uppercase tracking-wider font-bold">City / Where you are based</label>
+          <label htmlFor="submit-city" className="zs-label">City / Where you are based</label>
           <input
             id="submit-city"
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder="Brooklyn, NY"
-            className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+            className="zs-input"
           />
         </div>
         <div className="space-y-1.5">
-          <label htmlFor="submit-genre" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Genre / Sound</label>
+          <label htmlFor="submit-genre" className="zs-label">Genre / Sound</label>
           <input
             id="submit-genre"
             type="text"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
             placeholder="Indie folk, hip hop, etc."
-            className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+            className="zs-input"
           />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-track-ideas" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
+        <label htmlFor="submit-track-ideas" className="zs-label">
           Track or song ideas for your set
         </label>
         <textarea
@@ -172,13 +172,13 @@ export function MusicianSubmitForm() {
           rows={3}
           value={trackIdeas}
           onChange={(e) => setTrackIdeas(e.target.value)}
-          placeholder="Working titles, vibes, what you would play in a 25-minute set. Rough is fine."
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30 resize-none"
+          placeholder="Working titles, vibes, what you would play in your set. Rough is fine."
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-mp3" className="text-xs text-gray-400 uppercase tracking-wider font-bold">
+        <label htmlFor="submit-mp3" className="zs-label">
           MP3 / audio links
         </label>
         <textarea
@@ -187,66 +187,66 @@ export function MusicianSubmitForm() {
           value={mp3Links}
           onChange={(e) => setMp3Links(e.target.value)}
           placeholder="Drop links to Audius, SoundCloud, Spotify, YouTube, Dropbox, whatever. One per line."
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30 resize-none"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-socials" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Social links</label>
+        <label htmlFor="submit-socials" className="zs-label">Social links</label>
         <input
           id="submit-socials"
           type="text"
           value={socials}
           onChange={(e) => setSocials(e.target.value)}
           placeholder="Instagram, X, Farcaster, Audius, anywhere people find you"
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-bio" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Short bio</label>
+        <label htmlFor="submit-bio" className="zs-label">Short bio</label>
         <textarea
           id="submit-bio"
           rows={3}
           value={bio}
           onChange={(e) => setBio(e.target.value)}
           placeholder="A few sentences. What you sound like, who you are, what you want from this."
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30 resize-none"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="submit-referred" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Referred by</label>
+        <label htmlFor="submit-referred" className="zs-label">Referred by</label>
         <input
           id="submit-referred"
           type="text"
           value={referredBy}
           onChange={(e) => setReferredBy(e.target.value)}
           placeholder="If someone on the team or in the ZAO music community sent you, name them"
-          className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+          className="zs-input"
         />
       </div>
 
       <div className="space-y-2 pt-2">
-        <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+        <label className="zs-check">
           <input
             type="checkbox"
             checked={cypherInterested}
             onChange={(e) => setCypherInterested(e.target.checked)}
             className="mt-1"
           />
-          <span className="text-sm text-gray-200">
+          <span className="text-sm text-ink-950">
             Interested in joining the ZAOstock Cypher (live multi-artist collaborative track)
           </span>
         </label>
-        <label className="flex items-start gap-2.5 bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 cursor-pointer hover:border-[#f5a623]/30 transition-colors">
+        <label className="zs-check">
           <input
             type="checkbox"
             checked={needsTravel}
             onChange={(e) => setNeedsTravel(e.target.checked)}
             className="mt-1"
           />
-          <span className="text-sm text-gray-200">
+          <span className="text-sm text-ink-950">
             I would need travel support to perform at ZAOstock
           </span>
         </label>
@@ -254,32 +254,32 @@ export function MusicianSubmitForm() {
 
       {needsTravel ? (
         <div className="space-y-1.5">
-          <label htmlFor="submit-travel-from" className="text-xs text-gray-400 uppercase tracking-wider font-bold">Traveling from</label>
+          <label htmlFor="submit-travel-from" className="zs-label">Traveling from</label>
           <input
             id="submit-travel-from"
             type="text"
             value={travelFrom}
             onChange={(e) => setTravelFrom(e.target.value)}
             placeholder="City you would fly or drive from"
-            className="w-full bg-[#0a1628] border border-white/[0.08] rounded px-3 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+            className="zs-input"
           />
         </div>
       ) : null}
 
       {status === 'error' ? (
-        <p className="text-sm text-rose-400">{errMsg || 'Something went wrong. Try again.'}</p>
+        <p className="zs-error">{errMsg || 'Something went wrong. Try again.'}</p>
       ) : null}
 
       <button
         type="submit"
         disabled={busy}
-        className="w-full bg-[#f5a623] hover:bg-[#ffd700] disabled:bg-[#f5a623]/40 text-black font-bold rounded-lg px-4 py-3 text-sm transition-colors"
+        className="zs-btn zs-btn--primary w-full"
       >
         {busy ? 'Submitting...' : 'Submit'}
       </button>
 
-      <p className="text-xs text-gray-500 leading-relaxed">
-        Initial submissions OK now. Final materials (clean MP3s, artwork, technical rider) are due by <span className="text-[#f5a623]">September 3, 2026</span> - one month before the festival. Anyone past the cutoff gets replaced from the bench.
+      <p className="text-xs text-ink-muted leading-relaxed">
+        Initial submissions OK now. Final materials (clean MP3s, artwork, technical rider) are due by <span className="text-red-600">September 3, 2026</span> - one month before the festival. Anyone past the cutoff gets replaced from the bench.
       </p>
     </form>
   );

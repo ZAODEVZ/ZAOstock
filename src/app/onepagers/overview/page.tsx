@@ -64,19 +64,20 @@ const PILLARS: Pillar[] = [
 
 const PARTNERS: Partner[] = [
   { name: 'Town of Ellsworth', role: 'Venue partner — Franklin St Parklet', confirmed: true },
-  { name: 'Black Moon Public House', role: 'Indoor second stage + official after-party', confirmed: true },
+  { name: 'Black Moon Public House', role: 'The evening, indoors + official after-party', confirmed: true },
   // Heart of Ellsworth removed 2026-08-14: official-partner status not yet
   // approved by them. Do not re-add without written confirmation.
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true },
+  { name: 'COC Concertz', role: 'UNSET', confirmed: true },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true },
 ].filter((p) => p.confirmed);
 
 const SPONSOR_TIERS = [
   {
     tier: 'Main Stage Partner',
-    range: '$500+',
+    range: 'Ask',
     perks: [
       'Named credit on stage banner + signage',
       'On-site booth or table space',
@@ -117,7 +118,7 @@ const HOW_TO = [
   {
     role: 'Sponsors',
     detail:
-      '$500+ across 3 tiers. Local + national both welcome. One path: commercial, direct through ENTERACT, 50% upfront and 50% before delivery. Not tax-deductible - ZAOstock has no fiscal sponsor.',
+      'Five packages, prices on request. Local + national both welcome. Commercial sponsorship only. Not tax-deductible - ZAOstock has no fiscal sponsor.',
     cta: { label: 'Partner deck', href: '/sponsor/deck' },
   },
   {
@@ -127,7 +128,7 @@ const HOW_TO = [
   },
   {
     role: 'Press + media',
-    detail: 'Briefings, interviews, photo passes. Email zaal@thezao.com or browse our briefings.',
+    detail: 'Briefings, interviews, photo passes. Email info@thezao.com or browse our briefings.',
     cta: { label: 'Briefings', href: '/onepagers' },
   },
 ];
@@ -151,24 +152,24 @@ export default async function OverviewOnePager() {
   const volunteerCount = counts?.volunteers ?? 0;
 
   const stats: Stat[] = [
-    { value: 'Oct 3', label: '2026', sub: '12pm — late' },
+    { value: 'Oct 3', label: '2026', sub: 'Noon - late' },
     { value: 'Ellsworth', label: 'Maine', sub: 'Franklin St Parklet' },
     { value: `${days}`, label: 'days to go', sub: 'as of today' },
     { value: `${teamCount}`, label: 'team members', sub: '8 circles' },
   ];
 
   return (
-    <main className="min-h-screen bg-[#0a1628] text-slate-100 print:bg-white print:text-slate-900">
+    <main className="min-h-screen bg-paper-100 text-ink-950 print:bg-white print:text-slate-900">
       {/* Top bar */}
       <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-4 print:hidden">
-        <Link href="/" className="text-sm text-amber-400 hover:underline">
+        <Link href="/" className="text-sm text-gold-600 hover:underline">
           &larr; ZAOstock home
         </Link>
         <div className="flex items-center gap-2">
           {session && (
             <Link
               href="/onepagers"
-              className="text-xs text-slate-400 hover:text-amber-400 underline"
+              className="text-xs text-ink-muted hover:text-gold-600 underline"
             >
               All briefings
             </Link>
@@ -179,39 +180,39 @@ export default async function OverviewOnePager() {
       </div>
 
       {/* HERO */}
-      <header className="border-b border-white/10 print:border-slate-300">
+      <header className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-12 print:py-6">
-          <div className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">
+          <div className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600">
             ZAO Festivals presents
           </div>
-          <h1 className="mt-2 text-5xl font-black leading-none text-white sm:text-6xl print:text-slate-900 print:text-4xl">
+          <h1 className="mt-2 text-5xl font-black leading-none text-ink-950 sm:text-6xl print:text-slate-900 print:text-4xl">
             ZAOstock
-            <span className="ml-3 align-top text-2xl font-bold text-amber-400 print:text-amber-700">
+            <span className="ml-3 align-top text-2xl font-bold text-gold-600 print:text-gold-600">
               2026
             </span>
           </h1>
-          <p className="mt-4 max-w-2xl text-base text-slate-300 print:text-slate-700">
+          <p className="mt-4 max-w-2xl text-base text-ink-950 print:text-slate-700">
             A one-day, artist-built music festival in downtown Ellsworth, Maine. Run by{' '}
-            <strong className="text-white print:text-slate-900">The ZAO</strong> — a global,
+            <strong className="text-ink-950 print:text-slate-900">The ZAO</strong> — a global,
             independent music community. Year 1: relationship over scale.
           </p>
         </div>
       </header>
 
       {/* STATS GRID */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-px bg-white/5 sm:grid-cols-4 print:bg-slate-200">
           {stats.map((s) => (
             <div
               key={s.label}
-              className="bg-[#0a1628] px-4 py-6 print:bg-white"
+              className="bg-paper-100 px-4 py-6 print:bg-white"
             >
-              <div className="text-2xl font-black text-white print:text-slate-900">{s.value}</div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-wider text-amber-400 print:text-amber-700">
+              <div className="text-2xl font-black text-ink-950 print:text-slate-900">{s.value}</div>
+              <div className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold-600 print:text-gold-600">
                 {s.label}
               </div>
               {s.sub && (
-                <div className="mt-1 text-xs text-slate-400 print:text-slate-600">{s.sub}</div>
+                <div className="mt-1 text-xs text-ink-muted print:text-ink-muted">{s.sub}</div>
               )}
             </div>
           ))}
@@ -219,15 +220,15 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* PILLARS */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             Order of priorities
           </h2>
-          <div className="mt-2 text-2xl font-bold text-white print:text-slate-900">
+          <div className="mt-2 text-2xl font-bold text-ink-950 print:text-slate-900">
             Music first. Community second. Technology third.
           </div>
-          <p className="mt-2 text-sm text-slate-400 print:text-slate-600">
+          <p className="mt-2 text-sm text-ink-muted print:text-ink-muted">
             That order matters. We are digital creators focused on helping musicians and other
             artists with distribution and support.
           </p>
@@ -235,15 +236,15 @@ export default async function OverviewOnePager() {
             {PILLARS.map((p) => (
               <div
                 key={p.number}
-                className="rounded-lg border border-white/10 bg-white/[0.02] p-4 print:border-slate-300 print:bg-slate-50"
+                className="rounded-lg border border-ink-950/60 bg-paper-200 p-4 print:border-slate-300 print:bg-slate-50"
               >
-                <div className="text-xs font-mono text-amber-400 print:text-amber-700">
+                <div className="text-xs font-mono text-gold-600 print:text-gold-600">
                   {p.number}
                 </div>
-                <div className="mt-1 text-base font-bold text-white print:text-slate-900">
+                <div className="mt-1 text-base font-bold text-ink-950 print:text-slate-900">
                   {p.title}
                 </div>
-                <p className="mt-2 text-sm text-slate-300 print:text-slate-700">{p.body}</p>
+                <p className="mt-2 text-sm text-ink-950 print:text-slate-700">{p.body}</p>
               </div>
             ))}
           </div>
@@ -251,48 +252,48 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* WHAT IT IS */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             What it is
           </h2>
           <div className="mt-4 grid gap-6 sm:grid-cols-2">
             <div>
-              <div className="text-base font-bold text-white print:text-slate-900">
+              <div className="text-base font-bold text-ink-950 print:text-slate-900">
                 The festival
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-300 print:text-slate-700">
+              <p className="mt-2 text-sm leading-relaxed text-ink-950 print:text-slate-700">
                 One-day outdoor festival at the Franklin Street Parklet in downtown Ellsworth.
                 Independent + ZAO-vetted artists, multiple acts, day-into-evening. Programmed
                 end-to-end by The ZAO community.
               </p>
             </div>
             <div>
-              <div className="text-base font-bold text-white print:text-slate-900">
+              <div className="text-base font-bold text-ink-950 print:text-slate-900">
                 The umbrella
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-300 print:text-slate-700">
-                <strong className="text-white print:text-slate-900">ZAO Festivals</strong> is our
+              <p className="mt-2 text-sm leading-relaxed text-ink-950 print:text-slate-700">
+                <strong className="text-ink-950 print:text-slate-900">ZAO Festivals</strong> is our
                 event arm. ZAOstock is the flagship. Future events inherit the equity, mailing
                 list, and trust we build this year.
               </p>
             </div>
             <div>
-              <div className="text-base font-bold text-white print:text-slate-900">
+              <div className="text-base font-bold text-ink-950 print:text-slate-900">
                 The brand
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-300 print:text-slate-700">
-                <strong className="text-white print:text-slate-900">The ZAO</strong> (ZTalent
+              <p className="mt-2 text-sm leading-relaxed text-ink-950 print:text-slate-700">
+                <strong className="text-ink-950 print:text-slate-900">The ZAO</strong> (ZTalent
                 Artist Organization) is an independent music community: 100+ members, 30+
                 countries, organized around fractals (weekly peer-ranked contribution rounds) and
                 a shared treasury.
               </p>
             </div>
             <div>
-              <div className="text-base font-bold text-white print:text-slate-900">
+              <div className="text-base font-bold text-ink-950 print:text-slate-900">
                 The lineup
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-300 print:text-slate-700">
+              <p className="mt-2 text-sm leading-relaxed text-ink-950 print:text-slate-700">
                 Open-call. Submission-based. Cutoff roughly one month before the event. Curated
                 by the Music circle (DCoop + Shawn) with peer input.
               </p>
@@ -302,59 +303,59 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* WHERE WE ARE */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             Where we are
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            <div className="rounded-lg bg-white/[0.04] p-4 print:bg-slate-50">
-              <div className="text-xs uppercase tracking-wider text-slate-400 print:text-slate-600">
+            <div className="rounded-lg bg-paper-200 p-4 print:bg-slate-50">
+              <div className="text-xs uppercase tracking-wider text-ink-muted print:text-ink-muted">
                 Sponsors
               </div>
-              <div className="mt-1 text-2xl font-bold text-white print:text-slate-900">
+              <div className="mt-1 text-2xl font-bold text-ink-950 print:text-slate-900">
                 ${sponsorAmount.toLocaleString()}
               </div>
-              <div className="text-xs text-slate-400 print:text-slate-600">
+              <div className="text-xs text-ink-muted print:text-ink-muted">
                 {sponsorCount} committed
               </div>
             </div>
-            <div className="rounded-lg bg-white/[0.04] p-4 print:bg-slate-50">
-              <div className="text-xs uppercase tracking-wider text-slate-400 print:text-slate-600">
+            <div className="rounded-lg bg-paper-200 p-4 print:bg-slate-50">
+              <div className="text-xs uppercase tracking-wider text-ink-muted print:text-ink-muted">
                 Team
               </div>
-              <div className="mt-1 text-2xl font-bold text-white print:text-slate-900">
+              <div className="mt-1 text-2xl font-bold text-ink-950 print:text-slate-900">
                 {teamCount}
               </div>
-              <div className="text-xs text-slate-400 print:text-slate-600">8 circles</div>
+              <div className="text-xs text-ink-muted print:text-ink-muted">8 circles</div>
             </div>
-            <div className="rounded-lg bg-white/[0.04] p-4 print:bg-slate-50">
-              <div className="text-xs uppercase tracking-wider text-slate-400 print:text-slate-600">
+            <div className="rounded-lg bg-paper-200 p-4 print:bg-slate-50">
+              <div className="text-xs uppercase tracking-wider text-ink-muted print:text-ink-muted">
                 Volunteers
               </div>
-              <div className="mt-1 text-2xl font-bold text-white print:text-slate-900">
+              <div className="mt-1 text-2xl font-bold text-ink-950 print:text-slate-900">
                 {volunteerCount}
               </div>
-              <div className="text-xs text-slate-400 print:text-slate-600">signed up</div>
+              <div className="text-xs text-ink-muted print:text-ink-muted">signed up</div>
             </div>
           </div>
 
           <div className="mt-6">
-            <div className="text-base font-bold text-white print:text-slate-900">Partners</div>
+            <div className="text-base font-bold text-ink-950 print:text-slate-900">Partners</div>
             <ul className="mt-2 divide-y divide-white/5 print:divide-slate-200">
               {PARTNERS.map((p) => (
                 <li key={p.name} className="flex items-center justify-between py-2">
                   <div>
-                    <div className="text-sm font-semibold text-white print:text-slate-900">
+                    <div className="text-sm font-semibold text-ink-950 print:text-slate-900">
                       {p.name}
                     </div>
-                    <div className="text-xs text-slate-400 print:text-slate-600">{p.role}</div>
+                    <div className="text-xs text-ink-muted print:text-ink-muted">{p.role}</div>
                   </div>
                   <span
                     className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
                       p.confirmed
-                        ? 'bg-emerald-500/15 text-emerald-300 print:bg-emerald-100 print:text-emerald-800'
-                        : 'bg-slate-700/50 text-slate-300 print:bg-slate-200 print:text-slate-700'
+                        ? 'bg-olive-300 text-olive-500 print:bg-emerald-100 print:text-emerald-800'
+                        : 'bg-paper-100/50 text-ink-950 print:bg-slate-200 print:text-slate-700'
                     }`}
                   >
                     {p.confirmed ? 'Confirmed' : 'In conversation'}
@@ -367,28 +368,28 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* SPONSORSHIP TIERS */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             Sponsorship
           </h2>
-          <p className="mt-2 text-sm text-slate-400 print:text-slate-600">
-            Commercial sponsorship through ENTERACT. Not tax-deductible. Direct-deal with The ZAO.
+          <p className="mt-2 text-sm text-ink-muted print:text-ink-muted">
+            Commercial sponsorship. Not tax-deductible. Direct-deal with The ZAO.
           </p>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             {SPONSOR_TIERS.map((t) => (
               <div
                 key={t.tier}
-                className="rounded-lg border border-amber-500/20 bg-amber-500/[0.03] p-4 print:border-amber-700/40 print:bg-amber-50"
+                className="rounded-lg border border-ink-950/60 bg-amber-500/[0.03] p-4 print:border-amber-700/40 print:bg-amber-50"
               >
-                <div className="text-base font-bold text-white print:text-slate-900">{t.tier}</div>
-                <div className="text-sm font-semibold text-amber-400 print:text-amber-700">
+                <div className="text-base font-bold text-ink-950 print:text-slate-900">{t.tier}</div>
+                <div className="text-sm font-semibold text-gold-600 print:text-gold-600">
                   {t.range}
                 </div>
-                <ul className="mt-3 space-y-1 text-xs text-slate-300 print:text-slate-700">
+                <ul className="mt-3 space-y-1 text-xs text-ink-950 print:text-slate-700">
                   {t.perks.map((perk) => (
                     <li key={perk} className="flex gap-2">
-                      <span className="text-amber-400 print:text-amber-700">·</span>
+                      <span className="text-gold-600 print:text-gold-600">·</span>
                       <span>{perk}</span>
                     </li>
                   ))}
@@ -400,24 +401,24 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* HOW TO BE INVOLVED */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             How to be involved
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {HOW_TO.map((row) => (
               <div
                 key={row.role}
-                className="rounded-lg border border-white/10 bg-white/[0.02] p-4 print:border-slate-300 print:bg-white"
+                className="rounded-lg border border-ink-950/60 bg-paper-200 p-4 print:border-slate-300 print:bg-white"
               >
-                <div className="text-base font-bold text-white print:text-slate-900">
+                <div className="text-base font-bold text-ink-950 print:text-slate-900">
                   {row.role}
                 </div>
-                <p className="mt-1 text-sm text-slate-300 print:text-slate-700">{row.detail}</p>
+                <p className="mt-1 text-sm text-ink-950 print:text-slate-700">{row.detail}</p>
                 <Link
                   href={row.cta.href}
-                  className="mt-3 inline-block text-sm font-semibold text-amber-400 hover:underline print:text-amber-700"
+                  className="mt-3 inline-block text-sm font-semibold text-gold-600 hover:underline print:text-gold-600"
                 >
                   {row.cta.label} &rarr;
                 </Link>
@@ -428,9 +429,9 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* YEAR 1 COMMITMENTS */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             Year 1 commitments
           </h2>
           <ol className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -441,10 +442,10 @@ export default async function OverviewOnePager() {
               "Don't overscale. Capacity the venue + city are happy with. Year 2 earns the right to grow.",
             ].map((c, i) => (
               <li key={c} className="flex gap-3">
-                <span className="flex-shrink-0 text-2xl font-black text-amber-400 print:text-amber-700">
+                <span className="flex-shrink-0 text-2xl font-black text-gold-600 print:text-gold-600">
                   {i + 1}
                 </span>
-                <span className="text-sm text-slate-300 print:text-slate-700">{c}</span>
+                <span className="text-sm text-ink-950 print:text-slate-700">{c}</span>
               </li>
             ))}
           </ol>
@@ -452,30 +453,30 @@ export default async function OverviewOnePager() {
       </section>
 
       {/* CONTACT */}
-      <section className="border-b border-white/10 print:border-slate-300">
+      <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400 print:text-amber-700">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
             Contact
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
-              <div className="text-sm text-slate-400 print:text-slate-600">For everything</div>
+              <div className="text-sm text-ink-muted print:text-ink-muted">For everything</div>
               <a
-                href="mailto:zaal@thezao.com"
-                className="mt-1 block text-xl font-bold text-amber-400 hover:underline print:text-amber-700"
+                href="mailto:info@thezao.com"
+                className="mt-1 block text-xl font-bold text-gold-600 hover:underline print:text-gold-600"
               >
-                zaal@thezao.com
+                info@thezao.com
               </a>
-              <div className="mt-1 text-xs text-slate-500 print:text-slate-600">
+              <div className="mt-1 text-xs text-ink-muted print:text-ink-muted">
                 Zaal — ZAOstock organizer, The ZAO founder
               </div>
             </div>
             <div>
-              <div className="text-sm text-slate-400 print:text-slate-600">Online</div>
-              <ul className="mt-1 space-y-1 text-sm text-slate-300 print:text-slate-700">
+              <div className="text-sm text-ink-muted print:text-ink-muted">Online</div>
+              <ul className="mt-1 space-y-1 text-sm text-ink-950 print:text-slate-700">
                 <li>
                   Site:{' '}
-                  <Link href="/" className="text-amber-400 hover:underline print:text-amber-700">
+                  <Link href="/" className="text-gold-600 hover:underline print:text-gold-600">
                     zaostock.com
                   </Link>
                 </li>
@@ -489,24 +490,24 @@ export default async function OverviewOnePager() {
 
       {/* DASHBOARD-EDITED LONG-FORM (renders only if pager body has content) */}
       {pager?.body && pager.body.trim().length > 0 && (
-        <section className="border-b border-white/10 print:hidden">
+        <section className="border-b border-ink-950/60 print:hidden">
           <div className="mx-auto max-w-4xl px-4 py-10">
-            <details className="group rounded-lg border border-white/10 bg-white/[0.02] p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-amber-400 hover:underline">
+            <details className="group rounded-lg border border-ink-950/60 bg-paper-200 p-4">
+              <summary className="cursor-pointer text-sm font-semibold text-gold-600 hover:underline">
                 + Long-form briefing (last edited via dashboard)
               </summary>
-              <pre className="mt-4 whitespace-pre-wrap text-sm text-slate-300">{pager.body}</pre>
+              <pre className="mt-4 whitespace-pre-wrap text-sm text-ink-950">{pager.body}</pre>
             </details>
           </div>
         </section>
       )}
 
-      <footer className="mx-auto max-w-4xl px-4 py-8 text-xs text-slate-500 print:text-slate-600">
+      <footer className="mx-auto max-w-4xl px-4 py-8 text-xs text-ink-muted print:text-ink-muted">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             ZAO Festivals presents ZAOstock 2026 ·{' '}
             {pager?.updated_at && (
-              <span className="text-slate-600">v{pager.version} · updated {pager.updated_at.slice(0, 10)}</span>
+              <span className="text-ink-muted">v{pager.version} · updated {pager.updated_at.slice(0, 10)}</span>
             )}
           </div>
           <div className="text-right">
