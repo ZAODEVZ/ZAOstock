@@ -67,7 +67,7 @@ asked this week.** They stay listed so the gap stays visible.
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
 | First Aid contact | **No dedicated person** - Zaal, 27 Aug: "it's small". A named contact (UNSET) plus a prepared kit. The permit side is the CITY lane's. The July "eight hours, certified" framing is retired |
-| MC, noon to 16:00 - every changeover | **Now load-bearing.** Zaal, 27 Aug (Q16): there is no DJ; the changeovers - 15 minutes by our rule, 5 by Zaal's assumption, his call - are the MC plus sponsor spots. That makes the daytime MC the person who holds the street between every act. Cannot be Stilo. Not Steve - ZAO crew holds the mic all day, and both MC names (daytime, evening) are UNSET (Zaal, 27 Aug). Names wait. See production plan section 2 and 8.6 |
+| MC, noon to 16:00 - every changeover | **Now load-bearing.** Zaal, 27 Aug (Q16): there is no DJ; the changeovers - mixed, two of 5 and two of 10 (Zaal, 21:2x) - are the MC plus sponsor spots, and the 10s carry the event talk. That makes the daytime MC the person who holds the street between every act. Cannot be Stilo. Not Steve - ZAO crew holds the mic all day, and both MC names (daytime, evening) are UNSET (Zaal, 27 Aug). Names wait. See production plan section 2 and 8.6 |
 
 ---
 

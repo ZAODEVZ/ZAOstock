@@ -22,7 +22,10 @@ dropped: a 5-minute intro at noon; **about 30 minutes per act** in the order
 Crown Vics / Sen / Dcoop / Fellenz; Zaal assumes 5-minute changeovers where the
 rule here is 15 (one question back to him); the evening is **Stilo's DJ set
 18:00-19:30, then one of Steve's acts to close**; Werb is not fully confirmed
-and wanted for WaveWarZ; Lyons Den is confirmed and not in the order.
+and wanted for WaveWarZ; Lyons Den is confirmed and not in the order. Then,
+21:2x: **Lyons Den is fourth, after Dcoop**, and **the changeovers are mixed -
+5 for some, 10 where the event gets talked about.** Which gaps are the 10s is
+proposed below; the 5/10 split itself is Zaal's.
 
 Steve, this is the whole day on paper, built on the cadence you proposed:
 45/15 as the frame, 15-minute changeovers with the MC and sponsor spots in the
@@ -78,8 +81,9 @@ What it costs us, and I want to be straight about both:
 ## 2. The schedule
 
 Your cadence gave us the frame; the sets are now **about 30 minutes each**, in
-Zaal's order. Changeovers are shown at 15, which is our rule; Zaal is assuming
-5, and that is the one open question that moves every time below.
+Zaal's order, five of them. Changeovers are **mixed, 5 and 10** (Zaal): the 5s
+are a swap and nothing else, the 10s carry the event talk and a sponsor spot.
+Which gap is which is **proposed** here and marked so.
 
 ### Outdoors - Franklin Street Parklet
 
@@ -90,30 +94,38 @@ Zaal's order. Changeovers are shown at 15, which is our rule; Zaal is assuming
 | 10:00 | Everyone on site | First Aid, signage, merch if allowed, MC check, stage manager's walk - section 8.3 |
 | 12:00 - 12:05 | Intro on the mic | 5 minutes - Zaal. Welcome, Art of Ellsworth, the 6pm move, First Aid, sponsors. Who speaks: ZAO crew, name waits |
 | 12:05 - 12:35 | 1. The Crown Vics | 30 - **Zaal's order.** The act is PROPOSED: Steve confirms the booking; the slot is our plan |
-| 12:35 - 12:50 | Changeover | MC plus sponsor spots. Shown at 15; Zaal assumes 5 - **UNSET**, his call |
-| 12:50 - 13:20 | 2. Acadia Rising (Sen) | ~30 - Zaal's order |
-| 13:20 - 13:35 | Changeover | MC plus sponsor spots |
-| 13:35 - 14:05 | 3. Dcoop | ~30 - Zaal's order. AV cover during his set: name waits |
-| 14:05 - 14:20 | Changeover | MC plus sponsor spots |
-| 14:20 - 14:50 | 4. Fellenz | ~30 per the 20:4x order, or 15:00-15:45 per 20:0x - **UNSET**, Zaal. Ends before WaveWarZ either way |
-| 14:50 - 16:00 | **Open stretch** | About 70 minutes on these numbers, 100 on 5-minute changeovers. Zaal's dream if time: JANGO, Jadyn, Hurricane. Lyons Den (confirmed, not in the order) and Werb (not fully confirmed, wanted for WaveWarZ) have no row yet - **UNSET**. MC plus sponsor spots hold whatever stays empty. Battle stage reset inside the last 15 |
+| 12:35 - 12:45 | Changeover, **10** (PROPOSED as a 10) | The first gap, the biggest fresh crowd: the MC talks the event - the 6pm move, Art of Ellsworth - plus a sponsor spot |
+| 12:45 - 13:15 | 2. Acadia Rising (Sen) | ~30 - Zaal's order |
+| 13:15 - 13:20 | Changeover, **5** (PROPOSED as a 5) | Swap only; the MC keeps it moving. Only real with a shared backline (8.1) |
+| 13:20 - 13:50 | 3. Dcoop | ~30 - Zaal's order. AV cover during his set: name waits |
+| 13:50 - 13:55 | Changeover, **5** (PROPOSED as a 5) | Swap only |
+| 13:55 - 14:25 | 4. Lyons Den | ~30 - **Zaal, 21:2x: after Dcoop** |
+| 14:25 - 14:35 | Changeover, **10** (PROPOSED as a 10) | The last gap before the closer: event talk, the WaveWarZ pitch, a sponsor spot |
+| 14:35 - 15:05 | 5. Fellenz | ~30 - Zaal's order. Closes the outdoor block, ends before WaveWarZ |
+| 15:05 - 15:45 | **Open stretch** | About 40 minutes on these numbers. Zaal's dream if time: one of JANGO, Jadyn, Hurricane. Werb (not fully confirmed, wanted for WaveWarZ) has no row - **UNSET**. MC plus sponsor spots hold whatever stays empty |
+| 15:45 - 16:00 | Changeover | Battle stage reset. MC plus sponsor spots, handing to Hurricane |
 | 16:00 - 17:45 | WaveWarZ | Opens with the WaveWarZ story, Hurricane with Stilo (Zaal, 27 Aug: it exists, inside the block). Length UNSET. Then the battles, our artists, our MC. Audience decides |
 | 17:45 - 18:00 | Result, play-out, crowd walks | **Stilo DJs the transition out of WaveWarZ** (standup 24 Aug). Minute by minute in section 8.5 |
 | 18:00 | Outdoor stage down | Strike begins. Who, and by when the street is clear: section 8.10 |
 
-**The afternoon is no longer over-full - it has an open stretch.** On Zaal's
-20:4x numbers (about 30 minutes per act, four acts in his order) the last
-ordered act ends at 14:50 with 15-minute changeovers, or 14:20 with the
-5-minute ones he is assuming. That leaves 70 to 100 minutes before WaveWarZ at
-16:00. Three things want it, none decided - **UNSET**, Zaal:
+**The changeovers, and why the 10s sit where they do.** Zaal's rule (21:2x)
+is mixed gaps: 5 minutes where it is only a swap, 10 where the event gets
+talked about. Our proposed assignment - **PROPOSED, his to swap** - puts the two
+10s at the first gap and the last: the first because the largest fresh crowd is
+in the street then and the "everything moves next door at six" message has to
+land early; the last because it sets up the closer and WaveWarZ, and the
+sponsors get named right before the most-photographed block. The two 5s sit
+mid-afternoon, where momentum matters more than a speech - and a 5 is only
+physically real with a shared backline (8.1), which is Dcoop's question.
 
-1. **Lyons Den**, confirmed and not in the order.
-2. **Werb**, not fully confirmed, and wanted for WaveWarZ rather than a set.
-3. **The dream, if time:** JANGO, Jadyn, Hurricane - none asked, and two of
-   them are already inside WaveWarZ.
-
-Until he places them, the MC and sponsor spots hold the stretch, and the
-public page prints "sets from 12:05" with no count.
+**The open stretch.** Five sets at about 30, an intro of 5 and gaps of
+10+5+5+10 end the ordered day at 15:05. Swap the 10s and 5s any way and that
+moves by ten minutes at most. About 40 minutes are open before the 15:45 reset,
+and two things want them, neither decided - **UNSET**, Zaal: Werb, not fully
+confirmed and wanted for WaveWarZ rather than a set; and the dream, if time -
+JANGO, Jadyn, Hurricane, none asked, two of them already inside WaveWarZ. One
+of them fits. Until he places one, the MC and sponsor spots hold the stretch,
+and the public page prints "sets from 12:05" with no count.
 
 ### Indoors - Black Moon Public House
 
@@ -132,10 +144,9 @@ where already public; the rest stay generic until 1 September.
 
 | Slot | Act | Tag | Source |
 |------|-----|-----|--------|
-| 12:50 Acadia Rising, 13:35 Dcoop, 14:20 Fellenz (~30 each, Zaal's order) | Three confirmed acts in the order | **Confirmed** | Lineup confirmations, PR #45; the order and lengths from Zaal, 20:4x |
-| No row yet | Lyons Den | **Confirmed**, unplaced | Zaal's order omits him - question back to Zaal |
+| 12:45 Acadia Rising, 13:20 Dcoop, 13:55 Lyons Den, 14:35 Fellenz (~30 each, Zaal's order) | Four confirmed acts in the order | **Confirmed** | Lineup confirmations, PR #45; the order from Zaal 20:4x and 21:2x |
 | No row yet | Werb | **Not fully confirmed** (Zaal, 20:4x). Wanted for WaveWarZ | Was public as confirmed; the site has already pulled that |
-| Open stretch, if time | JANGO, Jadyn, Hurricane | **PROPOSED** by Zaal, not asked | The dream, 20:4x |
+| Open stretch 15:05-15:45, if time | One of JANGO, Jadyn, Hurricane | **PROPOSED** by Zaal, not asked | The dream, 20:4x |
 | 16:00-17:45 | Four battlers and the MC | **WaveWarZ** | Our block, our roster. The voting-window interludes are Hurricane plus sponsor spots - no DJ |
 | Every changeover, 12:45-16:00 | The MC plus sponsor spots - no DJ | **Decided** (Zaal, 27 Aug, Q16) | DJ Aquavantes is not on the day. MC name waits |
 | 12:05-12:35, in Zaal's typed order | The Crown Vics | **PROPOSED** | Steve's draft; Steve confirms the booking. The slot is Zaal's plan, not a booking |
@@ -321,14 +332,15 @@ The IMPROVEMENTS tab of the working doc read the whole day end to end on
 plan or a decision marked **UNSET** with the person who makes it. Nothing here
 invents a figure; where the review's own numbers are quoted, they are cited.
 
-### 8.1 Five-minute changeovers are not real - DONE, with one rule still open
+### 8.1 Five-minute changeovers - two of them are back, and they need the shared backline
 
-The grid in section 2 already runs 15-minute changeovers, so the review's first
-point is answered. What it also said still stands: **the outdoor block has zero
-slack.** On the frame, four 45-minute sets and four 15-minute gaps fill 12:00 to
-16:00 exactly, and WaveWarZ starts at 16:00 regardless. The real set lengths
-are UNSET (Zaal types per act); whatever they are, the sum plus changeovers
-is 240 or the day does not fit. An act that runs eight minutes over does
+The review said a 5-minute changeover is drum-kit-and-amps time, not band-swap
+time. Zaal's 21:2x rule brings two 5s back (mixed with two 10s), so the
+review's point now has a condition attached: **a 5-minute gap is only real with
+a shared backline** - one kit, one set of amps up all day, acts swap guitars
+and pedals. Without it, the 5s become 10s on the day and Fellenz ends at
+15:15 instead of 15:05, which the open stretch absorbs. Nothing cascades into
+WaveWarZ either way, because the ordered day ends well before 16:00. An act that runs eight minutes over does
 not cost eight minutes; it eats the next changeover and cascades.
 
 | Decision | Who | State |
@@ -412,8 +424,7 @@ proposed, not agreed.
 
 | Slot | If it falls through | Then |
 |------|---------------------|------|
-| Any daytime slot, while the fit in section 2 is unresolved | The act that did not fit takes it. This is the one fallback that costs nothing | The fit problem solves itself for that day |
-| Any daytime slot, once the fit is resolved | First: the next act comes up early if it is ready, and the MC holds the room with sponsor spots until it is. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the MC, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
+| Any daytime slot | First: the next act comes up early if it is ready, and the MC holds the room with sponsor spots until it is. Second: Steve's standing offer from 15 August of a local act, now our reserve (section 2). Third: the MC, and the grid holds - WaveWarZ still starts at 16:00 | Reserve act names: **UNSET**, Steve's to give |
 | WaveWarZ, a battler drops | The bracket shape is Stilo and Hurricane's to overwrite; with three competitors it still runs. The block stays 16:00-18:00 | Their call |
 | The MC is not there | Every gap is silent. Fallback: Zaal on the mic, sponsor spots read from the sheet. There is no DJ to fall back to (Zaal, 27 Aug) | MC name waits |
 | The closing act from 19:30 is not booked | Stilo's DJ set runs on past 19:30 and holds the room. The closer prints as in booking until Steve answers | Real fallback - Stilo is confirmed on our side |
@@ -577,8 +588,8 @@ open items at the end still stand. The live message is the city lane's
 | Which of the three acts are booked | Steve Peer | The whole indoor evening, the indoor PA, whether The Crown Vics is a reserve or a name | Drafted in `docs/drafts/msg-steve-peer-2026-08-27.md`, unsent |
 | Which act closes from 19:30, and is 19:30 right | Steve Peer | The printed closer. Stilo 18:00-19:30 is decided regardless | In `msg-steve-peer-2026-08-27.md`, unsent |
 | Does the permit cap an 11:00 start | - | Nothing any more | **WITHDRAWN** - music starts at noon, Zaal 27 August. Never sent |
-| The open stretch 14:50-16:00: Lyons Den, Werb, the dream acts | Zaal | The afternoon's last hour, the poster | **UNSET** - section 2 |
-| Changeovers 5 or 15 | Zaal | Every time after 12:35 | **UNSET** - he assumes 5, the rule is 15 |
+| The open stretch 15:05-15:45: Werb or one dream act | Zaal | The afternoon's last 40 minutes, the poster | **UNSET** - section 2 |
+| Which gaps are the 10s | Zaal | Ten minutes either way | **PROPOSED** - first and last; his to swap |
 | Changeover cover, 12:45 to 16:00 | The MC plus sponsor spots - decided, no DJ | Every 15-minute gap between sets | **Decided.** MC name waits |
 | Insurance certificate form and deadline | City of Ellsworth | A permit condition | Asked 17 Aug, unanswered |
 | Art of Ellsworth umbrella versus the Ch.14 45 day notice | City of Ellsworth | Whether a closed window applied to us | Open since July |
@@ -614,4 +625,5 @@ in booking either way.
   MC; First Aid is a contact plus a kit. Confirmed 20:46 (RETRO-LOG) with the
   full record in `~/zao-vault/daily/2026-08-27.md`: 5-minute intro; ~30 per act;
   the 20:4x order; 5-minute changeover assumption; Stilo 18:00-19:30 then one
-  of Steve's acts; Werb not fully confirmed; Lyons Den not in the order
+  of Steve's acts; Werb not fully confirmed; Lyons Den not in the order.
+  21:2x (logged 21:27): Lyons Den fourth after Dcoop; changeovers mixed 5/10

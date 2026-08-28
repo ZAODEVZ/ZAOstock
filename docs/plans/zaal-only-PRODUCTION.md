@@ -17,22 +17,23 @@ his "maybe"; he types the rest of the order; Steve does not MC; First Aid is a
 named contact plus a kit. All confirmed 20:46 (RETRO-LOG + the daily). Also from the
 daily: 5-minute intro at noon; ~30 per act, order Crown Vics / Sen / Dcoop /
 Fellenz; Stilo 18:00-19:30 then one of Steve's acts closes; Werb not fully
-confirmed; Lyons Den not in the order.
+confirmed; Lyons Den not in the order. 21:2x: Lyons Den fourth after Dcoop;
+changeovers mixed 5 and 10.
 
 ## Now
 
 1. Send `docs/drafts/msg-steve-peer-2026-08-27.md` as written? **yes/no** - unblocks the closer, the indoor PA, and whether The Crown Vics' 12:05 slot holds.
-2. Changeovers: you assume 5, the rule here is 15, the working doc found 5 is drum-kit time not band-swap time: **5 / 10 / 15** - moves every row after 12:35 in the plan and `ros-5min`.
-3. Lyons Den is confirmed and not in your order: **a slot in the open stretch / WaveWarZ / out** - production plan section 2.
-4. Werb, not fully confirmed, wanted for WaveWarZ: **WaveWarZ / a set / out** - section 2; the site already shows him unconfirmed.
-5. Fellenz: **~30 at 14:20 (your 20:4x order) / 15:00-15:45 (your 20:0x)** - section 2; either ends before WaveWarZ.
-6. The open stretch before 16:00 (70-100 minutes): JANGO, Jadyn, Hurricane "if time" - **which, in what order, and have they been asked: names or none** - section 2, `ros-5min` Q5.
-7. Which of Steve's acts closes the night from 19:30: **North Creek / The Somes Sound / The Crown Vics / Steve chooses** - production plan open item 4; goes into the Steve message.
-8. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - section 6, open item 1.
-9. Performer headcount for Black Moon's $20 certificates, and the date you will send it: **a number and a date** - section 3 row 3, 8.7.
-10. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
-11. The WaveWarZ story at 16:00, Hurricane with Stilo: **length in minutes** - `ros-5min` Q16.
-12. Sponsor spots in each gap: **how many, and live by the MC / recorded stings / both** - section 2, 8.6; copy is the sponsor deck's.
+2. The 5/10 changeover assignment - PROPOSED as 10 after Crown Vics, 5 after Sen, 5 after Dcoop, 10 after Lyons Den: **yes / swap (say which)** - production plan section 2, `ros-5min` Q1.
+3. Werb, not fully confirmed, wanted for WaveWarZ: **WaveWarZ / a set in the open stretch / out** - section 2; the site already shows him unconfirmed.
+4. Fellenz lands 14:35-15:05 on the new order: **fine / hold him to 15:00** - section 2, `ros-5min` Q2.
+5. The open stretch, about 40 minutes at 15:05-15:45: **JANGO / Jadyn / Hurricane / Werb / leave it to the MC** - one fits - section 2, `ros-5min` Q5.
+6. Which of Steve's acts closes the night from 19:30: **North Creek / The Somes Sound / The Crown Vics / Steve chooses** - production plan open item 4; goes into the Steve message.
+7. Latest-safe date for the PA to be confirmed, after which the backup starts regardless: **a date** - section 6, open item 1.
+8. Performer headcount for Black Moon's $20 certificates, and the date you will send it: **a number and a date** - section 3 row 3, 8.7.
+9. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
+10. The WaveWarZ story at 16:00, Hurricane with Stilo: **length in minutes** - `ros-5min` Q16.
+11. Sponsor spots in the two 10-minute gaps: **how many each, and live by the MC / recorded stings / both** - section 2, 8.6; copy is the sponsor deck's.
+12. Shared backline all day, which the two 5-minute gaps need: **yes / no** - production plan 8.1; Dcoop's kit question is in his draft.
 
 ## Later
 
