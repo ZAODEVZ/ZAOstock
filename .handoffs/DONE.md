@@ -379,3 +379,7 @@ ZAOSTOCK-STREAM msgs-v2. One msg file owned: `docs/drafts/msg-aziz-2026-08-27.md
 ## ZAOSTOCK-STREAM CLOSE (convention 10) - 2026-08-27, 21:1x
 
 ZAOSTOCK-STREAM CLOSE. Shipped: 11 lane files on branch `bettercallzaal/lane-stream-0827` (AV spec, chain, test plan, indoor mirror, content capture, soundcheck run sheet, power and internet, fallback matrix, Zaal-only list, two Aziz drafts both marked do-not-send), 12 commits on `118f127`, MERGE-READY, conflicts none, tsc 0, 31 tests pass, never pushed. Held: nothing not on disk; no pending relays, no monitors, no open question this pane alone knows. Every verdict heard is in a commit or in this file. Waiting on Zaal: the nine open lines in `docs/plans/zaal-only-STREAM.md`, soonest the AV meeting slot. Branch is local only; the nightly `zorca-bundle` picks it up. No `/handoff` needed by the convention's own test (step 2), so the next step is the orchestrator's "Ingested ... Ready", then close.
+
+## ZAOSTOCK-STREAM av-meeting - 2026-08-27, 21:2x
+
+ZAOSTOCK-STREAM av-meeting. Relay traced (board log 21:27). `docs/plans/av-spec-2026-10-03.md` header: the AV meeting is Friday 28 August, Zaal with Dcoop, Fellenz and Stilo, time UNSET, agenda is the UNSET cells in section order with section 1 as the frame and section 9 as what the room cannot close without Steve, Roddy or Aziz. Footer updated to match. `docs/plans/zaal-only-STREAM.md` line 1 now asks only for the time. Commit only. Pane still closed by the convention-10 line above; this was a one-line reopen for a verdict and nothing else changed.

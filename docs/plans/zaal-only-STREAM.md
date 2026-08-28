@@ -6,7 +6,7 @@ guessed; every blank stays UNSET until he types it.
 
 | # | Clock | Type this | Unblocks |
 |---|-------|-----------|----------|
-| 1 | SETTLED 27 Aug: the 26 Aug AV meeting did not happen. Still to type: the slot for next week's invite | "AV meeting ___ (day), ___ (time)" | `docs/plans/av-spec-2026-10-03.md`, every UNSET cell |
+| 1 | SETTLED 27 Aug 21:2x: AV meeting is Fri 28 Aug, Dcoop, Fellenz, Stilo. Still to type: the time | "AV meeting Fri 28 Aug, ___ (time)" | `docs/plans/av-spec-2026-10-03.md`, every UNSET cell |
 | 2 | SETTLED 27 Aug: Zaal messaged Aziz direct; Aziz runs the pipe test himself. Still to type: the result, "Stage 1 ran ___, pass/fail, ___ kbps" | `docs/av/test-plan-obs-rtmp-2026-10-03.md` results log |
 | 3 | Before the people map is treated as final | Aziz and Motomoto: "one person" or "two" | `docs/plans/people-map-2026-10-03.md`, `docs/av/livestream-chain-2026-10-03.md` identity flag |
 | 4 | Before the pipe test | Topology: "A, OBS to Cloudflare then out" or "B, OBS straight to Restream" or "Aziz picks" | `docs/av/livestream-chain-2026-10-03.md`, `docs/av/fallback-matrix-2026-10-03.md` link 6, `docs/av/power-internet-requirements.md` item 3 |
