@@ -389,3 +389,5 @@ Relay matched: board log "2026-08-27 21:14 RELAY ... DESIGN close".
   returning nothing.
 
 Stopped for the night.
+
+CLOSE addendum 21:2x: this lane's browse server and headless Chromium are gone. A gstack browse server (pid 4840, started 21:07:58, ppid 1) and a `next dev --webpack -p 3117` in the `lane-site-0827` worktree are running; both started after this lane's last browser call and belong to another session, so they were left alone. The `browse stop` CLI cannot reach 4840 ("Server crashed twice in a row - aborting"); whoever owns it should `kill 4840` when done.
