@@ -103,12 +103,14 @@ const PARTNERS: { name: string; role: string; confirmed: boolean; poc: string; l
   // Barney said official-partner status and logo use have to clear internally
   // first. It appears nowhere until she confirms in writing.
   { name: 'Town of Ellsworth', role: 'Parklet venue', confirmed: true, poc: 'Zaal' },
-  { name: 'Black Moon Public House', role: 'Indoor second stage + official after-party', confirmed: true, poc: 'Zaal' },
+  { name: 'Black Moon Public House', role: 'Indoor venue from 6pm + official after-party', confirmed: true, poc: 'Zaal' },
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
+  // Confirmed by Zaal 2026-08-27. Spelling is 'COC Concertz' - space, and a z.
+  { name: 'COC Concertz', role: 'Virtual concert series', confirmed: true, poc: 'Zaal' },
 ].filter((p) => p.confirmed);
 
 const NAV = [
