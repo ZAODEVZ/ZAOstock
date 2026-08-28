@@ -1385,3 +1385,4 @@ plus this file.
 
 `ws/lane-design-deck-0828`, ahead of `origin/main` by this commit only, not
 pushed, tree clean apart from `node_modules`. Nothing held, nothing sent.
+- ZAOSTOCK-SITE redesign /press (Forward round, 375): the real `docs/marketing/press-kit.md` on main renders through the route; at 375 the page scrolled horizontally to 414px because the fast-facts table pinned its first column to nowrap and the asset paths in code could not break. Fixed: table scrolls inside its own container, code and links wrap anywhere, first column wraps. scrollWidth at 375 now 375. Homepage at 375 re-verified on this branch: 375, no overflow.
