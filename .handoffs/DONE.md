@@ -1181,3 +1181,75 @@ ZAOSTOCK-PRODUCTION ros-v6 REQUEST for DECK (schedule slide) - CHANGED: evening 
 ZAOSTOCK-PRODUCTION CLOSE (convention 10, fourth time): shipped as above. Held - nothing off disk; no pending relays, no monitors; open questions in zaal-only-PRODUCTION.md (line 1 the 19:30 half hour) and ros-5min Q1-Q33; no /handoff bundle. Branch bettercallzaal/lane-production-0827, worktree ~/orca/workspaces/zaostock/lane-production-0827, base ws/production-plan-1003-0826 @ 118f127, 28 commits ahead after this line's commit, tree clean, NOT pushed. Known red: festival.test.ts:16 (SITE's). Ready to close.
 - ZAOSTOCK-SITE program-v6 (relay traced: board 23:03 "RELAY DECK+SITE ros-v6"): applied to every evening line in this write-set. `src/content/site.ts` DAY - which the homepage "The day" list renders - now reads `6 - 7:30 PM` DJ set as the street walks in, and `8 - 10 PM` live set hosted by Black Moon; nothing printed for 7:30-8 or after 10; "live music to close, in booking" is gone. `/team/plan` evening rows: 18:00-19:30 DJ set (unchanged), 19:30-20:00 UNSET half hour with nothing public, 20:00-22:00 live set hosted by Black Moon with Steve's act unnamed (name not on disk) and Crown Vics unnamed publicly until 1 Sept, nothing after 22:00 until the licence hour is typed. No act name added to any public surface. tsc clean, vitest 45/45. `src/app/program/page.tsx` NOT edited - fourth ask, same answer: outside this write-set per site.md line 2, unchanged since 18:51; on the fold it still prints the 18:00-21:00 after-party and 21:00 DJ blocks. NOTE for MARKETING: `docs/marketing/press-kit.md` "The day" and "Format" lines still say "then live music to close"; the /press route renders that file as written.
 - ZAOSTOCK-SITE program-v6 (addendum): PRODUCTION has closed its lane and `src/app/program/page.tsx` on the new fold still prints "45 minutes each", the 18:00-21:00 after party and the 21:00 DJ - ros-v3, v4 and v6 never reached it. The exact edit is drafted as `docs/drafts/program-ros-v6-2026-08-27.patch` (ros-v3 daytime sentence, ros-v6 evening blocks, comment rewritten, no act name): `git apply --check` passes against this tree and tsc is clean with it applied, then reverted. One command applies it; the file stays untouched here until someone with the write-set says so. Branch rebased onto the moved fold (6f0d200): 3 ahead, 0 behind, tsc clean, 45/45.
+
+---
+
+# ZAOSTOCK-DESIGN deck-html - 2026-08-28 07:2x, Forward round
+
+Relay matched: board log line 4442, "2026-08-28 07:12 BRIEF ... design.md".
+
+**Branch:** `ws/lane-design-deck-0828`, fresh off `origin/main` at `02634fe`
+(the overnight fold). Not pushed. Write-set: `docs/sponsor/deck-2026-10-03.html`
+plus this file.
+
+| Deliverable | State | Where |
+|---|---|---|
+| The sponsor deck as a designed HTML artifact | DONE | `docs/sponsor/deck-2026-10-03.html`, 40 KB, self-contained |
+| Wednesday design-meeting prep | Already on main | `docs/design/meeting-2026-09-02.md`, folded overnight from the 0827 lane |
+
+## What the deck file is
+
+- Rendered from `docs/sponsor/deck-2026-10-03.md` **as it is on origin/main**
+  (ros-v4 schedule, COC Concertz as the eighth partner, Heart of Ellsworth
+  struck, slide 4 unblocked), not from my lane's older copy. The words are the
+  deck's; only the layout is new.
+- DESIGN.md's system throughout: Boogaloo, Rubik, Space Mono from Google Fonts;
+  paper ground, ink text, red-500 stats, red-600 buttons, gold shadow on the
+  slide frame, grain at 0.35, hard offsets, no gradients, no motion beyond a
+  button press. Zero old-brand hex.
+- One `<section>` per slide, twelve, plus an appendix page marked "not for the
+  room" carrying the six Zaal fields, the logo and image gaps, and how the
+  file was made. `[SWAP]`, `[BLOCKED]` and `[CUT FROM LOCAL]` render as pill
+  tags on the slide head; slide 7 also carries a dashed "remove before
+  presenting" card.
+- **UNSET is visible:** nine `mark.unset` chips (seven on slide 9, one on
+  slide 10, one on slide 12), gold-300 fill, red dashed border, a hollow box
+  glyph so they survive greyscale print. The toolbar counts them live. Two
+  `mark.verify` chips on the newsletter count and the WaveWarZ figures.
+- **Print-friendly:** `@page letter landscape`, one slide per page, toolbar
+  hidden, shadows off, notes hidden unless the "Speaker notes" toggle is on
+  before printing. Speaker notes are `<details>` per slide on screen.
+- Badge from `public/brand/logos/zaostock26_badge_official.png` by relative
+  path; works opened from disk in the repo. Candy credited on slide 1.
+- Two-column slides collapse under 960px; the partner grid goes 2-up.
+
+## Verification
+
+- HTML parser pass: no unclosed or mismatched tags. 13 sections, 12 notes
+  blocks, 9 UNSET marks, 2 VERIFY marks, 0 occurrences of any old-brand hex or
+  "Fractured"; the three strings "45-minute", "tax-deductible" and "Heart of
+  Ellsworth is our" appear only inside do-not-say speaker notes. Badge file
+  exists at the referenced path.
+- **Visual render: UNSET.** gstack browse restarted mid-`goto` and returned a
+  blank page for the local file (0 sections, 5 KB screenshots); the orphan
+  browse server from another session (pid 4840, port shared) is the likely
+  cause. Three tries; stopped per the rule. Open the file in any browser to
+  see it; nothing in it needs a server.
+
+## Request lines
+
+- **DECK:** the production plan on main (updated overnight) now records The
+  Crown Vics 12:05 and Steve's own set 20:00-22:00 as booked, and the evening
+  as Stilo's DJ set 18:00-19:30 then one of Steve's acts to close. Deck slide 5
+  still prints "DJ set" and "live music to close, in booking" and the note "no
+  act is described as confirmed anywhere in this deck". If the deck md
+  changes, the HTML follows it; I did not change either.
+- **SITE / whoever prints:** re-pull the WaveWarZ figures and the newsletter
+  count the day it prints; both chips say so.
+- **Anyone with a working browser:** open the HTML once and say whether the
+  slide frames fit a landscape letter page with notes off. Untested here.
+
+## ZAOSTOCK-DESIGN CLOSE - 2026-08-28 07:2x
+
+`ws/lane-design-deck-0828`, ahead of `origin/main` by this commit only, not
+pushed, tree clean apart from `node_modules`. Nothing held, nothing sent.

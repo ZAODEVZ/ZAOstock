@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAOstock sponsor deck - 3 October 2026</title>
+<meta name="description" content="ZAOstock sponsor deck, LOCAL variant, rendered from docs/sponsor/deck-2026-10-03.md on DESIGN.md's system. Twelve slides, speaker notes, UNSET fields marked.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Rubik:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Tokens: docs/brand/tokens.reference.css primitives, DESIGN.md semantics. */
+:root{
+  --red-300:#E8735C;--red-500:#D2402A;--red-600:#B93826;--red-700:#9C2F1E;
+  --gold-300:#F2D48A;--gold-400:#E5AC3B;--gold-500:#C98F2A;--gold-600:#A8721C;
+  --denim-300:#7FA8C7;--denim-400:#2E6494;--denim-500:#245078;--denim-600:#1B3C5C;
+  --olive-300:#A4AF6E;--olive-400:#7C8A3D;--olive-500:#636F2F;
+  --paper-100:#F2E6D3;--paper-200:#FAF3E6;--ink-950:#241E15;
+  --ink-secondary:#625A4E;--ink-muted:#6A6256;
+  --hair:color-mix(in oklch,var(--ink-950) 60%,transparent);
+  --font-display:'Boogaloo','Baloo 2',system-ui,sans-serif;
+  --font-sans:'Rubik',-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'Space Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.14  0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:auto}
+body{margin:0;background:var(--ink-950);color:var(--ink-950);font-family:var(--font-sans);font-size:16px;line-height:1.5}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.75rem,2rem + 4vw,5.5rem);line-height:1.02}
+h2{font-size:2.5rem}
+h3{font-size:1.75rem;line-height:1.1}
+p{margin:0 0 12px;max-width:65ch}
+a{color:var(--denim-400)}a:hover{color:var(--denim-500)}
+strong{font-weight:700}
+
+/* Toolbar (screen only) */
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in oklch,var(--paper-200) 92%,transparent);backdrop-filter:blur(8px);border-bottom:2px solid var(--ink-950);padding:12px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bar__brand{font-family:var(--font-display);font-size:19px}
+.bar__brand small{font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-left:8px;letter-spacing:.04em}
+.bar__actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;border:2.5px solid var(--ink-950);cursor:pointer;box-shadow:3px 3px 0 var(--ink-950);padding:9px 18px;background:var(--paper-200);color:var(--ink-950);transition:transform 120ms var(--ease),box-shadow 120ms var(--ease),background 180ms var(--ease)}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink-950)}
+.btn:focus-visible{outline:none;box-shadow:3px 3px 0 var(--ink-950),0 0 0 3px color-mix(in oklch,var(--gold-400) 45%,transparent)}
+.btn--primary{background:var(--red-600);color:var(--paper-200)}.btn--primary:hover{background:var(--red-700)}
+.btn[aria-pressed="true"]{background:var(--gold-400)}
+.count{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red-700)}
+
+/* Slides */
+.deck{display:flex;flex-direction:column;gap:24px;padding:24px clamp(12px,3vw,48px) 64px;max-width:1280px;margin:0 auto}
+.slide{position:relative;background:var(--paper-100);color:var(--ink-950);border:2.5px solid var(--ink-950);border-radius:18px;box-shadow:5px 5px 0 var(--gold-400);padding:clamp(24px,4vw,56px);min-height:min(72vh,720px);display:flex;flex-direction:column;overflow:hidden}
+.slide::after{content:'';position:absolute;inset:0;background-image:var(--grain);opacity:.35;mix-blend-mode:multiply;pointer-events:none;border-radius:inherit}
+.slide>*{position:relative;z-index:1}
+.slide__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--denim-400);margin:0 0 8px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:2px solid var(--ink-950);white-space:nowrap}
+.tag--swap{background:var(--denim-400);color:var(--paper-200)}
+.tag--blocked{background:var(--red-500);color:var(--paper-200)}
+.tag--cut{background:transparent;color:var(--ink-950)}
+.tag--ok{background:var(--olive-400);color:var(--paper-200)}
+.slide__body{flex:1;display:grid;gap:24px}
+.slide__body--2{grid-template-columns:1.3fr 1fr;align-items:start}
+.slide__foot{margin-top:24px;padding-top:12px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);letter-spacing:.04em}
+.slide__foot b{color:var(--ink-950)}
+.lede{font-size:1.125rem;color:var(--ink-secondary)}
+.strong{font-weight:700;font-size:1.125rem;color:var(--ink-950)}
+.big{font-family:var(--font-display);font-size:clamp(2rem,1.5rem + 2.5vw,3.5rem);line-height:1.05;margin:0 0 16px}
+.big .accent{color:var(--gold-600)}
+ul.list{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+ul.list li{padding-left:20px;position:relative}
+ul.list li::before{content:'';position:absolute;left:0;top:.6em;width:10px;height:10px;border-radius:50%;background:var(--red-500);border:2px solid var(--ink-950)}
+.card{background:var(--paper-200);border:2px solid var(--ink-950);border-radius:14px;padding:20px 24px;box-shadow:3px 3px 0 var(--ink-950)}
+.card--inverse{background:var(--ink-950);color:var(--paper-200);box-shadow:3px 3px 0 var(--gold-400)}
+.card--inverse .eyebrow{color:var(--gold-400)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper-200)}
+.stat{padding:18px 20px;border-left:1px solid var(--hair)}
+.stat:first-child{border-left:none}
+.stat__value{font-family:var(--font-display);font-size:2.5rem;line-height:1;color:var(--red-500);font-variant-numeric:tabular-nums;display:block}
+.stat__label{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-top:6px}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper-200);border:2px solid var(--ink-950);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--hair);vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;background:var(--paper-100)}
+td.t{font-family:var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:14px}
+td.n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-weight:700}
+.badge{display:block;width:100%;max-width:320px;border:2.5px solid var(--ink-950);border-radius:18px;box-shadow:5px 5px 0 var(--ink-950);background:var(--red-500);aspect-ratio:1122/1402;object-fit:cover;justify-self:end}
+.partners{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.partners div{border:1px solid var(--hair);border-radius:14px;padding:14px 16px;font-weight:700;font-size:14px;background:var(--paper-200)}
+.partners div small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);font-weight:700;margin-top:4px}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.timeline .card{padding:0;overflow:hidden}
+.timeline .swatch{height:64px}
+.timeline .body{padding:16px 18px}
+.timeline h3{font-size:1.5rem;margin:6px 0 4px}
+.timeline p{font-size:14px;color:var(--ink-secondary);margin:0}
+
+/* UNSET and VERIFY marks: visible on screen, on paper, and in greyscale */
+mark.unset{font-family:var(--font-mono);font-weight:700;font-size:.85em;letter-spacing:.08em;background:var(--gold-300);color:var(--red-700);border:2px dashed var(--red-500);border-radius:6px;padding:1px 8px;white-space:nowrap}
+mark.unset::before{content:'\25A1  ';font-weight:400}
+mark.verify{font-family:var(--font-mono);font-weight:700;font-size:.75em;letter-spacing:.08em;background:transparent;color:var(--denim-600);border:2px solid var(--denim-400);border-radius:6px;padding:1px 8px;white-space:nowrap;vertical-align:middle}
+
+/* Speaker notes */
+.notes{margin-top:20px;border:2px solid var(--ink-950);border-radius:14px;background:var(--paper-200)}
+.notes summary{cursor:pointer;font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;color:var(--ink-muted);list-style:none}
+.notes summary::-webkit-details-marker{display:none}
+.notes summary::before{content:'+  ';color:var(--red-500)}
+.notes[open] summary::before{content:'-  '}
+.notes .inner{padding:0 16px 14px;font-size:14px;color:var(--ink-secondary)}
+.notes .inner p{max-width:none}
+.notes .inner strong{color:var(--ink-950)}
+.notes .inner .warn{color:var(--red-700);font-weight:700}
+body.show-notes .notes{display:block}
+
+/* Appendix (not a slide) */
+.appendix{background:var(--paper-200);border:2.5px dashed var(--red-500);box-shadow:none}
+.appendix h2{font-size:2rem}
+
+@media (max-width:960px){
+  .slide__body--2{grid-template-columns:1fr}
+  .badge{justify-self:start;max-width:240px}
+  .partners{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:1fr}
+  h2{font-size:2rem}
+}
+
+/* Print: one slide per landscape page, notes only when toggled on */
+@page{size:letter landscape;margin:.4in}
+@media print{
+  html{font-size:13px}
+  body{background:var(--paper-100)}
+  .bar{display:none}
+  .deck{padding:0;gap:0;max-width:none}
+  .slide{break-after:page;page-break-after:always;min-height:0;height:7.6in;border-radius:0;box-shadow:none;border-width:0;padding:.3in .4in;overflow:hidden}
+  .slide::after{display:none}
+  .slide:last-child{break-after:auto}
+  .notes{display:none}
+  body.show-notes .notes{display:block}
+  .notes summary::before{content:''}
+  .notes .inner{display:block}
+  .badge{box-shadow:none}
+  .card,.stats,table{box-shadow:none}
+  a{color:inherit;text-decoration:none}
+  .appendix{break-before:page}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" role="toolbar" aria-label="Deck controls">
+  <div class="bar__brand">ZAOSTOCK <small>sponsor deck · LOCAL variant · built 2026-08-28 from deck-2026-10-03.md</small></div>
+  <div class="bar__actions">
+    <span class="count" id="unsetCount">9 UNSET marks · 6 fields for Zaal</span>
+    <button class="btn" id="toggleNotes" aria-pressed="false" type="button">Speaker notes</button>
+    <button class="btn btn--primary" type="button" onclick="window.print()">Print</button>
+  </div>
+</div>
+
+<main class="deck">
+
+<!-- 1 -->
+<section class="slide" id="s1" aria-label="Slide 1, Cover">
+  <div class="slide__head"><div><p class="eyebrow">Slide 1 · Cover</p></div><div class="tags"><span class="tag tag--ok">Shared</span></div></div>
+  <div class="slide__body slide__body--2">
+    <div>
+      <h1>ZAO<span class="accent" style="color:var(--gold-600)">stock</span></h1>
+      <p class="strong" style="margin-top:16px">Saturday October 3, 2026 · Franklin Street Parklet, downtown Ellsworth, Maine</p>
+      <p class="lede">Free to attend. Part of the 9th annual Art of Ellsworth, during Maine Craft Weekend.</p>
+      <p class="eyebrow" style="margin-top:24px;color:var(--ink-muted)">ZAO Festivals presents ZAOstock</p>
+    </div>
+    <img class="badge" src="../../public/brand/logos/zaostock26_badge_official.png" width="1122" height="1402" alt="ZAOstock 26 badge: a dove on a guitar neck, October 3rd Maine, whole day of art, peace and music. Designed by Candy, CandyToyBox.">
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>Say the date, the street and the price in the first ten seconds. Free-to-attend is the fact that makes everything else make sense to a local business: this is footfall on their block, not a ticketed event that competes with them.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>1</b> / 12</span><span>Identity by Samantha "Candy", CandyToyBox</span></div>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="s2" aria-label="Slide 2, Who we are">
+  <div class="slide__head"><div><p class="eyebrow">Slide 2 · Who we are</p><h2>The ZAO.</h2></div><div class="tags"><span class="tag tag--ok">Shared</span></div></div>
+  <div class="slide__body slide__body--2">
+    <div>
+      <p class="lede"><strong>ZTalent Artist Organization.</strong> A community that returns margin, data and IP rights to the artists in it. Music first, community second, technology third.</p>
+      <ul class="list">
+        <li><strong>100+ consecutive weekly governance sessions</strong> since 2024-07-30</li>
+        <li><strong>157 verified on-chain governance members</strong>, 188+ Fractal participants</li>
+        <li><strong>500+ newsletter subscribers</strong>, daily editions <mark class="verify">verify before print</mark></li>
+        <li><strong>ZAO Festivals</strong> is the events arm. ZAOstock is its flagship.</li>
+      </ul>
+    </div>
+    <div class="card card--inverse"><p class="eyebrow">Since</p><span class="stat__value" style="color:var(--red-300)">2024</span><span class="stat__label" style="color:var(--paper-200);opacity:.8">Weekly, without a miss, since 30 July 2024</span></div>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>For a local room, lead with the weekly-since-2024 number and stop. It is the only one that answers the question they are actually asking, which is "are you going to still exist in October". Skip the governance and membership detail unless asked - it invites a conversation about technology, and this deck is not selling technology.</p>
+    <p><span class="warn">Newsletter count</span> is cited from docs 443/1277 (July 2026) and is marked VERIFY in the fact sheet. Do not print a precise subscriber number without a re-pull.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>2</b> / 12</span><span>Source: doc 2325 fact sheet; newsletter figure docs 443/1277, July 2026</span></div>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="s3" aria-label="Slide 3, Track record">
+  <div class="slide__head"><div><p class="eyebrow">Slide 3 · Track record</p><h2>What came before.</h2></div><div class="tags"><span class="tag tag--ok">Shared</span></div></div>
+  <div class="slide__body">
+    <div class="timeline">
+      <div class="card"><div class="swatch" style="background:var(--denim-400)"></div><div class="body"><p class="eyebrow" style="color:var(--ink-muted)">2024 · New York City, NFT NYC</p><h3>ZAO-PALOOZA</h3><p>12 artists. Broke even.</p></div></div>
+      <div class="card"><div class="swatch" style="background:var(--red-500)"></div><div class="body"><p class="eyebrow" style="color:var(--ink-muted)">Dec 6, 2024 · Miami, Art Basel Wynwood</p><h3>ZAO-CHELLA</h3><p>10 artists. First IRL WaveWarZ. AR art.</p></div></div>
+      <div class="card"><div class="swatch" style="background:var(--olive-400)"></div><div class="body"><p class="eyebrow" style="color:var(--ink-muted)">Jul 25, 2026 · Laurel, Maryland</p><h3>ZAOville</h3><p>The media dry run.</p></div></div>
+    </div>
+    <p class="strong" style="margin-top:8px"><span style="color:var(--red-500)">~$1,497 raised</span> for HuRya Empowerment Foundation across two WaveWarZ benefit battles, with platform fees waived.</p>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>Maceo's advice on the Aug 24 standup, and it is good: lead with ZAO-CHELLA and pull footage and stills from CHELLA and PALOOZA rather than building this slide from scratch. He offered his own sponsor-winning decks as templates.</p>
+    <p>"Broke even" is the right thing to say out loud about PALOOZA. A sponsor who hears a straight answer about a past event believes the rest of the deck.</p>
+    <p><span class="warn">Asset gap:</span> this slide needs images and we do not have them selected. The colour swatches above stand in for them. See the Links and Assets tab - it is the biggest gap blocking the deck.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>3</b> / 12</span><span>Images: UNSET, swatches stand in</span></div>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="s4" aria-label="Slide 4, Why ZAOstock, why Maine">
+  <div class="slide__head"><div><p class="eyebrow">Slide 4 · Why ZAOstock, why Maine</p><h2>Ellsworth is the gateway to Acadia.</h2></div><div class="tags"><span class="tag tag--swap">Swap</span></div></div>
+  <div class="slide__body slide__body--2">
+    <div>
+      <p class="lede">Over <strong>4 million people</strong> drove through in 2025. Downtown has just received National Historic Register designation. Zaal lives here and bought a house here - this is a hometown event, not a tour stop.</p>
+      <p class="strong">Expected attendance: 200-250 in person, plus about 1,000 online.</p>
+    </div>
+    <div class="stats" style="grid-template-columns:1fr 1fr">
+      <div class="stat"><span class="stat__value">200-250</span><span class="stat__label">In person, on the block</span></div>
+      <div class="stat"><span class="stat__value">~1,000</span><span class="stat__label">Online</span></div>
+      <div class="stat" style="border-left:none;border-top:1px solid var(--hair)"><span class="stat__value">4M</span><span class="stat__label">Drove through in 2025</span></div>
+      <div class="stat" style="border-top:1px solid var(--hair)"><span class="stat__value">9th</span><span class="stat__label">Art of Ellsworth</span></div>
+    </div>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p><strong>Unblocked.</strong> Zaal typed the attendance figures on 2026-08-27 and slide 4 may use them. Say both numbers, and say them in that order. The in-person figure is the one a local business cares about because it is footfall on their block. The online figure is what a sponsor's logo reaches beyond the street, and it is roughly four times the crowd.</p>
+    <p><span class="warn">Do not present these as the awareness goal.</span> "4,000 of the 8,000 people in Ellsworth" is a separate, larger ambition about the town hearing of the event - not a projection of who turns up. Keep the two apart on the slide and in the room.</p>
+    <p>The 4M-through-Acadia number is the strongest fact in the deck for a local business and it is doing something specific: it says the street outside your door already has traffic, and on October 3 some of it stops. Do not dilute it by stacking other numbers around it.</p>
+    <p>General and online variants swap this slide for the web3 use case.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>4</b> / 12</span><span>Attendance: Zaal, typed 2026-08-27</span></div>
+</section>
+
+<!-- 5 -->
+<section class="slide" id="s5" aria-label="Slide 5, The day">
+  <div class="slide__head"><div><p class="eyebrow">Slide 5 · The day</p><h2>One venue at a time. Outdoors, then in.</h2></div><div class="tags"><span class="tag tag--ok">Shared</span></div></div>
+  <div class="slide__body">
+    <table>
+      <thead><tr><th>Time</th><th>Where</th><th>What</th></tr></thead>
+      <tbody>
+        <tr><td class="t">12:00</td><td>Franklin Street Parklet, outdoors</td><td>Doors, and a short welcome</td></tr>
+        <tr><td class="t">from 12:05</td><td>Franklin Street Parklet, outdoors</td><td>Live sets, with <strong>our MC and sponsor spots in every changeover</strong></td></tr>
+        <tr><td class="t">16:00 - 18:00</td><td>Franklin Street Parklet, outdoors</td><td>WaveWarZ live music battles, opening with the WaveWarZ story</td></tr>
+        <tr><td class="t">18:00</td><td>Franklin Street to Black Moon</td><td>Everyone walks next door, together</td></tr>
+        <tr><td class="t">18:00 - 19:30</td><td>Black Moon Public House, indoors</td><td>DJ set</td></tr>
+        <tr><td class="t">19:30 - close</td><td>Black Moon Public House, indoors</td><td>Live music to close. <strong>In booking</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="strong">Saturday 3 October. Rain or shine, tent coverage via Wallace Events. Free to attend.</p>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>Source: PRODUCTION ros-v4, 2026-08-27, which supersedes ros-v3. The evening order flipped: the DJ now opens the indoor block at 18:00 and live music closes from 19:30. The closing live music is <strong>in booking</strong> - no act, no downbeat.</p>
+    <p><span class="warn">Do not print, and do not say:</span> any act name, a set count, set lengths, "45-minute sets", or a DJ between the daytime sets. The 18:00-19:30 DJ set is the one DJ on this slide and it is indoors.</p>
+    <p><span class="warn">No act is described as confirmed anywhere in this deck.</span> If you have seen an older version, or the website, naming an act as confirmed, do not carry that into the room. The lineup is announced on 1 September and that is the answer if a sponsor asks who is playing.</p>
+    <p>The daytime block deliberately has no end time printed. ros-v4 gives "live sets from 12:05" and WaveWarZ at 16:00, and does not state when the sets stop. Inventing a boundary is how a schedule slide stops matching the day.</p>
+    <p><strong>"Sponsor spots in every changeover" is the most sellable line here</strong> and it is deliberately not a number. The count of reads is Zaal's to state. Say "in every changeover" and let them ask.</p>
+    <p>The single most important sentence remains "one venue at a time". One crowd, one PA crew, and at six the whole street walks into the bar together. For a local sponsor, that walk is the moment their block gets busy. The running order is Zaal's plan and is not public.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>5</b> / 12</span><span>Source: PRODUCTION ros-v4, 2026-08-27</span></div>
+</section>
+
+<!-- 6 -->
+<section class="slide" id="s6" aria-label="Slide 6, WaveWarZ">
+  <div class="slide__head"><div><p class="eyebrow">Slide 6 · WaveWarZ</p><h2>The live music battle.</h2></div><div class="tags"><span class="tag tag--ok">Shared</span></div></div>
+  <div class="slide__body slide__body--2">
+    <div>
+      <p class="lede">Two artists go head to head on stage and the audience decides, in the street and online.</p>
+      <p class="strong">On the day, 16:00 to 18:00: Stilo, Jango, Lui and Quan battling, with Hurricane on the mic.</p>
+      <p class="eyebrow" style="color:var(--ink-muted);margin-top:16px">Measured 2026-08-27, live from the public API <mark class="verify">re-pull before print</mark></p>
+    </div>
+    <table>
+      <tbody>
+        <tr><td>Battles run</td><td class="n">1,452</td></tr>
+        <tr><td>Lifetime volume</td><td class="n">913.9 SOL <span style="font-weight:400;color:var(--ink-muted)">about $97,961 at $107.19/SOL</span></td></tr>
+        <tr><td>Paid to artists, automatic and on-chain</td><td class="n">14.23 SOL <span style="font-weight:400;color:var(--ink-muted)">about $1,525</span></td></tr>
+        <tr><td>Paid out to winning traders</td><td class="n">403.8 SOL <span style="font-weight:400;color:var(--ink-muted)">about $43,285, 1,874 withdrawals</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>These are live figures pulled the day the deck was built, not the July numbers still circulating in older docs. 1,452 is 53 main events, 171 main battles, 1,245 quick, 36 community. <span class="warn">Re-pull before printing</span> - it is one curl to <code>wavewarz.info/api/public/stats</code>.</p>
+    <p>For a local room, the number that lands is the one paid to artists automatically. It is small and it is the point: the mechanism works and it pays the artist without anyone deciding to.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>6</b> / 12</span><span>wavewarz.info/api/public/stats, fetched 2026-08-27 15:47 UTC</span></div>
+</section>
+
+<!-- 7 -->
+<section class="slide" id="s7" aria-label="Slide 7, The virtual side, cut from local" style="opacity:.92">
+  <div class="slide__head"><div><p class="eyebrow">Slide 7 · The virtual side</p><h2>A stream runs alongside the day.</h2></div><div class="tags"><span class="tag tag--cut">Cut from local</span></div></div>
+  <div class="slide__body">
+    <p class="lede">A live stream with the Baraza OBS rig, and a Decentraland mirror of Franklin Street.</p>
+    <div class="card" style="border-style:dashed;max-width:640px"><p class="eyebrow" style="color:var(--red-700)">Not in the local deck</p><p style="margin:0;font-size:14px;color:var(--ink-secondary)">Remove this page before presenting to an Ellsworth business. Keep it in the general and online variants.</p></div>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p><span class="warn">Cut this slide from the local deck.</span> It answers a question an Ellsworth business is not asking and it moves the conversation to technology.</p>
+    <p>Status, so nobody oversells it: the encode path is proven end to end. The stream destination is not - the ingest URL and key are owed by Aziz and the test slipped its 22 August date. Do not put a platform name on this slide until the stream has run once.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>7</b> / 12</span><span>Stream platform: UNSET until it has run once</span></div>
+</section>
+
+<!-- 8 -->
+<section class="slide" id="s8" aria-label="Slide 8, Why partner">
+  <div class="slide__head"><div><p class="eyebrow">Slide 8 · Why partner · LOCAL</p><h2>Your block, on the busiest weekend of the fall.</h2></div><div class="tags"><span class="tag tag--swap">Swap</span></div></div>
+  <div class="slide__body">
+    <ul class="list">
+      <li>Maine Craft Weekend brings statewide promotion. Art of Ellsworth is in its 9th year. ZAOstock puts live music on Franklin Street inside both.</li>
+      <li><strong>Free to attend</strong>, so nobody chooses between your business and a ticket.</li>
+      <li><strong>We are measuring what the day does for local businesses</strong> - an average Saturday against October 3 - and publishing it. If it works, you have the number. If it does not, you have that too.</li>
+      <li><strong>You would be joining eight confirmed partners.</strong></li>
+    </ul>
+    <div class="partners">
+      <div>Town of Ellsworth<small>Parklet venue</small></div>
+      <div>Black Moon Public House<small>The evening</small></div>
+      <div>Star 97.7<small>Local radio</small></div>
+      <div>Wallace Events<small>Tenting</small></div>
+      <div>WaveWarZ<small>The battle format</small></div>
+      <div>ENTERACT<small>Production support</small></div>
+      <div>Web3Metal<small>Community surface</small></div>
+      <div>COC Concertz<small>Virtual concert series</small></div>
+    </div>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>The measurement promise is the differentiator and it is real - it is a live commitment in the production plan, with Black Moon as the first business asked. Do not promise a specific lift. Promise the measurement.</p>
+    <p><strong>COC Concertz is confirmed as a ZAOstock partner</strong> (Zaal, 2026-08-27). It is the virtual concert series, a partnership rather than a ZAO sub-brand. Spelling is COC Concertz - a space, and a z on the end.</p>
+    <p><span class="warn">Heart of Ellsworth is NOT on that list and must not be added to it.</span> On the 2026-08-13 call Chesnee Barney said official-partner status and logo use have to clear internally first, and it has not. Say "part of Art of Ellsworth", which is true and is about the event, not "Heart of Ellsworth is our partner".</p>
+    <p>None of the eight has supplied a logo yet, which is why they are names and not marks. Three are outstanding and due Friday 29 August.</p>
+    <p>This is the slide where Zaal's own framing belongs, verbatim from the 8/17 call: "everyone always thinks to get sponsors it needs to be this big corporate brand... these are our peoples."</p>
+  </div></details>
+  <div class="slide__foot"><span><b>8</b> / 12</span><span>Logos: none on disk, names render instead</span></div>
+</section>
+
+<!-- 9 -->
+<section class="slide" id="s9" aria-label="Slide 9, Packages, blocked">
+  <div class="slide__head"><div><p class="eyebrow">Slide 9 · Packages · LOCAL</p><h2>Five ways in.</h2></div><div class="tags"><span class="tag tag--swap">Swap</span><span class="tag tag--blocked">Blocked</span></div></div>
+  <div class="slide__body">
+    <table>
+      <thead><tr><th>Tier</th><th>Price</th><th>What it gets</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Presenting</strong></td><td><mark class="unset">UNSET</mark></td><td>Name on the banner, the poster, the stage, the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027</td></tr>
+        <tr><td><strong>Platform</strong></td><td><mark class="unset">UNSET</mark></td><td>Logo on the poster and the site. Named in the newsletter and the recap. One on-stage mention</td></tr>
+        <tr><td><strong>Sponsor an artist</strong></td><td><mark class="unset">UNSET</mark></td><td>Covers one artist's travel. They make content carrying your name. The artist opts in</td></tr>
+        <tr><td><strong>Community</strong></td><td><mark class="unset">UNSET</mark></td><td>Logo on the site, named in the recap, thanked from stage</td></tr>
+        <tr><td><strong>Friend of the Fest</strong></td><td><mark class="unset">UNSET</mark></td><td>Name on the site and in the newsletter</td></tr>
+      </tbody>
+    </table>
+    <p class="strong">Early-close discount: <mark class="unset">UNSET</mark> off any cash tier for a signed yes by <mark class="unset">UNSET</mark>.</p>
+    <p style="font-size:14px;color:var(--ink-secondary)">In-kind counts at retail value toward a tier, with no extra discount stacked on top. Sponsor-an-artist is never discounted. There is a floor below which there is no negotiation. Sponsorship is a marketing spend; ZAOstock has no fiscal sponsor and nothing here is tax-deductible.</p>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p><span class="warn">Blocked.</span> Every figure on this slide is UNSET. The tier names and what each tier gets are settled. The prices are not, and no agent may infer them. A previous draft proposed a ladder topping at $2,500 with an early close of 11 September, sourced to a doc that does not contain those numbers; it was killed on 27 August. See <code>docs/sponsor/slide-9-tier-ladder.md</code>.</p>
+    <p>Three rules survive the kill and hold at any price: in-kind at retail value with no stacked discount; sponsor-an-artist never discounted, because it is a cost and not a margin; a floor below which there is no negotiation.</p>
+    <p><strong>This deck asks for sponsorship, never a donation.</strong> There is no fiscal sponsor, so nothing here may say tax-deductible - PR #39 already had to strip that claim from two live pages. Sponsorship is advertising spend: different budget, no charitable status needed, which is the better ask for a bank anyway.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>9</b> / 12</span><span>Seven marks on this page are Zaal's to type</span></div>
+</section>
+
+<!-- 10 -->
+<section class="slide" id="s10" aria-label="Slide 10, Sponsor an artist, blocked">
+  <div class="slide__head"><div><p class="eyebrow">Slide 10 · Sponsor an artist</p><h2>Cover one artist's costs. They make content with your name on it. They opt in.</h2></div><div class="tags"><span class="tag tag--blocked">Blocked</span></div></div>
+  <div class="slide__body slide__body--2">
+    <div>
+      <p class="lede">One business paying for one named person to get to Ellsworth. The artist agrees to it; we do not sell their likeness on their behalf.</p>
+    </div>
+    <div class="card"><p class="eyebrow">Price</p><span class="big" style="display:block;margin:0"><mark class="unset">UNSET</mark></span><p style="font-size:13px;color:var(--ink-muted);margin:10px 0 0">Same field as the third row of slide 9. Doc 2325 attributes a $500 flat model to Zaal from the 8/17 call, unconfirmed.</p></div>
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p><span class="warn">Blocked.</span> The $500 attribution has not been confirmed against anything Zaal typed, and the same class of claim on slide 9 turned out to be unsourced. One line for Zaal: confirm $500 or type the number.</p>
+    <p>This is the most human slide in the deck and it works hardest in a local room. The opt-in matters and should be said out loud.</p>
+    <p>Real context if it helps the ask: $1.6k was raised through Artizen last season, which covered getting a majority of artists there, plus a $3,000 prize from an Artizen pool. Both are time-delayed and neither arrives before October 3, so Zaal is currently fronting capital himself against money already raised. Use that only if a sponsor asks how it is funded today. It is true and it is not a sympathy pitch.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>10</b> / 12</span><span>Artizen figures: Aug 24 standup, gdoc snapshot 2026-08-27</span></div>
+</section>
+
+<!-- 11 -->
+<section class="slide" id="s11" aria-label="Slide 11, What we do for you">
+  <div class="slide__head"><div><p class="eyebrow">Slide 11 · What we do for you</p><h2>Pre, during and post. Not just a name to attach.</h2></div><div class="tags"><span class="tag tag--swap">Swap</span></div></div>
+  <div class="slide__body" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card"><p class="eyebrow">Pre</p><p style="margin:0">Named in the announcement, the newsletter and the lineup reveal on September 1.</p></div>
+    <div class="card"><p class="eyebrow">During</p><p style="margin:0">Our MC reads you in <strong>every changeover</strong>. Logo on the backdrop. Presence on the stream.</p></div>
+    <div class="card"><p class="eyebrow">Post</p><p style="margin:0">Named in the recap, in the published local-business measurement, and in the footage that keeps circulating after the day.</p></div>
+  </div>
+  <p style="margin-top:20px;font-size:14px;color:var(--ink-secondary)">Reach is across team accounts, the Farcaster /zao and /zabal channels, Telegram, the daily newsletter and the livestream.</p>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p><span class="warn">Do not print a combined follower number.</span> The team's counts come from an April 2026 scrape and were never deduplicated for overlap. Say "tens of thousands across team accounts", or name two accounts and their counts, and let them do the arithmetic.</p>
+    <p>The post half is what most sponsors do not get elsewhere and it is worth slowing down on.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>11</b> / 12</span><span>Follower total: deliberately not printed</span></div>
+</section>
+
+<!-- 12 -->
+<section class="slide" id="s12" aria-label="Slide 12, Next step">
+  <div class="slide__head"><div><p class="eyebrow">Slide 12 · Next step</p></div><div class="tags"><span class="tag tag--ok">Shared</span></div></div>
+  <div class="slide__body slide__body--2" style="align-items:center">
+    <div>
+      <h2 class="big" style="margin-bottom:24px">One conversation, then a yes or a no.</h2>
+      <p class="lede">Fifteen minutes this week.</p>
+      <p class="strong" style="font-size:1.5rem"><a href="mailto:info@thezao.com">info@thezao.com</a></p>
+      <p style="font-size:14px;color:var(--ink-muted)">Early close: <mark class="unset">UNSET</mark> - the date lands here once slide 9 has prices.</p>
+    </div>
+    <img class="badge" src="../../public/brand/logos/zaostock26_badge_official.png" width="1122" height="1402" alt="" aria-hidden="true" style="max-width:220px">
+  </div>
+  <details class="notes"><summary>Speaker notes</summary><div class="inner">
+    <p>End with a specific ask, not "let us know". The ask is a fifteen-minute conversation this week. Once slide 9 has prices, the early-close date goes here as the deadline, because a deck with a deadline gets answered and a deck without one gets read and put down.</p>
+  </div></details>
+  <div class="slide__foot"><span><b>12</b> / 12</span><span>ZAO Festivals · zaostock.com</span></div>
+</section>
+
+<!-- Appendix, not a slide -->
+<section class="slide appendix" id="appendix" aria-label="Appendix, before this deck ships">
+  <div class="slide__head"><div><p class="eyebrow" style="color:var(--red-700)">Appendix · not for the room</p><h2>Before this deck ships.</h2></div><div class="tags"><span class="tag tag--blocked">Internal</span></div></div>
+  <div class="slide__body slide__body--2">
+    <div>
+      <p class="eyebrow">Six fields, all Zaal's, all on slide 9</p>
+      <table>
+        <thead><tr><th>#</th><th>Field</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td>Presenting price</td><td></td></tr>
+          <tr><td class="n">2</td><td>Platform price</td><td></td></tr>
+          <tr><td class="n">3</td><td>Sponsor-an-artist price</td><td>Doc 2325 says $500 from the 8/17 call - confirm or replace. Also slide 10</td></tr>
+          <tr><td class="n">4</td><td>Community price</td><td></td></tr>
+          <tr><td class="n">5</td><td>Friend of the Fest price</td><td></td></tr>
+          <tr><td class="n">6</td><td>Early-close discount and date</td><td>The last useful close is the last day a new sponsor still reaches print; Candy's poster prints the week of September 1. Also slide 12</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p class="eyebrow">Owed by someone other than Zaal</p>
+      <div class="card"><p style="margin:0"><strong>Partner logos - three still missing</strong> (Town of Ellsworth, ENTERACT, Web3Metal), due Friday August 29. Vector or high-res transparent PNG. Blocks the backdrop, the poster and this deck. None of the eight is on disk today, so slide 8 renders names.</p></div>
+      <div class="card" style="margin-top:12px"><p style="margin:0"><strong>Images for slide 3.</strong> CHELLA and PALOOZA stills, not yet selected. Swatches stand in.</p></div>
+      <div class="card" style="margin-top:12px"><p style="margin:0"><strong>Two VERIFY marks:</strong> the newsletter count (slide 2) and the WaveWarZ figures (slide 6). Re-pull both the day it prints.</p></div>
+      <p class="eyebrow" style="margin-top:16px">How this file was made</p>
+      <p style="font-size:13px;color:var(--ink-secondary)">Rendered 2026-08-28 by the DESIGN lane from <code>docs/sponsor/deck-2026-10-03.md</code> (origin/main) on <code>DESIGN.md</code>'s system. Words are the deck's; only the layout is new. Edit the markdown, then this file, in that order. Print with the browser (landscape letter, one slide per page); toggle speaker notes on first to print them too.</p>
+    </div>
+  </div>
+  <div class="slide__foot"><span>Appendix</span><span>Sources listed in deck-2026-10-03.md</span></div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var b=document.getElementById('toggleNotes');
+  b.addEventListener('click',function(){
+    var on=document.body.classList.toggle('show-notes');
+    b.setAttribute('aria-pressed',String(on));
+    document.querySelectorAll('.notes').forEach(function(d){d.open=on});
+  });
+  var n=document.querySelectorAll('mark.unset').length;
+  document.getElementById('unsetCount').textContent=n+' UNSET marks · 6 fields for Zaal';
+})();
+</script>
+</body>
+</html>
