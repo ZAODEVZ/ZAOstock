@@ -8,8 +8,8 @@
 // differ: attendance stays off the public site (19:3x); Werb is not fully
 // confirmed, so only Lyons Den is public (20:4x); there is no changeover DJ,
 // the MC and partner spots cover changeovers (20:0x); the evening is a DJ set
-// 18:00-19:30, nothing printed 19:30-20:00, a live set 20:00-22:00 hosted by
-// Black Moon, nothing after 22:00 until the licence hour is typed (ros-v6).
+// 18:00-20:00, a live set 20:00-22:00 hosted by Black Moon, nothing after
+// 22:00 until the licence hour is typed (ros-v7, 28 Aug).
 
 export const SITE = {
   contact: 'info@thezao.com',
@@ -52,7 +52,7 @@ export const WAVEWARZ = {
 export const DAY = [
   { time: 'Noon - 4 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
   { time: '4 - 6 PM', where: 'Franklin Street Parklet', what: 'WaveWarZ. Two artists go head to head; the audience decides, in the street and online.' },
-  { time: '6 - 7:30 PM', where: 'Black Moon Public House, next door', what: 'DJ set as the street walks in.' },
+  { time: '6 - 8 PM', where: 'Black Moon Public House, next door', what: 'DJ set as the street walks in.' },
   { time: '8 - 10 PM', where: 'Black Moon Public House', what: 'Live set, hosted by Black Moon.' },
 ] as const;
 
