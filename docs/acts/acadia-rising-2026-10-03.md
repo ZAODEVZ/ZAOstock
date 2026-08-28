@@ -1,0 +1,69 @@
+# Deal memo - Acadia Rising - Sen, with Women with Rhythm - ZAOstock, Saturday 3 October 2026
+
+**DO NOT SEND.** Filled from `docs/music/artist-deal-memo-template.md` and the
+production plan as of 28 August 2026 (ros-5min v7). Every figure that Zaal
+has not typed is UNSET. The template's own stale lines (a Friday date, 25-minute
+sets, "DJs run between sets", a day-of soundcheck window) are not carried.
+
+**Event:** ZAOstock 2026 - **Saturday 3 October 2026**
+**Where:** Franklin Street Parklet, Ellsworth, Maine - outdoors, one stage;
+everything moves next door into Black Moon Public House at 18:00
+**Audience:** Free to attend, all-day, family-friendly (Art of Ellsworth,
+Maine Craft Weekend)
+**Status of this act:** Group size is not on disk - needed for wristbands and the Black Moon certificate count.
+
+## Your slot
+
+| Item | Detail |
+|---|---|
+| Position | 2 of 5 |
+| Set window | **12:45 - 13:15** |
+| Set length | about 30 minutes (Zaal's order; confirm with Sen) |
+| Before you | 10-minute changeover from The Crown Vics |
+| After you | 5-minute changeover (proposed - swap only, needs the shared backline), then Dcoop |
+| Changeovers | Two of the day's four changeovers are 5 minutes (a swap, nothing else) and two are 10 (the MC talks the event, a sponsor spot). Which is which is proposed, not final. There is no DJ between sets |
+| Overrun rule | **Yes (Zaal, 27 Aug):** an act that runs over loses the time from its own changeover, and the next act still starts on the grid. Said out loud at the stage manager's walk, 11:30 |
+| Backline | A shared backline (one kit, one set of amps up all day, you swap guitars and pedals) is proposed and not yet decided - it is what makes a 5-minute changeover real. Bring what you cannot share; tell Dcoop what you need beyond guitars and pedals |
+| Soundcheck | **Friday 2 October, mandatory, every act**, at the stage you play. Saturday morning is line-check only (confirm, not check). Friday time: UNSET |
+| Saturday call time | UNSET - crew is on site by 10:00; your call time will be told to you with the Friday time |
+| MC between sets | ZAO crew, not the venue; name to come |
+
+## What ZAOstock provides
+
+- Stage (already standing), PA, monitors, a sound operator for the day
+- Tent coverage, rain or shine (Wallace Events, confirmed)
+- Recording of your set (audio and video); you receive a copy - window UNSET
+- Water and power on site (Black Moon); a dressing room and bathroom in Black
+  Moon's basement, performers only, wristband access
+- A meal: a **$20 Black Moon gift certificate** per performer (Steve's figure),
+  to use in the hour after you come off - **headcount for your act: UNSET**
+- Inclusion in the lineup reveal (1 September) and the recap content
+
+## What you provide
+
+- The set, on the grid, and the Friday soundcheck
+- Technical needs to Dcoop (music and AV lead) - date UNSET
+- A headshot and a short bio for the reveal - date UNSET
+- One share of the lineup announcement
+
+## Fee, travel, rights - UNSET
+
+| Line | Value |
+|---|---|
+| Performance fee | **UNSET** - Zaal has typed no fee structure for 2026; the template's "no guaranteed fee" line is not carried until he confirms it |
+| Travel and lodging | **UNSET** - the template's three paths (direct cover / crowdfund pool / self-funded) are options, not an offer, until Zaal picks one for this act |
+| Merch and tips | **UNSET** |
+| Recording rights | Template default: you own your recording; ZAOstock may use clips up to 90 seconds for promotion. Confirm before sending |
+| Insurance | ZAOstock is arranging event liability insurance through a local broker (permit condition). No fiscal sponsor; no tax-deductible path. Your gear is your own insurance |
+| Cancellation | Template default (30 days; force majeure in good faith). Confirm before sending |
+
+## To accept
+
+Reply "Confirmed - I am in for ZAOstock 2026", or with edits.
+
+**Point of contact:** UNSET (music circle) · **Sent by / date:** UNSET
+
+---
+Sources: production plan sections 2, 4, 6, 8.1, 8.3, 8.7 (branch
+`bettercallzaal/lane-production-0828`); ros-5min v7; Zaal's verdicts of 27-28
+August via the orchestrator.
