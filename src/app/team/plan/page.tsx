@@ -111,7 +111,7 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
     label: 'Day-of operations',
     why: 'Not urgent this week, but each one needs a name against it before late September.',
     items: [
-      { title: 'First Aid lead - currently doubled onto Zaal, which does not work for a six-hour show', owner: 'Zaal', when: 'no date', card: '71716c06' },
+      { title: 'First Aid contact + kit, no dedicated person (Zaal, 27 Aug)', owner: 'Zaal', when: 'no date', card: '71716c06' },
       { title: 'Stage managers, parklet and Black Moon - both unnamed. Sequential, not simultaneous, so one person could cover both', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Sound cover for the WaveWarZ block, since Stilo is battling in it', owner: 'UNASSIGNED', when: 'before 3 Oct' },
       { title: 'Livestream and virtual - SPLIT, no longer one lead. Aziz owns the rig and Restream, Ohnahji owns scheduling and guests. Motomoto in the crew, does not lead a half', owner: 'Aziz + Ohnahji', when: 'closed 27 Aug', card: 'bb2b9326', note: 'Supersedes the 24 Aug call that virtual has no lead deliberately. Which half goes to which is read from the vault, not from Zaal - one word flips it. See docs/plans/people-map-2026-10-03.md.' },
@@ -164,22 +164,23 @@ const LANES: { id: Lane; label: string; why: string; items: Item[] }[] = [
 
 // One venue at a time, not two stages alternating - corrected 23 Aug. Doors
 // were moved to 11:00 on 26 Aug for a fifth 45/15 slot; Zaal reverted that on
-// 27 Aug: MUSIC STARTS AT NOON. 12:00-16:00 at 45/15 is four slots for five
-// confirmed acts - how the fifth fits is UNSET. Full reasoning and Steve's
-// supply list live in docs/plans/production-plan-2026-10-03.md.
+// 27 Aug: MUSIC STARTS AT NOON. 12:00-16:00 at 45/15 is four slots; four acts
+// confirmed, Werb not fully (20:4x). No DJ - the MC and partner spots cover
+// changeovers (20:0x). Full reasoning and Steve's supply list live in
+// docs/plans/production-plan-2026-10-03.md.
 const DAY = [
-  { time: '12:00 - 16:00', what: 'Artists, outdoors on the parklet. 45 min sets, 15 min changeovers, DJ in every gap', who: 'Werb, Fellenz, Lyons Den, Dcoop, Acadia Rising - five CONFIRMED, four slots at noon start (Zaal 27 Aug); the fifth is UNSET. The changeover DJ (Aquavantes) is PROPOSED ONLY, so the gaps are not covered yet' },
+  { time: '12:00 - 16:00', what: 'Artists, outdoors on the parklet. 45 min sets, 15 min changeovers, our MC plus partner spots between sets - no DJ (Zaal 27 Aug 20:0x)', who: 'Fellenz, Lyons Den, Dcoop, Acadia Rising - four CONFIRMED. Werb NOT fully confirmed (Zaal 27 Aug 20:4x), wanted for WaveWarZ. Four slots at noon start; running order is Zaal’s plan and not public' },
   { time: '16:00 - 18:00', what: 'WaveWarZ, still outdoors', who: 'Stilo, Jango, Lui, Quan battling. Hurricane MCing' },
-  { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. IN BOOKING - no confirmed act', who: 'North Creek PROPOSED ONLY (Zaal 27 Aug), along with Crown Vics, DJ Aquavantes, The Somes Sound. Downbeat 18:00 or 18:30 also unconfirmed' },
+  { time: '18:00 - 21:00', what: 'The after party, indoors at Black Moon. IN BOOKING - no confirmed act', who: 'North Creek PROPOSED ONLY (Zaal 27 Aug), along with Crown Vics and The Somes Sound - Steve’s three, until he confirms. Downbeat 18:00 or 18:30 also unconfirmed' },
   { time: '21:00 on', what: 'DJ to close, indoors', who: 'Stilo DJing - CONFIRMED on our side, per the message from the DJ (gdoc snapshot 27 Aug). Moved off the old 18:00-20:00 block' },
 ];
 
 const MONDAY = [
   'Sound: what Steve’s PA offer covers, and a named backup started in parallel',
   'The city: what form the insurance certificate takes, and whether the Art of Ellsworth exemption covers our permit window',
-  'The daytime is FULL, not half empty - one venue at a time from noon gives four slots and we hold five acts. Steve’s offer to fill blanks is a reserve, not a need; the fifth act’s slot is UNSET',
+  'The daytime is FULL, not half empty - one venue at a time from noon gives four slots; four acts confirmed and Werb in confirmation. Steve’s offer to fill blanks is a reserve, not a need',
   'Who covers sound during WaveWarZ, since Stilo is battling in it',
-  'Stage manager for the parklet and one for Black Moon after six, and splitting First Aid off Zaal',
+  'Stage manager for the parklet and one for Black Moon after six',
   'Who asks Black Moon for the normal-Saturday baseline, and by when',
   'Livestream: has Aziz sent the rtmps ingest URL and key? Everything else in the OBS rig is proven and this is the only untested link',
 ];

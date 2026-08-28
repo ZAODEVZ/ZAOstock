@@ -107,8 +107,8 @@ const PARTNERS: { name: string; role: string; confirmed: boolean; poc: string; l
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
-  // COC Concertz added 2026-08-27, typed by Zaal at 20:3x. POC not typed - UNSET until he names one.
-  { name: 'COC Concertz', role: 'Community partnership - monthly virtual concerts', confirmed: true, poc: 'UNSET' },
+  // COC Concertz added 2026-08-27, typed by Zaal at 20:3x. Role and POC not typed - UNSET until he does (MARKETING request, same day).
+  { name: 'COC Concertz', role: 'UNSET', confirmed: true, poc: 'UNSET' },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
   // Confirmed by Zaal 2026-08-27. Spelling is 'COC Concertz' - space, and a z.
@@ -398,14 +398,14 @@ export default async function TestPage() {
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7">
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                A full day of independent artists with DJs between every act. Werb and Lyons Den are confirmed. The rest of the lineup is announced once every set is locked.
+                A full day of independent artists with our MC and our partners between sets. Lyons Den is confirmed. The rest of the lineup is announced once every set is locked.
               </p>
             </div>
             <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/[0.12]">
               <dl className="space-y-4">
                 <div className="flex flex-col gap-1">
                   <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Confirmed so far</dt>
-                  <dd className="text-base text-white">Werb, Lyons Den</dd>
+                  <dd className="text-base text-white">Lyons Den</dd>
                 </div>
                 <div className="flex flex-col gap-1">
                   <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Stage</dt>
@@ -413,7 +413,7 @@ export default async function TestPage() {
                 </div>
                 <div className="flex flex-col gap-1">
                   <dt className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-gray-400 tracking-[0.18em]">Format</dt>
-                  <dd className="text-base text-white">Live sets with DJs between</dd>
+                  <dd className="text-base text-white">Live sets, MC and partner spots between</dd>
                 </div>
               </dl>
             </div>
@@ -484,7 +484,7 @@ export default async function TestPage() {
               <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed">
                 <p>
                   ZAOstock is The ZAO&apos;s flagship IRL music festival. A full-day outdoor showcase at the Franklin
-                  Street Parklet in downtown Ellsworth, Maine. Independent artists perform with DJs between.
+                  Street Parklet in downtown Ellsworth, Maine. Independent artists perform with our MC and our partners between sets.
                 </p>
                 <p>
                   Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, ZAOstock brings The ZAO&apos;s independent

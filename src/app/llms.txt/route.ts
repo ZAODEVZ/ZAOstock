@@ -9,7 +9,7 @@ const CONTENT = `# ZAOstock
 
 ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (NYC during NFT NYC, April 2024), ZAO-CHELLA (Miami Wynwood during Art Basel, December 2024), and the co-hosted ZAOville DMV chapter with DCoop in July 2026. ZAOville is a cross-promotion across the series — DCoop performed at ZAO-CHELLA and returns for ZAOstock. ZAOville lineup includes PROF!T, ELYVN, and more. ZAOstock takes place during Maine Craft Weekend as part of the 9th Annual Art of Ellsworth. The festival operates at break-even with fair artist pay. ZAO Festivals collaborates with ENTERACT for production and execution support. Sponsor money flows one way: client / sponsor -> ENTERACT (2% treasury) -> production / partners, with 50% upfront and 50% before delivery. Sponsorship is a commercial arrangement and no tax receipt is issued. ZAOstock has no fiscal sponsor, so there is no tax-deductible path and contributions are not tax-deductible. ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit.
 
-The festival format: independent artists performing with DJs between, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
+The festival format: independent artists performing with our MC and our partners between sets, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
 
 ## Confirmed partners
 

@@ -81,7 +81,7 @@ const PARTNERS = [
   { name: 'Star 97.7', role: 'Local radio promotion' },
   { name: 'Wallace Events', role: 'Event equipment + tenting' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage' },
-  { name: 'COC Concertz', role: 'Community partnership - monthly virtual concerts' },
+  { name: 'COC Concertz', role: 'UNSET' },
   // Fractured Atlas / New Media Commons removed 2026-08-20, then ruled OUT entirely
   // is IN CONFIRMATION, not confirmed (ZAOOS cards 6386c0c7, e899442e). Do not
   // re-add until the relationship is confirmed in writing.
@@ -216,7 +216,7 @@ export default async function PitchPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-6">
             <div className="lg:col-span-7 space-y-5">
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                A one-day outdoor music festival at the Franklin Street Parklet in downtown Ellsworth, Maine. Independent artists with DJs between every act. Part of the 9th annual Art of Ellsworth during Maine Craft Weekend.
+                A one-day outdoor music festival at the Franklin Street Parklet in downtown Ellsworth, Maine. Independent artists with our MC and our partners between sets. Part of the 9th annual Art of Ellsworth during Maine Craft Weekend.
               </p>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
                 Free to attend. The first round of crowdfunding is live - 20 people, $50 each, the next $1,000 toward the festival. Everyone who chips in gets a Pro Ticket and a 1:1 with the team.

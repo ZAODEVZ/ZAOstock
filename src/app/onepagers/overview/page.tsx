@@ -70,7 +70,7 @@ const PARTNERS: Partner[] = [
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true },
-  { name: 'COC Concertz', role: 'Community partnership - monthly virtual concerts', confirmed: true },
+  { name: 'COC Concertz', role: 'UNSET', confirmed: true },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true },
 ].filter((p) => p.confirmed);
 
