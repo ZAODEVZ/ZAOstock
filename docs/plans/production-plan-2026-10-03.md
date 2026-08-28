@@ -162,12 +162,10 @@ where already public; the rest stay generic until 1 September.
 | 17:55 play-out and 18:00-19:30 indoors | Stilo, our DJ | **Confirmed** on our side; slot decided by Zaal 20:0x | The DJ's own message; the 24 Aug standup; Zaal 20:0x |
 | 19:30-20:00 | Fellenz, 30 minutes indoors | **PROPOSED** placement of a 24 Aug agreement | The hole between Stilo and Steve; Zaal decides |
 
-**The bigger question comes before the downbeat.** On our side the three acts
-left from your draft - The Crown Vics, The Somes Sound and North Creek - are
-recorded as **proposed, not booked.** (The DJ is off the day entirely, on our
-side, so he is no longer a question.) Nobody here can tell which of the three
-you have actually secured. So the first ask is simply: which are booked, and
-which are still being asked?
+**The booking question is answered.** Zaal spoke to you on 27 August: The Crown
+Vics open the day at 12:05 and your own set closes it from 8 to 10, both
+booked. The Somes Sound, North Creek and the DJ are out of the plan. Nothing
+below treats any of them as pending.
 
 The evening is set: Stilo's DJ set opens the room at 18:00 and runs to 19:30,
 your own set is 8 to 10, and the half hour between is ours to fill - Fellenz's
@@ -180,8 +178,7 @@ Two notes on that grid.
 noon. That is now a decision on our side, not a question for the City. What it
 costs is the fifth slot, and the four ways of absorbing that are listed under
 the grid above. None of them touches you except the first, which would put one
-of our confirmed acts on your stage at the top of the evening - and given
-North Creek is still a proposal, that may be a help rather than an imposition.
+of our confirmed acts on your stage in the half hour between Stilo and you.
 
 **No DJ.** You offered one for the changeovers, noon to 5:30, and thank you.
 We have decided to run the gaps differently: the MC and sponsor spots fill
@@ -500,10 +497,10 @@ not lose the day, is on the AV List and is STREAM's row.
 Three answers we do not hold, and none is ours to make. Everything else in this
 document is decided.
 
-**Which of Steve's three acts are booked** is the one that moves the most. It is
-asked, with its two follow-ons (does The Somes Sound bring the indoor PA; which
-act closes the night from 19:30, and is 19:30 right), in
-`docs/drafts/msg-steve-peer-2026-08-27.md`.
+**Steve's acts are settled** (22:3x): The Crown Vics at 12:05 and Steve's own
+set 20:00-22:00 are booked, the other three are out. What is left of that
+thread is the indoor PA (house or brought in) and the licence hour, both
+Steve's, and the 19:30-20:00 half hour, which is ours.
 
 **The 11:00 open moved, and it moved on our side.** Zaal ruled on the evening of
 27 August that music starts at noon, before the City was ever asked. The
@@ -511,8 +508,7 @@ question to Roddy about how early amplified sound may start is withdrawn; the
 insurance certificate and the Chapter 14 questions in Draft 2 still stand and
 belong to the city lane. What the noon start costs is one slot, and where the
 fifth confirmed act plays is now the open question in section 2 - Zaal's, and
-it does not touch the City. The North Creek downbeat is a smaller question and
-it does not cascade at all.
+it does not touch the City.
 
 Working section. Neither draft below is part of the note that goes to Steve.
 
