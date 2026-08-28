@@ -5,13 +5,13 @@
 // confirmed after-party; performer names and any date other than Oct 3 are NOT
 // publishable. src/content/festival.test.ts enforces both.
 //
-// Window moved 12-6 -> 11-6 on 2026-08-27, then BACK to 12-6 the same day when
-// Zaal locked "music starts at NOON". The 11:00 open is withdrawn, and so is the
-// question about whether the permit caps an early start. Do not reintroduce 11:00.
-//
-// The tradeoff it was solving is real and unresolved: noon to four on a
-// 45-minute/15-minute grid is four slots, and five acts are confirmed. That is
-// the production lane's to settle, not this file's.
+// Window is 12-6. It was moved to 11-6 for part of 2026-08-27 to fit five
+// confirmed acts into 45-minute slots, and Zaal reverted it the same evening:
+// MUSIC STARTS AT NOON. That is a decision on our side, not a City condition,
+// so the 11:00 question to Roddy Ehrlenbach (City of Ellsworth Parks/Rec) was
+// withdrawn before it was sent. The fifth act's placement is an open decision
+// in docs/plans/production-plan-2026-10-03.md section 2; it does not change
+// this value. `date` at 12:00 matches the doors.
 
 export type AfterParty = {
   name: string;

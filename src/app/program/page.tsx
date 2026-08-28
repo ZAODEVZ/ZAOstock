@@ -23,20 +23,16 @@ export const metadata: Metadata = {
 // NO ARTIST NAMES on this page. The lineup is not public until the reveal
 // (Zaal, 2026-08-23), so slots stay generic here even where an act is
 // confirmed internally. Do NOT hand-write names in. That covers the band
-// Black Moon is underwriting for the indoor block too - it is booked and it is
-// named in docs/plans/production-plan-2026-10-03.md, but it stays off this page
-// until the reveal like every other act.
+// Black Moon offered to underwrite for the indoor block too - it is PROPOSED,
+// not booked (see below), and it is named in
+// docs/plans/production-plan-2026-10-03.md, but it stays off this page until
+// the reveal like every other act.
 //
-// Doors are NOON. The 11:00 open was proposed 2026-08-26 and withdrawn
-// 2026-08-27 when Zaal locked "music starts at NOON". Do not reintroduce it.
-//
-// Run of show v3 (PRODUCTION, 2026-08-27):
-//   - BLOCKS start is '12:00' = DOORS. Live sets run from 12:05.
-//   - There is NO DJ (Zaal, 2026-08-27 20:0x). Changeovers are the MC plus
-//     sponsor spots - do not write a DJ back into the daytime.
-//   - Steve's three acts are PROPOSED until he confirms them.
-//   - The running order is Zaal's plan and is NOT public.
-//   - Do not print set lengths, a set count, or any act name here.
+// DOORS ARE NOON. An 11:00 open was on this page for part of 2026-08-27 (five
+// confirmed acts do not fit four 45/15 slots from noon); Zaal reverted it the
+// same evening: music starts at noon, and the fifth act's placement is decided
+// in the production plan (section 2), not by moving doors. The 11:00 question
+// to the City was withdrawn unsent. src/content/festival.ts carries the window.
 //
 // The indoor block was two entries (18:00-20:00 DJ party, 20:00-late local
 // acts). A single 6-9 booking replaces both.
@@ -46,6 +42,10 @@ export const metadata: Metadata = {
 // ONLY. Nobody has confirmed which are booked. So this page says "in booking"
 // and commits to neither an act nor a downbeat. Do not upgrade this wording
 // without a confirmation you can point at.
+//
+// That includes the changeover DJ. Aquavantes is one of the four, so the daytime
+// block must not promise a DJ in every gap - the gaps are uncovered until Steve
+// confirms him. Tag ledger for every act: production plan, section 2.
 
 type Venue = 'OUT' | 'IN';
 
@@ -64,7 +64,7 @@ const BLOCKS: Block[] = [
     venue: 'OUT',
     label: 'Live music',
     detail:
-      'Independent artists on the parklet stage from 12:05, with our MC and our partners between sets. Lineup announced once every set is locked.',
+      'Independent artists back to back on the parklet stage, 45 minutes each with short changeovers between sets. Lineup announced once every set is locked.',
   },
   {
     start: '16:00',
@@ -80,7 +80,7 @@ const BLOCKS: Block[] = [
     venue: 'IN',
     label: 'The after party',
     detail:
-      'Everything moves inside to Black Moon Public House, walkable, right next door. Live music for the evening, in booking.',
+      'Everything moves inside to Black Moon Public House, walkable, right next door. Live music for the evening, in booking - no act or start time confirmed yet.',
   },
   {
     start: '21:00',
