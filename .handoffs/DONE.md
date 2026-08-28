@@ -783,3 +783,105 @@ ZAOSTOCK-MARKETING request -> ORCHESTRATOR: RESOLVED 20:5x, all four confirmed. 
 ZAOSTOCK-MARKETING msgs-v2 - re-checked all six `docs/drafts/msg-*-2026-08-27.md` bodies against the daily note from Grill round 4 down (noon; Crown Vics / Sen / Dcoop / Fellenz ~30 min; no DJ; sponsor spots in changeovers; 200-250 / 1,000; Werb not fully confirmed; Lyons Den = question; COC Concertz partner; first aid contact + kit; rain and overrun yes; Aziz test = Zaal). Files touched: `docs/drafts/msg-gabe-goode-2026-08-27.md` (body: "one name already out: Lyons Den" - a leftover "two" from the Werb strike; header: attendance hold rewritten, the figure now exists and is left out by choice), `docs/plans/zaal-only-MARKETING.md` (line 11 attendance marked ANSWERED). Candy, Eric, Town of Ellsworth, ENTERACT, Web3Metal: no line contradicts a verdict, unchanged. All six still DO NOT SEND tonight; Zaal sends tomorrow after the website.
 
 ZAOSTOCK-MARKETING CLOSE (convention 10, step 1) - Shipped: 9 marketing/draft files across R1-R3 plus six paste-ready messages and the Zaal-only list; every verdict from 19:3x to 20:4x applied; relay audit resolved. Held: nothing off disk - no pending relay, no monitor, no open question that is not already a line in `docs/plans/zaal-only-MARKETING.md` (9 open of 15). Branch `bettercallzaal/lane-marketing-0827` in worktree `~/orca/workspaces/zaostock/lane-marketing-0827`, 12 commits ahead of `ws/production-plan-1003-0826`, rebased clean, tsc and 31 tests green at `0f74fef`, no remote, never pushed - bundled nightly by `zorca-bundle`. Step 2 `/handoff` not needed: nothing is held that is not on disk. Ready to close on the orchestrator's word.
+
+---
+
+# ZAOSTOCK-STREAM lane - 2026-08-27
+
+Branch `bettercallzaal/lane-stream-0827` (the orchestrator's worktree branch;
+the brief named it `ws/lane-stream-0827`), off `ws/production-plan-1003-0826`
+at `118f127`. Committed, not pushed.
+
+ZAOSTOCK-STREAM DONE (1) AV spec: `docs/plans/av-spec-2026-10-03.md`. Every line of the Doc's AV LIST tab as a WHAT / OWNER / BACKUP table, plus what the repo and vault already record (Dcoop's monitors, Bomb Squad's lights, Fellenz's interface answer, the measured desktop, the 11:00 open). Every blank is UNSET with the person on record to fill it. Zero owners, counts, prices or dates invented. Nine things it cannot close, listed in section 9.
+ZAOSTOCK-STREAM DONE (2) Livestream chain: `docs/av/livestream-chain-2026-10-03.md`. Ten links, source to indoor mirror. Proven: the desktop and the encoder (ffmpeg h264_nvenc 6000 CBR 1080p30, ffprobe-verified 20 Aug). THE untested link: Aziz's rtmps ingest URL and key, owed since 22 Aug. Restream is in Zaal's verdict but its position in the chain is nowhere on disk; two topologies fit, written out as A and B for Aziz to pick.
+ZAOSTOCK-STREAM DONE (3) Aziz draft: `docs/drafts/aziz-2026-08-27.md`. The six measured specs, what is already installed, the three asks (ingest URL and key, plugin list confirm, Baraza_TV_v2.json export plus the Camera media path), the topology question, and the Motomoto plugin answer folded in. Test date left UNSET for Zaal. Not sent.
+ZAOSTOCK-STREAM DONE (4) Baraza read: PR #5 `Build-Africa-DAO/baraza-tv` is OPEN, still DRAFT, zero reviews, zero comments, last touched 2026-08-18T14:38:07Z (measured via `gh pr view` today). Aziz has not answered its two asks. The desktop lane's 20 Aug gaps 1 to 6 live in the vault handoff, not in the PR. Oct 3 virtual window per doc 2316: 12:00 to 18:00 ET, crew of 5 to 10 in two-hour slots; whether it moves with the 11:00 open is UNSET. Both written into the chain doc.
+
+## Flags for the orchestrator
+
+- **Aziz and Motomoto: one person or two?** Doc 2316 (CRM finding, Craig track `azizmotomoto`) says one. `docs/plans/people-map-2026-10-03.md` lists Motomoto as a separate crew member who does not lead a half. Not resolved here; the Aziz draft carries a note on which paragraph to cut if they are two. The people map is outside this lane's write-set; if they are one, that file needs a line changed.
+- **The 26 Aug AV meeting has no record on disk.** The spec is written as if it did not happen. If it did, its answers go into the UNSET cells.
+- **The Doc's "Thursday Aug 26" is not a date.** 26 Aug 2026 is a Wednesday. The spec says so; the gdoc edit list (`docs/plans/gdoc-update-2026-08-27.md`, edit 7) may want the same correction. Outside this lane.
+- **Restream's place in the chain is a decision nobody has made**, and it changes whether Aziz's ingest is even in the Oct 3 path. Asked of Aziz in the draft; Zaal can also just answer it.
+- `src/app/live/**` was in the write-set; nothing in the four tasks needed a page, so nothing was created there.
+- `docs/drafts/aziz-2026-08-27.md` is outside the write-set globs but named verbatim in task 3 of the brief, so it was written.
+
+## ZAOSTOCK-STREAM Round 2 - 2026-08-27, 18:xx
+
+ZAOSTOCK-STREAM R2 1/3 Test plan: `docs/av/test-plan-obs-rtmp-2026-10-03.md`. Three stages: (1) bare pipe, ten minutes, remote, link 6 only, pass = 3 continuous minutes seen by Aziz, under 1 percent dropped, scene switch holds, bitrate written down; (2) end to end from the parklet on Friday 2 Oct soundcheck, pass = 30 minutes on every destination plus a local recording plus one uplink drop survived plus the indoor screens showing it; (3) the day, 12:00 to 18:00 ET per doc 2316, whether it opens at 11:00 with the doors is UNSET. Every slot UNSET. PR #5 gates nothing technically for Stage 1; five corrections from the 20 Aug desktop run listed as what it must carry before leaving draft. Test-slot proposal appended to the Aziz draft, day and time UNSET.
+ZAOSTOCK-STREAM R2 2/3 Indoor mirror: `docs/av/indoor-mirror-2026-10-03.md`. Six pieces (screen, player, feed, pub internet, audio, setup person), all UNSET, because nothing on disk says whether Black Moon has a TV or wifi. Three feed options cheapest to most robust: public stream on a TV, Baraza watch page (only if topology A), a local cable or second endpoint (only one that survives an internet failure). First ask is two questions to Steve or Katina. The Decentraland iPads ride the same ask and are not promised until the mirror is built. Cost UNSET throughout.
+ZAOSTOCK-STREAM R2 3/3 Content capture: `docs/av/content-capture-2026-10-03.md`. Seven things to record (stream, Friday, photos, video, interviews, WaveWarZ clean, attendee gallery), by whom UNSET on all but the stream (Aziz) and the gallery (attendees, Paper's). Lands on ArDrive per the brief; no ZAO ArDrive drive or folder exists on disk, UNSET. Three run-of-show rows drafted for PRODUCTION (below). Two more unnamed roles surfaced: photographer and video shooter, not yet on the grill list.
+
+## Requests outside this lane's write-set
+
+- **PRODUCTION lane, `docs/plans/production-plan-2026-10-03.md` section 3 run of show:** add three capture rows, drafted verbatim in `docs/av/content-capture-2026-10-03.md` under "The row for the run of show": Friday soundcheck as filming and recording night; a 15-minute photo and interview window at each of the five changeovers (11:45, 12:45, 13:45, 14:45, 15:45), photographer and interviewer UNSET; Saturday 11:00 to 18:00 stream recording, Aziz, ArDrive folder UNSET. Also section 4 "What we supply": "Screens inside showing the outdoor stream" now has a spec at `docs/av/indoor-mirror-2026-10-03.md`; the row can point at it, owner still UNSET.
+- **Whoever owns the grill queue:** two roles to add to the five, photographer and video shooter for the day. The review's own words: the one crew who would do it is also performing.
+- **Whoever owns `docs/plans/people-map-2026-10-03.md`:** the Aziz and Motomoto identity question from Round 1 still stands and now also decides who is on the Stage 1 call.
+
+## ZAOSTOCK-STREAM Round 3 - 2026-08-27, 18:3x
+
+ZAOSTOCK-STREAM R3 1/3 Soundcheck night: `docs/av/soundcheck-night-2026-10-02.md`. The Doc's four Friday facts, then who must be on site (thirteen parties, every arrival time UNSET, four with no name), a twelve-step check order marked PROPOSED with a pass line each (PA up, line check, desk to stream, act checks, WaveWarZ, changeover rehearsal, stream end to end, indoor mirror, indoor DJ, walk-in music, lighting, strike), and the must-pass table with what starts that night if each fails. Start time UNSET, the Doc gives none. No performer names, repo is public.
+ZAOSTOCK-STREAM R3 2/3 Power and internet: `docs/av/power-internet-requirements.md`. Parklet power: loads listed, every draw UNSET pending Steve's gear list; the exact City question written as a blockquote for the Roddy draft, asking circuits, amperage, location, the summer series feed, and whether a generator is allowed; generator fallback UNSET on size, source, price, placement, permit. Internet: threshold from the setup doc (about 10 Mbps for 1080p, 720p below), who measures UNSET, two asks (Black Moon wifi, Heart of Ellsworth), bonded cellular fallback UNSET on coverage, device, price; floor is record-only with the mirror by cable. Where the stream goes: UNSET, question already with Aziz; fallback is Zaal's existing Restream destinations, named as a fallback not a decision.
+ZAOSTOCK-STREAM R3 3/3 Fallback matrix: `docs/av/fallback-matrix-2026-10-03.md`. All ten links, failure, backup on record with its source, owner. Honest count: two links have a backup that exists today without anyone acting (link 4 lower the encode, link 6 go direct to Restream); link 8 has one by construction once destinations exist; the rest UNSET, and links 2, 3 and 5 have no primary either. Five compound failures added (power, internet, Aziz unreachable, desktop dead, no power at the stream desk).
+
+## Requests outside this lane's write-set
+
+- **CITY lane, `docs/drafts/roddy-2026-08-27.md`:** add the power paragraph from `docs/av/power-internet-requirements.md` section 1, "The exact question for the City", to the Roddy thread. It is written as a blockquote to paste. One paragraph, asks for numbers and for whether a generator is allowed.
+- **PRODUCTION lane:** the Friday run sheet proposes a check order and needs a start time and act order from Dcoop; the production plan's Friday row can point at `docs/av/soundcheck-night-2026-10-02.md`.
+
+## ZAOSTOCK-STREAM Round 4 - 2026-08-27, 19:0x - converged, stopped
+
+ZAOSTOCK-STREAM R4 done. (1) `docs/plans/zaal-only-STREAM.md`: twelve lines, ranked by clock, one typable each, file cited per line; four are due now (did the 26 Aug meeting happen, two test slots, Aziz = Motomoto or not, topology A or B), one at standup (seven names in one line), the rest before Fri 2 Oct. (2) `docs/drafts/msg-aziz-2026-08-27.md`: one message, specs out, ingest URL and key, plugin confirm, v2 export and the Camera path, topology question, test-slot proposal with the slots UNSET, Motomoto relay as the last paragraph with a cut-if-two note. DO NOT SEND. Supersedes `docs/drafts/aziz-2026-08-27.md`. No new documents this round.
+
+## Request for CITY, verbatim, for `docs/drafts/roddy-2026-08-27.md`
+
+Paste on the same thread as the 11:00 question. Source `docs/av/power-internet-requirements.md` section 1.
+
+> On power for the parklet on 3 October: what electrical service is available at the stage and along the parklet, how many circuits, what amperage each, and where the outlets or panel are? The summer concert series ran on something and we would like to run on the same. If there is a City electrician or a contact who knows the panel, a name is enough. And if the service is not sufficient for a full PA, monitors, backline and lighting through to 18:00, is a generator allowed on the parklet, and is there a noise or placement condition on one?
+
+The internet half is not a City question; it goes to Black Moon and Heart of Ellsworth and is on Zaal's list, lines 6 and 7.
+
+## ZAOSTOCK-STREAM verify round - 2026-08-27, 19:0x
+
+ZAOSTOCK-STREAM MERGE-READY bettercallzaal/lane-stream-0827 6 commits, conflicts: none. tsc exit 0; vitest 7 files, 31 passed. /secure: one MEDIUM, Aziz's origin-machine media path in three files of a public repo, redacted in all three; no secrets, no keys, no performer names, no PII. /review: three consistency fixes in my own files (example slot dates that read as proposals removed from the Zaal-only list; the concert series named as the Doc names it; the old Aziz draft headed SUPERSEDED). Rebase onto ws/production-plan-1003-0826: already up to date, local and origin both at 118f127.
+
+- **Outside my write-set, same redaction owed:** the same origin-machine path appears verbatim in `~/zao-vault/handoffs/baraza.md` (private vault, lower risk) and in the body of the ask on baraza-tv PR #5 and possibly `obs/WINDOWS-SETUP.md` on that branch (public repo, Build-Africa-DAO). Whoever next touches the baraza lane should redact it there.
+
+## ZAOSTOCK-STREAM noon-applied - 2026-08-27, 19:3x
+
+ZAOSTOCK-STREAM noon-applied. Three verdicts from Zaal applied in one commit. (a) Aziz message: `docs/drafts/msg-aziz-2026-08-27.md` headed SUPERSEDED by Zaal direct, kept; test plan reworded so Aziz runs Stage 1 himself from the repo, which machine he pushes from UNSET; Zaal-only line 2 now asks only for the result. (b) The 26 Aug AV meeting did not happen: av-spec header says so, invite for next week is Zaal's, slot UNSET, Zaal-only line 1 now asks for the slot. (c) Noon: every 11:00 in the nine lane files is now 12:00 (av-spec header, section 2, sound operator row; chain doc window; test plan Stage 3; content-capture rows, the five changeover times replaced with "per the PRODUCTION grid" since the noon grid is theirs; soundcheck operator row; Zaal-only lines 5 and 11). Nothing else in my files said 11:00. Surfaces outside this lane still saying 11:00 (`src/content/festival.ts`, `/program`, `/pitch`, production plan section 2, the Roddy draft's 11:00 question) belong to SITE, PRODUCTION and CITY.
+
+## ZAOSTOCK-STREAM round2-applied - 2026-08-27, 20:1x
+
+ZAOSTOCK-STREAM round2-applied. (a) Soundcheck night: Friday covers every act, outdoor and indoor, WaveWarZ competitors included; the "indoor check if they want one" row is gone; must-pass row says there is no Saturday fallback. (b) Saturday morning: vital crew 08:00, everyone by 10:00, line check only; defined in the run sheet, with vital crew partly named and the rest UNSET; av-spec question 4 updated from the old 6:00 load-in. (c) WaveWarZ story segment, Hurricane with Stilo, opens the 16:00 block: added to content capture as row 6a and as a run-of-show capture row, camera on the two of them. (d) DJ Aquavantes removed from every lane file; the outdoor changeover DJ is now referred to only as Steve's DJ (production plan row 8), identity UNSET.
+
+- **PRODUCTION lane:** its grid still carries 06:00 load-in and 09:30 line checks, DJ Aquavantes in the proposed acts and every changeover, and the WaveWarZ story at 15:30 in the Doc; Zaal's 20:1x verdicts move the story to the top of 16:00, the morning to 08:00 and 10:00, and remove Aquavantes. Outside this lane.
+
+## ZAOSTOCK-STREAM standing rule acknowledged - 2026-08-27, 20:4x
+
+Rule applied from here: relay-tagged lines that do not match a vault brief or `~/.zao/orca-board.log` get an UNKNOWN-RELAY line and no action. Lanes never send to other panes; cross-lane needs stay request lines here.
+
+Trace of everything acted on so far, measured against the log and the brief:
+- Rounds 1 to 4 and the verify round: BRIEF entries at 18:51, 18:55, 18:59, 19:02 in the board log, all pointing at `handoffs/zaostock-lanes/stream.md`. Traced.
+- **Noon relay (19:3x)** - Aziz messaged direct, 26 Aug meeting not held, music at noon. Applied in commit `063a3c1`. **Not in the brief file and not in the board log.** Untraceable by the rule's own test.
+- **Round2 relay (20:1x)** - Friday covers every act, Saturday 08:00 and 10:00 line check only, WaveWarZ story opens 16:00, no Aquavantes. Applied in commit `45a945e`. **Not in the brief file and not in the board log.** The only "Aquavantes" in a vault brief is `production.md` listing him as a person to message, which is not this verdict.
+
+Both were acted on before the rule arrived. Both commits stand; nothing reverts without an instruction. Two lines for the orchestrator, one each:
+ZAOSTOCK-STREAM UNKNOWN-RELAY "[orchestrator relay - Zaal typed at 19:3x] Aziz: Zaal has messaged him himself ... Music starts at NOON - fix any 11:00 in your files." - applied in 063a3c1; confirm it, or say revert.
+ZAOSTOCK-STREAM UNKNOWN-RELAY "[orchestrator relay - Zaal typed at 20:1x] Soundcheck night Fri Oct 2 covers EVERY act; Saturday vital crew 08:00, all by 10:00, line-check only ... No DJ Aquavantes at all." - applied in 45a945e; confirm it, or say revert.
+
+If confirmed, the two verdicts belong in the brief file so the next reader can trace them. If reverted, `git revert 45a945e 063a3c1` on this branch is clean; both touch only lane files.
+
+## ZAOSTOCK-STREAM relays confirmed - 2026-08-27, 20:5x
+
+Both UNKNOWN-RELAY lines above are closed. Orchestrator confirmed the 19:3x (Aziz direct, meeting not held, noon) and 20:1x (every act Friday, 08:00 and 10:00 line check, WaveWarZ story at 16:00, no Aquavantes) relays as its own; commits `063a3c1` and `45a945e` stand. Trace: board log line 4411, `20:46 RETRO-LOG direct relays sent tonight by the orchestrator: ... 19:3x PRODUCTION/SITE/CITY/MARKETING/STREAM noon+verdicts; 20:0x-20:4x PRODUCTION/MARKETING/SITE/STREAM/CITY/DECK grill rounds 1-4`. Direct relays are logged from 20:5x onward. Nothing reverts.
+
+Still worth doing by whoever holds the brief file: append the two verdicts to `handoffs/zaostock-lanes/stream.md` so the next reader of that file sees them without the log.
+
+## ZAOSTOCK-STREAM msgs-v2 - 2026-08-27, 21:1x
+
+ZAOSTOCK-STREAM msgs-v2. One msg file owned: `docs/drafts/msg-aziz-2026-08-27.md`. Checked against every grill round 4 verdict in `~/zao-vault/daily/2026-08-27.md` from line 839 down. Two lines contradicted one verdict (Aziz test is Zaal himself): the header still asked for two call slots, and the test paragraph had Zaal at the desktop with Aziz on a call. Both rewritten: Zaal runs the pipe test alone from the repo, Aziz owes only the ingest and a look at the Cloudflare side afterwards; Friday soundcheck now says it covers every act. Noon, running order, no DJ, sponsor spots, attendance, Werb, Lyons Den, COC Concertz, first aid, rain and overrun: none appear in this message, nothing to fix. Header still reads SUPERSEDED, DO NOT SEND. Files touched: `docs/drafts/msg-aziz-2026-08-27.md`, `.handoffs/DONE.md`.
+
+## ZAOSTOCK-STREAM CLOSE (convention 10) - 2026-08-27, 21:1x
+
+ZAOSTOCK-STREAM CLOSE. Shipped: 11 lane files on branch `bettercallzaal/lane-stream-0827` (AV spec, chain, test plan, indoor mirror, content capture, soundcheck run sheet, power and internet, fallback matrix, Zaal-only list, two Aziz drafts both marked do-not-send), 12 commits on `118f127`, MERGE-READY, conflicts none, tsc 0, 31 tests pass, never pushed. Held: nothing not on disk; no pending relays, no monitors, no open question this pane alone knows. Every verdict heard is in a commit or in this file. Waiting on Zaal: the nine open lines in `docs/plans/zaal-only-STREAM.md`, soonest the AV meeting slot. Branch is local only; the nightly `zorca-bundle` picks it up. No `/handoff` needed by the convention's own test (step 2), so the next step is the orchestrator's "Ingested ... Ready", then close.
