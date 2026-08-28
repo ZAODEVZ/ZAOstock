@@ -19,26 +19,26 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="min-h-[100dvh] bg-[#0a1628] text-white flex items-center justify-center px-6">
-      <div className="text-center max-w-md">
-        <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[#f5a623]">
+    <main className="min-h-[100dvh] bg-paper-100 text-ink-950 flex items-center justify-center px-6">
+      <div className="max-w-md">
+        <p className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-denim-400">
           ZAO Festivals presents ZAOstock
         </p>
-        <h1 className="mt-4 text-5xl font-bold tracking-tight">Off-key for a sec.</h1>
-        <p className="mt-4 text-gray-300">
-          Something went wrong on our end. The festival is still on — October 3, 2026 at the
+        <h1 className="mt-4 font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">Off-key for a sec.</h1>
+        <p className="mt-4 text-lg text-ink-secondary">
+          Something went wrong on our end. The festival is still on: October 3, 2026 at the
           Franklin Street Parklet in Ellsworth, Maine.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="mt-8 flex flex-wrap gap-3">
           <button
             onClick={reset}
-            className="bg-[#f5a623] hover:bg-[#ffd700] text-black font-bold rounded-lg px-6 py-3 text-sm transition-colors"
+            className="zs-btn zs-btn--primary"
           >
             Try again
           </button>
           <Link
             href="/"
-            className="border border-white/20 hover:border-[#f5a623]/50 rounded-lg px-6 py-3 text-sm transition-colors"
+            className="zs-btn zs-btn--secondary"
           >
             Back to home
           </Link>

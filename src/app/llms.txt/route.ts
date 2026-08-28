@@ -19,7 +19,7 @@ The ZAO's core principle: Music first, Community second, Technology third. The f
 
 ## Key dates
 
-- October 3, 2026: Festival day, 12pm to 6pm, afterparty follows
+- October 3, 2026: Festival day. Music from noon on the Franklin Street Parklet until six, then everyone walks next door to Black Moon Public House for the evening. One venue at a time
 - June 30, 2026: Partner commitments due for printed materials
 - Lineup goes public once every set is locked
 - September 15, 2026: Run-of-show locked, attendee schedule cards printed
@@ -62,7 +62,7 @@ Every team member has a public profile at https://zaostock.com/team/m/[slug] wit
 
 ## Contact
 
-Zaal - zaalp99@gmail.com - lead organizer, ZAO founder, partner and artist outreach
+Zaal - info@thezao.com - lead organizer, ZAO founder, partner and artist outreach
 
 ## About The ZAO
 
