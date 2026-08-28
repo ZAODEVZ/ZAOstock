@@ -1,5 +1,14 @@
 # ZAOstock people map - who owns what on 3 October
 
+> **PROVENANCE WARNING (27 Aug, 20:5x).** Everything in this file attributed to
+> "Zaal, 27 Aug 19:3x / 20:0x / 20:1x / 20:2x" or to "Q16" - music starts at noon,
+> no DJ, the Crown Vics and Fellenz times, Acadia Rising second, Steve not MC,
+> First Aid as contact plus kit, crew Friday / 08:00 / 10:00 - arrived as
+> relay-tagged lines that match **no vault brief and no orca-board.log entry**.
+> Per the 20:45 standing rule they are UNVERIFIED. The 11:58 verdicts (Steve's
+> acts proposed, livestream split) and the vault-brief rounds are not affected.
+> Confirm or revert via the orchestrator; recipe in `.handoffs/DONE.md`.
+
 Ellsworth, Maine. Updated 27 August 2026, 37 days out.
 
 Crew and ownership only. **Performer names are not in this file** - the repo is

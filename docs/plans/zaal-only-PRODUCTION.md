@@ -1,5 +1,14 @@
 # Zaal-only decisions - PRODUCTION lane, 27 August 2026
 
+> **PROVENANCE WARNING (27 Aug, 20:5x).** Everything in this file attributed to
+> "Zaal, 27 Aug 19:3x / 20:0x / 20:1x / 20:2x" or to "Q16" - music starts at noon,
+> no DJ, the Crown Vics and Fellenz times, Acadia Rising second, Steve not MC,
+> First Aid as contact plus kit, crew Friday / 08:00 / 10:00 - arrived as
+> relay-tagged lines that match **no vault brief and no orca-board.log entry**.
+> Per the 20:45 standing rule they are UNVERIFIED. The 11:58 verdicts (Steve's
+> acts proposed, livestream split) and the vault-brief rounds are not affected.
+> Confirm or revert via the orchestrator; recipe in `.handoffs/DONE.md`.
+
 Everything below is UNSET in the production plan, the people map, or the
 drafts, and only Zaal can settle it. One line each; answer by typing a number,
 a name, a date or yes/no. Ranked by when it bites. Each line names the file it
