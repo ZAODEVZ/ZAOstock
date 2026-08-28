@@ -542,3 +542,45 @@ orchestrator's call, not mine.**
 - **ZAOSTOCK-DECK -> orchestrator:** I have no lane brief under
   `~/zao-vault/handoffs/zaostock-lanes/`. If the deck lane is meant to have one
   with a write-set, it does not exist yet.
+
+---
+
+# ZAOSTOCK-DECK schedule-v4 - 2026-08-27
+
+**Not pushed.** In write-set: only `docs/sponsor/deck-2026-10-03.md` touched.
+
+| Time | Slide now says |
+|---|---|
+| 12:00 | Doors, and a short welcome |
+| from 12:05 | Live sets, with our MC and sponsor spots in every changeover |
+| 16:00 - 18:00 | WaveWarZ, opening with the WaveWarZ story |
+| 18:00 | Everyone walks next door, together |
+| 18:00 - 19:30 | DJ set |
+| 19:30 - close | Live music to close. In booking |
+
+**Changed from v3:** the evening order flipped. DJ now opens the indoor block;
+live music closes and is in booking. Noon doors gained a short welcome.
+
+**Two deliberate absences, both noted on the slide so they are not "fixed" later:**
+
+1. **No end time on the daytime block.** ros-v4 gives "from 12:05" and WaveWarZ at
+   16:00 and does not say when sets stop. ros-v3's **15:45 is not carried
+   forward** - inventing a boundary is how a schedule slide stops matching the day.
+2. **No act described as confirmed anywhere in the deck.** Werb was already absent
+   after the slide-5 rewrite. This pass removed the last two places a count could
+   survive: a Sources line restating "five artists confirmed", and a draft guard
+   note that named Werb beside the word confirmed. **`grep Werb` on the deck now
+   returns zero.**
+
+The only DJ on the slide is the 18:00-19:30 indoor set. No DJ between daytime
+sets, per Zaal's 20:0x order.
+
+## Request line
+
+**ZAOSTOCK-DECK -> SITE:** ros-v4 says Werb must not appear as confirmed anywhere
+in the deck. **The public homepage still does** - `src/app/page.tsx` names "Werb
+and Lyons Den are confirmed" in the lineup teaser and carries a "Confirmed so far:
+Werb, Lyons Den" fact row, from PR #45. That file is in SITE's write-set, not
+mine, so I have not touched it. **Someone should decide whether the deck rule
+extends to the site**, because right now a sponsor could read the deck saying the
+lineup is announced 1 September and then find two names on the homepage.
