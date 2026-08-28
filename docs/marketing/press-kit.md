@@ -76,9 +76,9 @@ One venue at a time. The day does not split across two rooms.
 
 **HOLD until 1 September.** Two names are public now.
 
-Werb and Lyons Den are confirmed. The full lineup is announced on 1 September.
+Lyons Den is confirmed. The full lineup is announced on 1 September.
 
-*(On 1 September, replace with the five confirmed acts as Zaal confirms them
+*(On 1 September, replace with the confirmed acts as Zaal confirms them
 that day, plus the WaveWarZ block. Never list an act marked proposed.)*
 
 ## WaveWarZ
@@ -166,7 +166,7 @@ info@thezao.com
 | Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486,495` |
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
 | 20+ countries, music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
-| Werb, Lyons Den public | `src/app/page.tsx:397` |
+| Lyons Den public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
 | WaveWarZ 1,452, 27 Aug | `docs/sponsor/deck-2026-10-03.md` slide 6 |
 | Partners | `src/app/page.tsx:101-112, 546-548` |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |

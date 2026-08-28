@@ -6,7 +6,8 @@ day: **UNSET**. Lane: MARKETING. Design owner: Candy (with Paper). Print list
 owner: Candy.
 
 **One rule above every other line in this file: never print a proposed act.**
-The lineup on the poster is five confirmed acts plus the WaveWarZ block. The
+The lineup on the poster is four confirmed acts plus the WaveWarZ block
+(was five until Zaal, typed 27 Aug 20:4x: Werb is no longer fully confirmed). The
 four acts from Steve Peer's draft are proposed only (Zaal, typed 2026-08-27
 11:58) and do not appear, in any size, anywhere on the sheet.
 
@@ -18,36 +19,41 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 
 | Item | Status | Source | Note |
 |---|---|---|---|
-| Werb | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404` | Public since before the reveal. Spelling as on site |
-| Lyons Den | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404` | Spelling confirmed: Lyons Den (Zaal 27 Aug) |
+| Werb | **DO NOT PRINT** until confirmed | Zaal, typed 27 Aug 20:4x | **Not fully confirmed** - Zaal wants him for WaveWarZ. Still named as confirmed on the live site (`src/app/page.tsx:397,404`); SITE flagged. Back to HAVE the moment Zaal says confirmed |
+| Lyons Den | **HAVE** - confirmed, already public, **FLAG** | `src/app/page.tsx:397,404`; Zaal, typed 27 Aug 20:4x | Keeps printing as confirmed on Zaal's instruction, but he is **not in the 20:4x running order** (Crown Vics / Sen / Dcoop / Fellenz). **Question for Zaal: is Lyons Den playing, and where?** Spelling confirmed: Lyons Den |
 | Fellenz | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Fellenz (Zaal 27 Aug) |
 | Dcoop | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Dcoop (Zaal 27 Aug) |
-| Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | |
+| Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Lane observation, not a Zaal verdict: also absent from the 20:4x order. Worth the same question as Lyons Den |
+| Sen | **UNSET for print** | Zaal, typed 27 Aug 20:4x running order; gdoc Aug 3 ("2 Maine musicians confirmed... Sen is one of them") | In Zaal's order, not on the gated confirmed list. **Question for Zaal: is Sen confirmed for print?** Spelling as typed |
+| JANGO, Jadyn, Hurricane as acts | **DO NOT PRINT** | Zaal, typed 27 Aug 20:4x: "dream additions... if time" | JANGO and Hurricane already print inside the WaveWarZ block. As separate acts they are not booked |
 | WaveWarZ block | **HAVE** - confirmed block, 4 to 6 outdoors | `docs/plans/production-plan-2026-10-03.md` section 4; `src/app/program/page.tsx` BLOCKS[1] | Print as a block with the names. Battlers cleared for public (Zaal, typed 27 Aug 19:3x): Stilo, Jango, Lui, Quan; Hurricane MCing |
 | The Crown Vics | **DO NOT PRINT** | Zaal 2026-08-27, `docs/plans/surface-audit-2026-08-27.md` | Proposed only |
 | DJ Aquavantes | **DO NOT PRINT** | Zaal, typed 27 Aug 20:0x: "No DJ Aquavantes" | Out. With him goes the "DJ in every changeover" line - do not print it as a feature |
 | The Somes Sound | **DO NOT PRINT** | same | Proposed only |
 | North Creek | **DO NOT PRINT** | same | Proposed only. The evening block prints as "after party at Black Moon", no act |
 | Set order / set times | **DO NOT PRINT** | Zaal, typed 27 Aug 20:0x; PRODUCTION owns the grid | Zaal's running order is noted in section 1b below; times come from PRODUCTION's ros-v2 when it lands. Poster carries names, not a schedule |
-| Roster still five on print day | **BLOCKED - Zaal** | gdoc Links and Assets "Data we cannot see" | "The artist count has already moved three times in four days." Five is the count on the gated page as of 27 Aug. Re-confirm the morning the file goes to print |
-| Name spellings | **HAVE** - Lyons Den, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Werb and Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
+| Roster still four on print day | **BLOCKED - Zaal** | gdoc Links and Assets "Data we cannot see" | "The artist count has already moved three times in four days." Five is the count on the gated page as of 27 Aug. Re-confirm the morning the file goes to print |
+| Name spellings | **HAVE** - Lyons Den, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
 
-## 1b. The running order, as Zaal typed it (Zaal, typed 27 Aug 20:0x)
+## 1b. The running order, as Zaal typed it - v2 (Zaal, typed 27 Aug 20:4x)
 
 Noted for context. **Not for print** - the poster carries names, not times,
 and PRODUCTION owns the grid: take times from its ros-v2 when it lands.
+Supersedes the 20:0x order.
 
 | Slot | Act | Print? |
 |---|---|---|
-| 12:00 | Intro | no |
-| 12:05-12:35 | The Crown Vics | **DO NOT PRINT** - proposed until Steve confirms |
-| after | Werb, Dcoop, Lyons Den, Acadia Rising - order not given | names yes, order no |
-| 15:00-15:45 | Fellenz | name yes, time no |
-| 16:00-18:00 | WaveWarZ - Stilo, Jango, Lui, Quan; Hurricane MC | names yes |
-| 18:00-19:30 | Stilo DJ, indoors at Black Moon | name yes, time no |
-| close | One of Steve's acts | **DO NOT PRINT** - proposed until Steve confirms |
+| 1 | The Crown Vics, ~30 min | **DO NOT PRINT** - proposed until Steve confirms |
+| 2 | Sen, ~30 min | **UNSET** - confirm with Zaal |
+| 3 | Dcoop, ~30 min | yes |
+| 4 | Fellenz, ~30 min | yes |
+| then | WaveWarZ - Stilo, Jango, Lui, Quan; Hurricane MC | names yes |
+| if time | JANGO, Jadyn, Hurricane - "dream additions" | **DO NOT PRINT** |
+| evening | Stilo DJ indoors, then one of Steve's acts to close (20:0x) | Stilo yes; closer **DO NOT PRINT** |
 
-No DJ Aquavantes anywhere.
+Not in this order but still printing as confirmed: **Lyons Den** (Zaal: keep
+printing, flagged) and **Acadia Rising** (lane observation). **Werb** is out of
+the order and out of print until confirmed. No DJ Aquavantes anywhere.
 
 ## 2. The fixed facts
 
@@ -105,7 +111,8 @@ No DJ Aquavantes anywhere.
 
 1. Fri 29 Aug - the three logos land in Drive (or do not, and the strip prints
    with six).
-2. Before the file locks - Zaal re-confirms the five names are still five.
+2. Before the file locks - Zaal re-confirms the four names are still four, and
+   answers the Werb, Lyons Den and Sen questions in section 1.
    Spellings and the noon start are settled (27 Aug 19:3x).
 3. Sat 30 Aug - Candy's brand kit and print deliverables (card 801d6743).
 4. Tue 1 Sep - reveal. The poster's digital version is the reveal image if it
@@ -121,7 +128,7 @@ No DJ Aquavantes anywhere.
   print date"); Improvements tab call notes on boards and Eric.
 - `docs/plans/production-plan-2026-10-03.md` - sections 2, 4, 6, 8.
 - `docs/plans/surface-audit-2026-08-27.md` - the proposed-only correction.
-- `src/app/team/plan/page.tsx` - the five confirmed acts and the poster card
+- `src/app/team/plan/page.tsx` - the confirmed acts as of 27 Aug morning (five then; Werb moved out at 20:4x) and the poster card
   53e3ff3a ("Cannot start until set times exist" - superseded: the poster
   carries names, not times, so it can start once names are locked).
 - `src/content/festival.ts`, `src/app/page.tsx`, `src/app/program/page.tsx`.

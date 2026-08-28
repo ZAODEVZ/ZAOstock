@@ -22,8 +22,9 @@ before the copy.
 2. **No photo.** The only image in the repo is the badge. Artist photos are
    unowned (gdoc "What we are missing"). If Gabe asks for art, the answer is
    the badge and UNSET for the rest.
-3. **Lineup names** stay out of the pitch until 1 September. Werb and Lyons
-   Den are already public and may be named.
+3. **Lineup names** stay out of the pitch until 1 September. Lyons Den is
+   already public and may be named. Werb is also public on the site but is not
+   fully confirmed (Zaal, typed 27 Aug 20:4x) - do not repeat him.
 4. **No attendance figure.** Zaal has not typed one. If asked, "free, on a
    street that four million cars a year pass through" is the sourced answer
    and a headcount is not.
@@ -104,7 +105,7 @@ number the town gets out of it
 > measuring what a free festival does for downtown - an ordinary Saturday
 > against 3 October, published combined across the businesses that take part,
 > Black Moon first. Second, the lineup goes public on 1 September, with two
-> names already out: Werb and Lyons Den.
+> name already out: Lyons Den.
 >
 > I am in Ellsworth and happy to sit down any day that suits. If a preview
 > around the 1st works for you, I can have the full lineup and the day's
@@ -128,9 +129,9 @@ number the town gets out of it
 | WaveWarZ format, audience decides | `src/app/program/page.tsx` BLOCKS[1] |
 | The measurement, Black Moon first | `docs/plans/production-plan-2026-10-03.md` section 7 |
 | Reveal 1 September | production plan section 6 |
-| Werb and Lyons Den public | `src/app/page.tsx:397` |
+| Lyons Den public | `src/app/page.tsx:397`. Werb not fully confirmed (Zaal, typed 27 Aug 20:4x), not repeated |
 | info@thezao.com | deck slide 12; `docs/drafts/email-john-jagger-2026-08-27.md` |
 
 Deliberately not in the email: a headcount, sponsor tiers,
-the four proposed acts, the number of confirmed artists (five - true, but it
+the four proposed acts, the number of confirmed artists (four - true, but it
 invites "who" before the 1st).
