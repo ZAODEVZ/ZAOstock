@@ -6,8 +6,13 @@ day: **UNSET**. Lane: MARKETING. Design owner: Candy (with Paper). Print list
 owner: Candy.
 
 **One rule above every other line in this file: never print a proposed act.**
-The lineup on the poster is four confirmed acts plus the WaveWarZ block
-(was five until Zaal, typed 27 Aug 20:4x: Werb is no longer fully confirmed). The
+
+**SEP 1 REVEAL RULE (Zaal, tapped 27 Aug 21:4x): reveal only acts confirmed IN WRITING by 31 August, whatever the count. Print that list, then "more to come" for the rest.**
+"Confirmed" on this sheet means a written yes from the act in hand by 31 August;
+any act without one, however likely, falls under "more to come". As of 21:2x
+that list is four acts plus the WaveWarZ block (was five until Zaal, typed 27 Aug
+20:4x: Werb is no longer fully confirmed) - re-checked against the written
+confirmations on 31 August before the file locks. The
 four acts from Steve Peer's draft are proposed only (Zaal, typed 2026-08-27
 11:58) and do not appear, in any size, anywhere on the sheet.
 
@@ -19,12 +24,12 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 
 | Item | Status | Source | Note |
 |---|---|---|---|
-| Werb | **DO NOT PRINT** until confirmed | Zaal, typed 27 Aug 20:4x | **Not fully confirmed** - Zaal wants him for WaveWarZ. Still named as confirmed on the live site (`src/app/page.tsx:397,404`); SITE flagged. Back to HAVE the moment Zaal says confirmed |
+| Werb | **DO NOT PRINT** until confirmed | Zaal, typed 27 Aug 20:4x | **Not fully confirmed** - Zaal wants him for WaveWarZ. Still named as confirmed on the live site (`src/app/page.tsx:397,404`); SITE flagged. Back to HAVE the moment Zaal says confirmed Prints only with a written yes by 31 Aug |
 | Lyons Den | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404`; Zaal, typed 27 Aug 21:2x | Placed in the running order after Dcoop at 21:2x; the 20:4x flag is closed. Spelling confirmed: Lyons Den |
 | Fellenz | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Fellenz (Zaal 27 Aug) |
 | Dcoop | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Dcoop (Zaal 27 Aug) |
 | Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Lane observation, not a Zaal verdict: also absent from the 20:4x order. Worth the same question as Lyons Den |
-| Sen | **UNSET for print** | Zaal, typed 27 Aug 20:4x running order; gdoc Aug 3 ("2 Maine musicians confirmed... Sen is one of them") | In Zaal's order, not on the gated confirmed list. **Question for Zaal: is Sen confirmed for print?** Spelling as typed |
+| Sen | **UNSET for print** | Zaal, typed 27 Aug 20:4x running order; gdoc Aug 3 ("2 Maine musicians confirmed... Sen is one of them") | In Zaal's order, not on the gated confirmed list. **Question for Zaal: is Sen confirmed for print?** Spelling as typed Prints only with a written yes by 31 Aug |
 | JANGO, Jadyn, Hurricane as acts | **DO NOT PRINT** | Zaal, typed 27 Aug 20:4x: "dream additions... if time" | JANGO and Hurricane already print inside the WaveWarZ block. As separate acts they are not booked |
 | WaveWarZ block | **HAVE** - confirmed block, 4 to 6 outdoors | `docs/plans/production-plan-2026-10-03.md` section 4; `src/app/program/page.tsx` BLOCKS[1] | Print as a block with the names. Battlers cleared for public (Zaal, typed 27 Aug 19:3x): Stilo, Jango, Lui, Quan; Hurricane MCing |
 | The Crown Vics | **DO NOT PRINT** | Zaal 2026-08-27, `docs/plans/surface-audit-2026-08-27.md` | Proposed only |
@@ -112,8 +117,9 @@ the order and out of print until confirmed. No DJ Aquavantes anywhere.
 
 1. Fri 29 Aug - the three logos land in Drive (or do not, and the strip prints
    with six).
-2. Before the file locks - Zaal re-confirms the four names are still four, and
-   answers the Werb and Sen questions in section 1 (Lyons Den placed 21:2x).
+2. 31 August - Zaal lists the acts confirmed in writing. That list, whatever
+   the count, is the poster; Werb and Sen are on it only with a written yes.
+   Everything else is "more to come".
    Spellings and the noon start are settled (27 Aug 19:3x).
 3. Sat 30 Aug - Candy's brand kit and print deliverables (card 801d6743).
 4. Tue 1 Sep - reveal. The poster's digital version is the reveal image if it
