@@ -1181,3 +1181,60 @@ ZAOSTOCK-PRODUCTION ros-v6 REQUEST for DECK (schedule slide) - CHANGED: evening 
 ZAOSTOCK-PRODUCTION CLOSE (convention 10, fourth time): shipped as above. Held - nothing off disk; no pending relays, no monitors; open questions in zaal-only-PRODUCTION.md (line 1 the 19:30 half hour) and ros-5min Q1-Q33; no /handoff bundle. Branch bettercallzaal/lane-production-0827, worktree ~/orca/workspaces/zaostock/lane-production-0827, base ws/production-plan-1003-0826 @ 118f127, 28 commits ahead after this line's commit, tree clean, NOT pushed. Known red: festival.test.ts:16 (SITE's). Ready to close.
 - ZAOSTOCK-SITE program-v6 (relay traced: board 23:03 "RELAY DECK+SITE ros-v6"): applied to every evening line in this write-set. `src/content/site.ts` DAY - which the homepage "The day" list renders - now reads `6 - 7:30 PM` DJ set as the street walks in, and `8 - 10 PM` live set hosted by Black Moon; nothing printed for 7:30-8 or after 10; "live music to close, in booking" is gone. `/team/plan` evening rows: 18:00-19:30 DJ set (unchanged), 19:30-20:00 UNSET half hour with nothing public, 20:00-22:00 live set hosted by Black Moon with Steve's act unnamed (name not on disk) and Crown Vics unnamed publicly until 1 Sept, nothing after 22:00 until the licence hour is typed. No act name added to any public surface. tsc clean, vitest 45/45. `src/app/program/page.tsx` NOT edited - fourth ask, same answer: outside this write-set per site.md line 2, unchanged since 18:51; on the fold it still prints the 18:00-21:00 after-party and 21:00 DJ blocks. NOTE for MARKETING: `docs/marketing/press-kit.md` "The day" and "Format" lines still say "then live music to close"; the /press route renders that file as written.
 - ZAOSTOCK-SITE program-v6 (addendum): PRODUCTION has closed its lane and `src/app/program/page.tsx` on the new fold still prints "45 minutes each", the 18:00-21:00 after party and the 21:00 DJ - ros-v3, v4 and v6 never reached it. The exact edit is drafted as `docs/drafts/program-ros-v6-2026-08-27.patch` (ros-v3 daytime sentence, ros-v6 evening blocks, comment rewritten, no act name): `git apply --check` passes against this tree and tsc is clean with it applied, then reverted. One command applies it; the file stays untouched here until someone with the write-set says so. Branch rebased onto the moved fold (6f0d200): 3 ahead, 0 behind, tsc clean, 45/45.
+
+---
+
+# ZAOSTOCK-DECK schedule-v7 - 2026-08-28
+
+Fresh branch **`ws/deck-0828`** off `origin/main` @ `02634fe`, now that PR #56 is
+merged. **Not pushed.** Write-set: `docs/sponsor/deck-2026-10-03.md` only.
+
+| Time | Slide |
+|---|---|
+| 12:00 | Doors, and a short welcome |
+| from 12:05 | Live sets, with our MC between them |
+| 16:00 - 18:00 | WaveWarZ, opening with the WaveWarZ story |
+| 18:00 | Everyone walks next door, together |
+| 18:00 - 20:00 | DJ set |
+| 20:00 - 22:00 | Live set, hosted by Black Moon |
+
+**v7 closes the gap v6 had.** The DJ runs to 20:00 instead of 19:30, so the
+evening is one continuous block from six with no unexplained half hour.
+
+**One silence remains, still defended in the note:** nothing after 22:00. Open in
+the run of show, not the end of the night.
+
+**No fire on the slide.** Verified - `grep -i fire` returns nothing. The note now
+says it must not be added until Dcoop names a time and a place. It sits in the
+older fact sheet, which is why it needed saying: a fact-sheet entry is not a
+schedule item until it has a slot.
+
+## The branch move nearly cost three versions of work - read this one
+
+**PR #56 folded this deck at its v4 state.** My v6 commit was never in it - only
+2 commits were unmerged and that was one of them.
+
+So branching clean off `origin/main` and applying only v7's one-line evening
+change, which is exactly what the instruction describes, **would have silently
+reverted:**
+
+- v5's sharper sponsor line, on slides 5 **and** 11
+- v6's evening and the printed-silence speaker note
+- the City of Ellsworth naming
+- the updated sources line
+
+Handled by cherry-picking `e3a763f` onto the new branch before applying v7. Clean,
+no conflicts.
+
+**The general shape, worth a convention line:** after a fold, "start a fresh
+branch off origin/main" is only safe once you have checked that the fold actually
+captured your lane's latest work. Here it did not, and nothing in the merge or
+the relay said so. **Diff your file against `origin/main` before you branch, not
+after.**
+
+## Still open from yesterday
+
+- **ZAOSTOCK-DECK -> SITE:** Town vs City of Ellsworth in the website `PARTNERS`
+  array. Deck says City. One-word revert if Town is deliberate.
+- Slide 9 remains **UNSET**, six fields, for the Candy meeting.
+- The John Jagger insurance email is unblocked and unsent.
