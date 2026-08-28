@@ -37,7 +37,7 @@ Free to attend.**
 
 ZAOstock is a free, one-day, artist-built music festival on Franklin Street in
 downtown Ellsworth, Maine. From noon, independent artists play the outdoor
-parklet stage with a DJ covering every changeover, then two hours of
+parklet stage, then two hours of
 WaveWarZ, a live music-battle format where two artists go head to head and the
 audience decides. At six the whole street walks next door into Black Moon
 Public House for the evening. It is part of the 9th Annual Art of Ellsworth
@@ -53,7 +53,7 @@ countries.
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
 | Cost | Free to attend |
 | Music starts | Noon |
-| Format | Independent artists outdoors, DJ between sets, WaveWarZ live battles, then indoors at Black Moon with a DJ to close |
+| Format | Independent artists outdoors, WaveWarZ live battles, then indoors at Black Moon with a DJ set and live music to close |
 | Weather | Rain or shine, under tent cover from Wallace Events |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
@@ -63,12 +63,12 @@ countries.
 ## The day
 
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
-  to back, 45-minute sets, a DJ in every changeover.
+  to back.
 - **WaveWarZ, four to six, outdoors.** Live music battles. Stilo, Jango, Lui
   and Quan go head to head, Hurricane on the mic, and the audience decides, in
   the street and online.
 - **Six onward, indoors at Black Moon Public House.** Live music for the
-  evening, then a DJ until the room empties.
+  evening: a DJ set as the street walks in, then live music to close.
 
 One venue at a time. The day does not split across two rooms.
 
@@ -158,7 +158,8 @@ info@thezao.com
 | Date, venue, free, Black Moon next door | `src/content/festival.ts` |
 | Music starts at noon | Zaal, typed 27 Aug 19:3x |
 | Battlers and MC | Zaal, typed 27 Aug 19:3x; `src/app/team/plan/page.tsx` DAY[1] |
-| The day, one venue at a time, WaveWarZ four to six, DJ to close | `src/app/program/page.tsx` BLOCKS |
+| The day, one venue at a time, WaveWarZ four to six | `src/app/program/page.tsx` BLOCKS |
+| Evening shape: DJ set from six, live music to close; no changeover DJ | Zaal, typed 27 Aug 20:0x (running order; no DJ Aquavantes). PRODUCTION's ros-v2 supersedes when it lands |
 | Tent, Wallace Events | `docs/plans/production-plan-2026-10-03.md` section 4 |
 | Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486,495` |
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |

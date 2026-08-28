@@ -22,7 +22,8 @@ all seven.
 | Saturday 3 October, Franklin Street Parklet, Ellsworth, free | `src/content/festival.ts` |
 | Music starts at noon | Zaal, typed 27 Aug 19:3x, relayed by the orchestrator |
 | WaveWarZ battlers may be named: Stilo, Jango, Lui, Quan; Hurricane MC | Zaal, typed 27 Aug 19:3x; roster at `src/app/team/plan/page.tsx` DAY[1] |
-| Outdoors until six, then Black Moon next door, DJ to close | `src/app/program/page.tsx` BLOCKS |
+| Outdoors until six, then Black Moon next door | `src/app/program/page.tsx` BLOCKS |
+| Evening: Stilo DJs from six, live music to close; no changeover DJ | Zaal, typed 27 Aug 20:0x running order. PRODUCTION's ros-v2 supersedes |
 | Werb and Lyons Den confirmed, public | `src/app/page.tsx:397,404` |
 | Five confirmed acts total (names gated until 1 Sep) | `src/app/team/plan/page.tsx` DAY[0] |
 | Lineup reveal 1 September | `docs/plans/production-plan-2026-10-03.md` section 6 |
@@ -86,10 +87,10 @@ Angle: one venue at a time. Outdoors, then next door. Standard.
 > ZM. ZAOstock runs one stage at a time. Outdoors on the Franklin Street Parklet from noon until six, then the whole thing walks next door into Black Moon and keeps going. One crowd, one street, one bar. Free. zaostock.com/program
 
 **Farcaster /zao GC**
-> ZM. the ZAOstock day, in one line: parklet until six, Black Moon after six, DJ to close. we dropped the second simultaneous stage on purpose - a street with 200 people on it looks full, two rooms with 100 each look empty. zaostock.com/program
+> ZM. the ZAOstock day, in one line: parklet until six, Black Moon after six with Stilo on the decks as the street walks in. we dropped the second simultaneous stage on purpose - a street with 200 people on it looks full, two rooms with 100 each look empty. zaostock.com/program
 
 **Discord**
-> ZM. ZAOstock schedule shape is up on zaostock.com/program. Independent artists back to back outdoors with a DJ covering every changeover, WaveWarZ battles after the sets, then everything moves inside Black Moon Public House next door. Rain or shine, there is a tent. Question for the room: who is driving up from where?
+> ZM. ZAOstock schedule shape is up on zaostock.com/program. Independent artists back to back outdoors, WaveWarZ battles after the sets, then everything moves inside Black Moon Public House next door. Rain or shine, there is a tent. Question for the room: who is driving up from where?
 
 **Facebook**
 > ZM. ZAOstock is Saturday October 3 on Franklin Street in downtown Ellsworth, and it is free. Music outdoors on the parklet through the day, then everyone walks next door into Black Moon for the evening. It is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Bring the family, stay for dinner downtown. zaostock.com
@@ -169,7 +170,7 @@ Tags: UNSET x5. Add handles once collected.
 > ZM. it is out. werb, lyons den, fellenz, dcoop, acadia rising, and the WaveWarZ block. every one of them is an independent artist nobody is paying to make the music they make. quote the main post, tag the acts you know, and if you are within driving distance of ellsworth on october 3 this is the one.
 
 **Farcaster /zao GC**
-> ZM. ZAOstock lineup is public: werb, lyons den, fellenz, dcoop, acadia rising, plus WaveWarZ battles on the parklet stage. five sets, a DJ in every changeover, then the whole street moves into Black Moon at six. this is what the season has been building toward. zaostock.com/program
+> ZM. ZAOstock lineup is public: werb, lyons den, fellenz, dcoop, acadia rising, plus WaveWarZ battles on the parklet stage. five sets, then the whole street moves into Black Moon at six with Stilo on the decks. this is what the season has been building toward. zaostock.com/program
 
 **Telegram**
 > ZM. ZAOstock lineup is live: Werb, Lyons Den, Fellenz, Dcoop, Acadia Rising + WaveWarZ. Oct 3, Ellsworth, free. zaostock.com/program

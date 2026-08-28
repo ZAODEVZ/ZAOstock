@@ -25,12 +25,29 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | |
 | WaveWarZ block | **HAVE** - confirmed block, 4 to 6 outdoors | `docs/plans/production-plan-2026-10-03.md` section 4; `src/app/program/page.tsx` BLOCKS[1] | Print as a block with the names. Battlers cleared for public (Zaal, typed 27 Aug 19:3x): Stilo, Jango, Lui, Quan; Hurricane MCing |
 | The Crown Vics | **DO NOT PRINT** | Zaal 2026-08-27, `docs/plans/surface-audit-2026-08-27.md` | Proposed only |
-| DJ Aquavantes | **DO NOT PRINT** | same | Proposed only. Also the changeover DJ, so "DJs between every act" is a claim about a role, not a name |
+| DJ Aquavantes | **DO NOT PRINT** | Zaal, typed 27 Aug 20:0x: "No DJ Aquavantes" | Out. With him goes the "DJ in every changeover" line - do not print it as a feature |
 | The Somes Sound | **DO NOT PRINT** | same | Proposed only |
 | North Creek | **DO NOT PRINT** | same | Proposed only. The evening block prints as "after party at Black Moon", no act |
-| Set order / set times | **DO NOT PRINT** | production plan section 2 | No downbeat is printed anywhere until Steve answers; set order is not fixed. Poster carries names, not a schedule |
+| Set order / set times | **DO NOT PRINT** | Zaal, typed 27 Aug 20:0x; PRODUCTION owns the grid | Zaal's running order is noted in section 1b below; times come from PRODUCTION's ros-v2 when it lands. Poster carries names, not a schedule |
 | Roster still five on print day | **BLOCKED - Zaal** | gdoc Links and Assets "Data we cannot see" | "The artist count has already moved three times in four days." Five is the count on the gated page as of 27 Aug. Re-confirm the morning the file goes to print |
 | Name spellings | **HAVE** - Lyons Den, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Werb and Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
+
+## 1b. The running order, as Zaal typed it (Zaal, typed 27 Aug 20:0x)
+
+Noted for context. **Not for print** - the poster carries names, not times,
+and PRODUCTION owns the grid: take times from its ros-v2 when it lands.
+
+| Slot | Act | Print? |
+|---|---|---|
+| 12:00 | Intro | no |
+| 12:05-12:35 | The Crown Vics | **DO NOT PRINT** - proposed until Steve confirms |
+| after | Werb, Dcoop, Lyons Den, Acadia Rising - order not given | names yes, order no |
+| 15:00-15:45 | Fellenz | name yes, time no |
+| 16:00-18:00 | WaveWarZ - Stilo, Jango, Lui, Quan; Hurricane MC | names yes |
+| 18:00-19:30 | Stilo DJ, indoors at Black Moon | name yes, time no |
+| close | One of Steve's acts | **DO NOT PRINT** - proposed until Steve confirms |
+
+No DJ Aquavantes anywhere.
 
 ## 2. The fixed facts
 
