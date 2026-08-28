@@ -11,6 +11,10 @@ ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (N
 
 The festival format: independent artists performing with DJs between, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
 
+## Confirmed partners
+
+Town of Ellsworth (parklet venue), Black Moon Public House (indoor stage and official after-party), Star 97.7 (local radio), Wallace Events (equipment and tenting), WaveWarZ (live music-battle format), COC Concertz (community partnership, monthly virtual concerts), ENTERACT (production and operational support), Web3Metal (partnership integration and community surface). Heart of Ellsworth is not a listed partner until they confirm in writing.
+
 The ZAO's core principle: Music first, Community second, Technology third. The festival leads with the music experience. The ZAO are digital creators focused on helping musicians and other artists with distribution and support.
 
 ## Key dates

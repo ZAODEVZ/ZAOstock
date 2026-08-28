@@ -107,6 +107,8 @@ const PARTNERS: { name: string; role: string; confirmed: boolean; poc: string; l
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true, poc: 'Zaal' },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true, poc: 'Zaal' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', confirmed: true, poc: 'Zaal' },
+  // COC Concertz added 2026-08-27, typed by Zaal at 20:3x. POC not typed - UNSET until he names one.
+  { name: 'COC Concertz', role: 'Community partnership - monthly virtual concerts', confirmed: true, poc: 'UNSET' },
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true, poc: 'FailOften' },
   { name: 'Web3Metal', role: 'Partnership integration + community surface', confirmed: true, poc: 'Shawn' },
   // Confirmed by Zaal 2026-08-27. Spelling is 'COC Concertz' - space, and a z.

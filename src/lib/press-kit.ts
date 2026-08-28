@@ -18,7 +18,7 @@ export const PRESS_KIT_PATH = path.join(process.cwd(), 'docs', 'marketing', 'pre
 
 export const PRESS_CONTACT = 'info@thezao.com';
 
-// Same seven names as the homepage PARTNERS list (src/app/page.tsx), which
+// Same eight names as the homepage PARTNERS list (src/app/page.tsx), which
 // gates on confirmed === true. If that list changes, change this one.
 export const CONFIRMED_PARTNERS = [
   'Town of Ellsworth',
@@ -26,6 +26,7 @@ export const CONFIRMED_PARTNERS = [
   'Star 97.7',
   'Wallace Events',
   'WaveWarZ',
+  'COC Concertz',
   'ENTERACT',
   'Web3Metal',
 ] as const;

@@ -197,6 +197,7 @@ export default async function DeckPage() {
             <li>- Star 97.7 - Local radio promotion</li>
             <li>- Wallace Events - Event equipment + tenting</li>
             <li>- WaveWarZ - Live music-battle format on the ZAOstock stage</li>
+            <li>- COC Concertz - Community partnership - monthly virtual concerts</li>
             <li>- ENTERACT - Production + operational support</li>
           </ul>
           <p className="text-[11px] text-gray-500 italic pt-2">

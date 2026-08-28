@@ -81,6 +81,7 @@ const PARTNERS = [
   { name: 'Star 97.7', role: 'Local radio promotion' },
   { name: 'Wallace Events', role: 'Event equipment + tenting' },
   { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage' },
+  { name: 'COC Concertz', role: 'Community partnership - monthly virtual concerts' },
   // Fractured Atlas / New Media Commons removed 2026-08-20, then ruled OUT entirely
   // is IN CONFIRMATION, not confirmed (ZAOOS cards 6386c0c7, e899442e). Do not
   // re-add until the relationship is confirmed in writing.
