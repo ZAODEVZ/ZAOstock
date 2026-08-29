@@ -25,7 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/partners',
     '/build',
     '/onepagers/overview',
-    '/cypher',
     '/zaoville',
     '/privacy',
     '/press',

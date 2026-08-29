@@ -17,10 +17,10 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   // Guard below the hooks, not above: hook order has to be identical on every
   // render, so an early return above them is a rules-of-hooks error (broke #48).
   //
-  // #48 took the four /apply, /cypher, /musicians/submit and /suggest forms off
-  // and missed this one, which is the most visible form on the site - it sits on
-  // the homepage. It kept accepting names and email addresses and discarding
-  // every one of them, exactly the failure FormsUnavailable exists to prevent.
+  // #48 took the public forms off while the write path was down and missed this
+  // one, which is the most visible form on the site - it sits on the homepage.
+  // It kept accepting names and email addresses and discarding every one of
+  // them, exactly the failure FormsUnavailable exists to prevent.
   if (!formIsLive('rsvp')) {
     return <FormsUnavailable action="get on the list for Oct 3" subject="ZAOstock - RSVP" include={['Your name', 'The email to reach you on']} />;
   }

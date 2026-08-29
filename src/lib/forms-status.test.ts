@@ -2,13 +2,13 @@ import { describe, it, expect } from 'vitest';
 import { FORM_POLICY, DATABASE_AVAILABLE, formIsLive, emailByDesign, type FormSurface } from './forms-status';
 
 // Zaal, 2026-08-29: the volunteer sign-up, the ideas box and the RSVP stay as
-// forms; musician submissions and riders become an email link. The cypher form
-// follows the musician forms until he says otherwise. These tests pin that
-// decision so a later edit cannot quietly put a music intake back on a form,
+// forms; musician submissions and riders become an email link, and the cypher
+// page is dropped entirely. These tests pin that decision so a later edit
+// cannot quietly put a music intake back on a form,
 // and pin the rule that no form renders while the write path is down - which
 // is what made 23 August cost us a submission.
 
-const SURFACES: FormSurface[] = ['volunteer', 'ideas', 'rsvp', 'musician-submission', 'rider', 'cypher'];
+const SURFACES: FormSurface[] = ['volunteer', 'ideas', 'rsvp', 'musician-submission', 'rider'];
 
 describe('form policy', () => {
   it('keeps the volunteer, ideas and RSVP surfaces as forms', () => {
@@ -20,7 +20,6 @@ describe('form policy', () => {
   it('sends the music intakes to email', () => {
     expect(FORM_POLICY['musician-submission']).toBe('email');
     expect(FORM_POLICY.rider).toBe('email');
-    expect(FORM_POLICY.cypher).toBe('email');
   });
 
   it('never renders a form while the database is unavailable', () => {

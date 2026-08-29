@@ -9,16 +9,17 @@
 //
 // Zaal, 2026-08-29, once the code-login dashboard was retired: the volunteer
 // sign-up, the ideas box and the RSVP stay as forms; musician submissions and
-// riders become an email link. The cypher form is the third music intake and
-// writes the same artists rows, so it follows the musician forms here - one
-// word from Zaal moves it back to 'form'.
+// riders become an email link. The cypher form was the third music intake and
+// is dropped entirely in the same pass - Zaal, same day: "drop, we need to go
+// to MVP with this, get as many people there and see if sponsors will give us
+// anything.
 //
 // Two separate questions, so they are two separate switches:
 //   FORM_POLICY       - what this surface should be, by decision. Permanent.
 //   DATABASE_AVAILABLE - whether the write path works at all. Temporary.
 // A surface renders its form only when it is a 'form' AND the database is up.
 
-export type FormSurface = 'volunteer' | 'ideas' | 'rsvp' | 'musician-submission' | 'rider' | 'cypher';
+export type FormSurface = 'volunteer' | 'ideas' | 'rsvp' | 'musician-submission' | 'rider';
 
 export type FormPolicy = 'form' | 'email';
 
@@ -28,7 +29,6 @@ export const FORM_POLICY: Record<FormSurface, FormPolicy> = {
   rsvp: 'form',
   'musician-submission': 'email',
   rider: 'email',
-  cypher: 'email',
 };
 
 // FLIP THIS when Vercel Production points at the real Supabase project
