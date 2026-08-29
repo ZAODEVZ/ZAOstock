@@ -6,6 +6,7 @@ import { logActivity, logFieldChanges } from '@/lib/log-activity';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { ARTIST_STATUSES } from '@/lib/team-constants';
 import { resolveEventId } from '@/lib/api/resolve-event';
+import { withoutClaimToken, withoutClaimTokens } from '@/lib/api/redact';
 
 export async function GET(request: NextRequest) {
   const member = await getStockTeamMember();
@@ -22,8 +23,7 @@ export async function GET(request: NextRequest) {
     .order('created_at', { ascending: false });
 
   if (error) return NextResponse.json({ error: 'Failed to load artists' }, { status: 500 });
-  // claim_token is the artist's own credential for /artist/<slug>; the dashboard never needs it.
-  return NextResponse.json({ artists: (data ?? []).map(({ claim_token: _claim, ...rest }) => rest) });
+  return NextResponse.json({ artists: withoutClaimTokens(data ?? []) });
 }
 
 const createSchema = z.object({
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     action: 'create',
     newValue: { name: data.name, status: data.status },
   });
-  return NextResponse.json({ artist: data }, { status: 201 });
+  return NextResponse.json({ artist: withoutClaimToken(data) }, { status: 201 });
 }
 
 const patchSchema = z.object({
