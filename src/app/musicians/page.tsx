@@ -46,12 +46,12 @@ export default function MusiciansPage() {
       facts={[
         { term: 'Date', detail: 'Saturday 3 October 2026, music from noon' },
         { term: 'Where', detail: 'Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six' },
-        { term: 'Submissions close', detail: '3 September 2026' },
+        { term: 'Submissions close', detail: '1 September 2026' },
         { term: 'Soundcheck', detail: 'Friday 2 October, artists only' },
         { term: 'Set length', detail: 'Settled with you when your slot is' },
         { term: 'Pay', detail: 'Not pay-to-play. Independent and ZAO-vetted only' },
       ]}
-      footnote="Submissions close 3 September 2026. Independent and ZAO-vetted only. This is not a pay-to-play festival."
+      footnote="Submissions close 1 September 2026. Independent and ZAO-vetted only. This is not a pay-to-play festival."
     />
   );
 }

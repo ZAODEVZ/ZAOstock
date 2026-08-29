@@ -12,7 +12,7 @@ describe('SITE facts', () => {
     expect(SITE.musicFrom).toBe('Noon');
     expect(SITE.contact).toBe('info@thezao.com');
     expect(SITE.lineupRevealDate).toBe('2026-09-01');
-    expect(SITE.submissionCutoffDate).toBe('2026-09-03');
+    expect(SITE.submissionCutoffDate).toBe('2026-09-01');
   });
 
   it('names no proposed act anywhere', () => {

@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/sponsor',
     '/partners',
     '/build',
+    '/meetings',
     '/onepagers/overview',
     '/zaoville',
     '/privacy',

@@ -18,8 +18,8 @@ export const SITE = {
   windowLabel: 'Noon - 6 PM',
   lineupRevealLabel: '1 September',
   lineupRevealDate: '2026-09-01',
-  submissionCutoffLabel: '3 September',
-  submissionCutoffDate: '2026-09-03',
+  submissionCutoffLabel: '1 September',
+  submissionCutoffDate: '2026-09-01',
   soundcheckNight: 'Friday 2 October',
   weather: 'Rain or shine, under tent cover.',
   series: '9th Annual Art of Ellsworth',
@@ -54,6 +54,26 @@ export const DAY = [
   { time: '4 - 6 PM', where: 'Franklin Street Parklet', what: 'WaveWarZ. Two artists go head to head; the audience decides, in the street and online.' },
   { time: '6 - 8 PM', where: 'Black Moon Public House, next door', what: 'DJ set as the street walks in.' },
   { time: '8 - 10 PM', where: 'Black Moon Public House', what: 'Live set, hosted by Black Moon.' },
+] as const;
+
+/**
+ * The two open meetings, every day until 3 October. Zaal, 29 August: the eight
+ * circles "will become meetings", 11:30 AM and 5 PM Eastern. Rendered by
+ * /meetings; the same two times go on the shared calendar.
+ */
+export const MEETINGS = [
+  {
+    label: 'Midday',
+    time: '11:30 AM',
+    zone: 'Eastern, every day',
+    what: 'What moved since yesterday, and what is stuck. The one that catches problems early enough to fix them.',
+  },
+  {
+    label: 'Evening',
+    time: '5:00 PM',
+    zone: 'Eastern, every day',
+    what: 'For anyone whose day starts after the midday one. Same agenda, later, so nobody has to choose between this and a job.',
+  },
 ] as const;
 
 export type Partner = { name: string; role: string; poc: string; confirmed: boolean; logoSrc?: string };
