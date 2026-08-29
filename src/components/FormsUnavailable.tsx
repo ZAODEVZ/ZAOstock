@@ -11,9 +11,9 @@ import { SITE } from '@/content/site';
 // So while the write path is down the forms come off and this takes their
 // place: an honest explanation and a route that actually works.
 //
-// TO PUT THE FORMS BACK: set PUBLIC_FORMS_ENABLED back to true in
-// src/lib/forms-status.ts. One constant, nothing else. Do not delete the form
-// components - they are fine, the database underneath them was not.
+// TO PUT A FORM BACK: see src/lib/forms-status.ts - FORM_POLICY decides what a
+// surface should be, DATABASE_AVAILABLE decides whether it can be. Do not delete
+// the form components - they are fine, the database underneath them was not.
 
 interface FormsUnavailableProps {
   /** What the person was trying to do, e.g. "submit your music". */
@@ -22,16 +22,27 @@ interface FormsUnavailableProps {
   subject: string;
   /** Optional list of what to include, so email is not a worse form. */
   include?: string[];
+  /**
+   * Why there is no form here. 'database-down' is the 23 August outage state
+   * and says so; 'by-design' is a surface Zaal decided should be email (the
+   * musician forms, 29 August) and must not claim to be temporary.
+   */
+  reason?: 'database-down' | 'by-design';
 }
 
-export function FormsUnavailable({ action, subject, include }: FormsUnavailableProps) {
+export function FormsUnavailable({ action, subject, include, reason = 'database-down' }: FormsUnavailableProps) {
+  const byDesign = reason === 'by-design';
   const mailto = `mailto:${SITE.contact}?subject=${encodeURIComponent(subject)}`;
 
   return (
     <div className="zs-alert zs-alert--warning">
-      <p className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] m-0">This form is temporarily off</p>
+      <p className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] m-0">
+        {byDesign ? 'This one goes by email' : 'This form is temporarily off'}
+      </p>
       <p className="text-sm m-0 measure">
-        Our submissions database is down, and rather than show you a form that fails after you have filled it in, we have taken it off. Email works and reaches the same people.
+        {byDesign
+          ? 'A person reads every one of these and writes back, so we ask by email rather than through a form. Nothing is lost in a queue.'
+          : 'Our submissions database is down, and rather than show you a form that fails after you have filled it in, we have taken it off. Email works and reaches the same people.'}
       </p>
 
       {include && include.length > 0 && (

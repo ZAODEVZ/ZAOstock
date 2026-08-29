@@ -1,6 +1,6 @@
 'use client';
 
-import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { formIsLive } from '@/lib/forms-status';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
 
 import { useState } from 'react';
@@ -31,7 +31,7 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
 
   // Guard below the hooks, not above: hook order has to be identical on every
   // render, so an early return above them is a rules-of-hooks error (broke #48).
-  if (!PUBLIC_FORMS_ENABLED) {
+  if (!formIsLive('volunteer')) {
     return <FormsUnavailable action="volunteer" subject="ZAOstock - volunteer signup"
       include={['Your name', 'How to reach you', 'What you would like to help with', 'Which hours on Oct 3 you are free']} />;
   }

@@ -3,7 +3,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { RiderForm } from './RiderForm';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
-import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { formIsLive, emailByDesign } from '@/lib/forms-status';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
@@ -39,10 +39,11 @@ export default function RiderPage() {
       </Section>
       <Section>
         <div className="max-w-[760px]">
-          {PUBLIC_FORMS_ENABLED ? (
+          {formIsLive('rider') ? (
             <RiderForm />
           ) : (
             <FormsUnavailable
+              reason={emailByDesign('rider') ? 'by-design' : 'database-down'}
               action="send your rider"
               subject="ZAOstock rider"
               include={['Your act name and the name you go by on stage', 'Set length and instrumentation, with anything you need on stage', 'Travel: where from, and whether you need help with it', 'Merch: whether you need a table', 'A link to a track or a set']}

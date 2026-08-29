@@ -30,7 +30,7 @@ export default function PrivacyPage() {
         <section className="space-y-2">
           <h2 className="font-display font-normal text-h3 text-ink-950">What we collect</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
-            If you RSVP, apply to volunteer, sign up for the cypher, submit an artist form, or fill out an
+            If you RSVP, apply to volunteer, submit an artist form, or fill out an
             artist rider, we collect what you actually type into that form - typically your name and email,
             sometimes a phone number, social links, or a message. We don&apos;t collect anything beyond what
             the form asks for. This site uses Vercel Analytics for anonymous traffic counts (page views, not
