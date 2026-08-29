@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { TEAM_DASHBOARD_RETIRED, TEAM_RETIRED_MESSAGE } from '@/lib/team-status';
+
 import { z } from 'zod';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
@@ -16,6 +18,7 @@ const linkWalletSchema = z.object({
 // who they are from scratch. Server-verifies the signature so a client
 // can't just assert an arbitrary address.
 export async function POST(request: NextRequest) {
+  if (TEAM_DASHBOARD_RETIRED) return NextResponse.json({ error: TEAM_RETIRED_MESSAGE }, { status: 410 });
   const member = await getStockTeamMember();
   if (!member) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 

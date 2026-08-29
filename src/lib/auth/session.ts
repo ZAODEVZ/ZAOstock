@@ -2,6 +2,7 @@ import { getIronSession, IronSession, sealData, unsealData } from 'iron-session'
 import { cookies, headers } from 'next/headers';
 import { ENV } from '@/lib/env';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
+import { TEAM_DASHBOARD_RETIRED } from '@/lib/team-status';
 
 export interface StockTeamPayload {
   memberId?: string;
@@ -76,6 +77,7 @@ async function getBearerTeamMember(): Promise<{ memberId: string; memberName: st
 // `cookies()` both read from the current request context implicitly in a
 // Route Handler, no request object needs to be threaded through.
 export async function getStockTeamMember(): Promise<{ memberId: string; memberName: string } | null> {
+  if (TEAM_DASHBOARD_RETIRED) return null;
   // Fail closed (anonymous) instead of throwing - a misconfigured/missing
   // SESSION_SECRET should never 500 a public page.
   try {

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/test', '/team/help', '/team/m/'],
+        disallow: ['/api/', '/test', '/team', '/team/'],
       },
     ],
     sitemap: 'https://zaostock.com/sitemap.xml',
