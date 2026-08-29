@@ -32,7 +32,7 @@ const SHIFT_LABEL: Record<Volunteer['shift'], string> = {
   early: 'Early (8-12)',
   block1: 'Block 1 (12-3)',
   block2: 'Block 2 (3-6)',
-  teardown: 'Teardown (6-7:30)',
+  teardown: 'Teardown (from 10 PM)',
   allday: 'All Day',
 };
 

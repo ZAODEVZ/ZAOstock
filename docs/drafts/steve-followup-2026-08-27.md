@@ -1,3 +1,10 @@
+> **SUPERSEDED, 29 August 2026. Do not send.** Written before the 27-28 August
+> verdicts. It asks about a "6 to 9 block" and treats DJ Aquavantes as covering the
+> daytime changeovers; both are gone. The Crown Vics at 12:05 and Steve's own set
+> 20:00-22:00 are booked, The Somes Sound, North Creek and DJ Aquavantes are out, and
+> the evening is Stilo 18:00-20:00 straight into Steve 20:00-22:00 with no gap.
+> The current Steve message is `msg-steve-peer-2026-08-27.md`.
+
 # Draft message - Zaal to Steve Peer, Black Moon Public House
 
 **SUPERSEDED 27 Aug, Round 3** by `docs/drafts/msg-steve-peer-2026-08-27.md`, which folds these three questions into one consolidated message. Kept for the record.
