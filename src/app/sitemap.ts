@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/festivals',
     '/sponsor',
     '/partners',
+    '/build',
     '/onepagers/overview',
     '/cypher',
     '/zaoville',

@@ -6,6 +6,7 @@ const LINKS = [
   { href: '/program', label: 'Program' },
   { href: '/press', label: 'Press' },
   { href: '/partners', label: 'Partners' },
+  { href: '/build', label: 'Build' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/ellsworth', label: 'Ellsworth' },
   { href: '/acadia', label: 'Acadia' },

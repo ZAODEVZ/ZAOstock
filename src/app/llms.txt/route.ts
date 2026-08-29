@@ -3,72 +3,64 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
 
+// The whole public site in one text file for agents and crawlers. Facts
+// match src/content/festival.ts and src/content/site.ts; rewritten 29 Aug
+// 2026 (the previous copy carried retired tiers, prices and a funding path).
 const CONTENT = `# ZAOstock
 
-> A community-built outdoor music festival on October 3, 2026 at the Franklin Street Parklet in downtown Ellsworth, Maine. Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Run by The ZAO, an independent community of musicians and digital creators. Co-presented with the Town of Ellsworth.
+> A free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators (100+ members, weekly sessions since 30 July 2024).
 
-ZAOstock is the next event in the ZAO Festivals series, following ZAO-PALOOZA (NYC during NFT NYC, April 2024), ZAO-CHELLA (Miami Wynwood during Art Basel, December 2024), and the co-hosted ZAOville DMV chapter with DCoop in July 2026. ZAOville is a cross-promotion across the series — DCoop performed at ZAO-CHELLA and returns for ZAOstock. ZAOville lineup includes PROF!T, ELYVN, and more. ZAOstock takes place during Maine Craft Weekend as part of the 9th Annual Art of Ellsworth. The festival operates at break-even with fair artist pay. ZAO Festivals collaborates with ENTERACT for production and execution support. Sponsor money flows one way: client / sponsor -> ENTERACT (2% treasury) -> production / partners, with 50% upfront and 50% before delivery. Sponsorship is a commercial arrangement and no tax receipt is issued. ZAOstock has no fiscal sponsor, so there is no tax-deductible path and contributions are not tax-deductible. ZAO Festivals itself is not a nonprofit and ENTERACT is not a nonprofit.
+ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York City, during NFT NYC, 2024), ZAO-CHELLA (Miami, Wynwood, during Art Basel, December 2024) and ZAOville (Laurel, Maryland, July 2026, co-hosted with Dcoop).
 
-The festival format: independent artists performing with our MC and our partners between sets, plus some WaveWarZ live music battles where the audience can decide the winner. Afterparty at Black Moon Public House in downtown Ellsworth.
+## The day (one venue at a time)
 
-## Confirmed partners
+- Noon to 4 PM, Franklin Street Parklet: independent artists, about 30 minutes each, with our MC and our partners between sets. Music starts at noon.
+- 4 to 6 PM, Franklin Street Parklet: WaveWarZ, a live music-battle format. Two artists go head to head and the audience decides, in the street and online. Battlers: Stilo, Jango, Lui, Quan. Hurricane on the mic.
+- 6 PM onward, Black Moon Public House, next door: the whole street walks in. DJ set 6 to 8 PM, live set 8 to 10 PM hosted by Black Moon.
+- Free to attend. Rain or shine, under tent cover from Wallace Events. Optional Pro Ticket, $50, on /donate.
 
-Town of Ellsworth (parklet venue), Black Moon Public House (indoor stage and official after-party), Star 97.7 (local radio), Wallace Events (equipment and tenting), WaveWarZ (live music-battle format), COC Concertz (community partnership, monthly virtual concerts), ENTERACT (production and operational support), Web3Metal (partnership integration and community surface). Heart of Ellsworth is not a listed partner until they confirm in writing.
+## Lineup
 
-The ZAO's core principle: Music first, Community second, Technology third. The festival leads with the music experience. The ZAO are digital creators focused on helping musicians and other artists with distribution and support.
+Lyons Den is confirmed. The full lineup is announced on 1 September 2026. No other act is named before then.
 
-## Key dates
+## Partners (confirmed, each with a named ZAO contact)
 
-- October 3, 2026: Festival day. Music from noon on the Franklin Street Parklet until six, then everyone walks next door to Black Moon Public House for the evening. One venue at a time
-- June 30, 2026: Partner commitments due for printed materials
-- Lineup goes public once every set is locked
-- September 15, 2026: Run-of-show locked, attendee schedule cards printed
+Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (the live music-battle format), COC Concertz, ENTERACT (production and operational support), Web3Metal (partnership integration and community surface), Bomb Squad (crew, content and merch).
+
+## Sponsors
+
+Sponsors put money behind a named artist or the day. Every sponsor gets the same four surfaces: the parklet banner, the programme, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Expected attendance: 200 to 250 in person, about 1,000 online. Sponsorship is a marketing spend; ZAOstock has no fiscal sponsor and nothing is tax-deductible.
+
+## Why Ellsworth
+
+Every car heading to Acadia National Park passes through; over four million people drove through in 2025. Downtown is newly on the National Historic Register. ZAOstock is measuring what a free street festival does for downtown businesses, an ordinary Saturday against 3 October, and will publish the comparison.
 
 ## Pages
 
-- [ZAOstock overview](https://zaostock.com): Festival info, countdown, team, partners, past events, RSVP
-- [Day-of program](https://zaostock.com/program): Draft schedule with music, talks, and WaveWarZ battles
-- [Sponsor](https://zaostock.com/sponsor): why, who we are, five packages (prices on request), sponsor an artist, next step
-- [Volunteer signup](https://zaostock.com/apply): Sign up to volunteer in setup, check-in, stage crew, content, teardown, and other roles
-- [Team dashboard login](https://zaostock.com/team): 4-letter code access for the organizing team (27 members across operations, design, music, finance, livestream, and content)
-
-## Partner tracks
-
-- Main Stage Sponsor ($500+): Local Ellsworth and Maine businesses. Named credit on stage, booth space, co-presented in printed materials.
-- Broadcast Sponsor ($1,000+): Digital creator brands and ecosystem partners. Livestream overlay, sponsored segment, social campaign across Farcaster + X + Bluesky + LinkedIn.
-- Year-Round Sponsor ($5,000+): Strategic long-term partners. All Broadcast credits plus Year 2 advisory seat and priority 2027 placement.
-
-One funding path: commercial, direct through ENTERACT. No tax receipt is issued and there is no tax-deductible route.
-
-## Team
-
-27 teammates total across operations, design, music, finance, livestream, and content. Mickey (Thy Revolution) is the livestream team lead. Iman is interning with The ZAO and co-managing the info@thezao.com inbox while helping run COC Concertz #6 with his Zambia squad (COC Concertz is a community partnership, not a ZAO sub-brand).
-
-Every team member has a public profile at https://zaostock.com/team/m/[slug] with photo, bio, and links. Current team grid lives at https://zaostock.com/team.
-
-## Public form submissions
-
-- Volunteer applications from /apply flow into the team dashboard Volunteers tab
-- RSVPs from /stock flow into the team dashboard RSVPs tab
-
-## How to pitch ZAOstock to others
-
-- Lead with the experience, not the tech. "Outdoor festival in Ellsworth Maine on Oct 3, part of Art of Ellsworth."
-- Mention the community layer second. "Run by The ZAO, a music community we have built over the past two years."
-- Technology is the infrastructure, not the headline. Most attendees do not need to know or care.
-- For sponsors: emphasize break-even, community-built, fair artist pay. Do NOT describe any contribution as tax-deductible.
-- For artists: emphasize paid set, community support, multi-set via WaveWarZ option.
-- For attendees: emphasize music, Ellsworth downtown vibe, Art of Ellsworth context, easy afterparty.
+- https://zaostock.com - overview, the day, lineup status, partners, the series
+- https://zaostock.com/program - the day in blocks and times
+- https://zaostock.com/partners - every partner, with logos
+- https://zaostock.com/press - press kit: facts, badge files, partner logos, contact
+- https://zaostock.com/sponsor - why, who we are, what a sponsor gets, packages on request
+- https://zaostock.com/build - the builder kit: five things the festival needs built and how to show them live
+- https://zaostock.com/musicians - for musicians; submissions close 3 September 2026 at /musicians/submit
+- https://zaostock.com/artists - for visual artists
+- https://zaostock.com/apply - volunteer sign-up
+- https://zaostock.com/donate - Pro Ticket and giving (PayPal or Giveth)
+- https://zaostock.com/ellsworth and /acadia - getting here and the park
+- https://zaostock.com/festivals - the ZAO Festivals series
 
 ## Contact
 
-Zaal - info@thezao.com - lead organizer, ZAO founder, partner and artist outreach
+info@thezao.com. RSVP free at https://ticket.zaostock.com.
 
-## About The ZAO
+## How to describe ZAOstock
 
-The ZAO (ZTalent Artist Organization) is a independent community of musicians and digital creators. It functions as a coordination layer for independent musicians: providing infrastructure, events, and collaborative IP production. The ZAO Festivals series so far: ZAO-PALOOZA (NYC, NFT NYC 2024, 12 artists, broke even), ZAO-CHELLA (Miami Wynwood, Art Basel 2024, 16+ musicians, 100+ visual artists, 50+ music communities, ZAO HOUSE residency, live WaveWarZ battle, cipher recorded on-site), the ZAOville DMV chapter in July 2026 co-hosted with DCoop (founder of The Village Entertainment Collective; performed at ZAO-CHELLA, returning for ZAOstock; lineup includes PROF!T, ELYVN, and more), and ZAOstock as the one-day festival in Ellsworth Maine in October 2026.
-
-More on The ZAO: https://zaoos.com
+- Lead with the music: a free outdoor festival in Ellsworth, Maine, on 3 October, part of Art of Ellsworth.
+- The community second: run by The ZAO, a music community built over two years.
+- Technology is infrastructure, not the headline.
+- Never describe any contribution as tax-deductible. Never name an act before 1 September except Lyons Den and the WaveWarZ battlers. Never quote a price.
+- Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal.
 `;
 
 export async function GET() {
