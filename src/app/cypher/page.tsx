@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { CypherForm } from './CypherForm';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/components/poster';
@@ -7,10 +8,12 @@ export const metadata: Metadata = {
   title: 'The cypher',
   description: 'Sign up to be part of the ZAOstock cypher, a live multi-artist collaborative track created at the festival on Saturday 3 October 2026.',
   robots: { index: false, follow: false },
+  alternates: { canonical: '/cypher' },
   openGraph: {
     title: 'The cypher | ZAOstock',
     description: 'Sign up to be part of the ZAOstock cypher, a live multi-artist collaborative track created at the festival.',
     url: 'https://zaostock.com/cypher',
+    images: [OG_IMAGE],
   },
 };
 

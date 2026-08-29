@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { SuggestForm } from './SuggestForm';
 import { SiteShell, Section, Eyebrow, Badge, SectionHeader } from '@/components/poster';
@@ -6,10 +7,12 @@ import { SiteShell, Section, Eyebrow, Badge, SectionHeader } from '@/components/
 export const metadata: Metadata = {
   title: 'Suggestions',
   description: 'Drop a suggestion for ZAOstock. Anyone can submit. We credit the contributors.',
+  alternates: { canonical: '/suggest' },
   openGraph: {
     title: 'Suggestions | ZAOstock',
     description: 'Drop a suggestion for ZAOstock. Anyone can submit. We credit the contributors.',
     url: 'https://zaostock.com/suggest',
+    images: [OG_IMAGE],
   },
 };
 

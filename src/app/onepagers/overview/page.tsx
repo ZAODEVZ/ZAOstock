@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getOnePager } from '@/lib/onepagers';
 import { getStockCounts, getPublicMembers } from '@/lib/members';
@@ -15,7 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'ZAOstock 2026 — Overview',
     description:
       'ZAO Festivals presents ZAOstock — a one-day artist-built music festival in Ellsworth, Maine. October 3, 2026.',
+    alternates: { canonical: '/onepagers/overview' },
     openGraph: {
+      url: 'https://zaostock.com/onepagers/overview',
+      images: [OG_IMAGE],
       title: 'ZAOstock 2026 — Overview',
       description:
         'ZAO Festivals presents ZAOstock — October 3, 2026 at the Franklin Street Parklet, Ellsworth, Maine.',
@@ -162,14 +166,14 @@ export default async function OverviewOnePager() {
     <main className="min-h-screen bg-paper-100 text-ink-950 print:bg-white print:text-slate-900">
       {/* Top bar */}
       <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-4 print:hidden">
-        <Link href="/" className="text-sm text-gold-600 hover:underline">
+        <Link href="/" className="text-sm text-denim-500 hover:underline">
           &larr; ZAOstock home
         </Link>
         <div className="flex items-center gap-2">
           {session && (
             <Link
               href="/onepagers"
-              className="text-xs text-ink-muted hover:text-gold-600 underline"
+              className="text-xs text-ink-muted hover:text-denim-500 underline"
             >
               All briefings
             </Link>
@@ -182,12 +186,12 @@ export default async function OverviewOnePager() {
       {/* HERO */}
       <header className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-12 print:py-6">
-          <div className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600">
+          <div className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500">
             ZAO Festivals presents
           </div>
           <h1 className="mt-2 text-5xl font-black leading-none text-ink-950 sm:text-6xl print:text-slate-900 print:text-4xl">
             ZAOstock
-            <span className="ml-3 align-top text-2xl font-bold text-gold-600 print:text-gold-600">
+            <span className="ml-3 align-top text-2xl font-bold text-denim-500 print:text-denim-500">
               2026
             </span>
           </h1>
@@ -208,7 +212,7 @@ export default async function OverviewOnePager() {
               className="bg-paper-100 px-4 py-6 print:bg-white"
             >
               <div className="text-2xl font-black text-ink-950 print:text-slate-900">{s.value}</div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-wider text-gold-600 print:text-gold-600">
+              <div className="mt-1 text-xs font-semibold uppercase tracking-wider text-denim-500 print:text-denim-500">
                 {s.label}
               </div>
               {s.sub && (
@@ -222,7 +226,7 @@ export default async function OverviewOnePager() {
       {/* PILLARS */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             Order of priorities
           </h2>
           <div className="mt-2 text-2xl font-bold text-ink-950 print:text-slate-900">
@@ -238,7 +242,7 @@ export default async function OverviewOnePager() {
                 key={p.number}
                 className="rounded-lg border border-ink-950/60 bg-paper-200 p-4 print:border-slate-300 print:bg-slate-50"
               >
-                <div className="text-xs font-mono text-gold-600 print:text-gold-600">
+                <div className="text-xs font-mono text-denim-500 print:text-denim-500">
                   {p.number}
                 </div>
                 <div className="mt-1 text-base font-bold text-ink-950 print:text-slate-900">
@@ -254,7 +258,7 @@ export default async function OverviewOnePager() {
       {/* WHAT IT IS */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             What it is
           </h2>
           <div className="mt-4 grid gap-6 sm:grid-cols-2">
@@ -305,7 +309,7 @@ export default async function OverviewOnePager() {
       {/* WHERE WE ARE */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             Where we are
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
@@ -354,7 +358,7 @@ export default async function OverviewOnePager() {
                   <span
                     className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
                       p.confirmed
-                        ? 'bg-olive-300 text-olive-500 print:bg-emerald-100 print:text-emerald-800'
+                        ? 'bg-olive-300 text-ink-950 print:bg-emerald-100 print:text-emerald-800'
                         : 'bg-paper-100/50 text-ink-950 print:bg-slate-200 print:text-slate-700'
                     }`}
                   >
@@ -370,7 +374,7 @@ export default async function OverviewOnePager() {
       {/* SPONSORSHIP TIERS */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             Sponsorship
           </h2>
           <p className="mt-2 text-sm text-ink-muted print:text-ink-muted">
@@ -383,13 +387,13 @@ export default async function OverviewOnePager() {
                 className="rounded-lg border border-ink-950/60 bg-amber-500/[0.03] p-4 print:border-amber-700/40 print:bg-amber-50"
               >
                 <div className="text-base font-bold text-ink-950 print:text-slate-900">{t.tier}</div>
-                <div className="text-sm font-semibold text-gold-600 print:text-gold-600">
+                <div className="text-sm font-semibold text-denim-500 print:text-denim-500">
                   {t.range}
                 </div>
                 <ul className="mt-3 space-y-1 text-xs text-ink-950 print:text-slate-700">
                   {t.perks.map((perk) => (
                     <li key={perk} className="flex gap-2">
-                      <span className="text-gold-600 print:text-gold-600">·</span>
+                      <span className="text-denim-500 print:text-denim-500">·</span>
                       <span>{perk}</span>
                     </li>
                   ))}
@@ -403,7 +407,7 @@ export default async function OverviewOnePager() {
       {/* HOW TO BE INVOLVED */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             How to be involved
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -418,7 +422,7 @@ export default async function OverviewOnePager() {
                 <p className="mt-1 text-sm text-ink-950 print:text-slate-700">{row.detail}</p>
                 <Link
                   href={row.cta.href}
-                  className="mt-3 inline-block text-sm font-semibold text-gold-600 hover:underline print:text-gold-600"
+                  className="mt-3 inline-block text-sm font-semibold text-denim-500 hover:underline print:text-denim-500"
                 >
                   {row.cta.label} &rarr;
                 </Link>
@@ -431,7 +435,7 @@ export default async function OverviewOnePager() {
       {/* YEAR 1 COMMITMENTS */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             Year 1 commitments
           </h2>
           <ol className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -442,7 +446,7 @@ export default async function OverviewOnePager() {
               "Don't overscale. Capacity the venue + city are happy with. Year 2 earns the right to grow.",
             ].map((c, i) => (
               <li key={c} className="flex gap-3">
-                <span className="flex-shrink-0 text-2xl font-black text-gold-600 print:text-gold-600">
+                <span className="flex-shrink-0 text-2xl font-black text-denim-500 print:text-denim-500">
                   {i + 1}
                 </span>
                 <span className="text-sm text-ink-950 print:text-slate-700">{c}</span>
@@ -455,7 +459,7 @@ export default async function OverviewOnePager() {
       {/* CONTACT */}
       <section className="border-b border-ink-950/60 print:border-slate-300">
         <div className="mx-auto max-w-4xl px-4 py-10 print:py-6">
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600 print:text-gold-600">
+          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-denim-500 print:text-denim-500">
             Contact
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -463,7 +467,7 @@ export default async function OverviewOnePager() {
               <div className="text-sm text-ink-muted print:text-ink-muted">For everything</div>
               <a
                 href="mailto:info@thezao.com"
-                className="mt-1 block text-xl font-bold text-gold-600 hover:underline print:text-gold-600"
+                className="mt-1 block text-xl font-bold text-denim-500 hover:underline print:text-denim-500"
               >
                 info@thezao.com
               </a>
@@ -476,7 +480,7 @@ export default async function OverviewOnePager() {
               <ul className="mt-1 space-y-1 text-sm text-ink-950 print:text-slate-700">
                 <li>
                   Site:{' '}
-                  <Link href="/" className="text-gold-600 hover:underline print:text-gold-600">
+                  <Link href="/" className="text-denim-500 hover:underline print:text-denim-500">
                     zaostock.com
                   </Link>
                 </li>
@@ -493,7 +497,7 @@ export default async function OverviewOnePager() {
         <section className="border-b border-ink-950/60 print:hidden">
           <div className="mx-auto max-w-4xl px-4 py-10">
             <details className="group rounded-lg border border-ink-950/60 bg-paper-200 p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-gold-600 hover:underline">
+              <summary className="cursor-pointer text-sm font-semibold text-denim-500 hover:underline">
                 + Long-form briefing (last edited via dashboard)
               </summary>
               <pre className="mt-4 whitespace-pre-wrap text-sm text-ink-950">{pager.body}</pre>

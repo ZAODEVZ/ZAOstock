@@ -249,6 +249,7 @@ export function RiderForm() {
         onChange={(e) => setHp(e.target.value)}
         autoComplete="off"
         tabIndex={-1}
+        aria-label="Leave this field empty"
         className="hidden"
         aria-hidden="true"
       />
@@ -300,8 +301,8 @@ export function RiderForm() {
               onClick={() => setScheduleResp(v)}
               className={`rounded border px-3 py-2.5 text-sm font-medium transition-colors ${
                 scheduleResp === v
-                  ? 'border-ink-950 bg-gold-400 text-red-600'
-                  : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
+                  ? 'border-ink-950 bg-gold-400 text-ink-950'
+                  : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-ink-950'
               }`}
             >
               {v === 'accepted' ? 'ACCEPTED' : 'Request a change'}
@@ -331,8 +332,8 @@ export function RiderForm() {
               onClick={() => setEquipResp(v)}
               className={`rounded border px-3 py-2.5 text-sm font-medium transition-colors ${
                 equipResp === v
-                  ? 'border-ink-950 bg-gold-400 text-red-600'
-                  : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
+                  ? 'border-ink-950 bg-gold-400 text-ink-950'
+                  : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-ink-950'
               }`}
             >
               {v === 'accepted' ? 'ACCEPTED' : 'Additional needs'}
@@ -379,8 +380,8 @@ export function RiderForm() {
                     onClick={() => setMerchTable(v)}
                     className={`rounded border px-3 py-2.5 text-sm font-medium transition-colors ${
                       merchTable === v
-                        ? 'border-ink-950 bg-gold-400 text-red-600'
-                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
+                        ? 'border-ink-950 bg-gold-400 text-ink-950'
+                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-ink-950'
                     }`}
                   >
                     {v === 'need_table' ? 'Need table space' : 'Providing my own'}
@@ -422,8 +423,8 @@ export function RiderForm() {
                     onClick={() => setInterviewFormat(v)}
                     className={`rounded border px-2 py-2.5 text-xs font-medium transition-colors ${
                       interviewFormat === v
-                        ? 'border-ink-950 bg-gold-400 text-red-600'
-                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
+                        ? 'border-ink-950 bg-gold-400 text-ink-950'
+                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-ink-950'
                     }`}
                   >
                     {v === 'in_person' ? 'In-person' : v === 'virtual' ? 'Virtual' : 'Either'}
@@ -461,8 +462,8 @@ export function RiderForm() {
                     onClick={() => setRetreatFormat(v)}
                     className={`rounded border px-2 py-2.5 text-xs font-medium transition-colors ${
                       retreatFormat === v
-                        ? 'border-ink-950 bg-gold-400 text-red-600'
-                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-white/20'
+                        ? 'border-ink-950 bg-gold-400 text-ink-950'
+                        : 'border-ink-950/60 bg-paper-100 text-ink-950 hover:border-ink-950'
                     }`}
                   >
                     {v === 'in_person' ? 'In-person' : v === 'virtual' ? 'Virtual' : 'Either'}

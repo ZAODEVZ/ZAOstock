@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
 
 export const metadata: Metadata = {
   title: 'For Artists · ZAOstock',
   description:
     'Visual artists, designers, photographers, and makers - we are taking interest. ZAOstock 2026 is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. If you want to bring visual energy to the build, reach out.',
+  alternates: { canonical: '/artists' },
   openGraph: {
     title: 'For Artists · ZAOstock 2026',
     description: 'Visual artists - we are taking interest. Email info@thezao.com if you want to bring visual energy to ZAOstock.',
     url: 'https://zaostock.com/artists',
+    images: [OG_IMAGE],
     type: 'website',
   },
   twitter: {

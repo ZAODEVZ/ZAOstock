@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell } from '@/components/poster';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { listOnePagers } from '@/lib/onepagers';
@@ -7,15 +8,22 @@ import { listOnePagers } from '@/lib/onepagers';
 export const metadata: Metadata = {
   title: 'ZAOstock One-Pagers',
   description: 'Briefing docs for sponsors, partners, venues, and city contacts.',
+  alternates: { canonical: '/onepagers' },
+  openGraph: {
+    title: 'ZAOstock One-Pagers | ZAOstock',
+    description: 'Briefing docs for sponsors, partners, venues, and city contacts.',
+    url: 'https://zaostock.com/onepagers',
+    images: [OG_IMAGE],
+  },
 };
 
 export const dynamic = 'force-dynamic';
 
 const STATUS_COLOR: Record<string, string> = {
   draft: 'bg-paper-100 text-ink-950',
-  review: 'bg-gold-300 text-gold-600 border border-ink-950/60',
-  final: 'bg-olive-300 text-olive-500 border border-ink-950/60',
-  sent: 'bg-denim-300 text-denim-500 border border-ink-950/60',
+  review: 'bg-gold-300 text-ink-950 border border-ink-950/60',
+  final: 'bg-olive-300 text-ink-950 border border-ink-950/60',
+  sent: 'bg-denim-300 text-ink-950 border border-ink-950/60',
   archived: 'bg-paper-100 text-ink-muted',
 };
 
@@ -29,7 +37,7 @@ export default async function OnePagersPage() {
 
   return (
     <SiteShell>
-    <main className="mx-auto max-w-4xl px-4 py-10 text-ink-950">
+    <div className="mx-auto max-w-4xl px-4 py-10 text-ink-950">
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gold-600">One-Pagers</h1>
         <p className="mt-2 max-w-2xl text-sm text-ink-muted">
@@ -38,13 +46,13 @@ export default async function OnePagersPage() {
       </header>
 
       {!session && (
-        <div className="mb-6 rounded-lg border border-ink-950/60 bg-gold-300 px-4 py-3 text-sm text-gold-600">
+        <div className="mb-6 rounded-lg border border-ink-950/60 bg-gold-300 px-4 py-3 text-sm text-ink-950">
           You&apos;re viewing as a guest - only public one-pagers are listed. <a href="/team" className="underline">Sign in</a> to see internal drafts.
         </div>
       )}
 
       {visible.length === 0 ? (
-        <div className="rounded-xl border border-ink-950/60 bg-paper-200 p-8 text-center text-sm text-ink-muted">
+        <div className="rounded-md border border-ink-950/60 bg-paper-200 p-8 text-center text-sm text-ink-muted">
           No published one-pagers yet — check back soon.
         </div>
       ) : (
@@ -53,7 +61,7 @@ export default async function OnePagersPage() {
             <Link
               key={p.slug}
               href={`/onepagers/${p.slug}`}
-              className="group block rounded-xl border border-ink-950/60 bg-paper-200 p-5 transition hover:border-ink-950/60 hover:bg-paper-200"
+              className="group block rounded-md border border-ink-950/60 bg-paper-200 p-5 transition hover:border-ink-950/60 hover:bg-paper-200"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
@@ -87,7 +95,7 @@ export default async function OnePagersPage() {
           ))}
         </div>
       )}
-    </main>
+    </div>
     </SiteShell>
   );
 }

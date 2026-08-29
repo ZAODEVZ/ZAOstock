@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { RiderForm } from './RiderForm';
 import { SITE } from '@/content/site';
@@ -9,10 +10,12 @@ export const metadata: Metadata = {
   description:
     'Confirmed for the ZAOstock lineup? Complete your performance & participation rider - schedule, equipment, backing tracks, merch, interview, and retreat.',
   robots: { index: false, follow: false },
+  alternates: { canonical: '/musicians/rider' },
   openGraph: {
     title: 'Artist Rider · ZAOstock',
     description: 'Confirmed for the ZAOstock lineup? Complete your performance & participation rider.',
     url: 'https://zaostock.com/musicians/rider',
+    images: [OG_IMAGE],
   },
 };
 

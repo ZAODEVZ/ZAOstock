@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'ZAOville Pool Party',
   description:
     'The ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026. Co-hosted with Dcoop and The VEC. Free entry, free drinks, open mic, live sets and a DJ night swim. Part of the ZAO Festivals series.',
+  alternates: { canonical: '/zaoville' },
   openGraph: {
-    title: 'ZAOville Pool Party | ZAO Festivals',
+    title: 'ZAOville Pool Party | ZAO Festivals | ZAOstock',
     description: 'Laurel, Maryland, Saturday 25 July 2026. Co-hosted with Dcoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
     url: 'https://zaostock.com/zaoville',
+    images: [OG_IMAGE],
     type: 'website',
   },
 };

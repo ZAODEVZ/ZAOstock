@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, PUBLIC_LINEUP, WAVEWARZ } from '@/content/site';
@@ -7,10 +8,12 @@ import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader 
 export const metadata: Metadata = {
   title: 'Program',
   description: 'Day-of schedule for ZAOstock, Saturday 3 October 2026. Outdoors on Franklin Street from noon, WaveWarZ from four, then indoors at Black Moon from six.',
+  alternates: { canonical: '/program' },
   openGraph: {
     title: 'Program | ZAOstock',
     description: 'Outdoors from noon, WaveWarZ from four, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
     url: 'https://zaostock.com/program',
+    images: [OG_IMAGE],
   },
 };
 
@@ -67,7 +70,7 @@ const BLOCKS: Block[] = [
       { time: '13:55', label: `Set 4 - ${PUBLIC_LINEUP[0]}`, detail: 'Confirmed.', tone: 'set' },
       { time: '14:25', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
       { time: '14:35', label: 'Set 5', detail: 'Closes the outdoor block.', tone: 'set' },
-      { time: '15:05', label: 'Open', detail: 'Around forty minutes with nothing booked yet. The MC and our partners hold the stage.', tone: 'open' },
+      { time: '15:05', label: 'Open stretch', detail: 'Around forty minutes with nothing booked yet. The MC and our partners hold the stage.', tone: 'open' },
       { time: '15:45', label: 'Battle stage reset', detail: 'The MC hands to Hurricane.', tone: 'gap' },
     ],
   },
@@ -110,7 +113,7 @@ const TONE: Record<NonNullable<Slot['tone']>, string> = {
   set: 'text-ink-950 font-extrabold',
   battle: 'text-ink-950 font-extrabold',
   gap: 'text-ink-secondary font-semibold',
-  open: 'text-gold-600 font-extrabold',
+  open: 'text-ink-950 font-extrabold',
 };
 
 const GOOD_TO_KNOW = [
@@ -140,12 +143,12 @@ export default function ProgramPage() {
           </div>
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 m-0">
             {(['OUT', 'IN'] as const).map((v) => (
-              <div key={v} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-5 py-4 flex items-start gap-3">
-                <span className={['mt-1.5 h-3 w-3 rounded-full border-2 border-ink-950 shrink-0', VENUE[v].dot].join(' ')} aria-hidden="true" />
-                <div>
-                  <dt className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted m-0">{VENUE[v].name}</dt>
-                  <dd className="text-sm font-bold text-ink-950 m-0 mt-1">{VENUE[v].where}</dd>
-                </div>
+              <div key={v} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-5 py-4">
+                <dt className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted m-0 flex items-center gap-2">
+                  <span className={['h-3 w-3 rounded-full border-2 border-ink-950 shrink-0', VENUE[v].dot].join(' ')} aria-hidden="true" />
+                  {VENUE[v].name}
+                </dt>
+                <dd className="text-sm font-bold text-ink-950 m-0 mt-1 pl-5">{VENUE[v].where}</dd>
               </div>
             ))}
           </dl>

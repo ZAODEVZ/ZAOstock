@@ -18,6 +18,19 @@ interface InstagramEmbedProps {
  * Loads the script once, then reprocesses whenever the url list changes.
  */
 export function InstagramEmbed({ urls }: InstagramEmbedProps) {
+  // embed.js injects untitled iframes; give each an accessible name (axe frame-title).
+  useEffect(() => {
+    const name = () => {
+      document.querySelectorAll<HTMLIFrameElement>('iframe.instagram-media, iframe[src*="instagram.com"]').forEach((f, i) => {
+        if (!f.title) f.title = `Instagram post ${i + 1}`;
+      });
+    };
+    name();
+    const obs = new MutationObserver(name);
+    obs.observe(document.body, { childList: true, subtree: true });
+    return () => obs.disconnect();
+  }, [urls]);
+
   useEffect(() => {
     const SRC = 'https://www.instagram.com/embed.js';
     const existing = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`);

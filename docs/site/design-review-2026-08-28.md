@@ -62,3 +62,26 @@ Grade: A. Design score: A- with findings 1 to 4 landed; the remaining gap is pho
 - `/press`: the kit block - both badges with download, six partner logos with
   download, contact.
 - Footer: Partners link.
+
+## Round 2 (2026-08-29 00:5x) - browser-qa, seo, accessibility skills on the live site
+
+Run after PR #58 deployed (main `402f58c`). Playwright plus axe-core 4.10
+(wcag2a, wcag2aa, wcag21aa, wcag22aa, best-practice) over 22 public routes
+at 1280, plus every internal link status-checked and the crawl files fetched.
+All 22 routes 200, TTFB 24-153 ms, CLS 0, no dead internal links.
+
+| # | Area | Finding | Fix |
+|---|---|---|---|
+| 7 | SEO | `og:image` present only on `/`; no page had a canonical. The root `opengraph-image.tsx` is overridden by each page's own `openGraph` object. | `src/lib/meta.ts` OG_IMAGE; every public page lists it and sets `alternates.canonical` |
+| 8 | SEO | Five pages rendered "X \| ZAOstock \| ZAOstock" (title plus template). | Page titles without the suffix; og:title keeps it |
+| 9 | SEO | Sitemap listed the private `/team` and omitted `/partners`. | Fixed; `/circles` held out while its API 500s |
+| 10 | SEO | `/favicon.ico` 404. | `src/app/favicon.ico` from the badge (16-64px) |
+| 11 | a11y serious | gold-600 at 12-14px on `/program` (Open row) and `/press` (hold summaries): 3.3:1. | Ink text plus a gold "Open slot" badge; summaries in denim-400 |
+| 12 | a11y serious | `/musicians/rider` selected toggles red-600 on gold-400; hover border `white/20`; honeypot flagged. | ink-950 on gold-400, ink border, honeypot labelled |
+| 13 | a11y serious | `/onepagers/overview`: 31 contrast failures, all `text-gold-600` labels. | `text-denim-500` (36 replacements) |
+| 14 | a11y moderate | `/circles` and `/onepagers` render a `<main>` inside the shell's `<main>`. | Inner element is a `<div>` |
+| 15 | a11y serious | `/festivals` Instagram iframes have no title (injected by embed.js). | MutationObserver names each frame; instagram in CSP frame-src |
+| 16 | open | `/circles`: `GET /api/team/circles` returns 500 in production ("Failed to load circles"); the `circles` table is not in the live database. Page shows the error state. | Not fixed here: needs the migration on the live project or the page retired. Zaal's call. |
+
+Not changed: `/musicians` H1 length, header link height (16px text links,
+hamburger under 640), `manifest.webmanifest` 404 (no PWA intent).

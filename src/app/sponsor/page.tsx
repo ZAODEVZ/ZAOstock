@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { SITE, DELIVERABLES, ATTENDANCE, ELLSWORTH, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, Stat, SectionHeader, BorderedList } from '@/components/poster';
 
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
   title: 'Sponsor',
   description:
     'Sponsor ZAOstock 2026: put your name on the busiest weekend of the fall in downtown Ellsworth, Maine. Commercial sponsorship, no tax receipt; ZAOstock has no fiscal sponsor.',
+  alternates: { canonical: '/sponsor' },
   openGraph: {
     title: 'Sponsor | ZAOstock',
     description: 'Put your name on the busiest weekend of the fall. Saturday 3 October 2026, Ellsworth, Maine.',
     url: 'https://zaostock.com/sponsor',
+    images: [OG_IMAGE],
   },
 };
 

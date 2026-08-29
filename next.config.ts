@@ -43,7 +43,7 @@ const config: NextConfig = {
               "img-src 'self' data: https://pbs.twimg.com https://i.imgur.com https://imgur.com https://i.postimg.cc https://postimg.cc",
               "font-src 'self' data:",
               "connect-src 'self'",
-              "frame-src 'self' https://platform.twitter.com",
+              "frame-src 'self' https://platform.twitter.com https://www.instagram.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
