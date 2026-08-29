@@ -15,7 +15,6 @@ export function MusicianSubmitForm() {
   const [mp3Links, setMp3Links] = useState('');
   const [bio, setBio] = useState('');
   const [referredBy, setReferredBy] = useState('');
-  const [cypherInterested, setCypherInterested] = useState(false);
   const [needsTravel, setNeedsTravel] = useState(false);
   const [travelFrom, setTravelFrom] = useState('');
   const [hp, setHp] = useState('');
@@ -50,7 +49,6 @@ export function MusicianSubmitForm() {
           mp3_links: mp3Links,
           bio,
           referred_by: referredBy,
-          cypher_interested: cypherInterested,
           needs_travel: needsTravel,
           travel_from: travelFrom,
           hp,
@@ -70,7 +68,6 @@ export function MusicianSubmitForm() {
       setMp3Links('');
       setBio('');
       setReferredBy('');
-      setCypherInterested(false);
       setNeedsTravel(false);
       setTravelFrom('');
     } catch (err) {
@@ -229,17 +226,6 @@ export function MusicianSubmitForm() {
       </div>
 
       <div className="space-y-2 pt-2">
-        <label className="zs-check">
-          <input
-            type="checkbox"
-            checked={cypherInterested}
-            onChange={(e) => setCypherInterested(e.target.checked)}
-            className="mt-1"
-          />
-          <span className="text-sm text-ink-950">
-            Interested in joining the ZAOstock Cypher (live multi-artist collaborative track)
-          </span>
-        </label>
         <label className="zs-check">
           <input
             type="checkbox"

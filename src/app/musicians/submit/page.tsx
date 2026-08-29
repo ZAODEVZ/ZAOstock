@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { MusicianSubmitForm } from './SubmitForm';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
@@ -7,10 +8,12 @@ import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader, BorderedList 
 export const metadata: Metadata = {
   title: 'Submit your music',
   description: `Submit for the ZAOstock 2026 lineup. Artist name, track ideas, audio links, contact. Submissions close ${SITE.submissionCutoffLabel} 2026.`,
+  alternates: { canonical: '/musicians/submit' },
   openGraph: {
     title: 'Submit your music | ZAOstock',
     description: `Submit for the lineup. Submissions close ${SITE.submissionCutoffLabel} 2026.`,
     url: 'https://zaostock.com/musicians/submit',
+    images: [OG_IMAGE],
     type: 'website',
   },
 };
@@ -50,9 +53,6 @@ export default function MusicianSubmitPage() {
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/musicians" variant="secondary" size="sm">
                   Back to musicians
-                </Button>
-                <Button href="/cypher" variant="ghost" size="sm">
-                  The cypher signup
                 </Button>
               </div>
             </Card>
