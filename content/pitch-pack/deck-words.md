@@ -8,6 +8,13 @@ original-query: "Pitch deck v1 words: three variants (general / local / online) 
 tier: STANDARD
 ---
 
+> **SUPERSEDED, 29 August 2026. Do not lift copy from this file.** It was written
+> 20 August and every fact below predates the 23-28 August verdicts: it says 45-minute
+> sets (now about 30), two stages alternating (one venue at a time since 23 August),
+> ~15 artists, an after-party "6 to 8", and a $250/$500/$1,000 tier ladder that was
+> killed on 27 August. The current words are `docs/sponsor/deck-2026-10-03.md` and the
+> live pages. Kept as the record of the first pitch attempt.
+
 # 2325 - ZAOstock Pitch Deck v1 Words (general / local / online)
 
 > **Goal:** The words for the ZAOstock sponsor deck, in three variants, so Paper +

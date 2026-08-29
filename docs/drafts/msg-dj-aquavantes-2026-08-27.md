@@ -1,3 +1,7 @@
+> **WITHDRAWN, 29 August 2026. Do not send.** DJ Aquavantes is out of the plan
+> (Zaal, 27 August 22:3x): there is no DJ between the daytime sets, the changeovers
+> are the MC plus sponsor spots, and the evening DJ is Stilo, 18:00-20:00.
+
 # Message - Zaal to DJ Aquavantes - WITHDRAWN
 
 **WITHDRAWN 27 August, late (Q16): there is no DJ on the day.** Zaal's call. Do

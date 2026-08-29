@@ -55,12 +55,12 @@ for their own set?** If it is a house-capable PA, that answers most of our
 indoor sound question. If it is their rig for their set, the indoor PA is still
 open. Either is fine; I need to know which.
 
-**3. The evening, and which of your acts closes it.** Here is the shape on
-our side: at six the street walks in and our DJ (Stilo, who is also battling
-in WaveWarZ) opens the room with a set to 7:30. From 7:30 the night is one of
-your acts to close - North Creek, The Somes Sound or The Crown Vics, your
-call, and whether 7:30 is right for them or later is theirs. Until I hear, we
-are printing "DJ set 6 to 7:30, then live music, in booking" and no name.
+**3. The evening.** Here is the shape on our side, and it is settled: at six
+the street walks in and our DJ (Stilo, who is also battling in WaveWarZ) opens
+the room and plays two hours, six to eight. At eight your own set takes it to
+ten, straight on from the DJ with no gap. We are printing "DJ set from six,
+live set from eight, hosted by Black Moon" and no act name until 1 September.
+If eight to ten is wrong for you, that is the one thing I still need.
 
 **4. The gift certificates, and who eats when.** Your $20 per performer is the
 figure we are working to; I owe you the headcount and will send it with a date
