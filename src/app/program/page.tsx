@@ -70,7 +70,7 @@ const BLOCKS: Block[] = [
       { time: '13:55', label: `Set 4 - ${PUBLIC_LINEUP[0]}`, detail: 'Confirmed.', tone: 'set' },
       { time: '14:25', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
       { time: '14:35', label: 'Set 5', detail: 'Closes the outdoor block.', tone: 'set' },
-      { time: '15:05', label: 'Open', detail: 'Around forty minutes with nothing booked yet. The MC and our partners hold the stage.', tone: 'open' },
+      { time: '15:05', label: 'Open stretch', detail: 'Around forty minutes with nothing booked yet. The MC and our partners hold the stage.', tone: 'open' },
       { time: '15:45', label: 'Battle stage reset', detail: 'The MC hands to Hurricane.', tone: 'gap' },
     ],
   },
@@ -170,10 +170,7 @@ export default function ProgramPage() {
                   <li key={i} className="grid grid-cols-[72px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
                     <span className="font-mono text-sm font-bold text-ink-950 tabular pt-0.5">{s.time}</span>
                     <span>
-                      <span className={['block text-sm', TONE[s.tone ?? 'set']].join(' ')}>
-                        {s.label}
-                        {s.tone === 'open' ? <Badge tone="gold" className="ml-2 align-middle">Open slot</Badge> : null}
-                      </span>
+                      <span className={['block text-sm', TONE[s.tone ?? 'set']].join(' ')}>{s.label}</span>
                       {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
                     </span>
                   </li>
