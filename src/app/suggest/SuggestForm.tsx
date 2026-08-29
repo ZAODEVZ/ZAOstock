@@ -1,6 +1,6 @@
 'use client';
 
-import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { formIsLive } from '@/lib/forms-status';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
 
 import { useState } from 'react';
@@ -18,7 +18,7 @@ export function SuggestForm() {
 
   // Guard below the hooks, not above: hook order has to be identical on every
   // render, so an early return above them is a rules-of-hooks error (broke #48).
-  if (!PUBLIC_FORMS_ENABLED) {
+  if (!formIsLive('ideas')) {
     return <FormsUnavailable action="send a suggestion" subject="ZAOstock - suggestion" />;
   }
 

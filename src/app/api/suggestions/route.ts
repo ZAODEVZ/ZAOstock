@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { submissionUnstored } from '@/lib/api/submission-fallback';
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { getStockTeamMember } from '@/lib/auth/session';
@@ -13,6 +14,8 @@ const createSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  // Held outside the try so an unexpected failure still logs what the person sent.
+  let payload: unknown;
   try {
     const limited = rateLimitPublicForm(request, 'suggestions');
     if (limited) return limited;
@@ -20,6 +23,7 @@ export async function POST(request: NextRequest) {
     const parsedBody = await parseJsonBody(request);
     if (!parsedBody.ok) return parsedBody.response;
     const body = parsedBody.data;
+    payload = body;
     const parsed = createSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -40,13 +44,12 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      return NextResponse.json({ error: 'Could not submit' }, { status: 500 });
+      return submissionUnstored('suggestions', parsed.data, error);
     }
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (err) {
-    console.error('[suggestions] unexpected', err);
-    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
+    return submissionUnstored('suggestions', payload, err);
   }
 }
 

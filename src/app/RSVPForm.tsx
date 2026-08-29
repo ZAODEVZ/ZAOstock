@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { formIsLive } from '@/lib/forms-status';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
 
 interface RSVPFormProps {
@@ -21,7 +21,7 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   // and missed this one, which is the most visible form on the site - it sits on
   // the homepage. It kept accepting names and email addresses and discarding
   // every one of them, exactly the failure FormsUnavailable exists to prevent.
-  if (!PUBLIC_FORMS_ENABLED) {
+  if (!formIsLive('rsvp')) {
     return <FormsUnavailable action="get on the list for Oct 3" subject="ZAOstock - RSVP" include={['Your name', 'The email to reach you on']} />;
   }
 

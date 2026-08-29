@@ -1,6 +1,6 @@
 'use client';
 
-import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { formIsLive, emailByDesign } from '@/lib/forms-status';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
 
 import { useState } from 'react';
@@ -25,8 +25,9 @@ export function MusicianSubmitForm() {
 
   // Guard below the hooks, not above: hook order has to be identical on every
   // render, so an early return above them is a rules-of-hooks error (broke #48).
-  if (!PUBLIC_FORMS_ENABLED) {
-    return <FormsUnavailable action="submit your music" subject="ZAOstock - musician submission"
+  if (!formIsLive('musician-submission')) {
+    return <FormsUnavailable
+        reason={emailByDesign('musician-submission') ? 'by-design' : 'database-down'} action="submit your music" subject="ZAOstock - musician submission"
       include={['Artist or band name', 'City', 'Genre or sound', 'Track or set ideas', 'Links to music, video or socials', 'A short bio', 'Who referred you, if anyone']} />;
   }
 

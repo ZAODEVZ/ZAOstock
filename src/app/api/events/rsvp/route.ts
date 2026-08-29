@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { submissionUnstored } from '@/lib/api/submission-fallback';
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { parseJsonBody } from '@/lib/api/parse-json';
@@ -14,6 +15,8 @@ const rsvpSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  // Held outside the try so an unexpected failure still logs what the person sent.
+  let payload: unknown;
   try {
     const limited = rateLimitPublicForm(request, 'events-rsvp');
     if (limited) return limited;
@@ -21,6 +24,7 @@ export async function POST(request: NextRequest) {
     const parsedBody = await parseJsonBody(request);
     if (!parsedBody.ok) return parsedBody.response;
     const body = parsedBody.data;
+    payload = body;
     const parsed = rsvpSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -65,12 +69,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      return NextResponse.json({ error: 'Could not submit right now' }, { status: 500 });
+      return submissionUnstored('events/rsvp', parsed.data, error);
     }
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (err) {
-    console.error('[events/rsvp] unexpected', err);
-    return NextResponse.json({ error: 'Could not submit right now' }, { status: 500 });
+    return submissionUnstored('events/rsvp', payload, err);
   }
 }

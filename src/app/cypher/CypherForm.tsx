@@ -1,6 +1,6 @@
 'use client';
 
-import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
+import { formIsLive, emailByDesign } from '@/lib/forms-status';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
 
 import { useState } from 'react';
@@ -35,8 +35,9 @@ export function CypherForm() {
 
   // Guard below the hooks, not above: hook order has to be identical on every
   // render, so an early return above them is a rules-of-hooks error (broke #48).
-  if (!PUBLIC_FORMS_ENABLED) {
-    return <FormsUnavailable action="join the cypher" subject="ZAOstock - cypher signup" />;
+  if (!formIsLive('cypher')) {
+    return <FormsUnavailable
+        reason={emailByDesign('cypher') ? 'by-design' : 'database-down'} action="join the cypher" subject="ZAOstock - cypher signup" />;
   }
 
   async function submit(e: React.FormEvent) {

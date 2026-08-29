@@ -1,22 +1,48 @@
-// The one switch for the public submission forms.
+// What each public submission surface does.
 //
-// Set to false on 2026-08-23. The Supabase project behind these forms is
-// unavailable, so every submission returned "Could not submit right now" and
-// the person's answers were thrown away. An artist referred by Heart of
-// Ellsworth hit it and only got through by emailing the whole submission by
-// hand; the ones who did not have a personal email address for us got nothing,
-// and we have no record they ever tried.
+// History. On 2026-08-23 every form was switched off in one go: the Supabase
+// project behind them was unreachable, so a submission returned "Could not
+// submit right now" and the answers were thrown away. An artist referred by
+// Heart of Ellsworth hit exactly that and only got through by emailing the
+// whole thing by hand. A form that discards what you typed is worse than no
+// form.
 //
-// A form that discards what you typed is worse than no form. So the forms come
-// off and src/components/FormsUnavailable.tsx takes their place with a mailto
-// that works.
+// Zaal, 2026-08-29, once the code-login dashboard was retired: the volunteer
+// sign-up, the ideas box and the RSVP stay as forms; musician submissions and
+// riders become an email link. The cypher form is the third music intake and
+// writes the same artists rows, so it follows the musician forms here - one
+// word from Zaal moves it back to 'form'.
 //
-// TO PUT THEM BACK: set this to true. That is the whole change. The form
-// components are untouched and still correct - the database underneath them
-// was the problem.
-//
-// Before flipping it back, fix the thing that made this bad rather than merely
-// broken: /api/musicians/submit and its siblings return 500 on a failed insert
-// and DROP the submission. Catch that and persist it somewhere, so the next
-// outage costs a delay instead of an artist.
-export const PUBLIC_FORMS_ENABLED = false;
+// Two separate questions, so they are two separate switches:
+//   FORM_POLICY       - what this surface should be, by decision. Permanent.
+//   DATABASE_AVAILABLE - whether the write path works at all. Temporary.
+// A surface renders its form only when it is a 'form' AND the database is up.
+
+export type FormSurface = 'volunteer' | 'ideas' | 'rsvp' | 'musician-submission' | 'rider' | 'cypher';
+
+export type FormPolicy = 'form' | 'email';
+
+export const FORM_POLICY: Record<FormSurface, FormPolicy> = {
+  volunteer: 'form',
+  ideas: 'form',
+  rsvp: 'form',
+  'musician-submission': 'email',
+  rider: 'email',
+  cypher: 'email',
+};
+
+// FLIP THIS when Vercel Production points at the real Supabase project
+// (yjrlaxpjusmrfylumban) and `curl https://zaostock.com/api/events` returns a
+// list rather than 500. That is the whole change; the form components are
+// untouched and still correct.
+export const DATABASE_AVAILABLE = false;
+
+/** True when this surface should render its real form right now. */
+export function formIsLive(surface: FormSurface): boolean {
+  return FORM_POLICY[surface] === 'form' && DATABASE_AVAILABLE;
+}
+
+/** True when this surface is an email link by decision, not because of an outage. */
+export function emailByDesign(surface: FormSurface): boolean {
+  return FORM_POLICY[surface] === 'email';
+}
