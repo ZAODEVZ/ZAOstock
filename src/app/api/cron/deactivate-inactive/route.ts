@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { TEAM_DASHBOARD_RETIRED } from '@/lib/team-status';
 import { timingSafeEqual } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { ENV } from '@/lib/env';
@@ -23,6 +24,7 @@ function isAuthorized(authHeader: string | null, cronSecret: string): boolean {
 // dashboard with no recovery path (leads can still be manually deactivated
 // by another lead via PATCH /api/team/members).
 export async function GET(request: NextRequest) {
+  if (TEAM_DASHBOARD_RETIRED) return NextResponse.json({ skipped: 'team dashboard retired' });
   let cronSecret: string;
   try {
     cronSecret = ENV.CRON_SECRET;

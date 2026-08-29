@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { TEAM_DASHBOARD_RETIRED, TEAM_RETIRED_MESSAGE } from '@/lib/team-status';
+
 import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { findTeamPasswordMatch } from '@/lib/auth/verify-team-password';
@@ -10,6 +12,7 @@ const requestAccessSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  if (TEAM_DASHBOARD_RETIRED) return NextResponse.json({ error: TEAM_RETIRED_MESSAGE }, { status: 410 });
   try {
     const limited = rateLimitPublicForm(request, 'team-request-access');
     if (limited) return limited;
