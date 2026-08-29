@@ -1,12 +1,15 @@
 import { Metadata } from 'next';
-import { SITE, TIERS, ELLSWORTH, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
+import { SITE, DELIVERABLES, ATTENDANCE, ELLSWORTH, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, Stat, SectionHeader, BorderedList } from '@/components/poster';
 
 // One sponsor page, absorbing /sponsor/deck and /pitch (both redirect here).
-// Content is deck slides 2, 3, 6, 8, 9, 10, 11 and 12 as of 2026-08-27. Every
-// price is UNSET and renders as "Ask"; the attendance figure stays off the site
-// (Zaal 19:3x); the advisor block is gone until each named person has agreed;
-// the ENTERACT payment route is not named until ENTERACT agrees to be.
+// Content is deck slides 2, 3, 6, 8, 10, 11 and 12 as of 2026-08-27. The
+// tier ladder (slide 9) is OFF this page: the DECK lane is redrafting it and
+// no price exists, so the page shows the four things every partner gets and
+// "packages on request" (site-fix brief, 28 Aug). Attendance 200-250 in
+// person, about 1,000 online is Zaal's typed figure (27 Aug 19:3x) and is
+// public here only. The advisor block stays off until each named person has
+// agreed; the ENTERACT payment route is not named until ENTERACT agrees.
 // Prints to a clean PDF for the person who will not open a deck.
 
 export const metadata: Metadata = {
@@ -41,10 +44,6 @@ const FOR_YOU = [
   { term: 'After', detail: 'Named in the recap, in the published local-business measurement, and in the footage that keeps circulating.' },
 ] as const;
 
-function Price({ price }: { price: string | null }) {
-  return <span className="font-display text-h3 text-red-500 leading-none">{price ?? 'Ask'}</span>;
-}
-
 export default function SponsorPage() {
   return (
     <SiteShell>
@@ -58,7 +57,7 @@ export default function SponsorPage() {
             Saturday 3 October 2026. Franklin Street Parklet, downtown Ellsworth, Maine, then Black Moon Public House next door. Free to attend, music from noon.
           </p>
           <div className="mt-7 flex flex-wrap gap-3 no-print">
-            <Button href="#packages">The packages</Button>
+            <Button href="#get">What you get</Button>
             <Button href={`mailto:${SITE.contact}`} external variant="secondary">
               Start the conversation
             </Button>
@@ -83,6 +82,8 @@ export default function SponsorPage() {
             </ol>
           </div>
           <div className="grid grid-cols-2 gap-6">
+            <Stat value={ATTENDANCE.inPerson} label="expected in person" />
+            <Stat value={ATTENDANCE.online} label="expected online" />
             <Stat value={ELLSWORTH.driveThrough.value} label={ELLSWORTH.driveThrough.label} />
             <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
             <Stat value={ELLSWORTH.heartEvents.value} label={ELLSWORTH.heartEvents.label} />
@@ -121,27 +122,29 @@ export default function SponsorPage() {
         </TwoUp>
       </Section>
 
-      <Section id="packages">
-        <SectionHeader
-          eyebrow="Packages"
-          title="Five ways in."
-          lede="Tier names and what each gets are settled. Prices are a conversation: ask."
-          className="mb-6"
-        />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {TIERS.map((t) => (
-            <Card key={t.name}>
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0">{t.name}</h3>
-                <Price price={t.price} />
+      <Section id="get">
+        <TwoUp>
+          <SectionHeader
+            eyebrow="What you get"
+            title="Four things, whatever the size."
+            lede="Every sponsor gets the same four surfaces. How big your name is on each one is the conversation."
+          />
+          <div className="flex flex-col gap-4">
+            <BorderedList rows={DELIVERABLES.map((d) => ({ term: d.name, detail: d.detail }))} />
+            <Card>
+              <Eyebrow className="mb-1.5">Packages</Eyebrow>
+              <p className="font-sans font-extrabold text-h4 text-ink-950 m-0">Packages on request.</p>
+              <p className="text-sm text-ink-secondary m-0 mt-2">
+                Tell us what you want your name on and we send back one page with the options. In-kind counts at retail value.
+              </p>
+              <div className="mt-4 no-print">
+                <Button href={`mailto:${SITE.contact}?subject=ZAOstock%20sponsorship`} external size="sm">
+                  Ask for the packages
+                </Button>
               </div>
-              <p className="text-sm text-ink-secondary m-0 mt-3">{t.gets}</p>
             </Card>
-          ))}
-        </div>
-        <p className="text-sm text-ink-muted mt-5 measure m-0">
-          In-kind counts at retail value toward a tier. Sponsor-an-artist is never discounted, because it is a cost and not a margin.
-        </p>
+          </div>
+        </TwoUp>
       </Section>
 
       <Section id="artist">
@@ -153,10 +156,8 @@ export default function SponsorPage() {
           />
           <Card>
             <Eyebrow>Sponsor an artist</Eyebrow>
-            <div className="mt-2">
-              <Price price={null} />
-            </div>
-            <p className="text-sm text-ink-secondary m-0 mt-3">Covers one artist&apos;s travel. Content carrying your name. Opt-in from the artist, every time.</p>
+            <p className="font-sans font-extrabold text-h4 text-ink-950 m-0 mt-2">One artist, one business.</p>
+            <p className="text-sm text-ink-secondary m-0 mt-3">Covers one artist&apos;s travel. Content carrying your name. Opt-in from the artist, every time. Never discounted, because it is a cost and not a margin.</p>
           </Card>
         </TwoUp>
       </Section>

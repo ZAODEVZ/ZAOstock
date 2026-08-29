@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, DAY, PUBLIC_LINEUP, WAVEWARZ, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList, PartnerTile } from '@/components/poster';
 
 // The one link that goes in the email. Seven sections, in the order
 // docs/design/redesign-2026-08-28.md sets, and no eighth. Reads nothing from
@@ -11,8 +11,8 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionH
 //
 // Overrides relayed to SITE on 2026-08-27 that beat the spec: Lyons Den is
 // the only public act (Werb not fully confirmed, 20:4x); no changeover DJ
-// (20:0x); DJ set 6-8 then a live set 8-10 hosted by Black Moon (ros-v7); no attendance
-// figure on the site (19:3x).
+// (20:0x); DJ set 6-8 then a live set 8-10 hosted by Black Moon (ros-v7); the
+// attendance figure is on /sponsor only (28 Aug brief), not here.
 
 export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
@@ -197,12 +197,9 @@ export default function HomePage() {
           lede="Each has a confirmed agreement and a named point of contact on the ZAO team."
           className="mb-6"
         />
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 list-none m-0 p-0">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
           {PARTNERS.map((p) => (
-            <li key={p.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4.5 py-4">
-              <p className="font-sans font-bold text-sm text-ink-950 m-0">{p.name}</p>
-              {p.role !== 'UNSET' ? <p className="text-[13px] text-ink-muted m-0 mt-0.5">{p.role}</p> : null}
-            </li>
+            <PartnerTile key={p.name} partner={p} />
           ))}
         </ul>
         <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -210,6 +207,9 @@ export default function HomePage() {
           <Button href="/sponsor" variant="secondary">
             Sponsor ZAOstock
           </Button>
+          <Link href="/partners" className="text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
+            All partners
+          </Link>
         </div>
       </Section>
 

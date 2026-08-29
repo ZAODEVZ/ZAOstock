@@ -30,8 +30,9 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists eight confirmed partners and only partners with a POC field', () => {
-    expect(PARTNERS).toHaveLength(8);
+  it('lists nine confirmed partners and only partners with a POC field', () => {
+    expect(PARTNERS).toHaveLength(9);
+    expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');
     for (const p of PARTNERS) expect(p.confirmed).toBe(true);
