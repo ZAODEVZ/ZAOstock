@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
 
 export const metadata: Metadata = {
   title: 'For Event Organizers · ZAOstock',
   description:
     'Built a community? Run your own ZAO. ZAOstock is the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next one could be yours - in your city, with your community, under the umbrella.',
+  alternates: { canonical: '/event-organizers' },
   openGraph: {
     title: 'For Organizers · ZAOstock 2026',
     description: 'Built a community? Run your own ZAO. The next chapter could be yours - in your city, with your community.',
     url: 'https://zaostock.com/event-organizers',
+    images: [OG_IMAGE],
     type: 'website',
   },
   twitter: {

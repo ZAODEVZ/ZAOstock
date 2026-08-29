@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, PUBLIC_LINEUP, WAVEWARZ } from '@/content/site';
@@ -7,10 +8,12 @@ import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader 
 export const metadata: Metadata = {
   title: 'Program',
   description: 'Day-of schedule for ZAOstock, Saturday 3 October 2026. Outdoors on Franklin Street from noon, WaveWarZ from four, then indoors at Black Moon from six.',
+  alternates: { canonical: '/program' },
   openGraph: {
     title: 'Program | ZAOstock',
     description: 'Outdoors from noon, WaveWarZ from four, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
     url: 'https://zaostock.com/program',
+    images: [OG_IMAGE],
   },
 };
 
@@ -110,7 +113,7 @@ const TONE: Record<NonNullable<Slot['tone']>, string> = {
   set: 'text-ink-950 font-extrabold',
   battle: 'text-ink-950 font-extrabold',
   gap: 'text-ink-secondary font-semibold',
-  open: 'text-gold-600 font-extrabold',
+  open: 'text-ink-950 font-extrabold',
 };
 
 const GOOD_TO_KNOW = [
@@ -140,12 +143,12 @@ export default function ProgramPage() {
           </div>
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 m-0">
             {(['OUT', 'IN'] as const).map((v) => (
-              <div key={v} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-5 py-4 flex items-start gap-3">
-                <span className={['mt-1.5 h-3 w-3 rounded-full border-2 border-ink-950 shrink-0', VENUE[v].dot].join(' ')} aria-hidden="true" />
-                <div>
-                  <dt className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted m-0">{VENUE[v].name}</dt>
-                  <dd className="text-sm font-bold text-ink-950 m-0 mt-1">{VENUE[v].where}</dd>
-                </div>
+              <div key={v} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-5 py-4">
+                <dt className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted m-0 flex items-center gap-2">
+                  <span className={['h-3 w-3 rounded-full border-2 border-ink-950 shrink-0', VENUE[v].dot].join(' ')} aria-hidden="true" />
+                  {VENUE[v].name}
+                </dt>
+                <dd className="text-sm font-bold text-ink-950 m-0 mt-1 pl-5">{VENUE[v].where}</dd>
               </div>
             ))}
           </dl>
@@ -167,7 +170,10 @@ export default function ProgramPage() {
                   <li key={i} className="grid grid-cols-[72px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
                     <span className="font-mono text-sm font-bold text-ink-950 tabular pt-0.5">{s.time}</span>
                     <span>
-                      <span className={['block text-sm', TONE[s.tone ?? 'set']].join(' ')}>{s.label}</span>
+                      <span className={['block text-sm', TONE[s.tone ?? 'set']].join(' ')}>
+                        {s.label}
+                        {s.tone === 'open' ? <Badge tone="gold" className="ml-2 align-middle">Open slot</Badge> : null}
+                      </span>
                       {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
                     </span>
                   </li>

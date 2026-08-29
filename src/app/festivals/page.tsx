@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { InstagramEmbed } from './InstagramEmbed';
@@ -11,10 +12,12 @@ export const metadata: Metadata = {
   title: 'ZAO Festivals',
   description:
     "ZAO Festivals is The ZAO's series of community-owned, artist-built music festivals: free to attend, artists paid fairly. Flagship: ZAOstock 2026, Ellsworth, Maine.",
+  alternates: { canonical: '/festivals' },
   openGraph: {
-    title: 'ZAO Festivals',
+    title: 'ZAO Festivals | ZAOstock',
     description: 'A series of community-owned, artist-built music festivals. Free, fair, owned by the people who show up. Flagship: ZAOstock 2026.',
     url: 'https://zaostock.com/festivals',
+    images: [OG_IMAGE],
     type: 'website',
   },
 };

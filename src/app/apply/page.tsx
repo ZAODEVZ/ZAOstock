@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { ApplyForm } from './ApplyForm';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
@@ -7,10 +8,12 @@ import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader, BorderedList 
 export const metadata: Metadata = {
   title: 'Volunteer',
   description: 'Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on Saturday 3 October 2026.',
+  alternates: { canonical: '/apply' },
   openGraph: {
     title: 'Volunteer | ZAOstock',
     description: 'Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on Saturday 3 October 2026.',
     url: 'https://zaostock.com/apply',
+    images: [OG_IMAGE],
   },
 };
 

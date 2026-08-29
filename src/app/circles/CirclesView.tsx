@@ -79,14 +79,14 @@ export function CirclesView() {
   };
 
   if (loading && !data) {
-    return <div className="rounded-xl border border-white/10 bg-slate-900/40 p-6 text-sm text-slate-400">Loading circles...</div>;
+    return <div className="rounded-md border border-ink-950/60 bg-paper-200 p-6 text-sm text-ink-secondary">Loading circles...</div>;
   }
 
   if (!data) {
     return (
-      <div className="rounded-xl border border-rose-500/30 bg-rose-500/5 p-6 text-sm text-rose-300">
+      <div className="rounded-md border border-red-600 bg-paper-200 p-6 text-sm text-red-700">
         {error || 'No circles available yet.'}
-        <p className="mt-2 text-xs text-slate-500">If circles tables don&apos;t exist, run scripts/stock-circles-v1-migration.sql in Supabase.</p>
+        <p className="mt-2 text-xs text-ink-muted">If circles tables don&apos;t exist, run scripts/stock-circles-v1-migration.sql in Supabase.</p>
       </div>
     );
   }
@@ -101,7 +101,7 @@ export function CirclesView() {
         </div>
       )}
       {error && (
-        <div className="rounded-lg border border-rose-500/30 bg-rose-500/5 px-4 py-3 text-sm text-rose-300">{error}</div>
+        <div className="rounded-lg border border-red-600 bg-paper-200 px-4 py-3 text-sm text-red-700">{error}</div>
       )}
       <div className="grid gap-4 md:grid-cols-2">
         {data.circles.map((c) => {
@@ -109,14 +109,14 @@ export function CirclesView() {
           return (
             <div
               key={c.id}
-              className={`rounded-xl border bg-slate-900/40 p-5 transition ${
-                c.is_member ? 'border-amber-500/40' : 'border-white/10 hover:border-white/20'
+              className={`rounded-md border bg-paper-200 p-5 transition ${
+                c.is_member ? 'border-amber-500/40' : 'border-ink-950/60 hover:border-ink-950'
               }`}
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-bold text-white">{c.name}</h2>
-                  <p className="mt-1 text-xs text-slate-500">/{c.slug}</p>
+                  <h2 className="text-lg font-bold text-ink-950">{c.name}</h2>
+                  <p className="mt-1 text-xs text-ink-muted">/{c.slug}</p>
                 </div>
                 {isLoggedIn && (
                   <button
@@ -125,17 +125,17 @@ export function CirclesView() {
                     onClick={() => toggle(c.slug, c.is_member)}
                     className={`shrink-0 rounded-md px-3 py-1.5 text-xs font-bold transition ${
                       c.is_member
-                        ? 'bg-slate-800 text-slate-200 hover:bg-slate-700'
-                        : 'bg-amber-500 text-slate-900 hover:bg-amber-400'
+                        ? 'bg-paper-200 text-ink-950 hover:bg-paper-100'
+                        : 'bg-amber-500 text-ink-950 hover:bg-amber-400'
                     } disabled:opacity-50`}
                   >
                     {busy ? '...' : c.is_member ? 'Leave' : 'Join'}
                   </button>
                 )}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300">{c.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-950">{c.description}</p>
               <div className="mt-4 flex items-center gap-2 text-xs">
-                <span className="rounded-full bg-slate-800 px-2 py-0.5 text-slate-300">
+                <span className="rounded-full bg-paper-200 px-2 py-0.5 text-ink-950">
                   {c.member_count} {c.member_count === 1 ? 'member' : 'members'}
                 </span>
                 {c.coordinator && (
@@ -149,7 +149,7 @@ export function CirclesView() {
               </div>
               {c.members.length > 0 && (
                 <details className="mt-3 group">
-                  <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-300">
+                  <summary className="cursor-pointer text-xs text-ink-muted hover:text-ink-950">
                     See members ({c.member_count})
                   </summary>
                   <ul className="mt-2 flex flex-wrap gap-1.5">
@@ -159,7 +159,7 @@ export function CirclesView() {
                         className={`rounded-full border px-2.5 py-0.5 text-xs ${
                           m.id === c.coordinator?.id
                             ? 'border-amber-500/40 bg-amber-500/10 text-amber-200'
-                            : 'border-white/10 bg-slate-800 text-slate-300'
+                            : 'border-ink-950/60 bg-paper-200 text-ink-950'
                         }`}
                       >
                         {m.name}
@@ -172,7 +172,7 @@ export function CirclesView() {
           );
         })}
       </div>
-      <p className="mt-6 text-xs text-slate-500">
+      <p className="mt-6 text-xs text-ink-muted">
         Want to coordinate a circle? Tell Zaal in the ZAOstock Telegram group. No commitment, no rotation, no rules.
       </p>
     </div>

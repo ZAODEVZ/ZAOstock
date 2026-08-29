@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SERIES } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
@@ -6,10 +7,12 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 export const metadata: Metadata = {
   title: 'Donate',
   description: 'Two ways to give: PayPal for fiat or Giveth for crypto. Funds cover artist pay and materials for ZAOstock 2026 in Ellsworth, Maine. Not tax-deductible.',
+  alternates: { canonical: '/donate' },
   openGraph: {
     title: 'Donate | ZAOstock',
     description: 'Support ZAOstock 2026. PayPal or Giveth. Not tax-deductible.',
     url: 'https://zaostock.com/donate',
+    images: [OG_IMAGE],
   },
 };
 

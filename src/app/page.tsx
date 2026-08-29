@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
@@ -18,10 +19,12 @@ export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
   description:
     'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026. Independent artists, one stage, music from noon.',
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'ZAOstock 2026',
     description: 'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026.',
     url: 'https://zaostock.com',
+    images: [OG_IMAGE],
   },
 };
 

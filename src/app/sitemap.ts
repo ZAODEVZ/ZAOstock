@@ -2,6 +2,9 @@ import type { MetadataRoute } from 'next';
 
 const BASE = 'https://zaostock.com';
 
+// /circles is not listed while its API returns 500 in production (the circles
+// table is not in the live database, measured 2026-08-29); /team is private.
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const routes = [
@@ -19,10 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/acadia',
     '/festivals',
     '/sponsor',
-    '/team',
+    '/partners',
     '/onepagers/overview',
     '/cypher',
-    '/circles',
     '/zaoville',
     '/privacy',
     '/press',

@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
 export const metadata: Metadata = {
-  title: 'Privacy | ZAOstock',
+  title: 'Privacy',
   description: 'What ZAOstock collects when you RSVP, volunteer, or submit an artist form, and how it is used.',
+  alternates: { canonical: '/privacy' },
   openGraph: {
     title: 'Privacy | ZAOstock',
     description: 'What ZAOstock collects and how it is used.',
     url: 'https://zaostock.com/privacy',
+    images: [OG_IMAGE],
   },
 };
 

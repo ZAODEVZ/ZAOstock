@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
@@ -22,10 +23,12 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Press',
   description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
+  alternates: { canonical: '/press' },
   openGraph: {
     title: 'Press | ZAOstock',
     description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
     url: 'https://zaostock.com/press',
+    images: [OG_IMAGE],
   },
 };
 
@@ -181,7 +184,7 @@ export default function PressPage() {
         .press-body td:first-child { font-weight: 700; color: var(--color-ink-muted); letter-spacing: 0.04em; }
         .press-body td:last-child { font-weight: 600; }
         .press-body details { background: var(--color-paper-200); border: 2px solid var(--color-ink-950); border-radius: 14px; padding: 12px 20px; margin: 1rem 0; box-shadow: var(--shadow-hard); }
-        .press-body summary { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gold-600); cursor: pointer; }
+        .press-body summary { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-denim-400); cursor: pointer; }
         .press-body hr { border: 0; border-top: 1px solid rgba(36, 30, 21, 0.6); margin: 1.5rem 0; }
       `}</style>
     </SiteShell>

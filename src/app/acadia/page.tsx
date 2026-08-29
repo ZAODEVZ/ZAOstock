@@ -1,16 +1,19 @@
 import { Metadata } from 'next';
+import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Eyebrow, Button, SectionHeader } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 
 export const metadata: Metadata = {
-  title: 'ZAO Guide to Acadia National Park | ZAOstock',
+  title: 'ZAO Guide to Acadia National Park',
   description:
     'The ZAO Guide to Acadia National Park - getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan for ZAOstock weekend in Ellsworth, Maine.',
+  alternates: { canonical: '/acadia' },
   openGraph: {
     title: 'ZAO Guide to Acadia National Park | ZAOstock',
     description:
       'Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, October 3, 2026.',
     url: 'https://zaostock.com/acadia',
+    images: [OG_IMAGE],
   },
 };
 
