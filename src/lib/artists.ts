@@ -1,5 +1,7 @@
+import { cache } from 'react';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { randomBytes } from 'crypto';
+import { lineupIsPublic } from '@/lib/lineup-reveal';
 
 export interface PublicArtist {
   id: string;
@@ -30,12 +32,19 @@ export function generateClaimToken(): string {
   return randomBytes(8).toString('hex');
 }
 
-export async function getPublicArtists(): Promise<PublicArtist[]> {
+// Public pages: CONFIRMED artists only, and none before the reveal. Before
+// 2026-08-29 this filtered on status != 'declined', which would have given
+// every cypher applicant a live /artist/<name> page before anyone confirmed
+// them, and every confirmed act a page before 1 September (Iman's audit,
+// items 05 and the reveal rule). Wrapped in react cache() so generateMetadata
+// and the page share one query per request.
+export const getPublicArtists = cache(async function getPublicArtists(): Promise<PublicArtist[]> {
+  if (!lineupIsPublic()) return [];
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('artists')
     .select('id, name, genre, city, status, socials, bio, photo_url, logo_url, cypher_interested, cypher_role, points_earned, volunteer_eligible')
-    .neq('status', 'declined')
+    .eq('status', 'confirmed')
     .order('status')
     .order('name');
 
@@ -57,7 +66,7 @@ export async function getPublicArtists(): Promise<PublicArtist[]> {
     points_earned: a.points_earned || 0,
     volunteer_eligible: Boolean(a.volunteer_eligible),
   }));
-}
+});
 
 export async function getArtistBySlug(slug: string): Promise<PublicArtist | null> {
   const all = await getPublicArtists();

@@ -33,7 +33,7 @@ ZAOstock is the first feature graduate.
 24 public routes. The ones people actually land on:
 
 - `/` - festival landing page
-- `/program` - day-of schedule, two stages
+- `/program` - day-of schedule, one venue at a time (parklet until six, then Black Moon)
 - `/pitch`, `/sponsor`, `/sponsor/deck` - the sponsor conversation
 - `/musicians`, `/musicians/submit`, `/musicians/rider` - the musician funnel
 - `/artists` - call for visual artists

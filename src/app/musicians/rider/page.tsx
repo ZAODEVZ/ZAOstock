@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { RiderForm } from './RiderForm';
+import { FormsUnavailable } from '@/components/FormsUnavailable';
+import { PUBLIC_FORMS_ENABLED } from '@/lib/forms-status';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
@@ -37,7 +39,15 @@ export default function RiderPage() {
       </Section>
       <Section>
         <div className="max-w-[760px]">
-          <RiderForm />
+          {PUBLIC_FORMS_ENABLED ? (
+            <RiderForm />
+          ) : (
+            <FormsUnavailable
+              action="send your rider"
+              subject="ZAOstock rider"
+              include={['Your act name and the name you go by on stage', 'Set length and instrumentation, with anything you need on stage', 'Travel: where from, and whether you need help with it', 'Merch: whether you need a table', 'A link to a track or a set']}
+            />
+          )}
           <p className="text-sm text-ink-muted mt-6 m-0">
             The host is not responsible for lost, stolen or damaged property. Questions about your rider: email{' '}
             <a href={`mailto:${SITE.contact}`} className="text-denim-400 underline underline-offset-4 hover:text-denim-500">

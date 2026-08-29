@@ -16,7 +16,7 @@ const patchSchema = z.object({
       (v) => !v || v === '' || /^https:\/\//i.test(v),
       { message: 'Photo URL must start with https://' },
     ),
-  scope: z.enum(['', 'ops', 'music', 'design']).optional(),
+  scope: z.enum(['', 'ops', 'music', 'design', 'livestream', 'finance', 'content']).optional(),
   status_text: z.string().max(140).optional(),
   skills: z.string().max(500).optional(),
 });
