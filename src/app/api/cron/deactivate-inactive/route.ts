@@ -3,7 +3,9 @@ import { timingSafeEqual } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { ENV } from '@/lib/env';
 
-const INACTIVITY_WINDOW_DAYS = 3;
+// 45, not 3: with 3 a volunteer who last signed in on 29 Sep is locked out on
+// show day and sees "Invalid code" (Iman's audit, item 09). Covers the run-in.
+const INACTIVITY_WINDOW_DAYS = 45;
 
 function isAuthorized(authHeader: string | null, cronSecret: string): boolean {
   const expected = Buffer.from(`Bearer ${cronSecret}`);

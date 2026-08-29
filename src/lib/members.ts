@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { slugify, type PublicMember } from '@/lib/members-shared';
 
@@ -44,7 +45,9 @@ export async function getStockCounts(): Promise<StockCounts> {
   return { volunteers, rsvps, sponsorsCommitted, sponsorsCommittedAmount };
 }
 
-export async function getPublicMembers(): Promise<PublicMember[]> {
+// react cache(): generateMetadata, the page and its "more of the crew" list
+// share one team_members read per request instead of three (Iman's audit, 10).
+export const getPublicMembers = cache(async function getPublicMembers(): Promise<PublicMember[]> {
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from('team_members')
@@ -70,7 +73,7 @@ export async function getPublicMembers(): Promise<PublicMember[]> {
     skills: m.skills || '',
     slug: slugify(m.name),
   }));
-}
+});
 
 export async function getMemberBySlug(slug: string): Promise<PublicMember | null> {
   const all = await getPublicMembers();

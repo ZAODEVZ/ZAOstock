@@ -7,7 +7,9 @@
 //   npm run codes list                show every member + their expected 4-letter code
 //   npm run codes test                POST each expected code to /api/team/login (dev or prod)
 //   npm run codes verify [file]       test the actual codes you keep in scripts/team-codes.local.json
-//   npm run codes reset DCoop         print SQL to reset ONE member to the deterministic code
+//   npm run codes reset DCoop         print SQL to reset ONE member to a fresh RANDOM code
+//   npm run codes rotate              print SQL that moves EVERY member to a fresh random code, and
+//                                     write the new codes to scripts/team-codes.local.json (gitignored)
 //
 // Why each subcommand exists:
 //   - codes are scrypt-hashed in DB so we can't read them back
@@ -20,7 +22,7 @@
 //   TEAM_CODES_BASE   override the API base URL for `test` (default http://localhost:3000)
 
 import { scryptSync, randomBytes } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // Source of truth: ZAO STOCK Supabase team_members table (27 rows incl. ZAOstock Bot).
@@ -173,6 +175,31 @@ function resetCmd(rawName, { mode = 'random' } = {}) {
   console.log(`--   3) Update scripts/team-codes.local.json so verify keeps passing.\n`);
 }
 
+// Rotate every code at once. Codes were minted from a formula that lives in
+// this public repo (name -> first four letters), so anyone who can read a name
+// can guess a code. `rotate` prints ONE SQL script for the Supabase SQL editor
+// that gives every member a fresh random code, and writes name -> code to the
+// gitignored local file so `verify` keeps working. The codes are shown once,
+// here and in that file; send each person theirs privately.
+function rotateCmd() {
+  const rows = TEAM.map((m) => ({ name: m.name, code: randomCode() }));
+  const stamp = new Date().toISOString();
+  console.log(`-- ZAOstock team codes: full rotation, generated ${stamp}`);
+  console.log(`-- Paste the whole block into the Supabase SQL editor on the REAL project`);
+  console.log(`-- (yjrlaxpjusmrfylumban). Expect one "UPDATE 1" per member; a 0 means the`);
+  console.log(`-- name in team_members differs from the roster below - fix with reset <Name>.`);
+  console.log(`-- Codes are case-insensitive at login (uppercased before the hash check).\n`);
+  for (const r of rows) {
+    console.log(`UPDATE team_members SET password_hash = '${hashPassword(r.code)}' WHERE name = '${r.name.replace(/'/g, "''")}';`);
+  }
+  const out = resolve('scripts/team-codes.local.json');
+  const local = {};
+  for (const r of rows) local[r.name] = r.code;
+  writeFileSync(out, JSON.stringify(local, null, 2) + '\n');
+  console.log(`\n-- New codes written to ${out} (gitignored). Send each person theirs privately, then run: npm run codes verify`);
+  console.log(`-- Members in the database but not in this roster keep their OLD code until you run: npm run codes reset <Name>`);
+}
+
 async function verifyCmd(filePath) {
   const path = resolve(filePath || 'scripts/team-codes.local.json');
   let raw;
@@ -239,6 +266,9 @@ switch (cmd) {
   case 'verify':
     await verifyCmd(rest[0]);
     break;
+  case 'rotate':
+    rotateCmd();
+    break;
   case 'reset': {
     const args = rest.filter((a) => !a.startsWith('--'));
     const flags = rest.filter((a) => a.startsWith('--'));
@@ -248,6 +278,6 @@ switch (cmd) {
   }
   default:
     console.error(`Unknown command: ${cmd}`);
-    console.error('Usage: npm run codes [list|test|verify <file>|reset <Name>]');
+    console.error('Usage: npm run codes [list|test|verify <file>|reset <Name>|rotate]');
     process.exit(1);
 }

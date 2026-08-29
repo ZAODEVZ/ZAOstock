@@ -16,7 +16,7 @@ vi.mock('@/lib/lineup-fallback', () => ({
 
 import { GET } from './route';
 
-const params = Promise.resolve({ slug: 'zaostock-2026' });
+const params = Promise.resolve({ slug: 'zaostock' });
 const req = {} as Parameters<typeof GET>[0];
 
 /** Minimal stand-in for the two chained Supabase queries the route makes. */

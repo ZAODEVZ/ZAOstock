@@ -22,7 +22,8 @@ export async function GET(request: NextRequest) {
     .order('created_at', { ascending: false });
 
   if (error) return NextResponse.json({ error: 'Failed to load artists' }, { status: 500 });
-  return NextResponse.json({ artists: data });
+  // claim_token is the artist's own credential for /artist/<slug>; the dashboard never needs it.
+  return NextResponse.json({ artists: (data ?? []).map(({ claim_token: _claim, ...rest }) => rest) });
 }
 
 const createSchema = z.object({

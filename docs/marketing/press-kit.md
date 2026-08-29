@@ -106,6 +106,21 @@ agreement and a named point of contact on the ZAO team.
 Concertz is a partner per Zaal, typed 27 Aug 20:3x; add it and Bomb Squad there. "Community
 partnership" is from `src/app/llms.txt/route.ts`; the role line is otherwise UNSET.)*
 
+## Boilerplate
+
+Paste as written.
+
+Short: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 at the Franklin Street Parklet in Ellsworth, Maine, with the evening next door at Black Moon Public House. It is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO.
+
+Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music runs from noon at the Franklin Street Parklet, with two hours of WaveWarZ live music battles from four, then moves next door into Black Moon Public House for the evening. The day is programmed as one continuous event rather than competing stages, so nobody has to choose what to miss. ZAOstock takes place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission is free.
+
+## Four angles
+
+- **Free, on purpose.** Free admission is a choice, not a first-year compromise. Somebody can decide at eleven in the morning and simply turn up.
+- **One venue at a time.** Most festivals run parallel stages and make the audience choose. ZAOstock runs one continuous programme that moves from the parklet indoors as the evening starts.
+- **Downtown, not a field.** The whole day happens within walking distance in downtown Ellsworth, on a public parklet and in the pub next door, rather than on a site built for the weekend and taken down after.
+- **Part of a bigger weekend.** ZAOstock sits inside the 9th Annual Art of Ellsworth and Maine Craft Weekend, a festival day within a weekend that already brings people to the region.
+
 ## The ZAO
 
 The ZAO is an independent community of musicians and digital creators. Its

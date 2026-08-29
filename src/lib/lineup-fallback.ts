@@ -49,6 +49,9 @@ export const AS_OF = '2026-08-22';
  * failure instead of a 503.
  */
 export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
+  // The events table slug is 'zaostock' (src/app/api/events/rsvp/route.ts);
+  // the mobile app calls 'zaostock-2026'. Both keys serve the same list.
+  zaostock: [],
   'zaostock-2026': [],
 };
 
