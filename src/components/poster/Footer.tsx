@@ -5,6 +5,7 @@ import { SITE } from '@/content/site';
 const LINKS = [
   { href: '/program', label: 'Program' },
   { href: '/press', label: 'Press' },
+  { href: '/partners', label: 'Partners' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/ellsworth', label: 'Ellsworth' },
   { href: '/acadia', label: 'Acadia' },
