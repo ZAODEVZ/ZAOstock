@@ -40,17 +40,17 @@ under 640) and the skip link (1x1 until focused).
 
 | # | Impact | Route | Finding | Owner | Status |
 |---|---|---|---|---|---|
-| 1 | High | `/partners`, `/press`, `/` strip | Three partner logos are wired to `.jpg` files: Star 97.7 renders a white rectangle on the paper card, Black Moon renders the black-disc version. The strip spec asks for transparent marks; keyed PNGs of all six are in `public/partners/*.png` (under 60 KB, 400px tall). | SITE pane (`site.ts` logoSrc) | open, noted in DONE.md |
-| 2 | Medium | `/` partners | Home strip is still nine text tiles on a 4-up grid, leaving Bomb Squad alone on row three. Render `PartnerTile` (logos now exist) on a 3-up grid: nine tiles, three rows, no orphan. | SITE pane (`page.tsx`) | open |
+| 1 | High | `/partners`, `/press`, `/` strip | Three partner logos are wired to `.jpg` files: Star 97.7 renders a white rectangle on the paper card, Black Moon renders the black-disc version. The strip spec asks for transparent marks; keyed PNGs of all six are in `public/partners/*.png` (under 60 KB, 400px tall). | SITE terminal | fixed in 1c01302: logoSrc points at the PNGs, jpgs removed |
+| 2 | Medium | `/` partners | Home strip is still nine text tiles on a 4-up grid, leaving Bomb Squad alone on row three. Render `PartnerTile` (logos now exist) on a 3-up grid: nine tiles, three rows, no orphan. | SITE terminal | fixed in 1c01302: PartnerTile, 3-up, link to /partners |
 | 3 | Medium | `/press` kit | Partner names truncated at 1280 on the 3-up logo rows ("Black Moon Public Hou..."). | SITE terminal | fixed: 2-up rows, names wrap |
-| 4 | Medium | `/sponsor` | Still "Five ways in" with "Ask" in five cards. The 28 Aug brief wants the four deliverables and "packages on request", plus attendance 200-250 / about 1,000. `DELIVERABLES` and `ATTENDANCE` already exist in the pane's `site.ts`. | SITE pane | open |
+| 4 | Medium | `/sponsor` | Still "Five ways in" with "Ask" in five cards. The 28 Aug brief wants the four deliverables and "packages on request", plus attendance 200-250 / about 1,000. `DELIVERABLES` and `ATTENDANCE` already exist in the pane's `site.ts`. | SITE terminal | fixed in 1c01302: four surfaces, packages on request, attendance stats |
 | 5 | Polish | `/program` | Nothing structural. The venue key on the right of the hero is two cards; on 375 they stack under the lede, fine. | - | none |
 | 6 | Polish | all | The Next dev "N" indicator appears bottom-left in every screenshot; dev only. | - | none |
 
 AI-slop check: no purple, no gradient, no three-up icon grid (the "Pick a
 door" cards carry an eyebrow and no icon), no centred body, one radius scale
 (8/14/18/pill), no blobs, no emoji, no coloured left borders, no "Welcome to".
-Grade: A. Design score: B+ until findings 1, 2 and 4 land, A after.
+Grade: A. Design score: A- with findings 1 to 4 landed; the remaining gap is photography, which does not exist yet.
 
 ## What this branch changes, by route
 
