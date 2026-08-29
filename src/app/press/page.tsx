@@ -125,12 +125,12 @@ export default function PressPage() {
         {PARTNERS.some((p) => p.logoSrc) ? (
           <>
             <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0 mb-3">Partner logos</h3>
-            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 m-0 p-0 list-none">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 m-0 p-0 list-none">
               {PARTNERS.filter((p) => p.logoSrc).map((p) => (
                 <li key={p.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4 py-4 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <PartnerLogo src={p.logoSrc!} name={p.name} />
-                    <span className="font-sans font-bold text-sm text-ink-950 truncate">{p.name}</span>
+                  <div className="flex items-center gap-4 min-w-0">
+                    <PartnerLogo src={p.logoSrc!} name={p.name} className="h-10 lg:h-12 w-auto max-w-[120px] shrink-0 object-contain object-left" />
+                    <span className="font-sans font-bold text-sm leading-tight text-ink-950">{p.name}</span>
                   </div>
                   <a href={p.logoSrc} download className="shrink-0 text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
                     Download
