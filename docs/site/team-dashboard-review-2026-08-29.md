@@ -31,11 +31,17 @@ The tracked roster (27 names; the database has 29) was assembled in May around s
 
 ## What replaces it
 
-Three tools, one rule each (Zaal, 29 Aug: "a workflow to cleanly work with people using Discord, Google Docs and Google Calendar"), written up in the Organizing Doc under "How we work" and in `~/zao-vault/notes/team-workflow-2026-08-29.md`:
+Two tools, not three (Zaal, 29 Aug, second verdict: "we havent been telling
+people or using this, lets please just organize through the google doc and
+the meetings"). Written up in `~/zao-vault/notes/team-workflow-2026-08-29.md`
+and in the Organizing Doc's "How we work" tab:
 
-- **The Organizing Doc** is the single working document: one tab per area, decisions typed in the tab they belong to, the "Start Here" tab is the front door. If it is not in the doc, it is not decided.
-- **Discord** is where the talking happens: one channel per lane, threads per item, a weekly written check-in in the standup channel. Voice for anything longer than three messages.
-- **Google Calendar** is the schedule: the Monday 11:30 ET standup, the AV and design meetings, and every deadline as an all-day event on the shared ZAOstock calendar. The public side stays on luma.com/zao.
+- **The Organizing Doc** is the single working document. If it is not in the doc, it is not decided; a decision is typed into its tab during the meeting it was made in.
+- **The meetings** (Google Calendar invites with the doc linked) are where decisions get made and where people are told. Every deadline is an all-day event.
+
+No Discord channel layout and no roster blast: whoever is on a meeting
+invite is on the team. The old codes' holders are not contacted about a tool
+they never used; the `/team` page says where things went.
 
 ## Stage two, after Zaal confirms the export
 
@@ -47,4 +53,4 @@ Three tools, one rule each (Zaal, 29 Aug: "a workflow to cleanly work with peopl
 
 ## Message to the old roster
 
-Draft on Zaal's clipboard page (he sends). Says: the dashboard and codes are gone; the Organizing Doc, Discord and the calendar are how we work; if you are in for 3 October, reply with what you want to take on; thank you either way.
+None. Withdrawn by Zaal the same morning; the meeting invites carry the doc link and that is the announcement.
