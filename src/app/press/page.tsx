@@ -1,9 +1,18 @@
 import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 import { loadPressKit } from '@/lib/press-kit';
-import { SITE } from '@/content/site';
-import { SiteShell, Section, Eyebrow, Badge, Button } from '@/components/poster';
+import { SITE, PARTNERS } from '@/content/site';
+import { SiteShell, Section, Eyebrow, Badge, Button, Card, SectionHeader, PartnerLogo } from '@/components/poster';
+
+// The kit's files, each with a direct download. Only files that exist in
+// public/ are listed (docs/marketing/press-kit.md "Assets"); partner logos
+// come from the same PARTNERS list the homepage and /partners render.
+const BADGES = [
+  { href: SITE.badge.src, label: 'ZAOstock 2026 badge, colour', note: 'the primary mark', alt: SITE.badge.alt },
+  { href: '/brand/logos/zaostock26_badge_bw_final.png', label: 'ZAOstock 2026 badge, black and white', note: 'for single-colour print', alt: 'ZAOstock 26 badge, black and white' },
+] as const;
 
 // Static: the markdown is read once at build time, so a redeploy is what
 // publishes a new docs/marketing/press-kit.md. Everything above that file's
@@ -83,17 +92,66 @@ export default function PressPage() {
               ),
             )}
           </article>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href={SITE.badge.src} external variant="secondary" size="sm">
-              Badge, colour (PNG)
-            </Button>
-            <Button href="/brand/logos/zaostock26_badge_bw_final.png" external variant="secondary" size="sm">
-              Badge, black and white (PNG)
-            </Button>
-            <Button href={`mailto:${SITE.contact}`} external variant="primary" size="sm">
-              Press contact
-            </Button>
-          </div>
+        </div>
+      </Section>
+
+      {/* The kit itself: every file a newsroom can take today, each with a direct download. */}
+      <Section id="kit">
+        <SectionHeader
+          eyebrow="Press kit"
+          title="Files you can use today."
+          lede={`The official mark in two versions and the partner logos as supplied. Credit the mark to Samantha "Candy", CandyToyBox. Photos and artist bios are not available yet; ask.`}
+          className="mb-6"
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">
+          {BADGES.map((b) => (
+            <Card key={b.href} className="p-0">
+              <div className="flex items-center justify-center bg-paper-100 border-b-2 border-ink-950 p-5">
+                <Image src={b.href} alt={b.alt} width={SITE.badge.width} height={SITE.badge.height} sizes="240px" className="h-[180px] w-auto rounded-sm border-2 border-ink-950" />
+              </div>
+              <div className="p-5 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p className="font-sans font-extrabold text-base text-ink-950 m-0">{b.label}</p>
+                  <p className="text-[13px] text-ink-muted m-0 mt-0.5">PNG, {b.note}</p>
+                </div>
+                <Button href={b.href} external variant="secondary" size="sm">
+                  Download
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {PARTNERS.some((p) => p.logoSrc) ? (
+          <>
+            <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0 mb-3">Partner logos</h3>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 m-0 p-0 list-none">
+              {PARTNERS.filter((p) => p.logoSrc).map((p) => (
+                <li key={p.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4 py-4 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <PartnerLogo src={p.logoSrc!} name={p.name} className="h-10 lg:h-12 w-auto max-w-[120px] shrink-0 object-contain object-left" />
+                    <span className="font-sans font-bold text-sm leading-tight text-ink-950">{p.name}</span>
+                  </div>
+                  <a href={p.logoSrc} download className="shrink-0 text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
+                    Download
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="text-[13px] text-ink-muted mt-3 m-0 measure">Each partner owns its mark. Use them as supplied, next to the ZAOstock mark, and not on their own.</p>
+          </>
+        ) : null}
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button href={`mailto:${SITE.contact}`} external variant="primary" size="sm">
+            Press contact
+          </Button>
+          <Button href="/partners" variant="secondary" size="sm">
+            All partners
+          </Button>
+          <Button href="/program" variant="secondary" size="sm">
+            The program
+          </Button>
         </div>
       </Section>
 

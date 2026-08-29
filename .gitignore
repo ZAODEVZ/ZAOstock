@@ -11,3 +11,4 @@ next-env.d.ts
 scripts/team-codes.local.json
 .vercel
 .env*
+.gstack/

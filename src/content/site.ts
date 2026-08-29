@@ -61,20 +61,33 @@ export type Partner = { name: string; role: string; poc: string; confirmed: bool
 // PARTNER GATING RULES (strict): a partner appears only if confirmed === true
 // (locked agreement, not "in conversation") and poc is the ZAO team member who
 // owns the relationship. logoSrc only once the file exists in public/partners/
-// (today none does). Heart of Ellsworth is deliberately NOT listed: on the
+// (six do since 28 Aug; Town, ENTERACT, Web3Metal due 29 Aug). Heart of Ellsworth is deliberately NOT listed: on the
 // 2026-08-13 call Chesnee Barney said official-partner status and logo use
 // have to clear internally first. COC Concertz added 2026-08-27 (Zaal, 20:3x);
 // its role and POC were not typed and stay UNSET until he does.
 export const PARTNERS: readonly Partner[] = [
   { name: 'Town of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true },
-  { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true },
-  { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true },
-  { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true },
-  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', poc: 'Zaal', confirmed: true },
-  { name: 'COC Concertz', role: 'UNSET', poc: 'UNSET', confirmed: true },
+  { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true, logoSrc: '/partners/black-moon.png' },
+  { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true, logoSrc: '/partners/star-977.png' },
+  { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
+  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wavewarz.png' },
+  { name: 'COC Concertz', role: 'UNSET', poc: 'UNSET', confirmed: true, logoSrc: '/partners/coc-concertz.png' },
   { name: 'ENTERACT', role: 'Production and operational support', poc: 'FailOften', confirmed: true },
   { name: 'Web3Metal', role: 'Partnership integration and community surface', poc: 'Shawn', confirmed: true },
+  // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner Dcoop.
+  { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'Dcoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
 ].filter((p) => p.confirmed);
+
+/** What every partner gets, whatever the tier (site-fix brief, 28 Aug). */
+export const DELIVERABLES = [
+  { name: 'The parklet banner', detail: 'Your name on the banner behind the stage on Franklin Street.' },
+  { name: 'The programme', detail: 'Named in the printed programme and on the day-of schedule.' },
+  { name: 'Site and stream', detail: 'Logo on zaostock.com and on the livestream.' },
+  { name: 'Thank-you from the stage', detail: 'Said out loud by the MC, in the changeovers.' },
+] as const;
+
+/** Zaal, typed 27 Aug 19:3x. Public on /sponsor per the 28 Aug site-fix brief; nowhere else. */
+export const ATTENDANCE = { inPerson: '200-250', online: 'about 1,000' } as const;
 
 export type Tier = { name: string; gets: string; price: null | string };
 
