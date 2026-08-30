@@ -26,9 +26,10 @@ Ellsworth American or anyone else without Zaal.
 4. **Quote lines** are UNSET. Two are marked. Zaal writes his own; a Black Moon
    quote needs Steve Peer's words, not ours.
 5. **Attendance, budget, sponsor names:** none appear. Do not add.
-6. **Proposed acts:** The Crown Vics, DJ Aquavantes, The Somes Sound, North
-   Creek do not appear. If any is confirmed before 1 Sep, Zaal says so and it
-   is added then.
+6. **Steve's four acts, resolved 27 Aug 22:3x:** The Crown Vics are BOOKED and
+   open the day at 12:05, so they belong in the reveal if their written yes is
+   in by 31 Aug. DJ Aquavantes, The Somes Sound and North Creek are OUT of the
+   plan and must not appear under any circumstances.
 
 ---
 

@@ -27,7 +27,7 @@ all seven.
 | Lyons Den confirmed, public | `src/app/page.tsx:397,404` |
 | Four confirmed acts total (names gated until 1 Sep): Lyons Den, Fellenz, Dcoop, Acadia Rising | `src/app/team/plan/page.tsx` DAY[0] minus Werb (Zaal, typed 27 Aug 20:4x) |
 | Lineup reveal 1 September | `docs/plans/production-plan-2026-10-03.md` section 6 |
-| Musician submission cutoff 3 September | production plan section 6, locked at the 12 May standup (`docs/standup/2026-05-12-tue-recap.md:36`) |
+| Musician submission cutoff **1 September** (moved from 3 Sep by Zaal, 29 Aug) | production plan section 6, locked at the 12 May standup (`docs/standup/2026-05-12-tue-recap.md:36`) |
 | WaveWarZ block, audience decides, in the street and online | `src/app/program/page.tsx` BLOCKS[1] |
 | WaveWarZ: 1,452 battles, 913.9 SOL lifetime, measured 2026-08-27 15:47 UTC | `docs/sponsor/deck-2026-10-03.md:154-155` |
 | Seven partners on the site, time and skill, no cash; COC Concertz is the eighth | `src/app/page.tsx:101-112, 546-548`; Zaal, typed 27 Aug 20:3x |
@@ -243,7 +243,14 @@ name goes in.
 
 ---
 
-## Thu 3 Sep - submission cutoff
+## Thu 3 Sep - submission cutoff  
+
+> **STALE, 29 August.** The cutoff moved to **1 September**, the same day as the
+> reveal: that is when the flyers go out and artists are sent the rider form and
+> everything else they need. A cutoff post on 3 September would announce a
+> deadline that passed two days earlier. Fold this into the 1 September reveal
+> post instead. Note also that musician submissions are now an **email link**,
+> not a form, so the "forms must be live" gate below no longer applies.
 
 **HOLD - public forms are OFF** (`src/lib/forms-status.ts`,
 `src/components/FormsUnavailable.tsx`; Supabase project returns 503). A "submit
@@ -289,7 +296,7 @@ Source: Tuesday's post; nothing new claimed.
 | Mon 31 Aug | Eve of reveal | Firefly, X GC, FC GC | none |
 | Tue 1 Sep | **Reveal** | all seven | **Reveal rule: only acts confirmed in writing by 31 Aug, plus "more to come"; handles UNSET; image UNSET** |
 | Wed 2 Sep | Eight partners, no cash | Firefly, FC GC, LinkedIn | Bomb Squad only |
-| Thu 3 Sep | Submission cutoff | Firefly, FC GC, TG | **forms must be live; fallback provided** |
+| ~~Thu 3 Sep~~ | ~~Submission cutoff~~ **MOVED to 1 Sep, fold into the reveal post** | - | submissions are an email link now, not a form |
 
 ## What this calendar does not cover, and who owns it
 
