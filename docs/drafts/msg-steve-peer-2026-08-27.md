@@ -23,8 +23,8 @@ closer - all consistent. Attendance is not in this message on purpose.
 
 Steve - thank you for listing all of that out. Water, power, the gift
 certificates, the basement dressing room, the porta potty, and the offer to
-underwrite North Creek for the after party - that is a huge part of the day
-handled, and I do not take it lightly. Wristbands for performers is a great
+underwrite the after party - that is a huge part of the day handled, and I do
+not take it lightly. Wristbands for performers is a great
 call; we will have them.
 
 The full schedule is attached: one stage at a time, sets of about 30 minutes
@@ -37,23 +37,20 @@ stages: outdoors at the Franklin Street Parklet until 6, then everything moves
 into Black Moon for the evening. One crowd, one PA crew at a time, and we never
 need both systems live at once. Music starts at noon, as you had it.
 
-**1. Of the acts on your list, which are booked and which are still being
-asked?** The Crown Vics, The Somes Sound, North Creek. On our side all three
-are recorded as proposals, because nobody here has a yes from any of them that
-we can point at. One of them is the close of the night, so if that one is a lead
-rather than a booking I need to know this week, so we can cover the evening
-ourselves rather than find out at soundcheck. One line per act is plenty:
-booked, asked, or not yet asked.
+**1. The acts, as I have them.** From what you sent back: The Crown Vics open
+the day at 12:05, and your own set closes the night. The Somes Sound and North
+Creek are out, and so is the DJ. If I have any of that wrong, correct me now
+rather than at soundcheck - it is the spine of the schedule.
 
 And one thing to say plainly rather than let it drift: **we are not going to
-use a DJ for the changeovers after all.** Thank you for offering one. We have
-decided the gaps between sets are the MC and our sponsor spots, and Stilo
-plays the crowd out at six. So please do not hold your DJ for us.
+use a DJ for the changeovers.** Thank you for offering one. The gaps between
+sets are the MC and our sponsor spots, and Stilo plays the crowd out at six. So
+please do not hold your DJ for us.
 
-**2. The Somes Sound - do they provide the indoor PA, or only their own gear
-for their own set?** If it is a house-capable PA, that answers most of our
-indoor sound question. If it is their rig for their set, the indoor PA is still
-open. Either is fine; I need to know which.
+**2. The indoor PA.** With The Somes Sound out, the indoor sound question is
+open again: is Black Moon's house system what Stilo and your own set run on, or
+are you bringing something in? That is the last unanswered piece of the AV
+plan.
 
 **3. The evening.** Here is the shape on our side, and it is settled: at six
 the street walks in and our DJ (Stilo, who is also battling in WaveWarZ) opens
