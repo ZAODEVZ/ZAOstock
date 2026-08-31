@@ -35,7 +35,6 @@ export function Footer() {
               </Link>
             ))}
           </nav>
-          <p className="m-0 text-xs text-ink-muted">{SITE.credit}</p>
         </div>
       </div>
     </footer>

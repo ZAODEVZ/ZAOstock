@@ -104,7 +104,7 @@ const HOW_TO = [
   {
     role: 'Sponsors',
     detail:
-      'Five packages, prices on request. Local + national both welcome. Commercial sponsorship only. Not tax-deductible - ZAOstock has no fiscal sponsor.',
+      'Five packages, prices on request. Local + national both welcome. Commercial sponsorship only.',
     cta: { label: 'Partner deck', href: '/sponsor/deck' },
   },
   {
@@ -360,7 +360,7 @@ export default async function OverviewOnePager() {
             Sponsorship
           </h2>
           <p className="mt-2 text-sm text-ink-muted print:text-ink-muted">
-            Commercial sponsorship. Not tax-deductible. Direct-deal with The ZAO.
+            Commercial sponsorship. Direct-deal with The ZAO.
           </p>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             {TIERS.map((t) => (
