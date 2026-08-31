@@ -126,11 +126,6 @@ export default function TicketsPage() {
                   term: 'Does the Pro Ticket get me in earlier',
                   detail: 'No. It gets you a 1:1 with the team before the event and your name credited as a supporter. Nothing about the day itself changes.',
                 },
-                {
-                  term: 'Tax',
-                  detail:
-                    'ZAOstock does not currently have a fiscal sponsor, so contributions are not tax-deductible and we cannot issue a charitable receipt.',
-                },
                 { term: 'Other ways to give', detail: 'PayPal for fiat or Giveth for crypto, at /donate.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
