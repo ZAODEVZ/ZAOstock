@@ -1,0 +1,1973 @@
+<title>ZAOstock Ops Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+/* ============================================================================
+   ZAOstock 26 retro-poster identity, taken from the site's own tokens
+   (src/app/globals.css). Paper is the ground, ink is the text, red is the only
+   thing that asks to be clicked. Gold marks now. Denim marks crew. Olive marks
+   settled. The ZAO navy-and-gold mark appears small, as a crest, not a palette.
+   ========================================================================== */
+:root{
+  --paper-100:#F2E6D3; --paper-200:#FAF3E6; --paper-300:#E7D8BF;
+  --ink:#241E15; --ink-2:#625A4E; --ink-3:#6A6256;
+  --red-300:#E8735C; --red-500:#D2402A; --red-600:#B93826; --red-700:#9C2F1E;
+  --gold-300:#F2D48A; --gold-400:#E5AC3B; --gold-500:#C98F2A; --gold-600:#A8721C;
+  --denim-300:#7FA8C7; --denim-400:#2E6494; --denim-500:#245078; --denim-600:#1B3C5C;
+  --olive-300:#A4AF6E; --olive-400:#7C8A3D; --olive-500:#636F2F;
+  --zao-navy:#03254C; --zao-gold:#FEBA04;
+
+  --ground:var(--paper-100); --surface:var(--paper-200); --surface-2:var(--paper-300);
+  --line:#D8C7A9; --line-soft:#E3D5BC;
+  --hard:3px 3px 0 var(--ink);
+  --hard-lg:5px 5px 0 var(--ink);
+  --r-sm:8px; --r-md:14px; --r-lg:18px; --r-pill:999px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.14  0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Night: the same poster, printed on denim instead of paper. For a 10pm board. */
+:root[data-mode="night"]{
+  --ground:#152F47; --surface:#1B3C5C; --surface-2:#24506F;
+  --line:#2F6288; --line-soft:#26506F;
+  --ink:#F5EDDD; --ink-2:#BFD2E2; --ink-3:#9DB6CB;
+  --paper-100:#152F47; --paper-200:#1B3C5C; --paper-300:#24506F;
+  --hard:3px 3px 0 #0B1D2E; --hard-lg:5px 5px 0 #0B1D2E;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--ink);
+  font-family:"Rubik", -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  /* The paper is lit, not flat: a warm bloom top-left, a cooler fall to the
+     bottom-right, and the print grain over the whole thing. */
+  background:
+    radial-gradient(1200px 620px at 8% -6%, rgba(229,172,59,.20), transparent 62%),
+    radial-gradient(900px 700px at 102% 8%, rgba(210,64,42,.10), transparent 58%),
+    radial-gradient(1000px 800px at 50% 118%, rgba(36,80,120,.10), transparent 62%),
+    linear-gradient(178deg, var(--paper-200) 0%, var(--ground) 42%, var(--paper-300) 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:var(--grain); opacity:.5; mix-blend-mode:multiply;
+}
+.app{position:relative; z-index:1}
+h1,h2,h3,h4{margin:0; text-wrap:balance}
+.disp{font-family:"Boogaloo","Baloo 2",system-ui,cursive; font-weight:400; line-height:1.02}
+p{margin:0}
+a{color:inherit}
+button{font:inherit; color:inherit; font-family:inherit}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:0; box-shadow:0 0 0 3px rgba(229,172,59,.6); border-radius:6px}
+.mono{font-family:"Space Mono",ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"Space Mono",monospace; font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.hidden{display:none !important}
+.grain{position:relative}
+.grain::after{content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.38; mix-blend-mode:multiply; pointer-events:none; border-radius:inherit}
+.grain > *{position:relative; z-index:1}
+
+/* ============================== shell ============================== */
+.app{display:grid; grid-template-columns:250px 1fr; min-height:100vh}
+.rail{
+  border-right:2px solid var(--ink); display:flex; flex-direction:column;
+  position:sticky; top:0; height:100vh; overflow:hidden;
+  background:linear-gradient(184deg, var(--paper-200) 0%, var(--ground) 58%, var(--paper-300) 100%);
+  box-shadow:6px 0 22px -18px rgba(36,30,21,.6);
+}
+.rail-head{display:flex; align-items:center; gap:11px; padding:15px 15px 13px; border-bottom:2px solid var(--ink)}
+.badge-mark{width:46px; height:46px; border-radius:50%; flex:none; object-fit:cover; border:2px solid var(--ink); background:var(--paper-200)}
+.rail-name{font-family:"Boogaloo",cursive; font-size:23px; line-height:1}
+.rail-name small{display:block; font-family:"Space Mono",monospace; font-size:9px; letter-spacing:.18em; color:var(--ink-3); margin-top:4px; text-transform:uppercase}
+.rail-scroll{flex:1; overflow-y:auto; padding:10px}
+.navgroup{margin-top:12px}
+.navgroup:first-child{margin-top:2px}
+.navgroup > .eyebrow{padding:0 6px 8px; display:flex; align-items:center; gap:8px; font-size:9.5px}
+.navgroup > .eyebrow::after{content:""; flex:1; height:2px; background:var(--line)}
+.nav{display:flex; align-items:center; gap:10px; width:100%; padding:8px 10px; border:2px solid transparent; border-radius:var(--r-sm); background:transparent; color:var(--ink-2); cursor:pointer; font-size:13.5px; font-weight:500; text-align:left; margin-bottom:3px}
+.nav:hover{background:linear-gradient(178deg, var(--paper-200), var(--paper-300)); color:var(--ink); transform:translateX(1px)}
+.nav[aria-current="true"]{background:linear-gradient(178deg, var(--red-300) -35%, var(--red-500) 45%, var(--red-700) 145%); border-color:var(--ink); color:#FFF6E8; font-weight:600; box-shadow:var(--hard), 0 14px 22px -18px rgba(156,47,30,.9); text-shadow:0 1px 0 rgba(90,20,10,.5)}
+.nav svg{width:15px; height:15px; flex:none; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.nav .badge{margin-left:auto; font-family:"Space Mono",monospace; font-size:10px; font-weight:700; padding:1px 7px; border-radius:var(--r-pill); background:var(--red-600); color:#FFF6E8; border:1.5px solid var(--ink)}
+.nav[aria-current="true"] .badge{background:var(--paper-200); color:var(--red-700)}
+.nav .badge.g{background:var(--gold-400); color:var(--ink)}
+
+.dock{border-top:2px solid var(--ink); background:var(--paper-300); padding:11px 13px}
+.dock-row{display:flex; align-items:center; gap:10px}
+.dock-art{width:40px; height:40px; border-radius:var(--r-sm); flex:none; object-fit:cover; border:2px solid var(--ink)}
+.dock-meta{min-width:0; flex:1}
+.dock-meta .t{font-family:"Boogaloo",cursive; font-size:16px; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.dock-meta .s{font-family:"Space Mono",monospace; font-size:9.5px; color:var(--ink-3); margin-top:3px; display:flex; align-items:center; gap:6px}
+.dock-play{width:34px; height:34px; border-radius:50%; border:2px solid var(--ink); background:linear-gradient(178deg, var(--red-300) -20%, var(--red-500) 50%, var(--red-700) 140%); color:#FFF6E8; cursor:pointer; display:grid; place-items:center; flex:none; font-size:11px; box-shadow:2px 2px 0 var(--ink)}
+.dock-play:hover{background:var(--red-600)}
+.dock-play:active{transform:translate(2px,2px); box-shadow:none}
+.dock-bar{height:7px; border-radius:var(--r-pill); background:var(--paper-200); border:2px solid var(--ink); margin-top:10px; overflow:hidden; cursor:pointer}
+.dock-bar i{display:block; height:100%; width:0; background:var(--gold-400)}
+.eqbars{display:inline-flex; align-items:flex-end; gap:2px; height:9px}
+.eqbars i{width:2px; background:var(--red-500); border-radius:1px; animation:eq .95s ease-in-out infinite}
+.eqbars i:nth-child(1){height:4px; animation-delay:-.2s}
+.eqbars i:nth-child(2){height:9px; animation-delay:-.55s}
+.eqbars i:nth-child(3){height:6px}
+@keyframes eq{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.eqbars i{animation:none}}
+
+.pane{min-width:0; display:flex; flex-direction:column}
+.topbar{position:sticky; top:0; z-index:30; border-bottom:2px solid var(--ink); display:flex; align-items:center; gap:11px; padding:0 22px; height:64px; background:linear-gradient(180deg, var(--paper-200), var(--ground)); backdrop-filter:saturate(1.15) blur(6px); box-shadow:0 10px 26px -22px rgba(36,30,21,.85)}
+.topbar h1{font-family:"Boogaloo",cursive; font-size:25px; line-height:1}
+.topbar .crumb{font-family:"Space Mono",monospace; font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); margin-bottom:2px}
+.topbar .who{margin-right:auto; min-width:0}
+.pill{display:inline-flex; align-items:center; gap:7px; padding:5px 12px; border-radius:var(--r-pill); border:2px solid var(--ink); background:var(--paper-200); font-size:12px; font-weight:600; white-space:nowrap}
+.pill.hot{background:var(--gold-400)}
+.pill.red{background:var(--red-500); color:#FFF6E8}
+.iconbtn{border:2px solid var(--ink); background:var(--paper-200); width:36px; height:36px; border-radius:var(--r-sm); cursor:pointer; display:grid; place-items:center; flex:none; box-shadow:2px 2px 0 var(--ink)}
+.iconbtn:hover{background:var(--gold-300)}
+.iconbtn:active{transform:translate(2px,2px); box-shadow:none}
+.iconbtn svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round}
+.content{padding:26px 22px 90px; max-width:1180px; width:100%}
+.screen{display:none}
+.screen.on{display:block; animation:rise .2s var(--ease)}
+@keyframes rise{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){.screen.on{animation:none}}
+
+/* ============================== pieces ============================== */
+.card{background:linear-gradient(168deg, var(--paper-200) 0%, var(--surface) 55%, var(--paper-300) 100%); border:2px solid var(--ink); border-radius:var(--r-md); box-shadow:var(--hard), 0 18px 34px -30px rgba(36,30,21,.9)}
+.pad{padding:18px}
+.grid{display:grid; gap:14px}
+.sec{margin-top:32px}
+.sec:first-child{margin-top:0}
+.sec-head{display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap}
+.sec-head h2{font-family:"Boogaloo",cursive; font-size:28px; line-height:1}
+.sec-head .rule{flex:1; height:3px; background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 22px); min-width:30px}
+.sec-head .note{font-size:12.5px; color:var(--ink-3)}
+
+.chip{display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:var(--r-pill); font-family:"Space Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; border:2px solid var(--ink); white-space:nowrap; background:var(--paper-200); color:var(--ink)}
+.chip.red{background:var(--red-500); color:#FFF6E8}
+.chip.gold{background:var(--gold-400)}
+.chip.olive{background:var(--olive-300)}
+.chip.denim{background:var(--denim-300)}
+.chip.mute{background:transparent; border-color:var(--line); color:var(--ink-3)}
+
+.btn{border:2px solid var(--ink); background:linear-gradient(178deg, var(--red-300) -30%, var(--red-500) 42%, var(--red-700) 140%); color:#FFF6E8; text-shadow:0 1px 0 rgba(90,20,10,.45); padding:10px 20px; border-radius:var(--r-pill); font-weight:700; font-size:14px; cursor:pointer; box-shadow:var(--hard); transition:transform .1s var(--ease), box-shadow .1s var(--ease)}
+.btn:hover{filter:brightness(1.07)}
+.btn:active{transform:translate(3px,3px); box-shadow:none}
+.btn.ghost{background:linear-gradient(178deg, var(--paper-200), var(--paper-300)); color:var(--ink); text-shadow:none}
+.btn.ghost:hover{background:linear-gradient(178deg, #FBEBBE, var(--gold-300))}
+.btn.sm{padding:6px 14px; font-size:12.5px; box-shadow:2px 2px 0 var(--ink)}
+.btn.sm:active{transform:translate(2px,2px); box-shadow:none}
+.btn:disabled{opacity:.5; cursor:not-allowed}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+.row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+
+label.f{display:flex; flex-direction:column; gap:6px; font-size:10.5px; font-weight:700; color:var(--ink-3); text-transform:uppercase; letter-spacing:.13em; font-family:"Space Mono",monospace}
+input,select,textarea{font-family:"Rubik",sans-serif; font-size:14px; font-weight:400; padding:10px 12px; border-radius:var(--r-sm); border:2px solid var(--ink); background:linear-gradient(178deg, var(--paper-300), var(--paper-200) 45%); color:var(--ink); width:100%; text-transform:none; letter-spacing:0; box-shadow:inset 0 2px 5px -3px rgba(36,30,21,.55)}
+textarea{min-height:86px; resize:vertical; line-height:1.5}
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:700px){.form-grid{grid-template-columns:1fr}}
+
+.tiles{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px}
+.tile{display:flex; flex-direction:column; gap:5px; padding:15px 16px; text-decoration:none; background:linear-gradient(166deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); border:2px solid var(--ink); border-radius:var(--r-md); box-shadow:var(--hard), 0 16px 30px -28px rgba(36,30,21,.9); transition:transform .14s var(--ease), box-shadow .14s var(--ease), background .14s var(--ease)}
+a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 40px -30px rgba(36,30,21,.9); background:linear-gradient(166deg, #FBEBBE, var(--gold-300) 70%, #E9C468)}
+@media (prefers-reduced-motion:reduce){.tile{transition:none} a.tile:hover{transform:none}}
+.tile .n{font-weight:700; font-size:15px; display:flex; align-items:center; gap:8px; justify-content:space-between}
+.tile .d{font-size:12.5px; color:var(--ink-2); line-height:1.45}
+.tile .u{font-family:"Space Mono",monospace; font-size:10px; color:var(--ink-3); word-break:break-all}
+
+.kpi{display:grid; grid-template-columns:repeat(auto-fit,minmax(146px,1fr)); gap:14px}
+.kpibox{background:linear-gradient(168deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); border:2px solid var(--ink); border-radius:var(--r-md); padding:15px 16px; box-shadow:var(--hard), 0 16px 28px -28px rgba(36,30,21,.9)}
+.kpibox.red{background:linear-gradient(168deg, var(--red-300) -25%, var(--red-500) 48%, var(--red-700) 145%); color:#FFF6E8}
+.kpibox.gold{background:linear-gradient(168deg, #F7DFA4, var(--gold-400) 55%, var(--gold-500)); color:var(--ink)}
+.kpibox.olive{background:linear-gradient(168deg, #BAC48A, var(--olive-300) 55%, var(--olive-400)); color:var(--ink)}
+.kpibox .v{font-family:"Boogaloo",cursive; font-size:36px; line-height:1; font-variant-numeric:tabular-nums}
+.kpibox .k{font-family:"Space Mono",monospace; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.78; margin-top:7px}
+
+/* ============================== lounge ============================== */
+.hero{border:2px solid var(--ink); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--hard-lg), 0 42px 70px -46px rgba(36,30,21,.95); background:var(--surface)}
+.hero-photo{position:relative; min-height:340px; display:grid; align-items:end; background:var(--denim-600)}
+.hero-photo > img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55}
+.hero-photo::before{content:""; position:absolute; inset:0; background:linear-gradient(178deg, rgba(27,60,92,.30) 0%, rgba(36,30,21,.55) 42%, rgba(24,18,12,.92) 88%), radial-gradient(760px 340px at 14% 108%, rgba(210,64,42,.34), transparent 66%), radial-gradient(620px 300px at 88% -6%, rgba(229,172,59,.30), transparent 62%)}
+.hero-in{position:relative; padding:28px 30px 26px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end}
+.hero-in h2{font-family:"Boogaloo",cursive; font-size:clamp(36px,5.6vw,64px); line-height:.97; color:#FFF6E8}
+.hero-in .sub{font-size:15px; color:#E7DCC8; max-width:52ch; margin-top:10px}
+.hero-badge{display:inline-flex; align-items:center; gap:8px; font-family:"Space Mono",monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-300); margin-bottom:12px}
+.hero-crest{width:88px; height:88px; border-radius:var(--r-md); border:2px solid var(--ink); object-fit:cover; box-shadow:var(--hard)}
+@media (max-width:760px){.hero-in{grid-template-columns:1fr} .hero-crest{width:60px; height:60px}}
+.countdown{display:flex; gap:24px; flex-wrap:wrap; margin-top:20px}
+.cd .n{font-family:"Boogaloo",cursive; font-size:42px; line-height:.9; color:var(--gold-400); font-variant-numeric:tabular-nums}
+.cd .l{font-family:"Space Mono",monospace; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#CBBDA6; margin-top:5px}
+
+.lounge-body{display:grid; grid-template-columns:1.3fr 1fr; border-top:2px solid var(--ink)}
+@media (max-width:860px){.lounge-body{grid-template-columns:1fr}}
+.lounge-left{padding:22px; border-right:2px solid var(--ink); background:linear-gradient(178deg, var(--paper-200), var(--surface) 70%)}
+@media (max-width:860px){.lounge-left{border-right:0; border-bottom:2px solid var(--ink)}}
+.lounge-right{padding:22px; display:flex; flex-direction:column; gap:12px; background:linear-gradient(168deg, var(--paper-300), var(--ground) 70%)}
+
+.bigplay{display:flex; align-items:center; gap:16px}
+.bigplay-btn{width:66px; height:66px; border-radius:50%; border:2px solid var(--ink); background:linear-gradient(178deg, var(--red-300) -20%, var(--red-500) 50%, var(--red-700) 145%); color:#FFF6E8; cursor:pointer; display:grid; place-items:center; font-size:20px; flex:none; box-shadow:var(--hard)}
+.bigplay-btn:hover{background:var(--red-600)}
+.bigplay-btn:active{transform:translate(3px,3px); box-shadow:none}
+.bigplay .t{font-family:"Boogaloo",cursive; font-size:30px; line-height:1}
+.bigplay .a{font-size:12.5px; color:var(--ink-2); margin-top:3px; display:flex; align-items:center; gap:8px}
+.seekrow{display:flex; align-items:center; gap:10px; margin-top:18px}
+.seek{-webkit-appearance:none; appearance:none; height:9px; border-radius:var(--r-pill); padding:0; background:var(--paper-100); border:2px solid var(--ink); flex:1; cursor:pointer}
+.seek::-webkit-slider-thumb{-webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--red-500); border:2px solid var(--ink); cursor:pointer}
+.seek::-moz-range-thumb{width:14px; height:14px; border-radius:50%; background:var(--red-500); border:2px solid var(--ink); cursor:pointer}
+.tm{font-family:"Space Mono",monospace; font-size:11.5px; color:var(--ink-3); width:42px}
+.tm.r{text-align:right}
+
+.panel{border:2px solid var(--ink); border-radius:var(--r-md); padding:15px 16px; background:linear-gradient(168deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); box-shadow:var(--hard), 0 14px 26px -26px rgba(36,30,21,.9)}
+.panel.gold{background:linear-gradient(168deg, #FBEBBE, var(--gold-300) 65%, #EBCB86)}
+.panel .h{font-weight:700; font-size:15px; margin-bottom:4px}
+.panel .b{font-size:13px; color:var(--ink-2)}
+
+.people{display:grid; grid-template-columns:repeat(auto-fit,minmax(212px,1fr)); gap:14px}
+.person{border:2px solid var(--ink); border-radius:var(--r-md); overflow:hidden; background:linear-gradient(168deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); box-shadow:var(--hard), 0 20px 34px -30px rgba(36,30,21,.9); transition:transform .14s var(--ease), box-shadow .14s var(--ease)}
+.person:hover{transform:translateY(-3px); box-shadow:var(--hard-lg), 0 28px 40px -30px rgba(36,30,21,.9)}
+.person img{display:block; width:100%; aspect-ratio:16/10; object-fit:cover; border-bottom:2px solid var(--ink)}
+.person .cap{padding:12px 14px}
+.person .cap b{display:block; font-size:15px; margin-bottom:3px}
+.person .cap span{font-size:12.5px; color:var(--ink-2)}
+.monogram{display:grid; place-items:center; aspect-ratio:16/10; border-bottom:2px solid var(--ink); font-family:"Boogaloo",cursive; font-size:40px; background:var(--paper-300)}
+
+.nownext{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:700px){.nownext{grid-template-columns:1fr}}
+.nn{background:var(--surface); border:2px solid var(--ink); border-radius:var(--r-md); padding:18px 20px; box-shadow:var(--hard)}
+.nn.live{background:linear-gradient(168deg, #F7DFA4, var(--gold-400) 60%, var(--gold-500))}
+.nn .lab{display:flex; align-items:center; gap:7px; margin-bottom:6px}
+.nn .lab span{font-family:"Space Mono",monospace; font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.nn.live .lab span{color:var(--ink)}
+.nn .title{font-family:"Boogaloo",cursive; font-size:27px; line-height:1.05}
+.nn .meta{font-size:12.5px; color:var(--ink-2); margin-top:5px}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--red-500); border:1px solid var(--ink); flex:none; animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+
+.sched{border:2px solid var(--ink); border-radius:var(--r-md); overflow:hidden; background:linear-gradient(180deg, var(--paper-200), var(--surface) 40%, var(--paper-300)); box-shadow:var(--hard), 0 20px 36px -32px rgba(36,30,21,.9)}
+.vhead{display:flex; align-items:center; gap:9px; padding:12px 16px; background:linear-gradient(178deg, var(--denim-400), var(--denim-500) 55%, var(--denim-600)); color:#F1F6FA; border-top:2px solid var(--ink); text-shadow:0 1px 0 rgba(8,30,50,.5)}
+.vhead:first-child{border-top:0}
+.vhead h3{font-family:"Boogaloo",cursive; font-size:20px; line-height:1}
+.vhead .w{font-family:"Space Mono",monospace; font-size:10.5px; color:var(--gold-300); margin-left:auto; letter-spacing:.12em}
+.slot{display:grid; grid-template-columns:68px 1fr auto; gap:14px; padding:12px 16px; border-top:1px solid var(--line-soft); align-items:start}
+.slot .time{font-family:"Space Mono",monospace; font-size:12.5px; font-weight:700; color:var(--ink-2); padding-top:2px}
+.slot .nm{font-weight:700; font-size:15px}
+.slot .dt{font-size:12.5px; color:var(--ink-2); margin-top:3px}
+.slot .own{font-family:"Space Mono",monospace; font-size:10.5px; color:var(--ink-3); margin-top:6px}
+.slot.now{background:linear-gradient(178deg, #FBEBBE, var(--gold-300)); box-shadow:inset 4px 0 0 var(--red-500)}
+.slot.past{opacity:.45}
+.slot.gap .nm{font-weight:500; color:var(--ink-2); font-size:13.5px}
+
+.item{border-top:1px solid var(--line-soft); padding:13px 16px}
+.item:first-child{border-top:0}
+.item .top{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:5px}
+.item .msg{font-size:14px}
+.item .sub{font-size:11px; color:var(--ink-3); margin-top:4px; font-family:"Space Mono",monospace}
+.item.done{opacity:.5}
+.item.urgent{box-shadow:inset 4px 0 0 var(--red-500)}
+.empty{padding:28px 16px; text-align:center; color:var(--ink-3); font-size:13.5px}
+
+.rota{display:grid; grid-template-columns:repeat(auto-fill,minmax(164px,1fr)); gap:12px}
+.rslot{border:2px solid var(--ink); border-radius:var(--r-md); padding:11px 12px; background:linear-gradient(168deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); box-shadow:var(--hard), 0 14px 24px -26px rgba(36,30,21,.9); transition:transform .12s var(--ease)}
+.rslot:hover{transform:translateY(-2px)}
+.rslot.part{background:linear-gradient(168deg, #FBEBBE, var(--gold-300) 65%, #EBCB86)}
+.rslot.full{background:linear-gradient(168deg, #C3CB97, var(--olive-300) 60%, var(--olive-400))}
+.rslot .h{font-family:"Space Mono",monospace; font-size:10.5px; font-weight:700; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; gap:6px}
+.rname{display:block; width:100%; text-align:left; background:transparent; border:0; cursor:pointer; font-size:13px; padding:3px 0; min-height:25px}
+.rname.free{color:var(--ink-3); font-style:italic}
+.rname:hover{color:var(--red-600)}
+
+.agent{border:2px solid var(--ink); border-radius:var(--r-md); background:linear-gradient(168deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); padding:16px; box-shadow:var(--hard), 0 16px 30px -28px rgba(36,30,21,.9)}
+.agent h4{font-family:"Boogaloo",cursive; font-size:21px; line-height:1.05; margin-bottom:4px}
+.agent .who{font-family:"Space Mono",monospace; font-size:10px; color:var(--red-700); margin-bottom:9px; text-transform:uppercase; letter-spacing:.11em}
+.agent p{font-size:13px; color:var(--ink-2); margin-bottom:10px}
+.brief{font-family:"Space Mono",monospace; font-size:11px; line-height:1.65; background:var(--paper-100); border:2px solid var(--line); border-radius:var(--r-sm); padding:11px 12px; white-space:pre-wrap; max-height:146px; overflow:auto; color:var(--ink-2); margin-bottom:10px}
+
+.gate{max-width:430px; margin:52px auto; text-align:center}
+.gate-mark{width:76px; height:76px; border-radius:50%; border:2px solid var(--ink); margin-bottom:14px}
+
+.cmdk{position:fixed; inset:0; z-index:80; background:rgba(36,30,21,.55); display:grid; place-items:start center; padding-top:12vh}
+.cmdk-box{width:min(560px,92vw); background:var(--surface); border:2px solid var(--ink); border-radius:var(--r-md); box-shadow:var(--hard-lg); overflow:hidden}
+.cmdk-box input{border:0; border-bottom:2px solid var(--ink); border-radius:0; padding:15px 18px; font-size:15px}
+.cmdk-list{max-height:52vh; overflow:auto; padding:6px}
+.cmdk-item{display:flex; align-items:center; gap:10px; width:100%; padding:9px 12px; border:0; border-radius:var(--r-sm); background:transparent; cursor:pointer; text-align:left; font-size:13.5px}
+.cmdk-item:hover,.cmdk-item.sel{background:var(--gold-300)}
+.cmdk-item .k{margin-left:auto; font-family:"Space Mono",monospace; font-size:9.5px; color:var(--ink-3); text-transform:uppercase; letter-spacing:.12em}
+
+.toast{position:fixed; left:50%; transform:translateX(-50%); bottom:24px; z-index:90; background:var(--ink); color:var(--paper-200); padding:12px 20px; border-radius:var(--r-pill); font-size:13.5px; font-weight:500; box-shadow:var(--hard); max-width:min(92vw,470px); border:2px solid var(--ink)}
+.soundnudge{position:fixed; right:22px; bottom:22px; z-index:70; display:flex; align-items:center; gap:9px; background:var(--gold-400); color:var(--ink); border:2px solid var(--ink); border-radius:var(--r-pill); padding:9px 17px; box-shadow:var(--hard); font-size:13px; font-weight:700; cursor:pointer}
+.soundnudge:active{transform:translate(3px,3px); box-shadow:none}
+.foot{margin-top:36px; padding-top:16px; border-top:2px solid var(--line); font-size:12px; color:var(--ink-3)}
+
+.railtoggle{display:none}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .rail{position:fixed; z-index:50; width:250px; transform:translateX(-100%); transition:transform .2s var(--ease)}
+  .rail.open{transform:none}
+  .railtoggle{display:grid}
+  .content{padding:20px 16px 90px}
+  .topbar{padding:0 14px}
+  .topbar h1{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){.rail{transition:none}}
+</style>
+
+<div class="app">
+  <aside class="rail grain" id="rail">
+    <div class="rail-head">
+      <img class="badge-mark" id="mark-badge" alt="ZAOstock">
+      <div class="rail-name">ZAOstock<small>Ops Room</small></div>
+    </div>
+    <div class="rail-scroll">
+      <div class="navgroup"><div class="eyebrow">Everyone</div><div id="nav-public"></div></div>
+      <div class="navgroup"><div class="eyebrow">Team</div><div id="nav-team"></div></div>
+    </div>
+    <div class="dock">
+      <div class="dock-row">
+        <img class="dock-art" id="mark-zao" alt="The ZAO">
+        <div class="dock-meta">
+          <div class="t" id="dock-title">ZAOSTOCK</div>
+          <div class="s" id="dock-sub">Iman Afrikah</div>
+        </div>
+        <button class="dock-play" id="dock-play" aria-label="Play or pause the theme">&#9654;</button>
+      </div>
+      <div class="dock-bar" id="dock-bar"><i id="dock-fill"></i></div>
+    </div>
+  </aside>
+
+  <div class="pane">
+    <div class="topbar">
+      <button class="iconbtn railtoggle" id="railtoggle" aria-label="Menu"><svg viewBox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"/></svg></button>
+      <div class="who">
+        <div class="crumb" id="crumb">Everyone</div>
+        <h1 id="screen-title">The Waiting Room</h1>
+      </div>
+      <span class="pill" id="pill-clock"><span class="mono" id="clock">--:--</span> Ellsworth</span>
+      <span class="pill" id="pill-when"></span>
+      <button class="iconbtn" id="cmd-open" aria-label="Search" title="Search (Ctrl K)"><svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg></button>
+      <button class="iconbtn" id="mode" aria-label="Paper or night" title="Paper or night"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5v11" stroke-width="5"/></svg></button>
+    </div>
+
+    <div class="content">
+
+      <section class="screen on" id="s-lounge">
+        <div class="hero">
+          <div class="hero-photo">
+            <img id="img-hero" alt="">
+            <div class="hero-in">
+              <div>
+                <div class="hero-badge" id="lounge-badge"><span class="dot"></span> The waiting room</div>
+                <h2 id="lounge-head">You're early. Good.</h2>
+                <p class="sub" id="lounge-sub">The theme is already playing. Saturday 3 October, Franklin Street Parklet in downtown Ellsworth, free, music from noon.</p>
+                <div class="countdown" id="countdown"></div>
+              </div>
+              <img class="hero-crest" id="mark-crest" alt="The ZAO">
+            </div>
+          </div>
+          <div class="lounge-body">
+            <div class="lounge-left">
+              <div class="bigplay">
+                <button class="bigplay-btn" id="big-play" aria-label="Play">&#9654;</button>
+                <div>
+                  <div class="t" id="np-title">ZAOSTOCK</div>
+                  <div class="a" id="np-artist">Iman Afrikah</div>
+                </div>
+              </div>
+              <div class="seekrow">
+                <span class="tm mono" id="p-cur">0:00</span>
+                <input class="seek" id="p-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+                <span class="tm r mono" id="p-dur">0:00</span>
+              </div>
+              <div class="row" style="margin-top:16px">
+                <span class="eyebrow">Volume</span>
+                <input class="seek" id="p-vol" type="range" min="0" max="100" value="70" style="max-width:150px" aria-label="Volume">
+                <span class="chip gold">On loop</span>
+              </div>
+              <p class="foot">Pick a door on the left, or press Ctrl K and type where you want to go.</p>
+            </div>
+            <div class="lounge-right">
+              <div class="panel gold" id="help-status">
+                <div class="h">Need a hand with anything?</div>
+                <div class="b">Getting here, access, a lost friend, a stream that will not load. Tell us and a real person picks it up.</div>
+                <button class="btn sm" id="jump-help" style="margin-top:12px">Ask for help</button>
+              </div>
+              <div class="panel">
+                <div class="h" id="lounge-when">Doors at noon</div>
+                <div class="b" id="lounge-when-sub">Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine. Free.</div>
+              </div>
+              <div class="panel">
+                <div class="h">Where to be</div>
+                <div class="b">Noon to six is outdoors on the parklet. At six the whole thing moves inside to Black Moon Public House, one door down, until ten.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><h2>Right now</h2><span class="rule"></span></div>
+          <div class="nownext">
+            <div class="nn" id="nn-now"><div class="lab"><span>On now</span></div><div class="title">&mdash;</div></div>
+            <div class="nn" id="nn-next"><div class="lab"><span>Up next</span></div><div class="title">&mdash;</div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><h2>Who you're joining</h2><span class="rule"></span><span class="note">Real rooms, real nights</span></div>
+          <div class="people" id="people"></div>
+        </div>
+
+        <div class="sec hidden" id="pub-announce">
+          <div class="sec-head"><h2>Latest word</h2><span class="rule"></span><span class="note">Posted by the crew</span></div>
+          <div class="card" id="announce-list"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-profile">
+        <div class="sec">
+          <div class="sec-head"><h2 id="prof-name">Your profile</h2><span class="rule"></span>
+            <button class="btn ghost sm" id="id-out">Sign out</button>
+          </div>
+          <div class="kpi" id="prof-kpi"></div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Messages for you</h2><span class="rule"></span><span class="note">From the crew</span></div>
+          <div class="card" id="prof-messages"></div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Your requests</h2><span class="rule"></span><span class="note">Everything you have sent the crew</span></div>
+          <div class="card" id="prof-requests"></div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>What the crew has posted</h2><span class="rule"></span></div>
+          <div class="card" id="prof-announce"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-watch">
+        <div class="sec">
+          <div class="sec-head"><h2>Watch and listen</h2><span class="rule"></span><span class="note">Wherever you are</span></div>
+          <div class="tiles" id="watch-tiles"></div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>How the online side works</h2><span class="rule"></span></div>
+          <div class="card pad grain" style="font-size:14px; color:var(--ink-2); max-width:74ch">
+            <p>There is no single room. Several communities each host their own Space at the same time, all pointing at ZAOstock, with the build running continuously underneath and the livestream carrying the actual show. Drop into whichever room you already belong to.</p>
+            <p style="margin-top:12px">Black Moon is hosting iPads on the bar running the build, so people standing on Franklin Street can meet the people who are not.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-day">
+        <div class="sec">
+          <div class="sec-head"><h2>The day</h2><span class="rule"></span><span class="note">All times Ellsworth</span></div>
+          <div class="sched" id="sched-public"></div>
+          <p class="foot">Acts not yet confirmed in writing show as to be announced. The running order is settled; individual set lengths can still move.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="s-help">
+        <div class="sec">
+          <div class="sec-head"><h2>Need a human?</h2><span class="rule"></span><span class="note">Goes straight to the crew</span></div>
+          <div class="card pad">
+            <p style="font-size:13.5px; color:var(--ink-2); max-width:70ch; margin-bottom:16px">Nothing here is locked. We only ask for enough to find you and get back to you, so please fill the whole thing in: a request with no name and no way to reach you is one we cannot act on.</p>
+            <div class="form-grid">
+              <label class="f">What do you need?
+                <select id="h-kind">
+                  <option>Medical or first aid</option>
+                  <option>Accessibility (seating, access, quiet space)</option>
+                  <option>Lost person or item</option>
+                  <option>Stream or audio problem</option>
+                  <option>Getting here or parking</option>
+                  <option>Artist or performer question</option>
+                  <option selected>Something else</option>
+                </select>
+              </label>
+              <label class="f">Where are you?
+                <select id="h-where">
+                  <option>At the parklet</option>
+                  <option>At Black Moon</option>
+                  <option selected>Online</option>
+                  <option>On my way</option>
+                </select>
+              </label>
+              <label class="f">Your name <input id="h-who" placeholder="So we know who to look for" maxlength="60"></label>
+              <label class="f">How to reach you <input id="h-contact" placeholder="Phone, email, or exactly where you are standing" maxlength="90"></label>
+              <label class="f">X or Farcaster
+                <select id="h-platform"><option value="x">X</option><option value="fc">Farcaster</option></select>
+              </label>
+              <label class="f">Your handle <input id="h-handle" placeholder="@yourhandle, so we can reply online too" maxlength="40" autocomplete="off"></label>
+            </div>
+            <label class="f" style="margin-top:12px">Tell us what's up
+              <textarea id="h-msg" placeholder="A sentence is plenty. If it is urgent, say so first." maxlength="600"></textarea>
+            </label>
+            <p id="h-err" class="hidden" style="margin-top:10px; font-size:12.5px; color:var(--red-700); font-weight:700"></p>
+            <div class="row" style="margin-top:14px">
+              <button class="btn" id="h-send">Send to the crew</button>
+              <span class="note" style="font-size:12.5px; color:var(--ink-3)">If it is an emergency, call 911 first, then tell us here.</span>
+            </div>
+            <p style="font-size:12px; color:var(--ink-3); margin-top:12px; max-width:70ch">What you send goes on the crew board so whoever is free can pick it up. Give us the way you actually want to be reached, and nothing more than that.</p>
+            <div id="h-fallback" class="hidden" style="margin-top:16px"></div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Good to know</h2><span class="rule"></span></div>
+          <div class="tiles" id="info-tiles"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-links">
+        <div class="sec">
+          <div class="sec-head"><h2>Every link</h2><span class="rule"></span><span class="note">Ctrl K searches these</span></div>
+          <div class="tiles" id="link-tiles"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-gate">
+        <div class="gate">
+          <div class="card pad grain">
+            <img class="gate-mark" id="mark-gate" alt="">
+            <div class="eyebrow" style="margin-bottom:10px">Team only</div>
+            <h2 class="disp" style="font-size:34px; margin-bottom:8px">Ops board</h2>
+            <p style="font-size:13.5px; color:var(--ink-2); margin-bottom:18px">Crew, artists and DJs. The run of show with owners and seconds, the artist advance and kits, the help queue, the rota, the squads and what to say to the public right now.</p>
+            <label class="f" style="text-align:left">Crew code <input id="gate-code" type="password" autocomplete="off" placeholder="Ask in the group chat"></label>
+            <div class="row" style="margin-top:14px; justify-content:center"><button class="btn" id="gate-go">Open the board</button></div>
+            <p id="gate-err" class="hidden" style="margin-top:12px; color:var(--red-700); font-weight:700"></p>
+            <p style="margin-top:18px; font-size:11.5px; color:var(--ink-3)">This is a curtain, not a lock. Nothing private goes on this page: no money figures, no personal numbers, no contracts.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-board">
+        <div class="sec">
+          <div class="sec-head"><h2 id="board-head">&mdash;</h2><span class="rule"></span>
+            <button class="btn ghost sm" id="copy-report">Copy report</button>
+            <button class="btn ghost sm" id="lock">Lock</button>
+          </div>
+          <div class="kpi" id="kpis"></div>
+          <p style="font-size:13.5px; color:var(--ink-2); margin-top:14px" id="board-sub">&mdash;</p>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>What to say right now</h2><span class="rule"></span><span class="note">One voice, everywhere</span></div>
+          <div class="card pad">
+            <div id="say-box" class="brief" style="max-height:none; margin-bottom:12px"></div>
+            <button class="btn sm" id="copy-say">Copy this line</button>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>The lineup switch</h2><span class="rule"></span><span class="note">Publishes act names to everyone</span></div>
+          <div class="card pad">
+            <label class="f" style="flex-direction:row; align-items:center; gap:10px; text-transform:none; letter-spacing:0; font-family:Rubik,sans-serif; font-size:14px; color:var(--ink)">
+              <input type="checkbox" id="lineup-public" style="width:auto"> Show act names on the public screens
+            </label>
+            <p style="font-size:13px; color:var(--ink-2); margin-top:10px; max-width:70ch">Off until the reveal. While it is off, the public schedule shows the running order, the venues and the set lengths, but every act reads "to be announced". The crew screens always show the real names.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-head"><h2>Rehearse the day</h2><span class="rule"></span><span class="note">Nothing here is published</span></div>
+          <div class="card pad">
+            <div class="row">
+              <label class="f" style="flex-direction:row; align-items:center; gap:8px; text-transform:none; letter-spacing:0; font-family:Rubik,sans-serif; font-size:13px; color:var(--ink)"><input type="checkbox" id="sim-on" style="width:auto"> Simulate a time</label>
+              <input id="sim-time" type="range" min="480" max="1330" step="5" value="780" style="flex:1; min-width:180px; padding:0" disabled>
+              <span class="chip mute mono" id="sim-label">off</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-queue">
+        <div class="sec">
+          <div class="sec-head"><h2>Help queue</h2><span class="rule"></span><span class="note" id="queue-note"></span></div>
+          <div class="card" id="queue-list"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-attention">
+        <div class="sec">
+          <div class="sec-head"><h2>Needs attention</h2><span class="rule"></span><span class="note">Tap a chip to move it along</span></div>
+          <div class="card" id="attention-list"></div>
+          <div class="row" style="margin-top:12px">
+            <input id="att-title" placeholder="Add something that needs attention" style="flex:1; min-width:220px">
+            <input id="att-owner" placeholder="Owner" style="width:130px">
+            <button class="btn sm" id="att-add">Add</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-runofshow">
+        <div class="sec">
+          <div class="sec-head"><h2>Run of show</h2><span class="rule"></span><span class="note">Owner and second on every line</span></div>
+          <div class="sched" id="sched-team"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-artists">
+        <div class="sec">
+          <div class="sec-head"><h2>Artist advance</h2><span class="rule"></span><span class="note" id="adv-note"></span></div>
+          <p style="font-size:13.5px; color:var(--ink-2); max-width:74ch; margin-bottom:16px">Every act on the day and what each one still owes. Tick as it lands. Anything unticked on 26 September is a phone call, not a note. Team only: nothing on this screen is public.</p>
+          <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(330px,1fr))" id="artists"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-kit">
+        <div class="sec">
+          <div class="sec-head"><h2>Artist kit</h2><span class="rule"></span><span class="note">Send this to an act</span></div>
+          <div class="card pad">
+            <div class="row">
+              <label class="f" style="flex:1; min-width:220px">Build the kit for <select id="kit-who"></select></label>
+              <button class="btn sm" id="kit-copy" style="align-self:flex-end">Copy the whole kit</button>
+            </div>
+          </div>
+          <div class="card pad grain" style="margin-top:14px">
+            <div id="kit-body"></div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>What Black Moon is covering</h2><span class="rule"></span><span class="note">Confirmed by Steve, 31 August</span></div>
+          <div class="tiles" id="hosp-tiles"></div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Dates that bind</h2><span class="rule"></span></div>
+          <div class="card" id="dates-list"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-messages">
+        <div class="sec">
+          <div class="sec-head"><h2>Message someone</h2><span class="rule"></span><span class="note">Lands in their profile</span></div>
+          <div class="card pad">
+            <div class="form-grid">
+              <label class="f">To handle <input id="msg-to" placeholder="@handle, exactly as they signed in" maxlength="40"></label>
+              <label class="f">From <input id="msg-by" placeholder="Your name" maxlength="40"></label>
+            </div>
+            <label class="f" style="margin-top:12px">Message <textarea id="msg-text" placeholder="Short and specific. They see it the next time they open the app." maxlength="500"></textarea></label>
+            <div class="row" style="margin-top:12px">
+              <button class="btn sm" id="msg-send">Send it</button>
+              <span class="note" style="font-size:12.5px; color:var(--ink-3)">Handles only. Never put a phone number or an address in here.</span>
+            </div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Sent</h2><span class="rule"></span><span class="note" id="msg-note"></span></div>
+          <div class="card" id="msg-list"></div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Who has a pass</h2><span class="rule"></span><span class="note">Handles only, no emails</span></div>
+          <div class="card" id="who-list"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-rota">
+        <div class="sec">
+          <div class="sec-head"><h2>Moderator rota</h2><span class="rule"></span><span class="note" id="rota-note"></span></div>
+          <div class="rota" id="rota"></div>
+          <p class="foot">Two people an hour, noon to ten. Anyone from the WaveWarZ crew who cannot travel: this is how you are in the event.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="s-squads">
+        <div class="sec">
+          <div class="sec-head"><h2>Agent squads</h2><span class="rule"></span><span class="note">Roles a teammate can hand to an agent</span></div>
+          <p style="font-size:13.5px; color:var(--ink-2); max-width:72ch; margin-bottom:16px">Each one keeps a human owner who stays accountable. The agent watches, chases and drafts; the human decides and speaks for ZAO. Copy a brief into your assistant and give it the channel it should post into.</p>
+          <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))" id="agents"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-channels">
+        <div class="sec">
+          <div class="sec-head"><h2>Where the audience goes</h2><span class="rule"></span><span class="note">Fill these and the public tiles go live</span></div>
+          <div class="card pad">
+            <div class="form-grid">
+              <label class="f">Livestream URL <input id="ch-stream" placeholder="The one link the audience watches on"></label>
+              <label class="f">Spaces hub URL <input id="ch-spaces" placeholder="Where the list of Spaces lives"></label>
+              <label class="f">Metaverse build URL <input id="ch-metaverse" placeholder="The build link"></label>
+              <label class="f">WaveWarZ vote URL <input id="ch-vote" placeholder="Opens at four, street and online"></label>
+              <label class="f">Help line, if there is one <input id="ch-helpLine" placeholder="A number or handle the public can reach"></label>
+            </div>
+            <div class="row" style="margin-top:14px">
+              <button class="btn sm" id="ch-save">Save and publish</button>
+              <span class="note" style="font-size:12.5px; color:var(--ink-3)">Anything empty shows as "Soon" rather than a dead link.</span>
+            </div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-head"><h2>Crew links</h2><span class="rule"></span></div>
+          <div class="tiles" id="team-tiles"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="s-broadcast">
+        <div class="sec">
+          <div class="sec-head"><h2>Post to the public side</h2><span class="rule"></span><span class="note">Shows on the open page instantly</span></div>
+          <div class="card pad">
+            <label class="f">Announcement <textarea id="ann-text" placeholder="Doors are open. Music at noon. First act is on the parklet." maxlength="300"></textarea></label>
+            <div class="row" style="margin-top:12px">
+              <select id="ann-level" style="width:160px"><option value="info">Info</option><option value="live">Happening now</option><option value="warn">Heads up</option></select>
+              <input id="ann-by" placeholder="Your name" style="width:160px">
+              <button class="btn sm" id="ann-post">Post it</button>
+            </div>
+          </div>
+          <div class="card" id="ann-admin" style="margin-top:14px"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<button class="soundnudge hidden" id="soundnudge"><span class="dot"></span> Tap for sound</button>
+
+<div class="cmdk hidden" id="cmdk">
+  <div class="cmdk-box">
+    <input id="cmdk-input" placeholder="Jump to a screen, or find a link" autocomplete="off">
+    <div class="cmdk-list" id="cmdk-list"></div>
+  </div>
+</div>
+
+<script id="ops-state" type="application/json">
+{"version":4,"updatedAt":null,"announcements":[],"help":[],"rota":{},"attention":[{"id":"n1","title":"A second for Stilo, 16:00 to 20:00. He battles then DJs, so he cannot run his own sound. Four hours with the indoor move inside it. Biggest gap on the day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n2","title":"A second for Dcoop on AV while he is on stage, covering his set and the fire slot.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager, parklet and Black Moon.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day but it is a rota. Dcoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n5","title":"Online moderators, two an hour noon to ten. Twenty seats, none claimed.","owner":"IMan + Rev","state":"blocked"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n7","title":"A fire circle for Dcoop. The City approved the performance on 31 August; the circle is all that is left.","owner":"Dcoop","state":"moving"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition.","owner":"Zaal","state":"moving"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a6","title":"WaveWarZ online voting does not exist yet. Vote in the street and online is on the running order.","owner":"IMan","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream.","owner":"Steve / Katina","state":"blocked"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms still switched off: RSVP, volunteer and the ideas box.","owner":"IMan","state":"moving"},{"id":"a11","title":"No confirmed artists linked to the event row in the database.","owner":"Zaal","state":"blocked"},{"id":"a13","title":"Artist photos and press shots: none exist for any act.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? It rides on the 11 September PA rental.","owner":"Dcoop","state":"blocked"},{"id":"a15","title":"Stilo indoors: house system or his own controller?","owner":"Steve Peer","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics and Acadia Rising, for the meal certificates.","owner":"Dcoop","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d2","title":"City approved the fire performance.","owner":"Dcoop","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power at both stages, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
+</script>
+
+<script>
+var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var TZ = "America/New_York";
+  var DOORS = new Date("2026-10-03T12:00:00-04:00");
+  var DAY = "2026-10-03";
+  var GATE_HASH = 168443727;
+  var IMG = /*__IMG__*/{};
+  var THEME = /*__THEME__*/null;
+
+  var SCHEDULE = [
+    {v:"crew", t:480,  e:600,  n:"Vital crew on site",        d:"Parklet unlocked. PA power-up and line checks from 08:15.", own:"Roddy", sec:"", kind:"gap", pub:false},
+    {v:"crew", t:600,  e:660,  n:"Everyone on site",          d:"First aid kit and contact, wayfinding, merch table, sponsor signage, stream rig check.", own:"Zaal", sec:"", kind:"gap", pub:false},
+    {v:"crew", t:660,  e:690,  n:"MC mic check",              d:"Sponsor spot scripts on the desk. The MC is a rota, not one person: Zaal primary, with Steve Peer and one or two from sponsors.", own:"Zaal", sec:"", kind:"gap", pub:false},
+    {v:"crew", t:690,  e:720,  n:"Stage manager's walk",      d:"Acts on site, overrun rule said aloud.", own:"UNNAMED", sec:"", kind:"gap", pub:false, flag:"No stage manager"},
+    {v:"out",  t:720,  e:725,  n:"Intro",                     d:"Five minutes. Who speaks and what is said is still open.", own:"Zaal", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:725,  e:755,  n:"The Crown Vics",            d:"30 minutes. Steve Peer is performing, so Katina covers venue and door for this window.", own:"Steve Peer", sec:"Katina", kind:"act", pub:true, confirmed:true},
+    {v:"out",  t:755,  e:760,  n:"Changeover",                d:"Five minutes, tightened from ten. MC talks the event, the six o'clock move and Art of Ellsworth, plus a sponsor spot.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:760,  e:790,  n:"Acadia Rising",             d:"Sen Wilde with Women with Rhythm. 30 minutes. Group size still unset for the meal headcount.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:true},
+    {v:"out",  t:790,  e:795,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:795,  e:825,  n:"Michael Anderson",          d:"Piano, 30 minutes. Confirmed (31 Aug standup: every non-WaveWarZ act is now confirmed). Still open: does he bring his own keyboard, or does one ride on the PA rental?", own:"Dcoop", sec:"UNNAMED", kind:"act", pub:true, confirmed:true, flag:"Keyboard question open"},
+    {v:"out",  t:825,  e:830,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:830,  e:860,  n:"Dcoop",                     d:"30 minutes plus the fire slot. The City approved the fire performance (31 Aug); all it needs now is a fire circle. AV cover while he is on stage is his second, and the same name covers the fire slot.", own:"Dcoop", sec:"UNNAMED", kind:"act", pub:true, confirmed:true, flag:"AV second unnamed · fire circle"},
+    {v:"out",  t:860,  e:865,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:865,  e:905,  n:"Lyons Den",                 d:"40 minutes, extended from 30.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:true},
+    {v:"out",  t:905,  e:910,  n:"Changeover",                d:"The tightest thing on the grid: event talk, the WaveWarZ pitch and one sponsor spot in five minutes. If something gives, cut the event talk.", own:"MC rota", sec:"", kind:"gap", pub:true, flag:"Three items in five minutes"},
+    {v:"out",  t:910,  e:950,  n:"Fellenz",                   d:"40 minutes, closing the outdoor block. Confirmed at 15:10 by the 31 August standup running order.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:true},
+    {v:"out",  t:950,  e:960,  n:"Battle reset",              d:"Ten minutes. The battle rig should be patched and line-checked during Fellenz's set, not in this window.", own:"Stilo", sec:"", kind:"gap", pub:false},
+    {v:"out",  t:960,  e:1080, n:"WaveWarZ",                  d:"Story segment, rules, bracket, voting windows, final. Hurricane hosting. Battlers: Stilo, Jango, Lui and Quan. Vote in the street and online.", own:"Hurricane", sec:"SOUND SECOND UNNAMED", kind:"act", pub:true, confirmed:true, flag:"Sound second unnamed, four-hour window"},
+    {v:"out",  t:1075, e:1080, n:"Result and hand-off",       d:"Result called, then the street moves indoors.", own:"Hurricane", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:1080, e:1085, n:"Everything moves to Black Moon", d:"Outdoor strike begins. The street pointer at the move still needs a name.", own:"Steve Peer", sec:"UNNAMED", kind:"move", pub:true, flag:"No street pointer"},
+    {v:"in",   t:720,  e:1080, n:"Black Moon open",           d:"Performers eat here after their set. Stream on screens inside, still to build.", own:"Katina", sec:"", kind:"gap", pub:true},
+    {v:"in",   t:1080, e:1200, n:"Stilo, DJ set",             d:"Music on before the first person reaches the door. House system or his own controller is still open.", own:"Steve Peer", sec:"Katina", kind:"act", pub:true, confirmed:true},
+    {v:"in",   t:1200, e:1320, n:"Steve Peer",                d:"Closing set. The indoor PA is a rental rather than the house rig, with a gate of Friday 11 September.", own:"Katina", sec:"", kind:"act", pub:true, confirmed:true}
+  ];
+
+  var PEOPLE = [
+    {img:"stage", b:"WaveWarZ", s:"The battle format that takes the stage from four to six. Hurricane hosts. Stilo, Jango, Lui and Quan battle."},
+    {img:"crowd", b:"A ZAO room", s:"Last time out. This is the energy heading for Franklin Street on 3 October."},
+    {img:"zaal",  b:"Zaal", s:"Runs ZAO Festivals and the day itself, and he is on the mic for most of the afternoon."}
+  ];
+
+  /* ------------------------------------------------- the artist layer */
+  // Every act on the day, with the advance each one still owes. Checks are
+  // stored in state.artists so the crew can tick them off together.
+  var ROSTER = [
+    {id:"crownvics", n:"The Crown Vics",   t:725,  e:755,  where:"Parklet", kind:"Band",
+     lead:"Steve Peer", note:"Steve's own band, and he is also venue and door lead, so Katina covers that window. Group size still needed for the meal headcount and the certificates."},
+    {id:"acadia",    n:"Acadia Rising",    t:760,  e:790,  where:"Parklet", kind:"Band",
+     lead:"Sen Wilde", note:"Sen Wilde with Women with Rhythm. Group size still needed for the meal headcount."},
+    {id:"anderson",  n:"Michael Anderson", t:795,  e:825,  where:"Parklet", kind:"Piano",
+     lead:"Dcoop", note:"Open question, and it has a cost attached: own keyboard, or one provided on the PA rental? Answer before the 11 September rental gate."},
+    {id:"dcoop",     n:"Dcoop",            t:830,  e:860,  where:"Parklet", kind:"Set + fire",
+     lead:"Dcoop", note:"The City approved the fire performance on 31 August. All it needs is a fire circle. Dcoop brings his own extinguisher and water. He also runs AV, so he needs a named second for his own set plus the fire slot, about 45 minutes."},
+    {id:"lyonsden",  n:"Lyons Den",        t:865,  e:905,  where:"Parklet", kind:"Band",
+     lead:"Dcoop", note:"40 minutes, extended from 30. Zaal floated Dcoop giving the intro. Travelling in to Maine."},
+    {id:"fellenz",   n:"Fellenz",          t:910,  e:950,  where:"Parklet", kind:"Band",
+     lead:"Dcoop", note:"40 minutes, closing the outdoor block immediately before WaveWarZ. The battle rig gets patched and line-checked during this set."},
+    {id:"wavewarz",  n:"WaveWarZ",         t:960,  e:1080, where:"Parklet", kind:"Battle",
+     lead:"Hurricane", note:"Hurricane hosts. Battlers: Stilo, Jango, Lui, Quan. Werb is out. Bracket, battle order, voting windows and the prize are all still with the WaveWarZ team. Anyone who cannot travel goes on the online rota instead."},
+    {id:"stilo",     n:"Stilo, DJ set",    t:1080, e:1200, where:"Black Moon", kind:"DJ",
+     lead:"Steve Peer", note:"House system or his own controller is still unanswered. He battles 16:00 to 18:00 and then plays, so he cannot run his own sound: one second covers 16:00 to 20:00, with the move indoors inside it. Biggest gap on the day."},
+    {id:"stevepeer", n:"Steve Peer",       t:1200, e:1320, where:"Black Moon", kind:"Closing set",
+     lead:"Katina", note:"Closes the night. Indoor PA is a rental rather than the house rig, gate of Friday 11 September."}
+  ];
+
+  // The advance. Ordered the way you would actually chase it.
+  var CHECKS = [
+    {k:"confirmed", n:"Confirmed in writing",    d:"A yes you can point at. Everything public depends on this."},
+    {k:"setlength", n:"Set length agreed",       d:"So the grid does not move again."},
+    {k:"headcount", n:"Group size given",        d:"Drives the meal certificates and the dressing-room space."},
+    {k:"stageplot", n:"Stage plot / input list", d:"What they plug in, how many channels, who brings what."},
+    {k:"backline",  n:"Backline sorted",         d:"What is shared, what they carry, what has to be hired."},
+    {k:"photo",     n:"Press photo received",    d:"For the poster, the site, the reveal and the stream lower third."},
+    {k:"socials",   n:"Socials and handles",     d:"For tagging on the reveal and for collaborative posts."},
+    {k:"songs",     n:"Songs and lyrics sent",   d:"Needed for the lyric videos and for the stream."},
+    {k:"travel",    n:"Travel and arrival",      d:"Call time, parking, and whether they need housing."},
+    {k:"soundcheck",n:"Friday soundcheck agreed",d:"2 October is mandatory and goes in the contract."}
+  ];
+
+  var HOSPITALITY = [
+    {n:"Bottled water", d:"At both stages. Committed by Steve and Black Moon."},
+    {n:"Electricity", d:"At both stages, committed by Black Moon."},
+    {n:"A $20 gift certificate", d:"For every performer, redeemable at Black Moon. Eat after your set. Headcount comes from your group size, so give it early."},
+    {n:"Dressing room", d:"The Black Moon basement, with its own bathroom, for performers."},
+    {n:"A porta-potty", d:"On site, committed by Black Moon."},
+    {n:"Friday soundcheck", d:"2 October, at whichever stage you actually play. Mandatory, and it doubles as a filming and recording night."}
+  ];
+
+  var KEYDATES = [
+    {d:"Tue 1 Sep",  t:"Poster and daily photos start going out. Facebook event is live and the City will share it."},
+    {d:"Thu 10 Sep", t:"Zaal live in the Star 97.7 studio, the 8 o'clock hour. At the studio before 8:00."},
+    {d:"Fri 11 Sep", t:"Indoor PA rental gate. Money attached. The keyboard question rides on this."},
+    {d:"Fri 19 Sep", t:"Star 97.7 30-second ads start rotating. Copy needs to be with Candy before this."},
+    {d:"Fri 26 Sep", t:"Target for a full moderator rota and every artist advance closed."},
+    {d:"Thu 1 Oct",  t:"Zaal back on Star 97.7 as the week-of reminder."},
+    {d:"Fri 2 Oct",  t:"Soundcheck night. Every act, mandatory. Streaming chain must work end to end."},
+    {d:"Sat 3 Oct",  t:"Crew 08:00. Everyone 10:00. Music at noon."}
+  ];
+
+  var WATCH = [
+    {n:"Watch the livestream", d:"The full day, noon to ten, from the parklet and then inside Black Moon.", key:"stream", pending:"Destination not set yet. It lands here the moment it does."},
+    {n:"Join a Space", d:"Several communities host their own Space at the same time, all pointing here. Drop into whichever one you belong to.", key:"spaces", pending:"Host list opens closer to the day. Want to host one? Use the help form."},
+    {n:"The metaverse build", d:"The show runs continuously in the ZAO build, and there are iPads inside Black Moon so people on the parklet can meet you there.", key:"metaverse", pending:"Build in progress. Follow the builder battle at zaostock.com/build."},
+    {n:"Vote in WaveWarZ", d:"Four battlers, from four o'clock. Voting opens per round, in the street and online at once.", key:"vote", pending:"Voting opens on the day, right here."}
+  ];
+
+  var INFO = [
+    {n:"Free to get in", d:"No ticket, no door charge, all ages on the parklet. Black Moon has its own house rules after six."},
+    {n:"Where it is", d:"Franklin Street Parklet, downtown Ellsworth, Maine, then Black Moon Public House next door. Everything is on one block."},
+    {n:"Rain or shine", d:"Wallace Events has the tent confirmed. The rain call is made at Friday soundcheck and looked at again at eight on Saturday morning."},
+    {n:"Food and drink", d:"Black Moon is open from noon. The beer garden is run by Black Moon under their own permit, about an eighth of the general section."},
+    {n:"Accessibility", d:"Tell us what you need through the help form and someone will meet you. Seating, access routes and a quieter spot are all askable."},
+    {n:"Bringing a crew", d:"Come. The parklet holds two to three hundred and it is a street, not a stadium."},
+    {n:"A bigger weekend", d:"ZAOstock sits inside the 9th annual Art of Ellsworth and Maine Craft Weekend, so there is a whole town's worth of programme around it."},
+    {n:"Playing or helping", d:"Musician submissions and volunteer sign-ups are both open. Both are on the Links screen."}
+  ];
+
+  var LINKS = [
+    {n:"zaostock.com", u:"https://zaostock.com", d:"The main site."},
+    {n:"The programme", u:"https://zaostock.com/program", d:"The day and the running order."},
+    {n:"Volunteer", u:"https://apply.zaostock.com", d:"Sign up to help on the day."},
+    {n:"For musicians", u:"https://play.zaostock.com", d:"Submissions and the stage rider."},
+    {n:"For artists", u:"https://zaostock.com/artists", d:"The artist side of the weekend."},
+    {n:"Builder battle", u:"https://zaostock.com/build", d:"Build the venue in the metaverse."},
+    {n:"Facebook event", u:"https://facebook.com/events/28051455107809318", d:"RSVP and see who else is coming."},
+    {n:"Tickets page", u:"https://ticket.zaostock.com", d:"Free event, but the page is there."},
+    {n:"Sponsor pitch", u:"https://zaostock.com/pitch", d:"What sponsorship gets you."},
+    {n:"Sponsor deck", u:"https://deck.zaostock.com", d:"The full deck, sendable."},
+    {n:"Ellsworth", u:"https://zaostock.com/ellsworth", d:"The local page."},
+    {n:"ZAO Festivals", u:"https://zaostock.com/festivals", d:"Who runs this."},
+    {n:"WaveWarZ", u:"https://wavewarz.info", d:"The battle format running four to six."},
+    {n:"The ZAO", u:"https://thezao.com", d:"The wider organisation."},
+    {n:"ZAO OS", u:"https://zaoos.com", d:"The operating system side of things."},
+    {n:"Support ZAO Festivals", u:"https://giveth.io/project/sustaining-zao-festivals-creativity-technology", d:"Funding page on Giveth."},
+    {n:"Zaal on X", u:"https://x.com/bettercallzaal", d:"Day-of updates."}
+  ];
+
+  var TEAMLINKS = [
+    {n:"Monday standup", u:"https://meet.google.com/prq-ujyg-ojs", d:"Every Monday, 11:30 EDT. Partners and helpers welcome."},
+    {n:"Drive folder", u:"https://files.zaostock.com", d:"Logos, photos, artwork, contracts. Not the chat thread."},
+    {n:"The code", u:"https://github.com/ZAODEVZ/ZAOstock", d:"Canonical repo."},
+    {n:"Research library", u:"https://github.com/bettercallzaal/ZAOOS/tree/main/research", d:"Every ZAOstock doc."},
+    {n:"Team page", u:"https://zaostock.com/team", d:"Public. Careful what goes on it."},
+    {n:"Working document", u:"", d:"Deliberately not linked here. It is readable by anyone with the link and carries money figures. Get it from the group chat."}
+  ];
+
+  var AGENTS = [
+    {n:"Stream watchdog", who:"Owner: IMan", p:"Checks the stream is actually up and actually has audio, every few minutes, all day. The commonest failure is a stream that looks fine on the encoder and is dead to viewers.",
+     b:"You are the stream watchdog for ZAOstock on Saturday 3 October.\nEvery 5 minutes from 11:00 to 22:00 Ellsworth time, load the public stream URL as a viewer would and confirm: the player is live, video is moving, audio is present, and viewer count is not zero.\nIf any check fails twice in a row, post to the crew channel: what failed, when it started, and which fallback to try next in this order: 1) reload encoder scene, 2) switch to the second machine, 3) switch carrier on the bonded connection, 4) put up the holding slate and post the delay publicly.\nDo not post about a single failed check. Do not attempt any fix yourself. Report, and name the human who owns the next step."},
+    {n:"Spaces herald", who:"Owner: Thy Revolution", p:"Feeds every Space host the same line at the same moment, so six rooms are never describing three different events.",
+     b:"You are the herald for the ZAOstock Spaces on Saturday 3 October.\nAt the top of every set change, send all Space hosts one short message: who is on now, who is next, the watch link, and one sentence they can read aloud.\nPull the current and next act from the run of show. Never announce an act flagged as not confirmed in writing.\nIf a set runs over, say so plainly rather than repeating the schedule.\nKeep every message under 40 words. Same words to every host, every time."},
+    {n:"Help router", who:"Owner: rota lead on duty", p:"Triages what comes in from the public help form, so nothing sits unread while everyone assumes someone else has it.",
+     b:"You are triaging incoming help requests for ZAOstock.\nFor each new request, classify it as: MEDICAL (escalate immediately by name and stop), ACCESS, LOST, STREAM, TRAVEL, ARTIST, or OTHER.\nAssign it to the right lane: parklet crew, Black Moon crew, or online crew, based on where the person says they are.\nDraft a one-sentence reply the human can send as-is. Warm, specific, no apologies, no policy language.\nFlag anything unanswered after 10 minutes. Never answer a medical request yourself."},
+    {n:"Clip cutter", who:"Owner: IMan", p:"Logs the moments worth clipping while they happen, so the recap does not mean scrubbing ten hours of video on Sunday.",
+     b:"You are logging clip moments during ZAOstock.\nWatch the crew channel and the public chat. Every time a moment lands (a big crowd reaction, a guest appearance, a battle result, a first-time performer finishing), log: timestamp in Ellsworth time, act name, one line on what happened, and how strong it was out of three.\nAt the end of each hour, post the top three of that hour.\nDo not log routine set changes. Do not log anything you did not see evidence of in a channel."},
+    {n:"Sponsor spot prompter", who:"Owner: MC rota", p:"The changeovers carry the sponsor reads and they are five minutes long. This makes sure the right one gets read, once, in the right gap.",
+     b:"You are prompting sponsor reads for the ZAOstock MC rota.\nThere is one sponsor spot per changeover, read live, never recorded. Two minutes before each changeover, send whoever has the mic: which sponsor, the exact copy, and how long it should take.\nThe 15:05 changeover carries three items in five minutes. For that one only, send the order and add: if time runs short, cut the event talk, keep the sponsor spot and the battle pitch.\nStar 97.7's logo and mentions are contractual. Never skip that one."},
+    {n:"Rota chaser", who:"Owner: Thy Revolution", p:"Twenty moderator slots, two an hour. This one keeps asking until they are full, which is the whole job.",
+     b:"You are filling the ZAOstock moderator rota: two people per hour, noon to 22:00, twenty slots.\nEvery day until 26 September, post the current count and name only the empty hours. Ask for one hour, not a whole day, and name the people who have not yet claimed anything.\nPrioritise anyone from the WaveWarZ crew who cannot travel, since this is how they are in the event.\nStop asking a person once they have claimed a slot. Never post a shaming list."},
+    {n:"Vote steward", who:"Owner: IMan", p:"Opens and closes the WaveWarZ voting windows and puts the link in every room at the same second.",
+     b:"You are stewarding the WaveWarZ vote between 16:00 and 18:00 Ellsworth time.\nWhen the host calls a voting window open, post the vote link to every channel at once: the stream chat, every Space, the metaverse chat, and the on-site screen feed. When the window closes, post that it is closed, in the same places.\nNever post the running tally unless the host asks. Never post a result before the host calls it.\nIf the vote page is not reachable, say so immediately and switch to the fallback poll."},
+    {n:"Hourly recap", who:"Owner: Zaal", p:"Writes the hour up while it is fresh, so the post-event campaign starts on Saturday night and not the following week.",
+     b:"You are writing hourly recaps during ZAOstock.\nAt the end of each hour, write 60 words on what happened: who played, one specific moment, one number if you have a real one (peak viewers, crowd size), and what is next.\nWrite it so it can be posted as-is. No hype adjectives, no exclamation marks. Specific beats loud.\nUse only facts posted in the crew channels. If you do not have a number, leave it out rather than estimating."}
+  ];
+
+  var SAY = [
+    {from:0,   to:660,  t:"We are not open yet. Music starts at noon on the Franklin Street Parklet, it is free, and it runs to ten at night. If someone asks where to be: Franklin Street Parklet from noon, Black Moon Public House from six."},
+    {from:660, to:720,  t:"Doors shortly. Music at noon on the parklet. Free, all ages outdoors, and the whole thing moves inside to Black Moon at six. Watching from elsewhere: the stream link is on the public page."},
+    {from:720, to:960,  t:"We are live on the parklet. Music runs straight through with no gaps until four, then WaveWarZ takes the stage until six, then everything moves inside to Black Moon. Free, all ages, come down."},
+    {from:960, to:1080, t:"WaveWarZ is on until six. Four battlers, hosted by Hurricane, and you can vote in the street or online. At six the whole thing moves inside to Black Moon and keeps going to ten."},
+    {from:1080,to:1200, t:"We have moved inside to Black Moon Public House. Stilo is on the decks until eight, then Steve Peer closes the night to ten. Same block, one door down."},
+    {from:1200,to:1330, t:"Last stretch inside Black Moon. Steve Peer until ten. If you are still online with us, the stream stays up to the end."},
+    {from:1330,to:1441, t:"That is ZAOstock. Thank you to everyone who came down, played, hosted a room or watched from somewhere else. Recap and photos to follow. Say what you loved, we are reading everything."}
+  ];
+
+  var ICON = {
+    lounge:'<circle cx="8" cy="8" r="6"/><path d="M6.5 5.8l4 2.2-4 2.2z"/>',
+    watch:'<rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="M5 14.5h6"/>',
+    day:'<rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5.5 1.8v2.4M10.5 1.8v2.4"/>',
+    help:'<circle cx="8" cy="8" r="6.2"/><path d="M6.3 6.2a1.8 1.8 0 113 1.4c-.7.5-1.3.8-1.3 1.7M8 11.6v.01"/>',
+    links:'<path d="M6.6 9.4a2.7 2.7 0 004 .3l2-2a2.7 2.7 0 00-3.8-3.8l-1.1 1.1"/><path d="M9.4 6.6a2.7 2.7 0 00-4-.3l-2 2a2.7 2.7 0 003.8 3.8l1.1-1.1"/>',
+    board:'<rect x="1.8" y="2.5" width="12.4" height="11" rx="1.5"/><path d="M5 10.5V7M8 10.5V5M11 10.5V8.5"/>',
+    queue:'<path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h7"/>',
+    attention:'<path d="M8 2l6 11H2z"/><path d="M8 6.5v3M8 11.3v.01"/>',
+    rota:'<circle cx="8" cy="8" r="6.2"/><path d="M8 4.5V8l2.4 1.5"/>',
+    squads:'<circle cx="5.5" cy="6" r="2.2"/><circle cx="11" cy="6" r="1.8"/><path d="M2 13c0-2 1.6-3.3 3.5-3.3S9 11 9 13M10 9.9c1.8 0 3 1.2 3 3.1"/>',
+    channels:'<path d="M8 2.5v11M4 5.5v5M12 5.5v5M1.8 7.4v1.2M14.2 7.4v1.2"/>',
+    broadcast:'<path d="M3.2 4.2a6.5 6.5 0 000 7.6M12.8 4.2a6.5 6.5 0 010 7.6"/><circle cx="8" cy="8" r="1.8"/>',
+    profile:'<circle cx="8" cy="5.6" r="2.6"/><path d="M2.8 13.4c0-2.6 2.3-4.2 5.2-4.2s5.2 1.6 5.2 4.2"/>',
+    messages:'<path d="M2 4.2h12v7.2H8.8L5.6 13.8v-2.4H2z"/>',
+    artists:'<path d="M6.4 11.2V3.6l6.4-1.2v7.6"/><circle cx="4.6" cy="11.6" r="1.9"/><circle cx="11" cy="10.4" r="1.9"/>',
+    kit:'<rect x="2" y="4.8" width="12" height="8.4" rx="1.5"/><path d="M5.8 4.8V3.4a1 1 0 011-1h2.4a1 1 0 011 1v1.4M2 8.4h12"/>'
+  };
+
+  var SCREENS = [
+    {id:"lounge",    t:"The Waiting Room", g:"public", i:"lounge", open:true},
+    {id:"watch",     t:"Watch and Listen", g:"public", i:"watch"},
+    {id:"day",       t:"The Day",          g:"public", i:"day"},
+    {id:"help",      t:"Get Help",         g:"public", i:"help"},
+    {id:"profile",   t:"Your Profile",     g:"public", i:"profile"},
+    {id:"links",     t:"Links",            g:"public", i:"links"},
+    {id:"board",     t:"Ops Board",        g:"team",   i:"board"},
+    {id:"queue",     t:"Help Queue",       g:"team",   i:"queue"},
+    {id:"messages",  t:"Messages",         g:"team",   i:"messages"},
+    {id:"attention", t:"Needs Attention",  g:"team",   i:"attention"},
+    {id:"runofshow", t:"Run of Show",      g:"team",   i:"day"},
+    {id:"artists",   t:"Artist Advance",   g:"team",   i:"artists"},
+    {id:"kit",       t:"Artist Kit",       g:"team",   i:"kit"},
+    {id:"rota",      t:"Moderator Rota",   g:"team",   i:"rota"},
+    {id:"squads",    t:"Agent Squads",     g:"team",   i:"squads"},
+    {id:"channels",  t:"Channels",         g:"team",   i:"channels"},
+    {id:"broadcast", t:"Broadcast",        g:"team",   i:"broadcast"}
+  ];
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var el = function (t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; };
+  var hhmm = function (m) { var h = Math.floor(m / 60), x = m % 60; return (h < 10 ? "0" : "") + h + ":" + (x < 10 ? "0" : "") + x; };
+  var mmss = function (s) { if (!isFinite(s) || s < 0) s = 0; return Math.floor(s / 60) + ":" + ("0" + Math.floor(s % 60)).slice(-2); };
+  var uid = function () { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); };
+  function hash(s) { var h = 5381, i; for (i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h; }
+  function svg(p) { return '<svg viewBox="0 0 16 16">' + p + '</svg>'; }
+  function eventParts(d) {
+    var f = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+    var o = {}; f.formatToParts(d).forEach(function (p) { o[p.type] = p.value; });
+    return { date: o.year + "-" + o.month + "-" + o.day, min: (+o.hour % 24) * 60 + (+o.minute), hh: o.hour, mm: o.minute };
+  }
+  var toastT;
+  function toast(msg) {
+    var old = $(".toast"); if (old) old.remove();
+    var n = el("div", "toast", msg); document.body.appendChild(n);
+    clearTimeout(toastT); toastT = setTimeout(function () { n.remove(); }, 3600);
+  }
+  function copy(text, what) {
+    var ta = el("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast(what + " copied."); }
+    catch (e) { toast("The browser blocked copying. Select it by hand."); }
+    ta.remove();
+  }
+
+  var state;
+  try { state = JSON.parse($("#ops-state").textContent); } catch (e) { state = {}; }
+  state.announcements = state.announcements || [];
+  state.help = state.help || [];
+  state.rota = state.rota || {};
+  state.attention = state.attention || [];
+  state.channels = state.channels || {};
+  state.artists = state.artists || {};
+  state.messages = state.messages || [];
+  state.passes = state.passes || [];
+  if (typeof state.lineupPublic !== "boolean") state.lineupPublic = false;
+
+  var artifactNs = null, canWrite = true, publishing = false;
+  var nsPromise = (window.claude && typeof window.claude.use === "function")
+    ? window.claude.use("artifact").then(function (ns) { artifactNs = ns; return ns; }, function () { return null; })
+    : Promise.resolve(null);
+  nsPromise.then(function () { render(); });
+
+  function serialize() {
+    var json = JSON.stringify(state).replace(/</g, "\\u003c");
+    return PRISTINE.replace(/(<script id="ops-state" type="application\/json">)[\s\S]*?(<\/script>)/,
+      function (m, a, b) { return a + "\n" + json + "\n" + b; });
+  }
+  function save(okMsg, onFail, onOk) {
+    state.updatedAt = new Date().toISOString();
+    render();
+    if (publishing) { toast("One at a time, still saving the last change."); return; }
+    publishing = true;
+    nsPromise.then(function (ns) {
+      if (!ns) {
+        publishing = false; canWrite = false; render();
+        if (onFail) onFail("unavailable"); else toast("Saved on this screen only. This view cannot write to the shared board.");
+        return;
+      }
+      return ns.publish(serialize()).then(function () {
+        publishing = false; toast(okMsg || "Saved for everyone."); if (onOk) onOk();
+      }, function (err) {
+        publishing = false;
+        var code = (err && (err.code || err.name)) || "";
+        if (code === "conflict") { toast("Someone saved first. This screen reloads to their version."); return; }
+        canWrite = false; render();
+        if (onFail) onFail(code); else toast("Saved on this screen only. You do not have write access to the shared board.");
+      });
+    });
+  }
+
+  var simOn = false, simMin = 780;
+  function nowState() {
+    if (simOn) return { date: DAY, min: simMin, sim: true };
+    var p = eventParts(new Date());
+    return { date: p.date, min: p.min, hh: p.hh, mm: p.mm, sim: false };
+  }
+  function isEventDay(ns) { return ns.date === DAY; }
+  function phase(ns) {
+    if (ns.date < DAY) return "before";
+    if (ns.date > DAY) return "after";
+    if (ns.min < 660) return "morning";
+    if (ns.min >= 1330) return "after";
+    return "live";
+  }
+  function currentSlots(ns) {
+    if (!isEventDay(ns)) return { now: null, next: null };
+    var ordered = SCHEDULE.filter(function (x) { return x.v !== "in"; })
+      .concat(SCHEDULE.filter(function (x) { return x.v === "in" && x.t >= 1080; }));
+    var live = null, next = null, i, s;
+    for (i = 0; i < ordered.length; i++) {
+      s = ordered[i];
+      if (ns.min >= s.t && ns.min < s.e) { if (!live || s.kind === "act") live = s; }
+      if (s.t > ns.min && !next) next = s;
+    }
+    return { now: live, next: next };
+  }
+  function slotTitle(s, forPublic) {
+    if (!forPublic) return s.n;
+    if (s.confirmed === false) return "To be announced";
+    if (s.kind === "act" && !state.lineupPublic) return "To be announced";
+    return s.n;
+  }
+
+  /* ---------------------------------------------------------- who you are */
+  // Nothing is gated for the audience. The first time someone asks the crew
+  // for something, what they typed is remembered on their own device so the
+  // form prefills and their profile can follow that request through.
+  var me = null;
+  try { me = JSON.parse(localStorage.getItem("zao.me") || "null"); } catch (e) { me = null; }
+  function known() { return !!(me && (me.handle || me.name)); }
+  function cleanHandle(v, platform) {
+    v = (v || "").trim().replace(/^@+/, "").toLowerCase();
+    if (!v) return "";
+    if (platform === "fc") return /^[a-z0-9][a-z0-9._-]{0,32}$/.test(v) ? v : "";
+    return /^[a-z0-9_]{1,15}$/.test(v) ? v : "";
+  }
+  function atName() { return me ? (me.handle ? "@" + me.handle : me.name) : ""; }
+  function remember(rec) {
+    me = { handle: rec.handle, platform: rec.platform, name: rec.who, contact: rec.contact, since: new Date().toISOString() };
+    try { localStorage.setItem("zao.me", JSON.stringify(me)); } catch (e) {}
+    if (rec.handle) {
+      var seen = state.passes.some(function (p) { return p.handle === rec.handle && p.platform === rec.platform; });
+      if (!seen) state.passes.push({ handle: rec.handle, platform: rec.platform, at: new Date().toLocaleString() });
+    }
+  }
+  function forgetMe() {
+    me = null;
+    try { localStorage.removeItem("zao.me"); } catch (e) {}
+    render(); toast("Forgotten on this device. Anything already with the crew stays with them.");
+  }
+  function myMessages() {
+    if (!me || !me.handle) return [];
+    return state.messages.filter(function (m) { return (m.to || "").toLowerCase() === me.handle; });
+  }
+  function myRequests() {
+    if (!known()) return [];
+    return state.help.filter(function (h) {
+      if (me.handle && (h.handle || "").toLowerCase() === me.handle) return true;
+      return !me.handle && !!me.name && (h.who || "") === me.name;
+    });
+  }
+
+  /* ------------------------------------------------- the theme, autoplaying */
+  var audio = new Audio(), started = false, audioDead = false, armed = false;
+  var useBlob = true, retried = false, stallTimer = null, lastTime = -1, blobUrl = null;
+  audio.loop = true;
+  audio.preload = "auto";
+  var soundWanted = true;
+  try { soundWanted = localStorage.getItem("zao.sound") !== "off"; } catch (e) {}
+  try { var sv = localStorage.getItem("zao.vol"); audio.volume = sv === null ? .7 : Math.min(1, Math.max(0, +sv)); }
+  catch (e) { audio.volume = .7; }
+
+  function trackSrc() {
+    if (!THEME) return "";
+    if (!useBlob) return THEME.src;
+    if (blobUrl) return blobUrl;
+    try {
+      var b64 = THEME.src.slice(THEME.src.indexOf(",") + 1), bin = atob(b64), n = bin.length, by = new Uint8Array(n), i;
+      for (i = 0; i < n; i++) by[i] = bin.charCodeAt(i);
+      blobUrl = URL.createObjectURL(new Blob([by], { type: "audio/mpeg" }));
+      return blobUrl;
+    } catch (e) { useBlob = false; return THEME.src; }
+  }
+  function watchdog() {
+    clearTimeout(stallTimer); lastTime = audio.currentTime;
+    stallTimer = setTimeout(function () {
+      if (started && !audio.paused && audio.currentTime === lastTime) {
+        if (useBlob && !retried) {
+          retried = true; useBlob = false;
+          if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} blobUrl = null; }
+          audio.src = trackSrc(); playTheme(); return;
+        }
+        audioDead = true; started = false; audio.pause(); renderPlayer();
+      }
+    }, 8000);
+  }
+  function playTheme(fromUser) {
+    if (!THEME) return;
+    if (!audio.src) audio.src = trackSrc();
+    if (fromUser) { soundWanted = true; try { localStorage.setItem("zao.sound", "on"); } catch (e) {} }
+    started = true; audioDead = false;
+    var p = audio.play();
+    if (p && p.then) p.then(function () { nudge(false); renderPlayer(); },
+      function () { started = false; clearTimeout(stallTimer); armFirstGesture(); renderPlayer(); });
+    watchdog(); renderPlayer();
+  }
+  function pauseTheme() {
+    audio.pause(); clearTimeout(stallTimer); started = false; soundWanted = false;
+    try { localStorage.setItem("zao.sound", "off"); } catch (e) {}
+    nudge(false); renderPlayer();
+  }
+  function toggleTheme() { if (!started || audio.paused) playTheme(true); else pauseTheme(); }
+  function nudge(show) { $("#soundnudge").classList.toggle("hidden", !show); }
+  function armFirstGesture() {
+    if (armed || !soundWanted) return;
+    armed = true; nudge(true);
+    var evs = ["pointerdown", "keydown", "touchstart", "wheel"];
+    var kick = function () {
+      evs.forEach(function (ev) { window.removeEventListener(ev, kick, true); });
+      armed = false; playTheme();
+    };
+    evs.forEach(function (ev) { window.addEventListener(ev, kick, true); });
+  }
+
+  audio.addEventListener("timeupdate", function () {
+    var d = audio.duration || 0, c = audio.currentTime;
+    $("#p-cur").textContent = mmss(c);
+    $("#p-dur").textContent = mmss(d);
+    if (d) { $("#p-seek").value = Math.round((c / d) * 1000); $("#dock-fill").style.width = ((c / d) * 100).toFixed(2) + "%"; }
+    if (c !== lastTime) watchdog();
+  });
+  audio.addEventListener("loadedmetadata", function () { $("#p-dur").textContent = mmss(audio.duration); });
+  audio.addEventListener("error", function () {
+    if (useBlob && !retried) {
+      retried = true; useBlob = false;
+      if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} blobUrl = null; }
+      audio.src = trackSrc(); if (started) playTheme(); return;
+    }
+    audioDead = true; started = false; clearTimeout(stallTimer); renderPlayer();
+  });
+  audio.addEventListener("play", renderPlayer);
+  audio.addEventListener("pause", renderPlayer);
+
+  function renderPlayer() {
+    var playing = started && !audio.paused;
+    $("#big-play").innerHTML = playing ? "&#10073;&#10073;" : "&#9654;";
+    $("#big-play").setAttribute("aria-label", playing ? "Pause" : "Play");
+    $("#dock-play").innerHTML = playing ? "&#10073;&#10073;" : "&#9654;";
+    $("#np-title").textContent = audioDead ? "Playback blocked here" : (THEME ? THEME.title : "No theme bundled");
+    var a = $("#np-artist"); a.innerHTML = "";
+    if (audioDead) a.appendChild(el("span", null, "Open the page in a normal browser tab and it plays"));
+    else {
+      a.appendChild(el("span", null, (THEME ? THEME.artist : "") + (playing ? " · playing" : " · paused")));
+      if (playing) { var eq = el("span", "eqbars"); eq.appendChild(el("i")); eq.appendChild(el("i")); eq.appendChild(el("i")); a.appendChild(eq); }
+    }
+    $("#dock-title").textContent = THEME ? THEME.title : "—";
+    var ds = $("#dock-sub"); ds.innerHTML = "";
+    ds.appendChild(el("span", null, playing ? "on loop" : (THEME ? THEME.artist : "")));
+    if (playing) { var eq2 = el("span", "eqbars"); eq2.appendChild(el("i")); eq2.appendChild(el("i")); eq2.appendChild(el("i")); ds.appendChild(eq2); }
+  }
+
+  /* ------------------------------------------------------------- rendering */
+  function renderClock() {
+    var ns = nowState();
+    $("#clock").textContent = ns.sim ? hhmm(ns.min) : (ns.hh + ":" + ns.mm);
+    $("#pill-clock").classList.toggle("hot", ns.sim);
+    var ph = phase(ns), c = currentSlots(ns), pw = $("#pill-when");
+    if (ph === "live" && c.now) { pw.className = "pill red"; pw.innerHTML = ""; pw.appendChild(el("span", "dot")); pw.appendChild(el("span", null, "On now: " + slotTitle(c.now, true))); }
+    else if (ph === "morning") { pw.className = "pill hot"; pw.textContent = "Event day, before doors"; }
+    else if (ph === "after") { pw.className = "pill"; pw.textContent = "After the day"; }
+    else { pw.className = "pill"; pw.textContent = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5)) + " days to doors"; }
+  }
+  function renderCountdown() {
+    var ns = nowState(), box = $("#countdown"), ph = phase(ns);
+    box.innerHTML = "";
+    function cd(n, l) { var d = el("div", "cd"); d.appendChild(el("div", "n", n)); d.appendChild(el("div", "l", l)); box.appendChild(d); }
+    if (ph === "before") {
+      var ms = DOORS - new Date();
+      cd(Math.floor(ms / 864e5), "days"); cd(Math.floor(ms / 36e5) % 24, "hours"); cd(Math.floor(ms / 6e4) % 60, "minutes"); cd("Noon", "doors, 3 Oct");
+    } else if (ph === "after") { cd("10h", "of music"); cd("6", "acts outdoors"); cd("2", "venues"); cd("1", "day"); }
+    else { var left = Math.max(0, 1330 - ns.min); cd(Math.floor(left / 60), "hours left"); cd(left % 60, "minutes"); cd(ns.min < 1080 ? "Parklet" : "Black Moon", "you are here"); }
+  }
+  function renderNowNext() {
+    var ns = nowState(), c = currentSlots(ns), ph = phase(ns);
+    function fill(box, which, slot, et, em) {
+      box.innerHTML = "";
+      var lab = el("div", "lab");
+      if (which === "now" && slot && ph === "live") lab.appendChild(el("span", "dot"));
+      lab.appendChild(el("span", null, which === "now" ? "On now" : "Up next"));
+      box.appendChild(lab);
+      box.appendChild(el("div", "title", slot ? slotTitle(slot, true) : et));
+      box.appendChild(el("div", "meta", slot
+        ? hhmm(slot.t) + " to " + hhmm(slot.e) + " · " + (slot.v === "in" ? "Black Moon" : slot.v === "out" ? "Franklin Street Parklet" : "Crew call")
+        : em));
+    }
+    if (ph === "before") { fill($("#nn-now"), "now", null, "Not yet", "Saturday 3 October. Music at noon."); fill($("#nn-next"), "next", null, "Doors at noon", "Franklin Street Parklet, Ellsworth. Free."); }
+    else if (ph === "after") { fill($("#nn-now"), "now", null, "That is a wrap", "Thank you for being here, wherever you were."); fill($("#nn-next"), "next", null, "Recap coming", "Photos and clips to follow."); }
+    else { fill($("#nn-now"), "now", c.now, "Between things", "Back in a moment."); fill($("#nn-next"), "next", c.next, "Nothing after this", "That is the end of the day."); }
+    $("#nn-now").classList.toggle("live", ph === "live" && !!c.now);
+  }
+  function renderLounge() {
+    var ns = nowState(), ph = phase(ns);
+    var head = $("#lounge-head"), sub = $("#lounge-sub"), badge = $("#lounge-badge");
+    var when = $("#lounge-when"), whenSub = $("#lounge-when-sub");
+    badge.innerHTML = ""; badge.appendChild(el("span", "dot"));
+    if (ph === "live") {
+      badge.appendChild(el("span", null, "Live now"));
+      head.textContent = "We are live right now.";
+      sub.textContent = "The stream and the Spaces are one door over. The theme is still here if you want it between sets.";
+      when.textContent = "On now";
+      var c = currentSlots(ns);
+      whenSub.textContent = (c.now ? slotTitle(c.now, true) : "Between sets") + (ns.min < 1080 ? ", on the parklet." : ", inside Black Moon.");
+    } else if (ph === "after") {
+      badge.appendChild(el("span", null, "After the day"));
+      head.textContent = "That was ZAOstock.";
+      sub.textContent = "Thank you for being here, wherever you were standing. Here is the theme again while the recap comes together.";
+      when.textContent = "Until next time";
+      whenSub.textContent = "Photos, clips and the recap are on the way. Tell us your favourite moment.";
+    } else if (ph === "morning") {
+      badge.appendChild(el("span", null, "Doors today"));
+      head.textContent = "Nearly. Doors at noon.";
+      sub.textContent = "The crew is setting up on Franklin Street right now. This runs until the first act does.";
+      when.textContent = "Doors at noon";
+      whenSub.textContent = "Today. Franklin Street Parklet, Ellsworth, Maine. Free.";
+    } else {
+      var days = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5));
+      badge.appendChild(el("span", null, "The waiting room"));
+      head.textContent = days === 1 ? "Tomorrow." : "You're early. Good.";
+      sub.textContent = "The theme is already playing. Saturday 3 October, Franklin Street Parklet in downtown Ellsworth, free, music from noon.";
+      when.textContent = days + (days === 1 ? " day to go" : " days to go");
+      whenSub.textContent = "Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine. Free.";
+    }
+  }
+  function renderPeople() {
+    var box = $("#people"); box.innerHTML = "";
+    PEOPLE.forEach(function (p) {
+      var d = el("div", "person");
+      if (IMG[p.img]) { var im = el("img"); im.src = IMG[p.img]; im.alt = p.b; im.loading = "lazy"; d.appendChild(im); }
+      else d.appendChild(el("div", "monogram", p.b.slice(0, 2).toUpperCase()));
+      var cap = el("div", "cap");
+      cap.appendChild(el("b", null, p.b));
+      cap.appendChild(el("span", null, p.s));
+      d.appendChild(cap); box.appendChild(d);
+    });
+  }
+  function renderSchedule(target, forPublic) {
+    var box = $(target); box.innerHTML = "";
+    var ns = nowState(), c = currentSlots(ns);
+    [{ k: "crew", l: "Before doors", w: "08:00 – 11:30", teamOnly: true },
+     { k: "out",  l: "Outdoors, Franklin Street Parklet", w: "NOON – 6PM" },
+     { k: "in",   l: "Inside, Black Moon Public House", w: "6PM – 10PM" }].forEach(function (g) {
+      if (forPublic && g.teamOnly) return;
+      var rows = SCHEDULE.filter(function (s) { return s.v === g.k; });
+      if (forPublic) rows = rows.filter(function (s) { return s.pub !== false; });
+      if (!rows.length) return;
+      var h = el("div", "vhead"); h.appendChild(el("h3", null, g.l)); h.appendChild(el("span", "w", g.w));
+      box.appendChild(h);
+      rows.forEach(function (s) {
+        var d = el("div", "slot" + (s.kind === "gap" ? " gap" : ""));
+        if (isEventDay(ns)) { if (c.now === s) d.classList.add("now"); else if (ns.min >= s.e) d.classList.add("past"); }
+        d.appendChild(el("div", "time", hhmm(s.t)));
+        var mid = el("div");
+        mid.appendChild(el("div", "nm", slotTitle(s, forPublic)));
+        if (!forPublic || s.kind !== "gap") mid.appendChild(el("div", "dt", s.d));
+        if (!forPublic) mid.appendChild(el("div", "own", "Owner: " + (s.own || "—") + (s.sec ? "   ·   Second: " + s.sec : "")));
+        d.appendChild(mid);
+        var right = el("div");
+        if (!forPublic && s.flag) right.appendChild(el("span", "chip red", s.flag));
+        else if (!forPublic && s.confirmed === false) right.appendChild(el("span", "chip gold", "Not public"));
+        else if (forPublic && s.kind === "act") right.appendChild(el("span", "chip mute", (s.e - s.t) + " min"));
+        d.appendChild(right);
+        box.appendChild(d);
+      });
+    });
+  }
+  function renderWatch() {
+    var box = $("#watch-tiles"); box.innerHTML = "";
+    WATCH.forEach(function (w) {
+      var url = state.channels[w.key] || "";
+      var a = el(url ? "a" : "div", "tile");
+      if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+      var n = el("div", "n");
+      n.appendChild(el("span", null, w.n));
+      n.appendChild(el("span", "chip " + (url ? "red" : "mute"), url ? "Open" : "Soon"));
+      a.appendChild(n);
+      a.appendChild(el("div", "d", url ? w.d : w.pending));
+      if (url) a.appendChild(el("div", "u", url.replace(/^https?:\/\//, "")));
+      box.appendChild(a);
+    });
+  }
+  function renderTiles(target, list) {
+    var box = $(target); box.innerHTML = "";
+    list.forEach(function (l) {
+      var a = el(l.u ? "a" : "div", "tile");
+      if (l.u) { a.href = l.u; a.target = "_blank"; a.rel = "noopener"; }
+      var n = el("div", "n"); n.appendChild(el("span", null, l.n)); a.appendChild(n);
+      a.appendChild(el("div", "d", l.d));
+      if (l.u) a.appendChild(el("div", "u", l.u.replace(/^https?:\/\//, "")));
+      box.appendChild(a);
+    });
+  }
+  function renderAnnouncements() {
+    var pub = $("#pub-announce"), list = $("#announce-list"), admin = $("#ann-admin");
+    var items = state.announcements.slice().reverse();
+    list.innerHTML = ""; admin.innerHTML = "";
+    if (!items.length) { pub.classList.add("hidden"); admin.appendChild(el("div", "empty", "Nothing posted yet.")); return; }
+    pub.classList.remove("hidden");
+    items.forEach(function (a) {
+      function row() {
+        var d = el("div", "item");
+        var top = el("div", "top");
+        top.appendChild(el("span", "chip " + (a.level === "live" ? "red" : a.level === "warn" ? "gold" : "denim"),
+          a.level === "live" ? "Happening now" : a.level === "warn" ? "Heads up" : "Info"));
+        top.appendChild(el("span", "sub", a.at));
+        d.appendChild(top); d.appendChild(el("div", "msg", a.text));
+        if (a.by) d.appendChild(el("div", "sub", "— " + a.by));
+        return d;
+      }
+      list.appendChild(row());
+      var d2 = row();
+      var del = el("button", "btn ghost sm", "Remove"); del.style.marginTop = "9px";
+      del.onclick = function () { state.announcements = state.announcements.filter(function (x) { return x.id !== a.id; }); save("Removed."); };
+      d2.appendChild(del); admin.appendChild(d2);
+    });
+  }
+  function renderQueue() {
+    var box = $("#queue-list"); box.innerHTML = "";
+    var items = state.help.slice().reverse();
+    var open = state.help.filter(function (h) { return h.status === "open"; }).length;
+    var claimed = state.help.filter(function (h) { return h.status === "claimed"; }).length;
+    $("#queue-note").textContent = open + " open · " + claimed + " being handled · " + state.help.length + " today";
+    if (!items.length) { box.appendChild(el("div", "empty", "Nothing in the queue. That is either very good or very early.")); return; }
+    items.forEach(function (h) {
+      var urgent = /medical|first aid/i.test(h.kind);
+      var d = el("div", "item" + (h.status === "done" ? " done" : "") + (urgent && h.status !== "done" ? " urgent" : ""));
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip " + (urgent ? "red" : h.status === "done" ? "olive" : h.status === "claimed" ? "gold" : "denim"), h.kind));
+      top.appendChild(el("span", "chip mute", h.where));
+      if (h.handle) top.appendChild(el("span", "chip gold", "@" + h.handle));
+      if (h.status === "claimed") top.appendChild(el("span", "chip gold", "Held by " + (h.claimedBy || "someone")));
+      if (h.status === "done") top.appendChild(el("span", "chip olive", "Done"));
+      d.appendChild(top);
+      d.appendChild(el("div", "msg", h.msg || "(no message)"));
+      d.appendChild(el("div", "sub", [h.at, h.who || "anonymous", h.contact || "no contact given"].join("  ·  ")));
+      var row = el("div", "row"); row.style.marginTop = "10px";
+      if (h.status !== "done") {
+        var claim = el("button", "btn ghost sm", h.status === "claimed" ? "Take over" : "I've got this");
+        claim.onclick = function () {
+          var who = prompt("Your name, so the room knows who has it:", h.claimedBy || "");
+          if (who === null) return;
+          h.status = "claimed"; h.claimedBy = who.trim() || "crew"; save("Claimed.");
+        };
+        row.appendChild(claim);
+        var done = el("button", "btn sm", "Sorted");
+        done.onclick = function () { h.status = "done"; save("Marked sorted."); };
+        row.appendChild(done);
+      } else {
+        var re = el("button", "btn ghost sm", "Reopen");
+        re.onclick = function () { h.status = "open"; save("Reopened."); };
+        row.appendChild(re);
+      }
+      d.appendChild(row); box.appendChild(d);
+    });
+  }
+  function renderAttention() {
+    var box = $("#attention-list"); box.innerHTML = "";
+    var order = { blocked: 0, moving: 1, done: 2 };
+    var items = state.attention.slice().sort(function (a, b) { return order[a.state] - order[b.state]; });
+    if (!items.length) { box.appendChild(el("div", "empty", "Nothing flagged.")); return; }
+    items.forEach(function (a) {
+      var d = el("div", "item" + (a.state === "done" ? " done" : "") + (a.state === "blocked" ? " urgent" : ""));
+      var top = el("div", "top");
+      var chip = el("button", "chip " + (a.state === "blocked" ? "red" : a.state === "moving" ? "gold" : "olive"),
+        a.state === "blocked" ? "Blocked" : a.state === "moving" ? "Moving" : "Done");
+      chip.style.cursor = "pointer"; chip.title = "Click to change state";
+      chip.onclick = function () { a.state = a.state === "blocked" ? "moving" : a.state === "moving" ? "done" : "blocked"; save("Updated."); };
+      top.appendChild(chip);
+      if (a.owner) top.appendChild(el("span", "chip mute", a.owner));
+      d.appendChild(top); d.appendChild(el("div", "msg", a.title));
+      box.appendChild(d);
+    });
+  }
+  function seatCount() { var s = 0, h, r; for (h = 12; h <= 21; h++) { r = state.rota[String(h)] || []; if ((r[0] || "").trim()) s++; if ((r[1] || "").trim()) s++; } return s; }
+  function renderRota() {
+    var box = $("#rota"); box.innerHTML = "";
+    for (var h = 12; h <= 21; h++) {
+      (function (h) {
+        var key = String(h), names = state.rota[key] || ["", ""];
+        var n0 = (names[0] || "").trim(), n1 = (names[1] || "").trim(), got = (n0 ? 1 : 0) + (n1 ? 1 : 0);
+        var card = el("div", "rslot" + (got === 2 ? " full" : got === 1 ? " part" : ""));
+        var head = el("div", "h");
+        head.appendChild(el("span", null, hhmm(h * 60) + " – " + hhmm((h + 1) * 60)));
+        head.appendChild(el("span", "chip " + (got === 2 ? "olive" : got ? "gold" : "red"), got + "/2"));
+        card.appendChild(head);
+        [0, 1].forEach(function (i) {
+          var name = (names[i] || "").trim();
+          var b = el("button", "rname" + (name ? "" : " free"), name || "claim this seat");
+          b.onclick = function () {
+            var v = prompt("Who is covering " + hhmm(h * 60) + " to " + hhmm((h + 1) * 60) + "? (blank to clear)", name);
+            if (v === null) return;
+            var arr = (state.rota[key] || ["", ""]).slice();
+            arr[i] = v.trim(); state.rota[key] = arr;
+            save(v.trim() ? "Booked." : "Cleared.");
+          };
+          card.appendChild(b);
+        });
+        box.appendChild(card);
+      })(h);
+    }
+    $("#rota-note").textContent = seatCount() + " of 20 seats claimed";
+  }
+  function renderAgents() {
+    var box = $("#agents"); box.innerHTML = "";
+    AGENTS.forEach(function (a) {
+      var d = el("div", "agent");
+      d.appendChild(el("h4", null, a.n));
+      d.appendChild(el("div", "who", a.who));
+      d.appendChild(el("p", null, a.p));
+      d.appendChild(el("div", "brief", a.b));
+      var b = el("button", "btn ghost sm", "Copy brief");
+      b.onclick = function () { copy(a.b, a.n + " brief"); };
+      d.appendChild(b); box.appendChild(d);
+    });
+  }
+  function sayLine() {
+    var ns = nowState();
+    if (!isEventDay(ns) && !simOn) {
+      var days = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5));
+      return "ZAOstock is Saturday 3 October, " + days + " days out. Free, Franklin Street Parklet in Ellsworth, music from noon, outdoors until six then inside at Black Moon until ten. Part of Art of Ellsworth and Maine Craft Weekend. Everything is at zaostock.com.";
+    }
+    for (var i = 0; i < SAY.length; i++) if (ns.min >= SAY[i].from && ns.min < SAY[i].to) return SAY[i].t;
+    return SAY[SAY.length - 1].t;
+  }
+  function renderBoard() {
+    var ns = nowState(), c = currentSlots(ns), ph = phase(ns);
+    var openHelp = state.help.filter(function (h) { return h.status === "open"; }).length;
+    var blocked = state.attention.filter(function (a) { return a.state === "blocked"; }).length;
+    var seats = seatCount();
+    $("#board-head").textContent = ph === "live" ? "On now: " + (c.now ? c.now.n : "between things")
+      : ph === "morning" ? "Event day, before doors"
+      : ph === "after" ? "After the event"
+      : Math.max(0, Math.ceil((DOORS - new Date()) / 864e5)) + " days to doors";
+    $("#board-sub").textContent = c.next
+      ? "Next up " + hhmm(c.next.t) + ", " + c.next.n + (c.next.own ? " · owner " + c.next.own : "")
+      : "The run of show has not started. Owners and seconds are on the Run of Show screen.";
+    var k = $("#kpis"); k.innerHTML = "";
+    function box(cls, v, label) { var d = el("div", "kpibox " + cls); d.appendChild(el("div", "v", String(v))); d.appendChild(el("div", "k", label)); k.appendChild(d); }
+    box(openHelp ? "red" : "olive", openHelp, "help open");
+    box(blocked ? "red" : "olive", blocked, "blocked");
+    box(seats === 20 ? "olive" : "gold", seats + "/20", "rota seats");
+    box(state.channels.stream ? "olive" : "red", state.channels.stream ? "set" : "none", "stream link");
+    box(artifactNs && canWrite ? "olive" : "gold", artifactNs && canWrite ? "shared" : "local", "this board");
+    $("#say-box").textContent = sayLine();
+    $("#sim-label").textContent = simOn ? hhmm(simMin) : "off";
+    $("#lineup-public").checked = !!state.lineupPublic;
+  }
+  function renderPass() {
+    var box = $("#help-status");
+    var mine = myRequests(), open = mine.filter(function (h) { return h.status !== "done"; });
+    var msgs = myMessages();
+    box.innerHTML = "";
+    if (!known()) {
+      box.appendChild(el("div", "h", "Need a hand with anything?"));
+      box.appendChild(el("div", "b", "Getting here, access, a lost friend, a stream that will not load. Tell us who you are and where you are, and a real person picks it up."));
+      var only = el("button", "btn sm", "Ask for help"); only.style.marginTop = "12px";
+      only.onclick = function () { go("help"); setTimeout(function () { $("#h-msg").focus(); }, 200); };
+      box.appendChild(only);
+      return;
+    }
+    box.appendChild(el("div", "h", "Hello again, " + atName()));
+    if (open.length) {
+      var latest = open[open.length - 1];
+      box.appendChild(el("div", "b", latest.status === "claimed"
+        ? (latest.claimedBy || "Someone on the crew") + " has your request right now."
+        : "Your request is in the queue and the crew can see it."));
+    } else if (msgs.length) {
+      box.appendChild(el("div", "b", msgs.length + (msgs.length === 1 ? " message" : " messages") + " waiting for you from the crew."));
+    } else {
+      box.appendChild(el("div", "b", "Getting here, access, a lost friend, a stream that will not load. Tell us and a real person picks it up."));
+    }
+    var row = el("div", "row"); row.style.marginTop = "12px";
+    var a = el("button", "btn sm", "Ask for help"); a.onclick = function () { go("help"); setTimeout(function () { $("#h-msg").focus(); }, 200); };
+    var b = el("button", "btn ghost sm", "My profile" + (msgs.length ? " (" + msgs.length + ")" : ""));
+    b.onclick = function () { go("profile"); };
+    row.appendChild(a); row.appendChild(b); box.appendChild(row);
+  }
+
+  function renderProfile() {
+    if (!known()) {
+      $("#prof-name").textContent = "Your profile";
+      $("#id-out").classList.add("hidden");
+      $("#prof-kpi").innerHTML = "";
+      [["#prof-messages", "Once you have asked the crew for something, anything they send back lands here."],
+       ["#prof-requests", "Nothing yet. Send a request from Get Help and it will show up here with its status."],
+       ["#prof-announce", "Nothing posted yet."]].forEach(function (p) {
+        var b = $(p[0]); b.innerHTML = ""; b.appendChild(el("div", "empty", p[1]));
+      });
+      if (state.announcements.length) {
+        var ab0 = $("#prof-announce"); ab0.innerHTML = "";
+        state.announcements.slice().reverse().forEach(function (a) {
+          var d = el("div", "item");
+          d.appendChild(el("div", "msg", a.text));
+          d.appendChild(el("div", "sub", a.at));
+          ab0.appendChild(d);
+        });
+      }
+      return;
+    }
+    $("#id-out").classList.remove("hidden");
+    $("#prof-name").textContent = atName();
+    var mine = myRequests(), msgs = myMessages();
+    var k = $("#prof-kpi"); k.innerHTML = "";
+    function box(cls, v, label) { var d = el("div", "kpibox " + cls); d.appendChild(el("div", "v", String(v))); d.appendChild(el("div", "k", label)); k.appendChild(d); }
+    box(msgs.length ? "gold" : "", msgs.length, "messages");
+    box(mine.filter(function (h) { return h.status !== "done"; }).length ? "red" : "olive", mine.length, "requests sent");
+    box("", state.announcements.length, "crew posts");
+    box("", me.handle ? (me.platform === "fc" ? "Farcaster" : "X") : "no handle", "we reply on");
+
+    var mb = $("#prof-messages"); mb.innerHTML = "";
+    if (!msgs.length) mb.appendChild(el("div", "empty", "No messages yet. If the crew needs to reach you about the day, it lands here."));
+    else msgs.slice().reverse().forEach(function (m) {
+      var d = el("div", "item");
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip gold", "From " + (m.by || "the crew")));
+      top.appendChild(el("span", "sub", m.at));
+      d.appendChild(top); d.appendChild(el("div", "msg", m.text));
+      mb.appendChild(d);
+    });
+
+    var rb = $("#prof-requests"); rb.innerHTML = "";
+    if (!mine.length) rb.appendChild(el("div", "empty", "You have not asked for anything yet. That is allowed."));
+    else mine.slice().reverse().forEach(function (h) {
+      var d = el("div", "item" + (h.status === "done" ? " done" : ""));
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip " + (h.status === "done" ? "olive" : h.status === "claimed" ? "gold" : "denim"),
+        h.status === "done" ? "Handled" : h.status === "claimed" ? "Being handled" : "Waiting"));
+      top.appendChild(el("span", "chip mute", h.kind));
+      top.appendChild(el("span", "sub", h.at));
+      d.appendChild(top); d.appendChild(el("div", "msg", h.msg));
+      if (h.status === "claimed" && h.claimedBy) d.appendChild(el("div", "sub", h.claimedBy + " has it"));
+      rb.appendChild(d);
+    });
+
+    var ab = $("#prof-announce"); ab.innerHTML = "";
+    if (!state.announcements.length) ab.appendChild(el("div", "empty", "Nothing posted yet."));
+    else state.announcements.slice().reverse().forEach(function (a) {
+      var d = el("div", "item");
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip " + (a.level === "live" ? "red" : a.level === "warn" ? "gold" : "denim"),
+        a.level === "live" ? "Happening now" : a.level === "warn" ? "Heads up" : "Info"));
+      top.appendChild(el("span", "sub", a.at));
+      d.appendChild(top); d.appendChild(el("div", "msg", a.text));
+      ab.appendChild(d);
+    });
+  }
+
+  function advOf(id) { return (state.artists[id] && state.artists[id].checks) || {}; }
+  function advCount(id) { var c = advOf(id), n = 0; CHECKS.forEach(function (k) { if (c[k.k]) n++; }); return n; }
+  function renderArtists() {
+    var box = $("#artists"); box.innerHTML = "";
+    var total = ROSTER.length * CHECKS.length, done = 0;
+    ROSTER.forEach(function (a) { done += advCount(a.id); });
+    $("#adv-note").textContent = done + " of " + total + " items closed across " + ROSTER.length + " acts";
+    ROSTER.forEach(function (a) {
+      var got = advCount(a.id);
+      var card = el("div", "agent");
+      var top = el("div", "row"); top.style.marginBottom = "4px";
+      var h = el("h4", null, a.n); h.style.marginBottom = "0"; top.appendChild(h);
+      var chip = el("span", "chip " + (got === CHECKS.length ? "olive" : got ? "gold" : "red"), got + "/" + CHECKS.length);
+      chip.style.marginLeft = "auto"; top.appendChild(chip);
+      card.appendChild(top);
+      card.appendChild(el("div", "who", hhmm(a.t) + " – " + hhmm(a.e) + " · " + a.where + " · " + a.kind + " · lead " + a.lead));
+      card.appendChild(el("p", null, a.note));
+      CHECKS.forEach(function (c) {
+        var on = !!advOf(a.id)[c.k];
+        var b = el("button", "rname" + (on ? "" : " free"));
+        b.style.cssText = "display:flex; gap:9px; align-items:flex-start; padding:5px 0";
+        var mark = el("span", "chip " + (on ? "olive" : "mute"), on ? "done" : "open");
+        mark.style.marginTop = "1px";
+        b.appendChild(mark);
+        var t = el("span", null, c.n); t.style.cssText = "font-size:13px; color:var(--ink)";
+        b.appendChild(t);
+        b.title = c.d;
+        b.onclick = function () {
+          if (!state.artists[a.id]) state.artists[a.id] = { checks: {} };
+          if (!state.artists[a.id].checks) state.artists[a.id].checks = {};
+          state.artists[a.id].checks[c.k] = !on;
+          save(on ? "Reopened " + c.n.toLowerCase() + "." : c.n + " ticked for " + a.n + ".");
+        };
+        card.appendChild(b);
+      });
+      var copy1 = el("button", "btn ghost sm", "Copy their kit");
+      copy1.style.marginTop = "10px";
+      copy1.onclick = function () { $("#kit-who").value = a.id; renderKit(); copy(kitText(a), a.n + " kit"); };
+      card.appendChild(copy1);
+      box.appendChild(card);
+    });
+  }
+
+  function kitText(a) {
+    var lines = [
+      "ZAOSTOCK · Saturday 3 October 2026 · Ellsworth, Maine",
+      "Artist pack for " + a.n,
+      "",
+      "YOUR SET",
+      "  " + hhmm(a.t) + " to " + hhmm(a.e) + ", " + (a.e - a.t) + " minutes, " + a.where + ".",
+      "  Five minutes between every act. If a set runs over it comes out of that act's own",
+      "  changeover; the next act still starts on time. Please help us hold that.",
+      "",
+      "THE DAY",
+      "  Free, all ages on the parklet, music from noon.",
+      "  Noon to six is outdoors on the Franklin Street Parklet.",
+      "  At six everything moves inside to Black Moon Public House, one door down, until ten.",
+      "  Part of the 9th annual Art of Ellsworth and Maine Craft Weekend.",
+      "",
+      "FRIDAY 2 OCTOBER, SOUNDCHECK",
+      "  Mandatory for every act, and it goes in the contract. You check at whichever stage you",
+      "  actually play. It doubles as a filming and recording night, so bring what you want shot.",
+      "",
+      "SATURDAY CALL",
+      "  Vital crew on site 08:00. Everyone 10:00. Line checks only on the day.",
+      "",
+      "WHAT BLACK MOON IS COVERING FOR PERFORMERS"
+    ];
+    HOSPITALITY.forEach(function (h) { lines.push("  · " + h.n + " — " + h.d); });
+    lines.push("", "WHAT WE STILL NEED FROM YOU");
+    var openItems = CHECKS.filter(function (c) { return !advOf(a.id)[c.k]; });
+    if (!openItems.length) lines.push("  Nothing. You are fully advanced. Thank you.");
+    else openItems.forEach(function (c) { lines.push("  · " + c.n + " — " + c.d); });
+    if (a.note) lines.push("", "NOTE FOR YOU", "  " + a.note);
+    lines.push("",
+      "PROMO",
+      "  The lineup goes public shortly. Post the poster, tag us, and send your handles so we can",
+      "  tag you back and run collaborative posts. The Facebook event is live and the City is",
+      "  sharing it: facebook.com/events/28051455107809318",
+      "  Everything else is at zaostock.com",
+      "",
+      "WHO TO ASK",
+      "  Music, set times, backline, soundcheck: Dcoop.",
+      "  Venue, door, indoor stage, meals: Steve Peer and Katina, Black Moon.",
+      "  Anything online, the stream or the Spaces: IMan and Thy Revolution.",
+      "  Everything else: Zaal, on ZAOstock daily at 11:30.",
+      "",
+      "From IMan");
+    return lines.join("\n");
+  }
+
+  function renderKit() {
+    var sel = $("#kit-who");
+    if (!sel.options.length) {
+      ROSTER.forEach(function (a) { var o = document.createElement("option"); o.value = a.id; o.textContent = a.n; sel.appendChild(o); });
+    }
+    var a = ROSTER.filter(function (x) { return x.id === sel.value; })[0] || ROSTER[0];
+    var body = $("#kit-body"); body.innerHTML = "";
+    var pre = el("div", "brief"); pre.style.maxHeight = "none"; pre.textContent = kitText(a);
+    body.appendChild(pre);
+  }
+
+  function renderMessages() {
+    var box = $("#msg-list"); box.innerHTML = "";
+    $("#msg-note").textContent = state.messages.length + (state.messages.length === 1 ? " sent" : " sent");
+    if (!state.messages.length) box.appendChild(el("div", "empty", "Nothing sent yet."));
+    else state.messages.slice().reverse().forEach(function (m) {
+      var d = el("div", "item");
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip denim", "@" + m.to));
+      top.appendChild(el("span", "chip mute", m.by || "crew"));
+      top.appendChild(el("span", "sub", m.at));
+      d.appendChild(top); d.appendChild(el("div", "msg", m.text));
+      var del = el("button", "btn ghost sm", "Delete"); del.style.marginTop = "9px";
+      del.onclick = function () { state.messages = state.messages.filter(function (x) { return x.id !== m.id; }); save("Deleted."); };
+      d.appendChild(del);
+      box.appendChild(d);
+    });
+    var wb = $("#who-list"); wb.innerHTML = "";
+    if (!state.passes.length) wb.appendChild(el("div", "empty", "Nobody has taken a pass yet."));
+    else state.passes.slice().reverse().forEach(function (p) {
+      var d = el("div", "item");
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip gold", "@" + p.handle));
+      top.appendChild(el("span", "chip mute", p.platform === "fc" ? "Farcaster" : "X"));
+      top.appendChild(el("span", "sub", p.at));
+      d.appendChild(top);
+      var b = el("button", "btn ghost sm", "Message them"); b.style.marginTop = "8px";
+      b.onclick = function () { $("#msg-to").value = "@" + p.handle; $("#msg-text").focus(); };
+      d.appendChild(b);
+      wb.appendChild(d);
+    });
+  }
+
+  function setBadge(id, n, cls) {
+    var btn = document.querySelector('[data-screen="' + id + '"]'); if (!btn) return;
+    var old = btn.querySelector(".badge"); if (old) old.remove();
+    if (n > 0) btn.appendChild(el("span", "badge" + (cls ? " " + cls : ""), String(n)));
+  }
+  function updateBadges() {
+    setBadge("queue", state.help.filter(function (h) { return h.status === "open"; }).length, "");
+    setBadge("attention", state.attention.filter(function (a) { return a.state === "blocked"; }).length, "");
+    setBadge("rota", 20 - seatCount(), "g");
+    var openAdv = 0; ROSTER.forEach(function (a) { openAdv += CHECKS.length - advCount(a.id); });
+    setBadge("artists", openAdv, "g");
+    setBadge("profile", myMessages().length, "g");
+  }
+  function render() {
+    renderClock(); renderCountdown(); renderNowNext(); renderLounge(); renderPass(); renderProfile(); renderPlayer();
+    renderSchedule("#sched-public", true); renderSchedule("#sched-team", false);
+    renderWatch(); renderAnnouncements(); renderQueue(); renderAttention(); renderRota(); renderBoard();
+    renderArtists(); renderKit(); renderMessages();
+    updateBadges();
+  }
+
+  var unlocked = false, current = "lounge", pendingScreen = "board";
+  function buildNav() {
+    ["public", "team"].forEach(function (g) {
+      var box = $("#nav-" + g); box.innerHTML = "";
+      SCREENS.filter(function (s) { return s.g === g; }).forEach(function (s) {
+        var b = el("button", "nav");
+        b.setAttribute("data-screen", s.id);
+        b.innerHTML = svg(ICON[s.i] || ICON.board);
+        b.appendChild(el("span", null, s.t));
+        b.onclick = function () { go(s.id); };
+        box.appendChild(b);
+      });
+    });
+  }
+  function go(id) {
+    var s = SCREENS.filter(function (x) { return x.id === id; })[0];
+    if (!s) { id = "lounge"; s = SCREENS[0]; }
+    if (s.g === "team" && !unlocked) {
+      document.querySelectorAll(".screen").forEach(function (n) { n.classList.remove("on"); });
+      $("#s-gate").classList.add("on");
+      $("#screen-title").textContent = "Team only"; $("#crumb").textContent = "Locked";
+      document.querySelectorAll(".nav").forEach(function (n) { n.setAttribute("aria-current", "false"); });
+      pendingScreen = id; $("#rail").classList.remove("open"); window.scrollTo({ top: 0 });
+      return;
+    }
+    current = id;
+    document.querySelectorAll(".screen").forEach(function (n) { n.classList.remove("on"); });
+    var t = $("#s-" + id); if (t) t.classList.add("on");
+    $("#screen-title").textContent = s.t;
+    $("#crumb").textContent = s.g === "team" ? "Team" : "Everyone";
+    document.querySelectorAll(".nav").forEach(function (n) { n.setAttribute("aria-current", n.getAttribute("data-screen") === id ? "true" : "false"); });
+    if (location.hash !== "#/" + id) history.replaceState(null, "", "#/" + id);
+    $("#rail").classList.remove("open");
+    render(); window.scrollTo({ top: 0 });
+  }
+
+  var cmdItems = [], cmdSel = 0;
+  function buildCmd() {
+    cmdItems = SCREENS.map(function (s) { return { label: s.t, kind: s.g === "team" ? "team" : "screen", act: function () { go(s.id); } }; })
+      .concat(LINKS.map(function (l) { return { label: l.n, kind: "link", act: function () { window.open(l.u, "_blank", "noopener"); } }; }))
+      .concat([{ label: "Play the theme", kind: "sound", act: function () { playTheme(true); } },
+               { label: "Copy the public line", kind: "action", act: function () { copy(sayLine(), "The line"); } }]);
+  }
+  function cmdRender(q) {
+    var list = $("#cmdk-list"); list.innerHTML = "";
+    var f = cmdItems.filter(function (i) { return !q || i.label.toLowerCase().indexOf(q.toLowerCase()) > -1; }).slice(0, 9);
+    if (!f.length) { list.appendChild(el("div", "empty", "Nothing matches that.")); list._items = []; return; }
+    cmdSel = Math.min(cmdSel, f.length - 1);
+    f.forEach(function (i, n) {
+      var b = el("button", "cmdk-item" + (n === cmdSel ? " sel" : ""));
+      b.appendChild(el("span", null, i.label));
+      b.appendChild(el("span", "k", i.kind));
+      b.onclick = function () { cmdClose(); i.act(); };
+      list.appendChild(b);
+    });
+    list._items = f;
+  }
+  function cmdOpen() { $("#cmdk").classList.remove("hidden"); $("#cmdk-input").value = ""; cmdSel = 0; cmdRender(""); $("#cmdk-input").focus(); }
+  function cmdClose() { $("#cmdk").classList.add("hidden"); }
+
+  $("#gate-go").onclick = function () {
+    var v = ($("#gate-code").value || "").trim().toUpperCase();
+    if (hash(v) === GATE_HASH) { unlocked = true; $("#gate-err").classList.add("hidden"); $("#gate-code").value = ""; go(pendingScreen || "board"); }
+    else { $("#gate-err").textContent = "That code is not right. Ask in the crew chat."; $("#gate-err").classList.remove("hidden"); }
+  };
+  $("#gate-code").addEventListener("keydown", function (e) { if (e.key === "Enter") $("#gate-go").click(); });
+  $("#lock").onclick = function () { unlocked = false; go("lounge"); toast("Board locked."); };
+  $("#railtoggle").onclick = function () { $("#rail").classList.toggle("open"); };
+  $("#cmd-open").onclick = cmdOpen;
+  $("#cmdk").onclick = function (e) { if (e.target === $("#cmdk")) cmdClose(); };
+  $("#cmdk-input").addEventListener("input", function () { cmdSel = 0; cmdRender(this.value); });
+  $("#cmdk-input").addEventListener("keydown", function (e) {
+    var items = $("#cmdk-list")._items || [];
+    if (e.key === "ArrowDown") { cmdSel = Math.min(cmdSel + 1, items.length - 1); cmdRender(this.value); e.preventDefault(); }
+    else if (e.key === "ArrowUp") { cmdSel = Math.max(cmdSel - 1, 0); cmdRender(this.value); e.preventDefault(); }
+    else if (e.key === "Enter") { if (items[cmdSel]) { cmdClose(); items[cmdSel].act(); } }
+    else if (e.key === "Escape") cmdClose();
+  });
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); cmdOpen(); }
+    else if (e.key === "Escape") cmdClose();
+  });
+  $("#mode").onclick = function () {
+    var r = document.documentElement, night = r.getAttribute("data-mode") === "night";
+    r.setAttribute("data-mode", night ? "paper" : "night");
+    try { localStorage.setItem("zao.mode", night ? "paper" : "night"); } catch (e) {}
+  };
+  $("#id-out").onclick = forgetMe;
+
+  $("#msg-send").onclick = function () {
+    var to = (($("#msg-to").value || "").trim().replace(/^@+/, "")).toLowerCase();
+    var txt = ($("#msg-text").value || "").trim();
+    if (!to) { toast("Who is it for? Use the handle they signed in with."); return; }
+    if (!txt) { toast("Write the message first."); return; }
+    state.messages.push({ id: uid(), to: to, text: txt, by: ($("#msg-by").value || "").trim(), at: new Date().toLocaleString() });
+    $("#msg-text").value = "";
+    save("Sent to @" + to + ".");
+  };
+
+  $("#kit-who").onchange = renderKit;
+  $("#kit-copy").onclick = function () {
+    var a = ROSTER.filter(function (x) { return x.id === $("#kit-who").value; })[0] || ROSTER[0];
+    copy(kitText(a), a.n + " kit");
+  };
+  $("#lineup-public").onchange = function () {
+    state.lineupPublic = this.checked;
+    save(this.checked ? "Lineup is public. Act names are live on the public screens." : "Lineup hidden. The public sees to be announced.");
+  };
+
+  $("#soundnudge").onclick = function () { playTheme(true); };
+  $("#big-play").onclick = toggleTheme;
+  $("#dock-play").onclick = toggleTheme;
+  $("#p-seek").oninput = function () { if (audio.duration) audio.currentTime = (this.value / 1000) * audio.duration; };
+  $("#p-vol").value = Math.round(audio.volume * 100);
+  $("#p-vol").oninput = function () { audio.volume = this.value / 100; try { localStorage.setItem("zao.vol", String(audio.volume)); } catch (e) {} };
+  $("#dock-bar").onclick = function (e) {
+    if (!audio.duration) return;
+    var r = this.getBoundingClientRect();
+    audio.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * audio.duration;
+  };
+  $("#jump-help").onclick = function () { go("help"); setTimeout(function () { $("#h-msg").focus(); }, 200); };
+
+  $("#h-send").onclick = function () {
+    var err = $("#h-err");
+    function fail(m, focus) { err.textContent = m; err.classList.remove("hidden"); if (focus) $(focus).focus(); }
+    var msg = $("#h-msg").value.trim();
+    var who = $("#h-who").value.trim();
+    var contact = $("#h-contact").value.trim();
+    var platform = $("#h-platform").value;
+    var handle = cleanHandle($("#h-handle").value, platform);
+    if (!who) return fail("We need a name, so we know who to look for.", "#h-who");
+    if (!contact) return fail("Give us a way to reach you: a phone, an email, or exactly where you are standing.", "#h-contact");
+    if ($("#h-handle").value.trim() && !handle) {
+      return fail(platform === "fc" ? "That Farcaster username does not look right. Letters, numbers, dots and dashes." : "That X handle does not look right. Letters, numbers and underscores, up to 15.", "#h-handle");
+    }
+    if (!msg) return fail("Tell us what is up, even just a few words.", "#h-msg");
+    err.classList.add("hidden");
+    var rec = { id: uid(), at: new Date().toLocaleString(), kind: $("#h-kind").value, where: $("#h-where").value,
+      who: who, contact: contact, msg: msg, status: "open", claimedBy: "",
+      handle: handle, platform: handle ? platform : "" };
+    remember(rec);
+    state.help.push(rec);
+    $("#h-send").disabled = true;
+    save("Sent. Someone on the crew will pick this up.", function () {
+      $("#h-send").disabled = false;
+      state.help = state.help.filter(function (h) { return h.id !== rec.id; });
+      var fb = $("#h-fallback"); fb.classList.remove("hidden"); fb.innerHTML = "";
+      var c = el("div", "panel");
+      c.appendChild(el("div", "h", "This screen cannot post into the crew board"));
+      c.appendChild(el("div", "b", "Copy this and send it in the ZAOstock chat, or find anyone in a ZAO shirt on the block."));
+      fb.appendChild(c);
+      var pre = el("div", "brief");
+      pre.textContent = "ZAOSTOCK HELP\n" + rec.kind + " · " + rec.where + "\n" + (rec.who || "anonymous") + " · " + (rec.contact || "no contact") + "\n\n" + rec.msg;
+      pre.style.marginTop = "12px"; fb.appendChild(pre);
+      var b = el("button", "btn sm", "Copy it"); b.onclick = function () { copy(pre.textContent, "Your message"); };
+      fb.appendChild(b);
+    }, function () {
+      $("#h-send").disabled = false;
+      $("#h-fallback").classList.add("hidden");
+      $("#h-msg").value = "";
+      renderPass(); go("profile");
+    });
+  };
+  $("#ann-post").onclick = function () {
+    var t = $("#ann-text").value.trim();
+    if (!t) { toast("Write the announcement first."); return; }
+    state.announcements.push({ id: uid(), at: new Date().toLocaleString(), text: t, by: $("#ann-by").value.trim(), level: $("#ann-level").value });
+    $("#ann-text").value = ""; save("Posted to the public page.");
+  };
+  $("#att-add").onclick = function () {
+    var t = $("#att-title").value.trim();
+    if (!t) { toast("Name the thing first."); return; }
+    state.attention.push({ id: uid(), title: t, owner: $("#att-owner").value.trim(), state: "blocked" });
+    $("#att-title").value = ""; $("#att-owner").value = ""; save("Added.");
+  };
+  $("#copy-say").onclick = function () { copy(sayLine(), "The line"); };
+  var CH = ["stream", "spaces", "metaverse", "vote", "helpLine"];
+  function fillChannels() { CH.forEach(function (k) { var i = $("#ch-" + k); if (i) i.value = state.channels[k] || ""; }); }
+  $("#ch-save").onclick = function () {
+    CH.forEach(function (k) { state.channels[k] = ($("#ch-" + k).value || "").trim(); });
+    save("Published. The public tiles just changed.");
+  };
+  $("#copy-report").onclick = function () {
+    var ns = nowState(), c = currentSlots(ns);
+    var openHelp = state.help.filter(function (h) { return h.status === "open"; });
+    var blocked = state.attention.filter(function (a) { return a.state === "blocked"; });
+    copy([
+      "ZAOSTOCK OPS REPORT · " + new Date().toLocaleString(), "",
+      "ON NOW: " + (c.now ? c.now.n + " (" + hhmm(c.now.t) + "–" + hhmm(c.now.e) + ", owner " + (c.now.own || "—") + ")" : "nothing scheduled"),
+      "NEXT: " + (c.next ? c.next.n + " at " + hhmm(c.next.t) : "—"), "",
+      "HELP QUEUE: " + openHelp.length + " open",
+      openHelp.length ? openHelp.map(function (x) { return "  · " + x.kind + " — " + x.where + " — " + x.msg; }).join("\n") : "  · clear", "",
+      "BLOCKED (" + blocked.length + "):",
+      blocked.length ? blocked.map(function (x) { return "  · " + x.title + " — " + (x.owner || "no owner"); }).join("\n") : "  · nothing", "",
+      "MODERATOR ROTA: " + seatCount() + "/20 seats claimed", "",
+      "PUBLIC LINE RIGHT NOW:", sayLine()
+    ].join("\n"), "Report");
+  };
+  $("#sim-on").onchange = function () { simOn = this.checked; $("#sim-time").disabled = !simOn; render(); };
+  $("#sim-time").oninput = function () { simMin = +this.value; render(); };
+
+  /* --------------------------------------------------------------- kickoff */
+  try { var md = localStorage.getItem("zao.mode"); if (md) document.documentElement.setAttribute("data-mode", md); } catch (e) {}
+  if (IMG.badge) { $("#mark-badge").src = IMG.badge; $("#mark-gate").src = IMG.badge; }
+  if (IMG.zao) { $("#mark-zao").src = IMG.zao; $("#mark-crest").src = IMG.zao; }
+  if (IMG.stage) $("#img-hero").src = IMG.stage;
+  buildNav(); buildCmd(); renderPeople();
+  renderTiles("#info-tiles", INFO); renderTiles("#link-tiles", LINKS); renderTiles("#team-tiles", TEAMLINKS);
+  renderTiles("#hosp-tiles", HOSPITALITY);
+  (function () {
+    var box = $("#dates-list");
+    KEYDATES.forEach(function (d) {
+      var row = el("div", "item");
+      var top = el("div", "top");
+      top.appendChild(el("span", "chip gold", d.d));
+      row.appendChild(top);
+      row.appendChild(el("div", "msg", d.t));
+      box.appendChild(row);
+    });
+  })();
+  renderAgents(); fillChannels();
+  if (known()) {
+    if (me.name) $("#h-who").value = me.name;
+    if (me.contact) $("#h-contact").value = me.contact;
+    if (me.handle) { $("#h-handle").value = "@" + me.handle; $("#h-platform").value = me.platform || "x"; }
+  }
+  go("lounge");
+  if (soundWanted && THEME) { audio.src = trackSrc(); playTheme(); } else renderPlayer();
+  setInterval(function () { renderClock(); renderCountdown(); renderNowNext(); renderLounge(); if (current === "board") renderBoard(); }, 20000);
+})();
+</script>
