@@ -14,6 +14,20 @@ const eslintConfig = [
       'react-hooks/set-state-in-effect': 'warn',
     },
   },
+  {
+    // ops-room/*.js are plain Node CommonJS scripts - a build step and a static
+    // server - not application code and not TypeScript. no-require-imports is a
+    // TypeScript rule and require() is simply how these files work, so it fired
+    // on correct code and turned the whole repo's CI red on 2026-08-31.
+    //
+    // Scoped to the rule rather than ignoring the directory, so these files keep
+    // every other lint check. `scripts/**` is fully ignored above; this is the
+    // narrower version of the same idea.
+    files: ['ops-room/**/*.js'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
 ];
 
 export default eslintConfig;
