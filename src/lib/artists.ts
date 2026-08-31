@@ -35,7 +35,7 @@ export function generateClaimToken(): string {
 // Public pages: CONFIRMED artists only, and none before the reveal. Before
 // 2026-08-29 this filtered on status != 'declined', which would have given
 // every cypher applicant a live /artist/<name> page before anyone confirmed
-// them, and every confirmed act a page before 1 September (Iman's audit,
+// them, and every confirmed act a page before 7 September (Iman's audit,
 // items 05 and the reveal rule). Wrapped in react cache() so generateMetadata
 // and the page share one query per request.
 export const getPublicArtists = cache(async function getPublicArtists(): Promise<PublicArtist[]> {

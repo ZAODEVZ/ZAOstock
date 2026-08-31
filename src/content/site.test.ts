@@ -11,7 +11,7 @@ describe('SITE facts', () => {
   it('publishes noon, the contact address and the reveal date', () => {
     expect(SITE.musicFrom).toBe('Noon');
     expect(SITE.contact).toBe('info@thezao.com');
-    expect(SITE.lineupRevealDate).toBe('2026-09-01');
+    expect(SITE.lineupRevealDate).toBe('2026-09-07');
     expect(SITE.submissionCutoffDate).toBe('2026-09-01');
   });
 

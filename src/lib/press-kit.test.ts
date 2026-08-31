@@ -47,7 +47,7 @@ describe('press kit placeholder', () => {
     expect(PLACEHOLDER_MARKDOWN).toContain('info@thezao.com');
   });
 
-  it('names no performer before the 1 September reveal', () => {
+  it('names no performer before the 7 September reveal', () => {
     for (const name of ['werb', 'fellenz', 'lyons den', 'dcoop', 'acadia rising', 'stilo', 'north creek', 'aquavantes', 'sen', 'phelan']) {
       expect(blob).not.toContain(name);
     }

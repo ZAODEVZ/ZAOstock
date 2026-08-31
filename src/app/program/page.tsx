@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 // 18:00-20:00 runs straight into Steve's set 20:00-22:00 hosted by Black
 // Moon; the close is Black Moon's licence hour, UNSET.
 //
-// NAMES: the lineup reveal is 1 September. Until then only Lyons Den (public
+// NAMES: the lineup reveal is 7 September. Until then only Lyons Den (public
 // since 23 Aug) and the WaveWarZ battlers plus their MC (Zaal, 27 Aug 19:3x)
 // are named. Stilo is named as a battler, not as the evening DJ. Steve's own
 // act name is not on disk. The fire performance is Dcoop's to time and place;
