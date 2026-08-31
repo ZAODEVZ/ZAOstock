@@ -1,0 +1,27 @@
+# Iman's audit, 28 August 2026: "5 high npm advisories; Dependabot off".
+# PR #59 took the tree to 0 high. Nothing was watching for the next batch,
+# which is the actual gap - a one-time `npm audit fix` ages out.
+#
+# Weekly rather than daily on purpose: this repo has one maintainer and a
+# festival 33 days out. A daily firehose of dependency PRs during event week
+# is noise that trains people to ignore the alerts that matter.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      # One PR for the safe majority, so security patches are not buried
+      # under a dozen routine bumps.
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+    labels: ["dependencies"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies"]
