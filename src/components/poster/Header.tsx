@@ -3,11 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
 
 // Six links plus the gold RSVP badge. /team is not in the nav. Hamburger under
 // 640px is the only stateful thing in the shell.
+//
+// The badge points at /tickets, NOT straight at FESTIVAL.rsvpUrl. It used to go
+// direct to the Luma RSVP, which meant the site-wide primary action skipped past
+// the Pro Ticket entirely and it was reachable only by someone who thought to
+// open /donate. /tickets leads with the same free RSVP, so the fast path is one
+// extra click, and the paid option finally exists in the funnel.
+//
+// The LABEL stays "RSVP" on purpose. "Tickets" reads as "this costs money" on a
+// festival whose whole proposition is free admission.
 const NAV = [
   { href: '/program', label: 'Program' },
   { href: '/musicians', label: 'Musicians' },
@@ -34,14 +42,12 @@ export function Header() {
               {n.label}
             </Link>
           ))}
-          <a
-            href={FESTIVAL.rsvpUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/tickets"
             className="inline-flex items-center font-mono text-eyebrow font-bold uppercase tracking-[0.04em] px-3.5 py-1.5 rounded-pill border-2 border-ink-950 bg-gold-400 text-ink-950 hover:bg-gold-500 focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]"
           >
             RSVP
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -70,14 +76,13 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <a
-              href={FESTIVAL.rsvpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/tickets"
+              onClick={() => setOpen(false)}
               className="inline-flex self-start items-center font-mono text-eyebrow font-bold uppercase tracking-[0.04em] px-3.5 py-1.5 rounded-pill border-2 border-ink-950 bg-gold-400 text-ink-950"
             >
               RSVP
-            </a>
+            </Link>
           </div>
         </nav>
       ) : null}

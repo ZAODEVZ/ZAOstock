@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SERIES } from '@/content/site';
+import { SITE, SERIES, PRO_TICKET, PAYPAL_URL } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -16,20 +16,9 @@ export const metadata: Metadata = {
   },
 };
 
-const PAYPAL_URL = 'https://paypal.com/paypalme/zaalpanthaki';
 const GIVETH_URL = 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology';
 const WALLET = '0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB';
 const PRESETS = [10, 25, 50, 100];
-
-// Pro Ticket: $50, 20 spots, round-1 goal $1,000. On disk in the old homepage
-// and here; not in the deck or the press kit. It lives on this page only and is
-// flagged for Zaal: keep or drop (docs/design/redesign-2026-08-28.md, route 1).
-const PRO_TICKET = {
-  price: '$50',
-  spots: '20 spots',
-  goal: 'Round 1 goal: 20 people, $1,000',
-  gets: ['Supports the festival: artist fees, materials, production costs.', 'A 1:1 with someone on the ZAO team before the event.', 'Credited as a supporter on the festival page.'],
-} as const;
 
 export default function DonatePage() {
   return (
@@ -92,7 +81,7 @@ export default function DonatePage() {
           <SectionHeader
             eyebrow="Pro Ticket"
             title="Free to attend. The first round of crowdfunding starts now."
-            lede="ZAOstock is free for anyone who wants to show up. We are asking twenty people for $50 each, the next $1,000 toward making it happen. Everyone who chips in gets a Pro Ticket."
+            lede={`ZAOstock is free for anyone who wants to show up. We are asking ${PRO_TICKET.countWord} people for ${PRO_TICKET.price} each, the next ${PRO_TICKET.roundTotal} toward making it happen. Everyone who chips in gets a Pro Ticket.`}
           />
           <Card>
             <div className="flex items-baseline justify-between gap-3">
@@ -106,7 +95,7 @@ export default function DonatePage() {
             </ul>
             <p className="text-[13px] text-ink-muted m-0 mt-3">{PRO_TICKET.goal}. After paying, email {SITE.contact} so we can schedule your 1:1.</p>
             <div className="mt-4">
-              <Button href={`${PAYPAL_URL}/50`} external>
+              <Button href={`${PAYPAL_URL}/${PRO_TICKET.amount}`} external>
                 Get the Pro Ticket
               </Button>
             </div>

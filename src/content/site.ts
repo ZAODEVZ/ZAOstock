@@ -6,10 +6,16 @@
 //
 // Overrides relayed to SITE on 2026-08-27 that beat the spec where they
 // differ: attendance stays off the public site (19:3x); Werb is not fully
-// confirmed, so only Lyons Den is public (20:4x); there is no changeover DJ,
-// the MC and partner spots cover changeovers (20:0x); the evening is a DJ set
+// confirmed, so only Lyons Den is public (20:4x); the evening is a DJ set
 // 18:00-20:00, a live set 20:00-22:00 hosted by Black Moon, nothing after
 // 22:00 until the licence hour is typed (ros-v7, 28 Aug).
+//
+// SUPERSEDED, 31 Aug: "there is no changeover DJ, the MC and partner spots
+// cover changeovers" (20:0x, 27 Aug) is NO LONGER TRUE. Zaal reopened the
+// daytime DJ on the 31 Aug Dcoop call - "if we're gonna have one" - and is
+// sourcing local DJs through Nextdoor. Nothing on this page asserts the
+// absence of a DJ, so no public copy changes here; the note is corrected so
+// the next reader does not act on it. Doc 2453.
 
 export const SITE = {
   contact: 'info@thezao.com',
@@ -127,6 +133,33 @@ export type Tier = { name: string; gets: string; price: null | string };
  * This is the single source: the sponsor one-pager now reads from it rather
  * than keeping its own list.
  */
+// The Pro Ticket. ONE source: /donate and /tickets both read this, so the
+// price cannot drift between them the way "1 September" drifted across eight
+// files this morning.
+//
+// OPEN DECISION: "Pro Ticket, $50, 20 spots: keep on /donate or drop" is item 5
+// on the 2 September meeting agenda (docs/design/meeting-2026-09-02.md). If it
+// is dropped, delete this constant and the one block on each page that reads
+// it. Nothing else depends on it.
+export const PRO_TICKET = {
+  price: '$50',
+  amount: 50,
+  spots: '20 spots',
+  /** Round-1 cap, held at 20 since the 2026-05-12 standup. */
+  count: 20,
+  countWord: 'twenty',
+  roundTotal: '$1,000',
+  goal: 'Round 1 goal: 20 people, $1,000',
+  gets: [
+    'Supports the festival: artist fees, materials, production costs.',
+    'A 1:1 with someone on the ZAO team before the event.',
+    'Credited as a supporter on the festival page.',
+  ],
+} as const;
+
+/** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */
+export const PAYPAL_URL = 'https://paypal.com/paypalme/zaalpanthaki';
+
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
   { name: 'Sponsor an artist', gets: "Covers one artist's travel. They make content carrying your name. The artist opts in.", price: null },
