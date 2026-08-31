@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { TIERS } from '@/content/site';
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { getStockTeamMember } from '@/lib/auth/session';
@@ -78,39 +79,20 @@ const PARTNERS: Partner[] = [
   { name: 'ENTERACT', role: 'Production + operational support', confirmed: true },
 ].filter((p) => p.confirmed);
 
-const SPONSOR_TIERS = [
-  {
-    tier: 'Main Stage Partner',
-    range: 'Ask',
-    perks: [
-      'Named credit on stage banner + signage',
-      'On-site booth or table space',
-      'Welcome bag inclusion',
-      'Live verbal credit during the event',
-      'Co-presented in all printed materials',
-    ],
-  },
-  {
-    tier: 'Broadcast Partner',
-    range: '$1,000+',
-    perks: [
-      'Named credit on festival website',
-      'Livestream overlay credit',
-      'Sponsored segment + interview feature',
-      'Cross-platform social campaign (Farcaster, X, Bluesky)',
-      'Newsletter credit (400+ editions)',
-    ],
-  },
-  {
-    tier: 'Year-Round Partner',
-    range: '$5,000+',
-    perks: [
-      'Post-event thank-you feature + recap',
-      'Advisory seat for Year 2 planning',
-      'Priority placement in 2027',
-    ],
-  },
-];
+// SPONSOR_TIERS used to be defined here, with its own names and its own
+// dollar figures - "Broadcast Partner $1,000+" and "Year-Round Partner
+// $5,000+". Those prices were never typed by Zaal. `site.ts` has held every
+// tier price as null on purpose since 27 August, and site.test.ts asserts it,
+// but this page never imported from site.ts, so the two drifted and THIS one
+// was the copy the public actually saw.
+//
+// docs/sponsor/slide-9-tier-ladder.md records an earlier ladder killed for
+// exactly this ("a machine inventing a decision"), and the 2026-05-12 public
+// surfaces audit flagged a $500-$2,500 range as INCONSISTENT. The ladder came
+// out of the deck and survived here.
+//
+// Now there is one source. Prices come from site.ts, which means there are
+// none until Zaal types them.
 
 const HOW_TO = [
   {
@@ -381,23 +363,16 @@ export default async function OverviewOnePager() {
             Commercial sponsorship. Not tax-deductible. Direct-deal with The ZAO.
           </p>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            {SPONSOR_TIERS.map((t) => (
+            {TIERS.map((t) => (
               <div
-                key={t.tier}
+                key={t.name}
                 className="rounded-lg border border-ink-950/60 bg-amber-500/[0.03] p-4 print:border-amber-700/40 print:bg-amber-50"
               >
-                <div className="text-base font-bold text-ink-950 print:text-slate-900">{t.tier}</div>
-                <div className="text-sm font-semibold text-denim-500 print:text-denim-500">
-                  {t.range}
-                </div>
-                <ul className="mt-3 space-y-1 text-xs text-ink-950 print:text-slate-700">
-                  {t.perks.map((perk) => (
-                    <li key={perk} className="flex gap-2">
-                      <span className="text-denim-500 print:text-denim-500">·</span>
-                      <span>{perk}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="text-base font-bold text-ink-950 print:text-slate-900">{t.name}</div>
+                {t.price ? (
+                  <div className="text-sm font-semibold text-denim-500 print:text-denim-500">{t.price}</div>
+                ) : null}
+                <p className="mt-3 text-xs text-ink-950 print:text-slate-700">{t.gets}</p>
               </div>
             ))}
           </div>
