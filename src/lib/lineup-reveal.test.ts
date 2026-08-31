@@ -3,15 +3,17 @@ import { lineupIsPublic } from './lineup-reveal';
 import { getFallbackLineup } from './lineup-fallback';
 
 // The public /artist/<slug> pages and the public lineup must not exist before
-// the 1 September reveal, and the fallback lineup must answer to the slug the
+// the 7 September reveal, and the fallback lineup must answer to the slug the
 // events table actually uses ('zaostock') as well as the one the mobile app
 // calls ('zaostock-2026'). Both were wrong on 2026-08-28 (Iman's audit, items
 // 05 and 06).
 
 describe('lineup reveal gate', () => {
-  it('is closed before 1 September 2026 and open from that day', () => {
+  it('is closed before 7 September 2026 and open from that day', () => {
     expect(lineupIsPublic(new Date('2026-08-31T23:59:59Z'))).toBe(false);
-    expect(lineupIsPublic(new Date('2026-09-01T00:00:00Z'))).toBe(true);
+    expect(lineupIsPublic(new Date('2026-09-01T00:00:00Z'))).toBe(false);
+    expect(lineupIsPublic(new Date('2026-09-06T23:59:59Z'))).toBe(false);
+    expect(lineupIsPublic(new Date('2026-09-07T00:00:00Z'))).toBe(true);
     expect(lineupIsPublic(new Date('2026-10-03T16:00:00Z'))).toBe(true);
   });
 });

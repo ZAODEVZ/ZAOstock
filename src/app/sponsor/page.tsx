@@ -42,7 +42,7 @@ const WHY = [
 ] as const;
 
 const FOR_YOU = [
-  { term: 'Before', detail: 'Named in the announcement, the newsletter and the lineup reveal on 1 September.' },
+  { term: 'Before', detail: 'Named in the announcement, the newsletter and the lineup reveal on 7 September.' },
   { term: 'During', detail: 'On-stage mentions, your logo on the backdrop, presence on the stream.' },
   { term: 'After', detail: 'Named in the recap, in the published local-business measurement, and in the footage that keeps circulating.' },
 ] as const;

@@ -11,7 +11,7 @@ import { PARTNERS, SITE } from '@/content/site';
 // everything nobody has typed yet.
 //
 // Rules the placeholder obeys, and the test enforces:
-// - no performer names (the lineup reveal is 1 September)
+// - no performer names (the lineup reveal is 7 September)
 // - no attendance figure, no sponsor names, no quotes - UNSET until Zaal types them
 // - no tax-deductible language - ZAOstock has no fiscal sponsor
 
@@ -41,7 +41,7 @@ fact or marked **UNSET**.
 
 ## Lineup
 
-Announced 1 September 2026. No performer is named before then.
+Announced 7 September 2026. No performer is named before then.
 
 ## Partners
 
@@ -60,10 +60,10 @@ sponsor and no contribution is tax-deductible.
 | Piece | State |
 |---|---|
 | Press photos | **UNSET** |
-| Artist bios | **UNSET** until the 1 September reveal |
+| Artist bios | **UNSET** until the 7 September reveal |
 | Attendance figure | **UNSET** |
 | Quotes | **UNSET** |
-| Press release | **UNSET** - lands with the 1 September reveal |
+| Press release | **UNSET** - lands with the 7 September reveal |
 
 ## Contact
 

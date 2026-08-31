@@ -16,8 +16,8 @@ export const SITE = {
   musicFrom: 'Noon',
   /** Public window; festival.ts `window` is the source once PRODUCTION's noon revert merges. */
   windowLabel: 'Noon - 6 PM',
-  lineupRevealLabel: '1 September',
-  lineupRevealDate: '2026-09-01',
+  lineupRevealLabel: '7 September',
+  lineupRevealDate: '2026-09-07',
   submissionCutoffLabel: '1 September',
   submissionCutoffDate: '2026-09-01',
   soundcheckNight: 'Friday 2 October',

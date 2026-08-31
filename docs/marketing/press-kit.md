@@ -17,7 +17,7 @@ Written 2026-08-27 (Thursday). Lane: MARKETING.
 - Facts come from `src/content/festival.ts` where they exist there. If SITE
   would rather import them than repeat them, the strings match.
 - Two sections have a hold and must not render before the date on them: the
-  lineup (1 September) and WaveWarZ figures (re-pull before publishing).
+  lineup (7 September) and WaveWarZ figures (re-pull before publishing).
 - Music starts at noon (Zaal, typed 27 Aug 19:3x). `src/content/festival.ts` still
   reads 11 AM - 6 PM; SITE moves it back to noon. This file says noon.
 - Contact address is `info@thezao.com` - settled by Zaal, typed 27 Aug 21:2x. The overview
@@ -73,11 +73,11 @@ One venue at a time. The day does not split across two rooms.
 
 ## The lineup
 
-**HOLD until 1 September.** Two names are public now.
+**HOLD until 7 September.** Two names are public now.
 
-Lyons Den is confirmed. The full lineup is announced on 1 September.
+Lyons Den is confirmed. The full lineup is announced on 7 September.
 
-*(On 1 September, replace with the confirmed acts as Zaal confirms them
+*(On 7 September, replace with the confirmed acts as Zaal confirms them
 that day, plus the WaveWarZ block. Never list an act marked proposed.)*
 
 ## WaveWarZ
