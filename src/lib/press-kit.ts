@@ -13,7 +13,8 @@ import { PARTNERS, SITE } from '@/content/site';
 // Rules the placeholder obeys, and the test enforces:
 // - no performer names (the lineup reveal is 7 September)
 // - no attendance figure, no sponsor names, no quotes - UNSET until Zaal types them
-// - no tax-deductible language - ZAOstock has no fiscal sponsor
+// - never claims deductibility. The negative disclaimer was struck 2026-08-31;
+//   saying nothing is compliant, asserting a deduction is not
 
 export const PRESS_KIT_PATH = path.join(process.cwd(), 'docs', 'marketing', 'press-kit.md');
 
@@ -47,8 +48,7 @@ Announced 7 September 2026. No performer is named before then.
 
 ${CONFIRMED_PARTNERS.map((p) => `- ${p}`).join('\n')}
 
-Sponsors: none signed. Sponsorship is commercial only; ZAOstock has no fiscal
-sponsor and no contribution is tax-deductible.
+Sponsors: none signed. Sponsorship is commercial only, direct with The ZAO.
 
 ## Brand files
 

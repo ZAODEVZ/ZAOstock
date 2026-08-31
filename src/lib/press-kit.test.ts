@@ -62,7 +62,12 @@ describe('press kit placeholder', () => {
   it('never claims a tax-deductible path', () => {
     expect(blob).not.toContain('tax-deductible recognition');
     expect(blob).not.toContain('501(c)');
-    expect(blob).toContain('no contribution is tax-deductible');
+    // This used to REQUIRE the disclaimer "no contribution is tax-deductible".
+    // Zaal struck that sentence from the public site on 2026-08-31, so the test
+    // now enforces what the rule actually says: never make the positive claim.
+    // Silence is compliant; asserting deductibility is not.
+    expect(blob).not.toContain('tax deductible');
+    expect(blob).not.toContain('tax-deductible');
   });
 });
 

@@ -31,7 +31,6 @@ export const SITE = {
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
   producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
-  credit: 'Identity by Samantha "Candy", CandyToyBox.',
   badge: {
     src: '/brand/logos/zaostock26_badge_official.png',
     alt: 'ZAOstock 26 badge: October 3rd, Maine. Whole day of art, peace and music.',

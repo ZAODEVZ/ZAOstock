@@ -29,7 +29,7 @@ Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the 
 
 ## Sponsors
 
-Sponsors put money behind a named artist or the day. Every sponsor gets the same four surfaces: the parklet banner, the programme, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Expected attendance: 200 to 250 in person, about 1,000 online. Sponsorship is a marketing spend; ZAOstock has no fiscal sponsor and nothing is tax-deductible.
+Sponsors put money behind a named artist or the day. Every sponsor gets the same four surfaces: the parklet banner, the programme, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Expected attendance: 200 to 250 in person, about 1,000 online. Sponsorship is a marketing spend, direct with The ZAO.
 
 ## Why Ellsworth
 

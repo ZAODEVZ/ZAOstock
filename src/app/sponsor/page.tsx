@@ -16,7 +16,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, Stat, SectionHeader, 
 export const metadata: Metadata = {
   title: 'Sponsor',
   description:
-    'Sponsor ZAOstock 2026: put your name on the busiest weekend of the fall in downtown Ellsworth, Maine. Commercial sponsorship, no tax receipt; ZAOstock has no fiscal sponsor.',
+    'Sponsor ZAOstock 2026: put your name on the busiest weekend of the fall in downtown Ellsworth, Maine. Commercial sponsorship, direct with The ZAO.',
   alternates: { canonical: '/sponsor' },
   openGraph: {
     title: 'Sponsor | ZAOstock',
@@ -182,7 +182,7 @@ export default function SponsorPage() {
             </a>
           </p>
           <p className="text-sm text-ink-muted measure mt-4 m-0">
-            Sponsorship is a marketing spend. ZAOstock has no fiscal sponsor; nothing here is tax-deductible and no tax receipt is issued.
+            Sponsorship is a marketing spend, direct with The ZAO.
           </p>
           <div className="mt-7 no-print">
             <Button href={`mailto:${SITE.contact}`} external size="lg">

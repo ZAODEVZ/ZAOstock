@@ -6,11 +6,11 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 
 export const metadata: Metadata = {
   title: 'Donate',
-  description: 'Two ways to give: PayPal for fiat or Giveth for crypto. Funds cover artist pay and materials for ZAOstock 2026 in Ellsworth, Maine. Not tax-deductible.',
+  description: 'Two ways to give: PayPal for fiat or Giveth for crypto. Funds cover artist pay and materials for ZAOstock 2026 in Ellsworth, Maine.',
   alternates: { canonical: '/donate' },
   openGraph: {
     title: 'Donate | ZAOstock',
-    description: 'Support ZAOstock 2026. PayPal or Giveth. Not tax-deductible.',
+    description: 'Support ZAOstock 2026. PayPal or Giveth.',
     url: 'https://zaostock.com/donate',
     images: [OG_IMAGE],
   },
@@ -110,7 +110,6 @@ export default function DonatePage() {
             <BorderedList
               rows={[
                 { term: 'Who you give to', detail: 'ZAO Festivals, the events arm of The ZAO. The PayPal handle is the project’s collection account, not an individual.' },
-                { term: 'Tax', detail: 'ZAOstock does not currently have a fiscal sponsor, so contributions are not tax-deductible and we cannot issue a charitable receipt. Give because you want this to happen in Ellsworth, not for the write-off.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
             />
