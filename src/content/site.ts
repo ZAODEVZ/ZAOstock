@@ -111,13 +111,26 @@ export const ATTENDANCE = { inPerson: '200-250', online: 'about 1,000' } as cons
 
 export type Tier = { name: string; gets: string; price: null | string };
 
-/** Deck slide 9. Names and benefits are settled; every price is Zaal's to type. */
+/**
+ * THREE tiers, no prices. Zaal, 31 August 2026: fewer tiers, simpler.
+ *
+ * Was five (Presenting, Platform, Sponsor an artist, Community, Friend of the
+ * Fest) with five null prices - seven open fields that had been blocking the
+ * deck, the sponsor one-pager and three Chamber messages since 27 August.
+ * Collapsing to three closes all seven, because the discarded tiers were
+ * gradations of the same two ideas: back the festival, or back an artist.
+ *
+ * PRICES STAY NULL, and that is load-bearing. `docs/sponsor/slide-9-tier-ladder.md`
+ * records a previous ladder that was killed for inventing figures Zaal never
+ * typed, and `docs/audit/2026-05-12-public-surfaces.md` flagged a $500-$2,500
+ * range as INCONSISTENT back in May. site.test.ts asserts no price appears here.
+ * This is the single source: the sponsor one-pager now reads from it rather
+ * than keeping its own list.
+ */
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
-  { name: 'Platform', gets: 'Logo on the poster and the site. Named in the newsletter and the recap. One on-stage mention.', price: null },
   { name: 'Sponsor an artist', gets: "Covers one artist's travel. They make content carrying your name. The artist opts in.", price: null },
   { name: 'Community', gets: 'Logo on the site, named in the recap, thanked from stage.', price: null },
-  { name: 'Friend of the Fest', gets: 'Name on the site and in the newsletter.', price: null },
 ];
 
 /** Deck slide 3 and the press kit. */

@@ -83,10 +83,8 @@ on-chain; re-pull before printing.
 | Tier | What it gets | Price |
 |---|---|---|
 | Presenting | Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027 | **UNSET** |
-| Platform | Logo on the poster and the site. Named in the newsletter and the recap. One on-stage mention | **UNSET** |
 | Sponsor an artist | Covers one artist's travel. They make content carrying your name. The artist opts in | **UNSET** |
 | Community | Logo on the site, named in the recap, thanked from stage | **UNSET** |
-| Friend of the Fest | Name on the site and in the newsletter | **UNSET** |
 
 Early close: **UNSET** percent off any cash tier for a signed yes by **UNSET**.
 The last useful close is the last day a logo still reaches the poster, which
