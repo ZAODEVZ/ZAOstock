@@ -168,12 +168,68 @@ export async function POST(request: NextRequest) {
       if (d.bio) updates.bio = d.bio;
       if (!existing.claim_token) updates.claim_token = claimToken;
 
-      // `rider_submitted` is a convenience flag - tolerate its absence so this
-      // works whether or not the column exists yet.
-      let { error: updateError } = await supabase.from('artists').update(updates).eq('id', artistId);
+      // CONCURRENCY GUARD (Iman's audit: "rider notes read-modify-write can
+      // drop a line under concurrent writes"). We read `existing.notes`,
+      // appended a block, and are about to write the whole field back. Two
+      // riders submitted close together both read the same `notes`, and the
+      // second write silently erases the first one's block - the submitter
+      // sees success and their rider is gone.
+      //
+      // So the write is conditional on `notes` still being what we read.
+      // PostgREST turns the filter into a WHERE clause, so a row changed since
+      // our read does not match and we get zero rows back instead of
+      // clobbering it. On a miss we re-read and rebuild the merge once. One
+      // retry is enough: two riders racing is plausible, three hitting the
+      // same artist row inside one round trip is not.
+      let updateError: { message?: string } | null = null;
+      let wrote = false;
+
+      for (let attempt = 0; attempt < 2 && !wrote; attempt += 1) {
+        if (attempt > 0) {
+          // Someone wrote between our read and our write. Rebuild the merge
+          // against the CURRENT value so their block survives too.
+          const fresh = await supabase.from('artists').select('notes').eq('id', artistId).maybeSingle();
+          const freshNotes: string | null = fresh.data?.notes ?? null;
+          existing.notes = freshNotes;
+          updates.notes = [freshNotes?.trim(), riderBlock].filter(Boolean).join('\n\n');
+        }
+
+        const base = supabase.from('artists').update(updates).eq('id', artistId);
+        const guarded = existing.notes === null ? base.is('notes', null) : base.eq('notes', existing.notes);
+        const res = await guarded.select('id');
+
+        updateError = res.error;
+        if (updateError) break;
+        wrote = Array.isArray(res.data) && res.data.length > 0;
+      }
+
+      if (!wrote && !updateError) {
+        // Both attempts lost the race. Fail loudly rather than reporting a
+        // success that wrote nothing - a dropped rider that says "thanks" is
+        // exactly the bug this guard exists to prevent.
+        console.error('[rider] concurrent write lost twice for artist', artistId);
+        return NextResponse.json(
+          { success: false, message: 'Someone else updated this profile at the same moment. Please submit again.' },
+          { status: 409 },
+        );
+      }
       if (updateError && /rider_submitted/.test(updateError.message || '')) {
         delete updates.rider_submitted;
-        ({ error: updateError } = await supabase.from('artists').update(updates).eq('id', artistId));
+        // Keep the same concurrency guard on the retry. Without it this
+        // fallback path silently reintroduces the very race the block above
+        // exists to close - and it is the path that runs whenever the
+        // `rider_submitted` column is absent, so it is not a rare branch.
+        const retryBase = supabase.from('artists').update(updates).eq('id', artistId);
+        const retryGuarded = existing.notes === null ? retryBase.is('notes', null) : retryBase.eq('notes', existing.notes);
+        const retry = await retryGuarded.select('id');
+        updateError = retry.error;
+        if (!updateError && !(Array.isArray(retry.data) && retry.data.length > 0)) {
+          console.error('[rider] concurrent write lost on the rider_submitted fallback for artist', artistId);
+          return NextResponse.json(
+            { success: false, message: 'Someone else updated this profile at the same moment. Please submit again.' },
+            { status: 409 },
+          );
+        }
       }
       if (updateError) {
         console.error('[musicians/rider] update error', updateError);
