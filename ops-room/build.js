@@ -14,10 +14,17 @@
  */
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const HERE = __dirname;
 const SRC = path.join(HERE, 'ops-room.src.html');
 const OUT = path.join(HERE, 'ops-room.html');
+// The deployed copy. public/ is served verbatim by Next, so this is the file
+// zaostock.com/ops actually returns. It is GENERATED, and committing a
+// generated file invites drift: edit the source, forget to rebuild, and the
+// live board silently serves yesterday's. src/lib/ops-room.test.ts fails when
+// the stamp below stops matching the source, so the drift cannot go unnoticed.
+const DEPLOY = path.join(HERE, '..', 'public', 'ops', 'index.html');
 const MAX_MB = 15; // the artifact host refuses anything over 16
 
 function b64(p) {
@@ -50,7 +57,25 @@ for (const [token, value] of [
   src = src.replace(token, value);
 }
 
+// Stamp the source's hash into the output so a stale build is detectable
+// without rebuilding 4.7 MB of inlined assets to find out.
+//
+// The anchor is the <title>, not </head>: this file is an artifact fragment and
+// has no <head> at all. A .replace() on a token that is not there returns the
+// string unchanged and reports nothing, so the first attempt at this stamped
+// nothing while the build still printed "built" - exactly the silent-success
+// shape the stamp exists to catch. Hence the explicit check, matching how the
+// placeholder substitution below already fails.
+const TITLE = '<title>ZAOstock Ops Room</title>';
+if (!src.includes(TITLE)) { console.error('stamp anchor missing in source: ' + TITLE); process.exit(1); }
+const srcHash = crypto.createHash('sha256').update(fs.readFileSync(SRC)).digest('hex').slice(0, 16);
+src = src.replace(TITLE, TITLE + '\n<meta name="ops-room-src" content="' + srcHash + '">');
+if (!src.includes('ops-room-src')) { console.error('stamp failed to apply'); process.exit(1); }
+
 fs.writeFileSync(OUT, src);
+fs.mkdirSync(path.dirname(DEPLOY), { recursive: true });
+fs.writeFileSync(DEPLOY, src);
 const mb = Buffer.byteLength(src, 'utf8') / 1048576;
-console.log('built ops-room/ops-room.html  ' + mb.toFixed(2) + ' MB');
+console.log('built ops-room/ops-room.html  ' + mb.toFixed(2) + ' MB  src ' + srcHash);
+console.log('deployed copy -> public/ops/index.html');
 if (mb > MAX_MB) { console.error('over budget: 16 MB is the ceiling'); process.exit(1); }
