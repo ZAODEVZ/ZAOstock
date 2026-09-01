@@ -17,6 +17,10 @@ import { canonicalEventSlug } from '@/lib/event-slugs';
 // `{"artists": []}` sourced from a failure, because "no confirmed artists" and
 // "we could not find out" are different claims, and conflating them is how a
 // broken surface reads as a working one.
+//
+// The same rule has a second edge, on the LIVE path rather than the failure
+// path: an empty list that Supabase really did return is a true answer, but it
+// must not be CACHED like a settled one. See EMPTY_LIVE_CACHE.
 
 interface LineupArtist {
   id: string;
@@ -29,15 +33,39 @@ interface LineupArtist {
   set_order: number | null;
 }
 
-/** Supabase is live: cache at the edge, so the cache can carry us through a later outage. */
+/**
+ * Supabase answered AND there is a roster: cache at the edge, so the cache can
+ * carry us through a later outage.
+ */
 const LIVE_CACHE = 'public, s-maxage=300, stale-while-revalidate=86400';
+
+/**
+ * Supabase answered and the roster is EMPTY.
+ *
+ * Still 200 and still `source: 'live'`, because the answer is known and "nobody
+ * is confirmed yet" is a true thing to say. But it is the most perishable
+ * answer this route has: the reveal is the exact moment it stops being true.
+ *
+ * Under LIVE_CACHE an empty list stays fresh for five minutes and is then served
+ * STALE for another 24 hours while it revalidates. Measured on production
+ * 2026-09-01: /api/events/zaostock/lineup returns {"artists":[],"source":"live"}
+ * and the edge is already answering it X-Vercel-Cache: HIT. So on the 7
+ * September reveal the mobile app could show an empty bill for a day after the
+ * lineup landed, with nothing failing, nothing logged and nothing to look at.
+ *
+ * The long stale window exists to carry a REAL lineup through an outage. An
+ * empty list carries nothing through anything, so holding it buys nothing and
+ * costs the reveal.
+ */
+const EMPTY_LIVE_CACHE = 'public, s-maxage=30';
+
 /** Serving the committed fallback: cache briefly, so we retry Supabase often. */
 const FALLBACK_CACHE = 'public, s-maxage=60';
 
 function live(artists: LineupArtist[]) {
   return NextResponse.json(
     { artists, source: 'live' as const },
-    { headers: { 'Cache-Control': LIVE_CACHE } },
+    { headers: { 'Cache-Control': artists.length > 0 ? LIVE_CACHE : EMPTY_LIVE_CACHE } },
   );
 }
 

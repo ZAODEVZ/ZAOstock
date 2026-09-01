@@ -201,12 +201,36 @@ describe('GET /api/events/[slug]/lineup', () => {
     expect(body.reason).toBe('upstream-unavailable');
   });
 
-  it('lets a live response be edge-cached so the cache can cover a later outage', async () => {
-    getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [] }));
+  it('lets a live lineup WITH A ROSTER be edge-cached, so the cache can cover a later outage', async () => {
+    getSupabaseAdmin.mockReturnValue(
+      supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1 }] }),
+    );
 
     const res = await GET(req, { params });
 
     expect(res.status).toBe(200);
     expect(res.headers.get('Cache-Control')).toContain('stale-while-revalidate');
+  });
+
+  // THIS TEST USED TO ASSERT THE BUG.
+  //
+  // It was the test above, stubbed with `artists: []`, and it passed - so the
+  // suite was pinning a 24-hour stale window onto an EMPTY roster and calling
+  // that the desired behaviour. Production returns {"artists":[],"source":"live"}
+  // today and the edge already answers it X-Vercel-Cache: HIT, so the thing
+  // being pinned was the 7 September reveal failing to reach the mobile app for
+  // up to a day, quietly. Rewritten 2026-09-01.
+  //
+  // An empty live answer is still true and still 200. It just must not be held.
+  it('does not hold an EMPTY live roster in a long stale window', async () => {
+    getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [] }));
+
+    const res = await GET(req, { params });
+    const body = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(body.source).toBe('live');
+    expect(body.artists).toEqual([]);
+    expect(res.headers.get('Cache-Control')).not.toContain('stale-while-revalidate');
   });
 });
