@@ -37,4 +37,5 @@ should say so, in a file, with both dates.
 | [0001](0001-team-dashboard-retired.md) | The team dashboard is retired, the document is the tool | 2026-08-29, Zaal | active |
 | [0002](0002-virtual-lane-has-two-leads.md) | The virtual lane has two leads, split by platform | 2026-08-27, Zaal | active, supersedes an unwritten 24 Aug call |
 | [0003](0003-event-slug-aliases.md) | Client event slugs are aliased, never given their own events row | 2026-09-01, Iman | active |
+| [0004](0004-anon-key-reads-nothing.md) | The publishable key can read nothing, so no RLS work is needed before the event | 2026-09-01, measured | active |
 
