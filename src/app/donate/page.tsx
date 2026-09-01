@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SERIES, PRO_TICKET, PAYPAL_URL } from '@/content/site';
+import { SITE, SERIES, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -81,25 +81,32 @@ export default function DonatePage() {
           <SectionHeader
             eyebrow="Pro Ticket"
             title="Free to attend. The first round of crowdfunding starts now."
-            lede={`ZAOstock is free for anyone who wants to show up. We are asking ${PRO_TICKET.countWord} people for ${PRO_TICKET.price} each, the next ${PRO_TICKET.roundTotal} toward making it happen. Everyone who chips in gets a Pro Ticket.`}
+            lede={`ZAOstock is free for anyone who wants to show up. We are raising the next ${PRO_ROUND.roundTotal} toward making it happen, at ${SUPPORT_TIERS[0].price} or ${PRO_TICKET.price}. ${PRO_ROUND.countsRule} Both credit you by name.`}
           />
-          <Card>
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="font-display text-[2.25rem] leading-none text-red-500">{PRO_TICKET.price}</span>
-              <Eyebrow>{PRO_TICKET.spots}</Eyebrow>
-            </div>
-            <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
-              {PRO_TICKET.gets.map((g) => (
-                <li key={g}>{g}</li>
-              ))}
-            </ul>
-            <p className="text-[13px] text-ink-muted m-0 mt-3">{PRO_TICKET.goal}. After paying, email {SITE.contact} so we can schedule your 1:1.</p>
-            <div className="mt-4">
-              <Button href={`${PAYPAL_URL}/${PRO_TICKET.amount}`} external>
-                Get the Pro Ticket
-              </Button>
-            </div>
-          </Card>
+          <div className="flex flex-col gap-4">
+            {SUPPORT_TIERS.map((tier) => (
+              <Card key={tier.id}>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
+                  {tier.spots ? <Eyebrow>{tier.spots}</Eyebrow> : null}
+                </div>
+                <h3 className="font-display font-normal text-h3 text-ink-950 m-0 mt-2">{tier.name}</h3>
+                <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
+                  {tier.gets.map((g) => (
+                    <li key={g}>{g}</li>
+                  ))}
+                </ul>
+                <div className="mt-4">
+                  <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
+                    Chip in {tier.price}
+                  </Button>
+                </div>
+              </Card>
+            ))}
+            <p className="text-[13px] text-ink-muted m-0">
+              {PRO_ROUND.goal}. After taking the {PRO_TICKET.name}, email {SITE.contact} so we can schedule your 1:1.
+            </p>
+          </div>
         </TwoUp>
       </Section>
 
