@@ -136,28 +136,71 @@ export type Tier = { name: string; gets: string; price: null | string };
  * This is the single source: the sponsor one-pager now reads from it rather
  * than keeping its own list.
  */
-// The Pro Ticket. ONE source: /donate and /tickets both read this, so the
+// The two support tiers. ONE source: /donate and /tickets both read this, so a
 // price cannot drift between them the way "1 September" drifted across eight
-// files this morning.
+// files on 2026-08-31.
+//
+// NEITHER TIER IS ADMISSION. Admission is free and stays free - /tickets says
+// "this is patronage, not admission" and "nothing here buys access, because
+// access is free". So $50 is not a standard ticket with $20 underneath it; both
+// are ways to fund a day that charges nobody at the gate. Order them cheapest
+// first so the page reads as a ladder of support rather than a price list.
 //
 // OPEN DECISION: "Pro Ticket, $50, 20 spots: keep on /donate or drop" is item 5
-// on the 2 September meeting agenda (docs/design/meeting-2026-09-02.md). If it
-// is dropped, delete this constant and the one block on each page that reads
-// it. Nothing else depends on it.
-export const PRO_TICKET = {
-  price: '$50',
-  amount: 50,
-  spots: '20 spots',
-  /** Round-1 cap, held at 20 since the 2026-05-12 standup. */
+// on the 2 September meeting agenda (docs/design/meeting-2026-09-02.md). If the
+// paid tiers go, delete SUPPORT_TIERS and the one block on each page that reads
+// it. Nothing else depends on them.
+export interface SupportTier {
+  id: string;
+  name: string;
+  price: string;
+  /** The bare number, for building a PayPal link. */
+  amount: number;
+  /** UNSET when the tier is uncapped. */
+  spots: string | null;
+  blurb: string;
+  gets: readonly string[];
+}
+
+export const SUPPORT_TIERS: readonly SupportTier[] = [
+  {
+    id: 'supporter',
+    name: 'Supporter',
+    price: '$20',
+    amount: 20,
+    // Uncapped on purpose. The cap on the Pro Ticket exists because a 1:1 costs
+    // real time; nothing here is scarce, so nothing needs rationing.
+    spots: null,
+    blurb: 'The straightforward one. It pays for the day and puts your name on it.',
+    gets: [
+      'Supports the festival: artist fees, materials, production costs.',
+      'Credited as a supporter on the festival page.',
+    ],
+  },
+  {
+    id: 'pro',
+    name: 'Pro Ticket',
+    price: '$50',
+    amount: 50,
+    spots: '20 spots',
+    blurb: 'The same, plus time with the people building it.',
+    gets: [
+      'Supports the festival: artist fees, materials, production costs.',
+      'Credited as a supporter on the festival page.',
+      'A 1:1 with someone on the ZAO team before the event.',
+    ],
+  },
+] as const;
+
+/** The Pro Ticket, by name, for the copy that speaks about it specifically. */
+export const PRO_TICKET = SUPPORT_TIERS[1];
+
+/** Round-1 cap on the Pro Ticket, held at 20 since the 2026-05-12 standup. */
+export const PRO_ROUND = {
   count: 20,
   countWord: 'twenty',
   roundTotal: '$1,000',
   goal: 'Round 1 goal: 20 people, $1,000',
-  gets: [
-    'Supports the festival: artist fees, materials, production costs.',
-    'A 1:1 with someone on the ZAO team before the event.',
-    'Credited as a supporter on the festival page.',
-  ],
 } as const;
 
 /** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */

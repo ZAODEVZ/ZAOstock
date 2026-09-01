@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, PRO_TICKET, PAYPAL_URL } from '@/content/site';
+import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 // WHY THIS PAGE EXISTS
@@ -15,9 +15,13 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // page and the Pro Ticket sits below it, never in front of it, so nobody reads
 // "tickets" as "this costs money".
 //
-// The Pro Ticket block reads PRO_TICKET from src/content/site.ts, the same source
-// /donate reads. If item 5 on the 2 September agenda drops the Pro Ticket, delete
-// the one Section marked PRO TICKET below and nothing else on this page changes.
+// The paid block reads SUPPORT_TIERS from src/content/site.ts, the same source
+// /donate reads. If item 5 on the 2 September agenda drops the paid tiers, delete
+// the one Section marked SUPPORT TIERS below and nothing else on this page changes.
+//
+// Two tiers as of 2026-09-01, $20 and $50, cheapest first. NEITHER IS ADMISSION:
+// the copy below says so twice, because "tickets" plus two prices is exactly the
+// shape a reader mistakes for a paywall on a free festival.
 
 export const metadata: Metadata = {
   title: 'Tickets',
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/tickets' },
   openGraph: {
     title: 'Tickets | ZAOstock',
-    description: 'Free to attend. RSVP to hold a spot, or take a Pro Ticket to help fund the day.',
+    description: 'Free to attend. RSVP to hold a spot, or chip in to help fund the day.',
     url: 'https://zaostock.com/tickets',
     images: [OG_IMAGE],
   },
@@ -73,41 +77,45 @@ export default function TicketsPage() {
             </div>
             <h2 className="font-display font-normal text-h3 text-ink-950 m-0">Nothing else to buy</h2>
             <p className="text-sm text-ink-secondary m-0 mt-2">
-              No paid tier gets you a better spot, an earlier entry or a different view. Everything below is a way to
-              fund the day, not a way to buy a better one.
+              Neither paid tier gets you a better spot, an earlier entry or a different view. Both are ways to fund the
+              day, not ways to buy a better one.
             </p>
           </Card>
         </div>
       </Section>
 
-      {/* PRO TICKET - delete this whole Section if the 2 September agenda drops it. */}
-      <Section id="pro-ticket">
-        <TwoUp>
-          <SectionHeader
-            eyebrow="Pro Ticket"
-            title={`For the ${PRO_TICKET.countWord} people who want to make it happen.`}
-            lede="Still free to attend. This is patronage, not admission: it covers artist fees, materials and production for a day that costs money to put on and charges nobody at the gate."
-          />
-          <Card>
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="font-display text-[2.25rem] leading-none text-red-500">{PRO_TICKET.price}</span>
-              <Eyebrow>{PRO_TICKET.spots}</Eyebrow>
-            </div>
-            <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
-              {PRO_TICKET.gets.map((g) => (
-                <li key={g}>{g}</li>
-              ))}
-            </ul>
-            <p className="text-[13px] text-ink-muted m-0 mt-3">
-              {PRO_TICKET.goal}. After paying, email {SITE.contact} so we can schedule your 1:1.
-            </p>
-            <div className="mt-4">
-              <Button href={`${PAYPAL_URL}/${PRO_TICKET.amount}`} external>
-                Get the Pro Ticket
-              </Button>
-            </div>
-          </Card>
-        </TwoUp>
+      {/* SUPPORT TIERS - delete this whole Section if the 2 September agenda drops them. */}
+      <Section id="support">
+        <SectionHeader
+          eyebrow="Chip in"
+          title="Two ways to pay for a day that costs nothing to attend."
+          lede="Still free at the gate. This is patronage, not admission: it covers artist fees, materials and production for a festival that charges nobody to turn up."
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-6">
+          {SUPPORT_TIERS.map((tier) => (
+            <Card key={tier.id}>
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
+                {tier.spots ? <Eyebrow>{tier.spots}</Eyebrow> : null}
+              </div>
+              <h3 className="font-display font-normal text-h3 text-ink-950 m-0 mt-2">{tier.name}</h3>
+              <p className="text-sm text-ink-secondary m-0 mt-1">{tier.blurb}</p>
+              <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
+                {tier.gets.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+              <div className="mt-4">
+                <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
+                  Chip in {tier.price}
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <p className="text-[13px] text-ink-muted m-0 mt-4">
+          {PRO_ROUND.goal}. After taking the {PRO_TICKET.name}, email {SITE.contact} so we can schedule your 1:1.
+        </p>
       </Section>
 
       <Section>
@@ -123,8 +131,12 @@ export default function TicketsPage() {
                 { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket is checked at the parklet.` },
                 { term: 'Do I need the RSVP', detail: 'No. It helps us plan numbers, that is all. Turn up either way.' },
                 {
-                  term: 'Does the Pro Ticket get me in earlier',
-                  detail: 'No. It gets you a 1:1 with the team before the event and your name credited as a supporter. Nothing about the day itself changes.',
+                  term: 'Does paying get me in earlier',
+                  detail: 'No. Neither tier changes anything about the day. The higher one adds a 1:1 with the team before the event; both credit you as a supporter.',
+                },
+                {
+                  term: 'What is the difference between them',
+                  detail: 'Only the 1:1. Both support the festival and both credit you by name.',
                 },
                 { term: 'Other ways to give', detail: 'PayPal for fiat or Giveth for crypto, at /donate.' },
                 { term: 'Questions', detail: SITE.contact },
