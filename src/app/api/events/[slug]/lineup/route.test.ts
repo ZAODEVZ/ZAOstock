@@ -86,6 +86,38 @@ describe('GET /api/events/[slug]/lineup', () => {
     expect(body.degraded).toBeUndefined();
   });
 
+  // Regression, 2026-08-31. While Supabase was down this slug reached the
+  // fallback and answered; the moment the real database came back, the event
+  // lookup ran first and turned it into a hard 404 for the mobile app. The
+  // assertion that matters is the slug the query is given, not the status.
+  it('resolves the mobile app slug to the events-table slug rather than 404ing', async () => {
+    const slugsQueried: string[] = [];
+    getSupabaseAdmin.mockReturnValue({
+      from: (table: string) => {
+        if (table === 'events') {
+          return {
+            select: () => ({
+              eq: (_column: string, value: string) => {
+                slugsQueried.push(value);
+                return { maybeSingle: async () => ({ data: { id: 'evt-1' }, error: null }) };
+              },
+            }),
+          };
+        }
+        return {
+          select: () => ({
+            eq: () => ({ eq: () => ({ order: async () => ({ data: [], error: null }) }) }),
+          }),
+        };
+      },
+    });
+
+    const res = await GET(req, { params: Promise.resolve({ slug: 'zaostock-2026' }) });
+
+    expect(slugsQueried).toEqual(['zaostock']);
+    expect(res.status).toBe(200);
+  });
+
   it('serves the committed fallback when the artists query fails', async () => {
     getFallbackLineup.mockReturnValue([{ id: 'f1', name: 'Committed Act', set_order: 1 }]);
     getSupabaseAdmin.mockReturnValue(

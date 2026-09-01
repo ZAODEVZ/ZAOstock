@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { AS_OF, getFallbackLineup, type FallbackArtist } from '@/lib/lineup-fallback';
+import { canonicalEventSlug } from '@/lib/event-slugs';
 
 // Public - confirmed lineup only, and only public-safe fields (no fee,
 // rider, notes, contact info, or anything else internal to the artists
@@ -62,6 +63,10 @@ function degraded(slug: string, reason: string) {
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  // The mobile app calls 'zaostock-2026'; the events table says 'zaostock'.
+  // Resolved before the lookup, not after it fails, or the alias only works
+  // while the database is down (src/lib/event-slugs.ts).
+  const eventSlug = canonicalEventSlug(slug);
 
   let supabase: ReturnType<typeof getSupabaseAdmin>;
   try {
@@ -77,7 +82,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const { data: event, error: eventError } = await supabase
       .from('events')
       .select('id')
-      .eq('slug', slug)
+      .eq('slug', eventSlug)
       .maybeSingle();
 
     if (eventError) {

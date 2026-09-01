@@ -26,6 +26,8 @@
 // message. Update `AS_OF` in the same edit so consumers can see the age.
 // Anything not confirmed does not belong here.
 
+import { canonicalEventSlug } from '@/lib/event-slugs';
+
 export interface FallbackArtist {
   id: string;
   name: string;
@@ -49,12 +51,14 @@ export const AS_OF = '2026-08-22';
  * failure instead of a 503.
  */
 export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
-  // The events table slug is 'zaostock' (src/app/api/events/rsvp/route.ts);
-  // the mobile app calls 'zaostock-2026'. Both keys serve the same list.
+  // Keyed by the slug the events table uses. The mobile app's 'zaostock-2026'
+  // used to need its own duplicate key here; it is resolved by
+  // canonicalEventSlug now, in the one place that owns the alias, so that the
+  // live path and the degraded path cannot disagree about which event a slug
+  // means.
   zaostock: [],
-  'zaostock-2026': [],
 };
 
 export function getFallbackLineup(slug: string): FallbackArtist[] {
-  return LINEUP_FALLBACK[slug] ?? [];
+  return LINEUP_FALLBACK[canonicalEventSlug(slug)] ?? [];
 }
