@@ -15,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/musicians',
-    '/musicians/submit',
     '/musicians/rider',
     '/artists',
     '/event-organizers',

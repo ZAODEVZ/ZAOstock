@@ -24,6 +24,10 @@ export const SITE = {
   windowLabel: 'Noon - 6 PM',
   lineupRevealLabel: '7 September',
   lineupRevealDate: '2026-09-07',
+  // UNUSED since 2026-09-01: the submission form was removed from the site, so
+  // nothing renders these and there is no cutoff to enforce. Left in place
+  // rather than deleted so the value is not lost if intake ever returns. Do NOT
+  // read them as a live deadline - there is no way to submit on the site.
   submissionCutoffLabel: '1 September',
   submissionCutoffDate: '2026-09-01',
   soundcheckNight: 'Friday 2 October',

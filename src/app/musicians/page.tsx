@@ -40,18 +40,16 @@ export default function MusiciansPage() {
         'Help share when we post your slot. We do the heavy lift on socials, you amplify.',
       ]}
       ctas={[
-        { label: 'Submit your music', href: '/musicians/submit', primary: true },
-        { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest' },
+        { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest', primary: true },
       ]}
       facts={[
         { term: 'Date', detail: 'Saturday 3 October 2026, music from noon' },
         { term: 'Where', detail: 'Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six' },
-        { term: 'Submissions close', detail: '1 September 2026' },
         { term: 'Soundcheck', detail: 'Friday 2 October, artists only' },
         { term: 'Set length', detail: 'Settled with you when your slot is' },
         { term: 'Pay', detail: 'Not pay-to-play. Independent and ZAO-vetted only' },
       ]}
-      footnote="Submissions close 1 September 2026. Independent and ZAO-vetted only. This is not a pay-to-play festival."
+      footnote="Independent and ZAO-vetted only. This is not a pay-to-play festival."
     />
   );
 }
