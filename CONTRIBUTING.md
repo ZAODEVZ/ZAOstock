@@ -2,6 +2,22 @@
 
 Working on zaostock? Here's the actual workflow, not boilerplate.
 
+## Where things live
+
+| Looking for | Go to |
+|---|---|
+| Who owns what, who decides what | [`docs/team/`](docs/team/) |
+| A role nobody is filling | [`docs/team/OPEN-ROLES.md`](docs/team/OPEN-ROLES.md) |
+| Any ZAO event, its links and its slug | [`docs/events/`](docs/events/) |
+| Why something was decided, and when | [`docs/decisions/`](docs/decisions/) |
+| How the app is put together | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
+| How a bot should write as someone | [`agents/`](agents/) |
+
+Adding a person, an event or a decision each take four steps, written at the
+bottom of the relevant README. All three indexes are enforced by
+`src/content/registry.test.ts`, so forgetting the index row fails the build
+instead of leaving a file nobody can find.
+
 ## Setup
 
 ```bash
@@ -39,6 +55,12 @@ Conventional commits, matching the existing git history: `type(scope): descripti
 restatement of the diff - the diff already shows what changed.
 
 ## Database changes
+
+**Verify the RLS claim below rather than trusting it.** `npm run check:exposure`
+asks the project directly what the publishable key can read, table by table. It
+never writes and never pulls a row. The claim in this section has never been
+checked by CI, and the tables behind the retired team dashboard still hold every
+row they ever had. Retired routes are not retired data.
 
 This project's Supabase RLS policies are scoped to `service_role` only (not `public`/`anon`) - every
 DB access goes through `getSupabaseAdmin()` server-side, gated by the app's own session check. Keep it
