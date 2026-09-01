@@ -7,12 +7,18 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const { getSupabaseAdmin } = vi.hoisted(() => ({ getSupabaseAdmin: vi.fn() }));
 const { getFallbackLineup } = vi.hoisted(() => ({ getFallbackLineup: vi.fn() }));
+const { lineupIsPublic } = vi.hoisted(() => ({ lineupIsPublic: vi.fn() }));
 
 vi.mock('@/lib/db/supabase', () => ({ getSupabaseAdmin }));
 vi.mock('@/lib/lineup-fallback', () => ({
   getFallbackLineup,
   AS_OF: '2026-08-22',
 }));
+
+// Mocked rather than clock-driven: the reveal is 7 September and this suite runs
+// every day before and after it, so a real `new Date()` would make these tests
+// mean something different depending on when CI ran.
+vi.mock('@/lib/lineup-reveal', () => ({ lineupIsPublic }));
 
 import { GET } from './route';
 
@@ -59,6 +65,9 @@ function supabaseStub(opts: {
 beforeEach(() => {
   vi.clearAllMocks();
   getFallbackLineup.mockReturnValue([]);
+  // The default for the cases below is 'the reveal has happened'; the gate has
+  // its own describe at the bottom of this file.
+  lineupIsPublic.mockReturnValue(true);
 });
 
 describe('GET /api/events/[slug]/lineup', () => {
@@ -232,5 +241,78 @@ describe('GET /api/events/[slug]/lineup', () => {
     expect(body.source).toBe('live');
     expect(body.artists).toEqual([]);
     expect(res.headers.get('Cache-Control')).not.toContain('stale-while-revalidate');
+  });
+});
+
+// src/lib/artists.ts has enforced this since 2026-08-29 - "CONFIRMED artists
+// only, and none before the reveal" - so the website's /artist/<slug> pages stay
+// dark until 7 September. This route is the OTHER public reader of the same
+// table, and the one the mobile app calls, and it had no gate at all.
+//
+// It read as fine only because the artists table is empty, so both surfaces
+// agreed on nothing. Found by Iman, 2026-09-01, sweeping round two.
+describe('the reveal gate, on the API and not only on the website', () => {
+  it('publishes nothing before the reveal, even with confirmed acts in the table', async () => {
+    lineupIsPublic.mockReturnValue(false);
+    const tablesRead: string[] = [];
+    getSupabaseAdmin.mockReturnValue({
+      from: (table: string) => {
+        tablesRead.push(table);
+        if (table === 'events') {
+          return {
+            select: () => ({
+              eq: () => ({ maybeSingle: async () => ({ data: { id: 'evt-1' }, error: null }) }),
+            }),
+          };
+        }
+        return {
+          select: () => ({
+            eq: () => ({
+              eq: () => ({
+                order: async () => ({
+                  data: [{ id: 'a1', name: 'A Confirmed Act', set_order: 1 }],
+                  error: null,
+                }),
+              }),
+            }),
+          }),
+        };
+      },
+    });
+
+    const res = await GET(req, { params });
+    const body = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(body.artists).toEqual([]);
+    expect(body.published).toBe(false);
+    expect(body.reveal_date).toBe('2026-09-07');
+    // the row is never read, not read and then filtered
+    expect(tablesRead).not.toContain('artists');
+    // and the holding answer must not outlive the reveal in a cache
+    expect(res.headers.get('Cache-Control')).not.toContain('stale-while-revalidate');
+  });
+
+  it('still 404s an unknown event before the reveal, rather than holding it', async () => {
+    lineupIsPublic.mockReturnValue(false);
+    getSupabaseAdmin.mockReturnValue(supabaseStub({ event: null }));
+
+    const res = await GET(req, { params });
+
+    expect(res.status).toBe(404);
+  });
+
+  it('publishes the roster once the reveal has passed', async () => {
+    lineupIsPublic.mockReturnValue(true);
+    getSupabaseAdmin.mockReturnValue(
+      supabaseStub({ artists: [{ id: 'a1', name: 'A Confirmed Act', set_order: 1 }] }),
+    );
+
+    const res = await GET(req, { params });
+    const body = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(body.artists).toHaveLength(1);
+    expect(body.published).toBeUndefined();
   });
 });

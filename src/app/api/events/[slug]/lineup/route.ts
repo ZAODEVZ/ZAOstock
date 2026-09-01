@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { AS_OF, getFallbackLineup, type FallbackArtist } from '@/lib/lineup-fallback';
 import { canonicalEventSlug } from '@/lib/event-slugs';
+import { lineupIsPublic } from '@/lib/lineup-reveal';
+import { SITE } from '@/content/site';
 
 // Public - confirmed lineup only, and only public-safe fields (no fee,
 // rider, notes, contact info, or anything else internal to the artists
@@ -62,6 +64,37 @@ const EMPTY_LIVE_CACHE = 'public, s-maxage=30';
 /** Serving the committed fallback: cache briefly, so we retry Supabase often. */
 const FALLBACK_CACHE = 'public, s-maxage=60';
 
+/**
+ * The lineup reveal has not happened yet.
+ *
+ * `getPublicArtists()` in src/lib/artists.ts has enforced this since
+ * 2026-08-29 - "CONFIRMED artists only, and none before the reveal" - so the
+ * website's /artist/<slug> pages are dark until 7 September. This route, which
+ * is the OTHER public reader of the same table and the one the ZAO Festivals
+ * mobile app calls, never got the rule. The day anyone marks an act confirmed
+ * for planning, the app publishes the lineup, whatever the site promises.
+ *
+ * Nobody noticed because the artists table is empty, so both surfaces happen to
+ * agree on nothing. The gate is missing all the same, and it stops being
+ * theoretical the first time a row is set to confirmed.
+ *
+ * Additive, not a new shape: `artists: []` is exactly what the app already
+ * receives today, so nothing downstream has to change. `published` and
+ * `reveal_date` are there so a client can tell "not yet" from "nobody", which
+ * is the same distinction this route already draws for failures.
+ */
+function beforeReveal() {
+  return NextResponse.json(
+    {
+      artists: [],
+      source: 'live' as const,
+      published: false,
+      reveal_date: SITE.lineupRevealDate,
+    },
+    { headers: { 'Cache-Control': EMPTY_LIVE_CACHE } },
+  );
+}
+
 function live(artists: LineupArtist[]) {
   return NextResponse.json(
     { artists, source: 'live' as const },
@@ -120,6 +153,11 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     // A missing event is a real 404, not a degradation - the answer is known.
     if (!event) return NextResponse.json({ error: 'Event not found' }, { status: 404 });
+
+    // After the 404, so an unknown slug is still an honest 404 before the
+    // reveal, and before the artists query, so no unpublished row is read at
+    // all rather than read and then filtered.
+    if (!lineupIsPublic()) return beforeReveal();
 
     const { data, error } = await supabase
       .from('artists')
