@@ -37,9 +37,21 @@ export const FORM_POLICY: Record<FormSurface, FormPolicy> = {
 // untouched and still correct.
 export const DATABASE_AVAILABLE = false;
 
+/**
+ * The rule itself, with the state passed in.
+ *
+ * Split out from formIsLive so the rule can be tested in BOTH states. The test
+ * for this used to read `if (!DATABASE_AVAILABLE) { ... }`, which meant the
+ * assertion vanished the moment the flag was flipped - the suite stopped
+ * checking precisely when the risky state arrived, and went green doing it.
+ */
+export function surfaceIsLive(policy: FormPolicy, databaseAvailable: boolean): boolean {
+  return policy === 'form' && databaseAvailable;
+}
+
 /** True when this surface should render its real form right now. */
 export function formIsLive(surface: FormSurface): boolean {
-  return FORM_POLICY[surface] === 'form' && DATABASE_AVAILABLE;
+  return surfaceIsLive(FORM_POLICY[surface], DATABASE_AVAILABLE);
 }
 
 /** True when this surface is an email link by decision, not because of an outage. */
