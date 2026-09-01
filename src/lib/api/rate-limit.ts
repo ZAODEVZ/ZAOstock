@@ -9,8 +9,43 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 const buckets = new Map<string, { count: number; resetAt: number }>();
 
+/**
+ * Nothing used to remove an entry from `buckets`.
+ *
+ * The key is `bucket:ip`, and the IP is read off a request header on eleven
+ * public routes, two of them logins - so the key space is whatever the internet
+ * decides to send. An entry was only ever overwritten, and only if that exact
+ * key came back after its window had passed. Every other distinct IP that ever
+ * touched a public form stayed in memory for the life of the warm instance,
+ * counted and never collected.
+ *
+ * That is a slow leak in the code whose job is to raise the bar against abuse of
+ * those endpoints, and the input that grows it is the input it is defending
+ * against. An expired record has no meaning - the window is over and the next
+ * request starts a fresh one - so expired records are dropped rather than kept.
+ *
+ * Swept on write, at most once a minute, so a burst pays for one pass over the
+ * map rather than one per request.
+ */
+const SWEEP_INTERVAL_MS = 60_000;
+let lastSweep = Date.now();
+
+function sweepExpired(now: number): void {
+  if (now - lastSweep < SWEEP_INTERVAL_MS) return;
+  lastSweep = now;
+  for (const [key, rec] of buckets) {
+    if (now > rec.resetAt) buckets.delete(key);
+  }
+}
+
+/** How many windows are being tracked right now. Exists so the sweep is testable. */
+export function trackedWindowCount(): number {
+  return buckets.size;
+}
+
 function isRateLimited(key: string, windowMs: number, maxAttempts: number): boolean {
   const now = Date.now();
+  sweepExpired(now);
   const rec = buckets.get(key);
   if (!rec || now > rec.resetAt) {
     buckets.set(key, { count: 1, resetAt: now + windowMs });
