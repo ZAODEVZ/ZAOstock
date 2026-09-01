@@ -31,11 +31,22 @@ export const FORM_POLICY: Record<FormSurface, FormPolicy> = {
   rider: 'email',
 };
 
-// FLIP THIS when Vercel Production points at the real Supabase project
-// (yjrlaxpjusmrfylumban) and `curl https://zaostock.com/api/events` returns a
-// list rather than 500. That is the whole change; the form components are
-// untouched and still correct.
-export const DATABASE_AVAILABLE = false;
+// The condition this file set for itself was: Vercel Production points at the
+// real Supabase project (yjrlaxpjusmrfylumban) and `curl
+// https://zaostock.com/api/events` returns a list rather than 500.
+//
+// MET, measured 2026-09-01. /api/events returns HTTP 200 and a JSON list of the
+// four ZAO Festivals events. The three tables these forms write to all exist on
+// that project and all carry rows, so the write path has worked before:
+// volunteers, suggestions, rsvps.
+//
+// So the forms were dark from 2026-08-23 to 2026-09-01 for an outage that had
+// already ended. Nothing announced that, because an unavailable form looks
+// exactly like a deliberately disabled one - the same shape as the rest of this
+// week's findings. Volunteer sign-up was the casualty: 32 days out, with a
+// stage manager, an AV second and twenty moderator seats all unfilled, the one
+// public route into helping was switched off.
+export const DATABASE_AVAILABLE = true;
 
 /**
  * The rule itself, with the state passed in.
