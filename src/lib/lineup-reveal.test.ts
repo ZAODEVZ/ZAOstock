@@ -13,7 +13,12 @@ describe('lineup reveal gate', () => {
     expect(lineupIsPublic(new Date('2026-08-31T23:59:59Z'))).toBe(false);
     expect(lineupIsPublic(new Date('2026-09-01T00:00:00Z'))).toBe(false);
     expect(lineupIsPublic(new Date('2026-09-06T23:59:59Z'))).toBe(false);
-    expect(lineupIsPublic(new Date('2026-09-07T00:00:00Z'))).toBe(true);
+    // The bug this guards: midnight UTC on the 7th is 8 PM on the 6th in
+    // Ellsworth. The gate must still be SHUT.
+    expect(lineupIsPublic(new Date('2026-09-07T00:00:00Z'))).toBe(false);
+    expect(lineupIsPublic(new Date('2026-09-07T03:59:59Z'))).toBe(false);
+    // 04:00Z is midnight in Ellsworth on the 7th. Open.
+    expect(lineupIsPublic(new Date('2026-09-07T04:00:00Z'))).toBe(true);
     expect(lineupIsPublic(new Date('2026-10-03T16:00:00Z'))).toBe(true);
   });
 });
