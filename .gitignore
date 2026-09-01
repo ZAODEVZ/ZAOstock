@@ -12,3 +12,7 @@ scripts/team-codes.local.json
 .vercel
 .env*
 .gstack/
+
+# Local agent session scratch. .claude/LAST_MESSAGE.md holds whatever was last
+# typed in this folder, and this repo is PUBLIC, so it must never be committed.
+.claude/
