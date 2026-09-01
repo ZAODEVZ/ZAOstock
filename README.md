@@ -14,6 +14,41 @@ Run by [The ZAO](https://zaoos.com).
 - Tiptap (WYSIWYG bio editor)
 - Vercel (hosting)
 
+## Before you change anything
+
+Four things that have each already cost this project real time. None of them
+throws an error when you get it wrong, which is why they are on the front page.
+
+**The lineup reveal is TWO edits, in two systems.** The mobile app reads the
+Supabase `artists` table. The website reads `PUBLIC_LINEUP`, compiled into the
+bundle. The database reveals itself the moment the date passes; the website
+needs a human and a deploy. Do one without the other and nothing fails, the two
+surfaces just disagree in public.
+**Read [`docs/events/REVEAL-RUNBOOK.md`](docs/events/REVEAL-RUNBOOK.md) first.**
+
+**Dates and prices have one source, and it is `src/content/`.** The reveal date
+was typed as a literal in eight files and drifted. Never type a date, a price or
+a tier name into a page; read it from `src/content/site.ts`. Tests scan the
+rendered surfaces and fail if a literal reappears.
+
+**Event slugs are aliased, never duplicated.** The `events` table says
+`zaostock`; the app calls `zaostock-2026`. That resolves through
+`src/lib/event-slugs.ts`. Getting a slug wrong does not throw, it 404s or writes
+a row with a null `event_id` that looks like it saved. Never add a second events
+row for an alias. See
+[`docs/decisions/0003-event-slug-aliases.md`](docs/decisions/0003-event-slug-aliases.md).
+
+**This repo is public.** No email addresses, phone numbers, fees, negotiation
+positions, or performer names before the reveal, anywhere in `docs/team/`. The
+build enforces the first two. The working document is not linked from the site
+and must not be pasted into `TEAM_DOC_URL`; `src/lib/team-status.test.ts`
+explains why at length.
+
+> **Working on a branch here?** This clone's fetch refspec is narrowed to
+> `+refs/heads/main:refs/remotes/origin/main`, so `origin/<your-branch>` never
+> updates locally and `git push --force-with-lease` fails with "stale info".
+> Pass the lease explicitly: `--force-with-lease=<branch>:<sha>`.
+
 ## Who is on this, and what they own
 
 **[`docs/team/`](docs/team/)** is the roster. One folder per position, one file
