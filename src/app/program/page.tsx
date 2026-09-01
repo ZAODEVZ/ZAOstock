@@ -67,7 +67,16 @@ const BLOCKS: Block[] = [
       { time: '12:35', label: 'Changeover', detail: 'The MC, the six o’clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
       { time: '12:45', label: 'Set 2', tone: 'set' },
       { time: '13:20', label: 'Set 3', tone: 'set' },
-      { time: '13:55', label: `Set 4 - ${PUBLIC_LINEUP[0]}`, detail: 'Confirmed.', tone: 'set' },
+      // PUBLIC_LINEUP is the website's half of the reveal, so this array is
+      // exactly what gets edited on 7 September. Indexing it unguarded put the
+      // literal string "undefined" on the public run of show the moment it was
+      // emptied or reordered, with nothing failing.
+      {
+        time: '13:55',
+        label: PUBLIC_LINEUP[0] ? `Set 4 - ${PUBLIC_LINEUP[0]}` : 'Set 4',
+        detail: PUBLIC_LINEUP[0] ? 'Confirmed.' : undefined,
+        tone: 'set',
+      },
       { time: '14:25', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
       { time: '14:35', label: 'Set 5', detail: 'Closes the outdoor block.', tone: 'set' },
       { time: '15:05', label: 'Open stretch', detail: 'Around forty minutes with nothing booked yet. The MC and our partners hold the stage.', tone: 'open' },
