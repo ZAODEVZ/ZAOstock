@@ -30,12 +30,29 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists nine confirmed partners and only partners with a POC field', () => {
+  it('lists nine confirmed partners', () => {
     expect(PARTNERS).toHaveLength(9);
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');
     for (const p of PARTNERS) expect(p.confirmed).toBe(true);
+  });
+
+  // The test above was called '...and only partners with a POC field' and made
+  // no assertion about poc whatsoever. The gating rule over PARTNERS is strict -
+  // a partner is published only when it is confirmed AND poc names the ZAO team
+  // member who owns the relationship - and only half of it was enforced.
+  //
+  // COC Concertz is the one known exception: added 2026-08-27 with role and POC
+  // untyped. It is NAMED here rather than waved through, so a second unowned
+  // partner cannot reach the public homepage without this going red.
+  it('gives every published partner a typed role and a named owner, bar the one known exception', () => {
+    const untyped = PARTNERS.filter((p) => p.role === 'UNSET' || p.poc === 'UNSET').map((p) => p.name);
+    expect(untyped).toEqual(['COC Concertz']);
+    for (const p of PARTNERS) {
+      expect(p.poc.trim()).not.toBe('');
+      expect(p.role.trim()).not.toBe('');
+    }
   });
 
   it('describes one venue at a time with no changeover DJ', () => {

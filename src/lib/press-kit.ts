@@ -11,7 +11,7 @@ import { PARTNERS, SITE } from '@/content/site';
 // everything nobody has typed yet.
 //
 // Rules the placeholder obeys, and the test enforces:
-// - no performer names (the lineup reveal is 7 September)
+// - no performer names (the reveal date is SITE.lineupRevealLabel, never a literal)
 // - no attendance figure, no sponsor names, no quotes - UNSET until Zaal types them
 // - never claims deductibility. The negative disclaimer was struck 2026-08-31;
 //   saying nothing is compliant, asserting a deduction is not
@@ -42,7 +42,7 @@ fact or marked **UNSET**.
 
 ## Lineup
 
-Announced 7 September 2026. No performer is named before then.
+Announced ${SITE.lineupRevealLabel} 2026. No performer is named before then.
 
 ## Partners
 
@@ -60,10 +60,10 @@ Sponsors: none signed. Sponsorship is commercial only, direct with The ZAO.
 | Piece | State |
 |---|---|
 | Press photos | **UNSET** |
-| Artist bios | **UNSET** until the 7 September reveal |
+| Artist bios | **UNSET** until the ${SITE.lineupRevealLabel} reveal |
 | Attendance figure | **UNSET** |
 | Quotes | **UNSET** |
-| Press release | **UNSET** - lands with the 7 September reveal |
+| Press release | **UNSET** - lands with the ${SITE.lineupRevealLabel} reveal |
 
 ## Contact
 

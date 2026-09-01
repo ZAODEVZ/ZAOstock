@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { FORM_POLICY, DATABASE_AVAILABLE, formIsLive, emailByDesign, type FormSurface } from './forms-status';
+import { FORM_POLICY, DATABASE_AVAILABLE, formIsLive, surfaceIsLive, emailByDesign, type FormSurface } from './forms-status';
 
 // Zaal, 2026-08-29: the volunteer sign-up, the ideas box and the RSVP stay as
 // forms; musician submissions and riders become an email link, and the cypher
@@ -22,9 +22,23 @@ describe('form policy', () => {
     expect(FORM_POLICY.rider).toBe('email');
   });
 
-  it('never renders a form while the database is unavailable', () => {
-    if (!DATABASE_AVAILABLE) {
-      for (const s of SURFACES) expect(formIsLive(s)).toBe(false);
+  // This assertion used to be wrapped in `if (!DATABASE_AVAILABLE)`, so it
+  // tested nothing at all the moment anyone flipped the flag - it went quiet
+  // exactly when the state it guards became reachable, and stayed green. The
+  // rule is now checked in both states, unconditionally, by passing the state
+  // in rather than reading today's value.
+  it('never renders a form while the database is unavailable, whatever the flag says today', () => {
+    for (const s of SURFACES) expect(surfaceIsLive(FORM_POLICY[s], false)).toBe(false);
+  });
+
+  it('renders exactly the three form surfaces once the database is up', () => {
+    const live = SURFACES.filter((s) => surfaceIsLive(FORM_POLICY[s], true));
+    expect(live).toEqual(['volunteer', 'ideas', 'rsvp']);
+  });
+
+  it('wires the shipped helper to the same rule as the flag it reads', () => {
+    for (const s of SURFACES) {
+      expect(formIsLive(s)).toBe(surfaceIsLive(FORM_POLICY[s], DATABASE_AVAILABLE));
     }
   });
 

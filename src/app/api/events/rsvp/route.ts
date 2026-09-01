@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { rateLimitPublicForm } from '@/lib/api/rate-limit';
+import { canonicalEventSlug } from '@/lib/event-slugs';
 
 const rsvpSchema = z.object({
   name: z.string().trim().min(1, 'Name required').max(200),
@@ -42,7 +43,10 @@ export async function POST(request: NextRequest) {
     const { data: event } = await supabase
       .from('events')
       .select('id')
-      .eq('slug', parsed.data.eventSlug || 'zaostock')
+      // An unresolved slug here does not error, it just leaves event_id null
+      // and quietly detaches the RSVP from the festival, so the mobile app's
+      // 'zaostock-2026' has to be resolved the same way the lineup resolves it.
+      .eq('slug', canonicalEventSlug(parsed.data.eventSlug || 'zaostock'))
       .maybeSingle();
     const eventId = event?.id ?? null;
 

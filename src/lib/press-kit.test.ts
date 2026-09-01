@@ -47,7 +47,18 @@ describe('press kit placeholder', () => {
     expect(PLACEHOLDER_MARKDOWN).toContain('info@thezao.com');
   });
 
-  it('names no performer before the 7 September reveal', () => {
+  // The three reveal dates in this placeholder were literals until 2026-09-01.
+  // They read from SITE.lineupRevealLabel now (src/content/reveal-date.test.ts
+  // keeps them that way), so this checks the RENDERED text is unchanged by that:
+  // the source literal is gone, the published sentence is not.
+  it('still announces the reveal day it always did, now from one source', () => {
+    expect(PLACEHOLDER_MARKDOWN).toContain(`Announced ${SITE.lineupRevealLabel} 2026`);
+    expect(PLACEHOLDER_MARKDOWN).toContain(`until the ${SITE.lineupRevealLabel} reveal`);
+    expect(PLACEHOLDER_MARKDOWN).toContain(`lands with the ${SITE.lineupRevealLabel} reveal`);
+    expect(PLACEHOLDER_MARKDOWN).toContain('7 September');
+  });
+
+  it('names no performer before the reveal', () => {
     for (const name of ['werb', 'fellenz', 'lyons den', 'dcoop', 'acadia rising', 'stilo', 'north creek', 'aquavantes', 'sen', 'phelan']) {
       expect(blob).not.toContain(name);
     }
