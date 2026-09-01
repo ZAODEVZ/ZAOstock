@@ -13,6 +13,13 @@ One file per event, numbered in the order they happened.
 | 03 | [ZAOville](03-zaoville-2026.md) | Laurel, Maryland | July 2026 | `zaoville` | past |
 | 04 | [ZAOstock](04-zaostock-2026.md) | Ellsworth, Maine | 3 October 2026 | `zaostock` | **upcoming** |
 
+## Reveal day
+
+**[`REVEAL-RUNBOOK.md`](REVEAL-RUNBOOK.md)** is the 7 September checklist. Read it
+before touching anything that day. The short version: the reveal is **two edits
+in two systems**, the database and `PUBLIC_LINEUP` in the bundle, and doing one
+without the other fails silently. The site and the app just disagree in public.
+
 ## The slug is the load-bearing part
 
 Each event's `slug` is the value in the `events` table, and it is what the API

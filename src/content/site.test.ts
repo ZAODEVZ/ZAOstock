@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { PARTNERS, PUBLIC_LINEUP, TIERS, SITE, DAY, SERIES } from './site';
 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
@@ -24,6 +26,27 @@ describe('SITE facts', () => {
     const blob = PUBLIC_LINEUP.join(' ').toLowerCase();
     for (const name of NOT_PUBLIC) expect(blob).not.toContain(name);
     expect(PUBLIC_LINEUP).toEqual(['Lyons Den']);
+  });
+
+  // PUBLIC_LINEUP is the website's half of the reveal: the app reads the artists
+  // table, the site reads this array, and on 7 September BOTH have to change.
+  // So this array is guaranteed to be edited under time pressure, and a surface
+  // that indexes it renders the literal string "undefined" the moment it is
+  // emptied or reordered. /program did exactly that on the public run of show.
+  it('is never indexed into a template without a guard on the same line', () => {
+    const surfaces = ['src/app/program/page.tsx', 'src/app/page.tsx'];
+    for (const p of surfaces) {
+      const src = readFileSync(path.join(process.cwd(), p), 'utf8');
+      for (const line of src.split('\n')) {
+        for (const hit of line.matchAll(/\$\{PUBLIC_LINEUP\[(\d+)\]\}/g)) {
+          const i = hit[1];
+          expect(
+            line,
+            `${p}: PUBLIC_LINEUP[${i}] is interpolated with nothing checking it exists`,
+          ).toMatch(new RegExp(`PUBLIC_LINEUP\\[${i}\\]\\s*(\\?|&&)`));
+        }
+      }
+    }
   });
 
   it('carries no price until Zaal types one', () => {
