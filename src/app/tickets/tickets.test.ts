@@ -107,3 +107,26 @@ describe('the cap is on the scarce thing only', () => {
     expect(PRO_TICKET.spots).toBe('20 spots');
   });
 });
+
+describe('the funding goal states its own rule', () => {
+  // 20 x $50 = $1,000, so "20 people, $1,000" silently asserted $50 each. Once
+  // the $20 tier counts toward the same target that phrasing is simply wrong,
+  // and a target whose rule is invisible is the shape that produced the stale
+  // lineup date: a number everyone reads and nobody can check.
+  it('names the total without implying a headcount or a per-person price', () => {
+    expect(PRO_ROUND.goal).toContain(PRO_ROUND.roundTotal);
+    expect(PRO_ROUND.goal).not.toContain('20 people');
+    expect(PRO_ROUND.goal).not.toContain(PRO_TICKET.price);
+  });
+
+  it('says which tiers count, so the rule travels with the number', () => {
+    expect(PRO_ROUND.goal.toLowerCase()).toContain('either tier');
+    expect(PRO_ROUND.countsRule).toBeTruthy();
+  });
+
+  it('renders the goal on both pages rather than a bare figure', () => {
+    for (const p of [TICKETS, DONATE]) {
+      expect(read(p)).toContain('PRO_ROUND');
+    }
+  });
+});

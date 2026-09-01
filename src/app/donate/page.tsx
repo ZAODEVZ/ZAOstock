@@ -81,7 +81,7 @@ export default function DonatePage() {
           <SectionHeader
             eyebrow="Pro Ticket"
             title="Free to attend. The first round of crowdfunding starts now."
-            lede={`ZAOstock is free for anyone who wants to show up. We are asking ${PRO_ROUND.countWord} people for ${PRO_TICKET.price} each, the next ${PRO_ROUND.roundTotal} toward making it happen. There is a ${SUPPORT_TIERS[0].price} tier too, and both credit you by name.`}
+            lede={`ZAOstock is free for anyone who wants to show up. We are raising the next ${PRO_ROUND.roundTotal} toward making it happen, at ${SUPPORT_TIERS[0].price} or ${PRO_TICKET.price}. ${PRO_ROUND.countsRule} Both credit you by name.`}
           />
           <div className="flex flex-col gap-4">
             {SUPPORT_TIERS.map((tier) => (

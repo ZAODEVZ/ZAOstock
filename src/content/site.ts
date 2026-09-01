@@ -195,12 +195,33 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
 /** The Pro Ticket, by name, for the copy that speaks about it specifically. */
 export const PRO_TICKET = SUPPORT_TIERS[1];
 
-/** Round-1 cap on the Pro Ticket, held at 20 since the 2026-05-12 standup. */
+/**
+ * Round one of crowdfunding. The $1,000 target predates the $20 tier, and
+ * 20 x $50 = $1,000 exactly, so the goal was originally DEFINED as "sell the
+ * Pro Ticket round" rather than "raise a thousand dollars".
+ *
+ * WHAT COUNTS, decided 2026-09-01: every support dollar, at either tier. Two
+ * reasons. It funds a free festival, so a dollar is a dollar and the page says
+ * in words that neither tier buys access. And the alternative produces a figure
+ * that lies - twenty $20 supporters would raise $400 while a $50-only tracker
+ * still read zero.
+ *
+ * That also means the old "20 people, $1,000" phrasing is now WRONG, because it
+ * silently asserts $50 each. `goal` states its own rule instead. A target whose
+ * rule is invisible is the shape that produced the stale lineup date and the
+ * 10% Unlock error: a number everyone reads and nobody can check.
+ *
+ * `count` and `countWord` are the Pro Ticket's 20-spot CAP, held since the
+ * 2026-05-12 standup. They are not the goal's headcount - there isn't one any
+ * more, because the number of supporters depends on the mix.
+ */
 export const PRO_ROUND = {
   count: 20,
   countWord: 'twenty',
   roundTotal: '$1,000',
-  goal: 'Round 1 goal: 20 people, $1,000',
+  goal: 'Round 1 goal: $1,000, counting every supporter at either tier',
+  /** Rendered next to any progress figure, so the rule travels with the number. */
+  countsRule: 'Every supporter counts, at either tier.',
 } as const;
 
 /** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */
