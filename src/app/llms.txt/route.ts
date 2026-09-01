@@ -44,7 +44,7 @@ Every car heading to Acadia National Park passes through; over four million peop
 - https://zaostock.com/sponsor - why, who we are, what a sponsor gets, packages on request
 - https://zaostock.com/meetings - the two open meetings a day, 11:30 AM and 5 PM Eastern
 - https://zaostock.com/build - the builder kit: five things the festival needs built and how to show them live
-- https://zaostock.com/musicians - for musicians; submissions close 1 September 2026 at /musicians/submit
+- https://zaostock.com/musicians - for musicians; the way in is email, there is no submission form
 - https://zaostock.com/artists - for visual artists
 - https://zaostock.com/apply - volunteer sign-up
 - https://zaostock.com/donate - Pro Ticket and giving (PayPal or Giveth)
