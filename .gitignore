@@ -16,3 +16,7 @@ scripts/team-codes.local.json
 # Local agent session scratch. .claude/LAST_MESSAGE.md holds whatever was last
 # typed in this folder, and this repo is PUBLIC, so it must never be committed.
 .claude/
+
+# Raw notebook and research dumps. These carry the unreleased roster, and the
+# acts in them are not confirmed in writing. This repo is PUBLIC.
+CROSS REFF FINDS/
