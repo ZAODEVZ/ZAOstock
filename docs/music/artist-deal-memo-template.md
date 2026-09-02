@@ -24,8 +24,36 @@
 > Friday 11 September, which is also a real Friday. Checked against the calendar
 > rather than assumed - the same class of error this banner exists to fix.
 >
-> Note also that **Monday 7 September 2026 is Labor Day**, so the working week
-> these memos go out in effectively starts Tuesday 8 September.
+> ## Four more stale rows, fixed 2026-09-02
+>
+> | Row | Was | Now |
+> |---|---|---|
+> | Set time | "25 minutes" | 30 or 40 - the 31 August running order has no 25s |
+> | Day-of arrival | soundcheck "10:00 AM - 12:00 PM" on the day | **Friday 2 October, the evening before.** The old line would have sent artists to the parklet on Saturday morning for a soundcheck that happens the night before, and is mandatory |
+> | Set window | "TBD - confirmed by September 1" | A placeholder for the real slot. The date had passed and the slots exist |
+> | Format | "DJs run between sets" | Removed. The DJ was cut on 27 August and only reopened on 2 September with nobody sourced. Promising one in a signed memo is a commitment we cannot currently keep |
+>
+> ## Three collisions in the 2026-09-02 dates - read before sending
+>
+> The sign-by, press-shot and cancellation dates arrived on 2026-09-02. They are
+> real dates, but three things about them do not line up and none of them should
+> be resolved by whoever sends this:
+>
+> 1. **Sign by Saturday 5 September, but the memos were to go out "next week."**
+>    Zaal, earlier the same day, on when these send: *"what memoes do next
+>    week."* Next week starts Monday 8 September. An act cannot return a signed
+>    agreement on the 5th for a memo it receives on the 8th. **Either the memos
+>    go out in the next two days, or the sign-by date moves.**
+> 2. **Press shots are due Monday 7 September - the day the reveal fires.** The
+>    lineup gate opens at Ellsworth midnight on the 7th, so a photo that arrives
+>    "by the 7th" can arrive after the reveal has already published without it.
+>    If the images are meant to be *in* the reveal, the deadline is the 6th.
+> 3. **Two of the three dates fall on a Saturday** (5 and 19 September) and the
+>    third is **Labor Day** (Monday 7 September), which is also the reveal and the
+>    Arbor Camp site visit. Workable, but nobody should be surprised by it.
+>
+> Note also that because 7 September is Labor Day, the working week these memos
+> go out in effectively starts Tuesday 8 September.
 
 > **Status:** v1, locked May 7, 2026
 > **Format:** One-page deal memo, friendly tone, easy to sign back via email or e-sign
@@ -48,10 +76,10 @@
 | Item | Detail |
 |---|---|
 | Artist | [Full performer name + any preferred stage name] |
-| Set time | 25 minutes (negotiable for confirmed headliners) |
-| Day-of arrival | Soundcheck window between 10:00 AM - 12:00 PM EDT |
-| Set window | TBD - confirmed by September 1 |
-| Format | Live performance with provided PA. DJs run between sets. |
+| Set time | 30 or 40 minutes - your exact length is in your slot below |
+| Soundcheck | **Friday 2 October, on site, the evening before.** Mandatory, every act, indoors and outdoors. Times confirmed once the PA is fixed |
+| Set window | [Your slot, from the running order settled 31 August] |
+| Format | Live performance with provided PA |
 | Recording | ZAOstock will record audio + video of the set. Artist receives a copy of their set within 30 days of event. |
 
 ## What ZAOstock provides
@@ -68,6 +96,8 @@
 
 - Performance during the assigned 25-minute set window
 - Completed technical rider intake form by **Friday 18 September 2026**
+- Signed agreement returned by **Saturday 5 September 2026**
+- Press shot and one-paragraph bio by **Monday 7 September 2026**
 - Headshot + 1-paragraph bio for the lineup announcement (high-res, square preferred)
 - Confirmation of travel availability by **Friday 18 September 2026**
 - Day-of attendance and soundcheck participation
@@ -85,7 +115,7 @@ The path will be confirmed in writing by **Friday 18 September 2026**.
 
 ## Compensation
 
-ZAOstock operates at break-even. There is no guaranteed performance fee for Year 2 (2026). Artist compensation comes from:
+ZAOstock operates at break-even. **A performance fee is agreed privately with each act** and is set out in your individual offer, not in this template. In addition to that fee, artist compensation comes from:
 
 - 100% of any merch sold by the artist on-site (ZAOstock does not take a cut)
 - 100% of any tips collected for the artist
@@ -93,7 +123,13 @@ ZAOstock operates at break-even. There is no guaranteed performance fee for Year
 - Recap content + photography credit, owned mutually
 - Crowdfund support per the travel section above
 
-For Year 3 (2027) and beyond, ZAOstock targets a guaranteed performance fee structure. Year 2 is brand-building.
+> **Changed 2026-09-02.** This section previously read "There is no guaranteed
+> performance fee for Year 2 (2026)" and pointed at a fee structure starting in
+> Year 3. That is no longer true - acts are paid. Zaal, same day: *"Let's not
+> publicly write about artists pay."* So the fee exists and the amount lives in
+> the private offer to each act, never in this template, never on a public
+> surface, and never in this repository. Do not reintroduce a figure, a range or
+> a tier name here.
 
 ## Image + recording rights
 
@@ -111,6 +147,7 @@ For Year 3 (2027) and beyond, ZAOstock targets a guaranteed performance fee stru
   > from general liability) is recorded UNSET and is a second-round question for
   > the broker. Not a change to this clause - a number that should exist in the
   > budget and does not.
+- The cancellation cutoff for this event is **Saturday 19 September 2026**. After that date a cancellation leaves the running order with a hole we cannot fill.
 - If the artist cancels with more than 30 days notice, no penalty.
 - If the artist cancels with less than 30 days notice, ZAOstock will work with them in good faith to find a solution. Repeated late cancellations affect future bookings.
 - Force majeure (weather, public health, etc.): both parties act in good faith. ZAOstock may move the event to a virtual format with artist's consent.
@@ -163,7 +200,7 @@ Or respond with edits.
 
 ## What this template intentionally does NOT include
 
-- Specific dollar fees (no guaranteed performance fee for Year 2)
+- Specific dollar fees - these are agreed privately per act and never written into this template
 - Exclusivity clauses (artist can play other festivals)
 - Equity / token grants (out of scope - separate conversation if relevant)
 - Long IP rights transfers (we do not own the artist's catalog)
