@@ -1,22 +1,22 @@
 # ZAOstock Artist Deal Memo - Template
 
-> ## DO NOT SEND until the three dated fields below are reset
+> ## Dates reset 2026-09-02 - memos go out the week of 8 September
 >
-> **Flagged 2026-09-02, 31 days out.** Zaal, in the 2 September call: *"They have
-> all confirmed verbally, we need to write something to have them sign for all of
-> them."* This is that document, and it currently carries **three deadlines that
-> have already passed**, plus one option that does not exist. Sending it as-is
-> asks five acts to sign a memo whose dates expired weeks ago.
+> Zaal, 2026-09-02, on when these are sent: *"what memoes do next week."*
 >
-> | Field | Says | Reality on 2026-09-02 |
-> |---|---|---|
-> | Artist obligations | "Confirmation of travel availability by **August 1, 2026**" | 32 days past |
-> | Travel path 1 | "if event budget allows by **August 15**" | 18 days past |
-> | Travel section close | "The path will be confirmed in writing by **August 15, 2026**" | 18 days past |
+> This template carried **four** deadlines that had already passed. Sending it
+> unchanged would have asked five acts to sign a memo whose dates expired weeks
+> before they read it.
 >
-> Each needs a new date from Zaal before this goes out. They are deliberately
-> left as-is rather than guessed at, because a date invented here becomes a date
-> an artist signed.
+> | Field | Was | Now | Why this date |
+> |---|---|---|---|
+> | Technical rider intake | 15 Aug | **Fri 12 Sep** | The rider feeds the AV channel count, which is still UNSET because no act has submitted an input list |
+> | Travel availability | 1 Aug | **Fri 12 Sep** | One working week after the memos go out, three weeks clear of the event so travel can still be booked |
+> | Budget cover decision | 15 Aug | **Fri 11 Sep** | Deliberately the same day as the PA gate. Both ask "can we afford this, yes or no" and both should be answered in one sitting |
+> | Travel path in writing | 15 Aug | **Fri 12 Sep** | The same exchange in which the artist confirms availability - the path is settled there, not after |
+>
+> Move them if the send date moves. The rule that matters: **no date in this memo
+> should be in the past on the day an artist reads it.**
 
 > **Status:** v1, locked May 7, 2026
 > **Format:** One-page deal memo, friendly tone, easy to sign back via email or e-sign
@@ -58,9 +58,9 @@
 ## What artist provides
 
 - Performance during the assigned 25-minute set window
-- Completed technical rider intake form by August 15, 2026
+- Completed technical rider intake form by **Friday 12 September 2026**
 - Headshot + 1-paragraph bio for the lineup announcement (high-res, square preferred)
-- Confirmation of travel availability by August 1, 2026
+- Confirmation of travel availability by **Friday 12 September 2026**
 - Day-of attendance and soundcheck participation
 - Help share when ZAOstock posts the lineup announcement (one repost / share is enough)
 
@@ -68,11 +68,11 @@
 
 ZAOstock supports artist travel via the following channels (artist picks one, in order of preference):
 
-1. **ZAO Festivals direct cover** - if event budget allows by August 15, ZAOstock covers travel + 1 night hotel directly. Decided on a case-by-case basis based on event budget at that point.
+1. **ZAO Festivals direct cover** - if event budget allows by **Friday 11 September 2026**, ZAOstock covers travel + 1 night hotel directly. Decided on a case-by-case basis based on event budget at that point.
 2. **Per-artist crowdfund pool** - ZAOstock helps artist run a Giveth campaign for travel. (Corrected 2026-09-02: this said "a Giveth or GoFundMe campaign". No GoFundMe exists - zaostock.com/donate offers exactly two paths, PayPal and Giveth, verified live. Naming a channel we do not run in a signed memo is a promise we cannot keep.) Funds raised go directly to the artist. ZAOstock shares the campaign across our channels.
 3. **Self-funded** - artist covers their own travel. ZAO Festivals provides hotel recommendations and local connections to reduce cost.
 
-The path will be confirmed in writing by August 15, 2026.
+The path will be confirmed in writing by **Friday 12 September 2026**.
 
 ## Compensation
 
