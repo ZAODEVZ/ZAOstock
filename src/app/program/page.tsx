@@ -62,25 +62,43 @@ const BLOCKS: Block[] = [
     title: 'Live sets',
     lede: 'Independent artists back to back on the parklet stage, about 30 minutes each. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
     slots: [
+      // TIMINGS: the 31 August standup, not the v7 grid of 28 August.
+      //
+      // The afternoon was rebuilt to close a 40-minute hole. Six sets instead of
+      // five, every changeover cut from ten minutes to five, sets 5 and 6
+      // extended to forty minutes, and the battle reset trimmed to ten. The
+      // block now tiles noon to 16:00 end to end with no gap.
+      //
+      // Until 2026-09-02 this page published the old grid, so /program was
+      // telling the public that the one confirmed act played at 13:55 (it is
+      // 14:25) and that forty minutes in the middle of the festival had nothing
+      // booked (it is filled).
+      //
+      // NAMES ARE NOT TIMINGS. The 31 August schedule puts a new act in set 3
+      // who has not confirmed in writing, so he is not here. Only PUBLIC_LINEUP
+      // may be named; see docs/decisions/0005-confirmed-means-confirmed-in-writing.md.
       { time: '12:00', label: 'Doors. Music starts at noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
       { time: '12:05', label: 'Set 1', tone: 'set' },
       { time: '12:35', label: 'Changeover', detail: 'The MC, the six o’clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
-      { time: '12:45', label: 'Set 2', tone: 'set' },
-      { time: '13:20', label: 'Set 3', tone: 'set' },
+      { time: '12:40', label: 'Set 2', tone: 'set' },
+      { time: '13:10', label: 'Changeover', tone: 'gap' },
+      { time: '13:15', label: 'Set 3', tone: 'set' },
+      { time: '13:45', label: 'Changeover', tone: 'gap' },
+      { time: '13:50', label: 'Set 4', tone: 'set' },
+      { time: '14:20', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
       // PUBLIC_LINEUP is the website's half of the reveal, so this array is
       // exactly what gets edited on 7 September. Indexing it unguarded put the
       // literal string "undefined" on the public run of show the moment it was
       // emptied or reordered, with nothing failing.
       {
-        time: '13:55',
-        label: PUBLIC_LINEUP[0] ? `Set 4 - ${PUBLIC_LINEUP[0]}` : 'Set 4',
+        time: '14:25',
+        label: PUBLIC_LINEUP[0] ? `Set 5 - ${PUBLIC_LINEUP[0]}` : 'Set 5',
         detail: PUBLIC_LINEUP[0] ? 'Confirmed.' : undefined,
         tone: 'set',
       },
-      { time: '14:25', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
-      { time: '14:35', label: 'Set 5', detail: 'Closes the outdoor block.', tone: 'set' },
-      { time: '15:05', label: 'Open stretch', detail: 'Around forty minutes with nothing booked yet. The MC and our partners hold the stage.', tone: 'open' },
-      { time: '15:45', label: 'Battle stage reset', detail: 'The MC hands to Hurricane.', tone: 'gap' },
+      { time: '15:05', label: 'Changeover', tone: 'gap' },
+      { time: '15:10', label: 'Set 6', detail: 'Closes the outdoor block.', tone: 'set' },
+      { time: '15:50', label: 'Battle stage reset', detail: 'The MC hands to Hurricane.', tone: 'gap' },
     ],
   },
   {
