@@ -1,5 +1,23 @@
 # ZAOstock Artist Deal Memo - Template
 
+> ## DO NOT SEND until the three dated fields below are reset
+>
+> **Flagged 2026-09-02, 31 days out.** Zaal, in the 2 September call: *"They have
+> all confirmed verbally, we need to write something to have them sign for all of
+> them."* This is that document, and it currently carries **three deadlines that
+> have already passed**, plus one option that does not exist. Sending it as-is
+> asks five acts to sign a memo whose dates expired weeks ago.
+>
+> | Field | Says | Reality on 2026-09-02 |
+> |---|---|---|
+> | Artist obligations | "Confirmation of travel availability by **August 1, 2026**" | 32 days past |
+> | Travel path 1 | "if event budget allows by **August 15**" | 18 days past |
+> | Travel section close | "The path will be confirmed in writing by **August 15, 2026**" | 18 days past |
+>
+> Each needs a new date from Zaal before this goes out. They are deliberately
+> left as-is rather than guessed at, because a date invented here becomes a date
+> an artist signed.
+
 > **Status:** v1, locked May 7, 2026
 > **Format:** One-page deal memo, friendly tone, easy to sign back via email or e-sign
 > **Replaces:** No prior contract template existed - this is the first version
@@ -51,7 +69,7 @@
 ZAOstock supports artist travel via the following channels (artist picks one, in order of preference):
 
 1. **ZAO Festivals direct cover** - if event budget allows by August 15, ZAOstock covers travel + 1 night hotel directly. Decided on a case-by-case basis based on event budget at that point.
-2. **Per-artist crowdfund pool** - ZAOstock helps artist run a Giveth or GoFundMe campaign for travel. Funds raised go directly to the artist. ZAOstock shares the campaign across our channels.
+2. **Per-artist crowdfund pool** - ZAOstock helps artist run a Giveth campaign for travel. (Corrected 2026-09-02: this said "a Giveth or GoFundMe campaign". No GoFundMe exists - zaostock.com/donate offers exactly two paths, PayPal and Giveth, verified live. Naming a channel we do not run in a signed memo is a promise we cannot keep.) Funds raised go directly to the artist. ZAOstock shares the campaign across our channels.
 3. **Self-funded** - artist covers their own travel. ZAO Festivals provides hotel recommendations and local connections to reduce cost.
 
 The path will be confirmed in writing by August 15, 2026.
@@ -78,9 +96,22 @@ For Year 3 (2027) and beyond, ZAOstock targets a guaranteed performance fee stru
 ## Cancellation
 
 - If ZAOstock cancels the event, the artist is released with no further obligation. Any travel costs already incurred by the artist (deposits, non-refundable bookings) are the responsibility of ZAOstock to refund up to a cap of $300 per artist.
+  > **Aggregate, noted 2026-09-02:** across the nine acts on the run of show this
+  > is up to **$2,700** of cancellation exposure. The budget's contingency line is
+  > $1,000, and whether the event policy carries cancellation cover (as distinct
+  > from general liability) is recorded UNSET and is a second-round question for
+  > the broker. Not a change to this clause - a number that should exist in the
+  > budget and does not.
 - If the artist cancels with more than 30 days notice, no penalty.
 - If the artist cancels with less than 30 days notice, ZAOstock will work with them in good faith to find a solution. Repeated late cancellations affect future bookings.
-- Force majeure (weather, public health, etc.): both parties act in good faith. ZAOstock may move the event to a backup date or virtual format with artist's consent.
+- Force majeure (weather, public health, etc.): both parties act in good faith. ZAOstock may move the event to a virtual format with artist's consent.
+  > **Corrected 2026-09-02.** This clause used to offer "a backup date or virtual
+  > format". There is no backup date and there cannot be one: 3 October is fixed
+  > inside the 9th annual Art of Ellsworth and Maine Craft Weekend, dates nobody
+  > on our side controls, which is why "rain or shine" is the only honest policy
+  > (`docs/permits/rain-plan-2026-10-03.md:22`). Offering a rescheduled date in a
+  > signed agreement, when none exists, is the one clause here an artist could
+  > reasonably hold us to.
 
 ## Insurance + safety
 
