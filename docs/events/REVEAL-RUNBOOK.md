@@ -32,8 +32,15 @@ not. The website needs a human.
 
 Set the confirmed acts in the `artists` table:
 
-- `status` must be exactly `confirmed`. Anything else is invisible to both
-  gated surfaces. The allowed values are pinned in `src/lib/team-constants.ts`.
+- `status` must be exactly `confirmed`, and **`confirmed` means confirmed in
+  writing**. Not "internally confirmed", not "locked into the running order",
+  not "we shook on it". If an act has not signed, it does not go in the table
+  yet. The signature is what creates the row.
+  See [`../decisions/0005-confirmed-means-confirmed-in-writing.md`](../decisions/0005-confirmed-means-confirmed-in-writing.md).
+  As of 2026-09-02 exactly **one** act on the whole bill had signed.
+- Do **not** use `travel_booked` for an act you want on the site. Both public
+  queries ask for `confirmed` exactly, so that status silently unpublishes them.
+  The allowed values are pinned in `src/lib/team-constants.ts`.
 - `event_id` must point at the **`zaostock`** event row. Not `zaostock-2026`,
   which is a client alias and has never been a row. See
   [`../decisions/0003-event-slug-aliases.md`](../decisions/0003-event-slug-aliases.md).
