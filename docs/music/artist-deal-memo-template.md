@@ -38,17 +38,29 @@
 > This block used to raise three collisions and ask for a ruling. It has one, so
 > it now records the answers rather than the questions.
 >
-> 1. **Sign-by moved to Friday 11 September** (was Saturday 5 September). The
->    memos go out the week of 8 September - Zaal, same day: *"what memoes do next
->    week."* An act could not return a signed memo on the 5th for something it
->    receives on the 8th. 11 September gives Tuesday to Friday, and it is the day
->    the PA gate and the budget-cover decision are already answered, so who has
->    signed and what we can afford land in one sitting.
+> 1. **Sign-by is Saturday 5 September** - moved BACK from 11 September on
+>    2026-09-03, and this is the third setting of this date. Read why before
+>    changing it again.
 >
->    **Zaal said "Friday 12 September" and 12 September 2026 is a Saturday.** The
->    date is 11 September, which is a real Friday, and he was told. This is the
->    second time this exact slip has been caught in this file - see the banner
->    above. Check the day of the week, do not assume it.
+>    It was 5 September. On 2 September it moved to 11 September, because the
+>    memos were going out the week of the 8th and nobody can return a signed memo
+>    on the 5th for something they receive on the 8th. That reasoning was sound.
+>
+>    What it missed: **the lineup reveal fires automatically on 7 September**
+>    (`lineupRevealDate` in `src/content/site.ts`), and decision 0005 says only
+>    acts confirmed IN WRITING may publish. An 11 September signature date is
+>    four days AFTER the gate opens, so the reveal would have published an empty
+>    bill while every act was still inside its own deadline. Nobody would have
+>    been late. The bill would simply have been blank.
+>
+>    Zaal chose on 2026-09-03 to get signatures before Monday. So the memos go
+>    out NOW rather than the week of the 8th, and the date is Saturday 5
+>    September - verified a real Saturday.
+>
+>    **The rule this file keeps learning:** a date here is only correct relative
+>    to `lineupRevealDate`. Check the weekday AND check it against the reveal.
+>    "Friday 12 September" was proposed twice and 12 September 2026 is a
+>    Saturday.
 >
 > 2. **Press shots moved to Saturday 5 September** (was Monday 7 September). The
 >    reveal fires automatically at Ellsworth midnight on the 7th, so a photo due
@@ -104,7 +116,7 @@
 
 - Performance during your assigned set window (30 or 40 minutes - your exact length is in the slot table above)
 - Completed technical rider intake form by **Friday 18 September 2026**
-- Signed agreement returned by **Friday 11 September 2026**
+- Signed agreement returned by **Saturday 5 September 2026**
 - Press shot and one-paragraph bio by **Saturday 5 September 2026**
 - Headshot + 1-paragraph bio for the lineup announcement (high-res, square preferred)
 - Confirmation of travel availability by **Friday 18 September 2026**
