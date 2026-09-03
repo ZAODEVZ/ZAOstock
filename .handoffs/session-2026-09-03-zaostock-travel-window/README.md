@@ -76,24 +76,52 @@ Monday's problem is therefore narrower than "there is no lineup". The lineup is
 known and settled. It has simply never been written into the one place that
 publishes it.
 
-### The run of show - settled 2 September, outdoors, 5-minute changeovers
+### The run of show - LOCKED 3 September, outdoors, 5-minute changeovers
 
-| Time | Act | Length | Genre |
+| Time | Act | Set | Genre |
 |---|---|---|---|
-| 12:05 | The Crown Vics | 30 | NEEDED |
-| 12:40 | OPEN X | 30 | modern pop rock |
-| 13:15 | Grass Rug | 30 | NEEDED |
-| 13:50 | Acadia Rising (Sen) | 30 | NEEDED |
-| 14:25 | Michael Anderson | 30 | solo piano |
-| 15:00 | Dcoop | 30 | hip-hop |
-| 15:35 | Hurricane | 40 | hip-hop |
-| 16:20 | Lyons Den | 40 | NEEDED |
-| 17:05 | Fellenz | 40 | instrumental guitar |
+| 12:05 PM | The Crown Vics | 30 | Rock n roll dance band |
+| 12:40 PM | OPEN X | 40 | Power pop rock |
+| 1:25 PM | Grass Rug | 30 | Jam rock band |
+| 2:00 PM | Acadia Rising (Sen Wilde, with Women with Rhythm) | 30 | World Rhythms / Global Fusion |
+| 2:35 PM | Michael Anderson | 30 | Solo piano |
+| 3:10 PM | Hurricane | 30 | Hip-hop |
+| 3:45 PM | Dcoop | 40 | Hip-hop |
+| 4:30 PM | Lyons Den | 40 | Native / Electro / Reggae / Hip-hop |
+| 5:15 PM | Fellenz | 40 | Rock guitar and soundtrack |
 
-Ends 17:45. Street clears 18:00. Evening scope is section A item 3.
+**Music 12:05 PM to 5:55 PM. Street clears 6:00 PM.** 310 minutes of music plus
+40 of changeover. **Five minutes of margin, and no recovery slot** - one long
+changeover puts the day over, on the evening the crowd is meant to move indoors.
 
-Nine acts. **Zero of them exist in the `artists` table.** The four marked NEEDED
-are the genres owed to the broker.
+Changed from the 2 September order on Zaal's instruction, 3 September: Hurricane
+moved ahead of Dcoop, Dcoop and OPEN X went to 40 minutes, Hurricane to 30.
+Hurricane at 30 also fits him better because he is MCing between sets as well as
+playing.
+
+**All nine genres are answered.** That closes the insurance broker's open
+question, which had four blanks as of this morning.
+
+Sourcing, because it is uneven and that matters:
+
+- **Independently verifiable:** The Crown Vics (their own tagline is "America's
+  Favorite Rock'n'Roll Dance Band"), OPEN X (power pop rock, per their own site),
+  Dcoop, Hurricane, Fellenz. **The Crown Vics and OPEN X have both already played
+  this exact stage** on the City's 2026 Downtown Summer Concert Series.
+- **Held only by us:** Acadia Rising - Sen Wilde emailed the full submission on
+  25 July because the website forms rejected it.
+- **One person's word, nothing to check it against:** Grass Rug, Lyons Den and
+  Michael Anderson have no findable web presence under any spelling. First-hand
+  sourcing is fine; the consequence is there is **no bio and no press shot** to
+  pull for any of the three, which the reveal needs.
+
+**Steve Peer plays drums in The Crown Vics**, which is why that act is his to
+answer for.
+
+Full research, with sources: `projects/zaostock-artist-research-2026-09-03.md`
+in the vault.
+
+**Zero of the nine exist in the `artists` table.**
 
 ---
 
