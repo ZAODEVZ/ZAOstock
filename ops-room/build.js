@@ -72,9 +72,7 @@ if (!src.includes(TITLE)) { console.error('stamp anchor missing in source: ' + T
 // the build CRLF while CI reads LF, and the same source then stamps two different
 // hashes. The test normalises the same way, so the stamp means "same source",
 // not "same operating system".
-const srcHash = crypto.createHash('sha256').update(fs.readFileSync(SRC, 'utf8').replace(/
-/g, '
-')).digest('hex').slice(0, 16);
+const srcHash = crypto.createHash('sha256').update(fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 16);
 src = src.replace(TITLE, TITLE + '\n<meta name="ops-room-src" content="' + srcHash + '">');
 if (!src.includes('ops-room-src')) { console.error('stamp failed to apply'); process.exit(1); }
 

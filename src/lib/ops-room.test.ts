@@ -27,9 +27,7 @@ describe('the deployed ops room matches its source', () => {
 
   it('was built from the source currently in the repo', () => {
     // LF-normalised, matching build.js, so a CRLF checkout and CI agree on the hash.
-    const expected = createHash('sha256').update(readFileSync(SRC, 'utf8').replace(/
-/g, '
-')).digest('hex').slice(0, 16);
+    const expected = createHash('sha256').update(readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 16);
     const stamp = readFileSync(DEPLOYED, 'utf8').match(/name="ops-room-src" content="([a-f0-9]+)"/);
     expect(stamp, 'no source stamp: rebuild with `node ops-room/build.js`').not.toBeNull();
     expect(stamp?.[1], 'ops room is STALE: run `node ops-room/build.js`').toBe(expected);
