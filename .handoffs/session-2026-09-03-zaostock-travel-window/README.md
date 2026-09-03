@@ -48,8 +48,52 @@ Ellsworth midnight on Monday whether or not anyone acted.
 `docs/decisions/0005-confirmed-means-confirmed-in-writing.md` says only acts
 confirmed IN WRITING may publish, and both public readers filter on
 `status = 'confirmed'`. So on today's data **the reveal publishes an empty
-bill**, and Lyons Den - the only publicly announced act - is not in the table at
-all.
+bill**. None of the nine acts in the settled run of show has a row.
+
+**CORRECTED 2026-09-03, after this bundle was first written.** An earlier version
+of this paragraph said "Lyons Den is the only publicly announced act." That is
+FALSE, and it was inherited from decision 0005 and the previous handoff and
+repeated here without being measured - the exact failure the verification
+convention above warns about. Measured against the live site:
+
+    curl -s https://zaostock.com/ https://zaostock.com/program https://zaostock.com/press
+    -> Lyons Den 10 mentions, Hurricane 14, Stilo 8, Dcoop 4
+       Crown Vics, Grass Rug, Acadia Rising, Michael Anderson, Fellenz, OPEN X: 0
+
+So four acts are named publicly, not one. Note that Stilo and Hurricane appear
+largely through the WaveWarZ block, which is CANCELLED - so the public site is
+advertising a format that is not happening, which is section A item 3.
+
+**Three different things, and they must not be blurred:**
+
+| | State |
+|---|---|
+| The run of show | REAL. Nine acts, 12:05 to 17:45, settled 2 September |
+| The public site | Names four acts, two of them via a cancelled block |
+| The `artists` table | **0 confirmed** - and this is the ONLY one the reveal reads |
+
+Monday's problem is therefore narrower than "there is no lineup". The lineup is
+known and settled. It has simply never been written into the one place that
+publishes it.
+
+### The run of show - settled 2 September, outdoors, 5-minute changeovers
+
+| Time | Act | Length | Genre |
+|---|---|---|---|
+| 12:05 | The Crown Vics | 30 | NEEDED |
+| 12:40 | OPEN X | 30 | modern pop rock |
+| 13:15 | Grass Rug | 30 | NEEDED |
+| 13:50 | Acadia Rising (Sen) | 30 | NEEDED |
+| 14:25 | Michael Anderson | 30 | solo piano |
+| 15:00 | Dcoop | 30 | hip-hop |
+| 15:35 | Hurricane | 40 | hip-hop |
+| 16:20 | Lyons Den | 40 | NEEDED |
+| 17:05 | Fellenz | 40 | instrumental guitar |
+
+Ends 17:45. Street clears 18:00. Evening scope is section A item 3.
+
+Nine acts. **Zero of them exist in the `artists` table.** The four marked NEEDED
+are the genres owed to the broker.
 
 ---
 
@@ -61,8 +105,11 @@ all.
       Template: `docs/music/artist-deal-memo-template.md`. Sending is Zaal's tap
       (see F).
 - [ ] **Get Lyons Den into `artists` as `confirmed` once a signature exists.**
-      It is the only act on any public surface and it has no row. Nobody is
-      recorded anywhere as owning the relationship, which is its own gap. The
+      It has no row, and no owner is recorded anywhere - every other act traces
+      to someone (Steve, Sen, Dcoop, Zaal), so if a signature needs chasing
+      nobody knows who calls them. That is the real gap; it is NOT that Lyons Den
+      is the only public act, which was a false claim in the first version of
+      this bundle. Ultimately all nine acts need rows. The
       ZAOstock database IS writable from a terminal session (probe run
       2026-09-03), so this is one insert the moment a signature exists - not a
       blocker in itself.
@@ -209,8 +256,9 @@ is hard, and all of it is time-boxed by a date nobody can move.
    happen - it is the only path to a signature before Monday.
 2. **Say whether the receiver may act while he is away**, or whether everything
    waits for him. One sentence, and it unblocks or blocks all of section A.
-3. **Name an owner for Lyons Den.** It is the only publicly announced act and
-   nobody is recorded as able to reach them.
+3. **Name an owner for Lyons Den.** Every other act in the run of show traces to
+   someone who can reach them - Steve, Sen, Dcoop or Zaal. Lyons Den traces to
+   nobody, so no signature can be chased while Zaal is away.
 4. **Confirm the evening** - Black Moon's afterparty or ZAOstock's programme.
    This decides the site, the tripwire and whether the broker gets a correction.
 5. **Ask Steve for the DJ spelling** and whether that act is in the running order
