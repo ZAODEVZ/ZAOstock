@@ -33,27 +33,35 @@
 > | Set window | "TBD - confirmed by September 1" | A placeholder for the real slot. The date had passed and the slots exist |
 > | Format | "DJs run between sets" | Removed. The DJ was cut on 27 August and only reopened on 2 September with nobody sourced. Promising one in a signed memo is a commitment we cannot currently keep |
 >
-> ## Three collisions in the 2026-09-02 dates - read before sending
+> ## The three date collisions - ANSWERED by Zaal, 2026-09-02 evening
 >
-> The sign-by, press-shot and cancellation dates arrived on 2026-09-02. They are
-> real dates, but three things about them do not line up and none of them should
-> be resolved by whoever sends this:
+> This block used to raise three collisions and ask for a ruling. It has one, so
+> it now records the answers rather than the questions.
 >
-> 1. **Sign by Saturday 5 September, but the memos were to go out "next week."**
->    Zaal, earlier the same day, on when these send: *"what memoes do next
->    week."* Next week starts Monday 8 September. An act cannot return a signed
->    agreement on the 5th for a memo it receives on the 8th. **Either the memos
->    go out in the next two days, or the sign-by date moves.**
-> 2. **Press shots are due Monday 7 September - the day the reveal fires.** The
->    lineup gate opens at Ellsworth midnight on the 7th, so a photo that arrives
->    "by the 7th" can arrive after the reveal has already published without it.
->    If the images are meant to be *in* the reveal, the deadline is the 6th.
-> 3. **Two of the three dates fall on a Saturday** (5 and 19 September) and the
->    third is **Labor Day** (Monday 7 September), which is also the reveal and the
->    Arbor Camp site visit. Workable, but nobody should be surprised by it.
+> 1. **Sign-by moved to Friday 11 September** (was Saturday 5 September). The
+>    memos go out the week of 8 September - Zaal, same day: *"what memoes do next
+>    week."* An act could not return a signed memo on the 5th for something it
+>    receives on the 8th. 11 September gives Tuesday to Friday, and it is the day
+>    the PA gate and the budget-cover decision are already answered, so who has
+>    signed and what we can afford land in one sitting.
 >
-> Note also that because 7 September is Labor Day, the working week these memos
-> go out in effectively starts Tuesday 8 September.
+>    **Zaal said "Friday 12 September" and 12 September 2026 is a Saturday.** The
+>    date is 11 September, which is a real Friday, and he was told. This is the
+>    second time this exact slip has been caught in this file - see the banner
+>    above. Check the day of the week, do not assume it.
+>
+> 2. **Press shots moved to Saturday 5 September** (was Monday 7 September). The
+>    reveal fires automatically at Ellsworth midnight on the 7th, so a photo due
+>    "by the 7th" could arrive after the lineup had already published without it.
+>    The 5th puts two clear days between the deadline and the gate.
+>
+> 3. **The remaining Saturdays are deliberate.** Press shots 5 September and the
+>    cancellation cutoff 19 September both fall on a Saturday, and 7 September is
+>    Labor Day. Nobody should be surprised by it, but none of the three needs to
+>    move.
+>
+> Because 7 September is Labor Day, the working week these memos go out in
+> effectively starts **Tuesday 8 September**.
 
 > **Status:** v1, locked May 7, 2026
 > **Format:** One-page deal memo, friendly tone, easy to sign back via email or e-sign
@@ -94,10 +102,10 @@
 
 ## What artist provides
 
-- Performance during the assigned 25-minute set window
+- Performance during your assigned set window (30 or 40 minutes - your exact length is in the slot table above)
 - Completed technical rider intake form by **Friday 18 September 2026**
-- Signed agreement returned by **Saturday 5 September 2026**
-- Press shot and one-paragraph bio by **Monday 7 September 2026**
+- Signed agreement returned by **Friday 11 September 2026**
+- Press shot and one-paragraph bio by **Saturday 5 September 2026**
 - Headshot + 1-paragraph bio for the lineup announcement (high-res, square preferred)
 - Confirmation of travel availability by **Friday 18 September 2026**
 - Day-of attendance and soundcheck participation
