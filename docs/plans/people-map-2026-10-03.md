@@ -1,10 +1,12 @@
 # ZAOstock people map - who owns what on 3 October
 
-Ellsworth, Maine. Updated 27 August 2026, 37 days out.
+Ellsworth, Maine. Written 27 August 2026. **Corrected 2 September 2026** - see
+the two dated notes below; the rest of the file is unchanged from 27 August.
 
 Crew and ownership only. **Performer names are not in this file** - the repo is
-public and the lineup reveal is 1 September. The roster with names against slots
-is on the gated team page at `/team/plan`.
+public and the lineup reveal is **7 September** (moved from 1 September by PR
+#81 on 31 August; this line still said 1 September until 2 September). The
+roster with names against slots is on the gated team page at `/team/plan`.
 
 ---
 
@@ -67,7 +69,41 @@ asked this week.** They stay listed so the gap stays visible.
 | AV during Dcoop's set | He is the AV lead and he is on stage |
 | Stage manager | Got simpler when the day went single-venue. One person can now cover both halves |
 | First Aid contact | **No dedicated person** - Zaal, 27 Aug: "it's small". A named contact (UNSET) plus a prepared kit. The permit side is the CITY lane's. The July "eight hours, certified" framing is retired |
-| MC, noon to 16:00 - every changeover | **Now load-bearing.** Zaal, 27 Aug (Q16): there is no DJ; the changeovers - mixed, two of 5 and two of 10 (Zaal, 21:2x) - are the MC plus sponsor spots, and the 10s carry the event talk. That makes the daytime MC the person who holds the street between every act. Cannot be Stilo. Not Steve - ZAO crew holds the mic all day, and both MC names (daytime, evening) are UNSET (Zaal, 27 Aug). Names wait. See production plan section 2 and 8.6 |
+| MC, noon to 16:00 - every changeover | **No longer load-bearing, and no longer one person. Corrected 2 September - see the note below.** Zaal, 31 Aug: the MC is a rota, not a name - Zaal primary, with Steve Peer and one or two people from sponsors and supporting projects, plus an open call for volunteers. Zaal, 2 Sep: there will be a DJ. Both facts reduce this row from a single load-bearing vacancy to a rota with music underneath it. See production plan section 2 and 8.6, and `seconds-map-2026-10-03.md` |
+
+---
+
+## Correction, 2 September 2026 - the no-DJ premise is reversed
+
+**Zaal, 2 September:** *"we will have a dj thats the biggest get now we need to
+use nextdoor to find someone."*
+
+This file was written on 27 August on the opposite premise. Q16 that day cut the
+DJ, and the MC row above was escalated to "load-bearing" as a direct consequence:
+with no music between acts, the MC alone held the street across every changeover.
+That is no longer the situation.
+
+What the reversal changes:
+
+- **The daytime MC stops being the single point of failure.** Music can run
+  underneath the changeovers, so a gap in MC cover is a flat moment rather than
+  silence in the street.
+- **The changeovers change shape.** The final order (31 August) is four
+  five-minute changeovers, not the mixed 5s and 10s this row describes. A
+  five-minute swap with a DJ under it is a different job from five minutes of
+  someone talking.
+- **It does not fill a vacancy - it creates one.** There is no DJ yet. Sourcing
+  runs through Nextdoor, a channel opened 31 August that appears in no CRM row,
+  so this is an open recruitment with no pipeline behind it and 31 days to run.
+- **It does not touch Stilo.** He DJs indoors 18:00-20:00 and that was always
+  separate. This is a daytime outdoor DJ for the parklet block.
+
+Two rows above are also superseded by the 31 August seconds map rather than by
+this correction: "sound during WaveWarZ" and "AV during Dcoop's set" are
+scheduling conflicts solved by naming seconds, not vacancies to hire into. The
+genuine vacancies are stage manager, street pointer, sound 12:00-16:00,
+photographer, and the First Aid contact - which Zaal parked until ~18 September
+on 31 August, so it is scheduled rather than missing.
 
 ---
 
