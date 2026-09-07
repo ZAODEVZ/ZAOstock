@@ -93,7 +93,9 @@ The four-to-six window it used to hold is Lyons Den at 4:30 and Fellenz at 5:15.
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 
-**HOLD - re-pull before publishing.** As of 27 August 2026: 1,452 battles run.
+As of 27 August 2026, WaveWarZ had run 1,452 battles. (Provenance and re-pull
+instructions are in the sources table at the foot of this file, not here - this
+section is what a journalist reads.)
 
 ## Partners
 
