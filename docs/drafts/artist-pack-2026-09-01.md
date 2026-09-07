@@ -97,7 +97,13 @@ now rather than a form, so just answer what applies:
 5. Travel: where you are coming from, and whether you need help getting here.
 6. Merch: do you want table space?
 7. A link to a track or a set, if we do not already have one, for the socials.
-8. Anything that would make the day go wrong for you if I did not know it.
+8. **One photo we can put next to your name** - on the site, in the programme and
+   in the press release. A press shot if you have one, a good live photo if you do
+   not; landscape or square both work. Send the largest file you have, and the
+   name of whoever took it so we can credit them. Attach it to your reply. If you
+   would rather we used something already online, send the link and say where it
+   is from.
+9. Anything that would make the day go wrong for you if I did not know it.
 
 **Two things I will send once they land:** the Friday soundcheck running order,
 and load-in and parking, which I am confirming with the City this week.
@@ -114,6 +120,16 @@ info@thezao.com
 
 ## Per-artist edits before sending
 
+**On item 8, the photo.** It asks for a reply with the file attached rather than
+an upload link, on purpose. Three of the nine acts - OPEN X, Grass Rug and
+Michael Anderson - have no folder in the Drive intake tree, verified against the
+live Drive API on 7 September, so any link-based ask would work for six acts and
+fail for three. Attachments work for all nine today, and the `content` lane files
+each one into `ZAO Files > ZAO-Festivals > ZAOstock > Artists > <act>` on arrival,
+recording the photographer credit with it. Coverage before this send: **one act of
+nine**. Detail in `zao-vault/projects/zaostock-press-shot-ask-2026-09-07.md`.
+
+
 - **[NAME]** and **[TIME]** from the table above. Nothing else changes between
   copies except the notes below.
 - **Dcoop:** add a line asking when and where he wants the fire performance -
@@ -123,7 +139,9 @@ info@thezao.com
   we need sound cover during WaveWarZ since he is in it). His email should ask
   about the desk during the battle block rather than treat him as one slot.
 - **Fellenz:** he closes the outdoor block, so his overrun matters more than
-  anyone's - WaveWarZ starts at four whatever happens.
+  anyone's - WaveWarZ starts at four whatever happens. He is also the **only act
+  who has already sent photos** (three of them, filed), so drop item 8 from his
+  copy rather than ask twice.
 - **Acadia Rising:** Sen plays with Women with Rhythm, so the headcount question
   matters most here.
 - **The Crown Vics:** came through Steve rather than direct. Worth one line
