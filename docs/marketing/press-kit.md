@@ -17,7 +17,8 @@ Written 2026-08-27 (Thursday). Lane: MARKETING.
 - Facts come from `src/content/festival.ts` where they exist there. If SITE
   would rather import them than repeat them, the strings match.
 - Two sections have a hold and must not render before the date on them: the
-  lineup (7 September) and WaveWarZ figures (re-pull before publishing).
+  lineup (13 September) and WaveWarZ figures (re-pull before publishing; WaveWarZ is
+  not on the 3 October programme).
 - Music starts at noon (Zaal, typed 27 Aug 19:3x). `src/content/festival.ts` still
   reads 11 AM - 6 PM; SITE moves it back to noon. This file says noon.
 - Contact address is `info@thezao.com` - settled by Zaal, typed 27 Aug 21:2x. The overview
@@ -35,11 +36,9 @@ Free to attend.**
 ## In one paragraph
 
 ZAOstock is a free, one-day, artist-built music festival on Franklin Street in
-downtown Ellsworth, Maine. From noon, independent artists play the outdoor
-parklet stage, then two hours of
-WaveWarZ, a live music-battle format where two artists go head to head and the
-audience decides. At six the whole street walks next door into Black Moon
-Public House for the evening. It is part of the 9th Annual Art of Ellsworth
+downtown Ellsworth, Maine. From noon, nine independent artists play the outdoor
+parklet stage back to back until six. At six the whole street walks next door
+into Black Moon Public House for the evening. It is part of the 9th Annual Art of Ellsworth
 during Maine Craft Weekend, and it is produced by ZAO Festivals, the events arm
 of The ZAO, an independent music community with members in more than twenty
 countries.
@@ -52,7 +51,7 @@ countries.
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
 | Cost | Free to attend |
 | Music starts | Noon |
-| Format | Independent artists outdoors, WaveWarZ live battles, then indoors at Black Moon with a DJ set and live music to close |
+| Format | Nine independent artists outdoors noon to six, then indoors at Black Moon for the evening |
 | Weather | Rain or shine, under tent cover from Wallace Events |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
@@ -63,9 +62,8 @@ countries.
 
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back.
-- **WaveWarZ, four to six, outdoors.** Live music battles. Stilo, Jango, Lui
-  and Quan go head to head, Hurricane on the mic, and the audience decides, in
-  the street and online.
+- **Nine acts, 12:05 to 5:55, one stage.** 30 to 40 minute sets with five-minute
+  changeovers. Music ends 5:55 and the street clears at six.
 - **Six onward, indoors at Black Moon Public House.** Live music for the
   evening: a DJ set as the street walks in, then live music to close.
 
@@ -73,18 +71,27 @@ One venue at a time. The day does not split across two rooms.
 
 ## The lineup
 
-**HOLD until 7 September.** Two names are public now.
+**All nine acts are named on zaostock.com now.** In running order: The Crown Vics,
+OPEN X, Grass Rug, Acadia Rising, Michael Anderson, Hurricane, Dcoop, Lyons Den,
+Fellenz.
 
-Lyons Den is confirmed. The full lineup is announced on 7 September.
+**NONE of them has countersigned.** They are booked and locked in the run of show,
+which is a different claim from confirmed. Do not describe any act as confirmed in
+press copy. The reveal on 13 September is the API and the /artist pages, and it
+publishes only acts that have confirmed in writing.
 
-*(On 7 September, replace with the confirmed acts as Zaal confirms them
-that day, plus the WaveWarZ block. Never list an act marked proposed.)*
+*(On 13 September, the gate opens by itself. It reads the artists table, not this
+file. Never list an act marked proposed.)*
 
 ## WaveWarZ
 
 WaveWarZ is a live music-battle format. Two artists play head to head and the
-audience picks the winner, in person and online. It runs online and comes to
-the ZAOstock stage on 3 October.
+audience picks the winner, in person and online. It runs online all year.
+
+**It is NOT on the 3 October programme.** Confirmed off by Zaal, 2026-09-07.
+The four-to-six window it used to hold is Lyons Den at 4:30 and Fellenz at 5:15.
+WaveWarZ remains a confirmed partner and its first live battle really did happen at
+ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 
 **HOLD - re-pull before publishing.** As of 27 August 2026: 1,452 battles run.
 
@@ -97,7 +104,7 @@ agreement and a named point of contact on the ZAO team.
 - Black Moon Public House - the evening, and the official after party
 - Star 97.7 - local radio promotion
 - Wallace Events - event equipment and tenting
-- WaveWarZ - the live music-battle format
+- WaveWarZ - live music-battle format, online all year, not on the 3 October programme
 - ENTERACT - production and operational support
 - Web3Metal - partnership integration and community surface
 - COC Concertz - community partnership
@@ -112,7 +119,7 @@ Paste as written.
 
 Short: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 at the Franklin Street Parklet in Ellsworth, Maine, with the evening next door at Black Moon Public House. It is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO.
 
-Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music runs from noon at the Franklin Street Parklet, with two hours of WaveWarZ live music battles from four, then moves next door into Black Moon Public House for the evening. The day is programmed as one continuous event rather than competing stages, so nobody has to choose what to miss. ZAOstock takes place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission is free.
+Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music runs from noon at the Franklin Street Parklet with nine acts back to back until six, then moves next door into Black Moon Public House for the evening. The day is programmed as one continuous event rather than competing stages, so nobody has to choose what to miss. ZAOstock takes place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission is free.
 
 ## Four angles
 
