@@ -357,7 +357,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
               <div>
                 <div class="hero-badge" id="lounge-badge"><span class="dot"></span> The waiting room</div>
                 <h2 id="lounge-head">You're early. Good.</h2>
-                <p class="sub" id="lounge-sub">The theme is already playing. Saturday 3 October, Franklin Street Parklet in downtown Ellsworth, free, music from noon.</p>
+                <p class="sub" id="lounge-sub">The theme is already playing. Saturday 3 October, Franklin Street Parklet in downtown Ellsworth, free, nine acts from 12:05 to six.</p>
                 <div class="countdown" id="countdown"></div>
               </div>
               <img class="hero-crest" id="mark-crest" alt="The ZAO">
@@ -392,11 +392,11 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
               </div>
               <div class="panel">
                 <div class="h" id="lounge-when">Doors at noon</div>
-                <div class="b" id="lounge-when-sub">Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine. Free.</div>
+                <div class="b" id="lounge-when-sub">Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine. Free. Music 12:05 to six.</div>
               </div>
               <div class="panel">
                 <div class="h">Where to be</div>
-                <div class="b">Noon to six is outdoors on the parklet. At six the whole thing moves inside to Black Moon Public House, one door down, until ten.</div>
+                <div class="b">Everything is outdoors on the Franklin Street Parklet, 12:05 to six. Black Moon Public House next door is open for food all day and hosts the afterparty after six.</div>
               </div>
             </div>
           </div>
@@ -460,7 +460,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
         <div class="sec">
           <div class="sec-head"><h2>The day</h2><span class="rule"></span><span class="note">All times Ellsworth</span></div>
           <div class="sched" id="sched-public"></div>
-          <p class="foot">Acts not yet confirmed in writing show as to be announced. The running order is settled; individual set lengths can still move.</p>
+          <p class="foot">Act names are shown once the lineup is public. The running order was locked on 3 September; the street clears at six.</p>
         </div>
       </section>
 
@@ -558,7 +558,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
             <label class="f" style="flex-direction:row; align-items:center; gap:10px; text-transform:none; letter-spacing:0; font-family:Rubik,sans-serif; font-size:14px; color:var(--ink)">
               <input type="checkbox" id="lineup-public" style="width:auto"> Show act names on the public screens
             </label>
-            <p style="font-size:13px; color:var(--ink-2); margin-top:10px; max-width:70ch">Off until the reveal. While it is off, the public schedule shows the running order, the venues and the set lengths, but every act reads "to be announced". The crew screens always show the real names.</p>
+            <p style="font-size:13px; color:var(--ink-2); margin-top:10px; max-width:70ch">Off until the reveal on Sunday 13 September, and only Zaal flips it. While it is off, the public schedule shows the running order and the set lengths, but every act reads "to be announced". The crew screens always show the real names.</p>
           </div>
         </div>
 
@@ -567,7 +567,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
           <div class="card pad">
             <div class="row">
               <label class="f" style="flex-direction:row; align-items:center; gap:8px; text-transform:none; letter-spacing:0; font-family:Rubik,sans-serif; font-size:13px; color:var(--ink)"><input type="checkbox" id="sim-on" style="width:auto"> Simulate a time</label>
-              <input id="sim-time" type="range" min="480" max="1330" step="5" value="780" style="flex:1; min-width:180px; padding:0" disabled>
+              <input id="sim-time" type="range" min="480" max="1200" step="5" value="780" style="flex:1; min-width:180px; padding:0" disabled>
               <span class="chip mute mono" id="sim-label">off</span>
             </div>
           </div>
@@ -660,7 +660,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
         <div class="sec">
           <div class="sec-head"><h2>Moderator rota</h2><span class="rule"></span><span class="note" id="rota-note"></span></div>
           <div class="rota" id="rota"></div>
-          <p class="foot">Two people an hour, noon to ten. Anyone from the WaveWarZ crew who cannot travel: this is how you are in the event.</p>
+          <p class="foot">Two people an hour, noon to six. Anyone on the team who cannot travel to Ellsworth: this is how you are in the event.</p>
         </div>
       </section>
 
@@ -680,7 +680,6 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
               <label class="f">Livestream URL <input id="ch-stream" placeholder="The one link the audience watches on"></label>
               <label class="f">Spaces hub URL <input id="ch-spaces" placeholder="Where the list of Spaces lives"></label>
               <label class="f">Metaverse build URL <input id="ch-metaverse" placeholder="The build link"></label>
-              <label class="f">WaveWarZ vote URL <input id="ch-vote" placeholder="Opens at four, street and online"></label>
               <label class="f">Help line, if there is one <input id="ch-helpLine" placeholder="A number or handle the public can reach"></label>
             </div>
             <div class="row" style="margin-top:14px">
@@ -724,7 +723,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
 </div>
 
 <script id="ops-state" type="application/json">
-{"version":4,"updatedAt":null,"announcements":[],"help":[],"rota":{},"attention":[{"id":"n1","title":"A second for Stilo, 16:00 to 20:00. He battles then DJs, so he cannot run his own sound. Four hours with the indoor move inside it. Biggest gap on the day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n2","title":"A second for Dcoop on AV while he is on stage, covering his set and the fire slot.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager, parklet and Black Moon.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day but it is a rota. Dcoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n5","title":"Online moderators, two an hour noon to ten. Twenty seats, none claimed.","owner":"IMan + Rev","state":"blocked"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n7","title":"A fire circle for Dcoop. The City approved the performance on 31 August; the circle is all that is left.","owner":"Dcoop","state":"moving"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition.","owner":"Zaal","state":"moving"},{"id":"n9","title":"A daytime DJ. Zaal, 2 September: we will have a DJ, sourcing through Nextdoor. The changeovers are built on there being no music between acts, so this changes their shape and takes the MC off being a single point of failure.","owner":"Zaal","state":"moving"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a6","title":"WaveWarZ online voting does not exist yet. Vote in the street and online is on the running order.","owner":"IMan","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream.","owner":"Steve / Katina","state":"blocked"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms back on: RSVP, volunteer and the ideas box. Were dark 23 Aug to 1 Sep for an outage that had already ended.","owner":"IMan","state":"done"},{"id":"a11","title":"No confirmed artists linked to the event row in the database.","owner":"Zaal","state":"blocked"},{"id":"a13","title":"Artist photos and press shots: none exist for any act.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? It rides on the 11 September PA rental.","owner":"Dcoop","state":"blocked"},{"id":"a15","title":"Stilo indoors: house system or his own controller?","owner":"Steve Peer","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics and Acadia Rising, for the meal certificates.","owner":"Dcoop","state":"blocked"},{"id":"a17","title":"Written confirmations. Every act has now said yes VERBALLY (Zaal, 2 September), but only Lyons Den has confirmed in writing. The reveal reads from written only, so on 7 September a verbal yes puts nobody on the site.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d2","title":"City approved the fire performance.","owner":"Dcoop","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power at both stages, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
+{"version":5,"updatedAt":null,"announcements":[],"help":[],"rota":{},"attention":[{"id":"n2","title":"A second for Dcoop on AV while he is on stage, covering his set and the fire slot.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager for the parklet. Nine acts, five-minute changeovers, five minutes of margin on the whole day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day, Hurricane MCs between sets as well as playing at 15:10. Dcoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n5","title":"Online moderators, two an hour, noon to six. Twelve seats, none claimed.","owner":"IMan + Rev","state":"blocked"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n7","title":"A fire circle for Dcoop. The City approved the performance on 31 August; the circle is all that is left on the City side.","owner":"Dcoop","state":"moving"},{"id":"n10","title":"Fire performer's certificate of insurance naming ZAO as additional insured. The broker asked for it as a CONDITION, not a courtesy. The City approval does not satisfy it.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition. All nine genres answered for the broker on 3 September.","owner":"Zaal","state":"moving"},{"id":"n9","title":"A daytime DJ. Zaal, 2 September: we will have a DJ, sourcing through Nextdoor. The changeovers are built on there being no music between acts, so this changes their shape and takes the MC off being a single point of failure.","owner":"Zaal","state":"moving"},{"id":"n11","title":"The evening. Zaal, 3 September: Black Moon's afterparty, not ZAOstock's programme. Still to be confirmed with Steve; the site's own DAY rows still say 6 to 10 PM is ours.","owner":"Zaal","state":"moving"},{"id":"n12","title":"An owner for Lyons Den. Every other act traces to a person; this one traces to nobody.","owner":"UNASSIGNED","state":"blocked"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream during the afterparty. Black Moon's call now, not ours.","owner":"Steve / Katina","state":"moving"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms back on: RSVP, volunteer and the ideas box.","owner":"IMan","state":"done"},{"id":"a11","title":"Artist rows. The reveal reads only rows with status confirmed. Six acts have no row at all, three are misnamed (DCoop / Coop D'Ville, Hurric4n3Ike, Tom Fellenz). Needed before Saturday 12 September.","owner":"Zaal","state":"blocked"},{"id":"a18","title":"Artist details form goes to all nine acts, due back Friday 11 September. Signatures come back through it; the confirm-artist endpoint then sets confirmed.","owner":"Zaal / Dcoop","state":"moving"},{"id":"a13","title":"Artist photos and press shots: Drive has 1 of 9. OPEN X, Grass Rug and Michael Anderson have no Drive folder.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? The PA now comes from OPEN X, so this is a question for OPEN X and Dcoop, not a rental.","owner":"Dcoop","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics, OPEN X, Grass Rug and Acadia Rising, for the meal certificates.","owner":"Dcoop","state":"blocked"},{"id":"a17","title":"Written confirmations. Every act said yes verbally (2 September); only Lyons Den is confirmed in writing. The reveal on Sunday 13 September reads written only.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d2","title":"City approved the fire performance.","owner":"Dcoop","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d9","title":"The PA comes from OPEN X, who also play. Closes the 11 September rental gate early and takes hired equipment off the insurance.","owner":"Zaal","state":"done"},{"id":"d10","title":"Run of show locked 3 September: nine acts, 12:05 to 17:55, street clears 18:00. WaveWarZ cancelled, Stilo not coming in person.","owner":"Zaal","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
 </script>
 
 <script>
@@ -743,59 +742,62 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   var THEME = /*__THEME__*/null;
 
   var SCHEDULE = [
-    {v:"crew", t:480,  e:600,  n:"Vital crew on site",        d:"Parklet unlocked. PA power-up and line checks from 08:15.", own:"Roddy", sec:"", kind:"gap", pub:false},
+    {v:"crew", t:480,  e:600,  n:"Vital crew on site",        d:"Parklet unlocked. PA power-up and line checks from 08:15. The PA is OPEN X's, so they are on site with it.", own:"Roddy", sec:"", kind:"gap", pub:false},
     {v:"crew", t:600,  e:660,  n:"Everyone on site",          d:"First aid kit and contact, wayfinding, merch table, sponsor signage, stream rig check.", own:"Zaal", sec:"", kind:"gap", pub:false},
-    {v:"crew", t:660,  e:690,  n:"MC mic check",              d:"Sponsor spot scripts on the desk. The MC is a rota, not one person: Zaal primary, with Steve Peer and one or two from sponsors.", own:"Zaal", sec:"", kind:"gap", pub:false},
-    {v:"crew", t:690,  e:720,  n:"Stage manager's walk",      d:"Acts on site, overrun rule said aloud.", own:"UNNAMED", sec:"", kind:"gap", pub:false, flag:"No stage manager"},
+    {v:"crew", t:660,  e:690,  n:"MC mic check",              d:"Sponsor spot scripts on the desk. The MC is a rota, not one person: Zaal primary, Hurricane between sets, Steve Peer as cover.", own:"Zaal", sec:"", kind:"gap", pub:false},
+    {v:"crew", t:690,  e:720,  n:"Stage manager's walk",      d:"Acts on site, overrun rule said aloud. Five minutes of margin on the whole day and no recovery slot.", own:"UNNAMED", sec:"", kind:"gap", pub:false, flag:"No stage manager"},
     {v:"out",  t:720,  e:725,  n:"Intro",                     d:"Five minutes. Who speaks and what is said is still open.", own:"Zaal", sec:"", kind:"gap", pub:true},
-    {v:"out",  t:725,  e:755,  n:"The Crown Vics",            d:"30 minutes. Steve Peer is performing, so Katina covers venue and door for this window.", own:"Steve Peer", sec:"Katina", kind:"act", pub:true, confirmed:true},
-    {v:"out",  t:755,  e:760,  n:"Changeover",                d:"Five minutes, tightened from ten. MC talks the event, the six o'clock move and Art of Ellsworth, plus a sponsor spot.", own:"MC rota", sec:"", kind:"gap", pub:true},
-    {v:"out",  t:760,  e:790,  n:"Acadia Rising",             d:"Sen Wilde with Women with Rhythm. 30 minutes. Group size still unset for the meal headcount.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:true},
-    {v:"out",  t:790,  e:795,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
-    {v:"out",  t:795,  e:825,  n:"Michael Anderson",          d:"Piano, 30 minutes. Verbal yes only, like every act except Lyons Den. Still open: does he bring his own keyboard, or does one ride on the PA rental?", own:"Dcoop", sec:"UNNAMED", kind:"act", pub:true, confirmed:true, flag:"Keyboard question open"},
-    {v:"out",  t:825,  e:830,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
-    {v:"out",  t:830,  e:860,  n:"Dcoop",                     d:"30 minutes plus the fire slot. The City approved the fire performance (31 Aug); all it needs now is a fire circle. AV cover while he is on stage is his second, and the same name covers the fire slot.", own:"Dcoop", sec:"UNNAMED", kind:"act", pub:true, confirmed:true, flag:"AV second unnamed · fire circle"},
-    {v:"out",  t:860,  e:865,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
-    {v:"out",  t:865,  e:905,  n:"Lyons Den",                 d:"40 minutes, extended from 30.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:true},
-    {v:"out",  t:905,  e:910,  n:"Changeover",                d:"The tightest thing on the grid: event talk, the WaveWarZ pitch and one sponsor spot in five minutes. If something gives, cut the event talk.", own:"MC rota", sec:"", kind:"gap", pub:true, flag:"Three items in five minutes"},
-    {v:"out",  t:910,  e:950,  n:"Fellenz",                   d:"40 minutes, closing the outdoor block. Confirmed at 15:10 by the 31 August standup running order.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:true},
-    {v:"out",  t:950,  e:960,  n:"Battle reset",              d:"Ten minutes. The battle rig should be patched and line-checked during Fellenz's set, not in this window.", own:"Stilo", sec:"", kind:"gap", pub:false},
-    {v:"out",  t:960,  e:1080, n:"WaveWarZ",                  d:"Story segment, rules, bracket, voting windows, final. Hurricane hosting. Battlers: Stilo, Jango, Lui and Quan. Vote in the street and online.", own:"Hurricane", sec:"SOUND SECOND UNNAMED", kind:"act", pub:true, confirmed:true, flag:"Sound second unnamed, four-hour window"},
-    {v:"out",  t:1075, e:1080, n:"Result and hand-off",       d:"Result called, then the street moves indoors.", own:"Hurricane", sec:"", kind:"gap", pub:true},
-    {v:"out",  t:1080, e:1085, n:"Everything moves to Black Moon", d:"Outdoor strike begins. The street pointer at the move still needs a name.", own:"Steve Peer", sec:"UNNAMED", kind:"move", pub:true, flag:"No street pointer"},
-    {v:"in",   t:720,  e:1080, n:"Black Moon open",           d:"Performers eat here after their set. Stream on screens inside, still to build.", own:"Katina", sec:"", kind:"gap", pub:true},
-    {v:"in",   t:1080, e:1200, n:"Stilo, DJ set",             d:"Music on before the first person reaches the door. House system or his own controller is still open.", own:"Steve Peer", sec:"Katina", kind:"act", pub:true, confirmed:true},
-    {v:"in",   t:1200, e:1320, n:"Closing set, act not named", d:"NOT BOOKED. Steve Peer is paying for this slot and chasing a group of local hip-hop artists, and they have not confirmed. The closing two hours of the festival currently have no confirmed act. Indoor PA is a rental rather than the house rig, gate of Friday 11 September.", own:"Steve Peer", sec:"Katina", kind:"act", pub:true, confirmed:false, flag:"Closing two hours unbooked"}
+    {v:"out",  t:725,  e:755,  n:"The Crown Vics", pd:"Rock n roll dance band, 30 minutes.",             d:"Rock n roll dance band, 30 minutes. Booked via Steve Peer, who is performing, so Katina covers venue and door for this window. They played this exact stage on the City's 2026 summer series.", own:"Steve Peer", sec:"Katina", kind:"act", pub:true, confirmed:false},
+    {v:"out",  t:755,  e:760,  n:"Changeover",                d:"Five minutes. MC talks the event and Art of Ellsworth, plus a sponsor spot.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:760,  e:800,  n:"OPEN X", pd:"Power pop rock, 40 minutes.",                     d:"Power pop rock, 40 minutes. The PA is theirs, which closed the rental question. Also played the parklet on the City's 2026 summer series.", own:"Dcoop", pd:"Hip-hop, 40 minutes, with a fire performance.",  sec:"", kind:"act", pub:true, confirmed:false},
+    {v:"out",  t:800,  e:805,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:805,  e:835,  n:"Grass Rug", pd:"Jam rock band, 30 minutes.",                  d:"Jam rock band, 30 minutes. No web presence: no bio, no photo yet.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:false},
+    {v:"out",  t:835,  e:840,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:840,  e:870,  n:"Acadia Rising", pd:"World rhythms and global fusion, 30 minutes.",              d:"Sen Wilde with Women with Rhythm. World rhythms, 30 minutes. Group size still unset for the meal headcount.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:false},
+    {v:"out",  t:870,  e:875,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:875,  e:905,  n:"Michael Anderson", pd:"Solo piano, 30 minutes.",           d:"Solo piano, 30 minutes. Verbal yes only, like every act except Lyons Den. Still open: does he bring his own keyboard, or does one come with OPEN X's PA?", own:"Dcoop", sec:"UNNAMED", kind:"act", pub:true, confirmed:false, flag:"Keyboard question open"},
+    {v:"out",  t:905,  e:910,  n:"Changeover",                d:"Five minutes. Hurricane is the next act and the MC, so someone else holds the mic for this one.", own:"Zaal", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:910,  e:940,  n:"Hurricane", pd:"Hip-hop, 30 minutes. Also your MC between sets.",                  d:"Hip-hop, 30 minutes. He is also MCing between sets, which is why his set is the short one.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:false},
+    {v:"out",  t:940,  e:945,  n:"Changeover",                d:"Five minutes, swap only.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:945,  e:985,  n:"Dcoop",                     d:"Hip-hop, 40 minutes, with the fire performance. The City approved it on 31 August; the fire circle and the performer's insurance certificate are what is left. AV cover while he is on stage is his second.", own:"Dcoop", sec:"UNNAMED", kind:"act", pub:true, confirmed:false, flag:"No AV second"},
+    {v:"out",  t:985,  e:990,  n:"Changeover",                d:"Five minutes. Dcoop asked to give the Lyons Den intro.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:990,  e:1030, n:"Lyons Den", pd:"Native, electro, reggae, hip-hop. 40 minutes.",                  d:"Native, electro, reggae, hip-hop. 40 minutes. The only act confirmed in writing, and the only act with no owner. Travelling in to Maine.", own:"UNNAMED", sec:"", kind:"act", pub:true, confirmed:true, flag:"No owner"},
+    {v:"out",  t:1030, e:1035, n:"Changeover",                d:"Five minutes. Last sponsor spot of the day.", own:"MC rota", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:1035, e:1075, n:"Fellenz", pd:"Rock guitar and soundtrack, 40 minutes. Closes the day.",                    d:"Rock guitar and soundtrack, 40 minutes, closing the day. Travelling from California.", own:"Dcoop", sec:"", kind:"act", pub:true, confirmed:false},
+    {v:"out",  t:1075, e:1080, n:"Close",                     d:"Thanks, the afterparty pointer, and the street clears at six. The permit ends here.", own:"Zaal", sec:"", kind:"gap", pub:true},
+    {v:"out",  t:1080, e:1140, n:"Strike",                    d:"Outdoor strike. OPEN X's PA goes with OPEN X. Tent is Wallace Events'.", own:"Roddy", sec:"Steve Peer", kind:"gap", pub:false},
+    {v:"in",   t:720,  e:1080, n:"Black Moon open",           d:"Performers eat here after their set, on the $20 certificate. Basement dressing room and bathroom.", own:"Katina", sec:"", kind:"gap", pub:true},
+    {v:"in",   t:1080, e:1320, n:"Black Moon afterparty",     d:"Hosted by Black Moon, under their own licence and house rules. Not ZAOstock's programme: we book nothing, run nothing and serve nothing in here. Zaal to confirm with Steve that it stays that way.", own:"Steve Peer", sec:"Katina", kind:"gap", pub:true}
   ];
 
   var PEOPLE = [
-    {img:"stage", b:"WaveWarZ", s:"The battle format that takes the stage from four to six. Hurricane hosts. Stilo, Jango, Lui and Quan battle."},
+    {img:"stage", b:"The stage", s:"Last time out. This year it is nine acts on one street, 12:05 to six, with Hurricane on the mic between sets."},
     {img:"crowd", b:"A ZAO room", s:"Last time out. This is the energy heading for Franklin Street on 3 October."},
-    {img:"zaal",  b:"Zaal", s:"Runs ZAO Festivals and the day itself, and he is on the mic for most of the afternoon."}
+    {img:"zaal",  b:"Zaal", s:"Runs ZAO Festivals and the day itself, and he opens and closes it on the mic."}
   ];
 
   /* ------------------------------------------------- the artist layer */
   // Every act on the day, with the advance each one still owes. Checks are
   // stored in state.artists so the crew can tick them off together.
   var ROSTER = [
-    {id:"crownvics", n:"The Crown Vics",   t:725,  e:755,  where:"Parklet", kind:"Band",
-     lead:"Steve Peer", note:"Steve's own band, and he is also venue and door lead, so Katina covers that window. Group size still needed for the meal headcount and the certificates."},
-    {id:"acadia",    n:"Acadia Rising",    t:760,  e:790,  where:"Parklet", kind:"Band",
+    {id:"crownvics", n:"The Crown Vics",   t:725,  e:755,  where:"Parklet", kind:"Rock n roll dance band",
+     lead:"Steve Peer", note:"Booked via Steve, who is also venue and door lead, so Katina covers that window. Group size still needed for the meal headcount and the certificates. They have played this stage before."},
+    {id:"openx",     n:"OPEN X",           t:760,  e:800,  where:"Parklet", kind:"Power pop rock",
+     lead:"Dcoop", note:"The PA is theirs and they play on it, so they are on site from crew call. Group size still needed. No Drive folder yet for photos."},
+    {id:"grassrug",  n:"Grass Rug",        t:805,  e:835,  where:"Parklet", kind:"Jam rock band",
+     lead:"Dcoop", note:"No bio, no photo, no handle found anywhere public. Everything on the advance list is owed."},
+    {id:"acadia",    n:"Acadia Rising",    t:840,  e:870,  where:"Parklet", kind:"World rhythms",
      lead:"Sen Wilde", note:"Sen Wilde with Women with Rhythm. Group size still needed for the meal headcount."},
-    {id:"anderson",  n:"Michael Anderson", t:795,  e:825,  where:"Parklet", kind:"Piano",
-     lead:"Dcoop", note:"Open question, and it has a cost attached: own keyboard, or one provided on the PA rental? Answer before the 11 September rental gate."},
-    {id:"dcoop",     n:"Dcoop",            t:830,  e:860,  where:"Parklet", kind:"Set + fire",
-     lead:"Dcoop", note:"The City approved the fire performance on 31 August. All it needs is a fire circle. Dcoop brings his own extinguisher and water. He also runs AV, so he needs a named second for his own set plus the fire slot, about 45 minutes."},
-    {id:"lyonsden",  n:"Lyons Den",        t:865,  e:905,  where:"Parklet", kind:"Band",
-     lead:"Dcoop", note:"40 minutes, extended from 30. Zaal floated Dcoop giving the intro. Travelling in to Maine."},
-    {id:"fellenz",   n:"Fellenz",          t:910,  e:950,  where:"Parklet", kind:"Band",
-     lead:"Dcoop", note:"40 minutes, closing the outdoor block immediately before WaveWarZ. The battle rig gets patched and line-checked during this set."},
-    {id:"wavewarz",  n:"WaveWarZ",         t:960,  e:1080, where:"Parklet", kind:"Battle",
-     lead:"Hurricane", note:"Hurricane hosts. Battlers: Stilo, Jango, Lui, Quan. Werb is out. Bracket, battle order, voting windows and the prize are all still with the WaveWarZ team. Anyone who cannot travel goes on the online rota instead."},
-    {id:"stilo",     n:"Stilo, DJ set",    t:1080, e:1200, where:"Black Moon", kind:"DJ",
-     lead:"Steve Peer", note:"House system or his own controller is still unanswered. He battles 16:00 to 18:00 and then plays, so he cannot run his own sound: one second covers 16:00 to 20:00, with the move indoors inside it. Biggest gap on the day."},
-    {id:"stevepeer", n:"Closing set, unnamed", t:1200, e:1320, where:"Black Moon", kind:"Closing set",
-     lead:"Steve Peer", note:"NOT BOOKED. Steve is paying for the slot and chasing a group of local hip-hop artists; they have not confirmed. Until they are named nothing else on this slot can start, and it is the last two hours of the festival. Indoor PA is a rental rather than the house rig, gate of Friday 11 September."}
+    {id:"anderson",  n:"Michael Anderson", t:875,  e:905,  where:"Parklet", kind:"Solo piano",
+     lead:"Dcoop", note:"Open question: own keyboard, or one on OPEN X's PA? Ask OPEN X before soundcheck night. No web presence, no photo yet."},
+    {id:"hurricane", n:"Hurricane",        t:910,  e:940,  where:"Parklet", kind:"Hip-hop",
+     lead:"Dcoop", note:"Also the MC between sets, so his own changeovers need another voice on the mic. Host mic is on the AV spec."},
+    {id:"dcoop",     n:"Dcoop",            t:945,  e:985,  where:"Parklet", kind:"Hip-hop + fire",
+     lead:"Dcoop", note:"The City approved the fire performance on 31 August. Still owed: the fire circle, and a certificate of insurance from the performer naming ZAO, which the broker asked for as a condition. He also runs AV, so he needs a named second for his own set plus the fire slot."},
+    {id:"lyonsden",  n:"Lyons Den",        t:990,  e:1030, where:"Parklet", kind:"Native, electro, reggae, hip-hop",
+     lead:"UNNAMED", note:"The only act confirmed in writing, and the only act with no owner. Zaal floated Dcoop giving the intro. Travelling in to Maine."},
+    {id:"fellenz",   n:"Fellenz",          t:1035, e:1075, where:"Parklet", kind:"Rock guitar and soundtrack",
+     lead:"Dcoop", note:"Closes the day at 17:55. Travelling from California, so travel and arrival is the first thing to settle."}
   ];
 
   // The advance. Ordered the way you would actually chase it.
@@ -818,33 +820,33 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     {n:"A $20 gift certificate", d:"For every performer, redeemable at Black Moon. Eat after your set. Headcount comes from your group size, so give it early."},
     {n:"Dressing room", d:"The Black Moon basement, with its own bathroom, for performers."},
     {n:"A porta-potty", d:"On site, committed by Black Moon."},
-    {n:"Friday soundcheck", d:"2 October, at whichever stage you actually play. Mandatory, and it doubles as a filming and recording night."}
+    {n:"Friday soundcheck", d:"2 October, on the parklet stage. Mandatory, and it doubles as a filming and recording night."}
   ];
 
   var KEYDATES = [
-    {d:"Tue 1 Sep",  t:"Poster and daily photos start going out. Facebook event is live and the City will share it."},
-    {d:"Mon 7 Sep",  t:"Lineup reveal. The gate opens by itself at 04:00Z and reads only from acts confirmed IN WRITING. Anything unsigned that morning does not appear, on the site or in the app."},
     {d:"Thu 10 Sep", t:"Zaal live in the Star 97.7 studio, the 8 o'clock hour. At the studio before 8:00."},
-    {d:"Fri 11 Sep", t:"Indoor PA rental gate. Money attached. The keyboard question rides on this."},
+    {d:"Fri 11 Sep", t:"Artist details form due back from all nine acts. Signatures come back through it. Nothing unsigned can be on the reveal."},
+    {d:"Sat 12 Sep", t:"Last day to get every act a row in the artists table with the right name and status. The reveal reads nothing else."},
+    {d:"Sun 13 Sep", t:"Lineup reveal. The gate opens by itself at 00:00 Ellsworth (04:00Z) and reads only from acts confirmed IN WRITING. Anything unsigned does not appear, on the site or in the app."},
     {d:"Fri 19 Sep", t:"Star 97.7 30-second ads start rotating. Copy needs to be with Candy before this."},
     {d:"Fri 26 Sep", t:"Target for a full moderator rota and every artist advance closed."},
     {d:"Thu 1 Oct",  t:"Zaal back on Star 97.7 as the week-of reminder."},
-    {d:"Fri 2 Oct",  t:"Soundcheck night. Every act, mandatory. Streaming chain must work end to end."},
-    {d:"Sat 3 Oct",  t:"Crew 08:00. Everyone 10:00. Music at noon."}
+    {d:"Fri 2 Oct",  t:"Soundcheck night on the parklet. Every act, mandatory. Streaming chain must work end to end."},
+    {d:"Sat 3 Oct",  t:"Crew 08:00. Everyone 10:00. Music 12:05. Street clears 18:00."}
   ];
 
   var WATCH = [
-    {n:"Watch the livestream", d:"The full day, noon to ten, from the parklet and then inside Black Moon.", key:"stream", pending:"Destination not set yet. It lands here the moment it does."},
+    {n:"Watch the livestream", d:"The full day, noon to six, from the Franklin Street Parklet.", key:"stream", pending:"Destination not set yet. It lands here the moment it does."},
     {n:"Join a Space", d:"Several communities host their own Space at the same time, all pointing here. Drop into whichever one you belong to.", key:"spaces", pending:"Host list opens closer to the day. Want to host one? Use the help form."},
-    {n:"The metaverse build", d:"The show runs continuously in the ZAO build, and there are iPads inside Black Moon so people on the parklet can meet you there.", key:"metaverse", pending:"Build in progress. Follow the builder battle at zaostock.com/build."},
-    {n:"Vote in WaveWarZ", d:"Four battlers, from four o'clock. Voting opens per round, in the street and online at once.", key:"vote", pending:"Voting opens on the day, right here."}
+    {n:"The metaverse build", d:"The show runs continuously in the ZAO build, and there are iPads inside Black Moon so people on the parklet can meet you there.", key:"metaverse", pending:"Build in progress. Follow the builder battle at zaostock.com/build."}
   ];
 
   var INFO = [
-    {n:"Free to get in", d:"No ticket, no door charge, all ages on the parklet. Black Moon has its own house rules after six."},
-    {n:"Where it is", d:"Franklin Street Parklet, downtown Ellsworth, Maine, then Black Moon Public House next door. Everything is on one block."},
+    {n:"Free to get in", d:"No ticket, no door charge, all ages on the parklet. Music 12:05 to 17:55, street clears at six."},
+    {n:"Where it is", d:"Franklin Street Parklet, downtown Ellsworth, Maine. Black Moon Public House is next door for food, and for the afterparty after six."},
+    {n:"After six", d:"Black Moon hosts the afterparty under their own roof and their own house rules. That part is theirs, not ours, so ask them, not the help form."},
     {n:"Rain or shine", d:"Wallace Events has the tent confirmed. The rain call is made at Friday soundcheck and looked at again at eight on Saturday morning."},
-    {n:"Food and drink", d:"Black Moon is open from noon. The beer garden is run by Black Moon under their own permit, about an eighth of the general section."},
+    {n:"Food and drink", d:"Black Moon is open from noon, next door. The beer garden is run by Black Moon under their own permit, about an eighth of the general section."},
     {n:"Accessibility", d:"Tell us what you need through the help form and someone will meet you. Seating, access routes and a quieter spot are all askable."},
     {n:"Bringing a crew", d:"Come. The parklet holds two to three hundred and it is a street, not a stadium."},
     {n:"A bigger weekend", d:"ZAOstock sits inside the 9th annual Art of Ellsworth and Maine Craft Weekend, so there is a whole town's worth of programme around it."},
@@ -864,7 +866,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     {n:"Sponsor deck", u:"https://deck.zaostock.com", d:"The full deck, sendable."},
     {n:"Ellsworth", u:"https://zaostock.com/ellsworth", d:"The local page."},
     {n:"ZAO Festivals", u:"https://zaostock.com/festivals", d:"Who runs this."},
-    {n:"WaveWarZ", u:"https://wavewarz.info", d:"The battle format running four to six."},
     {n:"The ZAO", u:"https://thezao.com", d:"The wider organisation."},
     {n:"ZAO OS", u:"https://zaoos.com", d:"The operating system side of things."},
     {n:"Support ZAO Festivals", u:"https://giveth.io/project/sustaining-zao-festivals-creativity-technology", d:"Funding page on Giveth."},
@@ -882,7 +883,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
 
   var AGENTS = [
     {n:"Stream watchdog", who:"Owner: IMan", p:"Checks the stream is actually up and actually has audio, every few minutes, all day. The commonest failure is a stream that looks fine on the encoder and is dead to viewers.",
-     b:"You are the stream watchdog for ZAOstock on Saturday 3 October.\nEvery 5 minutes from 11:00 to 22:00 Ellsworth time, load the public stream URL as a viewer would and confirm: the player is live, video is moving, audio is present, and viewer count is not zero.\nIf any check fails twice in a row, post to the crew channel: what failed, when it started, and which fallback to try next in this order: 1) reload encoder scene, 2) switch to the second machine, 3) switch carrier on the bonded connection, 4) put up the holding slate and post the delay publicly.\nDo not post about a single failed check. Do not attempt any fix yourself. Report, and name the human who owns the next step."},
+     b:"You are the stream watchdog for ZAOstock on Saturday 3 October.\nEvery 5 minutes from 11:00 to 18:30 Ellsworth time, load the public stream URL as a viewer would and confirm: the player is live, video is moving, audio is present, and viewer count is not zero.\nIf any check fails twice in a row, post to the crew channel: what failed, when it started, and which fallback to try next in this order: 1) reload encoder scene, 2) switch to the second machine, 3) switch carrier on the bonded connection, 4) put up the holding slate and post the delay publicly.\nDo not post about a single failed check. Do not attempt any fix yourself. Report, and name the human who owns the next step."},
     {n:"Spaces herald", who:"Owner: Thy Revolution", p:"Feeds every Space host the same line at the same moment, so six rooms are never describing three different events.",
      b:"You are the herald for the ZAOstock Spaces on Saturday 3 October.\nAt the top of every set change, send all Space hosts one short message: who is on now, who is next, the watch link, and one sentence they can read aloud.\nPull the current and next act from the run of show. Never announce an act flagged as not confirmed in writing.\nIf a set runs over, say so plainly rather than repeating the schedule.\nKeep every message under 40 words. Same words to every host, every time."},
     {n:"Help router", who:"Owner: rota lead on duty", p:"Triages what comes in from the public help form, so nothing sits unread while everyone assumes someone else has it.",
@@ -890,23 +891,20 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     {n:"Clip cutter", who:"Owner: IMan", p:"Logs the moments worth clipping while they happen, so the recap does not mean scrubbing ten hours of video on Sunday.",
      b:"You are logging clip moments during ZAOstock.\nWatch the crew channel and the public chat. Every time a moment lands (a big crowd reaction, a guest appearance, a battle result, a first-time performer finishing), log: timestamp in Ellsworth time, act name, one line on what happened, and how strong it was out of three.\nAt the end of each hour, post the top three of that hour.\nDo not log routine set changes. Do not log anything you did not see evidence of in a channel."},
     {n:"Sponsor spot prompter", who:"Owner: MC rota", p:"The changeovers carry the sponsor reads and they are five minutes long. This makes sure the right one gets read, once, in the right gap.",
-     b:"You are prompting sponsor reads for the ZAOstock MC rota.\nThere is one sponsor spot per changeover, read live, never recorded. Two minutes before each changeover, send whoever has the mic: which sponsor, the exact copy, and how long it should take.\nThe 15:05 changeover carries three items in five minutes. For that one only, send the order and add: if time runs short, cut the event talk, keep the sponsor spot and the battle pitch.\nStar 97.7's logo and mentions are contractual. Never skip that one."},
+     b:"You are prompting sponsor reads for the ZAOstock MC rota.\nThere is one sponsor spot per changeover, read live, never recorded. Two minutes before each changeover, send whoever has the mic: which sponsor, the exact copy, and how long it should take.\nEvery changeover is five minutes and there is no recovery slot in the day. If time runs short, cut the event talk and keep the sponsor spot.\nStar 97.7's logo and mentions are contractual. Never skip that one."},
     {n:"Rota chaser", who:"Owner: Thy Revolution", p:"Twenty moderator slots, two an hour. This one keeps asking until they are full, which is the whole job.",
-     b:"You are filling the ZAOstock moderator rota: two people per hour, noon to 22:00, twenty slots.\nEvery day until 26 September, post the current count and name only the empty hours. Ask for one hour, not a whole day, and name the people who have not yet claimed anything.\nPrioritise anyone from the WaveWarZ crew who cannot travel, since this is how they are in the event.\nStop asking a person once they have claimed a slot. Never post a shaming list."},
-    {n:"Vote steward", who:"Owner: IMan", p:"Opens and closes the WaveWarZ voting windows and puts the link in every room at the same second.",
-     b:"You are stewarding the WaveWarZ vote between 16:00 and 18:00 Ellsworth time.\nWhen the host calls a voting window open, post the vote link to every channel at once: the stream chat, every Space, the metaverse chat, and the on-site screen feed. When the window closes, post that it is closed, in the same places.\nNever post the running tally unless the host asks. Never post a result before the host calls it.\nIf the vote page is not reachable, say so immediately and switch to the fallback poll."},
+     b:"You are filling the ZAOstock moderator rota: two people per hour, noon to 18:00, twelve slots.\nEvery day until 26 September, post the current count and name only the empty hours. Ask for one hour, not a whole day, and name the people who have not yet claimed anything.\nPrioritise anyone on the team who cannot travel to Ellsworth, since this is how they are in the event.\nStop asking a person once they have claimed a slot. Never post a shaming list."},
     {n:"Hourly recap", who:"Owner: Zaal", p:"Writes the hour up while it is fresh, so the post-event campaign starts on Saturday night and not the following week.",
      b:"You are writing hourly recaps during ZAOstock.\nAt the end of each hour, write 60 words on what happened: who played, one specific moment, one number if you have a real one (peak viewers, crowd size), and what is next.\nWrite it so it can be posted as-is. No hype adjectives, no exclamation marks. Specific beats loud.\nUse only facts posted in the crew channels. If you do not have a number, leave it out rather than estimating."}
   ];
 
   var SAY = [
-    {from:0,   to:660,  t:"We are not open yet. Music starts at noon on the Franklin Street Parklet, it is free, and it runs to ten at night. If someone asks where to be: Franklin Street Parklet from noon, Black Moon Public House from six."},
-    {from:660, to:720,  t:"Doors shortly. Music at noon on the parklet. Free, all ages outdoors, and the whole thing moves inside to Black Moon at six. Watching from elsewhere: the stream link is on the public page."},
-    {from:720, to:960,  t:"We are live on the parklet. Music runs straight through with no gaps until four, then WaveWarZ takes the stage until six, then everything moves inside to Black Moon. Free, all ages, come down."},
-    {from:960, to:1080, t:"WaveWarZ is on until six. Four battlers, hosted by Hurricane, and you can vote in the street or online. At six the whole thing moves inside to Black Moon and keeps going to ten."},
-    {from:1080,to:1200, t:"We have moved inside to Black Moon Public House. Stilo is on the decks until eight, then Steve Peer closes the night to ten. Same block, one door down."},
-    {from:1200,to:1330, t:"Last stretch inside Black Moon. Steve Peer until ten. If you are still online with us, the stream stays up to the end."},
-    {from:1330,to:1441, t:"That is ZAOstock. Thank you to everyone who came down, played, hosted a room or watched from somewhere else. Recap and photos to follow. Say what you loved, we are reading everything."}
+    {from:0,   to:660,  t:"We are not open yet. Music starts at 12:05 on the Franklin Street Parklet, it is free, and it runs to six. If someone asks where to be: Franklin Street Parklet from noon. Black Moon next door is open for food all day and hosts the afterparty after six."},
+    {from:660, to:720,  t:"Doors shortly. Music at 12:05 on the parklet. Free, all ages, outdoors, nine acts straight through to six. Watching from elsewhere: the stream link is on the public page."},
+    {from:720, to:900,  t:"We are live on the parklet. Nine acts, five minutes between each, straight through to six. Free, all ages, come down. Black Moon next door is open if you are hungry."},
+    {from:900, to:1035, t:"Still live on the parklet, second half of the day. Music runs to six with no gaps. If you are online, the stream and the Spaces are one door over on this page."},
+    {from:1035,to:1080, t:"Last set of the day on the parklet. The street clears at six. After that Black Moon is hosting the afterparty next door, on their terms, so ask them about it, not us."},
+    {from:1080,to:1441, t:"That is ZAOstock. Thank you to everyone who came down, played, hosted a room or watched from somewhere else. The afterparty at Black Moon is theirs. Recap and photos to follow. Say what you loved, we are reading everything."}
   ];
 
   var ICON = {
@@ -1031,7 +1029,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     if (ns.date < DAY) return "before";
     if (ns.date > DAY) return "after";
     if (ns.min < 660) return "morning";
-    if (ns.min >= 1330) return "after";
+    if (ns.min >= 1140) return "after";
     return "live";
   }
   function currentSlots(ns) {
@@ -1048,7 +1046,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   }
   function slotTitle(s, forPublic) {
     if (!forPublic) return s.n;
-    if (s.confirmed === false) return "To be announced";
     if (s.kind === "act" && !state.lineupPublic) return "To be announced";
     return s.n;
   }
@@ -1209,8 +1206,8 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     if (ph === "before") {
       var ms = DOORS - new Date();
       cd(Math.floor(ms / 864e5), "days"); cd(Math.floor(ms / 36e5) % 24, "hours"); cd(Math.floor(ms / 6e4) % 60, "minutes"); cd("Noon", "doors, 3 Oct");
-    } else if (ph === "after") { cd("10h", "of music"); cd("6", "acts outdoors"); cd("2", "venues"); cd("1", "day"); }
-    else { var left = Math.max(0, 1330 - ns.min); cd(Math.floor(left / 60), "hours left"); cd(left % 60, "minutes"); cd(ns.min < 1080 ? "Parklet" : "Black Moon", "you are here"); }
+    } else if (ph === "after") { cd("9", "acts"); cd("5h 50", "of music"); cd("1", "street"); cd("1", "day"); }
+    else { var left = Math.max(0, 1080 - ns.min); cd(Math.floor(left / 60), "hours left"); cd(left % 60, "minutes"); cd(ns.min < 1080 ? "Parklet" : "Afterparty", "you are here"); }
   }
   function renderNowNext() {
     var ns = nowState(), c = currentSlots(ns), ph = phase(ns);
@@ -1227,7 +1224,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     }
     if (ph === "before") { fill($("#nn-now"), "now", null, "Not yet", "Saturday 3 October. Music at noon."); fill($("#nn-next"), "next", null, "Doors at noon", "Franklin Street Parklet, Ellsworth. Free."); }
     else if (ph === "after") { fill($("#nn-now"), "now", null, "That is a wrap", "Thank you for being here, wherever you were."); fill($("#nn-next"), "next", null, "Recap coming", "Photos and clips to follow."); }
-    else { fill($("#nn-now"), "now", c.now, "Between things", "Back in a moment."); fill($("#nn-next"), "next", c.next, "Nothing after this", "That is the end of the day."); }
+    else { fill($("#nn-now"), "now", c.now, "Between things", "Back in a moment."); fill($("#nn-next"), "next", c.next, "Nothing after this", "That is the end of the day. Black Moon's afterparty is next door, and it is theirs."); }
     $("#nn-now").classList.toggle("live", ph === "live" && !!c.now);
   }
   function renderLounge() {
@@ -1241,7 +1238,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       sub.textContent = "The stream and the Spaces are one door over. The theme is still here if you want it between sets.";
       when.textContent = "On now";
       var c = currentSlots(ns);
-      whenSub.textContent = (c.now ? slotTitle(c.now, true) : "Between sets") + (ns.min < 1080 ? ", on the parklet." : ", inside Black Moon.");
+      whenSub.textContent = (c.now ? slotTitle(c.now, true) : "Between sets") + (ns.min < 1080 ? ", on the parklet." : ", and the afterparty next door is Black Moon's.");
     } else if (ph === "after") {
       badge.appendChild(el("span", null, "After the day"));
       head.textContent = "That was ZAOstock.";
@@ -1251,16 +1248,16 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     } else if (ph === "morning") {
       badge.appendChild(el("span", null, "Doors today"));
       head.textContent = "Nearly. Doors at noon.";
-      sub.textContent = "The crew is setting up on Franklin Street right now. This runs until the first act does.";
+      sub.textContent = "The crew is setting up on Franklin Street right now. This runs until the first act does at 12:05.";
       when.textContent = "Doors at noon";
       whenSub.textContent = "Today. Franklin Street Parklet, Ellsworth, Maine. Free.";
     } else {
       var days = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5));
       badge.appendChild(el("span", null, "The waiting room"));
       head.textContent = days === 1 ? "Tomorrow." : "You're early. Good.";
-      sub.textContent = "The theme is already playing. Saturday 3 October, Franklin Street Parklet in downtown Ellsworth, free, music from noon.";
+      sub.textContent = "The theme is already playing. Saturday 3 October, Franklin Street Parklet in downtown Ellsworth, free, nine acts from 12:05 to six.";
       when.textContent = days + (days === 1 ? " day to go" : " days to go");
-      whenSub.textContent = "Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine. Free.";
+      whenSub.textContent = "Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine. Free. Music 12:05 to six.";
     }
   }
   function renderPeople() {
@@ -1280,7 +1277,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     var ns = nowState(), c = currentSlots(ns);
     [{ k: "crew", l: "Before doors", w: "08:00 – 11:30", teamOnly: true },
      { k: "out",  l: "Outdoors, Franklin Street Parklet", w: "NOON – 6PM" },
-     { k: "in",   l: "Inside, Black Moon Public House", w: "6PM – 10PM" }].forEach(function (g) {
+     { k: "in",   l: "Next door, Black Moon Public House", w: "NOON – LATE" }].forEach(function (g) {
       if (forPublic && g.teamOnly) return;
       var rows = SCHEDULE.filter(function (s) { return s.v === g.k; });
       if (forPublic) rows = rows.filter(function (s) { return s.pub !== false; });
@@ -1293,12 +1290,13 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
         d.appendChild(el("div", "time", hhmm(s.t)));
         var mid = el("div");
         mid.appendChild(el("div", "nm", slotTitle(s, forPublic)));
-        if (!forPublic || s.kind !== "gap") mid.appendChild(el("div", "dt", s.d));
+        if (!forPublic) mid.appendChild(el("div", "dt", s.d));
+        else if (s.kind === "act" && state.lineupPublic && s.pd) mid.appendChild(el("div", "dt", s.pd));
         if (!forPublic) mid.appendChild(el("div", "own", "Owner: " + (s.own || "—") + (s.sec ? "   ·   Second: " + s.sec : "")));
         d.appendChild(mid);
         var right = el("div");
         if (!forPublic && s.flag) right.appendChild(el("span", "chip red", s.flag));
-        else if (!forPublic && s.confirmed === false) right.appendChild(el("span", "chip gold", "Not public"));
+        else if (!forPublic && s.confirmed === false) right.appendChild(el("span", "chip gold", "Not signed"));
         else if (forPublic && s.kind === "act") right.appendChild(el("span", "chip mute", (s.e - s.t) + " min"));
         d.appendChild(right);
         box.appendChild(d);
@@ -1412,10 +1410,10 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       box.appendChild(d);
     });
   }
-  function seatCount() { var s = 0, h, r; for (h = 12; h <= 21; h++) { r = state.rota[String(h)] || []; if ((r[0] || "").trim()) s++; if ((r[1] || "").trim()) s++; } return s; }
+  function seatCount() { var s = 0, h, r; for (h = 12; h <= 17; h++) { r = state.rota[String(h)] || []; if ((r[0] || "").trim()) s++; if ((r[1] || "").trim()) s++; } return s; }
   function renderRota() {
     var box = $("#rota"); box.innerHTML = "";
-    for (var h = 12; h <= 21; h++) {
+    for (var h = 12; h <= 17; h++) {
       (function (h) {
         var key = String(h), names = state.rota[key] || ["", ""];
         var n0 = (names[0] || "").trim(), n1 = (names[1] || "").trim(), got = (n0 ? 1 : 0) + (n1 ? 1 : 0);
@@ -1439,7 +1437,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
         box.appendChild(card);
       })(h);
     }
-    $("#rota-note").textContent = seatCount() + " of 20 seats claimed";
+    $("#rota-note").textContent = seatCount() + " of 12 seats claimed";
   }
   function renderAgents() {
     var box = $("#agents"); box.innerHTML = "";
@@ -1458,7 +1456,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     var ns = nowState();
     if (!isEventDay(ns) && !simOn) {
       var days = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5));
-      return "ZAOstock is Saturday 3 October, " + days + " days out. Free, Franklin Street Parklet in Ellsworth, music from noon, outdoors until six then inside at Black Moon until ten. Part of Art of Ellsworth and Maine Craft Weekend. Everything is at zaostock.com.";
+      return "ZAOstock is Saturday 3 October, " + days + " days out. Free, Franklin Street Parklet in Ellsworth, nine acts from 12:05, outdoors until six, then Black Moon's afterparty next door. Part of Art of Ellsworth and Maine Craft Weekend. Everything is at zaostock.com.";
     }
     for (var i = 0; i < SAY.length; i++) if (ns.min >= SAY[i].from && ns.min < SAY[i].to) return SAY[i].t;
     return SAY[SAY.length - 1].t;
@@ -1640,14 +1638,14 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       "  changeover; the next act still starts on time. Please help us hold that.",
       "",
       "THE DAY",
-      "  Free, all ages on the parklet, music from noon.",
-      "  Noon to six is outdoors on the Franklin Street Parklet.",
-      "  At six everything moves inside to Black Moon Public House, one door down, until ten.",
+      "  Free, all ages, outdoors on the Franklin Street Parklet. Nine acts, 12:05 to 17:55.",
+      "  Five minutes between every act and five minutes of margin on the whole day.",
+      "  The street clears at six. Black Moon next door hosts the afterparty after that, on their terms.",
       "  Part of the 9th annual Art of Ellsworth and Maine Craft Weekend.",
       "",
       "FRIDAY 2 OCTOBER, SOUNDCHECK",
-      "  Mandatory for every act, and it goes in the contract. You check at whichever stage you",
-      "  actually play. It doubles as a filming and recording night, so bring what you want shot.",
+      "  Mandatory for every act, and it goes in the contract. On the parklet stage, on OPEN X's PA.",
+      "  It doubles as a filming and recording night, so bring what you want shot.",
       "",
       "SATURDAY CALL",
       "  Vital crew on site 08:00. Everyone 10:00. Line checks only on the day.",
@@ -1669,7 +1667,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       "",
       "WHO TO ASK",
       "  Music, set times, backline, soundcheck: Dcoop.",
-      "  Venue, door, indoor stage, meals: Steve Peer and Katina, Black Moon.",
+      "  Venue, door, meals, the afterparty: Steve Peer and Katina, Black Moon.",
       "  Anything online, the stream or the Spaces: IMan and Thy Revolution.",
       "  Everything else: Zaal, on ZAOstock daily at 11:30.",
       "",
@@ -1917,7 +1915,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     $("#att-title").value = ""; $("#att-owner").value = ""; save("Added.");
   };
   $("#copy-say").onclick = function () { copy(sayLine(), "The line"); };
-  var CH = ["stream", "spaces", "metaverse", "vote", "helpLine"];
+  var CH = ["stream", "spaces", "metaverse", "helpLine"];
   function fillChannels() { CH.forEach(function (k) { var i = $("#ch-" + k); if (i) i.value = state.channels[k] || ""; }); }
   $("#ch-save").onclick = function () {
     CH.forEach(function (k) { state.channels[k] = ($("#ch-" + k).value || "").trim(); });
@@ -1935,7 +1933,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       openHelp.length ? openHelp.map(function (x) { return "  · " + x.kind + " — " + x.where + " — " + x.msg; }).join("\n") : "  · clear", "",
       "BLOCKED (" + blocked.length + "):",
       blocked.length ? blocked.map(function (x) { return "  · " + x.title + " — " + (x.owner || "no owner"); }).join("\n") : "  · nothing", "",
-      "MODERATOR ROTA: " + seatCount() + "/20 seats claimed", "",
+      "MODERATOR ROTA: " + seatCount() + "/12 seats claimed", "",
       "PUBLIC LINE RIGHT NOW:", sayLine()
     ].join("\n"), "Report");
   };
