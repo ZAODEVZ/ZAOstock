@@ -4,7 +4,7 @@
 // component is a build-time error.
 import 'server-only';
 
-function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET' | 'CRON_SECRET'): string {
+function requiredServerEnv(key: 'SUPABASE_SERVICE_ROLE_KEY' | 'SESSION_SECRET' | 'CRON_SECRET' | 'ARTIST_CONFIRM_SECRET'): string {
   const value = process.env[key];
   if (!value) {
     // Fail fast and loud the moment the value is actually read, not when this
@@ -28,6 +28,7 @@ export const ENV = {
   SUPABASE_SERVICE_ROLE_KEY: string;
   SESSION_SECRET: string;
   CRON_SECRET: string;
+  ARTIST_CONFIRM_SECRET: string;
 };
 
 Object.defineProperty(ENV, 'SUPABASE_SERVICE_ROLE_KEY', {
@@ -41,6 +42,14 @@ Object.defineProperty(ENV, 'SESSION_SECRET', {
 Object.defineProperty(ENV, 'CRON_SECRET', {
   enumerable: true,
   get: () => requiredServerEnv('CRON_SECRET'),
+});
+// Guards POST /api/admin/confirm-artist, the ONLY path that can set an artist
+// to 'confirmed' while the team dashboard is retired. Unset means the route
+// fails closed with 503, which is the safe direction: no confirmation is worse
+// than a wrong one, because 'confirmed' is what the public reveal publishes.
+Object.defineProperty(ENV, 'ARTIST_CONFIRM_SECRET', {
+  enumerable: true,
+  get: () => requiredServerEnv('ARTIST_CONFIRM_SECRET'),
 });
 
 if (typeof window === 'undefined' && !ENV.NEXT_PUBLIC_SUPABASE_URL) {
