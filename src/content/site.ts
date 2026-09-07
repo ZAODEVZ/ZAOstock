@@ -22,8 +22,8 @@ export const SITE = {
   musicFrom: 'Noon',
   /** Public window; festival.ts `window` is the source once PRODUCTION's noon revert merges. */
   windowLabel: 'Noon - 6 PM',
-  lineupRevealLabel: '7 September',
-  lineupRevealDate: '2026-09-07',
+  lineupRevealLabel: '18 September',
+  lineupRevealDate: '2026-09-18',
   // UNUSED since 2026-09-01: the submission form was removed from the site, so
   // nothing renders these and there is no cutoff to enforce. Left in place
   // rather than deleted so the value is not lost if intake ever returns. Do NOT

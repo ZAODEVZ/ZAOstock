@@ -286,7 +286,7 @@ describe('the reveal gate, on the API and not only on the website', () => {
     expect(res.status).toBe(200);
     expect(body.artists).toEqual([]);
     expect(body.published).toBe(false);
-    expect(body.reveal_date).toBe('2026-09-07');
+    expect(body.reveal_date).toBe('2026-09-18');
     // the row is never read, not read and then filtered
     expect(tablesRead).not.toContain('artists');
     // and the holding answer must not outlive the reveal in a cache
