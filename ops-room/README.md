@@ -2,11 +2,12 @@
 
 One page that runs the day. The public side is where anyone lands, finds the
 schedule, watches, and asks a human for help. The team side, behind a code, is
-where the crew, the artists and the DJs work: the run of show with owners and
+where the crew and the artists work: the run of show with owners and
 seconds, the artist advance, the help queue, the moderator rota, the squads.
 
-Built for **Saturday 3 October 2026**, Franklin Street Parklet and Black Moon
-Public House, Ellsworth, Maine.
+Built for **Saturday 3 October 2026**, Franklin Street Parklet, Ellsworth,
+Maine. Nine acts, 12:05 to 17:55, street clears at six. Black Moon Public House
+next door feeds the performers and hosts its own afterparty after six.
 
 ---
 
@@ -41,15 +42,15 @@ Three problems it was built to close:
 | Screen | What it is |
 | --- | --- |
 | The Waiting Room | Where you land. The theme plays, the countdown runs, and on the day it becomes on-now / up-next. |
-| Watch and Listen | Stream, Spaces, the build, and the WaveWarZ vote. Each tile reads "Soon" until the crew fills the URL in. |
-| The Day | The full running order, both venues, with the current slot lit. |
+| Watch and Listen | Stream, Spaces and the build. Each tile reads "Soon" until the crew fills the URL in. |
+| The Day | The full running order with the current slot lit. |
 | Get Help | The request form. Goes straight to the crew board. |
 | Your Profile | Your requests and their live status, plus anything the crew sent you. |
 | Links | Every ZAOstock and ZAO URL, searchable from the command palette. |
 
 ### Team — one code, `Ctrl K` from anywhere
 
-Crew, artists and DJs all use the same code.
+Crew and artists use the same code.
 
 | Screen | What it is |
 | --- | --- |
@@ -60,8 +61,8 @@ Crew, artists and DJs all use the same code.
 | Run of Show | The grid with owner and second on every line, and red flags where a name is missing. |
 | Artist Advance | Nine acts × ten advance items, ticked together. |
 | Artist Kit | A personalised pack per act: their set time, the day, hospitality, and only what they still owe. One button copies it. |
-| Moderator Rota | Twenty seats, two an hour, noon to ten. Click a seat to claim it. |
-| Agent Squads | Eight roles a teammate can hand to an agent, with a paste-ready brief each. |
+| Moderator Rota | Twelve seats, two an hour, noon to six. Click a seat to claim it. |
+| Agent Squads | Seven roles a teammate can hand to an agent, with a paste-ready brief each. |
 | Channels | Where the audience goes. Fill these and the public tiles go live. |
 | Broadcast | Post an announcement to the public side. |
 
@@ -109,7 +110,7 @@ ops-room/
     zaostock.mp3      ZAOSTOCK by Iman Afrikah, the theme, 160 kbps
     badge.png         the ZAOstock 26 badge
     zao.jpg           the ZAO mark, used small as a crest
-    img-stage.jpg     WaveWarZ on stage, behind the hero headline
+    img-stage.jpg     the stage last time out, behind the hero headline
     img-crowd.jpg     a ZAO room, last time out
     img-zaal.jpg      Zaal
 ```
@@ -144,15 +145,21 @@ working the board after dark.
 
 ## Facts the app is built on
 
-From the organizing document and the **31 August standup**:
+From the organizing document, the 31 August standup and the **run of show
+locked on 3 September**:
 
-- Six acts, noon to 16:00, no open time. WaveWarZ 16:00–18:00. Stilo 18:00–20:00
-  indoors. Steve Peer 20:00–22:00.
+- Nine acts, outdoors, 12:05 to 17:55: The Crown Vics, OPEN X, Grass Rug,
+  Acadia Rising, Michael Anderson, Hurricane, Dcoop, Lyons Den, Fellenz. Street
+  clears 18:00. WaveWarZ is cancelled and Stilo is not coming in person.
+- The evening is Black Moon's afterparty, not ZAOstock's programme (Zaal,
+  3 September). The board shows it as theirs and books nothing into it.
+- The PA comes from OPEN X, who also play. There is no rental gate.
+- The lineup reveal is Sunday 13 September and reads only acts confirmed in
+  writing. The artist details form is due back Friday 11 September.
 - **Five minutes between every act. If a set runs over it comes out of that
   act's own changeover; the next act still starts on time.**
-- Black Moon covers bottled water and electricity at both stages, a $20 gift
-  certificate for every performer, the basement dressing room and bathroom, and
-  a porta-potty.
+- Black Moon covers bottled water and electricity, a $20 gift certificate for
+  every performer, the basement dressing room and bathroom, and a porta-potty.
 - The City has approved the fire performance. It needs a fire circle.
 - Event insurance is quoted; talks with a local broker to get ZAO and the City
   on liability. This was the permit condition.
@@ -173,7 +180,11 @@ the crew flips it on reveal day.
   are the only real ones in the repo. This is tracked on the attention board.
 - **The stream has no recorded destination**, no account and no operator, and
   the parklet internet has never been tested. Also on the board.
-- **Twenty moderator seats, none claimed** at the time of writing.
+- **Twelve moderator seats, none claimed** at the time of writing.
+- **Shared state only works inside the claude.ai artifact host.** Opened from
+  zaostock.com/ops the page has no `window.claude`, so every save says "saved on
+  this screen only" and the help queue, rota and lineup switch never leave the
+  device. Where that state should live is the open question on this rewrite.
 - Audio autoplay depends on browser policy. The page tries on load; if the
   browser refuses, the first click, keypress or scroll anywhere starts it and a
   "Tap for sound" button appears in the meantime.
