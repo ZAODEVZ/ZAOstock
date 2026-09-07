@@ -28,11 +28,30 @@ import { SITE, DAY } from '@/content/site';
 // `lineup-reveal.test.ts` pins the site-versus-app lineup gap. It fails the
 // moment anyone changes one side without the other, which is the prompt to
 // change both.
+// RESOLVED 2026-09-07, by the second route this comment names.
+//
+// Zaal settled it: the indoor half IS a separate evening. North Creek, roughly
+// 6 to 9, hosted AND underwritten by Black Moon on their own premises and their
+// own licence (Steve Peer's own mail, 26 August). Our insurance covers the
+// 12-6pm OUTDOOR event only (Zaal to the broker, 3 September).
+//
+// So 'Noon - 6 PM' is not a wrong end time any more. It is the correct window for
+// OUR event, and what follows is somebody else's evening that our crowd is invited
+// to. The old two rows, 6-8 DJ and 8-10 live, also ran an hour past what the
+// venue owner paying for it described.
+//
+// The pin below therefore changes shape: it no longer holds a contradiction open,
+// it holds the RESOLUTION in place. The last row must still be Black Moon's, and
+// it must still read as theirs rather than as a billed ZAO slot.
 describe('the public window and the programme must not disagree silently', () => {
-  it('pins the known gap so changing one side trips the other', () => {
+  it('keeps the window as OUR event, and the evening as Black Moon\'s', () => {
     expect(SITE.windowLabel).toBe('Noon - 6 PM');
-    expect(DAY[DAY.length - 1].time).toBe('8 - 10 PM');
-    expect(DAY[DAY.length - 1].where).toContain('Black Moon');
+    const last = DAY[DAY.length - 1];
+    expect(last.where).toContain('Black Moon');
+    expect(last.time).toBe('6 - 9 PM');
+    // The framing is the whole point of the resolution: if this stops reading as
+    // Black Moon's own evening, the window label becomes a wrong end time again.
+    expect(last.what).toContain('Black Moon');
   });
 
   // Whatever the label says, it has to start when the music starts. That half

@@ -6,7 +6,12 @@ import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
 // that live here until PRODUCTION's file absorbs them.
 
-const PROPOSED = ['aquavantes', 'somes sound', 'north creek'];
+// 'north creek' left this list on 2026-09-07: Zaal settled it as the after-party
+// act at Black Moon, 6-9pm, underwritten by them. It is no longer proposed.
+// 'aquavantes' STAYS: the act is unconfirmed for the programme and its spelling is
+// still disputed (repo and organising doc say Aquavantes, Zaal said Aquaventus,
+// only Steve can settle it), so it must not reach a public surface either way.
+const PROPOSED = ['aquavantes', 'somes sound'];
 const NOT_PUBLIC = ['werb', 'sen wilde', 'phelan'];
 
 describe('SITE facts', () => {

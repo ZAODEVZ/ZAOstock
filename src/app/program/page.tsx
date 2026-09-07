@@ -105,13 +105,26 @@ const BLOCKS: Block[] = [
   },
   {
     start: '18:00',
-    end: '22:00',
+    end: '21:00',
     venue: 'IN',
     title: 'The evening at Black Moon',
+    // SETTLED 2026-09-07. North Creek, roughly 6 to 9, underwritten by Black Moon
+    // on their own premises and their own licence. Source is Steve Peer's own mail
+    // of 26 August: "underwrite 'North Creek' for the after party. 6 - 9pm (approx.)
+    // on the indoor stage."
+    //
+    // This page previously published 18:00-22:00 as a two-hour DJ set then a live
+    // set. That was the older plan and it overran the evening by an hour against
+    // what the venue owner who is paying for it actually described.
+    //
+    // NOTE THE SCOPE LINE: our insurance covers the 12-6pm OUTDOOR event only
+    // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
+    // block describes their programme, not ours, and should not gain detail we
+    // have not been given.
     lede: 'At six the whole street walks next door, together. The music is already on when the first person reaches the door.',
     slots: [
-      { time: '18:00', label: 'DJ set', detail: 'Two hours, as the street walks in.', tone: 'set' },
-      { time: '20:00', label: 'Live set', detail: 'Hosted by Black Moon, straight on from the DJ. No gap.', tone: 'set' },
+      { time: '18:00', label: 'North Creek', detail: 'The after-party, hosted and underwritten by Black Moon on their own stage.', tone: 'set' },
+      { time: '21:00', label: 'Close', detail: 'Approximate. Black Moon keeps its own hours.', tone: 'gap' },
     ],
   },
 ];
@@ -146,7 +159,7 @@ export default function ProgramPage() {
             <Eyebrow tone="denim">Program · {FESTIVAL.dateLabel}</Eyebrow>
             <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Outside, then in.</h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              Music from noon on the {FESTIVAL.venue}. At six the whole street walks next door into Black Moon and keeps going until ten.
+              Music from noon on the {FESTIVAL.venue}. At six the whole street walks next door into Black Moon for the evening.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>
