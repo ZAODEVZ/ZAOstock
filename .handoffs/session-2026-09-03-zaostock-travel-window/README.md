@@ -155,13 +155,21 @@ in the vault.
       to forwarding it. `docs/permits/status-2026-08-27.md:85` has the structure:
       the performer carries his own policy and issues a certificate naming ZAO;
       we do not buy fire cover.
-- [ ] **Four genres and one spelling, owed to the broker this week.** Missing
-      genres: The Crown Vics, Grass Rug, Acadia Rising, Lyons Den. And the repo
-      AND the organizing doc both say **DJ Aquavantes** while Zaal said
-      **Aquaventus** on 2 Sep. Neither file settles it - the only primary source
-      is a JPG attachment on Steve's 20 August lineup draft, so it needs Steve
-      directly. Note the current running order contains no DJ at all, so decide
-      whether the act is in before spelling it.
+- [x] **Four genres, owed to the broker - ANSWERED.** Ticked 2026-09-06 by the
+      `zaostock` lane. The run of show locked 3 September answers all four, and
+      section A of this same bundle already says so 56 lines above this box:
+      The Crown Vics rock n roll dance band, Grass Rug jam rock band, Acadia
+      Rising World Rhythms / Global Fusion, Lyons Den Native / Electro /
+      Reggae / Hip-hop. All nine genres are answered. Nothing is owed to the
+      broker on genre.
+- [ ] **One spelling, still open. NOT closed by the tick above.** This was the
+      second half of the box above and it does not travel with the genres, so
+      it is split out rather than ticked away. The repo AND the organizing doc
+      both say **DJ Aquavantes** while Zaal said **Aquaventus** on 2 Sep.
+      Neither file settles it - the only primary source is a JPG attachment on
+      Steve's 20 August lineup draft, so it needs Steve directly. Note the
+      locked running order contains no DJ at all, so decide whether the act is
+      in before spelling it.
 
 ---
 
