@@ -48,7 +48,12 @@ function createZaostockArtistForm() {
     'IMPORTANT: submitting this form is what puts you on the public lineup. ' +
     'We do not publish anyone who has not confirmed in writing, so if we do not ' +
     'hear from you, you will not appear on the site even though you are on the ' +
-    'running order.'
+    'running order.\n\n' +
+    'Also please note the SOUNDCHECK IS THE EVENING OF FRIDAY 2 OCTOBER, the ' +
+    'night before the show. It covers every act and there is no Saturday ' +
+    'alternative - Saturday morning is a line check only. A contract with the ' +
+    'full terms follows separately; this form is just the four things plus a ' +
+    'yes or no on the Friday.'
   );
 
   form.setCollectEmail(true);
@@ -103,6 +108,25 @@ function createZaostockArtistForm() {
       'who has not confirmed in writing.'
     )
     .setChoiceValues(['Yes, I confirm I am playing ZAOstock on Saturday 3 October 2026'])
+    .setRequired(true);
+
+  // Folded in from the 'Artist contracts with Friday-night soundcheck clause'
+  // card (due 2026-09-08) rather than sent as a second message. An act should
+  // not be asked for a photo today and a soundcheck commitment tomorrow. This
+  // is an ASK, not a signature - the contract carries the binding term. It is a
+  // question rather than a forced yes so an act with a genuine conflict flags it
+  // instead of abandoning the form. Start time is UNSET in our records, so no
+  // time is stated here.
+  form.addMultipleChoiceItem()
+    .setTitle('Soundcheck is the evening of Friday 2 October. Can you be there?')
+    .setHelpText(
+      'It covers every act and there is no Saturday alternative - Saturday ' +
+      'morning is a line check only. Exact start time to be confirmed.'
+    )
+    .setChoiceValues([
+      'Yes, I can be there Friday evening 2 October',
+      'I have a problem with Friday - please get in touch',
+    ])
     .setRequired(true);
 
   form.addParagraphTextItem()
