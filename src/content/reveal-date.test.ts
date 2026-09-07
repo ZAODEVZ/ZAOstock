@@ -30,6 +30,34 @@ const code = (p: string) =>
     })
     .join('\n');
 
+// docs/marketing/press-kit.md is what /press actually RENDERS, and it is STATIC
+// MARKDOWN - it cannot read SITE, so it cannot go on the SURFACES list above.
+// That is exactly how it drifted: on 2026-09-07 every other surface moved to
+// 13 September and the press kit still told journalists the lineup was announced
+// on 7 September - a date that had already passed, with an empty result.
+//
+// So it gets the OPPOSITE guard. It MAY carry the literal; every September date
+// it carries must be the CURRENT one.
+describe('the rendered press kit cannot drift off the reveal date', () => {
+  const md = readFileSync(path.join(process.cwd(), 'docs/marketing/press-kit.md'), 'utf8');
+
+  it('names no September date other than the reveal date', () => {
+    const dates = [...new Set([...md.matchAll(/\b(\d{1,2}) September\b/g)].map((m) => `${m[1]} September`))];
+    expect(dates.length).toBeGreaterThan(0);
+    for (const d of dates) expect(d).toBe(SITE.lineupRevealLabel);
+  });
+
+  // Nobody has countersigned. "Booked and locked in the run of show" is a
+  // different claim from "confirmed", and press copy is where that distinction
+  // gets lost first.
+  it('never calls an act confirmed', () => {
+    const claims = md
+      .split('\n')
+      .filter((l) => /\bis confirmed\b/i.test(l) && !/partner/i.test(l));
+    expect(claims).toEqual([]);
+  });
+});
+
 describe('the lineup reveal date has one source', () => {
   it('is never typed as a literal in rendered copy', () => {
     for (const p of SURFACES) {
