@@ -117,7 +117,7 @@ export default function SponsorPage() {
           <SectionHeader
             eyebrow="WaveWarZ"
             title="Two artists go head to head. The audience decides."
-            lede="A live music-battle format, online all year and on the ZAOstock stage from four to six. The audience picks the winner in the street and online, and the artist is paid automatically, on-chain."
+            lede="A live music-battle format, online all year. The audience picks the winner and the artist is paid automatically, on-chain. It is not on the 3 October programme."
           />
           <div>
             <Stat value={WAVEWARZ_STATS.battles.value} label={`${WAVEWARZ_STATS.battles.label}, as of ${WAVEWARZ_STATS.asOf}`} />
