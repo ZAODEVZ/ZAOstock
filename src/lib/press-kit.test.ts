@@ -55,7 +55,7 @@ describe('press kit placeholder', () => {
     expect(PLACEHOLDER_MARKDOWN).toContain(`Announced ${SITE.lineupRevealLabel} 2026`);
     expect(PLACEHOLDER_MARKDOWN).toContain(`until the ${SITE.lineupRevealLabel} reveal`);
     expect(PLACEHOLDER_MARKDOWN).toContain(`lands with the ${SITE.lineupRevealLabel} reveal`);
-    expect(PLACEHOLDER_MARKDOWN).toContain('13 September');
+    expect(PLACEHOLDER_MARKDOWN).toContain('20 September');
   });
 
   it('names no performer before the reveal', () => {
