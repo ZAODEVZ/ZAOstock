@@ -57,65 +57,44 @@ interface Block {
 const BLOCKS: Block[] = [
   {
     start: '12:00',
-    end: '16:00',
-    venue: 'OUT',
-    title: 'Live sets',
-    lede: 'Independent artists back to back on the parklet stage, about 30 minutes each. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
-    slots: [
-      // TIMINGS: the 31 August standup, not the v7 grid of 28 August.
-      //
-      // The afternoon was rebuilt to close a 40-minute hole. Six sets instead of
-      // five, every changeover cut from ten minutes to five, sets 5 and 6
-      // extended to forty minutes, and the battle reset trimmed to ten. The
-      // block now tiles noon to 16:00 end to end with no gap.
-      //
-      // Until 2026-09-02 this page published the old grid, so /program was
-      // telling the public that the one confirmed act played at 13:55 (it is
-      // 14:25) and that forty minutes in the middle of the festival had nothing
-      // booked (it is filled).
-      //
-      // NAMES ARE NOT TIMINGS. The 31 August schedule puts a new act in set 3
-      // who has not confirmed in writing, so he is not here. Only PUBLIC_LINEUP
-      // may be named; see docs/decisions/0005-confirmed-means-confirmed-in-writing.md.
-      { time: '12:00', label: 'Doors. Music starts at noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
-      { time: '12:05', label: 'Set 1', tone: 'set' },
-      { time: '12:35', label: 'Changeover', detail: 'The MC, the six o’clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
-      { time: '12:40', label: 'Set 2', tone: 'set' },
-      { time: '13:10', label: 'Changeover', tone: 'gap' },
-      { time: '13:15', label: 'Set 3', tone: 'set' },
-      { time: '13:45', label: 'Changeover', tone: 'gap' },
-      { time: '13:50', label: 'Set 4', tone: 'set' },
-      { time: '14:20', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
-      // PUBLIC_LINEUP is the website's half of the reveal, so this array is
-      // exactly what gets edited on 7 September. Indexing it unguarded put the
-      // literal string "undefined" on the public run of show the moment it was
-      // emptied or reordered, with nothing failing.
-      {
-        time: '14:25',
-        label: PUBLIC_LINEUP[0] ? `Set 5 - ${PUBLIC_LINEUP[0]}` : 'Set 5',
-        detail: PUBLIC_LINEUP[0] ? 'Confirmed.' : undefined,
-        tone: 'set',
-      },
-      { time: '15:05', label: 'Changeover', tone: 'gap' },
-      { time: '15:10', label: 'Set 6', detail: 'Closes the outdoor block.', tone: 'set' },
-      { time: '15:50', label: 'Battle stage reset', detail: 'The MC hands to Hurricane.', tone: 'gap' },
-    ],
-  },
-  {
-    start: '16:00',
     end: '18:00',
     venue: 'OUT',
-    title: 'WaveWarZ',
-    lede: `Live music battles. Two artists go head to head and the audience decides, in the street and online. ${WAVEWARZ.battlers.join(', ')}. ${WAVEWARZ.mc} on the mic.`,
+    title: 'Live sets',
+    lede: 'Nine independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
     slots: [
-      { time: '16:00', label: 'The WaveWarZ story', detail: `${WAVEWARZ.mc} with Stilo. Lights on.`, tone: 'gap' },
-      { time: '16:15', label: 'Rules, bracket, how to vote', tone: 'gap' },
-      { time: '16:25', label: 'Battle 1', tone: 'battle' },
-      { time: '16:50', label: 'Voting', detail: 'Hurricane and a partner spot.', tone: 'gap' },
-      { time: '17:00', label: 'Battle 2', tone: 'battle' },
-      { time: '17:25', label: 'Voting', tone: 'gap' },
-      { time: '17:35', label: 'Final', detail: 'Low sun.', tone: 'battle' },
-      { time: '17:55', label: 'Result', detail: 'Hurricane walks the crowd next door.', tone: 'gap' },
+      // THE RUN OF SHOW LOCKED 3 SEPTEMBER. Music 12:05 to 17:55, street clears
+      // at 18:00. Five minutes of margin across the whole afternoon and no
+      // recovery slot, so one long changeover puts the day over on the evening
+      // the crowd is meant to move indoors.
+      //
+      // Zaal published the names with their real times on 2026-09-07. Note what
+      // that does and does not claim: this is who is PLAYING and when. It is not
+      // a statement that anyone has countersigned - none of the nine has - and
+      // the word "confirmed" appears against no act here. The API reveal is a
+      // separate gate that still reads only status='confirmed'.
+      //
+      // Until today this block ended at 15:10 with six unnamed sets and labelled
+      // one of them "Confirmed.", which was wrong on the time, the count and the
+      // claim.
+      { time: '12:00', label: 'Doors. Music starts at noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
+      { time: '12:05', label: 'The Crown Vics', detail: 'Rock n roll dance band. 30 minutes.', tone: 'set' },
+      { time: '12:35', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
+      { time: '12:40', label: 'OPEN X', detail: 'Power pop rock. 40 minutes.', tone: 'set' },
+      { time: '13:20', label: 'Changeover', tone: 'gap' },
+      { time: '13:25', label: 'Grass Rug', detail: 'Jam rock band. 30 minutes.', tone: 'set' },
+      { time: '13:55', label: 'Changeover', tone: 'gap' },
+      { time: '14:00', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion. 30 minutes.', tone: 'set' },
+      { time: '14:30', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' },
+      { time: '14:35', label: 'Michael Anderson', detail: 'Solo piano. 30 minutes.', tone: 'set' },
+      { time: '15:05', label: 'Changeover', tone: 'gap' },
+      { time: '15:10', label: 'Hurricane', detail: 'Hip-hop. 30 minutes, and he is on the mic between sets.', tone: 'set' },
+      { time: '15:40', label: 'Changeover', tone: 'gap' },
+      { time: '15:45', label: 'Dcoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
+      { time: '16:25', label: 'Changeover', tone: 'gap' },
+      { time: '16:30', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },
+      { time: '17:10', label: 'Changeover', tone: 'gap' },
+      { time: '17:15', label: 'Fellenz', detail: 'Rock guitar and soundtrack. 40 minutes. Closes the outdoor block.', tone: 'set' },
+      { time: '17:55', label: 'Music ends. The street clears at six.', detail: 'Everyone moves next door into Black Moon.', tone: 'gap' },
     ],
   },
   {

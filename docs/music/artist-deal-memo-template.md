@@ -190,7 +190,7 @@ ZAOstock operates at break-even. **A performance fee is agreed privately with ea
 
 | Channel | When to use |
 |---|---|
-| Email (zaalp99@gmail.com or your music circle contact) | Formal updates, document delivery, anything that needs a paper trail |
+| Email (info@thezao.com or your music circle contact) | Formal updates, document delivery, anything that needs a paper trail |
 | Telegram (@bettercallzaal or your music circle contact) | Quick day-of coordination, urgent rider questions |
 | ZAO Festivals Discord coworking (Mon / Wed / Fri 8 AM EDT) | Anytime, drop in |
 
