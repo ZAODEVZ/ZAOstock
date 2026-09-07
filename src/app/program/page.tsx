@@ -2,16 +2,16 @@ import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, WAVEWARZ } from '@/content/site';
+import { SITE, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Program',
-  description: 'Day-of schedule for ZAOstock, Saturday 3 October 2026. Outdoors on Franklin Street from noon, WaveWarZ from four, then indoors at Black Moon from six.',
+  description: 'Day-of schedule for ZAOstock, Saturday 3 October 2026. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.',
   alternates: { canonical: '/program' },
   openGraph: {
     title: 'Program | ZAOstock',
-    description: 'Outdoors from noon, WaveWarZ from four, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
+    description: 'Outdoors from noon, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
     url: 'https://zaostock.com/program',
     images: [OG_IMAGE],
   },
@@ -26,13 +26,19 @@ export const metadata: Metadata = {
 // Music starts at NOON: a five-minute intro on the mic, then about 30 minutes
 // per act with 5- or 10-minute changeovers held by the MC plus sponsor spots.
 // No DJ between sets. The last set ends 15:05 and the stretch to the 15:45
-// reset is OPEN; WaveWarZ 16:00-18:00 opens with the story; Stilo's DJ set
-// 18:00-20:00 runs straight into Steve's set 20:00-22:00 hosted by Black
-// Moon; the close is Black Moon's licence hour, UNSET.
+// reset is OPEN. WaveWarZ came OFF the programme (Zaal, 2026-09-07), so the
+// 16:00-18:00 battle block is gone. The evening indoors is Black Moon's, with
+// Steve's DJ Aquaventus set; the close is Black Moon's licence hour, UNSET.
 //
-// NAMES: the lineup reveal is 7 September. Until then only Lyons Den (public
-// since 23 Aug) and the WaveWarZ battlers plus their MC (Zaal, 27 Aug 19:3x)
-// are named. Stilo is named as a battler, not as the evening DJ. Steve's own
+// WARNING, and it is not fixed here: the grid below is still the OLD plan. It
+// runs unnamed Set 1 to Set 6 ending 15:10, while the run of show locked on
+// 3 September runs nine named acts from 12:05 to 17:55. Rebuilding this grid to
+// match is its own pass and is part of filling the site in this week.
+//
+// NAMES: the nine acts are now named on the site as plain content, with no set
+// times and no links, and NONE of them is described as confirmed - not one has
+// countersigned. The battlers are no longer named anywhere, because the block
+// they were named for is off. Steve's own
 // act name is not on disk. The fire performance is Dcoop's to time and place;
 // no row until he says. Do not hand-write any other name in.
 
@@ -85,7 +91,7 @@ const BLOCKS: Block[] = [
       { time: '13:15', label: 'Set 3', tone: 'set' },
       { time: '13:45', label: 'Changeover', tone: 'gap' },
       { time: '13:50', label: 'Set 4', tone: 'set' },
-      { time: '14:20', label: 'Changeover', detail: 'The MC, the WaveWarZ pitch, a partner spot.', tone: 'gap' },
+      { time: '14:20', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' },
       // PUBLIC_LINEUP is the website's half of the reveal, so this array is
       // exactly what gets edited on 7 September. Indexing it unguarded put the
       // literal string "undefined" on the public run of show the moment it was
@@ -98,24 +104,6 @@ const BLOCKS: Block[] = [
       },
       { time: '15:05', label: 'Changeover', tone: 'gap' },
       { time: '15:10', label: 'Set 6', detail: 'Closes the outdoor block.', tone: 'set' },
-      { time: '15:50', label: 'Battle stage reset', detail: 'The MC hands to Hurricane.', tone: 'gap' },
-    ],
-  },
-  {
-    start: '16:00',
-    end: '18:00',
-    venue: 'OUT',
-    title: 'WaveWarZ',
-    lede: `Live music battles. Two artists go head to head and the audience decides, in the street and online. ${WAVEWARZ.battlers.join(', ')}. ${WAVEWARZ.mc} on the mic.`,
-    slots: [
-      { time: '16:00', label: 'The WaveWarZ story', detail: `${WAVEWARZ.mc} with Stilo. Lights on.`, tone: 'gap' },
-      { time: '16:15', label: 'Rules, bracket, how to vote', tone: 'gap' },
-      { time: '16:25', label: 'Battle 1', tone: 'battle' },
-      { time: '16:50', label: 'Voting', detail: 'Hurricane and a partner spot.', tone: 'gap' },
-      { time: '17:00', label: 'Battle 2', tone: 'battle' },
-      { time: '17:25', label: 'Voting', tone: 'gap' },
-      { time: '17:35', label: 'Final', detail: 'Low sun.', tone: 'battle' },
-      { time: '17:55', label: 'Result', detail: 'Hurricane walks the crowd next door.', tone: 'gap' },
     ],
   },
   {
@@ -161,7 +149,7 @@ export default function ProgramPage() {
             <Eyebrow tone="denim">Program · {FESTIVAL.dateLabel}</Eyebrow>
             <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Outside, then in.</h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              Music from noon on the {FESTIVAL.venue}. WaveWarZ from four. At six the whole street walks next door into Black Moon and keeps going until ten.
+              Music from noon on the {FESTIVAL.venue}. At six the whole street walks next door into Black Moon and keeps going until ten.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>

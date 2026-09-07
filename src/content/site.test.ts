@@ -141,3 +141,45 @@ describe('the names-only lineup', () => {
     expect(LINEUP_NAMES.length).toBeGreaterThan(PUBLIC_LINEUP.length);
   });
 });
+
+// Zaal, 2026-09-07: WaveWarZ is OFF the 3 October programme. The locked run of
+// show puts Lyons Den at 16:30 and Fellenz at 17:15 in the window the battle
+// used to hold, so it was already off in practice while four surfaces still
+// advertised it.
+//
+// The distinction this guards: WaveWarZ the FORMAT is real, is a confirmed
+// partner and genuinely happened at ZAO-CHELLA in December 2024. What is gone is
+// the claim that it is on the ZAOstock bill. Do not "fix" this by deleting the
+// word everywhere - the history is true and deleting it would be its own error.
+describe('WaveWarZ is off the 3 October programme', () => {
+  const BATTLERS = ['Jango', 'Lui', 'Quan'];
+
+  it('holds no battle slot in the published day', () => {
+    const day = JSON.stringify(DAY);
+    expect(day).not.toContain('WaveWarZ');
+    expect(day).not.toContain('head to head');
+  });
+
+  it('names no battler anywhere in the site content', () => {
+    const blob = JSON.stringify({ PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, TIERS, SITE, DAY, SERIES });
+    for (const b of BATTLERS) expect(blob).not.toContain(b);
+  });
+
+  it('leaves the outdoor block running to six, with no gap where the battle was', () => {
+    const outdoor = DAY.filter((d) => d.where.includes('Franklin Street'));
+    expect(outdoor).toHaveLength(1);
+    expect(outdoor[0].time).toBe('Noon - 6 PM');
+  });
+
+  it('keeps WaveWarZ as a partner, but claiming no stage slot', () => {
+    const w = PARTNERS.find((p) => p.name === 'WaveWarZ');
+    expect(w).toBeDefined();
+    expect(w!.role).not.toContain('ZAOstock stage');
+  });
+
+  it('KEEPS the true ZAO-CHELLA 2024 history - that battle really happened', () => {
+    const chella = SERIES.find((s) => s.name === 'ZAO-CHELLA');
+    expect(chella).toBeDefined();
+    expect(JSON.stringify(chella)).toContain('WaveWarZ');
+  });
+});

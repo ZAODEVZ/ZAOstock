@@ -3,7 +3,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, DAY, LINEUP_NAMES, LINEUP_NAMES_NOTE, WAVEWARZ, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
+import { SITE, DAY, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList, PartnerTile } from '@/components/poster';
 
 // The one link that goes in the email. Seven sections, in the order
@@ -136,7 +136,6 @@ export default function HomePage() {
             <BorderedList
               rows={[
                 { term: 'Playing', detail: LINEUP_NAMES.join(', ') },
-                { term: 'WaveWarZ', detail: `${WAVEWARZ.battlers.join(', ')}. ${WAVEWARZ.mc} on the mic` },
                 { term: 'Between sets', detail: 'Our MC and our partners' },
               ]}
             />

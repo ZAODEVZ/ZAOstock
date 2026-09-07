@@ -87,16 +87,9 @@ export const LINEUP_NAMES: readonly string[] = [
 export const LINEUP_NAMES_NOTE =
   'Set times, bios and links go up across this week.';
 
-export const WAVEWARZ = {
-  battlers: ['Stilo', 'Jango', 'Lui', 'Quan'],
-  mc: 'Hurricane',
-  window: '4 - 6 PM',
-} as const;
-
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [
-  { time: 'Noon - 4 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
-  { time: '4 - 6 PM', where: 'Franklin Street Parklet', what: 'WaveWarZ. Two artists go head to head; the audience decides, in the street and online.' },
+  { time: 'Noon - 6 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
   { time: '6 - 8 PM', where: 'Black Moon Public House, next door', what: 'DJ set as the street walks in.' },
   { time: '8 - 10 PM', where: 'Black Moon Public House', what: 'Live set, hosted by Black Moon.' },
 ] as const;
@@ -135,7 +128,7 @@ export const PARTNERS: readonly Partner[] = [
   { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true, logoSrc: '/partners/black-moon.png' },
   { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true, logoSrc: '/partners/star-977.png' },
   { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
-  { name: 'WaveWarZ', role: 'Live music-battle format on the ZAOstock stage', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wavewarz.png' },
+  { name: 'WaveWarZ', role: 'Live music-battle format, online all year', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wavewarz.png' },
   { name: 'COC Concertz', role: 'UNSET', poc: 'UNSET', confirmed: true, logoSrc: '/partners/coc-concertz.png' },
   { name: 'ENTERACT', role: 'Production and operational support', poc: 'FailOften', confirmed: true },
   { name: 'Web3Metal', role: 'Partnership integration and community surface', poc: 'Shawn', confirmed: true },

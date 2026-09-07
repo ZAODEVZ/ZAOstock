@@ -16,7 +16,6 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 ## The day (one venue at a time)
 
 - Noon to 4 PM, Franklin Street Parklet: independent artists, about 30 minutes each, with our MC and our partners between sets. Music starts at noon.
-- 4 to 6 PM, Franklin Street Parklet: WaveWarZ, a live music-battle format. Two artists go head to head and the audience decides, in the street and online. Battlers: Stilo, Jango, Lui, Quan. Hurricane on the mic.
 - 6 PM onward, Black Moon Public House, next door: the whole street walks in. DJ set 6 to 8 PM, live set 8 to 10 PM hosted by Black Moon.
 - Free to attend. Rain or shine, under tent cover from Wallace Events. Optional Pro Ticket, $50, on /donate.
 
@@ -26,7 +25,7 @@ Lyons Den is confirmed. The full lineup is announced on ${SITE.lineupRevealLabel
 
 ## Partners (confirmed, each with a named ZAO contact)
 
-Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (the live music-battle format), COC Concertz, ENTERACT (production and operational support), Web3Metal (partnership integration and community surface), Bomb Squad (crew, content and merch).
+Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz, ENTERACT (production and operational support), Web3Metal (partnership integration and community surface), Bomb Squad (crew, content and merch).
 
 ## Sponsors
 
@@ -61,7 +60,7 @@ info@thezao.com. RSVP free at https://ticket.zaostock.com.
 - Lead with the music: a free outdoor festival in Ellsworth, Maine, on 3 October, part of Art of Ellsworth.
 - The community second: run by The ZAO, a music community built over two years.
 - Technology is infrastructure, not the headline.
-- Never describe any contribution as tax-deductible. Never name an act before ${SITE.lineupRevealLabel} except Lyons Den and the WaveWarZ battlers. Never quote a price.
+- Never describe any contribution as tax-deductible. Never name an act beyond the nine in the published lineup, and never describe any of them as confirmed. Never quote a price.
 - Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal.
 `;
 
