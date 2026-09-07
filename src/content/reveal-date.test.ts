@@ -36,15 +36,18 @@ describe('the lineup reveal date has one source', () => {
       expect(code(p)).not.toContain(SITE.lineupRevealLabel);
       expect(code(p)).not.toContain(SITE.lineupRevealDate);
       expect(code(p)).not.toContain('September 7');
+      // The date has drifted again: 1 -> 7 -> 8 September. The old literal
+      // stays guarded as well as the new one.
+      expect(code(p)).not.toContain('September 8');
     }
   });
 
   it('still carries the day Zaal typed, in both the label and the gate', () => {
-    expect(SITE.lineupRevealLabel).toBe('7 September');
-    expect(SITE.lineupRevealDate).toBe('2026-09-07');
+    expect(SITE.lineupRevealLabel).toBe('8 September');
+    expect(SITE.lineupRevealDate).toBe('2026-09-08');
     // The label and the gate must name the same day, or the site announces one
     // date and opens on another.
-    expect(SITE.lineupRevealDate).toContain('-09-07');
-    expect(SITE.lineupRevealLabel.startsWith('7 ')).toBe(true);
+    expect(SITE.lineupRevealDate).toContain('-09-08');
+    expect(SITE.lineupRevealLabel.startsWith('8 ')).toBe(true);
   });
 });
