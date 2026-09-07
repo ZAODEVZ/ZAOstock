@@ -3,7 +3,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, DAY, PUBLIC_LINEUP, WAVEWARZ, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
+import { SITE, DAY, LINEUP_NAMES, LINEUP_NAMES_NOTE, WAVEWARZ, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList, PartnerTile } from '@/components/poster';
 
 // The one link that goes in the email. Seven sections, in the order
@@ -130,12 +130,12 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="The lineup"
             title="Independent artists. One stage."
-            lede={`${PUBLIC_LINEUP.join(' and ')} ${PUBLIC_LINEUP.length === 1 ? 'is' : 'are'} confirmed. The full lineup is announced on ${SITE.lineupRevealLabel}.`}
+            lede={`Who is playing. ${LINEUP_NAMES_NOTE}`}
           />
           <div className="flex flex-col gap-4">
             <BorderedList
               rows={[
-                { term: 'Confirmed so far', detail: PUBLIC_LINEUP.join(', ') },
+                { term: 'Playing', detail: LINEUP_NAMES.join(', ') },
                 { term: 'WaveWarZ', detail: `${WAVEWARZ.battlers.join(', ')}. ${WAVEWARZ.mc} on the mic` },
                 { term: 'Between sets', detail: 'Our MC and our partners' },
               ]}

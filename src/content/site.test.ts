@@ -1,13 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PARTNERS, PUBLIC_LINEUP, TIERS, SITE, DAY, SERIES } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES } from './site';
 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
 // that live here until PRODUCTION's file absorbs them.
 
-const PROPOSED = ['crown vics', 'aquavantes', 'somes sound', 'north creek'];
-const NOT_PUBLIC = ['werb', 'fellenz', 'dcoop', 'acadia rising', 'sen', 'phelan'];
+const PROPOSED = ['aquavantes', 'somes sound', 'north creek'];
+const NOT_PUBLIC = ['werb', 'sen wilde', 'phelan'];
 
 describe('SITE facts', () => {
   it('publishes noon, the contact address and the reveal date', () => {
@@ -18,7 +18,7 @@ describe('SITE facts', () => {
   });
 
   it('names no proposed act anywhere', () => {
-    const blob = JSON.stringify({ PARTNERS, PUBLIC_LINEUP, TIERS, SITE, DAY, SERIES }).toLowerCase();
+    const blob = JSON.stringify({ PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, TIERS, SITE, DAY, SERIES }).toLowerCase();
     for (const name of PROPOSED) expect(blob).not.toContain(name);
   });
 
@@ -89,5 +89,55 @@ describe('SITE facts', () => {
     const blob = JSON.stringify({ SITE, TIERS }).toLowerCase();
     expect(blob).not.toContain('tax-deductible');
     expect(blob).not.toContain('501(c)');
+  });
+});
+
+// Zaal, 2026-09-07: "lets just update it with the names but no times and no links
+// and over the week this week we will just add it all to the website."
+//
+// So the guard changed shape rather than going away. It used to say "do not name
+// these acts". It now says "name them, but never claim they signed, and publish no
+// set time and no link until the rest is filled in". None of the nine has
+// countersigned, so a rendered "confirmed" next to these names would be a
+// fabricated signature - the one line that has not moved all week.
+describe('the names-only lineup', () => {
+  const RUN_OF_SHOW = [
+    'The Crown Vics',
+    'OPEN X',
+    'Grass Rug',
+    'Acadia Rising',
+    'Michael Anderson',
+    'Hurricane',
+    'Dcoop',
+    'Lyons Den',
+    'Fellenz',
+  ];
+
+  it('is the nine acts of the locked run of show, in order', () => {
+    expect(LINEUP_NAMES).toEqual(RUN_OF_SHOW);
+  });
+
+  it('carries NO set time and NO link', () => {
+    for (const entry of [...LINEUP_NAMES, LINEUP_NAMES_NOTE]) {
+      expect(entry).not.toMatch(/\d{1,2}:\d{2}/);
+      expect(entry).not.toMatch(/\b\d{1,2}\s*(AM|PM)\b/i);
+      expect(entry).not.toMatch(/https?:\/\//);
+    }
+  });
+
+  it('never claims these acts are confirmed - none has countersigned', () => {
+    expect(LINEUP_NAMES_NOTE.toLowerCase()).not.toContain('confirm');
+    for (const p of ['src/app/page.tsx', 'src/app/program/page.tsx']) {
+      const lines = readFileSync(path.join(process.cwd(), p), 'utf8').split('\n');
+      const offending = lines.filter(
+        (l) => l.includes('LINEUP_NAMES') && /confirm/i.test(l),
+      );
+      expect(offending).toEqual([]);
+    }
+  });
+
+  it('keeps "confirmed" for PUBLIC_LINEUP only, which is a different and narrower claim', () => {
+    expect(PUBLIC_LINEUP).toEqual(['Lyons Den']);
+    expect(LINEUP_NAMES.length).toBeGreaterThan(PUBLIC_LINEUP.length);
   });
 });

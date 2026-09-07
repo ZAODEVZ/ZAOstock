@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, PUBLIC_LINEUP, WAVEWARZ } from '@/content/site';
+import { SITE, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, WAVEWARZ } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -165,7 +165,7 @@ export default function ProgramPage() {
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>
-              <span className="text-sm text-ink-muted">{PUBLIC_LINEUP.join(', ')} confirmed. The rest of the names on the day the reveal lands.</span>
+              <span className="text-sm text-ink-muted">{LINEUP_NAMES.join(', ')}. {LINEUP_NAMES_NOTE}</span>
             </div>
           </div>
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 m-0">
