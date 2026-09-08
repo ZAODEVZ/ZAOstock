@@ -96,6 +96,12 @@ ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 As of 27 August 2026, WaveWarZ had run 1,452 battles. (Provenance and re-pull
 instructions are in the sources table at the foot of this file, not here - this
 section is what a journalist reads.)
+<!-- re-check: 2026-09-12 -->
+<!-- The 1,452 is a point-in-time count of a live, still-running system, printed
+     on the one page a journalist reads. It was 12 days old before anyone stamped
+     it. Re-pull it before the 13 September reveal or drop the figure: a stale
+     number quoted to press is worse than no number, because we cannot correct
+     what they have already published. -->
 
 ## Partners
 
