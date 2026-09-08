@@ -302,7 +302,7 @@ describe('the reveal gate, on the API and not only on the website', () => {
     expect(res.status).toBe(404);
   });
 
-  it('publishes the roster once the reveal has passed', async () => {
+  it('publishes the roster once the reveal has passed, and says so', async () => {
     lineupIsPublic.mockReturnValue(true);
     getSupabaseAdmin.mockReturnValue(
       supabaseStub({ artists: [{ id: 'a1', name: 'A Confirmed Act', set_order: 1 }] }),
@@ -313,6 +313,59 @@ describe('the reveal gate, on the API and not only on the website', () => {
 
     expect(res.status).toBe(200);
     expect(body.artists).toHaveLength(1);
-    expect(body.published).toBeUndefined();
+    // This used to assert `published` was UNDEFINED here. That was the whole
+    // problem: the field existed before the reveal and vanished after it, so
+    // the one state nobody could name was "revealed, and empty". It is now
+    // always present.
+    expect(body.published).toBe(true);
+    expect(body.withheld).toBeUndefined();
+  });
+
+  /**
+   * 2026-09-07, the thing that actually happened: the gate opened on schedule
+   * against an empty artists table and the empty bill went public.
+   */
+  describe('when the reveal has passed and nobody is confirmed', () => {
+    beforeEach(() => {
+      lineupIsPublic.mockReturnValue(true);
+      getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [] }));
+    });
+
+    it('does NOT announce an empty lineup', async () => {
+      const body = await (await GET(req, { params })).json();
+
+      expect(body.artists).toEqual([]);
+      // The site stays on pre-reveal copy rather than announcing a festival
+      // with no acts on it.
+      expect(body.published).toBe(false);
+    });
+
+    it('says WHY it withheld, so the state is loud rather than silent', async () => {
+      const body = await (await GET(req, { params })).json();
+
+      // Without this the fix would be an inverted alarm: a failure that looks
+      // exactly like normal operation. A monitor can watch this field.
+      expect(body.withheld).toBe('no-confirmed-acts');
+    });
+
+    it('is distinguishable from "the reveal has not happened yet"', async () => {
+      const revealed = await (await GET(req, { params })).json();
+
+      lineupIsPublic.mockReturnValue(false);
+      const notYet = await (await GET(req, { params })).json();
+
+      // Both are published:false with no artists. The difference must be
+      // readable, or "nobody confirmed" hides inside "not yet".
+      expect(notYet.withheld).toBeUndefined();
+      expect(revealed.withheld).toBe('no-confirmed-acts');
+    });
+
+    it('still refuses to cache the empty answer for long', async () => {
+      const res = await GET(req, { params });
+
+      // 30 seconds, no stale-while-revalidate. A wrong empty answer must not
+      // outlive the confirmation that fixes it.
+      expect(res.headers.get('Cache-Control')).toContain('s-maxage=30');
+    });
   });
 });

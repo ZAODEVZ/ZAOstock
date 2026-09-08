@@ -97,8 +97,42 @@ function beforeReveal() {
 
 function live(artists: LineupArtist[]) {
   return NextResponse.json(
-    { artists, source: 'live' as const },
-    { headers: { 'Cache-Control': artists.length > 0 ? LIVE_CACHE : EMPTY_LIVE_CACHE } },
+    { artists, source: 'live' as const, published: true },
+    { headers: { 'Cache-Control': LIVE_CACHE } },
+  );
+}
+
+/**
+ * The reveal date has passed and NOBODY is confirmed.
+ *
+ * WHY THIS IS NOT `live([])`
+ * On 2026-09-07 the gate opened on schedule against an empty table and the
+ * empty bill went public. `live([])` served `{"artists":[]}` with no
+ * `published` field at all, so no client, monitor or person could tell
+ * "revealed, and nobody confirmed" from any other empty answer. It looked
+ * exactly like a working endpoint, which is why it was not caught by anything
+ * watching the endpoint.
+ *
+ * This route already refuses to serve an empty 200 when the upstream fails -
+ * `degraded()` returns 503 rather than pretend. The same principle applies
+ * here: an empty bill is not a lineup, so it is not announced as one.
+ *
+ * FAIL CLOSED, BUT NEVER SILENTLY. `published: false` keeps the site on its
+ * pre-reveal copy rather than announcing a festival with no acts. `withheld`
+ * says why, in a field a monitor can watch, so this state is LOUD rather than
+ * indistinguishable from "not yet". Hiding the failure quietly would just be
+ * the inverted-alarm bug wearing different clothes.
+ */
+function revealedButEmpty() {
+  return NextResponse.json(
+    {
+      artists: [],
+      source: 'live' as const,
+      published: false,
+      withheld: 'no-confirmed-acts' as const,
+      reveal_date: SITE.lineupRevealDate,
+    },
+    { headers: { 'Cache-Control': EMPTY_LIVE_CACHE } },
   );
 }
 
@@ -171,7 +205,12 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       return degraded(slug, 'upstream-error');
     }
 
-    return live((data ?? []) as LineupArtist[]);
+    const artists = (data ?? []) as LineupArtist[];
+
+    // The reveal fired but nobody has confirmed. Do not announce an empty bill.
+    if (artists.length === 0) return revealedButEmpty();
+
+    return live(artists);
   } catch (error: unknown) {
     // A thrown fetch/network error lands here rather than in an `error` field.
     console.error('[api/events/[slug]/lineup] unexpected failure', error);
