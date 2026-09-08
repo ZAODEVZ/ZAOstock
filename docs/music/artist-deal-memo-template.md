@@ -106,7 +106,7 @@
 
 - Stage, monitors, professional PA, lighting
 - 1 sound engineer for the day, available for rider needs
-- Backline (specific items confirmed via technical rider intake form)
+- Backline (specific items confirmed from your rider - see below for how to send it)
 - Recording of the set in audio + video, sent to the artist within 30 days
 - Hospitality: water, food, basic green-room space, parking pass
 - Crew shirt + day-of access for the artist plus 1 plus-one
@@ -115,7 +115,14 @@
 ## What artist provides
 
 - Performance during your assigned set window (30 or 40 minutes - your exact length is in the slot table above)
-- Completed technical rider intake form by **Friday 18 September 2026**
+- Your technical rider by **Friday 18 September 2026** - **email it to info@thezao.com**, or see `zaostock.com/musicians/rider`
+
+  > There is no rider FORM. Riders were switched to email by Zaal on 29 August
+  > (`src/lib/forms-status.ts`, `rider: 'email'`), and `/musicians/rider` says so
+  > and offers a mailto. This line used to say "completed technical rider intake
+  > form", which sent artists looking for something that does not exist - and an
+  > artist who cannot find the form waits instead of sending, which reads on our
+  > side as an artist who has not replied.
 - Signed agreement returned by **Saturday 5 September 2026**
 - Press shot and one-paragraph bio by **Saturday 5 September 2026**
 - Headshot + 1-paragraph bio for the lineup announcement (high-res, square preferred)
