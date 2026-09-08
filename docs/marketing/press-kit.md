@@ -37,8 +37,8 @@ Free to attend.**
 
 ZAOstock is a free, one-day, artist-built music festival on Franklin Street in
 downtown Ellsworth, Maine. From noon, nine independent artists play the outdoor
-parklet stage back to back until six. At six the whole street walks next door
-into Black Moon Public House for the evening. It is part of the 9th Annual Art of Ellsworth
+parklet stage back to back until six, when the street clears. Next door, Black
+Moon Public House hosts its own evening. It is part of the 9th Annual Art of Ellsworth
 during Maine Craft Weekend, and it is produced by ZAO Festivals, the events arm
 of The ZAO, an independent music community with members in more than twenty
 countries.
@@ -48,10 +48,10 @@ countries.
 | | |
 |---|---|
 | Date | Saturday 3 October 2026 |
-| Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
+| Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosts its own evening from six |
 | Cost | Free to attend |
 | Music starts | Noon |
-| Format | Nine independent artists outdoors noon to six, then indoors at Black Moon for the evening |
+| Format | Nine independent artists outdoors, noon to six. Black Moon's own evening follows next door |
 | Weather | Rain or shine, under tent cover from Wallace Events |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
@@ -64,8 +64,10 @@ countries.
   to back.
 - **Nine acts, 12:05 to 5:55, one stage.** 30 to 40 minute sets with five-minute
   changeovers. Music ends 5:55 and the street clears at six.
-- **Six onward, indoors at Black Moon Public House.** Live music for the
-  evening: a DJ set as the street walks in, then live music to close.
+- **Six onward: Black Moon Public House's own evening, next door.** North Creek,
+  roughly 6 to 9, **hosted and underwritten by Black Moon on their own stage and
+  their own licence.** It is their event, not part of the ZAOstock programme, and
+  ZAOstock's cover is the outdoor day only.
 
 One venue at a time. The day does not split across two rooms.
 
