@@ -96,9 +96,33 @@ Measured 2026-09-08, five days before the reveal: **0 of 9 acts are confirmed.**
 <!-- measured 2026-09-08T19:19Z - zao-measure --verify "zaostock acts confirmed count" -->
 <!-- re-check: 2026-09-13 -->
 
-### 3. Then the website, which is a deploy
+### 3. The website needs NO deploy - corrected 2026-09-08
 
-Edit `PUBLIC_LINEUP` in `src/content/site.ts` to the same acts, then ship it.
+**This step used to say: edit `PUBLIC_LINEUP` in `src/content/site.ts` to the
+same acts, then ship it. That was a no-op and it would have been dangerous on
+the day.**
+
+Nothing renders `PUBLIC_LINEUP`. `/program` imported it and never used it.
+Following the old step would have meant editing a constant, shipping a deploy,
+watching nothing change, and concluding the reveal had failed - at 6am, under
+pressure, with the real cause somewhere else entirely.
+
+**What actually publishes acts is `getPublicArtists()`, and it is dynamic.** It
+gates on `lineupIsPublic()` and selects `status = 'confirmed'`. So:
+
+- Acts appear on `/artist/<slug>` **when they confirm**, not when anyone deploys.
+- Before the gate, or with nothing confirmed, it returns `[]` and the pages 404.
+- **There is no website step.** If the API is right, the site is right.
+
+Verify instead of deploying:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://zaostock.com/artist/<a-confirmed-act>
+```
+
+`200` means published. `404` means either the gate is shut or that act is not
+`confirmed` - the same two causes as an empty API, and neither is fixed by
+shipping.
 
 Two tests will stop you shipping something inconsistent, and they are doing
 their job if they go red:

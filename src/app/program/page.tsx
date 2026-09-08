@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
+import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {

@@ -54,6 +54,27 @@ export const SITE = {
  */
 export const PUBLIC_LINEUP: readonly string[] = ['Lyons Den'];
 
+/*
+ * WHAT PUBLIC_LINEUP IS NOT, measured 2026-09-08.
+ *
+ * NOTHING RENDERS IT. `/program` imported it and never used it; that import is
+ * now removed. No other surface references it.
+ *
+ * This matters because REVEAL-RUNBOOK.md told the operator to edit this array
+ * on the day and ship a deploy - a step that would have changed nothing while
+ * feeling like publishing the lineup. The runbook is corrected in the same
+ * change.
+ *
+ * What actually publishes acts is `getPublicArtists()`, which is dynamic: it
+ * gates on `lineupIsPublic()` and selects `status = 'confirmed'` from the
+ * database. No deploy is involved. Acts appear when they confirm, not when
+ * someone edits this file.
+ *
+ * It is kept rather than deleted because it still states something true and
+ * narrow - the only acts the site may call CONFIRMED - and `site.test.ts` pins
+ * that meaning. Treat it as a guarded assertion, not as a render source.
+ */
+
 /**
  * WHO IS PLAYING - names only. Zaal, 2026-09-07: "lets just update it with the
  * names but no times and no links and over the week this week we will just add
