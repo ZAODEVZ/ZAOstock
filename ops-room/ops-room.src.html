@@ -308,6 +308,14 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
   .topbar{padding:0 14px}
   .topbar h1{font-size:21px}
 }
+@media (max-width:560px){
+  .topbar{gap:8px; padding:0 10px}
+  .topbar .who{flex:1 1 0; min-width:0}
+  .topbar h1{font-size:18px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .topbar .crumb{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .topbar .pill{padding:4px 8px; font-size:11px}
+  #pill-when{display:none}
+}
 @media (prefers-reduced-motion:reduce){.rail{transition:none}}
 </style>
 
@@ -466,7 +474,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
 
       <section class="screen" id="s-help">
         <div class="sec">
-          <div class="sec-head"><h2>Need a human?</h2><span class="rule"></span><span class="note">Goes straight to the crew</span></div>
+          <div class="sec-head"><h2>Need a human?</h2><span class="rule"></span><span class="note" id="help-route">Goes straight to the crew</span></div>
           <div class="card pad">
             <p style="font-size:13.5px; color:var(--ink-2); max-width:70ch; margin-bottom:16px">Nothing here is locked. We only ask for enough to find you and get back to you, so please fill the whole thing in: a request with no name and no way to reach you is one we cannot act on.</p>
             <div class="form-grid">
@@ -723,7 +731,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
 </div>
 
 <script id="ops-state" type="application/json">
-{"version":5,"updatedAt":null,"announcements":[],"help":[],"rota":{},"attention":[{"id":"n2","title":"A second for Dcoop on AV while he is on stage, covering his set and the fire slot.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager for the parklet. Nine acts, five-minute changeovers, five minutes of margin on the whole day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day, Hurricane MCs between sets as well as playing at 15:10. Dcoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n5","title":"Online moderators, two an hour, noon to six. Twelve seats, none claimed.","owner":"IMan + Rev","state":"blocked"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n7","title":"A fire circle for Dcoop. The City approved the performance on 31 August; the circle is all that is left on the City side.","owner":"Dcoop","state":"moving"},{"id":"n10","title":"Fire performer's certificate of insurance naming ZAO as additional insured. The broker asked for it as a CONDITION, not a courtesy. The City approval does not satisfy it.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition. All nine genres answered for the broker on 3 September.","owner":"Zaal","state":"moving"},{"id":"n9","title":"A daytime DJ. Zaal, 2 September: we will have a DJ, sourcing through Nextdoor. The changeovers are built on there being no music between acts, so this changes their shape and takes the MC off being a single point of failure.","owner":"Zaal","state":"moving"},{"id":"n11","title":"The evening. Zaal, 3 September: Black Moon's afterparty, not ZAOstock's programme. Still to be confirmed with Steve; the site's own DAY rows still say 6 to 10 PM is ours.","owner":"Zaal","state":"moving"},{"id":"n12","title":"An owner for Lyons Den. Every other act traces to a person; this one traces to nobody.","owner":"UNASSIGNED","state":"blocked"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream during the afterparty. Black Moon's call now, not ours.","owner":"Steve / Katina","state":"moving"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms back on: RSVP, volunteer and the ideas box.","owner":"IMan","state":"done"},{"id":"a11","title":"Artist rows. The reveal reads only rows with status confirmed. Six acts have no row at all, three are misnamed (DCoop / Coop D'Ville, Hurric4n3Ike, Tom Fellenz). Needed before Saturday 12 September.","owner":"Zaal","state":"blocked"},{"id":"a18","title":"Artist details form goes to all nine acts, due back Friday 11 September. Signatures come back through it; the confirm-artist endpoint then sets confirmed.","owner":"Zaal / Dcoop","state":"moving"},{"id":"a13","title":"Artist photos and press shots: Drive has 1 of 9. OPEN X, Grass Rug and Michael Anderson have no Drive folder.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? The PA now comes from OPEN X, so this is a question for OPEN X and Dcoop, not a rental.","owner":"Dcoop","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics, OPEN X, Grass Rug and Acadia Rising, for the meal certificates.","owner":"Dcoop","state":"blocked"},{"id":"a17","title":"Written confirmations. Every act said yes verbally (2 September); only Lyons Den is confirmed in writing. The reveal on Sunday 13 September reads written only.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d2","title":"City approved the fire performance.","owner":"Dcoop","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d9","title":"The PA comes from OPEN X, who also play. Closes the 11 September rental gate early and takes hired equipment off the insurance.","owner":"Zaal","state":"done"},{"id":"d10","title":"Run of show locked 3 September: nine acts, 12:05 to 17:55, street clears 18:00. WaveWarZ cancelled, Stilo not coming in person.","owner":"Zaal","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
+{"version":5,"updatedAt":null,"announcements":[],"help":[],"rota":{},"attention":[{"id":"n2","title":"A second for Dcoop on AV while he is on stage, covering his set and the fire slot.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager for the parklet. Nine acts, five-minute changeovers, five minutes of margin on the whole day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day, Hurricane MCs between sets as well as playing at 15:10. Dcoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n5","title":"Online moderators, two an hour, noon to six. Twelve seats, none claimed.","owner":"IMan + Rev","state":"blocked"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n7","title":"A fire circle for Dcoop. The City approved the performance on 31 August; the circle is all that is left on the City side.","owner":"Dcoop","state":"moving"},{"id":"n10","title":"Fire performer's certificate of insurance naming ZAO as additional insured. The broker asked for it as a CONDITION, not a courtesy. The City approval does not satisfy it.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition. All nine genres answered for the broker on 3 September.","owner":"Zaal","state":"moving"},{"id":"n9","title":"A daytime DJ. Zaal, 2 September: we will have a DJ, sourcing through Nextdoor. The changeovers are built on there being no music between acts, so this changes their shape and takes the MC off being a single point of failure.","owner":"Zaal","state":"moving"},{"id":"n11","title":"The evening, settled 7 September: North Creek at Black Moon, roughly 6 to 9, hosted and underwritten by Black Moon. Theirs, not ours. The site's /program says the same.","owner":"Zaal","state":"done"},{"id":"n12","title":"An owner for Lyons Den. Every other act traces to a person; this one traces to nobody.","owner":"UNASSIGNED","state":"blocked"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream during the afterparty. Black Moon's call now, not ours.","owner":"Steve / Katina","state":"moving"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms back on: RSVP, volunteer and the ideas box.","owner":"IMan","state":"done"},{"id":"a11","title":"Artist rows. The reveal reads only rows with status confirmed. Six acts have no row at all, three are misnamed (DCoop / Coop D'Ville, Hurric4n3Ike, Tom Fellenz). Needed before Saturday 12 September.","owner":"Zaal","state":"blocked"},{"id":"a18","title":"Artist details form goes to all nine acts, due back Friday 11 September. Signatures come back through it; the confirm-artist endpoint then sets confirmed.","owner":"Zaal / Dcoop","state":"moving"},{"id":"a13","title":"Artist photos and press shots: Drive has 1 of 9. OPEN X, Grass Rug and Michael Anderson have no Drive folder.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? The PA now comes from OPEN X, so this is a question for OPEN X and Dcoop, not a rental.","owner":"Dcoop","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics, OPEN X, Grass Rug and Acadia Rising, for the meal certificates.","owner":"Dcoop","state":"blocked"},{"id":"a17","title":"Written confirmations. Every act said yes verbally (2 September); only Lyons Den is confirmed in writing. The reveal on Sunday 13 September reads written only.","owner":"Dcoop / Zaal","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d2","title":"City approved the fire performance.","owner":"Dcoop","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d9","title":"The PA comes from OPEN X, who also play. Closes the 11 September rental gate early and takes hired equipment off the insurance.","owner":"Zaal","state":"done"},{"id":"d10","title":"Run of show locked 3 September: nine acts, 12:05 to 17:55, street clears 18:00. WaveWarZ cancelled, Stilo not coming in person.","owner":"Zaal","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
 </script>
 
 <script>
@@ -767,7 +775,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     {v:"out",  t:1075, e:1080, n:"Close",                     d:"Thanks, the afterparty pointer, and the street clears at six. The permit ends here.", own:"Zaal", sec:"", kind:"gap", pub:true},
     {v:"out",  t:1080, e:1140, n:"Strike",                    d:"Outdoor strike. OPEN X's PA goes with OPEN X. Tent is Wallace Events'.", own:"Roddy", sec:"Steve Peer", kind:"gap", pub:false},
     {v:"in",   t:720,  e:1080, n:"Black Moon open",           d:"Performers eat here after their set, on the $20 certificate. Basement dressing room and bathroom.", own:"Katina", sec:"", kind:"gap", pub:true},
-    {v:"in",   t:1080, e:1320, n:"Black Moon afterparty",     d:"Hosted by Black Moon, under their own licence and house rules. Not ZAOstock's programme: we book nothing, run nothing and serve nothing in here. Zaal to confirm with Steve that it stays that way.", own:"Steve Peer", sec:"Katina", kind:"gap", pub:true}
+    {v:"in",   t:1080, e:1260, n:"North Creek", pd:"The afterparty, hosted and underwritten by Black Moon on their own stage. Roughly 6 to 9, on their hours.", d:"The afterparty: North Creek, roughly 6 to 9, hosted and underwritten by Black Moon on their own stage and their own licence. Settled by Zaal on 7 September from Steve's mail of 26 August. Not ZAOstock's programme: we book nothing, run nothing and serve nothing in here, and our insurance covers the outdoor day only.", own:"Steve Peer", sec:"Katina", kind:"gap", pub:true}
   ];
 
   var PEOPLE = [
@@ -844,7 +852,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   var INFO = [
     {n:"Free to get in", d:"No ticket, no door charge, all ages on the parklet. Music 12:05 to 17:55, street clears at six."},
     {n:"Where it is", d:"Franklin Street Parklet, downtown Ellsworth, Maine. Black Moon Public House is next door for food, and for the afterparty after six."},
-    {n:"After six", d:"Black Moon hosts the afterparty under their own roof and their own house rules. That part is theirs, not ours, so ask them, not the help form."},
+    {n:"After six", d:"North Creek play the afterparty at Black Moon, roughly 6 to 9, under their own roof and their own house rules. That part is theirs, not ours, so ask them, not the help form."},
     {n:"Rain or shine", d:"Wallace Events has the tent confirmed. The rain call is made at Friday soundcheck and looked at again at eight on Saturday morning."},
     {n:"Food and drink", d:"Black Moon is open from noon, next door. The beer garden is run by Black Moon under their own permit, about an eighth of the general section."},
     {n:"Accessibility", d:"Tell us what you need through the help form and someone will meet you. Seating, access routes and a quieter spot are all askable."},
@@ -856,14 +864,14 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   var LINKS = [
     {n:"zaostock.com", u:"https://zaostock.com", d:"The main site."},
     {n:"The programme", u:"https://zaostock.com/program", d:"The day and the running order."},
-    {n:"Volunteer", u:"https://apply.zaostock.com", d:"Sign up to help on the day."},
-    {n:"For musicians", u:"https://play.zaostock.com", d:"Submissions and the stage rider."},
+    {n:"Volunteer", u:"https://zaostock.com/apply", d:"Sign up to help on the day."},
+    {n:"For musicians", u:"https://zaostock.com/musicians", d:"Submissions and the stage rider."},
     {n:"For artists", u:"https://zaostock.com/artists", d:"The artist side of the weekend."},
     {n:"Builder battle", u:"https://zaostock.com/build", d:"Build the venue in the metaverse."},
     {n:"Facebook event", u:"https://facebook.com/events/28051455107809318", d:"RSVP and see who else is coming."},
-    {n:"Tickets page", u:"https://ticket.zaostock.com", d:"Free event, but the page is there."},
-    {n:"Sponsor pitch", u:"https://zaostock.com/pitch", d:"What sponsorship gets you."},
-    {n:"Sponsor deck", u:"https://deck.zaostock.com", d:"The full deck, sendable."},
+    {n:"Tickets page", u:"https://zaostock.com/tickets", d:"Free event, but the page is there."},
+    {n:"Sponsor page", u:"https://zaostock.com/sponsor", d:"What sponsorship gets you. Prints to a clean PDF for anyone who wants a deck."},
+    {n:"Press kit", u:"https://zaostock.com/press", d:"For press and partners: the facts, the quotes, the images."},
     {n:"Ellsworth", u:"https://zaostock.com/ellsworth", d:"The local page."},
     {n:"ZAO Festivals", u:"https://zaostock.com/festivals", d:"Who runs this."},
     {n:"The ZAO", u:"https://thezao.com", d:"The wider organisation."},
@@ -874,7 +882,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
 
   var TEAMLINKS = [
     {n:"Monday standup", u:"https://meet.google.com/prq-ujyg-ojs", d:"Every Monday, 11:30 EDT. Partners and helpers welcome."},
-    {n:"Drive folder", u:"https://files.zaostock.com", d:"Logos, photos, artwork, contracts. Not the chat thread."},
+    {n:"Drive folder", u:"https://drive.google.com/drive/folders/1ln781xPRNOLykAuaIsd1r2P-VmZM8zzW", d:"Logos, photos, artwork, contracts. Not the chat thread. Ask Zaal for access."},
     {n:"The code", u:"https://github.com/ZAODEVZ/ZAOstock", d:"Canonical repo."},
     {n:"Research library", u:"https://github.com/bettercallzaal/ZAOOS/tree/main/research", d:"Every ZAOstock doc."},
     {n:"Team page", u:"https://zaostock.com/team", d:"Public. Careful what goes on it."},
@@ -988,7 +996,14 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   var nsPromise = (window.claude && typeof window.claude.use === "function")
     ? window.claude.use("artifact").then(function (ns) { artifactNs = ns; return ns; }, function () { return null; })
     : Promise.resolve(null);
-  nsPromise.then(function () { render(); });
+  nsPromise.then(function (ns) {
+    if (!ns) {
+      // No shared board behind this copy of the page: the form still works, but
+      // it hands the sender a message to pass on rather than posting it.
+      var hr = $("#help-route"); if (hr) hr.textContent = "Gives you a message to send to the crew";
+    }
+    render();
+  });
 
   function serialize() {
     var json = JSON.stringify(state).replace(/</g, "\\u003c");
@@ -1101,7 +1116,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
 
   function trackSrc() {
     if (!THEME) return "";
-    if (!useBlob) return THEME.src;
+    if (!useBlob || THEME.src.indexOf("data:") !== 0) return THEME.src;
     if (blobUrl) return blobUrl;
     try {
       var b64 = THEME.src.slice(THEME.src.indexOf(",") + 1), bin = atob(b64), n = bin.length, by = new Uint8Array(n), i;
@@ -1277,7 +1292,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     var ns = nowState(), c = currentSlots(ns);
     [{ k: "crew", l: "Before doors", w: "08:00 – 11:30", teamOnly: true },
      { k: "out",  l: "Outdoors, Franklin Street Parklet", w: "NOON – 6PM" },
-     { k: "in",   l: "Next door, Black Moon Public House", w: "NOON – LATE" }].forEach(function (g) {
+     { k: "in",   l: "Next door, Black Moon Public House", w: "NOON – 9PM" }].forEach(function (g) {
       if (forPublic && g.teamOnly) return;
       var rows = SCHEDULE.filter(function (s) { return s.v === g.k; });
       if (forPublic) rows = rows.filter(function (s) { return s.pub !== false; });
@@ -1292,6 +1307,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
         mid.appendChild(el("div", "nm", slotTitle(s, forPublic)));
         if (!forPublic) mid.appendChild(el("div", "dt", s.d));
         else if (s.kind === "act" && state.lineupPublic && s.pd) mid.appendChild(el("div", "dt", s.pd));
+        else if (s.kind === "gap" && s.pd) mid.appendChild(el("div", "dt", s.pd));
         if (!forPublic) mid.appendChild(el("div", "own", "Owner: " + (s.own || "—") + (s.sec ? "   ·   Second: " + s.sec : "")));
         d.appendChild(mid);
         var right = el("div");
@@ -1456,7 +1472,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     var ns = nowState();
     if (!isEventDay(ns) && !simOn) {
       var days = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5));
-      return "ZAOstock is Saturday 3 October, " + days + " days out. Free, Franklin Street Parklet in Ellsworth, nine acts from 12:05, outdoors until six, then Black Moon's afterparty next door. Part of Art of Ellsworth and Maine Craft Weekend. Everything is at zaostock.com.";
+      return "ZAOstock is Saturday 3 October, " + days + " days out. Free, Franklin Street Parklet in Ellsworth, nine acts from 12:05, outdoors until six, then North Creek at Black Moon next door, 6 to 9, which is Black Moon's own evening. Part of Art of Ellsworth and Maine Craft Weekend. Everything is at zaostock.com.";
     }
     for (var i = 0; i < SAY.length; i++) if (ns.min >= SAY[i].from && ns.min < SAY[i].to) return SAY[i].t;
     return SAY[SAY.length - 1].t;

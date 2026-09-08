@@ -33,20 +33,33 @@ describe('the deployed ops room matches its source', () => {
     expect(stamp?.[1], 'ops room is STALE: run `node ops-room/build.js`').toBe(expected);
   });
 
-  it('inlined its assets rather than linking them', () => {
-    // The board has to work on a phone on a parklet with bad signal. Its own
-    // build comment says: no server, no CDN for its own assets. If the images
-    // stopped being inlined the page would render blank in exactly the place it
-    // is needed most.
+  it('inlined the marks and photographs rather than linking them', () => {
+    // The board has to draw on a phone on a parklet with bad signal. If the
+    // images stopped being inlined the page would render blank in exactly the
+    // place it is needed most. They are about 400 KB together, which is fine.
     const html = readFileSync(DEPLOYED, 'utf8');
     expect(html).toContain('data:image/png;base64,');
     expect(html).toContain('data:image/jpeg;base64,');
   });
 
+  it('links the theme from /ops/assets/ rather than inlining it', () => {
+    // The theme is 3.2 MB of MP3. Inlined as base64 it made the page 4.96 MB
+    // and a phone took up to a minute to open it, which is the opposite of a
+    // board that works on a parklet. The site copy links it from the same
+    // origin instead; the artifact copy (ops-room/ops-room.html, git-ignored)
+    // still inlines it because the artifact host blocks media from anywhere
+    // else. build.js copies the file into place, so its absence is a build bug.
+    const html = readFileSync(DEPLOYED, 'utf8');
+    expect(html).not.toContain('data:audio/mpeg;base64,');
+    expect(html).toContain('"src":"/ops/assets/zaostock.mp3"');
+    expect(existsSync(path.join(ROOT, 'public', 'ops', 'assets', 'zaostock.mp3'))).toBe(true);
+  });
+
   it('stays under the size the build itself budgets for', () => {
-    // build.js exits non-zero over 15 MB. A 4.7 MB page is already heavy for a
-    // phone on mobile data, so this catches the inlining getting out of hand.
+    // build.js exits non-zero over 1 MB for the site copy. With the theme
+    // linked the page is about half a megabyte; this catches something heavy
+    // being inlined again.
     const mb = statSync(DEPLOYED).size / 1048576;
-    expect(mb).toBeLessThan(15);
+    expect(mb).toBeLessThan(1);
   });
 });

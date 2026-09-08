@@ -92,19 +92,25 @@ shared state is readable by anyone who can open the app.** So:
 ## Running it
 
 ```bash
-node ops-room/build.js     # inlines assets, writes ops-room/ops-room.html
+node ops-room/build.js     # writes ops-room/ops-room.html and public/ops/index.html
 node ops-room/serve.js     # serves it on http://localhost:4173
 ```
 
 Open `ops-room/ops-room.html` directly if you prefer. It has no server
-dependency once built.
+dependency once built: that copy is the artifact build, everything inlined.
+
+`public/ops/index.html` is the site build, what zaostock.com/ops returns. The
+marks and photographs are inlined there too, but the theme is linked from
+`public/ops/assets/zaostock.mp3` (the build copies it), because 3.2 MB of MP3
+as base64 made the page 4.96 MB and a phone took up to a minute to open it.
 
 ### Files
 
 ```
 ops-room/
   ops-room.src.html   the app. Edit this, never the built file.
-  build.js            inlines the theme, the marks and the photographs
+  build.js            builds both copies; inlines the marks and photographs,
+                      inlines the theme for the artifact and links it for the site
   serve.js            a static server for local checking
   assets/
     zaostock.mp3      ZAOSTOCK by Iman Afrikah, the theme, 160 kbps
@@ -118,7 +124,9 @@ ops-room/
 The three photographs are web-sized derivatives of the originals in
 `public/zao/`, kept next to the build so it stays self-contained.
 
-`ops-room.html` is generated and git-ignored.
+`ops-room.html` is generated and git-ignored. `public/ops/index.html` and
+`public/ops/assets/zaostock.mp3` are generated and committed, and
+`src/lib/ops-room.test.ts` fails when the deployed copy is stale.
 
 ---
 
