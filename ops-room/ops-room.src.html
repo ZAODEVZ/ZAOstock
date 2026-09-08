@@ -1493,7 +1493,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     function box(cls, v, label) { var d = el("div", "kpibox " + cls); d.appendChild(el("div", "v", String(v))); d.appendChild(el("div", "k", label)); k.appendChild(d); }
     box(openHelp ? "red" : "olive", openHelp, "help open");
     box(blocked ? "red" : "olive", blocked, "blocked");
-    box(seats === 20 ? "olive" : "gold", seats + "/20", "rota seats");
+    box(seats === 12 ? "olive" : "gold", seats + "/12", "rota seats");
     box(state.channels.stream ? "olive" : "red", state.channels.stream ? "set" : "none", "stream link");
     box(artifactNs && canWrite ? "olive" : "gold", artifactNs && canWrite ? "shared" : "local", "this board");
     $("#say-box").textContent = sayLine();
@@ -1742,7 +1742,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   function updateBadges() {
     setBadge("queue", state.help.filter(function (h) { return h.status === "open"; }).length, "");
     setBadge("attention", state.attention.filter(function (a) { return a.state === "blocked"; }).length, "");
-    setBadge("rota", 20 - seatCount(), "g");
+    setBadge("rota", 12 - seatCount(), "g");
     var openAdv = 0; ROSTER.forEach(function (a) { openAdv += CHECKS.length - advCount(a.id); });
     setBadge("artists", openAdv, "g");
     setBadge("profile", myMessages().length, "g");
