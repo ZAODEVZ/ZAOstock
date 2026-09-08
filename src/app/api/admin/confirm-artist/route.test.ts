@@ -38,14 +38,22 @@ function post(body: Body, auth: string | null = 'Bearer test-secret') {
 /** Records every write so a test can assert that NOTHING was written. */
 const writes: Array<{ table: string; op: string; payload?: unknown }> = [];
 
-function supabaseStub(existing: { id: string; name: string; status: string } | null, opts: { findError?: unknown; updateError?: unknown } = {}) {
+function supabaseStub(existing: { id: string; name: string; status: string } | null, opts: { findError?: unknown; updateError?: unknown; event?: { id: string } | null } = {}) {
   return {
     from: (table: string) => ({
-      select: () => ({
-        eq: () => ({
-          maybeSingle: async () => ({ data: existing, error: opts.findError ?? null }),
-        }),
-      }),
+      // The artists lookup is now scoped to the event, so it chains TWO .eq()
+      // calls. This returns a chainable shape rather than a one-shot, and
+      // answers the events table with the festival row.
+      select: () => {
+        const chain = {
+          eq: () => chain,
+          maybeSingle: async () =>
+            table === 'events'
+              ? { data: opts.event === undefined ? { id: 'evt-zaostock' } : opts.event, error: null }
+              : { data: existing, error: opts.findError ?? null },
+        };
+        return chain;
+      },
       update: (payload: unknown) => {
         writes.push({ table, op: 'update', payload });
         return { eq: async () => ({ error: opts.updateError ?? null }) };
@@ -177,5 +185,25 @@ describe('POST /api/admin/confirm-artist', () => {
   it('exposes no other verb - there is no GET, PATCH or DELETE on this route', async () => {
     const mod = await import('./route');
     expect(Object.keys(mod).sort()).toEqual(['POST']);
+  });
+
+  /**
+   * The lookup used to run across the whole artists table with no event scope.
+   * Four events exist; only zaostock has rows today, so this could not fire -
+   * but Hurricane and Dcoop played past ZAO festivals, and backfilling those
+   * rosters would have made a ZAOstock confirmation land on another event's row.
+   */
+  describe('scoping to the festival', () => {
+    it('fails closed when the event cannot be resolved, rather than confirming unscoped', async () => {
+      getSupabaseAdmin.mockReturnValue(
+        supabaseStub({ id: 'a1', name: 'Dcoop', status: 'wishlist' }, { event: null }),
+      );
+
+      const res = await POST(post({ name: 'Dcoop', confirmation_reference: 'form response' }));
+
+      expect(res.status).toBe(503);
+      // The load-bearing part: nothing was written when the scope was unknown.
+      expect(writes).toEqual([]);
+    });
   });
 });
