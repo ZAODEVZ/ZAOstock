@@ -32,6 +32,15 @@
 /** The question whose answer names the act. Must match the form exactly. */
 var ACT_QUESTION = 'Which act are you?';
 
+/**
+ * The checkbox that IS the confirmation. It is setRequired(true) on the form
+ * today, so no submission can exist without it - but that is a property of the
+ * current form, not a guarantee. If someone later makes it optional, an act
+ * could submit for a photo change and be marked confirmed by this script.
+ * Decision 0005 is enforced here as well as on the form.
+ */
+var CONFIRM_QUESTION = 'Confirming you are playing';
+
 function installTrigger() {
   var form = FormApp.getActiveForm();
   if (!form) throw new Error('Open this from the FORM\'s bound script, not a standalone project.');
@@ -71,6 +80,16 @@ function onArtistFormSubmit(e) {
                     'Answers present: ' + Object.keys(answers).join(', '));
   }
 
+  // Do not confirm anyone who did not tick the box, even if the form stops
+  // requiring it. A submission is not automatically a yes.
+  var confirmAnswer = answers[CONFIRM_QUESTION];
+  if (!confirmAnswer || String(confirmAnswer).toLowerCase().indexOf('confirm') === -1) {
+    throw new Error('NOT CONFIRMED for "' + act + '". The confirmation question ' +
+                    'was not answered affirmatively. Answer was: ' +
+                    (confirmAnswer || '(blank)') + '. The response is safe in the ' +
+                    'sheet - this is a refusal to confirm, not a failure.');
+  }
+
   // The reference points at the real thing that justified the confirmation.
   // Timestamped, and carrying the respondent's own email where the form
   // collected it, so it can be found again in the responses sheet.
@@ -91,7 +110,7 @@ function onArtistFormSubmit(e) {
   // Pass through anything the act gave us, so one call both confirms them and
   // fills the page. Absent answers are simply omitted.
   addIfPresent(body, 'bio', answers, ['A short bio', 'Bio', 'Your bio']);
-  addIfPresent(body, 'city', answers, ['Your city', 'City']);
+  addIfPresent(body, 'city', answers, ['Your city / where you are based', 'Your city', 'City']);
   addIfPresent(body, 'photo_url', answers, ['A link to your photo', 'Photo link', 'Photo']);
   addIfPresent(body, 'socials', answers, ['Your links', 'Links', 'Socials']);
 
