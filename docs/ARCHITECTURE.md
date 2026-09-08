@@ -169,13 +169,25 @@ recreated from a clone.
 Team API routes accept `?event_id=` so the mobile app can switch events.
 `resolveEventId()` falls back to the event with slug **`zaostock`**.
 
-**Worth verifying when the database is reachable:** the public lineup endpoint is
-called in production as `/api/events/zaostock-2026/lineup` - a different slug from
-the `zaostock` fallback. Both may exist as separate rows, or one may not exist at
-all. It could not be checked while writing this, because the Supabase org is over
-its egress quota (402 until 2026-09-21) and that lookup is exactly what fails. If
-`zaostock-2026` turns out not to exist, that endpoint will return 404 rather than
-data once the quota refills, and the fix is a slug, not code.
+**RESOLVED 2026-09-08, measured.** Both slugs answer 200 with identical bodies:
+
+    /api/events/zaostock/lineup       200  {"artists":[],...,"reveal_date":"2026-09-13"}
+    /api/events/zaostock-2026/lineup  200  same
+
+`zaostock-2026` is not a second row. It is an alias resolved *before* the lookup
+in `src/lib/event-slugs.ts`, which is why it answers rather than 404s. The
+concern below was real when written and is now closed.
+
+<details><summary>What this said before, and why it was wrong to leave standing</summary>
+
+It said the lookup "could not be checked" because the Supabase org was over its
+egress quota (402 until 2026-09-21), and warned `zaostock-2026` might 404 once
+the quota refilled. That was true on the day it was written. It then sat here
+unchanged while the alias shipped and both endpoints started answering - a claim
+about an external service that stayed loud after it stopped being true, which is
+the exact failure this repo now guards against. <!-- re-check: 2026-09-21 -->
+
+</details>
 
 ---
 
