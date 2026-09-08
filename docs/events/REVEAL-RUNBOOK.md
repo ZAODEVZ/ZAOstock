@@ -58,6 +58,20 @@ Nothing is published by doing this before the 13th. `lineupIsPublic()` holds bot
 surfaces shut until the date passes in **Ellsworth**, not UTC. That is what #86
 fixed, and it means the gate opens at 04:00Z on the 13th, not at midnight UTC.
 
+### 1b. Or run the whole preflight in one command
+
+```bash
+scripts/reveal-preflight.sh
+```
+
+Every check below, plus the app's slug and the public surfaces, as PASS/FAIL with
+an exit code. **It fails today**, correctly, on the only thing that matters:
+
+    FAIL  ZERO acts on the bill. Do not proceed - the reveal has nothing to reveal
+
+A check that cannot run reports UNVERIFIABLE and **counts as a failure**, because
+"I could not tell" must never read the same as "fine".
+
 ### 2. Check the API before the website
 
 ```bash
