@@ -52,6 +52,32 @@ const config: NextConfig = {
       },
     ];
   },
+  // Two paths people reach for that the site does not have.
+  //
+  // `/lineup` is the intuitive URL for a lineup - it is what someone types, and
+  // what would get written on a poster or encoded in a QR. It has never been a
+  // route: the nine acts are named on `/` and the running order lives on
+  // `/program`. It is also absent from the sitemap, so nothing internal points
+  // at it and this costs nothing to add.
+  //
+  // `/sponsors` is the plural of the real route, which is `/sponsor`. Both are
+  // easy to write from memory and only one of them answers.
+  //
+  // Found on 2026-09-08, five days before the reveal and with the poster about
+  // to print, by a sibling lane checking my og:image claim: my own check had
+  // grepped for `og:image` WITHOUT checking the status code, and a Next.js 404
+  // page still renders the root layout's tags - so a dead path measured as
+  // healthy. The redirect is the cheap half of the fix; the lesson is that a
+  // 200 is part of the measurement, not an assumption.
+  //
+  // Deliberately NOT permanent. A 308 is cached hard by browsers and would
+  // outlive a future decision to give `/lineup` a real page of its own.
+  async redirects() {
+    return [
+      { source: '/lineup', destination: '/program', permanent: false },
+      { source: '/sponsors', destination: '/sponsor', permanent: false },
+    ];
+  },
   async rewrites() {
     return {
       beforeFiles: [
