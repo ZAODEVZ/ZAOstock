@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ZAOstock Ops Room</title>
-<meta name="ops-room-src" content="cdacfb9db3b38cc4">
+<meta name="ops-room-src" content="b87d73c95bbfc57f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
@@ -783,7 +783,17 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
 
   var PEOPLE = [
     {img:"stage", b:"The stage", s:"Last time out. This year it is nine acts on one street, 12:05 to six, with Hurricane on the mic between sets."},
-    {img:"crowd", b:"A ZAO room", s:"Last time out. This is the energy heading for Franklin Street on 3 October."},
+    // REMOVED 2026-09-08: this rendered img-crowd.jpg, which is a photograph of
+    // a screen reading WAVE WARZ in large letters - captioned as the energy
+    // heading for 3 October. WaveWarZ came off the 3 October programme on
+    // 7 September, so the crew's own page was promising them an event that is
+    // not happening. Two real photographs beat three where one contradicts the
+    // programme.
+    //
+    // To restore: put the line back and drop a daytime outdoor frame in as
+    // assets/img-crowd.jpg. What this slot actually wants is the Franklin
+    // Street Parklet in daylight - the same missing photograph the deck's venue
+    // slide and the press kit are both waiting on.
     {img:"zaal",  b:"Zaal", s:"Runs ZAO Festivals and the day itself, and he opens and closes it on the mic."}
   ];
 
