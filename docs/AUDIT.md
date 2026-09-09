@@ -8,7 +8,38 @@ Two repos:
 
 ---
 
-## BLOCKING — needs Zaal, nothing else matters until this is done
+## BLOCKING — needs Zaal
+
+> **Compiled 2026-07-17/18. Item 1 below was RESOLVED on or before 2026-08-31 and
+> is kept only as history.** The heading used to read "nothing else matters until
+> this is done", which was true in July and false by September - a record that
+> stayed loud after it stopped being true, at the top of the document people read
+> first. Items 2 and 3 are UNVERIFIED from this seat: they need a real device and
+> an EAS build, which cannot be measured from here.
+> <!-- re-check: 2026-09-15 -->
+
+### 1. ~~Production is pointed at the wrong Supabase database~~ — RESOLVED
+
+**Measured 2026-09-08 using this section's own verification command:**
+
+```
+curl -s https://zaostock.com/api/events
+{"events":[{"id":"b49b8db0-8948-4f31-8202-d46ae3b92bd6","name":"ZAO-PALOOZA",...
+```
+
+Real event JSON, no `PGRST205`. And the returned IDs match a direct query against
+the `yjrlaxpjusmrfylumban` project row for row, so production and the real
+database are demonstrably the same project - not merely "responding".
+
+<!-- measured 2026-09-08T21:15Z - zao-measure --verify "zaostock api events returns real json not PGRST205" -->
+
+`src/lib/event-slugs.ts` dates the repoint: *"when production was repointed at the
+real project on the morning of 2026-08-31 the event lookup started succeeding."*
+That repoint is also what surfaced the `zaostock-2026` slug bug - fixing the
+database is what broke the client, which is the shape of bug that only appears
+when the thing above you gets better.
+
+<details><summary>What this said, and why it is left here</summary>
 
 ### 1. Production is pointed at the wrong Supabase database
 `zaostock.com`'s live `NEXT_PUBLIC_SUPABASE_URL` resolves to `etwvzrmlxeobinrlytza.supabase.co` — an unrelated project — instead of the real production database, `yjrlaxpjusmrfylumban` ("ZAO STOCK"). Confirmed by posting a real test write through the live public API and watching it fail on a schema mismatch (the wrong project's `suggestions` table has a different schema entirely). Every event, RSVP, and lineup fetch is currently broken because of this.
@@ -20,7 +51,12 @@ Two repos:
 
 Verify: `curl https://zaostock.com/api/events` should return real event JSON, not a `PGRST205` error.
 
+</details>
+
 ### 2. Push notifications capability was never synced (real device required)
+**UNVERIFIED from this seat as of 2026-09-08** - needs a real device and an EAS
+build. Neither is measurable from here, so this is neither confirmed open nor
+closed. <!-- re-check: 2026-09-15 -->
 Build 13 failed on this and was never retried until this session. Run from a **real Terminal.app window**, not through Claude Code:
 ```
 cd /tmp/zaostock-app   # or wherever the mobile repo is checked out locally
@@ -28,7 +64,9 @@ eas build --platform ios --profile production
 ```
 Expect a prompt about syncing provisioning/capabilities — confirm yes.
 
-### 3. Fresh TestFlight build once #1 and #2 are both confirmed
+### 3. Fresh TestFlight build once #2 is confirmed
+**UNVERIFIED from this seat.** Note the precondition changed: this used to wait on
+#1 and #2. #1 is resolved, so only #2 gates it. <!-- re-check: 2026-09-15 -->
 ```
 cd /tmp/zaostock-app
 eas build --platform ios --profile production
