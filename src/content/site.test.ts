@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES } from './site';
 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
 // that live here until PRODUCTION's file absorbs them.
@@ -186,5 +186,161 @@ describe('WaveWarZ is off the 3 October programme', () => {
     const chella = SERIES.find((s) => s.name === 'ZAO-CHELLA');
     expect(chella).toBeDefined();
     expect(JSON.stringify(chella)).toContain('WaveWarZ');
+  });
+});
+
+/**
+ * RETIRED CLAIMS. Each of these was live on a public sponsor surface on
+ * 2026-09-09 and was found by rendering the page, not by reading this file.
+ * The point of pinning VALUES rather than files is that a barred figure or
+ * phrase trips wherever it reappears, including in a file nobody thought to
+ * add to a checklist. That is the failure mode these three came back through.
+ */
+describe('retired claims stay retired', () => {
+  // Everything in this module that could reach a page.
+  const surfaces = JSON.stringify({ SITE, ZAO, WAVEWARZ_STATS, SERIES, ELLSWORTH, TIERS, DELIVERABLES, DAY });
+
+  const BARRED: ReadonlyArray<readonly [RegExp, string]> = [
+    [/\bon-?chain\b/i, 'no crypto or web3 framing on a local Maine surface'],
+    [/\bblockchain\b/i, 'no crypto or web3 framing on a local Maine surface'],
+    [/\bweb ?3\b/i, 'no crypto or web3 framing on a local Maine surface'],
+    [/\b157\b/, 'never quote a specific ZAO member count, use "100+"'],
+    [/\b1,?452\b/, 'stale WaveWarZ figure, superseded 2026-09-09'],
+    [/18 September/, 'the reveal is 13 September; the 18th replicated into a sibling lane'],
+    [/\$ ?25,?000|\$ ?25K/i, '$25K is internal only; $5,000 is the only public figure'],
+  ];
+
+  for (const [pattern, why] of BARRED) {
+    it(`does not carry ${pattern.source} - ${why}`, () => {
+      expect(surfaces).not.toMatch(pattern);
+    });
+  }
+
+  // A guard that cannot fail is not a guard. This proves the check above is
+  // actually looking at something, so deleting a constant cannot silently
+  // turn every assertion into a pass over an empty string.
+  it('is actually inspecting real content', () => {
+    expect(surfaces.length).toBeGreaterThan(500);
+    expect(surfaces).toContain('Franklin Street Parklet');
+  });
+});
+
+/**
+ * THE CROWD DOES NOT MOVE INDOORS, and no public surface may say it does.
+ *
+ * Black Moon's evening is North Creek, roughly 6 to 9, on THEIR stage and
+ * THEIR licence, underwritten by them. Two reasons this wording is load-bearing
+ * rather than fussy. Their posted occupancy has never been given to us, so
+ * "everyone goes inside" asserts a fire-code fact nobody has looked up against
+ * an expected 200-250 people. And our insurance covers the OUTDOOR day only, a
+ * position that depends on their evening not being one continuous ZAOstock event.
+ *
+ * On 2026-09-09 this claim was live on `/` and `/program` while the sponsor deck
+ * carried the careful version, so the surface the town and the artists read was
+ * the reckless one and the surface fewest people see was the honest one.
+ *
+ * The rule matches the CLAIM, not remembered phrasings: a subject meaning
+ * everyone, a verb of motion, a destination meaning inside or next door. An
+ * earlier version matched only "moves inside" and "moves indoors" and passed
+ * cleanly over four live instances of "walks next door".
+ */
+describe('no public surface claims the crowd goes indoors', () => {
+  const FILES = [
+    'src/app/page.tsx',
+    'src/app/program/page.tsx',
+    'src/app/llms.txt/route.ts',
+    'src/app/sponsor/page.tsx',
+  ];
+
+  const SUBJECT = /(the whole street|everyone|everybody|the whole day|the crowd|all of us)/i;
+  const MOTION = /(walks?|moves?|heads?|goes|go|piles?|files?|streams?)/i;
+  const INSIDE = /(next door|inside|indoors|into black moon|in to black moon|in\b)/i;
+  const CLAIM = new RegExp(`${SUBJECT.source}[^.!?\\n]{0,60}\\b${MOTION.source}\\b[^.!?\\n]{0,60}${INSIDE.source}`, 'i');
+
+  for (const rel of FILES) {
+    it(`${rel} does not assert a crowd movement nobody has measured`, () => {
+      const body = readFileSync(path.join(process.cwd(), rel), 'utf8');
+      const hit = body.match(CLAIM);
+      expect(hit ? `${rel}: ${hit[0]}` : null).toBeNull();
+    });
+  }
+
+  it('the rule actually fires on the wording that was live', () => {
+    // All four real 2026-09-09 instances, kept as cases so the rule cannot be
+    // narrowed back to something that passes over them.
+    for (const live of [
+      'At six the whole street walks next door.',
+      'At six the whole street walks next door into Black Moon for the evening.',
+      'Everyone moves next door into Black Moon.',
+      'the whole street walks in',
+      'At six the street clears and the whole day walks inside.',
+    ]) {
+      expect(live).toMatch(CLAIM);
+    }
+  });
+
+  it('does not fire on the wording that is correct', () => {
+    for (const ok of [
+      'At six the street clears, and Black Moon next door hosts their own evening.',
+      'North Creek, hosted by Black Moon. Their stage, their evening.',
+      'Black Moon Public House, next door',
+    ]) {
+      expect(ok).not.toMatch(CLAIM);
+    }
+  });
+});
+
+
+/**
+ * NO PUBLIC PAGE PUBLISHES A RECURRING MEETING TIME unless somebody holds it.
+ *
+ * /meetings advertised two open meetings a day, 11:30 AM and 5 PM Eastern,
+ * "every day until 3 October", in copy that invited people to whichever suited
+ * them "so nobody has to choose between this and a job". Zaal, 2026-09-09: "we
+ * never do the standups tbh". It was true when written on 29 August and went
+ * stale without anyone touching the page.
+ *
+ * This is the worst-consequence version of the stale-claim family, because a
+ * wrong figure misleads a reader and a wrong meeting time makes somebody travel.
+ *
+ * Matches the CLAIM, not the old wording: a clock time next to a recurrence
+ * word. If a real standing meeting ever starts, someone must delete this test
+ * deliberately and name who is holding it.
+ */
+describe('no public page publishes a recurring meeting time', () => {
+  const PAGES = ['src/app/meetings/page.tsx', 'src/app/page.tsx', 'src/app/program/page.tsx'];
+  const TIME = /\b(?:[01]?\d|2[0-3])(?::[0-5]\d)?\s*(?:AM|PM|am|pm)\b/;
+  const RECURS = /\b(every ?day|daily|each day|(?:twice|once|two|three) a day|meetings? a day|a day|per day|every week|weekly)\b/i;
+  const NEAR = new RegExp(`(?:${TIME.source}[^.!?\n]{0,80}${RECURS.source})|(?:${RECURS.source}[^.!?\n]{0,80}${TIME.source})`, 'i');
+
+  for (const rel of PAGES) {
+    it(`${rel} does not advertise a standing meeting time`, () => {
+      const body = readFileSync(path.join(process.cwd(), rel), 'utf8');
+      // Strip comments: the history of the retirement is written in them and
+      // must stay readable without tripping the guard it explains.
+      const code = body.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+      const hit = code.match(NEAR);
+      expect(hit ? `${rel}: ${hit[0]}` : null).toBeNull();
+    });
+  }
+
+  it('fires on the wording that was live', () => {
+    for (const live of [
+      'Two open meetings a day, 11:30 AM and 5 PM Eastern',
+      '11:30 AM Eastern, every day',
+      'daily at 5 PM',
+    ]) {
+      expect(live).toMatch(NEAR);
+    }
+  });
+
+  it('does not fire on the run of show', () => {
+    for (const ok of [
+      'Music starts at noon and the street clears at six.',
+      '12:05 The Crown Vics. 30 minutes.',
+      'Soundcheck is the evening of Friday 2 October.',
+    ]) {
+      expect(ok).not.toMatch(NEAR);
+    }
   });
 });

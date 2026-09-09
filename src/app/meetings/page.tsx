@@ -1,21 +1,22 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { SITE } from '@/content/site';
-import { MEETINGS } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList, Card } from '@/components/poster';
 
-// Replaces /circles. Zaal, 29 August: the eight circles "will become meetings",
-// twice a day at 11:30 and 17:00 ET. So this page is the two times and what
-// each one is for, and nothing else: no login, no database, no sign-up. The
-// circles page it replaces was a dashboard feature that has been failing
-// publicly since the dashboard was retired.
+// Replaces /circles. This page published two fixed daily meetings, 11:30 and
+// 17:00 ET, from 29 August until 2026-09-09, when Zaal said plainly that they
+// do not happen. A page telling the public to turn up somewhere nobody is, is
+// worse than no page, so the times are gone and what remains is the route in.
+//
+// Do NOT re-add a recurring time here unless someone is actually holding it.
+// site.test.ts fails the build if a published page carries one.
 export const metadata: Metadata = {
   title: 'Meetings',
-  description: 'ZAOstock runs on two open meetings a day, 11:30 AM and 5 PM Eastern, until 3 October. Anyone building the festival can join either one.',
+  description: 'How to get involved in building ZAOstock. Ask for the working document, bring the one thing you are working on.',
   alternates: { canonical: '/meetings' },
   openGraph: {
     title: 'Meetings | ZAOstock',
-    description: 'Two open meetings a day, 11:30 AM and 5 PM Eastern, until 3 October.',
+    description: 'How to get involved in building ZAOstock before 3 October.',
     url: 'https://zaostock.com/meetings',
     images: [OG_IMAGE],
   },
@@ -28,28 +29,23 @@ export default function MeetingsPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">How ZAOstock gets built</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Two meetings a day, until the third of October.
+Come and build it with us.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            There is no sign-up sheet and no committee. If you are building any part of this festival, come to
-            either meeting with the one thing you are working on. Everything decided goes straight into the
-            working document, so missing one costs you nothing.
+            There is no sign-up sheet and no committee. If you are building any part of this festival, get in
+            touch and we will find a time that suits you. Everything decided goes into the working document,
+            so nothing depends on being in the room at a particular hour.
           </p>
         </div>
       </Section>
 
       <Section id="times">
-        <SectionHeader eyebrow="The two times" title="Same times, every day." className="mb-6" />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {MEETINGS.map((m) => (
-            <Card key={m.time}>
-              <Eyebrow>{m.label}</Eyebrow>
-              <p className="font-display font-normal text-h2 text-ink-950 m-0 mt-2 tabular">{m.time}</p>
-              <p className="text-sm text-ink-muted m-0 mt-1">{m.zone}</p>
-              <p className="text-base text-ink-secondary m-0 mt-3">{m.what}</p>
-            </Card>
-          ))}
-        </div>
+        <SectionHeader
+          eyebrow="When"
+          title="No fixed weekly slot, on purpose."
+          lede="We are a volunteer team with jobs, and a standing meeting nobody attends is worse than none. We meet when there is something to decide. Say what you are working on and we will find an hour that works for you."
+          className="mb-6"
+        />
       </Section>
 
       <Section id="how">
@@ -57,9 +53,9 @@ export default function MeetingsPage() {
         <BorderedList
           rows={[
             { term: 'Bring one thing', detail: 'What you are working on, or the one question stopping you. Half-formed is fine.' },
-            { term: 'Thirty minutes', detail: 'Both meetings are short on purpose. If something needs an hour it gets its own call.' },
+            { term: 'Short', detail: 'Kept deliberately short. If something needs an hour it gets its own call.' },
             { term: 'Typed as we go', detail: 'Decisions go into the working document during the meeting, not after, so the document is always what we agreed.' },
-            { term: 'Nobody is required', detail: 'Come when you have something. No attendance, no titles, no tiers.' },
+            { term: 'Nobody is required', detail: 'Turn up when you have something. No attendance, no titles, no tiers.' },
           ]}
         />
       </Section>

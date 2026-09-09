@@ -98,24 +98,20 @@ export const DAY = [
 ] as const;
 
 /**
- * The two open meetings, every day until 3 October. Zaal, 29 August: the eight
- * circles "will become meetings", 11:30 AM and 5 PM Eastern. Rendered by
- * /meetings; the same two times go on the shared calendar.
+ * RETIRED 2026-09-09. There were two exported meeting times here, 11:30 AM and
+ * 5 PM Eastern, "every day until 3 October", rendered on /meetings and promised
+ * to the public.
+ *
+ * Zaal, 2026-09-09: "we never do the standups tbh". So the page invited
+ * strangers, artists and sponsors to meetings that do not happen, in copy that
+ * specifically said nobody has to choose between this and a job. It was true
+ * when it was written on 29 August and stopped being true without anyone
+ * editing the page, which is the same failure as the reveal date and the
+ * crowd-goes-indoors claim: a record that goes stale stays loud.
+ *
+ * Deleted rather than emptied, so nothing can render a meeting time from here
+ * again. /meetings now says how to reach us instead of when to turn up.
  */
-export const MEETINGS = [
-  {
-    label: 'Midday',
-    time: '11:30 AM',
-    zone: 'Eastern, every day',
-    what: 'What moved since yesterday, and what is stuck. The one that catches problems early enough to fix them.',
-  },
-  {
-    label: 'Evening',
-    time: '5:00 PM',
-    zone: 'Eastern, every day',
-    what: 'For anyone whose day starts after the midday one. Same agenda, later, so nobody has to choose between this and a job.',
-  },
-] as const;
 
 export type Partner = { name: string; role: string; poc: string; confirmed: boolean; logoSrc?: string };
 
@@ -284,11 +280,31 @@ export const ELLSWORTH = {
 /** Deck slide 2. The newsletter count is VERIFY in the deck and does not render. */
 export const ZAO = {
   weeklySessions: { value: '100+', label: 'consecutive weekly sessions since 30 July 2024' },
-  governanceMembers: { value: '157', label: 'verified on-chain governance members' },
+  /**
+   * RETIRED 2026-09-09: this was `157` / "verified on-chain governance members",
+   * and it broke two standing rules at once on a public sponsor surface - never
+   * quote a specific ZAO member count (use "100+"), and no crypto or web3
+   * framing in copy aimed at a local Maine audience. It was found live on
+   * /sponsor by the retired-claims registry, not by anyone re-reading this file.
+   *
+   * Replaced with the track record, which is what a sponsor is actually weighing
+   * and is sourced from SERIES below rather than invented.
+   */
+  festivalsRun: { value: '3', label: 'live festivals run since 2024, before this one' },
 } as const;
 
 /** Deck slide 6, measured 2026-08-27. Re-pull from wavewarz.info/api/public/stats before print. */
 export const WAVEWARZ_STATS = {
-  asOf: '27 August 2026',
-  battles: { value: '1,452', label: 'battles run' },
+  // Re-pulled 2026-09-09T12:38Z from wavewarz.info/api/public/stats, which
+  // returned battles.total = 1508. The previous figure, 1,452 as of 27 August,
+  // was refreshed in the sponsor deck hours before this file, which is exactly
+  // the shape this codebase keeps getting caught by: a correction that reaches
+  // one surface and not its sibling. This is the SOURCE, so the deck and the
+  // site now agree because they read the same number, not because someone
+  // remembered to edit both.
+  //
+  // It is a SNAPSHOT and it climbs, so it goes stale downward in credibility.
+  // re-check 2026-10-01, before any print run.
+  asOf: '9 September 2026',
+  battles: { value: '1,508', label: 'battles run' },
 } as const;

@@ -16,7 +16,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 ## The day (one venue at a time)
 
 - Noon to 4 PM, Franklin Street Parklet: independent artists, about 30 minutes each, with our MC and our partners between sets. Music starts at noon.
-- 6 PM onward, Black Moon Public House, next door: the whole street walks in. DJ set 6 to 8 PM, live set 8 to 10 PM hosted by Black Moon.
+- 6 PM, the street clears. Black Moon Public House, next door, hosts their own evening: North Creek, roughly 6 to 9 PM, on their stage and their licence. It is not a second ZAOstock stage.
 - Free to attend. Rain or shine, under tent cover from Wallace Events. Optional Pro Ticket, $50, on /donate.
 
 ## Lineup
