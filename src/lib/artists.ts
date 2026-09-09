@@ -41,9 +41,30 @@ export function generateClaimToken(): string {
 export const getPublicArtists = cache(async function getPublicArtists(): Promise<PublicArtist[]> {
   if (!lineupIsPublic()) return [];
   const supabase = getSupabaseAdmin();
+
+  // SCOPED TO THIS FESTIVAL. The artists table holds rows for every ZAO event -
+  // zao-palooza, zao-chella, zaoville and zaostock all exist in `events`. This
+  // query had no event filter, so any row anywhere marked 'confirmed' would have
+  // appeared on ZAOstock's public pages. Measured 2026-09-08: only zaostock has
+  // artist rows and none is confirmed, so it could not fire - but Hurricane and
+  // Dcoop played past ZAO festivals, and backfilling those rosters would have
+  // put another festival's line-up on this one's site. Same missing scope as
+  // /api/admin/confirm-artist, fixed there in the same week; this is the public
+  // half, which is the half a stranger sees.
+  const { data: event } = await supabase
+    .from('events')
+    .select('id')
+    .eq('slug', 'zaostock')
+    .maybeSingle();
+
+  // No event, no lineup. Failing to an empty list is right here: the caller
+  // renders "not yet", which is the same thing it shows before the reveal.
+  if (!event) return [];
+
   const { data, error } = await supabase
     .from('artists')
     .select('id, name, genre, city, status, socials, bio, photo_url, logo_url, cypher_interested, cypher_role, points_earned, volunteer_eligible')
+    .eq('event_id', event.id)
     .eq('status', 'confirmed')
     .order('status')
     .order('name');
