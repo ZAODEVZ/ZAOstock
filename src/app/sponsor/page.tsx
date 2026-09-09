@@ -105,7 +105,7 @@ export default function SponsorPage() {
           <div className="flex flex-col gap-6">
             <div className="grid grid-cols-2 gap-6">
               <Stat value={ZAO.weeklySessions.value} label={ZAO.weeklySessions.label} />
-              <Stat value={ZAO.governanceMembers.value} label={ZAO.governanceMembers.label} />
+              <Stat value={ZAO.festivalsRun.value} label={ZAO.festivalsRun.label} />
             </div>
             <BorderedList rows={SERIES.map((e) => ({ term: e.name, detail: `${e.place}, ${e.when}. ${e.note}` }))} />
           </div>
@@ -117,7 +117,7 @@ export default function SponsorPage() {
           <SectionHeader
             eyebrow="WaveWarZ"
             title="Two artists go head to head. The audience decides."
-            lede="A live music-battle format, online all year. The audience picks the winner and the artist is paid automatically, on-chain. It is not on the 3 October programme."
+            lede="A live music-battle format, online all year. The audience picks the winner, and the winning artist is paid straight away. It is not on the 3 October programme."
           />
           <div>
             <Stat value={WAVEWARZ_STATS.battles.value} label={`${WAVEWARZ_STATS.battles.label}, as of ${WAVEWARZ_STATS.asOf}`} />

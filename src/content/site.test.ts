@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES } from './site';
 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
 // that live here until PRODUCTION's file absorbs them.
@@ -186,5 +186,41 @@ describe('WaveWarZ is off the 3 October programme', () => {
     const chella = SERIES.find((s) => s.name === 'ZAO-CHELLA');
     expect(chella).toBeDefined();
     expect(JSON.stringify(chella)).toContain('WaveWarZ');
+  });
+});
+
+/**
+ * RETIRED CLAIMS. Each of these was live on a public sponsor surface on
+ * 2026-09-09 and was found by rendering the page, not by reading this file.
+ * The point of pinning VALUES rather than files is that a barred figure or
+ * phrase trips wherever it reappears, including in a file nobody thought to
+ * add to a checklist. That is the failure mode these three came back through.
+ */
+describe('retired claims stay retired', () => {
+  // Everything in this module that could reach a page.
+  const surfaces = JSON.stringify({ SITE, ZAO, WAVEWARZ_STATS, SERIES, ELLSWORTH, TIERS, DELIVERABLES, DAY });
+
+  const BARRED: ReadonlyArray<readonly [RegExp, string]> = [
+    [/\bon-?chain\b/i, 'no crypto or web3 framing on a local Maine surface'],
+    [/\bblockchain\b/i, 'no crypto or web3 framing on a local Maine surface'],
+    [/\bweb ?3\b/i, 'no crypto or web3 framing on a local Maine surface'],
+    [/\b157\b/, 'never quote a specific ZAO member count, use "100+"'],
+    [/\b1,?452\b/, 'stale WaveWarZ figure, superseded 2026-09-09'],
+    [/18 September/, 'the reveal is 13 September; the 18th replicated into a sibling lane'],
+    [/\$ ?25,?000|\$ ?25K/i, '$25K is internal only; $5,000 is the only public figure'],
+  ];
+
+  for (const [pattern, why] of BARRED) {
+    it(`does not carry ${pattern.source} - ${why}`, () => {
+      expect(surfaces).not.toMatch(pattern);
+    });
+  }
+
+  // A guard that cannot fail is not a guard. This proves the check above is
+  // actually looking at something, so deleting a constant cannot silently
+  // turn every assertion into a pass over an empty string.
+  it('is actually inspecting real content', () => {
+    expect(surfaces.length).toBeGreaterThan(500);
+    expect(surfaces).toContain('Franklin Street Parklet');
   });
 });
