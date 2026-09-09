@@ -289,3 +289,58 @@ describe('no public surface claims the crowd goes indoors', () => {
     }
   });
 });
+
+
+/**
+ * NO PUBLIC PAGE PUBLISHES A RECURRING MEETING TIME unless somebody holds it.
+ *
+ * /meetings advertised two open meetings a day, 11:30 AM and 5 PM Eastern,
+ * "every day until 3 October", in copy that invited people to whichever suited
+ * them "so nobody has to choose between this and a job". Zaal, 2026-09-09: "we
+ * never do the standups tbh". It was true when written on 29 August and went
+ * stale without anyone touching the page.
+ *
+ * This is the worst-consequence version of the stale-claim family, because a
+ * wrong figure misleads a reader and a wrong meeting time makes somebody travel.
+ *
+ * Matches the CLAIM, not the old wording: a clock time next to a recurrence
+ * word. If a real standing meeting ever starts, someone must delete this test
+ * deliberately and name who is holding it.
+ */
+describe('no public page publishes a recurring meeting time', () => {
+  const PAGES = ['src/app/meetings/page.tsx', 'src/app/page.tsx', 'src/app/program/page.tsx'];
+  const TIME = /\b(?:[01]?\d|2[0-3])(?::[0-5]\d)?\s*(?:AM|PM|am|pm)\b/;
+  const RECURS = /\b(every ?day|daily|each day|(?:twice|once|two|three) a day|meetings? a day|a day|per day|every week|weekly)\b/i;
+  const NEAR = new RegExp(`(?:${TIME.source}[^.!?\n]{0,80}${RECURS.source})|(?:${RECURS.source}[^.!?\n]{0,80}${TIME.source})`, 'i');
+
+  for (const rel of PAGES) {
+    it(`${rel} does not advertise a standing meeting time`, () => {
+      const body = readFileSync(path.join(process.cwd(), rel), 'utf8');
+      // Strip comments: the history of the retirement is written in them and
+      // must stay readable without tripping the guard it explains.
+      const code = body.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+      const hit = code.match(NEAR);
+      expect(hit ? `${rel}: ${hit[0]}` : null).toBeNull();
+    });
+  }
+
+  it('fires on the wording that was live', () => {
+    for (const live of [
+      'Two open meetings a day, 11:30 AM and 5 PM Eastern',
+      '11:30 AM Eastern, every day',
+      'daily at 5 PM',
+    ]) {
+      expect(live).toMatch(NEAR);
+    }
+  });
+
+  it('does not fire on the run of show', () => {
+    for (const ok of [
+      'Music starts at noon and the street clears at six.',
+      '12:05 The Crown Vics. 30 minutes.',
+      'Soundcheck is the evening of Friday 2 October.',
+    ]) {
+      expect(ok).not.toMatch(NEAR);
+    }
+  });
+});
