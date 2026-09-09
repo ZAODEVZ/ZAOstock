@@ -102,7 +102,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="The day"
             title="Outside, then in."
-            lede="One venue at a time. At six the whole street walks next door."
+            lede="One venue at a time. At six the street clears, and Black Moon next door hosts their own evening."
           />
           <div className="flex flex-col gap-4">
             <BorderedList

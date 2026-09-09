@@ -224,3 +224,68 @@ describe('retired claims stay retired', () => {
     expect(surfaces).toContain('Franklin Street Parklet');
   });
 });
+
+/**
+ * THE CROWD DOES NOT MOVE INDOORS, and no public surface may say it does.
+ *
+ * Black Moon's evening is North Creek, roughly 6 to 9, on THEIR stage and
+ * THEIR licence, underwritten by them. Two reasons this wording is load-bearing
+ * rather than fussy. Their posted occupancy has never been given to us, so
+ * "everyone goes inside" asserts a fire-code fact nobody has looked up against
+ * an expected 200-250 people. And our insurance covers the OUTDOOR day only, a
+ * position that depends on their evening not being one continuous ZAOstock event.
+ *
+ * On 2026-09-09 this claim was live on `/` and `/program` while the sponsor deck
+ * carried the careful version, so the surface the town and the artists read was
+ * the reckless one and the surface fewest people see was the honest one.
+ *
+ * The rule matches the CLAIM, not remembered phrasings: a subject meaning
+ * everyone, a verb of motion, a destination meaning inside or next door. An
+ * earlier version matched only "moves inside" and "moves indoors" and passed
+ * cleanly over four live instances of "walks next door".
+ */
+describe('no public surface claims the crowd goes indoors', () => {
+  const FILES = [
+    'src/app/page.tsx',
+    'src/app/program/page.tsx',
+    'src/app/llms.txt/route.ts',
+    'src/app/sponsor/page.tsx',
+  ];
+
+  const SUBJECT = /(the whole street|everyone|everybody|the whole day|the crowd|all of us)/i;
+  const MOTION = /(walks?|moves?|heads?|goes|go|piles?|files?|streams?)/i;
+  const INSIDE = /(next door|inside|indoors|into black moon|in to black moon|in\b)/i;
+  const CLAIM = new RegExp(`${SUBJECT.source}[^.!?\\n]{0,60}\\b${MOTION.source}\\b[^.!?\\n]{0,60}${INSIDE.source}`, 'i');
+
+  for (const rel of FILES) {
+    it(`${rel} does not assert a crowd movement nobody has measured`, () => {
+      const body = readFileSync(path.join(process.cwd(), rel), 'utf8');
+      const hit = body.match(CLAIM);
+      expect(hit ? `${rel}: ${hit[0]}` : null).toBeNull();
+    });
+  }
+
+  it('the rule actually fires on the wording that was live', () => {
+    // All four real 2026-09-09 instances, kept as cases so the rule cannot be
+    // narrowed back to something that passes over them.
+    for (const live of [
+      'At six the whole street walks next door.',
+      'At six the whole street walks next door into Black Moon for the evening.',
+      'Everyone moves next door into Black Moon.',
+      'the whole street walks in',
+      'At six the street clears and the whole day walks inside.',
+    ]) {
+      expect(live).toMatch(CLAIM);
+    }
+  });
+
+  it('does not fire on the wording that is correct', () => {
+    for (const ok of [
+      'At six the street clears, and Black Moon next door hosts their own evening.',
+      'North Creek, hosted by Black Moon. Their stage, their evening.',
+      'Black Moon Public House, next door',
+    ]) {
+      expect(ok).not.toMatch(CLAIM);
+    }
+  });
+});

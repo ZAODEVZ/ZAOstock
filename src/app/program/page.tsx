@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 // Zaal's typed verdicts in ~/zao-vault/daily/2026-08-27.md and 2026-08-28.md.
 //
 // One venue at a time (Zaal, 23 Aug): outdoors on the parklet until six, then
-// everything walks next door into Black Moon.
+// the street clears and Black Moon hosts their own evening next door.
 //
 // Music starts at NOON: a five-minute intro on the mic, then about 30 minutes
 // per act with 5- or 10-minute changeovers held by the MC plus sponsor spots.
@@ -71,7 +71,7 @@ const BLOCKS: Block[] = [
       // THE RUN OF SHOW LOCKED 3 SEPTEMBER. Music 12:05 to 17:55, street clears
       // at 18:00. Five minutes of margin across the whole afternoon and no
       // recovery slot, so one long changeover puts the day over on the evening
-      // the crowd is meant to move indoors.
+      // Black Moon is hosting their own evening next door.
       //
       // Zaal published the names with their real times on 2026-09-07. Note what
       // that does and does not claim: this is who is PLAYING and when. It is NOT
@@ -100,7 +100,7 @@ const BLOCKS: Block[] = [
       { time: '16:30', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },
       { time: '17:10', label: 'Changeover', tone: 'gap' },
       { time: '17:15', label: 'Fellenz', detail: 'Rock guitar and soundtrack. 40 minutes. Closes the outdoor block.', tone: 'set' },
-      { time: '17:55', label: 'Music ends. The street clears at six.', detail: 'Everyone moves next door into Black Moon.', tone: 'gap' },
+      { time: '17:55', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
     ],
   },
   {
@@ -121,7 +121,7 @@ const BLOCKS: Block[] = [
     // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
     // block describes their programme, not ours, and should not gain detail we
     // have not been given.
-    lede: 'At six the whole street walks next door, together. The music is already on when the first person reaches the door.',
+    lede: 'At six the street clears. Black Moon next door hosts their own evening, North Creek from 6 to 9 - their stage, their licence, underwritten by them.',
     slots: [
       { time: '18:00', label: 'North Creek', detail: 'The after-party, hosted and underwritten by Black Moon on their own stage.', tone: 'set' },
       { time: '21:00', label: 'Close', detail: 'Approximate. Black Moon keeps its own hours.', tone: 'gap' },
@@ -159,7 +159,7 @@ export default function ProgramPage() {
             <Eyebrow tone="denim">Program · {FESTIVAL.dateLabel}</Eyebrow>
             <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Outside, then in.</h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              Music from noon on the {FESTIVAL.venue}. At six the whole street walks next door into Black Moon for the evening.
+              Music from noon on the {FESTIVAL.venue}. At six the street clears, and their own evening starts inside Black Moon next door.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>
