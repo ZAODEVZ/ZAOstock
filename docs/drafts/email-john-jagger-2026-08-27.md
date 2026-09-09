@@ -35,12 +35,13 @@ against all the exposures, at the best price.
 
 - **Site:** the Franklin Street Parklet, the City-owned parklet in downtown
   Ellsworth. Outdoors, from noon until 6pm.
-- **Then indoors:** at 6pm the whole event moves next door into Black Moon
+- **Then next door, and NOT ours:** at 6pm the street clears and Black Moon
   Public House and finishes there. One venue at a time, never both at once.
 - **Alcohol** is served only inside Black Moon and at their beer garden, under
   **their own liquor permit**, not ours.
-- **What happens:** live music sets on a stage that is already standing from the
-  City's summer concert series, plus live music battles in the late afternoon.
+- **What happens:** nine independent music acts back to back on one stage, noon
+  to six. No second stage. Tenting via Wallace Events. **Do NOT claim the City's
+  stage is already standing** - nobody has confirmed it is up on 3 October.
 - **Expected attendance:** 200-250 in person, and around 1,000 online (the online side does not touch the site)
 - **Fire performance:** one act involves fire spinning, and the City has
   confirmed it can go ahead. The performer is Dcoop, who is also on the bill
