@@ -39,6 +39,12 @@ import { ENV } from '@/lib/env';
 // has no `slug`, no `confirmed_at` and no `confirmation_reference` column, and
 // `socials` is TEXT rather than json. An earlier draft of this route used all
 // four and would have failed at runtime on the first real confirmation.
+/**
+ * This route exists for one festival's reveal. Every lookup is scoped to it, so
+ * a confirmation can never land on another event's artist row.
+ */
+const EVENT_SLUG = 'zaostock';
+
 const bodySchema = z
   .object({
     id: z.string().uuid().optional(),
@@ -87,7 +93,32 @@ export async function POST(request: NextRequest) {
   }
 
   const supabase = getSupabaseAdmin();
-  const lookup = supabase.from('artists').select('id, name, status');
+
+  // SCOPED TO THIS FESTIVAL, always.
+  //
+  // The lookup used to be `.eq('name', ...)` across the whole artists table,
+  // with no event scope. That works only while no two events share an artist
+  // name. Measured 2026-09-08: four events exist and only `zaostock` has any
+  // artist rows, so it could not fire - but Hurricane and Dcoop both played
+  // past ZAO festivals, and the day someone backfills those rosters a
+  // confirmation sent for ZAOstock could land on ZAO-PALOOZA's row instead.
+  //
+  // Confirming the wrong festival's artist is indistinguishable from
+  // confirming someone who never agreed, which is the thing decision 0005
+  // exists to prevent. Fixed BEFORE the endpoint's first real use rather than
+  // after, because the window where it is unused is the safe one.
+  const { data: event, error: eventError } = await supabase
+    .from('events')
+    .select('id')
+    .eq('slug', EVENT_SLUG)
+    .maybeSingle();
+
+  if (eventError || !event) {
+    console.error('[api/admin/confirm-artist] event lookup failed', eventError);
+    return NextResponse.json({ error: 'Event lookup failed' }, { status: 503 });
+  }
+
+  const lookup = supabase.from('artists').select('id, name, status').eq('event_id', event.id);
   const { data: existing, error: findError } = parsed.data.id
     ? await lookup.eq('id', parsed.data.id).maybeSingle()
     : await lookup.eq('name', parsed.data.name as string).maybeSingle();
