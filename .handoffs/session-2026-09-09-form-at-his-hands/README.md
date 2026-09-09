@@ -16,7 +16,7 @@ to be finalized."* Every other lane is parked. This is the only lane working.
 
 - [ ] **DO THE DECK.** Canva `DAHUiVhk1Ss` (a COPY - the ZAO-CHELLA original is untouched, keep it that way) to approval-ready. Hard rules in Section B, **plus the two late arrivals in Section B2 - one flight not two, and no artist pay figures.**
 - [ ] **Apply one pending Canva edit** whose exact replacement text is already written: `~/zao-vault/projects/zaostock-deck-black-moon-overclaim-2026-09-08.md`. Two slides still claim the whole street walks inside Black Moon. The Canva MCP disconnected before I could apply it - **check the MCP is connected first.**
-- [ ] **When Zaal pastes the `/viewform` URL:** substitute it into the nine messages at `~/zao-vault/projects/zaostock-nine-confirmations-2026-09-08.md` and create nine Gmail drafts in one pass. Bodies are final. **The Gmail MCP session was expired at handoff - it needs reauth.**
+- [ ] **When Zaal pastes the `/viewform` URL:** substitute it into the messages at `~/zao-vault/projects/zaostock-nine-confirmations-2026-09-08.md`. **CORRECTION 2026-09-09: it is FIVE drafts, not nine.** Only Crown Vics (via Steve), Acadia Rising, Hurricane, Fellenz and Dcoop have addresses. OPEN X, Grass Rug, Michael Anderson and Lyons Den have **no route** - "likely Steve's" is a guess, not an address. **Both this lane's and artizen's Gmail sessions are expired; both need reauth.**
 - [ ] **When Zaal says the secret is set:** probe with `zao-measure` using a name that does NOT exist. **404 is the pass** (auth accepted, config live, DB reachable, nothing touched). 401 = the two values disagree. 503 = it still needs the redeploy. Never test by confirming a real artist.
 - [ ] **Do NOT commit `docs/marketing/press-kit.md` in the main worktree.** It is modified and unstaged, and it is STALE: local `main` is **22 commits behind** origin, so those edits duplicate work already merged in #125. Fetch and reset rather than commit.
 
@@ -69,6 +69,36 @@ public `/viewform` URL, and to run the Apps Script under that account only if it
 genuinely has it. **Check for its reply before assuming the form is still blocked
 on Zaal** - it may already be unblocked. Coordinate with `zaoartizen-62`; this
 lane owns the form, artizen holds the keys.
+
+## Section B3 - CORRECTIONS from artizen, 2026-09-09, after the bundle was written
+
+**1. MY BUNDLE SAID "NINE DRAFTS IN ONE PASS". IT IS FIVE.** Corrected above.
+Four of the nine have no address at all, and *"likely Steve's"* for OPEN X and
+Grass Rug is a theory, not a route. Worth having now rather than discovering it
+on Friday at the moment of sending. **The Lyons Den gap is the sharpest:** they
+are the one act named publicly since the start, so they are the most conspicuous
+act to be missing from a lineup they are already associated with.
+
+**2. NO LANE CAN CREATE A GOOGLE FORM.** artizen verified this independently
+rather than taking it from me: the Drive create-file tool lists document,
+spreadsheet, presentation and folder as the only Google-native types, and there
+is no Forms API tool in its set either. **Tap 1 is definitively Zaal's** - stop
+looking for a lane that can do it. artizen also declined to report a Drive search
+it did not actually run, which is the right call and means **whether a form exists
+under `info@thezao.com` is still UNMEASURED.**
+
+**3. BOTH GMAIL SESSIONS ARE EXPIRED.** artizen's worked earlier today - it sent
+two emails around 20:00-22:00 - and has since expired, verified with two
+different calls. So the drafts step cannot be handed to artizen on the assumption
+its Gmail is live. **Both lanes need reauth.**
+
+**4. The nine messages are clean on the pay rule.** artizen scanned for figures,
+fee, stipend and compensation; the only hit is the line recording Zaal's own
+instruction not to write about artist pay. Nothing to fix.
+
+**artizen is standing by**, parked except for this: the moment the URL exists AND
+Gmail is reauthed, it creates drafts for the five addressable acts in one pass,
+drafts only, nothing sent.
 
 ## Section C - repo state
 
