@@ -72,6 +72,6 @@ Then confirm the count moved by exactly one, and run `scripts/reveal-preflight.s
 **Mental model:** The reveal fires 13 September and everything mechanical for it is shipped, deployed and passing. The preflight is green on every check except `ZERO acts on the bill`, which is not a code problem. One of nine acts has replied. The remaining work is people: eight messages, one certificate, one soundcheck time, one airport.
 
 **Open questions for Zaal:**
-- **Is there one flight or two?** Finance corrected this to "Hurricane's is the only flight, Dcoop drives because he hauls a PA". A separate record describes Fellenz arriving via a Portland flight plus a 2.5 hour drive. Either that record is stale or a second flight is unbudgeted.
+- ~~**Is there one flight or two?**~~ **ANSWERED 2026-09-09.** Zaal, verbatim: "its just hurricane flying, fellenz is driving." **ONE flight, Hurricane's.** Fellenz drives, and Dcoop drives because he hauls a PA that cannot be checked. The record describing Fellenz flying into Portland was stale and has been corrected at its source. Anyone pricing travel prices ONE flight, from `Houston TX` per the artists table, and confirms the airport with him before booking. Fares climb inside 14 days, so from **19 September**. Any ask built on two or three flights is a multiple of the real number.
 - **Does the Candy Toy Box work supersede the deck**, or sit alongside it?
 - **Black Moon gift certificate value** is recorded as both $20 and about $25 per person, and the headcount owed is UNSET.
