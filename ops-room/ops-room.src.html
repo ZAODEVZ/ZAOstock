@@ -476,7 +476,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
         <div class="sec">
           <div class="sec-head"><h2>Need a human?</h2><span class="rule"></span><span class="note" id="help-route">Goes straight to the crew</span></div>
           <div class="card pad">
-            <p style="font-size:13.5px; color:var(--ink-2); max-width:70ch; margin-bottom:16px">Nothing here is locked. We only ask for enough to find you and get back to you, so please fill the whole thing in: a request with no name and no way to reach you is one we cannot act on.</p>
+            <p style="font-size:13.5px; color:var(--ink-2); max-width:70ch; margin-bottom:16px">Fill in what you can. We need a name and a way to reach you, the rest is optional.</p>
             <div class="form-grid">
               <label class="f">What do you need?
                 <select id="h-kind">
@@ -1217,7 +1217,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     if (ph === "live" && c.now) { pw.className = "pill red"; pw.innerHTML = ""; pw.appendChild(el("span", "dot")); pw.appendChild(el("span", null, "On now: " + slotTitle(c.now, true))); }
     else if (ph === "morning") { pw.className = "pill hot"; pw.textContent = "Event day, before doors"; }
     else if (ph === "after") { pw.className = "pill"; pw.textContent = "After the day"; }
-    else { pw.className = "pill"; pw.textContent = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5)) + " days to doors"; }
+    else { pw.className = "pill hot"; pw.textContent = Math.max(0, Math.ceil((DOORS - new Date()) / 864e5)) + " days to doors"; }
   }
   function renderCountdown() {
     var ns = nowState(), box = $("#countdown"), ph = phase(ns);
