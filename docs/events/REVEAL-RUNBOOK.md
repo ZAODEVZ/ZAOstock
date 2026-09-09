@@ -1,4 +1,12 @@
-# Reveal runbook, 7 September 2026
+# Reveal runbook, 13 September 2026
+
+> **This runbook was written for 7 September and that gate has already fired.**
+> On 2026-09-07 it opened on schedule against an empty artists table and the
+> empty bill went public. The date moved to Sunday 13 September in PR #108,
+> merged 2026-09-07, and every date below has been corrected to match
+> `SITE.lineupRevealDate`. If you are reading a "7 September" anywhere in this
+> file, it is a line I missed - trust `src/content/site.ts`, not this document.
+> <!-- re-check: 2026-09-13 -->
 
 The lineup reveal is **two edits in two different systems**, and doing one
 without the other is the most likely way this goes wrong. Nothing fails if you
@@ -46,9 +54,23 @@ Set the confirmed acts in the `artists` table:
   [`../decisions/0003-event-slug-aliases.md`](../decisions/0003-event-slug-aliases.md).
 - `set_order` controls the running order. Rows without one sort last.
 
-Nothing is published by doing this before the 7th. `lineupIsPublic()` holds both
+Nothing is published by doing this before the 13th. `lineupIsPublic()` holds both
 surfaces shut until the date passes in **Ellsworth**, not UTC. That is what #86
-fixed, and it means the gate opens at 04:00Z on the 7th, not at midnight UTC.
+fixed, and it means the gate opens at 04:00Z on the 13th, not at midnight UTC.
+
+### 1b. Or run the whole preflight in one command
+
+```bash
+scripts/reveal-preflight.sh
+```
+
+Every check below, plus the app's slug and the public surfaces, as PASS/FAIL with
+an exit code. **It fails today**, correctly, on the only thing that matters:
+
+    FAIL  ZERO acts on the bill. Do not proceed - the reveal has nothing to reveal
+
+A check that cannot run reports UNVERIFIABLE and **counts as a failure**, because
+"I could not tell" must never read the same as "fine".
 
 ### 2. Check the API before the website
 
@@ -57,13 +79,22 @@ curl -s https://zaostock.com/api/events/zaostock/lineup
 curl -s https://zaostock.com/api/events/zaostock-2026/lineup   # the app's slug
 ```
 
-Before the gate: `{"artists":[],"source":"live","published":false,"reveal_date":"2026-09-07"}`
+Before the gate: `{"artists":[],"source":"live","published":false,"reveal_date":"2026-09-13"}`
 
 After the gate, with rows in place: `"published"` is gone and `artists` has the
 roster in `set_order`.
 
 **If `artists` is `[]` after the gate opens, stop.** That is either the rows not
 being `confirmed`, or `event_id` not matching. It is not a caching problem.
+
+**This is not hypothetical. It is what happened on 7 September.** The gate opened
+exactly on time, the endpoint answered correctly, and the bill was empty because
+no row was `confirmed`. Everything worked and the result was still wrong, which
+is why this check exists before the website step rather than after it.
+
+Measured 2026-09-08, five days before the reveal: **0 of 9 acts are confirmed.**
+<!-- measured 2026-09-08T19:19Z - zao-measure --verify "zaostock acts confirmed count" -->
+<!-- re-check: 2026-09-13 -->
 
 ### 3. Then the website, which is a deploy
 
@@ -100,7 +131,7 @@ up to five minutes to reach the app. Get it right before, not after.
 |---|---|
 | App shows no acts, site shows them | Rows are not `confirmed`, or `event_id` is wrong |
 | Site shows no acts, app shows them | `PUBLIC_LINEUP` was not edited, or not deployed |
-| Both empty after the 7th | The gate. Check the date in Ellsworth, not UTC |
+| Both empty after the 13th | The gate. Check the date in Ellsworth, not UTC |
 | One act shows, the rest do not | `status` on the others |
 | "Set 4 - undefined" on /program | `PUBLIC_LINEUP` emptied without updating the slot |
 | App 404s | The slug. `zaostock-2026` resolves via `src/lib/event-slugs.ts` |
@@ -117,7 +148,7 @@ up to five minutes to reach the app. Get it right before, not after.
 ## The standing risk
 
 As of 1 September the `artists` table is **empty**, and `PUBLIC_LINEUP` names
-one act. If nothing changes before the 7th, the gate opens onto an empty roster
+one act. If nothing changes before the 13th, the gate opens onto an empty roster
 on every database-driven surface while the website announces one act. That is
 not a bug in the code. It is the roster, and it is the first of the three things
 the 31 August audit asked for.
