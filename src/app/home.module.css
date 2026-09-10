@@ -149,7 +149,7 @@
 .ellPhotos img { width: 100%; height: auto; }
 .ellCopy { background: #3f4d31; color: #f3ecd8; padding: 50px 44px; display: flex; flex-direction: column; justify-content: center; }
 @media (prefers-color-scheme: dark) { .ellCopy { background: #8fa26c; color: #1c150d; } .ellCopy p { color: #241b11 !important; } .ellCopy h2 { color: #1c150d !important; } }
-.ellCopy .kicker { background: var(--sun); color: #2e2015; }
+.ellCopy .kicker { background: var(--sun); color: #2e2015; align-self: flex-start; }
 .ellCopy h2 { color: #fdf3e0; }
 .ellCopy p { color: #dbe4ce; line-height: 1.75; margin: 0; }
 @media (max-width: 860px) { .ellWrap { grid-template-columns: 1fr; } }
