@@ -66,7 +66,7 @@ export const OPS_ACTS: readonly OpsAct[] = [
     codeSha256: 'e9ff956154b23901cee71a313712cff962bd772da981f7b63fa2273a6184086b' },
   { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:35', minutes: 30,
     codeSha256: 'b89fdb296171f0a04ebd1dcefa85b13b46dc74e32fe00f3e89397ac06d86b652' },
-  { key: 'dcoop', name: 'Dcoop', setStart: '15:45', minutes: 40,
+  { key: 'dcoop', name: 'DCoop', setStart: '15:45', minutes: 40,
     codeSha256: '58cdef916cbce928d46a263d3ffb64639285168051b57b91fc75ebd5f0ad9709' },
   { key: 'lyons-den', name: 'Lyons Den', setStart: '16:30', minutes: 40,
     codeSha256: 'c4e9b93e5e6d06ad10e2e7780d60ff016ef4027dde270c4297e62753755752ae' },
@@ -165,3 +165,79 @@ export const BRING: ReadonlyArray<string> = [
   'Layers and rain gear. It is rain or shine, under tent cover, in Maine in October.',
   'Merch, if you sell it. Say so in the last box of the form so we can plan for it.',
 ];
+
+/**
+ * Which act a form response belongs to. The "Which act are you?" answer exists
+ * in three shapes at once, all already in flight on 2026-09-10:
+ *
+ *   "Dcoop - 3:45 PM, 40 min"   the original option, name + set time
+ *   "Dcoop"                     bare name, after the first hand edit
+ *   "DCoop"                     Zaal's ruled spelling, after the rename
+ *
+ * plus the retired long form "Acadia Rising (Sen Wilde, with Women with
+ * Rhythm) - 2:00 PM, 30 min". Anything that reads responses must accept every
+ * shape, or it matches seven acts and loses the one who already replied.
+ *
+ * Match: drop everything from " - " on, drop any parenthetical, then compare
+ * letters and digits only, case-insensitively. No fuzzy matching: an answer
+ * that is not one of the acts returns null rather than a guess.
+ */
+export function actFromFormAnswer(answer: string, acts: readonly OpsAct[] = OPS_ACTS): OpsAct | null {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const head = answer.split(' - ')[0].replace(/\([^)]*\)/g, '');
+  const key = norm(head);
+  if (!key) return null;
+  return acts.find((a) => norm(a.name) === key) ?? null;
+}
+
+/** One row from the form's Responses sheet, as pasted. Field names are free. */
+export type FormResponse = { timestamp: string; act: string } & Record<string, string>;
+
+/**
+ * The form's own timestamp, e.g. "9/9/2026 11:38:50" (M/D/YYYY H:MM:SS, the
+ * sheet's US format) or ISO. Anything else throws: a row whose time cannot be
+ * read cannot be ordered, and guessing its order is the bug this exists to stop.
+ */
+export function responseTime(ts: string): number {
+  const us = ts.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2}):(\d{2})$/);
+  if (us) {
+    const [, mo, d, y, h, mi, s] = us.map(Number);
+    return Date.UTC(y, mo - 1, d, h, mi, s);
+  }
+  const iso = Date.parse(ts);
+  if (!Number.isNaN(iso) && /^\d{4}-\d{2}-\d{2}T/.test(ts.trim())) return iso;
+  throw new Error(`unreadable form timestamp: "${ts}"`);
+}
+
+/**
+ * DUPLICATES. "Submit another response" stays on so an artist can fix a wrong
+ * photo link, and anyone can reload the form anyway, so one act can have two
+ * or more rows. The rule is explicit: THE LATEST SUBMISSION PER ACT WINS, by
+ * the form's timestamp, never by row position.
+ *
+ * AND IT WINS WHOLE. The later row is taken as sent, fields and blanks alike.
+ * It is never merged with an earlier row: if someone resubmits to fix their
+ * photo and leaves the bio empty, a merge would quietly keep the old bio, and
+ * nobody could tell what is published from what was sent. An empty field in
+ * the winning row is a gap to chase, not a value to backfill.
+ *
+ * Equal timestamps: the later row in the input wins. Answers that match no act
+ * are returned in `unmatched`, never dropped silently.
+ */
+export function latestPerAct(
+  responses: readonly FormResponse[],
+  acts: readonly OpsAct[] = OPS_ACTS,
+): { byAct: Map<string, FormResponse>; unmatched: FormResponse[] } {
+  const byAct = new Map<string, FormResponse>();
+  const unmatched: FormResponse[] = [];
+  for (const r of responses) {
+    const act = actFromFormAnswer(r.act, acts);
+    if (!act) {
+      unmatched.push(r);
+      continue;
+    }
+    const held = byAct.get(act.key);
+    if (!held || responseTime(r.timestamp) >= responseTime(held.timestamp)) byAct.set(act.key, r);
+  }
+  return { byAct, unmatched };
+}

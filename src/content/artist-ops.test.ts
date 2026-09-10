@@ -8,6 +8,10 @@ import {
   SOUNDCHECK,
   addMinutes,
   artistFormUrl,
+  actFromFormAnswer,
+  latestPerAct,
+  responseTime,
+  type FormResponse,
   clock12,
   findActByCode,
   type OpsAct,
@@ -76,7 +80,7 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     // no set times, no member names (Zaal: always "Acadia Rising").
     const LIVE_OPTIONS = [
       'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising',
-      'Michael Anderson', 'Dcoop', 'Lyons Den', 'Fellenz',
+      'Michael Anderson', 'DCoop', 'Lyons Den', 'Fellenz',
     ];
     for (const a of OPS_ACTS) {
       const v = new URL(artistFormUrl({ act: a })).searchParams.get(ARTIST_FORM.actEntry);
@@ -125,5 +129,74 @@ describe('clock helpers', () => {
     expect(clock12('00:30')).toBe('12:30 AM');
     expect(addMinutes('17:15', 40)).toBe('17:55');
     expect(addMinutes('12:40', 40)).toBe('13:20');
+  });
+});
+
+describe('actFromFormAnswer - every shape the act question has had', () => {
+  // Zaal ruled "DCoop" on 2026-09-10 while responses in the old shapes were
+  // already in. All three must land on the same act.
+  it('matches DCoop in all three shapes', () => {
+    for (const answer of ['Dcoop - 3:45 PM, 40 min', 'Dcoop', 'DCoop']) {
+      expect(actFromFormAnswer(answer)?.key, answer).toBe('dcoop');
+    }
+  });
+
+  it('matches every act from its original option text and its bare name', () => {
+    const OLD = [
+      'The Crown Vics - 12:05 PM, 30 min', 'OPEN X - 12:40 PM, 40 min', 'Grass Rug - 1:25 PM, 30 min',
+      'Acadia Rising (Sen Wilde, with Women with Rhythm) - 2:00 PM, 30 min', 'Michael Anderson - 2:35 PM, 30 min',
+      'Dcoop - 3:45 PM, 40 min', 'Lyons Den - 4:30 PM, 40 min', 'Fellenz - 5:15 PM, 40 min',
+    ];
+    expect(OLD.map((a) => actFromFormAnswer(a)?.name)).toEqual(OPS_ACTS.map((a) => a.name));
+    expect(OPS_ACTS.map((a) => actFromFormAnswer(a.name)?.key)).toEqual(OPS_ACTS.map((a) => a.key));
+  });
+
+  // The red side: an answer that is not an act must not be forced onto one.
+  it('returns null for anything that is not one of the eight', () => {
+    for (const bad of ['Hurricane - 3:10 PM, 30 min', 'Hurricane', 'Coop', '', '   ', 'TEST DO NOT USE']) {
+      expect(actFromFormAnswer(bad), bad).toBeNull();
+    }
+  });
+});
+
+describe('latestPerAct - one act, several submissions', () => {
+  const row = (timestamp: string, act: string, bio: string, photo: string): FormResponse => ({ timestamp, act, bio, photo });
+
+  it('takes the LATER submission by timestamp, not by row order', () => {
+    const later = row('9/10/2026 14:00:00', 'Fellenz', 'New bio.', 'https://x/new.jpg');
+    const earlier = row('9/10/2026 09:00:00', 'Fellenz', 'Old bio.', 'https://x/old.jpg');
+    // later listed FIRST, so row position would pick the wrong one
+    const { byAct } = latestPerAct([later, earlier]);
+    expect(byAct.get('fellenz')).toBe(later);
+  });
+
+  // THE TRAP. Resubmitting to fix a photo with the bio box left empty must NOT
+  // quietly keep the old bio: the later row wins whole, blanks included.
+  it('does not inherit a field from an earlier submission when the later one is empty', () => {
+    const first = row('9/10/2026 09:00:00', 'Fellenz', 'Old bio.', 'https://x/old.jpg');
+    const fix = row('9/10/2026 10:00:00', 'Fellenz', '', 'https://x/fixed.jpg');
+    const won = latestPerAct([first, fix]).byAct.get('fellenz')!;
+    expect(won).toBe(fix);
+    expect(won.bio).toBe('');
+    expect(won.photo).toBe('https://x/fixed.jpg');
+  });
+
+  it('groups the old and new DCoop shapes as one act', () => {
+    const old = row('9/9/2026 11:38:50', 'Dcoop - 3:45 PM, 40 min', 'Bio.', '');
+    const renamed = row('9/11/2026 08:00:00', 'DCoop', 'Bio.', 'https://x/d.jpg');
+    const { byAct } = latestPerAct([renamed, old]);
+    expect(byAct.size).toBe(1);
+    expect(byAct.get('dcoop')).toBe(renamed);
+  });
+
+  it('keeps answers that match no act, rather than dropping them', () => {
+    const stray = row('9/10/2026 09:00:00', 'Hurricane - 3:10 PM, 30 min', 'x', 'y');
+    expect(latestPerAct([stray]).unmatched).toEqual([stray]);
+  });
+
+  it('refuses a timestamp it cannot read, rather than guessing the order', () => {
+    expect(responseTime('9/9/2026 11:38:50')).toBeLessThan(responseTime('9/10/2026 09:00:00'));
+    expect(() => responseTime('yesterday')).toThrow();
+    expect(() => latestPerAct([row('garbage', 'Fellenz', 'a', 'b'), row('9/10/2026 09:00:00', 'Fellenz', 'a', 'b')])).toThrow();
   });
 });

@@ -48,7 +48,7 @@ export const getPublicArtists = cache(async function getPublicArtists(): Promise
   // query had no event filter, so any row anywhere marked 'confirmed' would have
   // appeared on ZAOstock's public pages. Measured 2026-09-08: only zaostock has
   // artist rows and none is confirmed, so it could not fire - but Hurricane and
-  // Dcoop played past ZAO festivals, and backfilling those rosters would have
+  // DCoop played past ZAO festivals, and backfilling those rosters would have
   // put another festival's line-up on this one's site. Same missing scope as
   // /api/admin/confirm-artist, fixed there in the same week; this is the public
   // half, which is the half a stranger sees.

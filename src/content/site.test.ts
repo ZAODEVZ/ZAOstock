@@ -58,8 +58,8 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists nine confirmed partners', () => {
-    expect(PARTNERS).toHaveLength(9);
+  it('lists seven confirmed partners', () => {
+    expect(PARTNERS).toHaveLength(7);
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');
@@ -112,7 +112,7 @@ describe('the names-only lineup', () => {
     'Grass Rug',
     'Acadia Rising',
     'Michael Anderson',
-    'Dcoop',
+    'DCoop',
     'Lyons Den',
     'Fellenz',
   ];
@@ -366,5 +366,19 @@ describe('Hurricane is off the bill', () => {
 
   it('is counted as eight wherever the kit states a count', () => {
     expect(read('docs/marketing/press-kit.md')).not.toMatch(/\bnine\b/i);
+  });
+});
+
+// Zaal, 2026-09-10: "enteract is not a partner neither is we 3 metal". Both had
+// been rendering as confirmed partners on /, /press and /partners.
+describe('ENTERACT and Web3Metal are not partners', () => {
+  const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
+  it('never reappear in PARTNERS or on a surface that lists partners', () => {
+    const names = PARTNERS.map((p) => p.name.toLowerCase().replace(/\s+/g, ''));
+    for (const gone of ['enteract', 'web3metal']) expect(names).not.toContain(gone);
+    for (const f of ['docs/marketing/press-kit.md', 'src/app/llms.txt/route.ts', 'src/app/onepagers/overview/page.tsx']) {
+      const lines = read(f).split('\n').filter((l) => !l.trim().startsWith('//'));
+      expect(lines.filter((l) => /enteract|web3 ?metal/i.test(l)), f).toEqual([]);
+    }
   });
 });

@@ -74,7 +74,7 @@ One venue at a time. The day does not split across two rooms.
 ## The lineup
 
 **All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
-OPEN X, Grass Rug, Acadia Rising, Michael Anderson, Dcoop, Lyons Den, Fellenz.
+OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz.
 
 **NONE of them has countersigned.** They are booked and locked in the run of show,
 which is a different claim from confirmed. Do not describe any act as confirmed in
@@ -114,9 +114,8 @@ agreement and a named point of contact on the ZAO team.
 - Star 97.7 - local radio promotion
 - Wallace Events - event equipment and tenting
 - WaveWarZ - live music-battle format, online all year, not on the 3 October programme
-- ENTERACT - production and operational support
-- Web3Metal - partnership integration and community surface
 - COC Concertz - community partnership
+- Bomb Squad - crew, content and merch
 
 *(SITE: mirror `src/app/page.tsx` PARTNERS so this list cannot drift. COC
 Concertz is a partner per Zaal, typed 27 Aug 20:3x; add it and Bomb Squad there. "Community

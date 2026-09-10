@@ -28,7 +28,7 @@ var EVENT = 'ZAOstock, Saturday 3 October 2026, Franklin Street Parklet, Ellswor
 // EIGHT since 2026-09-10, bare names: the live form was edited by hand that day
 // to drop Hurricane and the set times, and Zaal's standing rule is always
 // "Acadia Rising", never the long form. This list mirrors the live dropdown.
-// A response filed before the edit carries the OLD text ("Dcoop - 3:45 PM,
+// A response filed before the edit carries the OLD text ("DCoop - 3:45 PM,
 // 40 min"), so anything reading responses must accept both shapes.
 var ACTS = [
   'The Crown Vics',
@@ -36,7 +36,7 @@ var ACTS = [
   'Grass Rug',
   'Acadia Rising',
   'Michael Anderson',
-  'Dcoop',
+  'DCoop',
   'Lyons Den',
   'Fellenz',
 ];
