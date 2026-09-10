@@ -3,17 +3,28 @@ import { OG_IMAGE } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, DAY, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList, PartnerTile, Countdown } from '@/components/poster';
+import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH } from '@/content/site';
+import { SiteShell, Countdown } from '@/components/poster';
+import { HomeHero } from './HomeHero';
+import s from './home.module.css';
 
-// The one link that goes in the email. Seven sections, in the order
-// docs/design/redesign-2026-08-28.md sets, and no eighth. Reads nothing from
-// the database, so it prerenders and needs no env to render.
+// THE HOMEPAGE IN CANDY'S LOOK. Zaal, 2026-09-10, of her site build: "this is
+// what the site should look like". Her layout, her art, her CSS (ported into
+// home.module.css); the site's own verified copy in every block.
 //
-// Overrides relayed to SITE on 2026-08-27 that beat the spec: Lyons Den is
-// the only public act (Werb not fully confirmed, 20:4x); no changeover DJ
-// (20:0x); DJ set 6-8 then a live set 8-10 hosted by Black Moon (ros-v7); the
-// attendance figure is on /sponsor only (28 Aug brief), not here.
+// Deliberately NOT carried over from her build, each for a recorded reason:
+// - "A whole day of art, peace & music" and the Art / Peace / Music tags: they
+//   echo Woodstock's "3 Days of Peace & Music", the same reason she retired the
+//   badge. The tags here are Free / All ages / Rain or shine.
+// - "Est. 2017" in her footer: untrue, this is the first ZAOstock.
+// - Her lineup cards (acoustic sets, local bands, an on-site open mic) and "full
+//   schedule drops closer to the date": there is no open mic, and the real eight
+//   acts are named here with the running order on /program.
+// - "a hand-built stage": the stage is rented.
+// - Placeholder partners ("Local businesses"): the real eight are listed.
+// - The admission ticket graphic: entry is free; RSVP goes to Luma.
+//
+// Reads nothing from the database, so it prerenders and needs no env to render.
 
 export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
@@ -28,217 +39,224 @@ export const metadata: Metadata = {
   },
 };
 
-const STRIP = [
-  { label: 'Date', value: 'Sat 3 Oct 2026' },
-  { label: 'Place', value: FESTIVAL.shortVenue },
-  { label: 'Music from', value: SITE.musicFrom },
-  { label: 'Cost', value: 'Free' },
+// The bill in running order, split into three panels. Names only: set times
+// live in one public place, /program.
+const PANELS = [
+  { kicker: 'Opening', img: '/brand/elements/acoustic_guitar_yellow.webp', acts: LINEUP_NAMES.slice(0, 3) },
+  { kicker: 'The afternoon', img: '/brand/home/electric_guitar_blue_semihollow.webp', acts: LINEUP_NAMES.slice(3, 6) },
+  { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(6) },
 ] as const;
 
-const DOORS = [
-  {
-    eyebrow: 'For musicians',
-    title: 'Made music nobody is paying you to make?',
-    body: 'Submit for the lineup. A real stage, a real crowd, a full recording of your set.',
-    href: '/musicians',
-  },
-  {
-    eyebrow: 'For visual artists',
-    title: 'Build the visual identity people remember.',
-    body: 'Posters, motion, signage. Named credit on every surface it appears on.',
-    href: '/artists',
-  },
-  {
-    eyebrow: 'For volunteers',
-    title: 'Build the day with us.',
-    body: 'Setup, check-in, stage crew, content, teardown. On-site gear and a meal.',
-    href: '/apply',
-  },
+const PLUG_IN = [
+  { n: '01', who: 'Artists', what: 'Submit work', href: '/artists' },
+  { n: '02', who: 'Musicians', what: 'Apply to play', href: '/musicians' },
+  { n: '03', who: 'Volunteers', what: 'Sign up', href: '/apply' },
+  { n: '04', who: 'Sponsors & press', what: 'Get in touch', href: '/sponsor' },
 ] as const;
 
 export default function HomePage() {
   return (
     <SiteShell>
-      {/* 1. Hero */}
-      <Section first className="pt-12 sm:pt-16 pb-12 sm:pb-24">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px] lg:gap-16 items-center">
-          <div>
-            <Eyebrow tone="denim">Community music festival · Ellsworth, Maine</Eyebrow>
-            <h1 className="font-display font-normal text-display m-0 mt-3.5 mb-4 text-ink-950">
-              ZAO<span className="text-gold-600">stock</span>
-            </h1>
-            <p className="text-lg text-ink-secondary max-w-[620px] m-0 mb-1.5">
-              A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine.
-            </p>
-            <p className="text-lg font-bold text-ink-950 max-w-[620px] m-0 mb-7">
-              Independent artists. One stage. Music from noon.
-            </p>
-            <InfoStrip items={STRIP} className="mb-4" />
-            <Countdown className="mb-7" />
-            <div className="flex flex-wrap gap-3">
-              <Button href={FESTIVAL.rsvpUrl} external size="lg">
-                RSVP free
-              </Button>
-              <Button href="/program" variant="secondary" size="lg">
-                See the program
-              </Button>
-            </div>
-            <p className="mt-3.5 text-[13px] text-ink-muted m-0">{SITE.weather}</p>
+      <div className={s.home}>
+        {/* 1. The flight down Franklin Street */}
+        <HomeHero>
+          <div className={`${s.tagrow} ${s.anim} ${s.d1}`}>
+            <span>Free</span>
+            <span>All ages</span>
+            <span>Rain or shine</span>
           </div>
-          {/* The moose is a white knockout: it sits on the ink inverse surface, never on paper. */}
-          <div className="w-full max-w-[320px] mx-auto lg:max-w-none rounded-lg border-[2.5px] border-ink-950 shadow-hard-lg bg-ink-950 p-5">
-            <Image
-              src={SITE.logo.src}
-              alt={SITE.logo.alt}
-              width={SITE.logo.width}
-              height={SITE.logo.height}
-              sizes="(min-width: 1024px) 360px, 320px"
-              priority
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
-      </Section>
-
-      {/* 2. The day */}
-      <Section id="day">
-        <TwoUp>
-          <SectionHeader
-            eyebrow="The day"
-            title="Outside, then in."
-            lede="One venue at a time. At six the street clears, and Black Moon next door hosts their own evening."
+          <Image
+            className={`${s.logo} ${s.anim} ${s.d2}`}
+            src="/brand/home/zaostock_logo_new.webp"
+            alt="ZAOstock 2026: the word ZAOSTOCK set in the antlers of a gold moose."
+            width={1000}
+            height={1000}
+            priority
           />
-          <div className="flex flex-col gap-4">
-            <BorderedList
-              mono
-              rows={DAY.map((d) => ({
-                term: d.time,
-                detail: (
-                  <span>
-                    <span className="block">{d.where}</span>
-                    <span className="block text-ink-secondary font-normal">{d.what}</span>
-                  </span>
-                ),
-              }))}
-            />
-            <Link href="/program" className="text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500 self-start">
-              The full program
-            </Link>
+          <h1 className={`${s.display} ${s.big} ${s.anim} ${s.d3}`}>
+            Franklin St
+            <br />
+            <em>Parklet</em>
+          </h1>
+          <div className={`${s.details} ${s.anim} ${s.d4}`}>
+            Ellsworth, Maine &nbsp;&bull;&nbsp; <b>Saturday, October 3, 2026</b> &nbsp;&bull;&nbsp; Free, all ages
           </div>
-        </TwoUp>
-      </Section>
+          <div className={`${s.cta} ${s.anim} ${s.d4}`}>
+            <a href={FESTIVAL.rsvpUrl} target="_blank" rel="noopener noreferrer" className={s.btn}>
+              RSVP free
+            </a>
+          </div>
+          <Countdown onDark className={s.count} />
+        </HomeHero>
 
-      {/* 3. Lineup */}
-      <Section id="lineup">
-        <TwoUp>
-          <SectionHeader
-            eyebrow="The lineup"
-            title="Independent artists. One stage."
-            lede={`Who is playing. ${LINEUP_NAMES_NOTE}`}
-          />
-          <div className="flex flex-col gap-4">
-            <BorderedList
-              rows={[
-                { term: 'Playing', detail: LINEUP_NAMES.join(', ') },
-                { term: 'Between sets', detail: 'Our MC and our partners' },
-              ]}
-            />
-            <div>
-              <Badge tone="gold">Meet the artists, one at a time</Badge>
+        {/* 2. The day */}
+        <section className={s.section} id="day">
+          <div className={s.wrap}>
+            <div className={s.dayWrap}>
+              <div>
+                <div className={s.kicker}>The day</div>
+                <h2 className={s.title}>
+                  One street.
+                  <br />
+                  <em>One stage.</em>
+                </h2>
+                <p className={s.lede}>
+                  Franklin Street closes to traffic and opens up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. At six the street clears, and Black Moon next door hosts their own evening.
+                </p>
+                <p className={s.lede}>
+                  Part of the {SITE.series} during {SITE.weekend}.
+                </p>
+                <Link href="/program" className={`${s.btn} ${s.ghost}`}>
+                  See the program
+                </Link>
+              </div>
+              <div className={s.dayVisual}>
+                <div className={s.frame}>
+                  <Image src="/brand/elements/sign_franklin_st_parklet.webp" alt="A Franklin Street Parklet street sign" width={620} height={350} unoptimized />
+                </div>
+                <div className={s.sunBadge}>
+                  Rain or
+                  <br />
+                  shine
+                </div>
+              </div>
             </div>
           </div>
-        </TwoUp>
-      </Section>
+        </section>
 
-      {/* 4. Why Ellsworth */}
-      <Section id="ellsworth">
-        <TwoUp>
-          <div className="flex flex-col gap-6">
-            <SectionHeader
-              eyebrow="Why Ellsworth"
-              title="Every car heading to Acadia passes through."
-              lede={`${ELLSWORTH.historic} Part of the ${SITE.series} during ${SITE.weekend}.`}
-            />
-            <div className="flex flex-wrap gap-10">
-              <Stat value={ELLSWORTH.heartEvents.value} label={ELLSWORTH.heartEvents.label} />
-              <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
+        {/* 3. The lineup */}
+        <section className={`${s.section} ${s.tint}`} id="lineup">
+          <div className={s.wrap}>
+            <div className={s.kicker}>Artist-built</div>
+            <h2 className={s.title}>
+              The <em>lineup</em>
+            </h2>
+            <p className={s.lede}>
+              Eight independent acts, back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
+              <Link href="/program" className={s.link}>
+                The running order
+              </Link>
+            </p>
+            <div className={s.lineupWrap}>
+              {PANELS.map((p) => (
+                <div key={p.kicker} className={s.panel}>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- decorative, cropped by CSS */}
+                  <img src={p.img} alt="" />
+                  <div className={s.fade} />
+                  <div className={s.panelTxt}>
+                    <div className={s.kicker}>{p.kicker}</div>
+                    {p.acts.map((a) => (
+                      <h3 key={a}>{a}</h3>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <Card className="p-0">
-            <div className="flex items-center justify-center bg-paper-100 py-6 border-b-2 border-ink-950">
-              <Image src={SITE.icons.lighthouse} alt="" width={220} height={220} style={{ height: 110, width: 'auto' }} />
+        </section>
+
+        {/* 4. Why Ellsworth */}
+        <section className={s.section} id="ellsworth">
+          <div className={s.wrap}>
+            <div className={s.ellWrap}>
+              <div className={s.ellPhotos}>
+                <div>
+                  <Image src="/brand/home/historic_main_street_storefronts.webp" alt="Main Street storefronts" width={680} height={694} unoptimized />
+                </div>
+                <div>
+                  <Image src="/brand/home/lighthouse_island_landscape.webp" alt="A lighthouse and pines" width={680} height={917} unoptimized />
+                </div>
+              </div>
+              <div className={s.ellCopy}>
+                <div className={s.kicker}>Downeast Maine</div>
+                <h2 className={s.title}>
+                  Why <em style={{ color: 'var(--sun)' }}>Ellsworth</em>
+                </h2>
+                <p>
+                  The gateway to Acadia National Park. {ELLSWORTH.historic} The Heart of Ellsworth ran {ELLSWORTH.heartEvents.value} events with {ELLSWORTH.heartSponsors.value} sponsors in 2025, and ZAOstock plugs into that calendar rather than competing with it.
+                </p>
+                <p style={{ marginTop: 16 }}>
+                  <Link href="/ellsworth" className={s.link} style={{ color: 'inherit' }}>
+                    Getting here
+                  </Link>
+                </p>
+              </div>
             </div>
-            <div className="p-5">
-              <Eyebrow>Ellsworth · Maine</Eyebrow>
-              <p className="font-sans font-extrabold text-lg text-ink-950 m-0 mt-1.5 mb-1">{FESTIVAL.shortVenue}</p>
-              <p className="text-[13px] text-ink-muted m-0">Downtown, at the gateway to Acadia National Park.</p>
-              <Link href="/ellsworth" className="inline-block mt-3 text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
-                Getting here
+          </div>
+        </section>
+
+        {/* 5. Plug in */}
+        <section className={`${s.section} ${s.tint}`} id="plugin">
+          <div className={`${s.wrap} ${s.center}`}>
+            <div className={s.kicker}>How to plug in</div>
+            <h2 className={s.title}>
+              Play, make,
+              <br />
+              <em>help</em>, or cover it
+            </h2>
+            <p className={s.lede} style={{ margin: '0 auto' }}>
+              ZAOstock runs on volunteers and local talent. There is a seat at the table whichever way you want in.
+            </p>
+            <div className={s.plugGrid}>
+              {PLUG_IN.map((p) => (
+                <Link key={p.href} href={p.href} className={s.plugCard}>
+                  <div className={s.num}>{p.n}</div>
+                  <h3>{p.who}</h3>
+                  <span className={s.mini}>{p.what} &rarr;</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Partners: the real eight, logos as supplied */}
+        <section className={s.section} id="partners">
+          <div className={`${s.wrap} ${s.center}`}>
+            <div className={s.kicker}>With thanks to</div>
+            <h2 className={s.title}>
+              Our <em>partners</em>
+            </h2>
+            <p className={s.lede} style={{ margin: '0 auto' }}>
+              Each has a confirmed agreement and a named point of contact on the ZAO team.
+            </p>
+            <ul className={s.partnerGrid}>
+              {PARTNERS.map((p) => (
+                <li key={p.name} className={s.partnerCard}>
+                  <div className={s.partnerLogo}>
+                    {p.logoSrc ? <Image src={p.logoSrc} alt={`${p.name} logo`} width={280} height={112} /> : null}
+                  </div>
+                  <span className={s.partnerName}>{p.name}</span>
+                  <span className={s.partnerRole}>{p.role}</span>
+                </li>
+              ))}
+            </ul>
+            <div style={{ marginTop: 30 }}>
+              <Link href="/sponsor" className={`${s.btn} ${s.ghost}`}>
+                Become a partner
               </Link>
             </div>
-          </Card>
-        </TwoUp>
-      </Section>
+          </div>
+        </section>
 
-      {/* 5. Doors */}
-      <Section id="doors">
-        <SectionHeader eyebrow="How to plug in" title="Pick a door." className="mb-6" />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {DOORS.map((d) => (
-            <Card key={d.href} href={d.href} interactive>
-              <Eyebrow className="mb-2.5">{d.eyebrow}</Eyebrow>
-              <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0 mb-2.5">{d.title}</h3>
-              <p className="text-sm text-ink-secondary m-0 mb-3.5">{d.body}</p>
-              <span className="text-sm text-denim-400 font-semibold underline underline-offset-4">See the door</span>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      {/* 6. Partners and sponsors */}
-      <Section id="partners">
-        <SectionHeader
-          eyebrow="Partners"
-          title="Partners give time, venue and infrastructure."
-          lede="Each has a confirmed agreement and a named point of contact on the ZAO team."
-          className="mb-6"
-        />
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
-          {PARTNERS.map((p) => (
-            <PartnerTile key={p.name} partner={p} />
-          ))}
-        </ul>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <p className="text-base text-ink-secondary m-0 measure">Sponsors put money behind a named artist or the day. Talk to us.</p>
-          <Button href="/sponsor" variant="secondary">
-            Sponsor ZAOstock
-          </Button>
-          <Link href="/partners" className="text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
-            All partners
-          </Link>
-        </div>
-      </Section>
-
-      {/* 7. Where it comes from */}
-      <Section id="series">
-        <SectionHeader eyebrow="Where it comes from" title="What came before." lede="ZAOstock is the first in Maine." className="mb-6" />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {SERIES.map((e, i) => (
-            <Card key={e.name} className="p-0">
-              <div className={['h-3 border-b-2 border-ink-950', i === 0 ? 'bg-red-500' : i === 1 ? 'bg-denim-400' : 'bg-olive-400'].join(' ')} />
-              <div className="p-5">
-                <Eyebrow>{e.when}</Eyebrow>
-                <p className="font-sans font-extrabold text-base text-ink-950 m-0 mt-1.5">{e.name}</p>
-                <p className="text-[13px] text-ink-secondary m-0 mt-1">{e.place}</p>
-                <p className="text-[13px] text-ink-muted m-0 mt-1.5">{e.note}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-        <Link href="/festivals" className="inline-block mt-6 text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
-          The ZAO Festivals series
-        </Link>
-      </Section>
+        {/* 7. See you on Franklin Street */}
+        <section className={s.close} id="rsvp">
+          <div className={`${s.wrap} ${s.closeInner}`}>
+            <div className={s.kicker}>Free &middot; All ages &middot; Rain or shine</div>
+            <h2 className={s.title}>
+              See you on
+              <br />
+              <em>Franklin Street</em>
+            </h2>
+            <a href={FESTIVAL.rsvpUrl} target="_blank" rel="noopener noreferrer" className={s.btn}>
+              RSVP free
+            </a>
+            <Image className={s.brush} src="/brand/home/zaostock_brush_lettering_black.webp" alt="ZAOstock" width={700} height={235} unoptimized />
+            <Link href="/festivals" className={s.link} style={{ color: 'inherit', fontSize: 14 }}>
+              What came before: the ZAO Festivals series
+            </Link>
+          </div>
+        </section>
+      </div>
     </SiteShell>
   );
 }

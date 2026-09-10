@@ -33,12 +33,16 @@ describe('the design kit cannot drift from the site it describes', () => {
   it('makes the moose the one mark, on ink', () => {
     expect(MARKS[0].file).toBe(SITE.logo.src);
     expect(MARKS[0].dark).toBe(true);
-    for (const f of ['src/components/poster/Header.tsx', 'src/components/poster/Footer.tsx', 'src/app/page.tsx']) {
+    for (const f of ['src/components/poster/Header.tsx', 'src/components/poster/Footer.tsx']) {
       const src = read(f);
       expect(src, f).toContain('SITE.logo.src');
       // A white knockout on paper is invisible: every placement sits on ink.
       expect(src, f).toContain('bg-ink-950');
     }
+    // The homepage carries Candy's GOLD moose since 2026-09-10 (made for any
+    // ground). If it ever places the white one again, it must be on ink.
+    const home = read('src/app/page.tsx');
+    if (home.includes('SITE.logo.src')) expect(home).toContain('bg-ink-950');
   });
 
   // RETIRED AND PULLED 2026-09-10. Candy retired the 26 badge as "too similar
