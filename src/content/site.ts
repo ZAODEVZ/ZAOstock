@@ -164,15 +164,15 @@ export type Partner = { name: string; role: string; poc: string; confirmed: bool
 // (six do since 28 Aug; Town of Ellsworth's is still due). Heart of Ellsworth is deliberately NOT listed: on the
 // 2026-08-13 call Chesnee Barney said official-partner status and logo use
 // have to clear internally first. COC Concertz added 2026-08-27 (Zaal, 20:3x).
-// POC is Thy Revolution (Zaal, 2026-09-10: "poc is thyrev"); its role is still
-// untyped, stays UNSET here, and no surface prints it.
+// POC is Thy Revolution (Zaal, 2026-09-10: "poc is thyrev"), role Co-presenter
+// (Zaal's pick the same day). No partner is untyped any more.
 export const PARTNERS: readonly Partner[] = [
   { name: 'Town of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true },
   { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true, logoSrc: '/partners/black-moon.png' },
   { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true, logoSrc: '/partners/star-977.png' },
   { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
   { name: 'WaveWarZ', role: 'Live music-battle format, online all year', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wavewarz.png' },
-  { name: 'COC Concertz', role: 'UNSET', poc: 'Thy Revolution', confirmed: true, logoSrc: '/partners/coc-concertz.png' },
+  { name: 'COC Concertz', role: 'Co-presenter', poc: 'Thy Revolution', confirmed: true, logoSrc: '/partners/coc-concertz.png' },
   // ENTERACT and Web3Metal were here, both confirmed: true, and both rendered on
   // /, /press and /partners. REMOVED 2026-09-10 by Zaal, verbatim: "enteract is
   // not a partner neither is we 3 metal". Deleted rather than set to false, so

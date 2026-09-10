@@ -113,7 +113,7 @@ Each has a confirmed agreement and a named point of contact on the ZAO team.
 - Star 97.7 - local radio promotion
 - Wallace Events - event equipment and tenting
 - WaveWarZ - live music-battle format, online all year, not on the 3 October programme
-- COC Concertz - community partnership
+- COC Concertz - co-presenter
 - Bomb Squad - crew, content and merch
 - Artizen - funding partner
 

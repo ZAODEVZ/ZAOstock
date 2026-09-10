@@ -73,18 +73,16 @@ describe('SITE facts', () => {
   // a partner is published only when it is confirmed AND poc names the ZAO team
   // member who owns the relationship - and only half of it was enforced.
   //
-  // COC Concertz is the one known exception: added 2026-08-27 with role and POC
-  // untyped. It is NAMED here rather than waved through, so a second unowned
-  // partner cannot reach the public homepage without this going red.
-  it('gives every published partner a typed role and a named owner, bar the one known exception', () => {
+  // COC Concertz was the one exception from 2026-08-27 until 2026-09-10, when
+  // Zaal typed both halves: POC Thy Revolution, role Co-presenter. There is no
+  // exception now, so a new unowned partner goes red on its own.
+  it('gives every published partner a typed role and a named owner', () => {
     const untyped = PARTNERS.filter((p) => p.role === 'UNSET' || p.poc === 'UNSET').map((p) => p.name);
-    expect(untyped).toEqual(['COC Concertz']);
-    // Zaal, 2026-09-10: "poc is thyrev". Only the role is still untyped.
+    expect(untyped).toEqual([]);
     const coc = PARTNERS.find((p) => p.name === 'COC Concertz');
     expect(coc?.poc).toBe('Thy Revolution');
-    expect(coc?.role).toBe('UNSET');
-    // And no page prints an untyped role: the overview one-pager's own list
-    // renders a role only when there is one.
+    expect(coc?.role).toBe('Co-presenter');
+    // The overview one-pager keeps its own list; it must not print UNSET either.
     const overview = readFileSync(path.join(process.cwd(), 'src/app/onepagers/overview/page.tsx'), 'utf8');
     expect(overview).not.toMatch(/role:\s*'UNSET'/);
     for (const p of PARTNERS) {
