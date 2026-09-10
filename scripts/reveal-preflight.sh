@@ -63,6 +63,39 @@ else
     fail "ZERO acts on the bill. Do not proceed - the reveal has nothing to reveal"
   fi
 
+  # THE BILL, NOT JUST "MORE THAN ZERO". On 2026-09-10 one act of eight was
+  # confirmed, and the check above would have printed a green "1 act(s) on the
+  # bill" on reveal morning with seven acts missing. So compare what is
+  # published against LINEUP_NAMES, the bill the site names, and say who is
+  # missing - and fail on any published act that is NOT on the bill (Hurricane
+  # left it that day; a stale confirmed row would reveal him).
+  if [ -n "$COUNT" ] && [ "$COUNT" -gt 0 ]; then
+    BILL="$(printf '%s' "$BODY" | python3 -c '
+import sys, json, re
+names = [a.get("name", "") for a in json.load(sys.stdin).get("artists", [])]
+m = re.search(r"LINEUP_NAMES[^=]*=\s*\[(.*?)\];", open("src/content/site.ts").read(), re.S)
+bill = re.findall(r"\x27([^\x27]+)\x27", m.group(1)) if m else []
+print("EXPECTED", len(bill))
+print("MISSING", ", ".join(n for n in bill if n not in names))
+print("EXTRA", ", ".join(n for n in names if n not in bill))
+' 2>/dev/null)"
+    EXPECTED="$(printf '%s\n' "$BILL" | sed -n 's/^EXPECTED //p')"
+    MISSING="$(printf '%s\n' "$BILL" | sed -n 's/^MISSING //p')"
+    EXTRA="$(printf '%s\n' "$BILL" | sed -n 's/^EXTRA //p')"
+    if [ -z "$EXPECTED" ] || [ "$EXPECTED" -eq 0 ]; then
+      warn "could not read LINEUP_NAMES from src/content/site.ts to compare the bill"
+    else
+      if [ -n "$EXTRA" ]; then
+        fail "published but NOT on the bill: ${EXTRA}"
+      fi
+      if [ -n "$MISSING" ]; then
+        fail "PARTIAL BILL: ${COUNT} of ${EXPECTED} acts published. Missing: ${MISSING}. Decide: announce these, or hold"
+      elif [ -z "$EXTRA" ]; then
+        pass "all ${EXPECTED} acts of the bill are published"
+      fi
+    fi
+  fi
+
   if printf '%s' "$BODY" | grep -q "\"reveal_date\":\"${REVEAL_DATE}\""; then
     pass "endpoint agrees with the gate date"
   elif printf '%s' "$BODY" | grep -q '"reveal_date"'; then
