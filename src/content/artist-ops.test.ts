@@ -245,17 +245,22 @@ describe('the artist form has no due date', () => {
   it('prints "11 September" nowhere an artist or the crew reads about the form', () => {
     for (const f of SURFACES) {
       const src = readFileSync(path.join(process.cwd(), f), 'utf8');
-      expect(src, f).not.toMatch(/Friday 11 September|due back Friday 11/);
+      // Narrow on purpose: the ops room also records a DIFFERENT, true 11
+      // September (the PA rental gate), so a bare /11 September/ would fail on
+      // a fact. Every spelling of the form's old due date is caught instead.
+      expect(src, f).not.toMatch(/Friday,? (the )?11(th)? Sept|due back Friday 11|Sept(ember)?\.? 11(th)?\b(?! rental)|\b11(th)? Sept(ember)?\b(?! rental)(?=[^\n]{0,40}(form|due|back|details))/i);
     }
     expect(JSON.stringify(ARTIST_FORM)).not.toMatch(/11 September/);
   });
 
-  it('asks without a date, and any date it ever carries is no later than 18 September', () => {
+  // What is enforced is STRICTER than "no later than 18 September": the ask
+  // carries no digit at all, so no date of any kind can be printed. If a date
+  // is ever wanted, this test must be changed on purpose, and Zaal's bound is
+  // 18 September.
+  it('asks without any date at all', () => {
     const row = ARTIST_DATES[0];
     expect(row.what).toMatch(/artist details form/);
     expect(row.when).toBe(ARTIST_FORM.askLabel);
-    const m = row.when.match(/(\d{1,2}) September/);
-    if (m) expect(Number(m[1])).toBeLessThanOrEqual(18);
     expect(ARTIST_FORM.askLabel).not.toMatch(/\d/);
   });
 });
