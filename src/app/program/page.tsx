@@ -23,20 +23,14 @@ export const metadata: Metadata = {
 // One venue at a time (Zaal, 23 Aug): outdoors on the parklet until six, then
 // the street clears and Black Moon hosts their own evening next door.
 //
-// Music starts at NOON: a five-minute intro on the mic, then about 30 minutes
-// per act with 5- or 10-minute changeovers held by the MC plus sponsor spots.
-// No DJ between sets. The last set ends 15:05 and the stretch to the 15:45
-// reset is OPEN. WaveWarZ came OFF the programme (Zaal, 2026-09-07), so the
+// Music starts at NOON: a five-minute intro on the mic, then eight acts with
+// seven-minute changeovers held by the MC plus sponsor spots (2026-09-10).
+// No DJ between sets. WaveWarZ came OFF the programme (Zaal, 2026-09-07), so the
 // 16:00-18:00 battle block is gone. The evening indoors is Black Moon's, with
 // Steve's DJ Aquaventus set; the close is Black Moon's licence hour, UNSET.
 //
-// WARNING, and it is not fixed here: the grid below is still the OLD plan. It
-// runs unnamed Set 1 to Set 6 ending 15:10, while the run of show locked on
-// 3 September runs named acts from 12:05 to 17:55 (eight since 2026-09-10). Rebuilding this grid to
-// match is its own pass and is part of filling the site in this week.
-//
-// NAMES: the acts are now named on the site as plain content, with no set
-// times and no links, and NONE of them is described as confirmed - not one has
+// NAMES AND TIMES: the grid below names every act with its set time, and it is
+// the one public place set times live. NONE of them is described as confirmed - not one has
 // countersigned. The battlers are no longer named anywhere, because the block
 // they were named for is off. Steve's own
 // act name is not on disk. The fire performance is DCoop's to time and place;
@@ -68,39 +62,39 @@ const BLOCKS: Block[] = [
     title: 'Live sets',
     lede: 'Eight independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
     slots: [
-      // THE RUN OF SHOW LOCKED 3 SEPTEMBER. Music 12:05 to 17:55, street clears
-      // at 18:00. Five minutes of margin across the whole afternoon and no
-      // recovery slot, so one long changeover puts the day over on the evening
-      // Black Moon is hosting their own evening next door.
+      // THE RUN OF SHOW, RETIMED 2026-09-10 (Zaal: "lets give 7 mins between
+      // performers and give the 30 mins people some more time", then "option b").
+      // Hurricane's 15:10 set left a 40-minute hole; it is spread across the
+      // day instead. Seven-minute changeovers, the four 30-minute acts now 33,
+      // the 40-minute acts unchanged. Music 12:05 to 17:46, street clears at
+      // 18:00: fourteen minutes of margin on the whole afternoon.
       //
-      // Zaal published the names with their real times on 2026-09-07. Note what
-      // that does and does not claim: this is who is PLAYING and when. It is NOT
-      // a statement that anyone has countersigned - none of them has - and
-      // the word "confirmed" appears against no act here. The API reveal is a
-      // separate gate that still reads only status='confirmed'.
+      // THIS GRID IS THE ONE PUBLIC SOURCE OF SET TIMES (Zaal, 2026-09-10:
+      // public everywhere at once, /program canonical, the artist form points
+      // here rather than repeating them). OPS_ACTS and the ops room are held to
+      // it by tests.
       //
-      // Until today this block ended at 15:10 with six unnamed sets and labelled
-      // one of them "Confirmed.", which was wrong on the time, the count and the
-      // claim: Lyons Den is the eighth act at 16:30, not the fifth at 14:25.
+      // Who is PLAYING and when, and nothing more: none of them has
+      // countersigned, and the word "confirmed" appears against no act here.
+      // The API reveal is a separate gate that still reads only
+      // status='confirmed'.
       { time: '12:00', label: 'Doors. Music starts at noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
-      { time: '12:05', label: 'The Crown Vics', detail: 'Rock n roll dance band. 30 minutes.', tone: 'set' },
-      { time: '12:35', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
-      { time: '12:40', label: 'OPEN X', detail: 'Power pop rock. 40 minutes.', tone: 'set' },
-      { time: '13:20', label: 'Changeover', tone: 'gap' },
-      { time: '13:25', label: 'Grass Rug', detail: 'Jam rock band. 30 minutes.', tone: 'set' },
-      { time: '13:55', label: 'Changeover', tone: 'gap' },
-      { time: '14:00', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion. 30 minutes.', tone: 'set' },
-      { time: '14:30', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' },
-      { time: '14:35', label: 'Michael Anderson', detail: 'Solo piano. 30 minutes.', tone: 'set' },
-      // Hurricane's 15:10 set was here. He is out (Zaal, 2026-09-10), with no
-      // replacement; nobody moved, so every other act keeps the time it was given.
-      { time: '15:05', label: 'The MC and our partners', detail: 'Stories from the day and a word from the partners, until DCoop at 3:45.', tone: 'gap' },
-      { time: '15:45', label: 'DCoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
-      { time: '16:25', label: 'Changeover', tone: 'gap' },
-      { time: '16:30', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },
-      { time: '17:10', label: 'Changeover', tone: 'gap' },
-      { time: '17:15', label: 'Fellenz', detail: 'Rock guitar and soundtrack. 40 minutes. Closes the outdoor block.', tone: 'set' },
-      { time: '17:55', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
+      { time: '12:05', label: 'The Crown Vics', detail: 'Rock n roll dance band. 33 minutes.', tone: 'set' },
+      { time: '12:38', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
+      { time: '12:45', label: 'OPEN X', detail: 'Power pop rock. 40 minutes.', tone: 'set' },
+      { time: '13:25', label: 'Changeover', tone: 'gap' },
+      { time: '13:32', label: 'Grass Rug', detail: 'Jam rock band. 33 minutes.', tone: 'set' },
+      { time: '14:05', label: 'Changeover', tone: 'gap' },
+      { time: '14:12', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion. 33 minutes.', tone: 'set' },
+      { time: '14:45', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' },
+      { time: '14:52', label: 'Michael Anderson', detail: 'Solo piano. 33 minutes.', tone: 'set' },
+      { time: '15:25', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' },
+      { time: '15:32', label: 'DCoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
+      { time: '16:12', label: 'Changeover', tone: 'gap' },
+      { time: '16:19', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },
+      { time: '16:59', label: 'Changeover', tone: 'gap' },
+      { time: '17:06', label: 'Fellenz', detail: 'Rock guitar and soundtrack. 40 minutes. Closes the outdoor block.', tone: 'set' },
+      { time: '17:46', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
     ],
   },
   {
