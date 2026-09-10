@@ -155,7 +155,7 @@ export type Partner = { name: string; role: string; poc: string; confirmed: bool
 // PARTNER GATING RULES (strict): a partner appears only if confirmed === true
 // (locked agreement, not "in conversation") and poc is the ZAO team member who
 // owns the relationship. logoSrc only once the file exists in public/partners/
-// (six do since 28 Aug; Town, ENTERACT, Web3Metal due 29 Aug). Heart of Ellsworth is deliberately NOT listed: on the
+// (six do since 28 Aug; Town of Ellsworth's is still due). Heart of Ellsworth is deliberately NOT listed: on the
 // 2026-08-13 call Chesnee Barney said official-partner status and logo use
 // have to clear internally first. COC Concertz added 2026-08-27 (Zaal, 20:3x);
 // its role and POC were not typed and stay UNSET until he does.
@@ -166,8 +166,10 @@ export const PARTNERS: readonly Partner[] = [
   { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
   { name: 'WaveWarZ', role: 'Live music-battle format, online all year', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wavewarz.png' },
   { name: 'COC Concertz', role: 'UNSET', poc: 'UNSET', confirmed: true, logoSrc: '/partners/coc-concertz.png' },
-  { name: 'ENTERACT', role: 'Production and operational support', poc: 'FailOften', confirmed: true },
-  { name: 'Web3Metal', role: 'Partnership integration and community surface', poc: 'Shawn', confirmed: true },
+  // ENTERACT and Web3Metal were here, both confirmed: true, and both rendered on
+  // /, /press and /partners. REMOVED 2026-09-10 by Zaal, verbatim: "enteract is
+  // not a partner neither is we 3 metal". Deleted rather than set to false, so
+  // nobody reads them as pending. Do not re-add either from an older deck or doc.
   // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner Dcoop.
   { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'Dcoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
 ].filter((p) => p.confirmed);
