@@ -47,7 +47,7 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     // filter removes him; after, it is a no-op and the equality still holds.
     expect(OPS_ACTS.map((a) => a.name)).toEqual(LINEUP_NAMES.filter((n) => n !== 'Hurricane'));
     expect(OPS_ACTS).toHaveLength(8);
-    expect(OPS_ACTS.some((a) => /hurricane/i.test(a.name + a.key + a.formChoice))).toBe(false);
+    expect(OPS_ACTS.some((a) => /hurricane/i.test(a.name + a.key))).toBe(false);
   });
 
   it('carries a distinct well-formed hash for every act, and no plaintext code', () => {
@@ -71,10 +71,18 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     expect(drift).toEqual([]);
   });
 
-  it('prefills with the exact dropdown value the form script creates', () => {
-    const gs = readFileSync(path.join(process.cwd(), 'scripts/create-artist-form.gs'), 'utf8');
-    for (const a of OPS_ACTS) expect(gs, a.name).toContain(`'${a.formChoice}'`);
-    for (const a of OPS_ACTS) expect(a.formChoice).toContain(clock12(a.setStart));
+  it('prefills with the bare act name the live dropdown offers', () => {
+    // Read from the live form 2026-09-10 after the hand edit: bare names only,
+    // no set times, no member names (Zaal: always "Acadia Rising").
+    const LIVE_OPTIONS = [
+      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising',
+      'Michael Anderson', 'Dcoop', 'Lyons Den', 'Fellenz',
+    ];
+    for (const a of OPS_ACTS) {
+      const v = new URL(artistFormUrl({ act: a })).searchParams.get(ARTIST_FORM.actEntry);
+      expect(LIVE_OPTIONS, a.name).toContain(v);
+      expect(v).not.toMatch(/\d:\d{2}|Sen Wilde|Women with Rhythm/);
+    }
   });
 });
 
@@ -90,7 +98,7 @@ describe('the form stays open', () => {
 
   it('prefills only the act question', () => {
     const url = new URL(artistFormUrl({ act: OPS_ACTS[5], embedded: true }));
-    expect(url.searchParams.get(ARTIST_FORM.actEntry)).toBe(OPS_ACTS[5].formChoice);
+    expect(url.searchParams.get(ARTIST_FORM.actEntry)).toBe(OPS_ACTS[5].name);
     expect(url.searchParams.get('embedded')).toBe('true');
     expect([...url.searchParams.keys()].sort()).toEqual(['embedded', ARTIST_FORM.actEntry, 'usp'].sort());
   });

@@ -10,7 +10,7 @@ export function ArtistForm({ act }: { act?: OpsAct }) {
       <Eyebrow>The artist details form</Eyebrow>
       <p className="text-sm text-ink-secondary m-0">
         Due {ARTIST_FORM.dueLabel}. No login and no code needed.
-        {act ? ` Your act is already picked in the first question.` : ''} If the form does not show below,
+        {act ? ` Your act is already picked for you.` : ''} If the form does not show below,
         open it in its own tab - it is the same form.
       </p>
       <div>

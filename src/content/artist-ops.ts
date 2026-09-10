@@ -31,7 +31,8 @@ import { createHash } from 'crypto';
 export const ARTIST_FORM = {
   viewUrl:
     'https://docs.google.com/forms/d/e/1FAIpQLSf7ex3EiiT1AkzyN8GKQ4jSfPWjBTo89l4ez27xvZCpc0OqtQ/viewform',
-  /** The "Which act are you?" dropdown, read from the live form 2026-09-10. */
+  /** The "Which act are you?" dropdown, read from the live form 2026-09-10:
+   *  options are the bare names, Hurricane removed. */
   actEntry: 'entry.1967705479',
   /** The deadline the form itself asks for (scripts/create-artist-form.gs DEADLINE). */
   dueLabel: 'Friday 11 September',
@@ -45,10 +46,6 @@ export type OpsAct = {
   /** 24h, exactly as /program prints it. A test holds the two together. */
   setStart: string;
   minutes: number;
-  /** The dropdown value in the live form, used to prefill it. If the option
-   *  text is ever edited, the prefill quietly does nothing - the form still
-   *  works, the artist just picks their act by hand. */
-  formChoice: string;
   /** SHA-256 hex of the code. The code itself is in the private vault. */
   codeSha256: string;
 };
@@ -60,28 +57,20 @@ export type OpsAct = {
  */
 export const OPS_ACTS: readonly OpsAct[] = [
   { key: 'crown-vics', name: 'The Crown Vics', setStart: '12:05', minutes: 30,
-    formChoice: 'The Crown Vics - 12:05 PM, 30 min',
     codeSha256: 'e3ff431d71cf5f7c147a6f6d267a4f26dedea7fc82f137d079173ea84f2ff4ca' },
   { key: 'open-x', name: 'OPEN X', setStart: '12:40', minutes: 40,
-    formChoice: 'OPEN X - 12:40 PM, 40 min',
     codeSha256: '9d4dc8269872799d466ce773635b98c63ebf21ae76755ea3e03a6f2495e4373e' },
   { key: 'grass-rug', name: 'Grass Rug', setStart: '13:25', minutes: 30,
-    formChoice: 'Grass Rug - 1:25 PM, 30 min',
     codeSha256: '23bb7d8cec6d8080324bb8172f8cd2c4dda1d96d0c194193b62253459ecaade8' },
   { key: 'acadia-rising', name: 'Acadia Rising', setStart: '14:00', minutes: 30,
-    formChoice: 'Acadia Rising (Sen Wilde, with Women with Rhythm) - 2:00 PM, 30 min',
     codeSha256: 'e9ff956154b23901cee71a313712cff962bd772da981f7b63fa2273a6184086b' },
   { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:35', minutes: 30,
-    formChoice: 'Michael Anderson - 2:35 PM, 30 min',
     codeSha256: 'b89fdb296171f0a04ebd1dcefa85b13b46dc74e32fe00f3e89397ac06d86b652' },
   { key: 'dcoop', name: 'Dcoop', setStart: '15:45', minutes: 40,
-    formChoice: 'Dcoop - 3:45 PM, 40 min',
     codeSha256: '58cdef916cbce928d46a263d3ffb64639285168051b57b91fc75ebd5f0ad9709' },
   { key: 'lyons-den', name: 'Lyons Den', setStart: '16:30', minutes: 40,
-    formChoice: 'Lyons Den - 4:30 PM, 40 min',
     codeSha256: 'c4e9b93e5e6d06ad10e2e7780d60ff016ef4027dde270c4297e62753755752ae' },
   { key: 'fellenz', name: 'Fellenz', setStart: '17:15', minutes: 40,
-    formChoice: 'Fellenz - 5:15 PM, 40 min',
     codeSha256: '21323ff07117cc8842f6984ca063c7072d008e2150696561cf2eca1d486b51ed' },
 ];
 
@@ -112,8 +101,13 @@ export function findActByCode(raw: string, acts: readonly OpsAct[] = OPS_ACTS): 
 export function artistFormUrl(opts: { act?: OpsAct; embedded?: boolean } = {}): string {
   const url = new URL(ARTIST_FORM.viewUrl);
   if (opts.act) {
+    // The live dropdown offers the bare act names (edited by hand 2026-09-10;
+    // it carried set times before). Prefill with the name itself so there is
+    // no second copy of the option text to drift. If the options are ever
+    // renamed, the prefill quietly selects nothing - the form still works,
+    // the artist just picks their act by hand.
     url.searchParams.set('usp', 'pp_url');
-    url.searchParams.set(ARTIST_FORM.actEntry, opts.act.formChoice);
+    url.searchParams.set(ARTIST_FORM.actEntry, opts.act.name);
   }
   if (opts.embedded) url.searchParams.set('embedded', 'true');
   return url.toString();
