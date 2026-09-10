@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, DAY, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, SERIES, ELLSWORTH } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList, PartnerTile } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, Stat, SectionHeader, InfoStrip, BorderedList, PartnerTile, Countdown } from '@/components/poster';
 
 // The one link that goes in the email. Seven sections, in the order
 // docs/design/redesign-2026-08-28.md sets, and no eighth. Reads nothing from
@@ -73,7 +73,8 @@ export default function HomePage() {
             <p className="text-lg font-bold text-ink-950 max-w-[620px] m-0 mb-7">
               Independent artists. One stage. Music from noon.
             </p>
-            <InfoStrip items={STRIP} className="mb-8" />
+            <InfoStrip items={STRIP} className="mb-4" />
+            <Countdown className="mb-7" />
             <div className="flex flex-wrap gap-3">
               <Button href={FESTIVAL.rsvpUrl} external size="lg">
                 RSVP free
