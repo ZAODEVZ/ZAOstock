@@ -3,6 +3,7 @@ import { createHash } from 'crypto';
 import { readFileSync } from 'fs';
 import path from 'path';
 import {
+  ARTIST_DATES,
   ARTIST_FORM,
   OPS_ACTS,
   SOUNDCHECK,
@@ -224,5 +225,37 @@ describe('the backstage page promises no reveal day', () => {
     expect(page).not.toContain('lineupRevealLabel');
     expect(page).not.toMatch(/Sunday|13 September/);
     expect(page).toContain('The form is what puts you in it.');
+  });
+});
+
+// Zaal, 2026-09-10: "just dont make it due on a date no later than 18 th". The
+// form's due date was Friday 11 September, the next day, with no act yet sent
+// its link. Every reading of his words forbids 11 September; neither asks for a
+// new date. So: none is printed, and if one ever is, it may not pass 18 Sep.
+describe('the artist form has no due date', () => {
+  const SURFACES = [
+    'src/content/artist-ops.ts',
+    'src/app/backstage/ArtistForm.tsx',
+    'src/app/backstage/[code]/page.tsx',
+    'src/app/backstage/page.tsx',
+    'scripts/create-artist-form.gs',
+    'ops-room/ops-room.src.html',
+  ];
+
+  it('prints "11 September" nowhere an artist or the crew reads about the form', () => {
+    for (const f of SURFACES) {
+      const src = readFileSync(path.join(process.cwd(), f), 'utf8');
+      expect(src, f).not.toMatch(/Friday 11 September|due back Friday 11/);
+    }
+    expect(JSON.stringify(ARTIST_FORM)).not.toMatch(/11 September/);
+  });
+
+  it('asks without a date, and any date it ever carries is no later than 18 September', () => {
+    const row = ARTIST_DATES[0];
+    expect(row.what).toMatch(/artist details form/);
+    expect(row.when).toBe(ARTIST_FORM.askLabel);
+    const m = row.when.match(/(\d{1,2}) September/);
+    if (m) expect(Number(m[1])).toBeLessThanOrEqual(18);
+    expect(ARTIST_FORM.askLabel).not.toMatch(/\d/);
   });
 });
