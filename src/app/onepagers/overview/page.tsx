@@ -57,7 +57,7 @@ const PILLARS: Pillar[] = [
     number: '02',
     title: 'Community second',
     body:
-      'The ZAO is 100+ members across 20+ countries. ZAOstock is the global community showing up for one local town: Ellsworth, Maine. Year 1 is about relationship.',
+      'The ZAO is 100+ members. ZAOstock is the global community showing up for one local town: Ellsworth, Maine. Year 1 is about relationship.',
   },
   {
     number: '03',
@@ -75,7 +75,7 @@ const PARTNERS: Partner[] = [
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format, online all year', confirmed: true },
-  { name: 'COC Concertz', role: 'UNSET', confirmed: true },
+  { name: 'COC Concertz', role: '', confirmed: true },
 ].filter((p) => p.confirmed);
 
 // SPONSOR_TIERS used to be defined here, with its own names and its own
@@ -269,8 +269,7 @@ export default async function OverviewOnePager() {
               </div>
               <p className="mt-2 text-sm leading-relaxed text-ink-950 print:text-slate-700">
                 <strong className="text-ink-950 print:text-slate-900">The ZAO</strong> (ZTalent
-                Artist Organization) is an independent music community: 100+ members, 30+
-                countries, organized around fractals (weekly peer-ranked contribution rounds) and
+                Artist Organization) is an independent music community: 100+ members, organized around fractals (weekly peer-ranked contribution rounds) and
                 a shared treasury.
               </p>
             </div>
@@ -334,7 +333,7 @@ export default async function OverviewOnePager() {
                     <div className="text-sm font-semibold text-ink-950 print:text-slate-900">
                       {p.name}
                     </div>
-                    <div className="text-xs text-ink-muted print:text-ink-muted">{p.role}</div>
+                    {p.role && <div className="text-xs text-ink-muted print:text-ink-muted">{p.role}</div>}
                   </div>
                   <span
                     className={`rounded-full px-2 py-0.5 text-xs font-semibold ${

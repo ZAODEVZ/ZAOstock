@@ -33,7 +33,7 @@ Sponsors put money behind a named artist or the day. Every sponsor gets the same
 
 ## Why Ellsworth
 
-Every car heading to Acadia National Park passes through; over four million people drove through in 2025. Downtown is newly on the National Historic Register. ZAOstock is measuring what a free street festival does for downtown businesses, an ordinary Saturday against 3 October, and will publish the comparison.
+Every car heading to Acadia National Park passes through. Downtown is newly on the National Historic Register. ZAOstock is measuring what a free street festival does for downtown businesses, an ordinary Saturday against 3 October, and will publish the comparison.
 
 ## Pages
 

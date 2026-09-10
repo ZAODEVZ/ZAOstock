@@ -40,8 +40,7 @@ downtown Ellsworth, Maine. From noon, eight independent artists play the outdoor
 parklet stage back to back until six, when the street clears. Next door, Black
 Moon Public House hosts its own evening. It is part of the 9th Annual Art of Ellsworth
 during Maine Craft Weekend, and it is produced by ZAO Festivals, the events arm
-of The ZAO, an independent music community with members in more than twenty
-countries.
+of The ZAO, an independent music community.
 
 ## Fast facts
 
@@ -153,8 +152,7 @@ ZAOstock is the first in Maine. The ZAO's founder lives in Ellsworth.
 
 ## Why Ellsworth
 
-Ellsworth is the gateway to Acadia National Park. Over four million people
-drove through in 2025. Downtown has just received National Historic Register
+Ellsworth is the gateway to Acadia National Park. Downtown has just received National Historic Register
 designation. The Heart of Ellsworth ran 28 events in 2025 with more than 50
 sponsors. ZAOstock plugs into that calendar rather than competing with it.
 
@@ -196,7 +194,7 @@ info@thezao.com
 | Tent, Wallace Events | `docs/plans/production-plan-2026-10-03.md` section 4 |
 | Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486,495` |
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
-| 20+ countries, music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
+| Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
 | Lyons Den public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
 | WaveWarZ 1,452, 27 Aug | `docs/sponsor/deck-2026-10-03.md` slide 6 |
 | Partners | `src/app/page.tsx:101-112, 546-548` |

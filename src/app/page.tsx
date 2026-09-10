@@ -156,10 +156,10 @@ export default function HomePage() {
             <SectionHeader
               eyebrow="Why Ellsworth"
               title="Every car heading to Acadia passes through."
-              lede={`Over four million people drove through in 2025. ${ELLSWORTH.historic} Part of the ${SITE.series} during ${SITE.weekend}.`}
+              lede={`${ELLSWORTH.historic} Part of the ${SITE.series} during ${SITE.weekend}.`}
             />
             <div className="flex flex-wrap gap-10">
-              <Stat value={ELLSWORTH.driveThrough.value} label={ELLSWORTH.driveThrough.label} />
+              <Stat value={ELLSWORTH.heartEvents.value} label={ELLSWORTH.heartEvents.label} />
               <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
             </div>
           </div>
