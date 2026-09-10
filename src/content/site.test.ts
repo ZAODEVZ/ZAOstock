@@ -58,8 +58,10 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists seven confirmed partners', () => {
-    expect(PARTNERS).toHaveLength(7);
+  it('lists eight confirmed partners', () => {
+    // Eighth since 2026-09-10: Artizen, for funding (Zaal).
+    expect(PARTNERS).toHaveLength(8);
+    expect(PARTNERS.map((p) => p.name)).toContain('Artizen');
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');

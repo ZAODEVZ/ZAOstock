@@ -105,8 +105,8 @@ section is what a journalist reads.)
 
 ## Partners
 
-Partners give time, venue and infrastructure, not money. Each has a confirmed
-agreement and a named point of contact on the ZAO team.
+Partners give time, venue and infrastructure, and Artizen supports the funding.
+Each has a confirmed agreement and a named point of contact on the ZAO team.
 
 - Town of Ellsworth - parklet venue
 - Black Moon Public House - the evening, and the official after party
@@ -115,6 +115,7 @@ agreement and a named point of contact on the ZAO team.
 - WaveWarZ - live music-battle format, online all year, not on the 3 October programme
 - COC Concertz - community partnership
 - Bomb Squad - crew, content and merch
+- Artizen - funding partner
 
 *(SITE: mirror `src/app/page.tsx` PARTNERS so this list cannot drift. COC
 Concertz is a partner per Zaal, typed 27 Aug 20:3x; add it and Bomb Squad there. "Community

@@ -76,6 +76,7 @@ const PARTNERS: Partner[] = [
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format, online all year', confirmed: true },
   { name: 'COC Concertz', role: '', confirmed: true },
+  { name: 'Artizen', role: 'Funding partner', confirmed: true },
 ].filter((p) => p.confirmed);
 
 // SPONSOR_TIERS used to be defined here, with its own names and its own

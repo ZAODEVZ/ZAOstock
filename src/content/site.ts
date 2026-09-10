@@ -179,6 +179,9 @@ export const PARTNERS: readonly Partner[] = [
   // nobody reads them as pending. Do not re-add either from an older deck or doc.
   // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner DCoop.
   { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'DCoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
+  // Artizen: Zaal, 2026-09-10, "also add artizen for funding as a parter". No
+  // amount is stated anywhere, on purpose: none has been given for public copy.
+  { name: 'Artizen', role: 'Funding partner', poc: 'Zaal', confirmed: true, logoSrc: '/partners/artizen.png' },
 ].filter((p) => p.confirmed);
 
 /** What every partner gets, whatever the tier (site-fix brief, 28 Aug). */
