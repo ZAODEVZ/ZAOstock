@@ -32,7 +32,9 @@ export function Header() {
     <header className="no-print sticky top-0 z-40 bg-paper-200/92 backdrop-blur-[8px] border-b-2 border-ink-950">
       <div className="wrap flex items-center justify-between gap-6 py-3.5">
         <Link href="/" className="flex items-center gap-2.5 text-ink-950" onClick={() => setOpen(false)}>
-          <Image src={SITE.badge.src} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover border-2 border-ink-950" priority />
+          <span className="h-9 w-9 shrink-0 rounded-full bg-ink-950 border-2 border-ink-950 flex items-center justify-center overflow-hidden">
+            <Image src={SITE.logo.src} alt="" width={36} height={36} className="h-8 w-8 object-contain" priority />
+          </span>
           <span className="font-display text-[19px] tracking-[-0.01em]">ZAOstock</span>
         </Link>
 

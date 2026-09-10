@@ -84,15 +84,18 @@ export default function HomePage() {
             </div>
             <p className="mt-3.5 text-[13px] text-ink-muted m-0">{SITE.weather}</p>
           </div>
-          <Image
-            src={SITE.badge.src}
-            alt={SITE.badge.alt}
-            width={SITE.badge.width}
-            height={SITE.badge.height}
-            sizes="(min-width: 1024px) 360px, 320px"
-            priority
-            className="w-full max-w-[320px] mx-auto lg:max-w-none rounded-lg border-[2.5px] border-ink-950 shadow-hard-lg"
-          />
+          {/* The moose is a white knockout: it sits on the ink inverse surface, never on paper. */}
+          <div className="w-full max-w-[320px] mx-auto lg:max-w-none rounded-lg border-[2.5px] border-ink-950 shadow-hard-lg bg-ink-950 p-5">
+            <Image
+              src={SITE.logo.src}
+              alt={SITE.logo.alt}
+              width={SITE.logo.width}
+              height={SITE.logo.height}
+              sizes="(min-width: 1024px) 360px, 320px"
+              priority
+              className="w-full h-auto"
+            />
+          </div>
         </div>
       </Section>
 

@@ -17,7 +17,9 @@ export function Footer() {
     <footer className="border-t border-ink-950/60 py-8">
       <div className="wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <Image src={SITE.badge.src} alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover border-2 border-ink-950" />
+          <span className="h-10 w-10 shrink-0 rounded-full bg-ink-950 border-2 border-ink-950 flex items-center justify-center overflow-hidden">
+            <Image src={SITE.logo.src} alt="" width={40} height={40} className="h-9 w-9 object-contain" />
+          </span>
           <div className="text-sm text-ink-secondary">
             <p className="m-0">{SITE.producedBy}</p>
             <p className="m-0">
