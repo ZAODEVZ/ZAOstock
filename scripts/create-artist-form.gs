@@ -25,17 +25,20 @@ var DEADLINE = 'Friday 11 September';
 var EVENT = 'ZAOstock, Saturday 3 October 2026, Franklin Street Parklet, Ellsworth';
 
 // Locked from the 3 September running order. Do NOT re-ask acts for these.
-// EIGHT since 2026-09-10: Hurricane is out and his option was deleted from the
-// live form by hand the same day. Nobody else moved.
+// EIGHT since 2026-09-10, bare names: the live form was edited by hand that day
+// to drop Hurricane and the set times, and Zaal's standing rule is always
+// "Acadia Rising", never the long form. This list mirrors the live dropdown.
+// A response filed before the edit carries the OLD text ("Dcoop - 3:45 PM,
+// 40 min"), so anything reading responses must accept both shapes.
 var ACTS = [
-  'The Crown Vics - 12:05 PM, 30 min',
-  'OPEN X - 12:40 PM, 40 min',
-  'Grass Rug - 1:25 PM, 30 min',
-  'Acadia Rising (Sen Wilde, with Women with Rhythm) - 2:00 PM, 30 min',
-  'Michael Anderson - 2:35 PM, 30 min',
-  'Dcoop - 3:45 PM, 40 min',
-  'Lyons Den - 4:30 PM, 40 min',
-  'Fellenz - 5:15 PM, 40 min',
+  'The Crown Vics',
+  'OPEN X',
+  'Grass Rug',
+  'Acadia Rising',
+  'Michael Anderson',
+  'Dcoop',
+  'Lyons Den',
+  'Fellenz',
 ];
 
 function createZaostockArtistForm() {
@@ -50,7 +53,7 @@ function createZaostockArtistForm() {
     'We do not publish anyone who has not confirmed in writing, so if we do not ' +
     'hear from you, you will not appear on the site even though you are on the ' +
     'running order.\n\n' +
-    'Also please note the SOUNDCHECK IS THE EVENING OF FRIDAY 2 OCTOBER, the ' +
+    'Also please note the SOUNDCHECK RUNS 4PM TO 7PM ON FRIDAY 2 OCTOBER, the ' +
     'night before the show. It covers every act and there is no Saturday ' +
     'alternative - Saturday morning is a line check only. A contract with the ' +
     'full terms follows separately; this form is just the four things plus a ' +

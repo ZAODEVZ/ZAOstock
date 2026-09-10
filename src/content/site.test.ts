@@ -357,6 +357,13 @@ describe('Hurricane is off the bill', () => {
     expect(read('scripts/create-artist-form.gs')).not.toMatch(/'Hurricane - /);
   });
 
+  // Zaal's standing rule, 2026-09-10: always "Acadia Rising", never the long form.
+  it('bills Acadia Rising by that name only', () => {
+    for (const p of ['docs/marketing/press-kit.md', 'ops-room/ops-room.src.html', 'scripts/create-artist-form.gs', 'src/app/program/page.tsx']) {
+      expect(read(p), p).not.toMatch(/Acadia Rising \(|Women with Rhythm/);
+    }
+  });
+
   it('is counted as eight wherever the kit states a count', () => {
     expect(read('docs/marketing/press-kit.md')).not.toMatch(/\bnine\b/i);
   });
