@@ -81,7 +81,7 @@ export const PUBLIC_LINEUP: readonly string[] = ['Lyons Den'];
  * change.
  *
  * What actually publishes acts is `getPublicArtists()`, which is dynamic: it
- * gates on `lineupIsPublic()` and selects `status = 'confirmed'` from the
+ * gates each row on `isPublishable()` (confirmed, bio, photo) from the
  * database. No deploy is involved. Acts appear when they confirm, not when
  * someone edits this file.
  *
