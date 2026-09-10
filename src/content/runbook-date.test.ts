@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'fs';
 import path from 'path';
-import { SITE } from './site';
 
 /**
  * THE REVEAL RUNBOOK'S OPERATIONAL DATE CANNOT DRIFT FROM THE GATE.
@@ -25,26 +24,14 @@ import { SITE } from './site';
 const RUNBOOK = path.join(process.cwd(), 'docs/events/REVEAL-RUNBOOK.md');
 
 describe('reveal runbook', () => {
-  it('shows a sample payload carrying the real reveal date', () => {
+  // RETIRED 2026-09-10 with the reveal date itself. This test used to pin the
+  // runbook's sample payload to SITE.lineupRevealDate; that key is gone. What
+  // must hold now is that nobody can follow the runbook as live instructions.
+  it('opens by saying it is retired and there is no reveal day', () => {
     const md = readFileSync(RUNBOOK, 'utf8');
-
-    // The line an operator diffs their curl output against.
-    const samples = [...md.matchAll(/"reveal_date":"(\d{4}-\d{2}-\d{2})"/g)].map((m) => m[1]);
-
-    expect(
-      samples.length,
-      'The runbook no longer shows a sample lineup payload. That sample is what ' +
-        'an operator compares real output against on the day - keep it.',
-    ).toBeGreaterThan(0);
-
-    for (const found of samples) {
-      expect(
-        found,
-        `The runbook's sample payload says reveal_date ${found}, but the gate is ` +
-          `${SITE.lineupRevealDate}. Someone following this on the day would ` +
-          `compare their curl output against the wrong date.`,
-      ).toBe(SITE.lineupRevealDate);
-    }
+    const head = md.split('\n').slice(0, 6).join('\n');
+    expect(head).toMatch(/RETIRED/);
+    expect(head).toMatch(/There is no reveal day/);
   });
 
   it('tells the operator to stop on an empty bill', () => {

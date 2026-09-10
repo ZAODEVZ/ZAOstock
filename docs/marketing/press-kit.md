@@ -16,9 +16,9 @@ Written 2026-08-27 (Thursday). Lane: MARKETING.
   link. Do not add any image that is not in the repo.
 - Facts come from `src/content/festival.ts` where they exist there. If SITE
   would rather import them than repeat them, the strings match.
-- Two sections have a hold and must not render before the date on them: the
-  lineup (13 September) and WaveWarZ figures (re-pull before publishing; WaveWarZ is
-  not on the 3 October programme).
+- One section has a hold: the WaveWarZ figure (re-pull before publishing; WaveWarZ
+  is not on the 3 October programme). There is no lineup reveal date since
+  2026-09-10 (Zaal): each act gets its own post as its details come in.
 - Music starts at noon (Zaal, typed 27 Aug 19:3x). `src/content/festival.ts` still
   reads 11 AM - 6 PM; SITE moves it back to noon. This file says noon.
 - Contact address is `info@thezao.com` - settled by Zaal, typed 27 Aug 21:2x. The overview
@@ -78,11 +78,11 @@ OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz.
 
 **NONE of them has countersigned.** They are booked and locked in the run of show,
 which is a different claim from confirmed. Do not describe any act as confirmed in
-press copy. The reveal on 13 September is the API and the /artist pages, and it
-publishes only acts that have confirmed in writing.
+press copy. The API and the /artist pages publish each act only once it has
+confirmed in writing and its bio and photo are in.
 
-*(On 13 September, the gate opens by itself. It reads the artists table, not this
-file. Never list an act marked proposed.)*
+*(The gate is per act and reads the artists table, not this file. Never list an
+act marked proposed.)*
 
 ## WaveWarZ
 
@@ -100,7 +100,7 @@ section is what a journalist reads.)
 <!-- re-check: 2026-09-12 -->
 <!-- The 1,452 is a point-in-time count of a live, still-running system, printed
      on the one page a journalist reads. It was 12 days old before anyone stamped
-     it. Re-pull it before the 13 September reveal or drop the figure: a stale
+     it. Re-pull it before quoting it again, or drop the figure: a stale
      number quoted to press is worse than no number, because we cannot correct
      what they have already published. -->
 
@@ -132,8 +132,8 @@ Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 Oct
 ## Four angles
 
 - **Free, on purpose.** Free admission is a choice, not a first-year compromise. Somebody can decide at eleven in the morning and simply turn up.
-- **One venue at a time.** Most festivals run parallel stages and make the audience choose. ZAOstock runs one continuous programme that moves from the parklet indoors as the evening starts.
-- **Downtown, not a field.** The whole day happens within walking distance in downtown Ellsworth, on a public parklet and in the pub next door, rather than on a site built for the weekend and taken down after.
+- **One stage at a time.** Most festivals run parallel stages and make the audience choose. ZAOstock runs one outdoor stage, one act after another, so nobody has to choose what to miss.
+- **Downtown, not a field.** The whole day happens on a public parklet in downtown Ellsworth, within walking distance of everything, rather than on a site built for the weekend and taken down after.
 - **Part of a bigger weekend.** ZAOstock sits inside the 9th Annual Art of Ellsworth and Maine Craft Weekend, a festival day within a weekend that already brings people to the region.
 
 ## The ZAO
@@ -144,7 +144,7 @@ Festivals is its events arm.
 
 Previous festivals:
 
-- **ZAO-PALOOZA** - New York City, during NFT NYC, 2024. Twelve artists.
+- **ZAO-PALOOZA** - New York City, 2024. Twelve artists.
 - **ZAO-CHELLA** - Miami, Wynwood, during Art Basel, December 2024. The
   first live WaveWarZ battle.
 - **ZAOville** - Laurel, Maryland, July 2026, co-hosted with DCoop.
@@ -164,11 +164,13 @@ comparison combined across the businesses that take part.
 
 ## Assets
 
-Official mark, designed by Samantha "Candy" of CandyToyBox. Credit her when
-the mark is used.
+The primary mark is the moose, drawn by attabotty. The 2026 badge, designed by
+Samantha "Candy" of CandyToyBox, is kept as an archive mark; credit her when it
+is used. Colours, fonts and usage rules: zaostock.com/design.
 
-- ZAOstock 2026 badge, colour (the primary mark): `/brand/logos/zaostock26_badge_official.png`
-- ZAOstock 2026 badge, black and white: `/brand/logos/zaostock26_badge_bw_final.png`
+- The moose, primary mark (white on transparent): `/brand/logos/zaostock26_moose.png`
+- ZAOstock 2026 badge, colour (archive): `/brand/logos/zaostock26_badge_official.png`
+- ZAOstock 2026 badge, black and white (archive): `/brand/logos/zaostock26_badge_bw_final.png`
 
 Artist photos and stage photos: not yet available. Ask.
 

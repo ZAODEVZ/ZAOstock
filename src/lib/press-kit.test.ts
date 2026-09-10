@@ -47,15 +47,11 @@ describe('press kit placeholder', () => {
     expect(PLACEHOLDER_MARKDOWN).toContain('info@thezao.com');
   });
 
-  // The three reveal dates in this placeholder were literals until 2026-09-01.
-  // They read from SITE.lineupRevealLabel now (src/content/reveal-date.test.ts
-  // keeps them that way), so this checks the RENDERED text is unchanged by that:
-  // the source literal is gone, the published sentence is not.
-  it('still announces the reveal day it always did, now from one source', () => {
-    expect(PLACEHOLDER_MARKDOWN).toContain(`Announced ${SITE.lineupRevealLabel} 2026`);
-    expect(PLACEHOLDER_MARKDOWN).toContain(`until the ${SITE.lineupRevealLabel} reveal`);
-    expect(PLACEHOLDER_MARKDOWN).toContain(`lands with the ${SITE.lineupRevealLabel} reveal`);
-    expect(PLACEHOLDER_MARKDOWN).toContain('13 September');
+  // There is no reveal day since 2026-09-10 (Zaal). The placeholder used to
+  // announce one three times; it now says how acts are announced instead.
+  it('announces each act in its own post, and names no reveal day', () => {
+    expect(PLACEHOLDER_MARKDOWN).toContain('Each artist is announced in their own post, with their bio and photo');
+    expect(PLACEHOLDER_MARKDOWN).not.toMatch(/13 September|reveal/i);
   });
 
   it('names no performer before the reveal', () => {

@@ -44,20 +44,15 @@ function publishable(markdown: string): string {
 type Segment = { markdown: string; hold?: string };
 
 /**
- * The kit carries two HOLD blocks (the lineup until the reveal date, the WaveWarZ
- * figure until re-pulled). Split them out so they render inside a real
+ * The kit carries one HOLD block (the WaveWarZ figure until re-pulled; the
+ * lineup hold went with the reveal date on 2026-09-10). Split them out so they render inside a real
  * <details>, closed by default, and cannot ship open by accident. SITE removes
  * this on the day. react-markdown escapes raw HTML, so the wrapper is JSX.
  */
 function splitHolds(markdown: string): Segment[] {
   const markers: Array<{ re: RegExp; label: string }> = [
-    // Derived from SITE, not typed twice: the marker in docs/marketing/press-kit.md
-    // carries the same label, and a literal here silently stops matching when the
-    // reveal date moves (it did, 31 Aug, 1 September -> 7 September).
-    {
-      re: new RegExp(`\\*\\*HOLD until ${SITE.lineupRevealLabel}\\.\\*\\*[\\s\\S]*?(?=\\n## |$)`),
-      label: `Held until ${SITE.lineupRevealLabel}`,
-    },
+    // The lineup hold ("HOLD until <reveal date>") is gone with the reveal date
+    // itself (Zaal, 2026-09-10). Only the WaveWarZ re-pull hold remains.
     { re: /\*\*HOLD - re-pull before publishing\.\*\*[^\n]*/, label: 'Re-pull before publishing' },
   ];
   let segments: Segment[] = [{ markdown }];

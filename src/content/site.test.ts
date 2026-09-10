@@ -15,10 +15,10 @@ const PROPOSED = ['aquavantes', 'somes sound'];
 const NOT_PUBLIC = ['werb', 'sen wilde', 'phelan'];
 
 describe('SITE facts', () => {
-  it('publishes noon, the contact address and the reveal date', () => {
+  it('publishes noon and the contact address, and no reveal date', () => {
     expect(SITE.musicFrom).toBe('Noon');
     expect(SITE.contact).toBe('info@thezao.com');
-    expect(SITE.lineupRevealDate).toBe('2026-09-13');
+    expect('lineupRevealDate' in SITE).toBe(false);
     expect(SITE.submissionCutoffDate).toBe('2026-09-01');
   });
 
@@ -379,6 +379,19 @@ describe('ENTERACT and Web3Metal are not partners', () => {
     for (const f of ['docs/marketing/press-kit.md', 'src/app/llms.txt/route.ts', 'src/app/onepagers/overview/page.tsx']) {
       const lines = read(f).split('\n').filter((l) => !l.trim().startsWith('//'));
       expect(lines.filter((l) => /enteract|web3 ?metal/i.test(l)), f).toEqual([]);
+    }
+  });
+});
+
+// No crypto framing in public copy (a standing rule for the local Maine
+// audience). "during NFT NYC" was retired from the press kit on 2026-09-10 and
+// was still live in SERIES and llms.txt: a retirement is a search, not an edit.
+describe('the retired "NFT NYC" framing', () => {
+  it('appears on no rendered surface', () => {
+    const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
+    expect(JSON.stringify(SERIES)).not.toMatch(/NFT/);
+    for (const f of ['src/app/llms.txt/route.ts', 'docs/marketing/press-kit.md', 'src/app/page.tsx', 'src/app/sponsor/page.tsx', 'src/app/event-organizers/page.tsx', 'src/app/festivals/page.tsx']) {
+      expect(read(f), f).not.toMatch(/NFT NYC/);
     }
   });
 });

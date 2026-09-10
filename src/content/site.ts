@@ -22,8 +22,11 @@ export const SITE = {
   musicFrom: 'Noon',
   /** Public window; festival.ts `window` is the source once PRODUCTION's noon revert merges. */
   windowLabel: 'Noon - 6 PM',
-  lineupRevealLabel: '13 September',
-  lineupRevealDate: '2026-09-13',
+  // lineupRevealLabel / lineupRevealDate ('13 September', '2026-09-13') lived
+  // here until 2026-09-10. Zaal: "stop making a whole reveal date - we will just
+  // post about each of them individually starting on Saturday with their bio
+  // and photo." Deleted, not blanked: reveal-date.test.ts fails if either key,
+  // or the date, comes back. Acts publish per artist (src/lib/lineup-reveal.ts).
   // UNUSED since 2026-09-01: the submission form was removed from the site, so
   // nothing renders these and there is no cutoff to enforce. Left in place
   // rather than deleted so the value is not lost if intake ever returns. Do NOT
@@ -305,7 +308,7 @@ export const TIERS: readonly Tier[] = [
 
 /** Deck slide 3 and the press kit. */
 export const SERIES = [
-  { name: 'ZAO-PALOOZA', place: 'New York City, during NFT NYC', when: '2024', note: 'Twelve artists. Volunteer-organised in six weeks. Broke even.', href: '/festivals' },
+  { name: 'ZAO-PALOOZA', place: 'New York City', when: '2024', note: 'Twelve artists. Volunteer-organised in six weeks. Broke even.', href: '/festivals' },
   { name: 'ZAO-CHELLA', place: 'Miami, Wynwood, during Art Basel', when: 'December 2024', note: 'The first live WaveWarZ battle.', href: '/festivals' },
   { name: 'ZAOville', place: 'Laurel, Maryland', when: 'July 2026', note: 'Co-hosted with DCoop.', href: '/zaoville' },
 ] as const;

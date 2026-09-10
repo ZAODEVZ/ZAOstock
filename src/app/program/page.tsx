@@ -146,7 +146,7 @@ const GOOD_TO_KNOW = [
   `${SITE.weather} Tent cover from Wallace Events.`,
   'One venue at a time. Nothing plays in two rooms at once.',
   'Black Moon is open through the day, walkable, right next door.',
-  `The full lineup is announced ${SITE.lineupRevealLabel}. Times can shift by a few minutes on the day.`,
+  'Each artist gets their own post with their bio and photo, in the order their details come in. Times can shift by a few minutes on the day.',
   'Friday 2 October is soundcheck night, artists only.',
 ];
 
@@ -162,7 +162,7 @@ export default function ProgramPage() {
               Music from noon on the {FESTIVAL.venue}. At six the street clears, and their own evening starts inside Black Moon next door.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>
+              <Badge tone="gold">Meet the artists, one at a time</Badge>
               <span className="text-sm text-ink-muted">{LINEUP_NAMES.join(', ')}. {LINEUP_NAMES_NOTE}</span>
             </div>
           </div>
