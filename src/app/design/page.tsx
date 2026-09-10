@@ -88,7 +88,13 @@ export default function DesignKitPage() {
 
       <Section id="colours">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-          <SectionHeader eyebrow="Colour" title="The poster inks" />
+          {/* Provenance, kept on purpose: Candy's colors.css says the palette was
+              sourced from the 2026 badge, which was retired on 2026-09-10. */}
+          <SectionHeader
+            eyebrow="Colour"
+            title="The poster inks"
+            lede="Candy's palette. It was first drawn from the 2026 badge, since retired; the colours stay."
+          />
           <Button href="/design/zaostock-colours.css" variant="secondary" size="sm">
             Download the palette
           </Button>
