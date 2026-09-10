@@ -1,12 +1,40 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { SiteShell, Section, SectionHeader, Card, Button, Eyebrow } from '@/components/poster';
-import { COLOURS, FONTS, MARKS, RULES } from '@/content/design-kit';
+import { SiteShell, Section, SectionHeader, Card, Button, Eyebrow, Badge } from '@/components/poster';
+import { COLOURS, FONTS, MARKS, RULES, SIGNS, ILLUSTRATIONS, type KitArt } from '@/content/design-kit';
 
 export const metadata: Metadata = {
   title: 'Design kit | ZAOstock',
   description: 'The ZAOstock marks, colours, type and the rules for using them. Every file downloads.',
 };
+
+// One tile per piece of Candy's artwork: the image on paper, its name, and the
+// file itself as the download.
+function ArtGrid({ items, cols }: { items: readonly KitArt[]; cols: string }) {
+  return (
+    <div className={`grid gap-3 ${cols}`}>
+      {items.map((a) => (
+        <a
+          key={a.file}
+          href={a.file}
+          download
+          className="group flex flex-col rounded-md border-2 border-ink-950 bg-paper-200 no-underline hover:bg-paper-100"
+        >
+          <span className="flex h-[140px] items-center justify-center p-3">
+            {/* unoptimized: these are Candy's own small webps. Through the optimiser a
+                160px file came back unscaled for a 640w request, and the
+                browser drew it at a quarter of its size. */}
+            <Image src={a.file} alt={a.name} width={a.width} height={a.height} unoptimized className="max-h-[116px] max-w-full w-auto h-auto" />
+          </span>
+          <span className="flex items-center justify-between gap-2 border-t-2 border-ink-950 px-3 py-2">
+            <span className="text-sm font-bold text-ink-950">{a.name}</span>
+            <span className="font-mono text-[11px] text-ink-muted group-hover:text-ink-950">WEBP</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default function DesignKitPage() {
   return (
@@ -40,6 +68,22 @@ export default function DesignKitPage() {
             </Card>
           ))}
         </div>
+      </Section>
+
+      <Section id="signage">
+        <SectionHeader
+          eyebrow="Signage"
+          title="Signs for the day"
+          lede={'Directional and welcome signs from Candy\u2019s design system, at web size for screens and posts. Print versions come from her master files, so ask before printing any of these.'}
+          className="mb-6"
+        />
+        <ArtGrid items={SIGNS} cols="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" />
+      </Section>
+
+      <Section id="illustrations">
+        <SectionHeader eyebrow="Illustrations" title="The poster pieces" lede="Hand-drawn pieces to build a post or a flyer from. Keep them whole: no recolouring or cropping." className="mb-6" />
+        <ArtGrid items={ILLUSTRATIONS} cols="grid-cols-2 sm:grid-cols-4" />
+        <p className="text-[13px] text-ink-muted mt-4 m-0">Signage and illustrations by Samantha &ldquo;Candy&rdquo;, CandyToyBox.</p>
       </Section>
 
       <Section id="colours">
@@ -78,6 +122,19 @@ export default function DesignKitPage() {
             </Card>
           ))}
         </div>
+      </Section>
+
+      <Section id="components">
+        <SectionHeader eyebrow="Components" title="Buttons and badges" lede="The site's own, drawn live from the same code the pages use." className="mb-6" />
+        <Card>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button href="#components" size="sm">Primary</Button>
+            <Button href="#components" variant="secondary" size="sm">Secondary</Button>
+            <Badge tone="gold">Gold badge</Badge>
+            <Badge tone="denim">Denim badge</Badge>
+            <Badge>Outline badge</Badge>
+          </div>
+        </Card>
       </Section>
 
       <Section id="rules">

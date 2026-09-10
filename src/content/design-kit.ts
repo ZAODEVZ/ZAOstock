@@ -71,10 +71,13 @@ export const RULES: ReadonlyArray<{ title: string; items: readonly string[] }> =
     ],
   },
   {
-    title: 'The 2026 badge',
+    // Was "The 2026 badge: an archive mark, kept and still usable". Wrong since
+    // 2026-09-10: Candy retired the badge as too close to Woodstock's branding
+    // and Zaal pulled it (#162). Corrected here, where it was read.
+    title: 'Credit',
     items: [
-      'An archive mark since 10 September 2026, kept and still usable. The moose leads.',
-      'Credit the badge and this colour and type system to Samantha "Candy", CandyToyBox.',
+      'Credit this colour and type system, the signage and the illustrations to Samantha "Candy", CandyToyBox.',
+      'The red 2026 badge is retired and is not a ZAOstock mark. Do not use it.',
     ],
   },
   {
@@ -89,6 +92,51 @@ export const RULES: ReadonlyArray<{ title: string; items: readonly string[] }> =
     title: 'The name',
     items: ['ZAOstock: one word, capital ZAO, never hyphenated.'],
   },
+];
+
+/**
+ * Candy's signage and illustrations, from the ZAOstock design system she sent
+ * the design team on 2026-09-10 (vault intake:
+ * projects/zaostock-design-assets-intake-2026-09-10.md). Web sizes, as webp
+ * from her own site build. These are for screens: the print masters are her
+ * Affinity file, not these.
+ *
+ * DELIBERATELY NOT HERE, and a test holds each line:
+ * - the bird and dove pieces: too close to the Woodstock imagery she retired
+ *   the badge over;
+ * - the four role badges and the wristbands: day-of credentials, and whether
+ *   they go public before the day is a question with vault;
+ * - the ticket graphics: admission is free, and nothing may look like a
+ *   ticket flow the site does not run;
+ * - pieces cut from a sprite sheet with a neighbour's fragments still on them
+ *   (the mic, drumsticks, pines, maple leaf, easel, lighthouse, moose
+ *   silhouette, "Now Playing"). Those want clean exports from her first.
+ */
+export type KitArt = { name: string; file: string; width: number; height: number };
+
+const art = (slug: string, name: string, width: number, height: number): KitArt => ({ name, file: `/brand/elements/${slug}.webp`, width, height });
+
+export const SIGNS: readonly KitArt[] = [
+  art('directional_sign_stage', 'Stage', 160, 108),
+  art('directional_sign_food', 'Food', 160, 112),
+  art('directional_sign_art', 'Art', 160, 141),
+  art('directional_sign_merch', 'Merch', 160, 144),
+  art('directional_sign_info', 'Info', 160, 114),
+  art('directional_sign_restrooms', 'Restrooms', 160, 94),
+  art('sign_welcome_to_zaostock', 'Welcome to ZAOstock', 148, 93),
+  art('sign_set_times_schedule', 'Set times', 189, 92),
+  art('sign_thank_you_ellsworth', 'Thank you Ellsworth', 176, 108),
+  art('sign_franklin_st_parklet', 'Franklin St Parklet', 620, 350),
+];
+
+export const ILLUSTRATIONS: readonly KitArt[] = [
+  art('banner_music_lives_here', 'Music lives here', 560, 191),
+  art('guitar_pick_zaostock_pine', 'ZAOstock pick', 180, 214),
+  art('stamp_zaostock_round_red', 'Stock stamp', 180, 160),
+  art('acoustic_guitar_yellow', 'Acoustic guitar', 420, 829),
+  art('vintage_guitar_amplifier', 'Amp', 114, 130),
+  art('festival_canopy_tent_booth', 'Tent', 300, 300),
+  art('star_red', 'Star', 60, 61),
 ];
 
 /** The downloadable palette, generated from COLOURS so it cannot drift. */

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { existsSync, readFileSync, statSync } from 'fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
 import path from 'path';
-import { COLOURS, FONTS, MARKS, paletteCss } from './design-kit';
+import { COLOURS, FONTS, ILLUSTRATIONS, MARKS, RULES, SIGNS, paletteCss } from './design-kit';
 import { SITE } from './site';
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
@@ -67,5 +67,42 @@ describe('the design kit cannot drift from the site it describes', () => {
   it('builds the downloadable palette from the same list', () => {
     const css = paletteCss();
     for (const c of COLOURS) expect(css).toContain(`--zaostock-${c.token}: ${c.hex};`);
+  });
+});
+
+// Candy's signage and illustrations (2026-09-10). What is shown must exist, and
+// what was held back must not be able to slip into public/ unnoticed.
+describe('signage and illustrations on /design', () => {
+  const ELEMENTS = path.join(process.cwd(), 'public/brand/elements');
+
+  it('offers only real webp files that exist', () => {
+    for (const a of [...SIGNS, ...ILLUSTRATIONS]) {
+      const p = path.join(process.cwd(), 'public', a.file);
+      expect(existsSync(p), a.file).toBe(true);
+      const head = readFileSync(p).subarray(0, 12);
+      expect(head.subarray(0, 4).toString('latin1'), a.file).toBe('RIFF');
+      expect(head.subarray(8, 12).toString('latin1'), a.file).toBe('WEBP');
+    }
+    expect(SIGNS.map((s) => s.name)).toEqual(['Stage', 'Food', 'Art', 'Merch', 'Info', 'Restrooms', 'Welcome to ZAOstock', 'Set times', 'Thank you Ellsworth', 'Franklin St Parklet']);
+  });
+
+  it('ships nothing in public/brand/elements that the page does not list', () => {
+    const listed = new Set([...SIGNS, ...ILLUSTRATIONS].map((a) => path.basename(a.file)));
+    expect(readdirSync(ELEMENTS).filter((f) => !listed.has(f))).toEqual([]);
+  });
+
+  // Held back on purpose: Woodstock-adjacent birds and doves, day-of
+  // credentials, ticket graphics for an event that needs no ticket, and beer.
+  it('holds back the birds, doves, credentials and tickets', () => {
+    const held = /bird|dove|badge_|wristband|ticket|beer/i;
+    expect(readdirSync(ELEMENTS).filter((f) => held.test(f))).toEqual([]);
+    expect([...SIGNS, ...ILLUSTRATIONS].filter((a) => held.test(a.file))).toEqual([]);
+  });
+
+  it('never calls the retired badge usable', () => {
+    const rules = JSON.stringify(RULES);
+    expect(rules).not.toMatch(/still usable|archive mark/i);
+    expect(rules).toMatch(/retired/);
+    expect(rules).toContain('CandyToyBox');
   });
 });
