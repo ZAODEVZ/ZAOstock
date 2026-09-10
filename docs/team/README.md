@@ -18,7 +18,7 @@ discovered on the day.
 | # | Position | Person | Owns |
 |---|----------|--------|------|
 | 01 | Lead | [Zaal Panthaki](01-lead/01-zaal.md) | The event. Breaks every tie |
-| 02 | Music and AV | [Dcoop](02-music-and-av/01-dcoop.md) | Artists, set schedule, soundcheck, sound backups |
+| 02 | Music and AV | [DCoop](02-music-and-av/01-dcoop.md) | Artists, set schedule, soundcheck, sound backups |
 | 03 | Broadcast and virtual | [Aziz](03-broadcast-and-virtual/01-aziz.md) | Whether the stream is broadcasting |
 | 03 | Broadcast and virtual | [Ohnahji](03-broadcast-and-virtual/02-ohnahji.md) | What is on the stream |
 | 03 | Broadcast and virtual | [Iman Afrikah](03-broadcast-and-virtual/03-iman.md) | Online operations, the Ops Room, repo audits |

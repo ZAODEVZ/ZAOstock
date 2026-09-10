@@ -157,7 +157,7 @@ From the organizing document, the 31 August standup and the **run of show
 locked on 3 September**:
 
 - Eight acts, outdoors, 12:05 to 17:55: The Crown Vics, OPEN X, Grass Rug,
-  Acadia Rising, Michael Anderson, Dcoop, Lyons Den, Fellenz (Hurricane out 2026-09-10). Street
+  Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz (Hurricane out 2026-09-10). Street
   clears 18:00. WaveWarZ is cancelled and Stilo is not coming in person.
 - The evening is Black Moon's afterparty, not ZAOstock's programme (Zaal,
   3 September). The board shows it as theirs and books nothing into it.

@@ -40,7 +40,7 @@ interface Chapter {
 const SERIES: Chapter[] = [
   { name: 'ZAO-PALOOZA', place: 'New York City, during NFT NYC', year: 'April 2024', note: 'Twelve artists, the community’s first IRL meetup. Volunteer-organised in six weeks. Broke even.', href: '#recap', status: 'past' },
   { name: 'ZAO-CHELLA', place: 'Miami, Wynwood, during Art Basel', year: 'December 2024', note: '16+ musicians, 100+ visual artists, the first live WaveWarZ battle, AR art.', href: '#recap', status: 'past' },
-  { name: 'ZAOville', place: 'Laurel, Maryland', year: 'July 2026', note: 'Co-hosted with Dcoop and The VEC. Open mic, live sets, a DJ night swim.', href: '/zaoville', status: 'past' },
+  { name: 'ZAOville', place: 'Laurel, Maryland', year: 'July 2026', note: 'Co-hosted with DCoop and The VEC. Open mic, live sets, a DJ night swim.', href: '/zaoville', status: 'past' },
   { name: 'ZAOstock', place: FESTIVAL.city, year: FESTIVAL.shortDate, note: 'The flagship, and the first in Maine. Free, one day, downtown, at the gateway to Acadia.', href: '/', status: 'flagship' },
 ];
 

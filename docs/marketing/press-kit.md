@@ -74,7 +74,7 @@ One venue at a time. The day does not split across two rooms.
 ## The lineup
 
 **All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
-OPEN X, Grass Rug, Acadia Rising, Michael Anderson, Dcoop, Lyons Den, Fellenz.
+OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz.
 
 **NONE of them has countersigned.** They are booked and locked in the run of show,
 which is a different claim from confirmed. Do not describe any act as confirmed in
