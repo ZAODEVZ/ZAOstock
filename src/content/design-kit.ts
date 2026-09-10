@@ -22,15 +22,15 @@ export type KitMark = {
 export const MARKS: readonly KitMark[] = [
   { name: 'The moose', file: SITE.logo.src, format: 'PNG, 4000 x 4000, transparent', note: `The primary mark since 10 September 2026, by ${SITE.logo.credit}. White on transparent.`, alt: SITE.logo.alt, width: SITE.logo.width, height: SITE.logo.height, dark: true },
   { name: 'The moose, web size', file: SITE.logo.web, format: 'PNG, 600 x 600, transparent', note: `Same mark by ${SITE.logo.credit}, small enough to drop into a post or an email.`, alt: SITE.logo.alt, width: 600, height: 600, dark: true },
-  { name: 'The 2026 badge, colour', file: SITE.badge.src, format: 'PNG, 1122 x 1402', note: 'Archive mark. Still ours to use; no longer the primary.', alt: SITE.badge.alt, width: SITE.badge.width, height: SITE.badge.height, dark: false },
-  { name: 'The 2026 badge, black and white', file: '/brand/logos/zaostock26_badge_bw_final.png', format: 'PNG', note: 'Archive mark, for single-colour print.', alt: 'ZAOstock 26 badge, black and white', width: SITE.badge.width, height: SITE.badge.height, dark: false },
+  // The 26 badge was listed here as an archive mark until 2026-09-10, when it
+  // was retired as too close to Woodstock's branding and pulled (Zaal: "Pull it").
 ];
 
 export type KitColour = { token: string; hex: string; role: string };
 
 /** DESIGN.md "Primitives", in its order. */
 export const COLOURS: readonly KitColour[] = [
-  { token: 'red-500', hex: '#D2402A', role: 'Primary. The badge red: the main button, stat values, the accent word in a headline.' },
+  { token: 'red-500', hex: '#D2402A', role: 'Primary: the main button, stat values, the accent word in a headline.' },
   { token: 'red-300', hex: '#E8735C', role: 'Red on ink surfaces.' },
   { token: 'red-600', hex: '#B93826', role: 'Primary button ground.' },
   { token: 'red-700', hex: '#9C2F1E', role: 'Primary button hover and press.' },

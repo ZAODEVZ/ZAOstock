@@ -163,13 +163,10 @@ comparison combined across the businesses that take part.
 
 ## Assets
 
-The primary mark is the moose, drawn by attabotty. The 2026 badge, designed by
-Samantha "Candy" of CandyToyBox, is kept as an archive mark; credit her when it
-is used. Colours, fonts and usage rules: zaostock.com/design.
+The mark is the moose, drawn by attabotty. Colours, fonts and usage rules:
+zaostock.com/design.
 
 - The moose, primary mark (white on transparent): `/brand/logos/zaostock26_moose.png`
-- ZAOstock 2026 badge, colour (archive): `/brand/logos/zaostock26_badge_official.png`
-- ZAOstock 2026 badge, black and white (archive): `/brand/logos/zaostock26_badge_bw_final.png`
 
 Artist photos and stage photos: not yet available. Ask.
 
