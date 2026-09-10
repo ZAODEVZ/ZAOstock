@@ -1,7 +1,7 @@
 ---
 event: ZAO-PALOOZA
 slug: zao-palooza
-place: New York City, during NFT NYC
+place: New York City
 when: 2024
 status: past
 public-page: /festivals

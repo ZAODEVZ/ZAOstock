@@ -35,14 +35,11 @@ echo "ZAOstock reveal preflight against ${BASE}"
 echo "  $(date -u '+%Y-%m-%dT%H:%MZ')"
 echo
 
-# The date the site itself believes in. Read from source, not typed here, so
-# this script cannot disagree with the gate.
-REVEAL_DATE="$(grep -oE "lineupRevealDate: '[0-9-]+'" src/content/site.ts | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')"
-if [ -z "$REVEAL_DATE" ]; then
-  warn "could not read lineupRevealDate from src/content/site.ts"
-else
-  echo "  reveal date in source: ${REVEAL_DATE}"
-fi
+# THERE IS NO REVEAL DATE since 2026-09-10 (Zaal: "stop making a whole reveal
+# date"). An act publishes when its own row is confirmed with a bio and a photo
+# (src/lib/lineup-reveal.ts). So this no longer checks a gate date; it checks
+# that no reveal date has crept back, and what the bill actually shows.
+echo "  gate: per artist (confirmed + bio + photo), no reveal date"
 echo
 
 echo "1. The lineup endpoint"
@@ -59,8 +56,10 @@ else
   elif [ "$COUNT" -gt 0 ]; then
     pass "${COUNT} act(s) on the bill"
   else
-    # THE CHECK THAT WOULD HAVE CAUGHT 7 SEPTEMBER.
-    fail "ZERO acts on the bill. Do not proceed - the reveal has nothing to reveal"
+    # THE CHECK THAT WOULD HAVE CAUGHT 7 SEPTEMBER. Still a FAIL: an empty
+    # bill must never read as fine. It says why, from the endpoint's own fields.
+    WHY="$(printf '%s' "$BODY" | python3 -c 'import sys,json; b=json.load(sys.stdin); print("withheld: %s, pending: %s" % (b.get("withheld"), b.get("pending")))' 2>/dev/null)"
+    fail "ZERO acts published (${WHY:-reason unreadable}). Nobody is complete yet - do not post anyone"
   fi
 
   # THE BILL, NOT JUST "MORE THAN ZERO". On 2026-09-10 one act of eight was
@@ -96,15 +95,10 @@ print("EXTRA", ", ".join(n for n in names if n not in bill))
     fi
   fi
 
-  if printf '%s' "$BODY" | grep -q "\"reveal_date\":\"${REVEAL_DATE}\""; then
-    pass "endpoint agrees with the gate date"
-  elif printf '%s' "$BODY" | grep -q '"reveal_date"'; then
-    fail "endpoint reveal_date disagrees with src/content/site.ts (${REVEAL_DATE})"
-  fi
-
-  if printf '%s' "$BODY" | grep -q '"withheld"'; then
-    fail "endpoint is WITHHOLDING: the gate passed with nothing confirmed"
-  fi
+  case "$BODY" in
+    *'"reveal_date"'*) fail "endpoint still carries reveal_date - the per-artist gate is not what is deployed" ;;
+    *)                 pass "endpoint carries no reveal date" ;;
+  esac
 fi
 echo
 
@@ -129,47 +123,25 @@ for path in "" "program" "press" "lineup" "sponsors"; do
 done
 echo
 
-echo "4. The press kit is not announcing a date that has passed"
-# Formatted with python rather than `date -d`, which is GNU-only and silently
-# fails on macOS - where this will actually be run at 6am on the day.
-REVEAL_HUMAN="$(python3 -c "
-import datetime,sys
-d=datetime.date.fromisoformat(sys.argv[1])
-print(f'{d.day} {d:%B}')
-" "${REVEAL_DATE}" 2>/dev/null)"
-if [ -z "$REVEAL_HUMAN" ]; then
-  warn "could not format the reveal date for comparison"
+echo "4. The press kit promises no reveal day"
+# MATCHED WITHOUT A PIPE, ON PURPOSE. `set -o pipefail` plus `grep -q`
+# manufactures FALSE FAILURES (grep exits early, the producer dies of SIGPIPE),
+# so a shell pattern match is used instead of a pipe.
+PRESS="$(curl -sf --max-time 20 "${BASE}/press")"
+if [ -z "$PRESS" ]; then
+  warn "/press unreachable - read it yourself before posting"
 else
-  # MATCHED WITHOUT A PIPE, ON PURPOSE.
-  #
-  # `set -o pipefail` plus `grep -q` manufactures FALSE FAILURES: grep -q exits
-  # at the first match and closes the pipe, the producer dies of SIGPIPE, and
-  # pipefail reports the whole pipeline as failed. So a press kit that DOES
-  # carry the right date reads as a failure.
-  #
-  # It is invisible in casual testing because `grep -c` and `grep -o` consume
-  # all input and never trigger it - which is exactly how this was nearly
-  # shipped: the same check passed by hand and failed in the script.
-  #
-  # pipefail is still right. It stops a failing producer from being masked. But
-  # it turns any early-exiting consumer into a false alarm, so the answer is to
-  # not pipe at all when a shell pattern match will do.
-  PRESS="$(curl -sf --max-time 20 "${BASE}/press")"
-  if [ -z "$PRESS" ]; then
-    warn "/press unreachable - read it yourself before publishing"
-  else
-    case "$PRESS" in
-      *"$REVEAL_HUMAN"*)
-        pass "press kit names the reveal date (${REVEAL_HUMAN})" ;;
-      *)
-        fail "press kit does NOT name ${REVEAL_HUMAN} - it may still carry an old date" ;;
-    esac
-  fi
+  case "$PRESS" in
+    *"13 September"*|*"reveal on"*|*"Lineup reveal"*)
+      fail "/press still promises a reveal day - there is none since 2026-09-10" ;;
+    *)
+      pass "/press promises no reveal day" ;;
+  esac
 fi
 echo
 
 if [ "$FAILURES" -eq 0 ]; then
-  printf '\033[32mALL CHECKS PASSED\033[0m - safe to proceed with the reveal.\n\n'
+  printf '\033[32mALL CHECKS PASSED\033[0m - every act on the bill is published.\n\n'
 else
   printf '\033[31m%d CHECK(S) FAILED\033[0m - do NOT publish until each is understood.\n' "$FAILURES"
   printf 'An empty bill is the failure that already happened once. It looked\n'

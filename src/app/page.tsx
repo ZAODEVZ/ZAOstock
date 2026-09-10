@@ -143,7 +143,7 @@ export default function HomePage() {
               ]}
             />
             <div>
-              <Badge tone="gold">Lineup reveal · {SITE.lineupRevealLabel}</Badge>
+              <Badge tone="gold">Meet the artists, one at a time</Badge>
             </div>
           </div>
         </TwoUp>

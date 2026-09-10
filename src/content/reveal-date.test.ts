@@ -3,22 +3,23 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { SITE } from './site';
 
-// The reveal date has ALREADY drifted once: 1 September became 7 September on
-// 2026-08-31, and src/app/press/page.tsx still carries a comment saying so. It
-// was typed as a literal in eight files at the time.
+// THERE IS NO REVEAL DATE. Zaal, 2026-09-10: "stop making a whole reveal date -
+// we will just post about each of them individually starting on Saturday with
+// their bio and photo."
 //
-// site.ts holds the one source, SITE.lineupRevealLabel. On 2026-09-01 five
-// pieces of RENDERED copy were still not reading it - three in the press-kit
-// placeholder, one on /sponsor, two in llms.txt - so the next move of the date
-// would have left the public site announcing two different days with nothing
-// failing. This is the same guard tickets.test.ts puts on the Pro Ticket price.
+// This file used to prove the reveal date was PRESENT and matched everywhere
+// (it drifted 1 -> 7 -> 13 September and reached eight files once). It now
+// proves the date is GONE. That is the only version of the test that can catch
+// a re-add: a check that a date matches passes happily on the date coming back.
 //
-// Comments may name the date while explaining themselves. Rendered copy may not.
-const SURFACES = [
-  'src/lib/press-kit.ts',
+// Comments may still tell the history. Rendered copy may not promise a reveal.
+const RENDERED = [
+  'src/app/page.tsx',
+  'src/app/program/page.tsx',
   'src/app/sponsor/page.tsx',
   'src/app/llms.txt/route.ts',
-  'src/app/program/page.tsx',
+  'src/app/backstage/[code]/page.tsx',
+  'src/lib/press-kit.ts',
 ];
 
 const code = (p: string) =>
@@ -26,56 +27,44 @@ const code = (p: string) =>
     .split('\n')
     .filter((l) => {
       const t = l.trim();
-      return !t.startsWith('//') && !t.startsWith('*') && !t.startsWith('/*');
+      return !t.startsWith('//') && !t.startsWith('*') && !t.startsWith('/*') && !t.startsWith('{/*');
     })
     .join('\n');
 
-// docs/marketing/press-kit.md is what /press actually RENDERS, and it is STATIC
-// MARKDOWN - it cannot read SITE, so it cannot go on the SURFACES list above.
-// That is exactly how it drifted: on 2026-09-07 every other surface moved to
-// 13 September and the press kit still told journalists the lineup was announced
-// on 7 September - a date that had already passed, with an empty result.
-//
-// So it gets the OPPOSITE guard. It MAY carry the literal; every September date
-// it carries must be the CURRENT one.
-describe('the rendered press kit cannot drift off the reveal date', () => {
-  const md = readFileSync(path.join(process.cwd(), 'docs/marketing/press-kit.md'), 'utf8');
-
-  it('names no September date other than the reveal date', () => {
-    const dates = [...new Set([...md.matchAll(/\b(\d{1,2}) September\b/g)].map((m) => `${m[1]} September`))];
-    expect(dates.length).toBeGreaterThan(0);
-    for (const d of dates) expect(d).toBe(SITE.lineupRevealLabel);
+describe('the reveal date is gone and stays gone', () => {
+  it('has no lineupRevealLabel or lineupRevealDate in SITE', () => {
+    expect('lineupRevealLabel' in SITE).toBe(false);
+    expect('lineupRevealDate' in SITE).toBe(false);
   });
 
-  // Nobody has countersigned. "Booked and locked in the run of show" is a
-  // different claim from "confirmed", and press copy is where that distinction
-  // gets lost first.
-  it('never calls an act confirmed', () => {
-    const claims = md
-      .split('\n')
-      .filter((l) => /\bis confirmed\b/i.test(l) && !/partner/i.test(l));
-    expect(claims).toEqual([]);
-  });
-});
-
-describe('the lineup reveal date has one source', () => {
-  it('is never typed as a literal in rendered copy', () => {
-    for (const p of SURFACES) {
-      expect(code(p)).not.toContain(SITE.lineupRevealLabel);
-      expect(code(p)).not.toContain(SITE.lineupRevealDate);
-      expect(code(p)).not.toContain('September 7');
-      // The date has now drifted twice: 1 -> 7 -> 13 September. The old literal
-      // stays guarded as well as the new one.
-      expect(code(p)).not.toContain('September 13');
+  it('is not promised on any rendered surface', () => {
+    for (const p of RENDERED) {
+      const c = code(p);
+      expect(c, p).not.toContain('lineupReveal');
+      expect(c, p).not.toMatch(/13 September|September 13|Lineup reveal|reveal on/i);
     }
   });
 
-  it('still carries the day Zaal typed, in both the label and the gate', () => {
-    expect(SITE.lineupRevealLabel).toBe('13 September');
-    expect(SITE.lineupRevealDate).toBe('2026-09-13');
-    // The label and the gate must name the same day, or the site announces one
-    // date and opens on another.
-    expect(SITE.lineupRevealDate).toContain('-09-13');
-    expect(SITE.lineupRevealLabel.startsWith('13 ')).toBe(true);
+  // docs/marketing/press-kit.md is what /press RENDERS, and it is static
+  // markdown that cannot read SITE - which is exactly how it drifted before.
+  it('is not promised in the rendered press kit', () => {
+    const md = readFileSync(path.join(process.cwd(), 'docs/marketing/press-kit.md'), 'utf8');
+    const rendered = md.slice(md.indexOf('\n---\n'));
+    expect(rendered).not.toMatch(/13 September|reveal on|the reveal/i);
+  });
+
+  it('is not on the crew board either', () => {
+    const ops = readFileSync(path.join(process.cwd(), 'ops-room/ops-room.src.html'), 'utf8');
+    expect(ops).not.toMatch(/Sun 13 Sep|reveal on Sunday|Lineup reveal/);
+  });
+});
+
+// Nobody has countersigned a memo. "Booked and locked in the run of show" is a
+// different claim from "confirmed", and press copy is where that gets lost.
+describe('the rendered press kit', () => {
+  it('never calls an act confirmed', () => {
+    const md = readFileSync(path.join(process.cwd(), 'docs/marketing/press-kit.md'), 'utf8');
+    const claims = md.split('\n').filter((l) => /\bis confirmed\b/i.test(l) && !/partner/i.test(l));
+    expect(claims).toEqual([]);
   });
 });
