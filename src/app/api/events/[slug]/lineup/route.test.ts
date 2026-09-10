@@ -1,4 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { readFileSync } from 'fs';
+import path from 'path';
 
 // The behaviour under test is what this endpoint does when Supabase is NOT
 // reachable, which is the state it was actually in on 2026-08-22 (egress quota
@@ -285,6 +287,37 @@ describe('the per-artist gate: confirmed, with a bio and a photo', () => {
     expect(body.withheld).toBeUndefined();
     // status is read to gate, never serialised
     expect(body.artists[0].status).toBeUndefined();
+  });
+
+  it('counts as pending only confirmed acts missing a bio or photo, never the roster', async () => {
+    getSupabaseAdmin.mockReturnValue(
+      supabaseStub({
+        artists: [
+          { id: 'a1', name: 'Complete', set_order: 1, ...COMPLETE },
+          { id: 'a2', name: 'Confirmed, no photo', set_order: 2, ...COMPLETE, photo_url: '' },
+          // Not confirmed: complete or not, it is not "pending".
+          { id: 'a3', name: 'Wishlist', set_order: 3, ...COMPLETE, status: 'wishlist' },
+          { id: 'a4', name: 'Wishlist, empty', set_order: 4, status: 'wishlist', bio: '', photo_url: '' },
+        ],
+      }),
+    );
+    const body = await (await GET(req, { params })).json();
+    expect(body.pending).toBe(1);
+    expect(body.artists.map((a: { name: string }) => a.name)).toEqual(['Complete']);
+  });
+
+  // A reason code that drifts is a log nobody can grep. These two strings are
+  // the whole vocabulary, and a monitor may match on them.
+  it('withholds with exactly one of two reason codes, and no others', async () => {
+    const seen = new Set<unknown>();
+    for (const artists of [[], [{ id: 'a', name: 'A', set_order: 1, ...COMPLETE, bio: '' }]]) {
+      getSupabaseAdmin.mockReturnValue(supabaseStub({ artists }));
+      seen.add((await (await GET(req, { params })).json()).withheld);
+    }
+    expect([...seen].sort()).toEqual(['awaiting-bio-or-photo', 'no-confirmed-acts']);
+    const src = readFileSync(path.join(process.cwd(), 'src/app/api/events/[slug]/lineup/route.ts'), 'utf8');
+    const codes = [...src.matchAll(/'([a-z-]+)' as const\)/g)].map((m) => m[1]).sort();
+    expect(codes).toEqual(['awaiting-bio-or-photo', 'no-confirmed-acts']);
   });
 
   it('carries no reveal date: that date no longer exists', async () => {

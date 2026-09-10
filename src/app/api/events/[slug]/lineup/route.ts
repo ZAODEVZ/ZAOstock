@@ -169,7 +169,10 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const artists: LineupArtist[] = rows
       .filter(isPublishable)
       .map(({ status: _status, ...publicFields }) => publicFields);
-    const pending = rows.length - artists.length;
+    // `pending` is acts that ARE confirmed but still missing a bio or photo -
+    // never the whole roster. Counted from status explicitly rather than from
+    // what the query happened to return, so it cannot drift if the query does.
+    const pending = rows.filter((r) => r.status === 'confirmed' && !isPublishable(r)).length;
 
     if (artists.length === 0) return noneYet(pending);
 
