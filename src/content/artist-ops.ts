@@ -66,7 +66,7 @@ export const OPS_ACTS: readonly OpsAct[] = [
     codeSha256: 'e9ff956154b23901cee71a313712cff962bd772da981f7b63fa2273a6184086b' },
   { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:35', minutes: 30,
     codeSha256: 'b89fdb296171f0a04ebd1dcefa85b13b46dc74e32fe00f3e89397ac06d86b652' },
-  { key: 'dcoop', name: 'Dcoop', setStart: '15:45', minutes: 40,
+  { key: 'dcoop', name: 'DCoop', setStart: '15:45', minutes: 40,
     codeSha256: '58cdef916cbce928d46a263d3ffb64639285168051b57b91fc75ebd5f0ad9709' },
   { key: 'lyons-den', name: 'Lyons Den', setStart: '16:30', minutes: 40,
     codeSha256: 'c4e9b93e5e6d06ad10e2e7780d60ff016ef4027dde270c4297e62753755752ae' },
@@ -165,3 +165,27 @@ export const BRING: ReadonlyArray<string> = [
   'Layers and rain gear. It is rain or shine, under tent cover, in Maine in October.',
   'Merch, if you sell it. Say so in the last box of the form so we can plan for it.',
 ];
+
+/**
+ * Which act a form response belongs to. The "Which act are you?" answer exists
+ * in three shapes at once, all already in flight on 2026-09-10:
+ *
+ *   "Dcoop - 3:45 PM, 40 min"   the original option, name + set time
+ *   "Dcoop"                     bare name, after the first hand edit
+ *   "DCoop"                     Zaal's ruled spelling, after the rename
+ *
+ * plus the retired long form "Acadia Rising (Sen Wilde, with Women with
+ * Rhythm) - 2:00 PM, 30 min". Anything that reads responses must accept every
+ * shape, or it matches seven acts and loses the one who already replied.
+ *
+ * Match: drop everything from " - " on, drop any parenthetical, then compare
+ * letters and digits only, case-insensitively. No fuzzy matching: an answer
+ * that is not one of the acts returns null rather than a guess.
+ */
+export function actFromFormAnswer(answer: string, acts: readonly OpsAct[] = OPS_ACTS): OpsAct | null {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const head = answer.split(' - ')[0].replace(/\([^)]*\)/g, '');
+  const key = norm(head);
+  if (!key) return null;
+  return acts.find((a) => norm(a.name) === key) ?? null;
+}

@@ -11,7 +11,7 @@ const CONTENT = `# ZAOstock
 
 > A free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators (100+ members, weekly sessions since 30 July 2024).
 
-ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York City, during NFT NYC, 2024), ZAO-CHELLA (Miami, Wynwood, during Art Basel, December 2024) and ZAOville (Laurel, Maryland, July 2026, co-hosted with Dcoop).
+ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York City, during NFT NYC, 2024), ZAO-CHELLA (Miami, Wynwood, during Art Basel, December 2024) and ZAOville (Laurel, Maryland, July 2026, co-hosted with DCoop).
 
 ## The day (one venue at a time)
 

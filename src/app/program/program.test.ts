@@ -54,7 +54,7 @@ describe('the published run of show', () => {
   it('carries all EIGHT acts of the locked run of show, in order', () => {
     const ACTS = [
       'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
-      'Dcoop', 'Lyons Den', 'Fellenz',
+      'DCoop', 'Lyons Den', 'Fellenz',
     ];
     const positions = ACTS.map((a) => ({ act: a, at: src.indexOf(`label: '${a}'`) }));
     for (const { act, at } of positions) {

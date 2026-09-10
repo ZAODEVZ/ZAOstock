@@ -15,7 +15,7 @@ stay listed so the gap stays visible.
 |------|----------------|----------------|
 | **MC, noon to 16:00** | Both MC names, daytime and evening, are UNSET. Cannot be Stilo, he is battling. Not Steve either: ZAO crew holds the mic all day | **Load-bearing.** There is no DJ. Every changeover, two of five minutes and two of ten, is the MC plus sponsor spots, and the tens carry the event talk. This is the person who holds the street between every act |
 | **Sound during WaveWarZ** | Stilo is battling in it and cannot do both | Two hours of the day, 16:00 to 18:00, with no named sound cover |
-| **AV during Dcoop's set** | He is the AV lead and he is on stage | A single set, but it is the one window where the AV lane has nobody awake at the desk |
+| **AV during DCoop's set** | He is the AV lead and he is on stage | A single set, but it is the one window where the AV lane has nobody awake at the desk |
 | **Stage manager** | Got simpler when the day went single-venue. One person can now cover both halves | Nobody currently owns the transition at 18:00 from the parklet into Black Moon |
 | **First Aid contact** | No dedicated person. Zaal, 27 August: "it's small" | A named contact, currently UNSET, plus a prepared kit. The permit side belongs to the city lane. The earlier "eight hours, certified" framing is retired |
 

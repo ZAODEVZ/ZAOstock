@@ -112,7 +112,7 @@ describe('the names-only lineup', () => {
     'Grass Rug',
     'Acadia Rising',
     'Michael Anderson',
-    'Dcoop',
+    'DCoop',
     'Lyons Den',
     'Fellenz',
   ];

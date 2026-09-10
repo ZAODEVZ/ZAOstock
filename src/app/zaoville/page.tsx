@@ -5,11 +5,11 @@ import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/comp
 export const metadata: Metadata = {
   title: 'ZAOville Pool Party',
   description:
-    'The ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026. Co-hosted with Dcoop and The VEC. Free entry, free drinks, open mic, live sets and a DJ night swim. Part of the ZAO Festivals series.',
+    'The ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets and a DJ night swim. Part of the ZAO Festivals series.',
   alternates: { canonical: '/zaoville' },
   openGraph: {
     title: 'ZAOville Pool Party | ZAO Festivals | ZAOstock',
-    description: 'Laurel, Maryland, Saturday 25 July 2026. Co-hosted with Dcoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
+    description: 'Laurel, Maryland, Saturday 25 July 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
     url: 'https://zaostock.com/zaoville',
     images: [OG_IMAGE],
     type: 'website',
@@ -28,7 +28,7 @@ const LINEUP: Slot[] = [
   { time: '3:45 - 4:05', label: 'DJ Set', type: 'DJ' },
   { time: '4:10 - 4:40', label: 'Ashley', type: 'SET' },
   { time: '4:50 - 5:20', label: 'Lyons Den', type: 'SET' },
-  { time: '5:30 - 6:00', label: 'Dcoop', type: 'SET' },
+  { time: '5:30 - 6:00', label: 'DCoop', type: 'SET' },
   { time: '6:10 - 6:40', label: 'PROF!T', type: 'SET' },
   { time: '7:00 - 7:30', label: 'John Clark', type: 'SET' },
   { time: '7:40 - 8:10', label: 'ELYVN', type: 'SET' },
@@ -59,7 +59,7 @@ export default function ZAOvillePage() {
           <Eyebrow tone="denim">Laurel, Maryland · Saturday 25 July 2026</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">ZAOville Pool Party</h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            The DMV chapter of the ZAO Festivals series, co-hosted with Dcoop, founder of The VEC. Free entry, free drinks: a vibe sesh and food from 11 AM, then open mic, live independent sets and a DJ night swim to close. Cross-promoted across the series and feeding straight into ZAOstock.
+            The DMV chapter of the ZAO Festivals series, co-hosted with DCoop, founder of The VEC. Free entry, free drinks: a vibe sesh and food from 11 AM, then open mic, live independent sets and a DJ night swim to close. Cross-promoted across the series and feeding straight into ZAOstock.
           </p>
         </div>
       </Section>
