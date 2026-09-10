@@ -43,6 +43,15 @@ describe('the design kit cannot drift from the site it describes', () => {
     }
   });
 
+  // Zaal, 2026-09-10: the moose is by attabotty. Every surface that offers the
+  // mark as a download carries the credit.
+  it('credits the moose to attabotty wherever it is offered as a download', () => {
+    expect(SITE.logo.credit).toBe('attabotty');
+    for (const m of MARKS.filter((m) => m.file.includes('moose'))) expect(m.note).toContain('attabotty');
+    expect(read('src/app/press/page.tsx')).toContain('SITE.logo.credit');
+    expect(read('src/lib/press-kit.ts')).toContain('SITE.logo.credit');
+  });
+
   it('builds the downloadable palette from the same list', () => {
     const css = paletteCss();
     for (const c of COLOURS) expect(css).toContain(`--zaostock-${c.token}: ${c.hex};`);
