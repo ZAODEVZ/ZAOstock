@@ -72,7 +72,7 @@
   font-size: 11px; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: #fdf3e0; opacity: 0.85; white-space: nowrap;
   transform-origin: left center; transform: translateY(-50%) rotate(-90deg) translateX(-50%);
 }
-@media (max-width: 700px) { .vtag { display: none; } }
+@media (max-width: 700px) { .vtag, .dots { display: none; } }
 .heroContent { position: relative; z-index: 3; padding: 0 24px; }
 .tagrow { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; justify-content: center; }
 .tagrow span { font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 7px 14px; border-radius: 3px; color: #fff8ec; }
