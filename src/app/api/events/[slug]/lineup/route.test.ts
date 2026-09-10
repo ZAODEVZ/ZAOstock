@@ -7,7 +7,6 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const { getSupabaseAdmin } = vi.hoisted(() => ({ getSupabaseAdmin: vi.fn() }));
 const { getFallbackLineup } = vi.hoisted(() => ({ getFallbackLineup: vi.fn() }));
-const { lineupIsPublic } = vi.hoisted(() => ({ lineupIsPublic: vi.fn() }));
 
 vi.mock('@/lib/db/supabase', () => ({ getSupabaseAdmin }));
 vi.mock('@/lib/lineup-fallback', () => ({
@@ -15,10 +14,9 @@ vi.mock('@/lib/lineup-fallback', () => ({
   AS_OF: '2026-08-22',
 }));
 
-// Mocked rather than clock-driven: the reveal is 7 September and this suite runs
-// every day before and after it, so a real `new Date()` would make these tests
-// mean something different depending on when CI ran.
-vi.mock('@/lib/lineup-reveal', () => ({ lineupIsPublic }));
+// The gate is per artist since 2026-09-10 (isPublishable), not a date, so there
+// is no clock to mock. A fixture row publishes only when it is complete.
+const COMPLETE = { status: 'confirmed', bio: 'A real bio.', photo_url: 'https://example.com/p.jpg' };
 
 import { GET } from './route';
 
@@ -65,15 +63,12 @@ function supabaseStub(opts: {
 beforeEach(() => {
   vi.clearAllMocks();
   getFallbackLineup.mockReturnValue([]);
-  // The default for the cases below is 'the reveal has happened'; the gate has
-  // its own describe at the bottom of this file.
-  lineupIsPublic.mockReturnValue(true);
 });
 
 describe('GET /api/events/[slug]/lineup', () => {
   it('serves the live lineup when Supabase answers', async () => {
     getSupabaseAdmin.mockReturnValue(
-      supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1 }] }),
+      supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1, ...COMPLETE }] }),
     );
 
     const res = await GET(req, { params });
@@ -212,7 +207,7 @@ describe('GET /api/events/[slug]/lineup', () => {
 
   it('lets a live lineup WITH A ROSTER be edge-cached, so the cache can cover a later outage', async () => {
     getSupabaseAdmin.mockReturnValue(
-      supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1 }] }),
+      supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1, ...COMPLETE }] }),
     );
 
     const res = await GET(req, { params });
@@ -251,34 +246,15 @@ describe('GET /api/events/[slug]/lineup', () => {
 //
 // It read as fine only because the artists table is empty, so both surfaces
 // agreed on nothing. Found by Iman, 2026-09-01, sweeping round two.
-describe('the reveal gate, on the API and not only on the website', () => {
-  it('publishes nothing before the reveal, even with confirmed acts in the table', async () => {
-    lineupIsPublic.mockReturnValue(false);
-    const tablesRead: string[] = [];
-    getSupabaseAdmin.mockReturnValue({
-      from: (table: string) => {
-        tablesRead.push(table);
-        if (table === 'events') {
-          return {
-            select: () => ({
-              eq: () => ({ maybeSingle: async () => ({ data: { id: 'evt-1' }, error: null }) }),
-            }),
-          };
-        }
-        return {
-          select: () => ({
-            eq: () => ({
-              eq: () => ({
-                order: async () => ({
-                  data: [{ id: 'a1', name: 'A Confirmed Act', set_order: 1 }],
-                  error: null,
-                }),
-              }),
-            }),
-          }),
-        };
-      },
-    });
+describe('the per-artist gate: confirmed, with a bio and a photo', () => {
+  // THE TEST THIS CHANGE EXISTS FOR. Dcoop, 2026-09-10: confirmed, bio in, no
+  // photo. Zaal: nobody is posted without their bio and photo in hand.
+  it('does NOT publish a confirmed act whose photo is empty', async () => {
+    getSupabaseAdmin.mockReturnValue(
+      supabaseStub({
+        artists: [{ id: 'a1', name: 'No Photo Yet', set_order: 1, status: 'confirmed', bio: 'A real bio.', photo_url: '' }],
+      }),
+    );
 
     const res = await GET(req, { params });
     const body = await res.json();
@@ -286,85 +262,74 @@ describe('the reveal gate, on the API and not only on the website', () => {
     expect(res.status).toBe(200);
     expect(body.artists).toEqual([]);
     expect(body.published).toBe(false);
-    expect(body.reveal_date).toBe('2026-09-13');
-    // the row is never read, not read and then filtered
-    expect(tablesRead).not.toContain('artists');
-    // and the holding answer must not outlive the reveal in a cache
-    expect(res.headers.get('Cache-Control')).not.toContain('stale-while-revalidate');
+    expect(body.withheld).toBe('awaiting-bio-or-photo');
+    expect(body.pending).toBe(1);
+    expect(JSON.stringify(body)).not.toContain('No Photo Yet');
   });
 
-  it('still 404s an unknown event before the reveal, rather than holding it', async () => {
-    lineupIsPublic.mockReturnValue(false);
-    getSupabaseAdmin.mockReturnValue(supabaseStub({ event: null }));
-
-    const res = await GET(req, { params });
-
-    expect(res.status).toBe(404);
-  });
-
-  it('publishes the roster once the reveal has passed, and says so', async () => {
-    lineupIsPublic.mockReturnValue(true);
+  it('publishes the complete acts and holds back only the incomplete one', async () => {
     getSupabaseAdmin.mockReturnValue(
-      supabaseStub({ artists: [{ id: 'a1', name: 'A Confirmed Act', set_order: 1 }] }),
+      supabaseStub({
+        artists: [
+          { id: 'a1', name: 'Complete Act', set_order: 1, ...COMPLETE },
+          { id: 'a2', name: 'No Bio Yet', set_order: 2, ...COMPLETE, bio: '' },
+        ],
+      }),
     );
 
-    const res = await GET(req, { params });
-    const body = await res.json();
+    const body = await (await GET(req, { params })).json();
 
-    expect(res.status).toBe(200);
-    expect(body.artists).toHaveLength(1);
-    // This used to assert `published` was UNDEFINED here. That was the whole
-    // problem: the field existed before the reveal and vanished after it, so
-    // the one state nobody could name was "revealed, and empty". It is now
-    // always present.
+    expect(body.artists.map((a: { name: string }) => a.name)).toEqual(['Complete Act']);
     expect(body.published).toBe(true);
+    expect(body.pending).toBe(1);
     expect(body.withheld).toBeUndefined();
+    // status is read to gate, never serialised
+    expect(body.artists[0].status).toBeUndefined();
+  });
+
+  it('carries no reveal date: that date no longer exists', async () => {
+    getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [{ id: 'a1', name: 'A', set_order: 1, ...COMPLETE }] }));
+    const published = await (await GET(req, { params })).json();
+    getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [] }));
+    const empty = await (await GET(req, { params })).json();
+    expect(published.reveal_date).toBeUndefined();
+    expect(empty.reveal_date).toBeUndefined();
+  });
+
+  it('still 404s an unknown event', async () => {
+    getSupabaseAdmin.mockReturnValue(supabaseStub({ event: null }));
+    expect((await GET(req, { params })).status).toBe(404);
   });
 
   /**
-   * 2026-09-07, the thing that actually happened: the gate opened on schedule
-   * against an empty artists table and the empty bill went public.
+   * 2026-09-07: an empty bill went public looking exactly like a working
+   * endpoint. Empty is now a normal state, but it is still never silent.
    */
-  describe('when the reveal has passed and nobody is confirmed', () => {
+  describe('when nobody is publishable', () => {
     beforeEach(() => {
-      lineupIsPublic.mockReturnValue(true);
       getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [] }));
     });
 
-    it('does NOT announce an empty lineup', async () => {
+    it('does NOT announce an empty lineup, and says why', async () => {
       const body = await (await GET(req, { params })).json();
-
       expect(body.artists).toEqual([]);
-      // The site stays on pre-reveal copy rather than announcing a festival
-      // with no acts on it.
       expect(body.published).toBe(false);
-    });
-
-    it('says WHY it withheld, so the state is loud rather than silent', async () => {
-      const body = await (await GET(req, { params })).json();
-
-      // Without this the fix would be an inverted alarm: a failure that looks
-      // exactly like normal operation. A monitor can watch this field.
       expect(body.withheld).toBe('no-confirmed-acts');
+      expect(body.pending).toBe(0);
     });
 
-    it('is distinguishable from "the reveal has not happened yet"', async () => {
-      const revealed = await (await GET(req, { params })).json();
-
-      lineupIsPublic.mockReturnValue(false);
-      const notYet = await (await GET(req, { params })).json();
-
-      // Both are published:false with no artists. The difference must be
-      // readable, or "nobody confirmed" hides inside "not yet".
-      expect(notYet.withheld).toBeUndefined();
-      expect(revealed.withheld).toBe('no-confirmed-acts');
+    it('tells "nobody confirmed" apart from "confirmed, photo not in yet"', async () => {
+      const nobody = await (await GET(req, { params })).json();
+      getSupabaseAdmin.mockReturnValue(
+        supabaseStub({ artists: [{ id: 'a1', name: 'X', set_order: 1, ...COMPLETE, photo_url: null }] }),
+      );
+      const incomplete = await (await GET(req, { params })).json();
+      expect(nobody.withheld).toBe('no-confirmed-acts');
+      expect(incomplete.withheld).toBe('awaiting-bio-or-photo');
     });
 
     it('still refuses to cache the empty answer for long', async () => {
       const res = await GET(req, { params });
-
-      // 30 seconds, no stale-while-revalidate. A wrong empty answer must not
-      // outlive the confirmation that fixes it.
       expect(res.headers.get('Cache-Control')).toContain('s-maxage=30');
     });
   });

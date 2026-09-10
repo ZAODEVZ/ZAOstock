@@ -1,28 +1,36 @@
-import { SITE } from '@/content/site';
-
 /**
- * The festival is in Ellsworth, Maine, so the reveal date means a date THERE.
+ * WHEN AN ACT GOES PUBLIC - per artist, not on a date.
  *
- * This used to compare `now.toISOString().slice(0, 10)`, which is UTC. In
- * September Maine is UTC-4, so a '2026-09-07' gate flipped open at
- * 2026-09-07T00:00:00Z, which is 8 PM on 6 September in Ellsworth. The lineup
- * would have gone public the evening BEFORE the day it was announced for, and
- * nothing would have reported an error - the same silent-success shape as the
- * press-kit hold regex. Caught by Iman, 2026-08-31.
+ * Until 2026-09-10 this file held `lineupIsPublic()`, a date gate: nothing was
+ * public before the lineup reveal on 13 September, everything confirmed was
+ * public after it. Zaal retired the reveal that morning: "stop making a whole
+ * reveal date - we will just post about each of them individually starting on
+ * Saturday with their bio and photo." And the rule that comes with it:
+ * nobody is posted without their bio and photo in hand.
  *
- * en-CA formats as YYYY-MM-DD, which is what SITE.lineupRevealDate is, so the
- * two are string-comparable.
+ * So the gate is the row, and it clears itself act by act. An act is public
+ * when, and only when, all three hold:
+ *
+ *   - status is 'confirmed' - confirmed in writing (decision 0005)
+ *   - bio is non-empty
+ *   - photo_url is non-empty
+ *
+ * The case this exists for: on 2026-09-10 Dcoop was confirmed with a bio and
+ * NO photo. Under the old gate he would have published photo-less the moment
+ * the date passed. Under this one he waits until his photo is in the row.
+ *
+ * Both public readers use this one predicate - the lineup API the ZAO Festivals
+ * app calls, and getPublicArtists() behind /artist/<slug> - so the site and the
+ * app cannot publish different acts.
  */
-const FESTIVAL_TZ = 'America/New_York';
+export type PublishCandidate = {
+  status?: string | null;
+  bio?: string | null;
+  photo_url?: string | null;
+};
 
-const localDate = new Intl.DateTimeFormat('en-CA', {
-  timeZone: FESTIVAL_TZ,
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-});
+const filled = (v: string | null | undefined) => typeof v === 'string' && v.trim().length > 0;
 
-/** Has the lineup reveal date passed in Ellsworth? Pure, so it needs no Supabase client. */
-export function lineupIsPublic(now: Date = new Date()): boolean {
-  return localDate.format(now) >= SITE.lineupRevealDate;
+export function isPublishable(row: PublishCandidate): boolean {
+  return row.status === 'confirmed' && filled(row.bio) && filled(row.photo_url);
 }

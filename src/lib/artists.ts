@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { randomBytes } from 'crypto';
-import { lineupIsPublic } from '@/lib/lineup-reveal';
+import { isPublishable } from '@/lib/lineup-reveal';
 
 export interface PublicArtist {
   id: string;
@@ -32,14 +32,15 @@ export function generateClaimToken(): string {
   return randomBytes(8).toString('hex');
 }
 
-// Public pages: CONFIRMED artists only, and none before the reveal. Before
+// Public pages: an act appears only when isPublishable - confirmed, with a bio
+// and a photo in the row. There is no reveal date since 2026-09-10 (Zaal); the
+// gate is per artist and the same predicate the lineup API uses. Before
 // 2026-08-29 this filtered on status != 'declined', which would have given
 // every cypher applicant a live /artist/<name> page before anyone confirmed
 // them, and every confirmed act a page before 7 September (Iman's audit,
 // items 05 and the reveal rule). Wrapped in react cache() so generateMetadata
 // and the page share one query per request.
 export const getPublicArtists = cache(async function getPublicArtists(): Promise<PublicArtist[]> {
-  if (!lineupIsPublic()) return [];
   const supabase = getSupabaseAdmin();
 
   // SCOPED TO THIS FESTIVAL. The artists table holds rows for every ZAO event -
@@ -71,7 +72,7 @@ export const getPublicArtists = cache(async function getPublicArtists(): Promise
 
   if (error || !data) return [];
 
-  return data.map((a) => ({
+  return data.filter(isPublishable).map((a) => ({
     id: a.id,
     name: a.name,
     slug: slugify(a.name),
