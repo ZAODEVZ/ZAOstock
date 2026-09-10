@@ -9,7 +9,7 @@ export function ArtistForm({ act }: { act?: OpsAct }) {
     <div className="space-y-4" id="form">
       <Eyebrow>The artist details form</Eyebrow>
       <p className="text-sm text-ink-secondary m-0">
-        Due {ARTIST_FORM.dueLabel}. No login and no code needed.
+        {ARTIST_FORM.askLabel}: your own post goes up once your details are in. No login and no code needed.
         {act ? ` Your act is already picked for you.` : ''} If the form does not show below,
         open it in its own tab - it is the same form.
       </p>
