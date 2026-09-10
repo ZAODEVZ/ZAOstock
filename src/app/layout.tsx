@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Boogaloo, Rubik, Space_Mono } from 'next/font/google';
+import { Boogaloo, Oswald, Rubik, Space_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
@@ -11,6 +11,16 @@ const boogaloo = Boogaloo({
   weight: ['400'],
   variable: '--font-boogaloo',
   display: 'swap',
+});
+
+// Oswald: the condensed heading face for the homepage in Candy's look
+// (2026-09-10). Her build asked for Arial Narrow, a system font most visitors
+// do not have, so the look changed machine to machine; this pins it.
+const oswald = Oswald({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  display: 'swap',
+  variable: '--font-oswald',
 });
 
 const rubik = Rubik({
@@ -102,7 +112,7 @@ const eventJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${boogaloo.variable} ${rubik.variable} ${spaceMono.variable}`}>
+    <html lang="en" className={`${boogaloo.variable} ${oswald.variable} ${rubik.variable} ${spaceMono.variable}`}>
       <body>
         <script
           type="application/ld+json"

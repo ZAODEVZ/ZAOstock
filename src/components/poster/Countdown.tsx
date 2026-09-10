@@ -12,7 +12,7 @@ function unit(n: number, one: string, many: string) {
   return `${n} ${n === 1 ? one : many}`;
 }
 
-export function Countdown({ className }: { className?: string }) {
+export function Countdown({ className, onDark = false }: { className?: string; onDark?: boolean }) {
   const [state, setState] = useState<CountdownState | null>(null);
 
   useEffect(() => {
@@ -26,12 +26,12 @@ export function Countdown({ className }: { className?: string }) {
   if (state?.phase === 'after') return null;
 
   return (
-    <p className={['min-h-[1.5rem] font-mono text-sm font-bold text-ink-950 m-0 tabular', className].filter(Boolean).join(' ')} aria-live="polite">
+    <p className={['min-h-[1.5rem] font-mono text-sm font-bold m-0 tabular', onDark ? 'text-paper-200' : 'text-ink-950', className].filter(Boolean).join(' ')} aria-live="polite">
       {state === null ? null : state.phase === 'live' ? (
-        <span className="text-red-500">On now on the parklet, until six.</span>
+        <span className={onDark ? 'text-gold-400' : 'text-red-500'}>On now on the parklet, until six.</span>
       ) : (
         <>
-          <span className="text-red-500">
+          <span className={onDark ? 'text-gold-400' : 'text-red-500'}>
             {unit(state.days, 'day', 'days')}, {unit(state.hours, 'hour', 'hours')}, {unit(state.minutes, 'minute', 'minutes')}
           </span>{' '}
           to the doors.
