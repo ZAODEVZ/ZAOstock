@@ -34,8 +34,11 @@ export const ARTIST_FORM = {
   /** The "Which act are you?" dropdown, read from the live form 2026-09-10:
    *  options are the bare names, Hurricane removed. */
   actEntry: 'entry.1967705479',
-  /** The deadline the form itself asks for (scripts/create-artist-form.gs DEADLINE). */
-  dueLabel: 'Friday 11 September',
+  /** NO DUE DATE. It was the Friday before the first posts. Zaal, 2026-09-10: "just dont make
+   *  it due on a date no later than 18 th". Every reading of that forbids 11
+   *  September; no replacement date is invented. If one is ever printed, it may
+   *  not be later than 18 September, and a test holds that bound. */
+  askLabel: 'As soon as you can',
 } as const;
 
 export type OpsAct = {
@@ -144,7 +147,7 @@ export const SOUNDCHECK = {
  * the vehicle-access answer and it is not in yet.
  */
 export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
-  { when: `${ARTIST_FORM.dueLabel}`, what: 'The artist details form, on this page. Photo link, short bio, your city, your links, a yes on playing and a yes or no on Friday soundcheck.' },
+  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on this page. Photo link, short bio, your city, your links, a yes on playing and a yes or no on Friday soundcheck. Your own post goes up once your details are in.' },
   { when: 'Friday 18 September', what: 'Your tech rider, by email to info@thezao.com: who is on stage, what you plug in, what you bring and what you need from us.' },
   { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage. Every act, mandatory, and there is no Saturday alternative. It doubles as a filming and recording night.' },
   { when: 'Saturday 3 October, 10 AM', what: 'Everyone on site. Crew is in from 8.' },

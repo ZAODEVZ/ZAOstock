@@ -21,7 +21,9 @@
  *   link question as well, as the fallback for acts with no Google account.
  */
 
-var DEADLINE = 'Friday 11 September';
+// No due date (Zaal, 2026-09-10: "just dont make it due on a date no later
+// than 18 th"). It was the Friday before the first posts. The live form carries no date.
+var ASK = 'as soon as you can';
 var EVENT = 'ZAOstock, Saturday 3 October 2026, Franklin Street Parklet, Ellsworth';
 
 // Locked from the 3 September running order. Do NOT re-ask acts for these.
@@ -47,7 +49,7 @@ function createZaostockArtistForm() {
   form.setDescription(
     "You're on the bill for " + EVENT + ".\n\n" +
     'We announce the full lineup this weekend with a post about each artist. ' +
-    'We need four things from you by ' + DEADLINE + ': a photo, a short bio, ' +
+    'We need four things from you ' + ASK + ': a photo, a short bio, ' +
     'your city, and your links.\n\n' +
     'IMPORTANT: submitting this form is what puts you on the public lineup. ' +
     'We do not publish anyone who has not confirmed in writing, so if we do not ' +
