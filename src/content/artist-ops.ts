@@ -189,3 +189,55 @@ export function actFromFormAnswer(answer: string, acts: readonly OpsAct[] = OPS_
   if (!key) return null;
   return acts.find((a) => norm(a.name) === key) ?? null;
 }
+
+/** One row from the form's Responses sheet, as pasted. Field names are free. */
+export type FormResponse = { timestamp: string; act: string } & Record<string, string>;
+
+/**
+ * The form's own timestamp, e.g. "9/9/2026 11:38:50" (M/D/YYYY H:MM:SS, the
+ * sheet's US format) or ISO. Anything else throws: a row whose time cannot be
+ * read cannot be ordered, and guessing its order is the bug this exists to stop.
+ */
+export function responseTime(ts: string): number {
+  const us = ts.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2}):(\d{2})$/);
+  if (us) {
+    const [, mo, d, y, h, mi, s] = us.map(Number);
+    return Date.UTC(y, mo - 1, d, h, mi, s);
+  }
+  const iso = Date.parse(ts);
+  if (!Number.isNaN(iso) && /^\d{4}-\d{2}-\d{2}T/.test(ts.trim())) return iso;
+  throw new Error(`unreadable form timestamp: "${ts}"`);
+}
+
+/**
+ * DUPLICATES. "Submit another response" stays on so an artist can fix a wrong
+ * photo link, and anyone can reload the form anyway, so one act can have two
+ * or more rows. The rule is explicit: THE LATEST SUBMISSION PER ACT WINS, by
+ * the form's timestamp, never by row position.
+ *
+ * AND IT WINS WHOLE. The later row is taken as sent, fields and blanks alike.
+ * It is never merged with an earlier row: if someone resubmits to fix their
+ * photo and leaves the bio empty, a merge would quietly keep the old bio, and
+ * nobody could tell what is published from what was sent. An empty field in
+ * the winning row is a gap to chase, not a value to backfill.
+ *
+ * Equal timestamps: the later row in the input wins. Answers that match no act
+ * are returned in `unmatched`, never dropped silently.
+ */
+export function latestPerAct(
+  responses: readonly FormResponse[],
+  acts: readonly OpsAct[] = OPS_ACTS,
+): { byAct: Map<string, FormResponse>; unmatched: FormResponse[] } {
+  const byAct = new Map<string, FormResponse>();
+  const unmatched: FormResponse[] = [];
+  for (const r of responses) {
+    const act = actFromFormAnswer(r.act, acts);
+    if (!act) {
+      unmatched.push(r);
+      continue;
+    }
+    const held = byAct.get(act.key);
+    if (!held || responseTime(r.timestamp) >= responseTime(held.timestamp)) byAct.set(act.key, r);
+  }
+  return { byAct, unmatched };
+}

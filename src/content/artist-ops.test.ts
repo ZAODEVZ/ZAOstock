@@ -9,6 +9,9 @@ import {
   addMinutes,
   artistFormUrl,
   actFromFormAnswer,
+  latestPerAct,
+  responseTime,
+  type FormResponse,
   clock12,
   findActByCode,
   type OpsAct,
@@ -153,5 +156,47 @@ describe('actFromFormAnswer - every shape the act question has had', () => {
     for (const bad of ['Hurricane - 3:10 PM, 30 min', 'Hurricane', 'Coop', '', '   ', 'TEST DO NOT USE']) {
       expect(actFromFormAnswer(bad), bad).toBeNull();
     }
+  });
+});
+
+describe('latestPerAct - one act, several submissions', () => {
+  const row = (timestamp: string, act: string, bio: string, photo: string): FormResponse => ({ timestamp, act, bio, photo });
+
+  it('takes the LATER submission by timestamp, not by row order', () => {
+    const later = row('9/10/2026 14:00:00', 'Fellenz', 'New bio.', 'https://x/new.jpg');
+    const earlier = row('9/10/2026 09:00:00', 'Fellenz', 'Old bio.', 'https://x/old.jpg');
+    // later listed FIRST, so row position would pick the wrong one
+    const { byAct } = latestPerAct([later, earlier]);
+    expect(byAct.get('fellenz')).toBe(later);
+  });
+
+  // THE TRAP. Resubmitting to fix a photo with the bio box left empty must NOT
+  // quietly keep the old bio: the later row wins whole, blanks included.
+  it('does not inherit a field from an earlier submission when the later one is empty', () => {
+    const first = row('9/10/2026 09:00:00', 'Fellenz', 'Old bio.', 'https://x/old.jpg');
+    const fix = row('9/10/2026 10:00:00', 'Fellenz', '', 'https://x/fixed.jpg');
+    const won = latestPerAct([first, fix]).byAct.get('fellenz')!;
+    expect(won).toBe(fix);
+    expect(won.bio).toBe('');
+    expect(won.photo).toBe('https://x/fixed.jpg');
+  });
+
+  it('groups the old and new DCoop shapes as one act', () => {
+    const old = row('9/9/2026 11:38:50', 'Dcoop - 3:45 PM, 40 min', 'Bio.', '');
+    const renamed = row('9/11/2026 08:00:00', 'DCoop', 'Bio.', 'https://x/d.jpg');
+    const { byAct } = latestPerAct([renamed, old]);
+    expect(byAct.size).toBe(1);
+    expect(byAct.get('dcoop')).toBe(renamed);
+  });
+
+  it('keeps answers that match no act, rather than dropping them', () => {
+    const stray = row('9/10/2026 09:00:00', 'Hurricane - 3:10 PM, 30 min', 'x', 'y');
+    expect(latestPerAct([stray]).unmatched).toEqual([stray]);
+  });
+
+  it('refuses a timestamp it cannot read, rather than guessing the order', () => {
+    expect(responseTime('9/9/2026 11:38:50')).toBeLessThan(responseTime('9/10/2026 09:00:00'));
+    expect(() => responseTime('yesterday')).toThrow();
+    expect(() => latestPerAct([row('garbage', 'Fellenz', 'a', 'b'), row('9/10/2026 09:00:00', 'Fellenz', 'a', 'b')])).toThrow();
   });
 });
