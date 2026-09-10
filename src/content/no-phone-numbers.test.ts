@@ -25,6 +25,17 @@ const ALLOWED: Record<string, string> = {
   '(703-531-8406': 'AVALive, business line',
 };
 
+/**
+ * The shape-test fixtures below. They are fictional (555-01xx is the range
+ * reserved for fiction) and they live in THIS file, so this file is the one
+ * place they are exempt. Found by CI on 2026-09-10: the guard's first local run
+ * passed only because this file was not yet tracked, so `git ls-files` never
+ * handed the guard to itself. Exempted by exact value and by path, never by
+ * loosening PHONE; any other number in this file still fails.
+ */
+const SELF = 'src/content/no-phone-numbers.test.ts';
+const FIXTURES = ['207-555-0142', '(207) 555-0142', '207.555.0142', '+1 207 555 0142', '+1-207-555-0142'];
+
 const BINARY = /\.(png|jpe?g|gif|webp|avif|ico|mp3|mp4|woff2?|ttf|otf|pdf|zip)$/i;
 
 function trackedTextFiles(): string[] {
@@ -44,7 +55,7 @@ describe('no phone numbers in this public repo (decision 0006)', () => {
   });
 
   it('matches the shapes a pasted number actually takes', () => {
-    for (const shape of ['207-555-0142', '(207) 555-0142', '207.555.0142', '+1 207 555 0142', '+1-207-555-0142']) {
+    for (const shape of FIXTURES) {
       expect(phoneHits(`call ${shape} today`), shape).toHaveLength(1);
     }
     // and not the numbers this repo is full of
@@ -54,8 +65,16 @@ describe('no phone numbers in this public repo (decision 0006)', () => {
   });
 
   it('finds none in any tracked file', () => {
-    const offenders = trackedTextFiles().flatMap((rel) => {
-      const hits = phoneHits(readFileSync(path.join(process.cwd(), rel), 'utf8'));
+    const files = trackedTextFiles();
+    // The guard must be scanning itself, or the exemption below is hiding nothing.
+    expect(files).toContain(SELF);
+    const offenders = files.flatMap((rel) => {
+      let hits = phoneHits(readFileSync(path.join(process.cwd(), rel), 'utf8'));
+      if (rel === SELF) {
+        const extra = [...hits];
+        for (const f of FIXTURES) extra.splice(extra.indexOf(f), extra.includes(f) ? 1 : 0);
+        hits = extra;
+      }
       return hits.map((h) => `${rel}: ${h}`);
     });
     expect(offenders).toEqual([]);
