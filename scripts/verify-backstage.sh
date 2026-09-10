@@ -10,8 +10,9 @@
 # `/backstage/<code>` URL in the file is checked against <base-url>, whatever
 # host the file itself names.
 #
-# Per act, PASS needs ALL of: HTTP 200, the act marker the page renders, and an
-# iframe whose src is the public form. Two controls run in the same invocation
+# Per act, PASS needs ALL of: HTTP 200, the act marker the page renders, an
+# iframe whose src is the public form, and no "reveal" / "13 September" /
+# "Sunday" anywhere on the page (there is no reveal day since 2026-09-10). Two controls run in the same invocation
 # and MUST come back the other way, or the whole run fails:
 #   - a made-up code must 404 and must not render any act marker
 #   - /backstage with no code must 200 and carry the form
@@ -36,14 +37,25 @@ fetch() { # url -> writes body to $TMP/body, echoes status
 
 has_form() { grep -q "docs.google.com/forms/d/e/$FORM_ID/viewform" "$TMP/body" && grep -q '<iframe' "$TMP/body"; }
 
+# A stale promise on the page is a failure too. Every one of these pages is
+# the landing page for a message that says there is no reveal day (Zaal,
+# 2026-09-10), so none may say "reveal", "13 September" or "Sunday" anywhere
+# in the served HTML - visible text or the payload that hydrates it.
+STALE='reveal|13 September|Sunday'
+stale_hits() { grep -o -i -E "$STALE" "$TMP/body" | wc -l | tr -d ' '; }
+
 echo "backstage check against $BASE, $N codes from $(basename "$LINKS")"
 if [ "$N" -ne 8 ]; then echo "FAIL  expected 8 codes in the links file, found $N"; fails=$((fails+1)); fi
 
 for code in $CODES; do
   key="${code%-*}"
   st=$(fetch "$BASE/backstage/$code")
-  if [ "$st" = 200 ] && grep -q "data-backstage-act=\"$key\"" "$TMP/body" && has_form; then
-    echo "PASS  $key  200, act marker, form iframe"
+  stale=$(stale_hits)
+  if [ "$st" = 200 ] && grep -q "data-backstage-act=\"$key\"" "$TMP/body" && has_form && [ "$stale" = 0 ]; then
+    echo "PASS  $key  200, act marker, form iframe, no stale reveal promise"
+  elif [ "$st" = 200 ] && [ "$stale" != 0 ]; then
+    echo "FAIL  $key  status=200 but $stale stale reveal/date hit(s): $(grep -o -i -E "$STALE" "$TMP/body" | sort | uniq -c | tr -s ' ' | tr '\n' ';')"
+    fails=$((fails+1))
   else
     marker=$(grep -c "data-backstage-act=\"$key\"" "$TMP/body" || true)
     form=$(has_form && echo yes || echo no)

@@ -200,3 +200,14 @@ describe('latestPerAct - one act, several submissions', () => {
     expect(() => latestPerAct([row('garbage', 'Fellenz', 'a', 'b'), row('9/10/2026 09:00:00', 'Fellenz', 'a', 'b')])).toThrow();
   });
 });
+
+// Zaal, 2026-09-10: there is no reveal day. Every backstage page is the landing
+// page for a message that says so, and must not contradict it.
+describe('the backstage page promises no reveal day', () => {
+  it('names no reveal date, no Sunday, and no reveal label', () => {
+    const page = readFileSync(path.join(process.cwd(), 'src/app/backstage/[code]/page.tsx'), 'utf8');
+    expect(page).not.toContain('lineupRevealLabel');
+    expect(page).not.toMatch(/Sunday|13 September/);
+    expect(page).toContain('The form is what puts you in it.');
+  });
+});
