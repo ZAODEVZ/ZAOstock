@@ -12,7 +12,7 @@
  *   Apps Script cannot ADD a file-upload item (FILE_UPLOAD can be read but not
  *   created), and Google Forms uploads additionally require every respondent to
  *   be signed into a Google account, with the files landing in the form owner's
- *   Drive. Two of the nine acts appear in zero files anywhere in our records, so
+ *   Drive. Two of the acts appear in zero files anywhere in our records, so
  *   a Google sign-in wall would silently lose exactly the acts we can least
  *   afford to lose. This form asks for a photo LINK and offers an email fallback.
  *
@@ -25,13 +25,14 @@ var DEADLINE = 'Friday 11 September';
 var EVENT = 'ZAOstock, Saturday 3 October 2026, Franklin Street Parklet, Ellsworth';
 
 // Locked from the 3 September running order. Do NOT re-ask acts for these.
+// EIGHT since 2026-09-10: Hurricane is out and his option was deleted from the
+// live form by hand the same day. Nobody else moved.
 var ACTS = [
   'The Crown Vics - 12:05 PM, 30 min',
   'OPEN X - 12:40 PM, 40 min',
   'Grass Rug - 1:25 PM, 30 min',
   'Acadia Rising (Sen Wilde, with Women with Rhythm) - 2:00 PM, 30 min',
   'Michael Anderson - 2:35 PM, 30 min',
-  'Hurricane - 3:10 PM, 30 min',
   'Dcoop - 3:45 PM, 40 min',
   'Lyons Den - 4:30 PM, 40 min',
   'Fellenz - 5:15 PM, 40 min',

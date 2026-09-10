@@ -82,7 +82,6 @@ describe('artist page URLs', () => {
       'grass-rug',
       'acadia-rising',
       'michael-anderson',
-      'hurricane',
       'dcoop',
       'lyons-den',
       'fellenz',

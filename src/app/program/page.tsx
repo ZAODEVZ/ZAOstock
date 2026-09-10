@@ -32,10 +32,10 @@ export const metadata: Metadata = {
 //
 // WARNING, and it is not fixed here: the grid below is still the OLD plan. It
 // runs unnamed Set 1 to Set 6 ending 15:10, while the run of show locked on
-// 3 September runs nine named acts from 12:05 to 17:55. Rebuilding this grid to
+// 3 September runs named acts from 12:05 to 17:55 (eight since 2026-09-10). Rebuilding this grid to
 // match is its own pass and is part of filling the site in this week.
 //
-// NAMES: the nine acts are now named on the site as plain content, with no set
+// NAMES: the acts are now named on the site as plain content, with no set
 // times and no links, and NONE of them is described as confirmed - not one has
 // countersigned. The battlers are no longer named anywhere, because the block
 // they were named for is off. Steve's own
@@ -66,7 +66,7 @@ const BLOCKS: Block[] = [
     end: '18:00',
     venue: 'OUT',
     title: 'Live sets',
-    lede: 'Nine independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
+    lede: 'Eight independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
     slots: [
       // THE RUN OF SHOW LOCKED 3 SEPTEMBER. Music 12:05 to 17:55, street clears
       // at 18:00. Five minutes of margin across the whole afternoon and no
@@ -75,7 +75,7 @@ const BLOCKS: Block[] = [
       //
       // Zaal published the names with their real times on 2026-09-07. Note what
       // that does and does not claim: this is who is PLAYING and when. It is NOT
-      // a statement that anyone has countersigned - none of the nine has - and
+      // a statement that anyone has countersigned - none of them has - and
       // the word "confirmed" appears against no act here. The API reveal is a
       // separate gate that still reads only status='confirmed'.
       //
@@ -92,9 +92,9 @@ const BLOCKS: Block[] = [
       { time: '14:00', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion. 30 minutes.', tone: 'set' },
       { time: '14:30', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' },
       { time: '14:35', label: 'Michael Anderson', detail: 'Solo piano. 30 minutes.', tone: 'set' },
-      { time: '15:05', label: 'Changeover', tone: 'gap' },
-      { time: '15:10', label: 'Hurricane', detail: 'Hip-hop. 30 minutes, and he is on the mic between sets.', tone: 'set' },
-      { time: '15:40', label: 'Changeover', tone: 'gap' },
+      // Hurricane's 15:10 set was here. He is out (Zaal, 2026-09-10), with no
+      // replacement; nobody moved, so every other act keeps the time it was given.
+      { time: '15:05', label: 'The MC and our partners', detail: 'Stories from the day and a word from the partners, until Dcoop at 3:45.', tone: 'gap' },
       { time: '15:45', label: 'Dcoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
       { time: '16:25', label: 'Changeover', tone: 'gap' },
       { time: '16:30', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },

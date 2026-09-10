@@ -90,7 +90,9 @@ export const PUBLIC_LINEUP: readonly string[] = ['Lyons Den'];
  * NO SET TIMES AND NO LINKS until the rest is filled in this week. A test
  * enforces both.
  *
- * Order is the run of show locked 3 September.
+ * Order is the run of show locked 3 September. EIGHT acts since 2026-09-10:
+ * Hurricane is out (Zaal: "He knows, strip him today"), no replacement and no
+ * held slot. Nobody else moved; his 15:10 set became an open stretch.
  */
 export const LINEUP_NAMES: readonly string[] = [
   'The Crown Vics',
@@ -98,7 +100,6 @@ export const LINEUP_NAMES: readonly string[] = [
   'Grass Rug',
   'Acadia Rising',
   'Michael Anderson',
-  'Hurricane',
   'Dcoop',
   'Lyons Den',
   'Fellenz',

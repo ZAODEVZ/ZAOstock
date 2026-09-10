@@ -49,13 +49,13 @@ function opsRoomTimes(): Map<string, string> {
 }
 
 describe('run of show, across every copy of it', () => {
-  it('names all nine acts on the public program', () => {
+  it('names every act on the public program', () => {
     const prog = programTimes();
     const missing = LINEUP_NAMES.filter((n) => !prog.has(n));
     expect(missing, `not on /program: ${missing.join(', ')}`).toEqual([]);
   });
 
-  it('names all nine acts in the ops room the crew runs the day from', () => {
+  it('names every act in the ops room the crew runs the day from', () => {
     const ops = opsRoomTimes();
     const missing = LINEUP_NAMES.filter((n) => !ops.has(n));
     expect(missing, `not in the ops room run of show: ${missing.join(', ')}`).toEqual([]);

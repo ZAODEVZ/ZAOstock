@@ -49,11 +49,12 @@ describe('the published run of show', () => {
   // Was "six sets, not the five of v7" while the sets were unnamed placeholders.
   // Zaal published the real names with their real times on 2026-09-07, so the
   // shape to pin is now the run of show locked 3 September: NINE acts, in order.
+  // EIGHT since 2026-09-10: Hurricane is out, no replacement, nobody moved.
   // Reverting to a shorter or reordered bill is the same regression in a new form.
-  it('carries all NINE acts of the locked run of show, in order', () => {
+  it('carries all EIGHT acts of the locked run of show, in order', () => {
     const ACTS = [
       'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
-      'Hurricane', 'Dcoop', 'Lyons Den', 'Fellenz',
+      'Dcoop', 'Lyons Den', 'Fellenz',
     ];
     const positions = ACTS.map((a) => ({ act: a, at: src.indexOf(`label: '${a}'`) }));
     for (const { act, at } of positions) {
@@ -67,7 +68,7 @@ describe('the published run of show', () => {
     }
   });
 
-  // Naming the nine is NOT saying they signed. Nobody has countersigned, and the
+  // Naming the acts is NOT saying they signed. Nobody has countersigned, and the
   // reveal API still publishes only status='confirmed'. This page must never put
   // the word against an act.
   it('never calls a published act confirmed', () => {
