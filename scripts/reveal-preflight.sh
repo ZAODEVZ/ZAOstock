@@ -29,6 +29,11 @@ FAILURES=0
 pass() { printf '  \033[32mPASS\033[0m  %s\n' "$1"; }
 fail() { printf '  \033[31mFAIL\033[0m  %s\n' "$1"; FAILURES=$((FAILURES + 1)); }
 warn() { printf '  \033[33mUNVERIFIABLE\033[0m  %s\n' "$1"; FAILURES=$((FAILURES + 1)); }
+# INFO is a true fact about the artists, not a fault in the software. It never
+# changes the exit code. Since there is no reveal morning (2026-09-10), an empty
+# or partial bill is the NORMAL state until photos arrive; calling it FAIL would
+# read red for days and train everyone to skip this script.
+info() { printf '  \033[36mINFO\033[0m  %s\n' "$1"; }
 
 echo
 echo "ZAOstock reveal preflight against ${BASE}"
@@ -56,18 +61,25 @@ else
   elif [ "$COUNT" -gt 0 ]; then
     pass "${COUNT} act(s) on the bill"
   else
-    # THE CHECK THAT WOULD HAVE CAUGHT 7 SEPTEMBER. Still a FAIL: an empty
-    # bill must never read as fine. It says why, from the endpoint's own fields.
+    # Zero published is NOT a failure any more: nobody has sent a complete
+    # bio and photo yet. It is never silent either - it prints the endpoint's
+    # own reason, so "nobody confirmed" and "photo not in" read differently.
     WHY="$(printf '%s' "$BODY" | python3 -c 'import sys,json; b=json.load(sys.stdin); print("withheld: %s, pending: %s" % (b.get("withheld"), b.get("pending")))' 2>/dev/null)"
-    fail "ZERO acts published (${WHY:-reason unreadable}). Nobody is complete yet - do not post anyone"
+    if [ -z "$WHY" ]; then
+      warn "zero acts published and the reason fields are unreadable"
+    else
+      info "zero acts published yet (${WHY}). Nobody gets a post until they appear here"
+    fi
   fi
 
-  # THE BILL, NOT JUST "MORE THAN ZERO". On 2026-09-10 one act of eight was
-  # confirmed, and the check above would have printed a green "1 act(s) on the
-  # bill" on reveal morning with seven acts missing. So compare what is
-  # published against LINEUP_NAMES, the bill the site names, and say who is
-  # missing - and fail on any published act that is NOT on the bill (Hurricane
-  # left it that day; a stale confirmed row would reveal him).
+  # THE BILL, NOT JUST "MORE THAN ZERO" (#148). Compare what is published
+  # against LINEUP_NAMES and name who is missing. What changed on 2026-09-10 is
+  # only the SEVERITY: with no reveal morning, a partial bill is the normal
+  # state for weeks, so it is INFO. Two things stay FAIL because they mean
+  # something is actually wrong:
+  #   - a published act NOT on the bill (a stale confirmed row - Hurricane left
+  #     the bill that day)
+  #   - a published act WITHOUT a bio or photo (the per-artist gate has broken)
   if [ -n "$COUNT" ] && [ "$COUNT" -gt 0 ]; then
     BILL="$(printf '%s' "$BODY" | python3 -c '
 import sys, json, re
@@ -78,6 +90,14 @@ print("EXPECTED", len(bill))
 print("MISSING", ", ".join(n for n in bill if n not in names))
 print("EXTRA", ", ".join(n for n in names if n not in bill))
 ' 2>/dev/null)"
+    INCOMPLETE="$(printf '%s' "$BODY" | python3 -c '
+import sys, json
+arts = json.load(sys.stdin).get("artists", [])
+print(", ".join(a.get("name", "?") for a in arts if not str(a.get("bio") or "").strip() or not str(a.get("photo_url") or "").strip()))
+' 2>/dev/null)"
+    if [ -n "$INCOMPLETE" ]; then
+      fail "published WITHOUT a bio or photo: ${INCOMPLETE} - the per-artist gate has broken"
+    fi
     EXPECTED="$(printf '%s\n' "$BILL" | sed -n 's/^EXPECTED //p')"
     MISSING="$(printf '%s\n' "$BILL" | sed -n 's/^MISSING //p')"
     EXTRA="$(printf '%s\n' "$BILL" | sed -n 's/^EXTRA //p')"
@@ -88,7 +108,7 @@ print("EXTRA", ", ".join(n for n in names if n not in bill))
         fail "published but NOT on the bill: ${EXTRA}"
       fi
       if [ -n "$MISSING" ]; then
-        fail "PARTIAL BILL: ${COUNT} of ${EXPECTED} acts published. Missing: ${MISSING}. Decide: announce these, or hold"
+        info "${COUNT} of ${EXPECTED} acts published. Still waiting on: ${MISSING}"
       elif [ -z "$EXTRA" ]; then
         pass "all ${EXPECTED} acts of the bill are published"
       fi
@@ -141,11 +161,11 @@ fi
 echo
 
 if [ "$FAILURES" -eq 0 ]; then
-  printf '\033[32mALL CHECKS PASSED\033[0m - every act on the bill is published.\n\n'
+  printf '\033[32mNO FAILURES\033[0m - read the INFO lines for who is published and who is still waiting.\n\n'
 else
   printf '\033[31m%d CHECK(S) FAILED\033[0m - do NOT publish until each is understood.\n' "$FAILURES"
-  printf 'An empty bill is the failure that already happened once. It looked\n'
-  printf 'exactly like a working system.\n\n'
+  printf 'A FAIL here means something is wrong with the site or the data, not\n'
+  printf 'that an artist has not sent a photo yet - that is INFO.\n\n'
 fi
 
 exit "$FAILURES"
