@@ -54,14 +54,10 @@ export const SITE = {
     width: 4000,
     height: 4000,
   },
-  /** ARCHIVE since 2026-09-10: the 26 badge, replaced as the primary mark by
-   *  the moose. Kept in the repo and in the press and design kits. */
-  badge: {
-    src: '/brand/logos/zaostock26_badge_official.png',
-    alt: 'ZAOstock 26 badge: October 3rd, Maine. Whole day of art, peace and music.',
-    width: 1122,
-    height: 1402,
-  },
+  // The 26 badge is RETIRED and PULLED (2026-09-10). Candy, who designed it,
+  // retired it as "too similar to the original Woodstock logo and branding",
+  // and Zaal: "Pull it". It is no longer served: the files moved out of
+  // public/ to docs/brand/archive/, and no page offers it. Do not re-add it.
   icons: {
     lighthouse: '/brand/icons/location-lighthouse-07.png',
     hands: '/brand/icons/community-hands-06.png',

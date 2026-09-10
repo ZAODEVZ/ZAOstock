@@ -30,10 +30,17 @@ transition.
 
 ## The logo
 
+> **RETIRED AND PULLED 2026-09-10. The red badge is no longer a ZAOstock mark.**
+> Candy retired it herself as "too similar to the original Woodstock logo and
+> branding", and Zaal ruled "Pull it". Both files moved out of `public/` to
+> `docs/brand/archive/` and no page offers them. The mark is the moose
+> (`public/brand/logos/zaostock26_moose.png`, by attabotty). The table below is
+> history; do not use it to pick a mark.
+
 | File | What it is | Use |
 |---|---|---|
-| `public/brand/logos/zaostock26_badge_official.png` | **The red badge. This is the primary mark.** Circular, retro-poster, ZAO dove on a guitar neck, "OCTOBER 3RD MAINE", "WHOLE DAY OF ART, PEACE & MUSIC" | Default everywhere |
-| `public/brand/logos/zaostock26_badge_bw_final.png` | Mono / black-and-white variant | Single-colour print, stamps, anywhere colour cannot reproduce |
+| `public/brand/logos/zaostock26_badge_official.png` (now `docs/brand/archive/`) | **Was the primary mark until 2026-09-10.** Circular, retro-poster, ZAO dove on a guitar neck, "OCTOBER 3RD MAINE", "WHOLE DAY OF ART, PEACE & MUSIC" | Default everywhere |
+| `public/brand/logos/zaostock26_badge_bw_final.png` (now `docs/brand/archive/`) | Mono / black-and-white variant | Single-colour print, stamps, anywhere colour cannot reproduce |
 
 There is no separate "red logo" file — **red IS the official badge.** If someone
 asks for the red one, it is `zaostock26_badge_official.png`.

@@ -53,8 +53,6 @@ Sponsors: none signed. Sponsorship is commercial only, direct with The ZAO.
 ## Brand files
 
 - The moose, primary mark by ${SITE.logo.credit} (white on transparent): [zaostock26_moose.png](/brand/logos/zaostock26_moose.png)
-- 2026 badge, colour (archive): [zaostock26_badge_official.png](/brand/logos/zaostock26_badge_official.png)
-- Badge, black and white: [zaostock26_badge_bw_final.png](/brand/logos/zaostock26_badge_bw_final.png)
 
 ## Not yet available
 

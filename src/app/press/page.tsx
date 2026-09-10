@@ -12,8 +12,6 @@ import { SiteShell, Section, Eyebrow, Badge, Button, Card, SectionHeader, Partne
 // come from the same PARTNERS list the homepage and /partners render.
 const BADGES = [
   { href: SITE.logo.src, label: 'ZAOstock logo, the moose', note: `the primary mark by ${SITE.logo.credit}, white on transparent, 4000px`, alt: SITE.logo.alt, dark: true },
-  { href: SITE.badge.src, label: 'ZAOstock 2026 badge, colour', note: 'archive mark', alt: SITE.badge.alt, dark: false },
-  { href: '/brand/logos/zaostock26_badge_bw_final.png', label: 'ZAOstock 2026 badge, black and white', note: 'archive mark, single-colour print', alt: 'ZAOstock 26 badge, black and white', dark: false },
 ] as const;
 
 // Static: the markdown is read once at build time, so a redeploy is what
@@ -105,14 +103,14 @@ export default function PressPage() {
         <SectionHeader
           eyebrow="Press kit"
           title="Files you can use today."
-          lede={`The moose, our primary mark, the 2026 badge in two versions, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit} and the badge to Samantha "Candy", CandyToyBox. Colours, fonts and usage rules are on the design kit at /design. Photos and artist bios are not available yet; ask.`}
+          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Photos and artist bios are not available yet; ask.`}
           className="mb-6"
         />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">
           {BADGES.map((b) => (
             <Card key={b.href} className="p-0">
               <div className={`flex items-center justify-center border-b-2 border-ink-950 p-5 ${b.dark ? 'bg-ink-950' : 'bg-paper-100'}`}>
-                <Image src={b.href} alt={b.alt} width={b.dark ? SITE.logo.width : SITE.badge.width} height={b.dark ? SITE.logo.height : SITE.badge.height} sizes="240px" className={b.dark ? 'h-[180px] w-auto' : 'h-[180px] w-auto rounded-sm border-2 border-ink-950'} />
+                <Image src={b.href} alt={b.alt} width={SITE.logo.width} height={SITE.logo.height} sizes="240px" className={b.dark ? 'h-[180px] w-auto' : 'h-[180px] w-auto rounded-sm border-2 border-ink-950'} />
               </div>
               <div className="p-5 flex flex-wrap items-center justify-between gap-3">
                 <div>

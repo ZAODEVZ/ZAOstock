@@ -30,16 +30,28 @@ describe('the design kit cannot drift from the site it describes', () => {
     }
   });
 
-  it('makes the moose the primary mark and keeps the badge as archive', () => {
+  it('makes the moose the one mark, on ink', () => {
     expect(MARKS[0].file).toBe(SITE.logo.src);
     expect(MARKS[0].dark).toBe(true);
-    expect(MARKS.some((m) => m.file === SITE.badge.src && !m.dark)).toBe(true);
     for (const f of ['src/components/poster/Header.tsx', 'src/components/poster/Footer.tsx', 'src/app/page.tsx']) {
       const src = read(f);
       expect(src, f).toContain('SITE.logo.src');
-      expect(src, f).not.toContain('SITE.badge.src');
       // A white knockout on paper is invisible: every placement sits on ink.
       expect(src, f).toContain('bg-ink-950');
+    }
+  });
+
+  // RETIRED AND PULLED 2026-09-10. Candy retired the 26 badge as "too similar
+  // to the original Woodstock logo and branding"; Zaal: "Pull it". A press page
+  // handing it out invites the comparison she changed the logo to avoid, so it
+  // must not come back through a kit, a page or a public file.
+  it('never offers or serves the retired badge', () => {
+    expect(MARKS.some((m) => /badge/i.test(m.file + m.name))).toBe(false);
+    for (const f of ['zaostock26_badge_official.png', 'zaostock26_badge_bw_final.png']) {
+      expect(existsSync(path.join(process.cwd(), 'public/brand/logos', f)), f).toBe(false);
+    }
+    for (const f of ['src/app/press/page.tsx', 'src/lib/press-kit.ts', 'src/content/design-kit.ts', 'src/content/site.ts', 'docs/marketing/press-kit.md', 'public/design/colors.html']) {
+      expect(read(f), f).not.toMatch(/\/brand\/logos\/zaostock26_badge|SITE\.badge/);
     }
   });
 
