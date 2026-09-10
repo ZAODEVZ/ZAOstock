@@ -11,16 +11,18 @@ import { NextResponse } from 'next/server';
 // So the checks ask the site. Vercel sets VERCEL_GIT_COMMIT_SHA at build time;
 // force-static bakes it into this deployment's own output, so the answer is
 // the build that is actually serving, not whichever record is newest.
-// Public and harmless: a commit SHA in a public repository.
+//
+// IT RETURNS THE SHA AND NOTHING ELSE, on purpose. This route is public and
+// unauthenticated, and a build-info endpoint is where branch names, build
+// times, environment names, env vars and dependency versions quietly pile up.
+// A commit SHA of a public repository reveals nothing; anything added here
+// has to justify being public first. build/route.test.ts fails if a second
+// key appears.
 export const dynamic = 'force-static';
 
 export function GET() {
   return NextResponse.json(
-    {
-      sha: process.env.VERCEL_GIT_COMMIT_SHA || null,
-      ref: process.env.VERCEL_GIT_COMMIT_REF || null,
-      env: process.env.VERCEL_ENV || null,
-    },
+    { sha: process.env.VERCEL_GIT_COMMIT_SHA || null },
     { headers: { 'Cache-Control': 'no-store' } },
   );
 }

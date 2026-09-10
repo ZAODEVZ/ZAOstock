@@ -5,11 +5,13 @@ afterEach(() => vi.unstubAllEnvs());
 describe('GET /api/build - the commit this deployment was built from', () => {
   it('reports the build SHA Vercel set', async () => {
     vi.stubEnv('VERCEL_GIT_COMMIT_SHA', '006aab9e1f2d3c4b5a6978877665544332211000');
-    vi.stubEnv('VERCEL_GIT_COMMIT_REF', 'main');
+    vi.stubEnv('VERCEL_GIT_COMMIT_REF', 'some-branch');
+    vi.stubEnv('VERCEL_ENV', 'production');
     const { GET } = await import('./route');
     const body = await GET().json();
     expect(body.sha).toBe('006aab9e1f2d3c4b5a6978877665544332211000');
-    expect(body.ref).toBe('main');
+    // Public and unauthenticated: the SHA is the only thing it may say.
+    expect(Object.keys(body)).toEqual(['sha']);
   });
 
   // The red side: outside Vercel there is no SHA, and the route must say null
