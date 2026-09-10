@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 // times and no links, and NONE of them is described as confirmed - not one has
 // countersigned. The battlers are no longer named anywhere, because the block
 // they were named for is off. Steve's own
-// act name is not on disk. The fire performance is Dcoop's to time and place;
+// act name is not on disk. The fire performance is DCoop's to time and place;
 // no row until he says. Do not hand-write any other name in.
 
 type Venue = 'OUT' | 'IN';
@@ -94,8 +94,8 @@ const BLOCKS: Block[] = [
       { time: '14:35', label: 'Michael Anderson', detail: 'Solo piano. 30 minutes.', tone: 'set' },
       // Hurricane's 15:10 set was here. He is out (Zaal, 2026-09-10), with no
       // replacement; nobody moved, so every other act keeps the time it was given.
-      { time: '15:05', label: 'The MC and our partners', detail: 'Stories from the day and a word from the partners, until Dcoop at 3:45.', tone: 'gap' },
-      { time: '15:45', label: 'Dcoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
+      { time: '15:05', label: 'The MC and our partners', detail: 'Stories from the day and a word from the partners, until DCoop at 3:45.', tone: 'gap' },
+      { time: '15:45', label: 'DCoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
       { time: '16:25', label: 'Changeover', tone: 'gap' },
       { time: '16:30', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },
       { time: '17:10', label: 'Changeover', tone: 'gap' },

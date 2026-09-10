@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
   // The lookup used to be `.eq('name', ...)` across the whole artists table,
   // with no event scope. That works only while no two events share an artist
   // name. Measured 2026-09-08: four events exist and only `zaostock` has any
-  // artist rows, so it could not fire - but Hurricane and Dcoop both played
+  // artist rows, so it could not fire - but Hurricane and DCoop both played
   // past ZAO festivals, and the day someone backfills those rosters a
   // confirmation sent for ZAOstock could land on ZAO-PALOOZA's row instead.
   //

@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { AS_OF, getFallbackLineup, type FallbackArtist } from '@/lib/lineup-fallback';
 import { canonicalEventSlug } from '@/lib/event-slugs';
-import { lineupIsPublic } from '@/lib/lineup-reveal';
-import { SITE } from '@/content/site';
+import { isPublishable } from '@/lib/lineup-reveal';
 
 // Public - confirmed lineup only, and only public-safe fields (no fee,
 // rider, notes, contact info, or anything else internal to the artists
@@ -64,73 +63,36 @@ const EMPTY_LIVE_CACHE = 'public, s-maxage=30';
 /** Serving the committed fallback: cache briefly, so we retry Supabase often. */
 const FALLBACK_CACHE = 'public, s-maxage=60';
 
-/**
- * The lineup reveal has not happened yet.
- *
- * `getPublicArtists()` in src/lib/artists.ts has enforced this since
- * 2026-08-29 - "CONFIRMED artists only, and none before the reveal" - so the
- * website's /artist/<slug> pages are dark until 7 September. This route, which
- * is the OTHER public reader of the same table and the one the ZAO Festivals
- * mobile app calls, never got the rule. The day anyone marks an act confirmed
- * for planning, the app publishes the lineup, whatever the site promises.
- *
- * Nobody noticed because the artists table is empty, so both surfaces happen to
- * agree on nothing. The gate is missing all the same, and it stops being
- * theoretical the first time a row is set to confirmed.
- *
- * Additive, not a new shape: `artists: []` is exactly what the app already
- * receives today, so nothing downstream has to change. `published` and
- * `reveal_date` are there so a client can tell "not yet" from "nobody", which
- * is the same distinction this route already draws for failures.
- */
-function beforeReveal() {
+function live(artists: LineupArtist[], pending: number) {
   return NextResponse.json(
-    {
-      artists: [],
-      source: 'live' as const,
-      published: false,
-      reveal_date: SITE.lineupRevealDate,
-    },
-    { headers: { 'Cache-Control': EMPTY_LIVE_CACHE } },
-  );
-}
-
-function live(artists: LineupArtist[]) {
-  return NextResponse.json(
-    { artists, source: 'live' as const, published: true },
+    { artists, source: 'live' as const, published: true, pending },
     { headers: { 'Cache-Control': LIVE_CACHE } },
   );
 }
 
 /**
- * The reveal date has passed and NOBODY is confirmed.
+ * Nobody is publishable yet.
  *
- * WHY THIS IS NOT `live([])`
- * On 2026-09-07 the gate opened on schedule against an empty table and the
- * empty bill went public. `live([])` served `{"artists":[]}` with no
- * `published` field at all, so no client, monitor or person could tell
- * "revealed, and nobody confirmed" from any other empty answer. It looked
- * exactly like a working endpoint, which is why it was not caught by anything
- * watching the endpoint.
+ * There is no reveal date any more (Zaal, 2026-09-10): an act goes public when
+ * its own row is complete - confirmed, with a bio and a photo (isPublishable).
+ * So an empty list is a normal state until the first act is complete, not an
+ * alarm on a date. It still must not look like every other empty answer, which
+ * is the 2026-09-07 lesson: `published: false` plus a `withheld` reason a
+ * monitor can read, and `pending` counts acts that ARE confirmed but are still
+ * missing a bio or photo, so "nobody confirmed" and "confirmed, photo not in
+ * yet" are different answers.
  *
- * This route already refuses to serve an empty 200 when the upstream fails -
- * `degraded()` returns 503 rather than pretend. The same principle applies
- * here: an empty bill is not a lineup, so it is not announced as one.
- *
- * FAIL CLOSED, BUT NEVER SILENTLY. `published: false` keeps the site on its
- * pre-reveal copy rather than announcing a festival with no acts. `withheld`
- * says why, in a field a monitor can watch, so this state is LOUD rather than
- * indistinguishable from "not yet". Hiding the failure quietly would just be
- * the inverted-alarm bug wearing different clothes.
+ * `reveal_date` is gone from every response, because the date it named no
+ * longer exists. A client that read it now gets undefined, never a stale date.
  */
-function revealedButEmpty() {
+function noneYet(pending: number) {
   return NextResponse.json(
     {
       artists: [],
       source: 'live' as const,
       published: false,
-      withheld: 'no-confirmed-acts' as const,
-      reveal_date: SITE.lineupRevealDate,
+      withheld: pending > 0 ? ('awaiting-bio-or-photo' as const) : ('no-confirmed-acts' as const),
+      pending,
     },
     { headers: { 'Cache-Control': EMPTY_LIVE_CACHE } },
   );
@@ -188,14 +150,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     // A missing event is a real 404, not a degradation - the answer is known.
     if (!event) return NextResponse.json({ error: 'Event not found' }, { status: 404 });
 
-    // After the 404, so an unknown slug is still an honest 404 before the
-    // reveal, and before the artists query, so no unpublished row is read at
-    // all rather than read and then filtered.
-    if (!lineupIsPublic()) return beforeReveal();
-
     const { data, error } = await supabase
       .from('artists')
-      .select('id, name, genre, city, bio, photo_url, socials, set_order')
+      .select('id, name, genre, city, bio, photo_url, socials, set_order, status')
       .eq('event_id', event.id)
       .eq('status', 'confirmed')
       .order('set_order', { ascending: true, nullsFirst: false });
@@ -205,12 +162,21 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       return degraded(slug, 'upstream-error');
     }
 
-    const artists = (data ?? []) as LineupArtist[];
+    const rows = (data ?? []) as Array<LineupArtist & { status?: string | null }>;
 
-    // The reveal fired but nobody has confirmed. Do not announce an empty bill.
-    if (artists.length === 0) return revealedButEmpty();
+    // THE GATE. Confirmed alone is not enough: an act is public only with its
+    // bio and photo in the row. Incomplete rows are counted, never serialised.
+    const artists: LineupArtist[] = rows
+      .filter(isPublishable)
+      .map(({ status: _status, ...publicFields }) => publicFields);
+    // `pending` is acts that ARE confirmed but still missing a bio or photo -
+    // never the whole roster. Counted from status explicitly rather than from
+    // what the query happened to return, so it cannot drift if the query does.
+    const pending = rows.filter((r) => r.status === 'confirmed' && !isPublishable(r)).length;
 
-    return live(artists);
+    if (artists.length === 0) return noneYet(pending);
+
+    return live(artists, pending);
   } catch (error: unknown) {
     // A thrown fetch/network error lands here rather than in an `error` field.
     console.error('[api/events/[slug]/lineup] unexpected failure', error);

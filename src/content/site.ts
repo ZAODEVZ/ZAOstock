@@ -12,7 +12,7 @@
 //
 // SUPERSEDED, 31 Aug: "there is no changeover DJ, the MC and partner spots
 // cover changeovers" (20:0x, 27 Aug) is NO LONGER TRUE. Zaal reopened the
-// daytime DJ on the 31 Aug Dcoop call - "if we're gonna have one" - and is
+// daytime DJ on the 31 Aug DCoop call - "if we're gonna have one" - and is
 // sourcing local DJs through Nextdoor. Nothing on this page asserts the
 // absence of a DJ, so no public copy changes here; the note is corrected so
 // the next reader does not act on it. Doc 2453.
@@ -84,7 +84,7 @@ export const PUBLIC_LINEUP: readonly string[] = ['Lyons Den'];
  * change.
  *
  * What actually publishes acts is `getPublicArtists()`, which is dynamic: it
- * gates on `lineupIsPublic()` and selects `status = 'confirmed'` from the
+ * gates each row on `isPublishable()` (confirmed, bio, photo) from the
  * database. No deploy is involved. Acts appear when they confirm, not when
  * someone edits this file.
  *
@@ -118,7 +118,7 @@ export const LINEUP_NAMES: readonly string[] = [
   'Grass Rug',
   'Acadia Rising',
   'Michael Anderson',
-  'Dcoop',
+  'DCoop',
   'Lyons Den',
   'Fellenz',
 ];
@@ -173,8 +173,8 @@ export const PARTNERS: readonly Partner[] = [
   // /, /press and /partners. REMOVED 2026-09-10 by Zaal, verbatim: "enteract is
   // not a partner neither is we 3 metal". Deleted rather than set to false, so
   // nobody reads them as pending. Do not re-add either from an older deck or doc.
-  // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner Dcoop.
-  { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'Dcoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
+  // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner DCoop.
+  { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'DCoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
 ].filter((p) => p.confirmed);
 
 /** What every partner gets, whatever the tier (site-fix brief, 28 Aug). */
@@ -307,7 +307,7 @@ export const TIERS: readonly Tier[] = [
 export const SERIES = [
   { name: 'ZAO-PALOOZA', place: 'New York City, during NFT NYC', when: '2024', note: 'Twelve artists. Volunteer-organised in six weeks. Broke even.', href: '/festivals' },
   { name: 'ZAO-CHELLA', place: 'Miami, Wynwood, during Art Basel', when: 'December 2024', note: 'The first live WaveWarZ battle.', href: '/festivals' },
-  { name: 'ZAOville', place: 'Laurel, Maryland', when: 'July 2026', note: 'Co-hosted with Dcoop.', href: '/zaoville' },
+  { name: 'ZAOville', place: 'Laurel, Maryland', when: 'July 2026', note: 'Co-hosted with DCoop.', href: '/zaoville' },
 ] as const;
 
 /** Why Ellsworth: press kit and deck slide 8. */
