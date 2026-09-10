@@ -12,8 +12,10 @@
 #
 # Per act, PASS needs ALL of: HTTP 200, the act marker the page renders, an
 # iframe whose src is the public form, and no "reveal" / "13 September" /
-# "Sunday" anywhere on the page (there is no reveal day since 2026-09-10). Two controls run in the same invocation
-# and MUST come back the other way, or the whole run fails:
+# "Sunday" anywhere on the page (there is no reveal day since 2026-09-10).
+# A failing page is re-checked once after RETRY_WAIT seconds (default 45) and
+# the output names the pass that decided it. Two controls run in the same
+# invocation and MUST come back the other way, or the whole run fails:
 #   - a made-up code must 404 and must not render any act marker
 #   - /backstage with no code must 200 and carry the form
 # Exit 0 only if every act passes and both controls hold.
@@ -47,19 +49,47 @@ stale_hits() { grep -o -i -E "$STALE" "$TMP/body" | wc -l | tr -d ' '; }
 echo "backstage check against $BASE, $N codes from $(basename "$LINKS")"
 if [ "$N" -ne 8 ]; then echo "FAIL  expected 8 codes in the links file, found $N"; fails=$((fails+1)); fi
 
-for code in $CODES; do
-  key="${code%-*}"
+# EVERY PAGE, NEVER A SAMPLE. The eight pages are one template but they do NOT
+# refresh together after a deploy: on 2026-09-10 the vault lane caught three of
+# eight still serving the retired "Sunday 13 September" line while the other
+# five were already correct, minutes after the same deploy. A check of one
+# "representative" page would have passed while three artists' pages still
+# contradicted the message sent to them. Do not optimise this loop down.
+#
+# NOT YET IS NOT WRONG. Because pages warm independently, a failure straight
+# after a deploy may only mean "not refreshed yet". So a page that fails is
+# re-fetched once after RETRY_WAIT seconds (default 45), and the output says
+# which pass decided it. A page that fails twice is a real failure; a page
+# that passes on the second pass is reported as such, never silently.
+RETRY_WAIT="${RETRY_WAIT:-45}"
+
+check_act() { # code key -> sets VERDICT (PASS|FAIL) and DETAIL
+  local code="$1" key="$2" st stale
   st=$(fetch "$BASE/backstage/$code")
   stale=$(stale_hits)
   if [ "$st" = 200 ] && grep -q "data-backstage-act=\"$key\"" "$TMP/body" && has_form && [ "$stale" = 0 ]; then
-    echo "PASS  $key  200, act marker, form iframe, no stale reveal promise"
+    VERDICT=PASS; DETAIL="200, act marker, form iframe, no stale reveal promise"
   elif [ "$st" = 200 ] && [ "$stale" != 0 ]; then
-    echo "FAIL  $key  status=200 but $stale stale reveal/date hit(s): $(grep -o -i -E "$STALE" "$TMP/body" | sort | uniq -c | tr -s ' ' | tr '\n' ';')"
-    fails=$((fails+1))
+    VERDICT=FAIL; DETAIL="status=200 but $stale stale reveal/date hit(s): $(grep -o -i -E "$STALE" "$TMP/body" | sort | uniq -c | tr -s ' ' | tr '\n' ';')"
   else
-    marker=$(grep -c "data-backstage-act=\"$key\"" "$TMP/body" || true)
-    form=$(has_form && echo yes || echo no)
-    echo "FAIL  $key  status=$st marker=$marker form=$form"
+    VERDICT=FAIL; DETAIL="status=$st marker=$(grep -c "data-backstage-act=\"$key\"" "$TMP/body" || true) form=$(has_form && echo yes || echo no)"
+  fi
+}
+
+for code in $CODES; do
+  key="${code%-*}"
+  check_act "$code" "$key"
+  if [ "$VERDICT" = PASS ]; then
+    echo "PASS  $key  $DETAIL"
+    continue
+  fi
+  first="$DETAIL"
+  sleep "$RETRY_WAIT"
+  check_act "$code" "$key"
+  if [ "$VERDICT" = PASS ]; then
+    echo "PASS  $key  on the SECOND pass after ${RETRY_WAIT}s (first pass: $first)"
+  else
+    echo "FAIL  $key  on BOTH passes, ${RETRY_WAIT}s apart: $DETAIL"
     fails=$((fails+1))
   fi
 done
