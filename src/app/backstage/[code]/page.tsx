@@ -88,8 +88,10 @@ export default async function BackstagePage({ params }: Props) {
               {SITE.producedBy}
             </p>
             <p className="text-sm text-ink-secondary mt-3 mb-0">
-              The lineup goes public on Sunday {SITE.lineupRevealLabel}. We only publish acts who have sent the form
-              back, so the form is what puts you on it.
+              {/* There is no reveal day (Zaal, 2026-09-10). "In it", not "on it": the
+                  lineup is already the names on the site; the form puts you in the posts. */}
+              Every artist gets their own post with their bio and photo, and the order follows who sends their details
+              first. The form is what puts you in it.
             </p>
             <p className="text-sm text-ink-secondary mt-3 mb-0">
               Anything at all: <a href={`mailto:${SITE.contact}`} className="underline">{SITE.contact}</a>.

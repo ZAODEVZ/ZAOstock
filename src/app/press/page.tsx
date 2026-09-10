@@ -11,7 +11,7 @@ import { SiteShell, Section, Eyebrow, Badge, Button, Card, SectionHeader, Partne
 // public/ are listed (docs/marketing/press-kit.md "Assets"); partner logos
 // come from the same PARTNERS list the homepage and /partners render.
 const BADGES = [
-  { href: SITE.logo.src, label: 'ZAOstock logo, the moose', note: 'the primary mark, white on transparent, 4000px', alt: SITE.logo.alt, dark: true },
+  { href: SITE.logo.src, label: 'ZAOstock logo, the moose', note: `the primary mark by ${SITE.logo.credit}, white on transparent, 4000px`, alt: SITE.logo.alt, dark: true },
   { href: SITE.badge.src, label: 'ZAOstock 2026 badge, colour', note: 'archive mark', alt: SITE.badge.alt, dark: false },
   { href: '/brand/logos/zaostock26_badge_bw_final.png', label: 'ZAOstock 2026 badge, black and white', note: 'archive mark, single-colour print', alt: 'ZAOstock 26 badge, black and white', dark: false },
 ] as const;
@@ -44,20 +44,15 @@ function publishable(markdown: string): string {
 type Segment = { markdown: string; hold?: string };
 
 /**
- * The kit carries two HOLD blocks (the lineup until the reveal date, the WaveWarZ
- * figure until re-pulled). Split them out so they render inside a real
+ * The kit carries one HOLD block (the WaveWarZ figure until re-pulled; the
+ * lineup hold went with the reveal date on 2026-09-10). Split them out so they render inside a real
  * <details>, closed by default, and cannot ship open by accident. SITE removes
  * this on the day. react-markdown escapes raw HTML, so the wrapper is JSX.
  */
 function splitHolds(markdown: string): Segment[] {
   const markers: Array<{ re: RegExp; label: string }> = [
-    // Derived from SITE, not typed twice: the marker in docs/marketing/press-kit.md
-    // carries the same label, and a literal here silently stops matching when the
-    // reveal date moves (it did, 31 Aug, 1 September -> 7 September).
-    {
-      re: new RegExp(`\\*\\*HOLD until ${SITE.lineupRevealLabel}\\.\\*\\*[\\s\\S]*?(?=\\n## |$)`),
-      label: `Held until ${SITE.lineupRevealLabel}`,
-    },
+    // The lineup hold ("HOLD until <reveal date>") is gone with the reveal date
+    // itself (Zaal, 2026-09-10). Only the WaveWarZ re-pull hold remains.
     { re: /\*\*HOLD - re-pull before publishing\.\*\*[^\n]*/, label: 'Re-pull before publishing' },
   ];
   let segments: Segment[] = [{ markdown }];
@@ -110,7 +105,7 @@ export default function PressPage() {
         <SectionHeader
           eyebrow="Press kit"
           title="Files you can use today."
-          lede={`The moose, our primary mark, the 2026 badge in two versions, and the partner logos as supplied. Credit the badge to Samantha "Candy", CandyToyBox. Colours, fonts and usage rules are on the design kit at /design. Photos and artist bios are not available yet; ask.`}
+          lede={`The moose, our primary mark, the 2026 badge in two versions, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit} and the badge to Samantha "Candy", CandyToyBox. Colours, fonts and usage rules are on the design kit at /design. Photos and artist bios are not available yet; ask.`}
           className="mb-6"
         />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">

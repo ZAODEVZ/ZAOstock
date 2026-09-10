@@ -1,4 +1,14 @@
-# Reveal runbook, 13 September 2026
+# Reveal runbook, 13 September 2026 - RETIRED
+
+> **RETIRED 2026-09-10. There is no reveal day.** Zaal: "stop making a whole
+> reveal date - we will just post about each of them individually starting on
+> Saturday with their bio and photo." The date gate is gone; each act
+> publishes when its own row is confirmed with a bio and a photo
+> (`src/lib/lineup-reveal.ts`, `isPublishable`), and `SITE.lineupRevealDate`
+> no longer exists. Kept as the record of the 7 September incident, which is
+> still the reason an empty bill is never silent. Nothing below is an
+> instruction any more; `scripts/reveal-preflight.sh` still runs and now
+> checks the per-artist gate.
 
 > **This runbook was written for 7 September and that gate has already fired.**
 > On 2026-09-07 it opened on schedule against an empty artists table and the
@@ -6,7 +16,6 @@
 > merged 2026-09-07, and every date below has been corrected to match
 > `SITE.lineupRevealDate`. If you are reading a "7 September" anywhere in this
 > file, it is a line I missed - trust `src/content/site.ts`, not this document.
-> <!-- re-check: 2026-09-13 -->
 
 The lineup reveal is **two edits in two different systems**, and doing one
 without the other is the most likely way this goes wrong. Nothing fails if you
