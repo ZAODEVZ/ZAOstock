@@ -25,7 +25,7 @@ Lyons Den is confirmed. The full lineup is announced on ${SITE.lineupRevealLabel
 
 ## Partners (confirmed, each with a named ZAO contact)
 
-Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz, ENTERACT (production and operational support), Web3Metal (partnership integration and community surface), Bomb Squad (crew, content and merch).
+Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz, Bomb Squad (crew, content and merch).
 
 ## Sponsors
 
