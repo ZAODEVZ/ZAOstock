@@ -35,6 +35,21 @@ export const SITE = {
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
   producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
+  /**
+   * THE PRIMARY MARK since 2026-09-10 (Zaal): the moose. It is a WHITE
+   * knockout on transparent, so it only ever sits on the ink inverse surface
+   * (`bg-ink-950`); on paper it disappears. `web` is a 600px copy for places
+   * that inline the file (the OG image); `src` is the full 4000px original.
+   */
+  logo: {
+    src: '/brand/logos/zaostock26_moose.png',
+    web: '/brand/logos/zaostock26_moose_600.png',
+    alt: 'ZAOstock logo: the word ZAOSTOCK set in the antlers of a moose head.',
+    width: 4000,
+    height: 4000,
+  },
+  /** ARCHIVE since 2026-09-10: the 26 badge, replaced as the primary mark by
+   *  the moose. Kept in the repo and in the press and design kits. */
   badge: {
     src: '/brand/logos/zaostock26_badge_official.png',
     alt: 'ZAOstock 26 badge: October 3rd, Maine. Whole day of art, peace and music.',

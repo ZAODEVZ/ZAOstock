@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-// The badge on paper at 1200x630, per docs/design/redesign-2026-08-28.md. Every
+// The moose on ink, beside the wordmark on paper, at 1200x630, per docs/design/redesign-2026-08-28.md. Every
 // route inherits it unless a page sets its own openGraph.images. Rendered once
 // at build; the mono badge (86 KB) keeps the response small.
 export const alt = 'ZAOstock 2026: a free, one-day, artist-built music festival in Ellsworth, Maine. Saturday 3 October 2026.';
@@ -12,13 +12,14 @@ export const contentType = 'image/png';
 const PAPER = '#F2E6D3';
 const CARD = '#FAF3E6';
 const INK = '#241E15';
-const RED = '#D2402A';
 const GOLD = '#A8721C';
 const DENIM = '#2E6494';
 
 export default async function OpengraphImage() {
-  const badge = await readFile(path.join(process.cwd(), 'public', 'brand', 'logos', 'zaostock26_badge_official.png'));
-  const badgeSrc = `data:image/png;base64,${badge.toString('base64')}`;
+  // The moose, the primary mark since 2026-09-10. White knockout, so it sits on
+  // ink. The 600px copy keeps the inlined image small.
+  const logo = await readFile(path.join(process.cwd(), 'public', 'brand', 'logos', 'zaostock26_moose_600.png'));
+  const logoSrc = `data:image/png;base64,${logo.toString('base64')}`;
 
   return new ImageResponse(
     (
@@ -72,16 +73,18 @@ export default async function OpengraphImage() {
           style={{
             display: 'flex',
             width: 360,
-            height: 450,
+            height: 360,
             borderRadius: 18,
             border: `3px solid ${INK}`,
             boxShadow: `8px 8px 0 ${INK}`,
-            background: RED,
+            background: INK,
             overflow: 'hidden',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element -- satori needs a plain img */}
-          <img src={badgeSrc} alt="" width={360} height={450} style={{ objectFit: 'cover' }} />
+          <img src={logoSrc} alt="" width={320} height={320} style={{ objectFit: 'contain' }} />
         </div>
       </div>
     ),

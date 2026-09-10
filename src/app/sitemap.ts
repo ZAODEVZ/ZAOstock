@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/zaoville',
     '/privacy',
     '/press',
+    '/design',
   ];
 
   return routes.map((path) => ({
