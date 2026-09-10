@@ -18,7 +18,9 @@
 # invocation and MUST come back the other way, or the whole run fails:
 #   - a made-up code must 404 and must not render any act marker
 #   - /backstage with no code must 200 and carry the form
-# Exit 0 only if every act passes and both controls hold.
+# EXIT: 0 every act passes and both controls hold; 1 something FAILED;
+# 2 nothing failed but production is not verifiably serving main (the pages
+# may be an older build - re-run after the deploy); 3 both.
 set -u
 
 BASE="${1:?base url, e.g. https://zaostock.com}"
@@ -47,6 +49,12 @@ STALE='reveal|13 September|Sunday'
 stale_hits() { grep -o -i -E "$STALE" "$TMP/body" | wc -l | tr -d ' '; }
 
 echo "backstage check against $BASE, $N codes from $(basename "$LINKS")"
+# Say which build these pages come from before judging them (2026-09-10: an
+# older build was promoted over a newer merge and served stale copy).
+unverified=0
+if ! bash "$(dirname "${BASH_SOURCE[0]}")/deployed-sha.sh" "$BASE"; then
+  unverified=1
+fi
 if [ "$N" -ne 8 ]; then echo "FAIL  expected 8 codes in the links file, found $N"; fails=$((fails+1)); fi
 
 # EVERY PAGE, NEVER A SAMPLE. The eight pages are one template but they do NOT
@@ -108,5 +116,10 @@ else
   echo "FAIL  control: /backstage with no code -> $st, form=$(has_form && echo yes || echo no)"; fails=$((fails+1))
 fi
 
-if [ "$fails" -eq 0 ]; then echo "ALL PASS"; exit 0; fi
-echo "$fails FAILED"; exit 1
+RC=0
+[ "$fails" -gt 0 ] && RC=$((RC | 1))
+[ "$unverified" -gt 0 ] && RC=$((RC | 2))
+if [ "$RC" -eq 0 ]; then echo "ALL PASS"; exit 0; fi
+[ "$fails" -gt 0 ] && echo "$fails FAILED"
+[ "$unverified" -gt 0 ] && echo "UNVERIFIABLE: production is not verifiably serving main; re-run after the deploy"
+exit "$RC"

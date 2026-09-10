@@ -15,20 +15,23 @@
 #   scripts/reveal-preflight.sh            # against production
 #   BASE=https://staging.example scripts/reveal-preflight.sh
 #
-# EXIT CODE
-#   0 = every check passed. Non-zero = the number of failures.
-#   A FAIL is never silent and never an empty result: a check that cannot run
-#   reports UNVERIFIABLE and counts as a failure, because "I could not tell"
-#   must not read the same as "fine".
+# EXIT CODE (split 2026-09-10, so a wrapper can tell "wrong" from "could not tell")
+#   0 = no FAIL and nothing UNVERIFIABLE (INFO lines allowed)
+#   1 = at least one FAIL, nothing unverifiable
+#   2 = nothing FAILed, but at least one check was UNVERIFIABLE
+#   3 = both
+#   A check that cannot run is never silent and never a pass: it is
+#   UNVERIFIABLE, which is its own exit bit rather than a failure.
 
 set -o pipefail
 
 BASE="${BASE:-https://zaostock.com}"
 FAILURES=0
+UNVERIFIED=0
 
 pass() { printf '  \033[32mPASS\033[0m  %s\n' "$1"; }
 fail() { printf '  \033[31mFAIL\033[0m  %s\n' "$1"; FAILURES=$((FAILURES + 1)); }
-warn() { printf '  \033[33mUNVERIFIABLE\033[0m  %s\n' "$1"; FAILURES=$((FAILURES + 1)); }
+warn() { printf '  \033[33mUNVERIFIABLE\033[0m  %s\n' "$1"; UNVERIFIED=$((UNVERIFIED + 1)); }
 # INFO is a true fact about the artists, not a fault in the software. It never
 # changes the exit code. Since there is no reveal morning (2026-09-10), an empty
 # or partial bill is the NORMAL state until photos arrive; calling it FAIL would
@@ -45,6 +48,17 @@ echo
 # (src/lib/lineup-reveal.ts). So this no longer checks a gate date; it checks
 # that no reveal date has crept back, and what the bill actually shows.
 echo "  gate: per artist (confirmed + bio + photo), no reveal date"
+echo
+
+echo "0. Is production serving main? (every result below is about THAT build)"
+# 2026-09-10: a merge deployed "success" and was then overwritten by an OLDER
+# build that finished later. Page checks read the old copy with nothing
+# failing. So say which build we are about to read, before reading it.
+if bash "$(dirname "${BASH_SOURCE[0]}")/deployed-sha.sh" "$BASE"; then
+  :
+else
+  warn "production is not verifiably serving main - results below may describe an older build"
+fi
 echo
 
 echo "1. The lineup endpoint"
@@ -160,12 +174,15 @@ else
 fi
 echo
 
-if [ "$FAILURES" -eq 0 ]; then
+if [ "$FAILURES" -eq 0 ] && [ "$UNVERIFIED" -eq 0 ]; then
   printf '\033[32mNO FAILURES\033[0m - read the INFO lines for who is published and who is still waiting.\n\n'
 else
-  printf '\033[31m%d CHECK(S) FAILED\033[0m - do NOT publish until each is understood.\n' "$FAILURES"
-  printf 'A FAIL here means something is wrong with the site or the data, not\n'
-  printf 'that an artist has not sent a photo yet - that is INFO.\n\n'
+  [ "$FAILURES" -gt 0 ] && printf '\033[31m%d CHECK(S) FAILED\033[0m - something is wrong with the site or the data.\n' "$FAILURES"
+  [ "$UNVERIFIED" -gt 0 ] && printf '\033[33m%d CHECK(S) UNVERIFIABLE\033[0m - could not tell; re-run once the deploy is live. Not a pass.\n' "$UNVERIFIED"
+  printf 'An artist not having sent a photo yet is INFO, never a FAIL.\n\n'
 fi
 
-exit "$FAILURES"
+RC=0
+[ "$FAILURES" -gt 0 ] && RC=$((RC | 1))
+[ "$UNVERIFIED" -gt 0 ] && RC=$((RC | 2))
+exit "$RC"
