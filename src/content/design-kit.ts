@@ -20,8 +20,8 @@ export type KitMark = {
 };
 
 export const MARKS: readonly KitMark[] = [
-  { name: 'The moose', file: SITE.logo.src, format: 'PNG, 4000 x 4000, transparent', note: 'The primary mark since 10 September 2026. White on transparent.', alt: SITE.logo.alt, width: SITE.logo.width, height: SITE.logo.height, dark: true },
-  { name: 'The moose, web size', file: SITE.logo.web, format: 'PNG, 600 x 600, transparent', note: 'Same mark, small enough to drop into a post or an email.', alt: SITE.logo.alt, width: 600, height: 600, dark: true },
+  { name: 'The moose', file: SITE.logo.src, format: 'PNG, 4000 x 4000, transparent', note: `The primary mark since 10 September 2026, by ${SITE.logo.credit}. White on transparent.`, alt: SITE.logo.alt, width: SITE.logo.width, height: SITE.logo.height, dark: true },
+  { name: 'The moose, web size', file: SITE.logo.web, format: 'PNG, 600 x 600, transparent', note: `Same mark by ${SITE.logo.credit}, small enough to drop into a post or an email.`, alt: SITE.logo.alt, width: 600, height: 600, dark: true },
   { name: 'The 2026 badge, colour', file: SITE.badge.src, format: 'PNG, 1122 x 1402', note: 'Archive mark. Still ours to use; no longer the primary.', alt: SITE.badge.alt, width: SITE.badge.width, height: SITE.badge.height, dark: false },
   { name: 'The 2026 badge, black and white', file: '/brand/logos/zaostock26_badge_bw_final.png', format: 'PNG', note: 'Archive mark, for single-colour print.', alt: 'ZAOstock 26 badge, black and white', width: SITE.badge.width, height: SITE.badge.height, dark: false },
 ];
@@ -64,6 +64,7 @@ export const RULES: ReadonlyArray<{ title: string; items: readonly string[] }> =
   {
     title: 'The moose',
     items: [
+      `Drawn by ${SITE.logo.credit}. Credit the moose to ${SITE.logo.credit}.`,
       'It is white on transparent. Put it on ink (#241E15) or another dark ground; on paper or a light photo it disappears.',
       'Use the file as supplied. Do not recolour, stretch, rotate, outline or add effects to it, and do not crop the antlers.',
       'Give it room. Nothing sits inside the antlers or touches the edge of the mark.',

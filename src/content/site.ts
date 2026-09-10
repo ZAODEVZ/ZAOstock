@@ -40,8 +40,11 @@ export const SITE = {
    * knockout on transparent, so it only ever sits on the ink inverse surface
    * (`bg-ink-950`); on paper it disappears. `web` is a 600px copy for places
    * that inline the file (the OG image); `src` is the full 4000px original.
+   * Drawn by attabotty (Zaal, 2026-09-10): credit on every surface that offers
+   * the mark as a download.
    */
   logo: {
+    credit: 'attabotty',
     src: '/brand/logos/zaostock26_moose.png',
     web: '/brand/logos/zaostock26_moose_600.png',
     alt: 'ZAOstock logo: the word ZAOSTOCK set in the antlers of a moose head.',
