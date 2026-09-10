@@ -11,8 +11,8 @@
 # live either.
 #
 # HOW. Ask the site itself first: /api/build returns the commit the serving
-# build was made from (VERCEL_GIT_COMMIT_SHA, baked in at build). If that route
-# is absent (a build from before it existed), fall back to the GitHub
+# build was made from (VERCEL_GIT_COMMIT_SHA, baked in at build). Only if that
+# route is ABSENT (HTTP 404: a build from before it existed) fall back to the GitHub
 # deployments API for environment Production: the newest deployment whose
 # latest status is success - never simply the newest, or a build still running
 # reads as the live one. The fallback is an inference from records and the
@@ -46,8 +46,26 @@ DEPLOYED="${DEPLOYED_SHA:-}"
 if [ -n "$DEPLOYED" ]; then
   SOURCE="override (DEPLOYED_SHA)"
 else
-  BUILD="$(curl -s --max-time 20 -H 'Cache-Control: no-cache' "$BASE/api/build")"
-  DEPLOYED="$(printf '%s' "$BUILD" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("sha") or "")' 2>/dev/null)"
+  # ABSENT is not WRONG. A 404 means the route does not exist on this build
+  # yet (a build from before it), so the records fallback may stand in, and
+  # says so. But a route that ANSWERS - a 200 with an unparseable or empty body,
+  # an edge error page, a 5xx, no connection - is not absent, it is answering
+  # wrongly, and that is UNVERIFIABLE with its reason, never quietly replaced
+  # by the records.
+  BUILD_FILE="$(mktemp)"
+  BUILD_CODE="$(curl -s -o "$BUILD_FILE" -w '%{http_code}' --max-time 20 -H 'Cache-Control: no-cache' "$BASE/api/build")"
+  DEPLOYED="$(python3 -c 'import sys,json; v=json.load(open(sys.argv[1])).get("sha"); print(v if isinstance(v,str) and len(v)>=7 else "")' "$BUILD_FILE" 2>/dev/null)"
+  rm -f "$BUILD_FILE"
+  if [ "$BUILD_CODE" = 200 ] && [ -z "$DEPLOYED" ]; then
+    echo "  UNVERIFIABLE  $BASE/api/build answered 200 but gave no usable sha (unparseable, empty or null) - not falling back to the records"
+    echo "                main ${MAIN_SHA:0:7}"
+    exit 3
+  fi
+  if [ "$BUILD_CODE" != 200 ] && [ "$BUILD_CODE" != 404 ]; then
+    echo "  UNVERIFIABLE  $BASE/api/build answered HTTP $BUILD_CODE - an error, not an absent route; not falling back to the records"
+    echo "                main ${MAIN_SHA:0:7}"
+    exit 3
+  fi
   if [ -n "$DEPLOYED" ]; then
     SOURCE="$BASE/api/build (read from the serving build)"
   elif [ "$BASE" != "https://zaostock.com" ]; then
