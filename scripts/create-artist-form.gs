@@ -71,7 +71,9 @@ function createZaostockArtistForm() {
 
   form.addListItem()
     .setTitle('Which act are you?')
-    .setHelpText('Your set time is already locked - you do not need to tell us.')
+    // Set times live in ONE public place, /program (Zaal, 2026-09-10). The form
+    // points there and never repeats a time, so the two cannot disagree.
+    .setHelpText('Your set time and length are at zaostock.com/program.')
     .setChoiceValues(ACTS)
     .setRequired(true);
 
@@ -130,6 +132,22 @@ function createZaostockArtistForm() {
     .setChoiceValues([
       'Yes, I can be there Friday evening 2 October',
       'I have a problem with Friday - please get in touch',
+    ])
+    .setRequired(true);
+
+  // Zaal, 2026-09-10: "we need a check mark for the artists to say we can
+  // livestream their performance and use in future content". A choice rather
+  // than a lone required tick, so an act that wants to talk first can still
+  // submit everything else instead of abandoning the form.
+  form.addMultipleChoiceItem()
+    .setTitle('Filming, photos and livestream')
+    .setHelpText(
+      'We livestream the day and film, record and photograph every set, ' +
+      'including the Friday soundcheck. This lets us share yours, live and afterwards.'
+    )
+    .setChoiceValues([
+      'Yes, ZAOstock and The ZAO can livestream, film, record and photograph my set and use it in future content',
+      "Let's talk first",
     ])
     .setRequired(true);
 

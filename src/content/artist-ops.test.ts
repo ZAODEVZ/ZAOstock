@@ -65,6 +65,21 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     }
   });
 
+  // Zaal, 2026-09-10: "lets give 7 mins between performers and give the 30
+  // mins people some more time", then "option b": 33-minute sets.
+  it('runs the day on seven-minute changeovers, music 12:05 to 17:46', () => {
+    expect(OPS_ACTS[0].setStart).toBe('12:05');
+    for (let i = 1; i < OPS_ACTS.length; i++) {
+      const prev = OPS_ACTS[i - 1];
+      expect(OPS_ACTS[i].setStart, `${prev.name} -> ${OPS_ACTS[i].name}`).toBe(
+        addMinutes(addMinutes(prev.setStart, prev.minutes), 7),
+      );
+    }
+    const last = OPS_ACTS[OPS_ACTS.length - 1];
+    expect(addMinutes(last.setStart, last.minutes)).toBe('17:46');
+    expect(OPS_ACTS.map((a) => a.minutes)).toEqual([33, 40, 33, 33, 33, 40, 40, 40]);
+  });
+
   it('gives every act the SAME time as /program', () => {
     const prog = readFileSync(path.join(process.cwd(), 'src/app/program/page.tsx'), 'utf8');
     const times = new Map<string, string>();
