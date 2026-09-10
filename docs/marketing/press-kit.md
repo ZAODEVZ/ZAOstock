@@ -36,7 +36,7 @@ Free to attend.**
 ## In one paragraph
 
 ZAOstock is a free, one-day, artist-built music festival on Franklin Street in
-downtown Ellsworth, Maine. From noon, nine independent artists play the outdoor
+downtown Ellsworth, Maine. From noon, eight independent artists play the outdoor
 parklet stage back to back until six, when the street clears. Next door, Black
 Moon Public House hosts its own evening. It is part of the 9th Annual Art of Ellsworth
 during Maine Craft Weekend, and it is produced by ZAO Festivals, the events arm
@@ -51,7 +51,7 @@ countries.
 | Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosts its own evening from six |
 | Cost | Free to attend |
 | Music starts | Noon |
-| Format | Nine independent artists outdoors, noon to six. Black Moon's own evening follows next door |
+| Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
 | Weather | Rain or shine, under tent cover from Wallace Events |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
@@ -62,7 +62,7 @@ countries.
 
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back.
-- **Nine acts, 12:05 to 5:55, one stage.** 30 to 40 minute sets with five-minute
+- **Eight acts, 12:05 to 5:55, one stage.** 30 to 40 minute sets with five-minute
   changeovers. Music ends 5:55 and the street clears at six.
 - **Six onward: Black Moon Public House's own evening, next door.** North Creek,
   roughly 6 to 9, **hosted and underwritten by Black Moon on their own stage and
@@ -73,9 +73,8 @@ One venue at a time. The day does not split across two rooms.
 
 ## The lineup
 
-**All nine acts are named on zaostock.com now.** In running order: The Crown Vics,
-OPEN X, Grass Rug, Acadia Rising, Michael Anderson, Hurricane, Dcoop, Lyons Den,
-Fellenz.
+**All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
+OPEN X, Grass Rug, Acadia Rising, Michael Anderson, Dcoop, Lyons Den, Fellenz.
 
 **NONE of them has countersigned.** They are booked and locked in the run of show,
 which is a different claim from confirmed. Do not describe any act as confirmed in
@@ -129,7 +128,7 @@ Paste as written.
 
 Short: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 at the Franklin Street Parklet in Ellsworth, Maine, with the evening next door at Black Moon Public House. It is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO.
 
-Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music runs from noon at the Franklin Street Parklet with nine acts back to back until six, then moves next door into Black Moon Public House for the evening. The day is programmed as one continuous event rather than competing stages, so nobody has to choose what to miss. ZAOstock takes place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission is free.
+Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music runs from noon at the Franklin Street Parklet with eight acts back to back until six; next door, Black Moon Public House hosts its own evening. One stage at a time rather than competing stages, so nobody has to choose what to miss. ZAOstock takes place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission is free.
 
 ## Four angles
 

@@ -102,7 +102,7 @@ describe('SITE facts', () => {
 //
 // So the guard changed shape rather than going away. It used to say "do not name
 // these acts". It now says "name them, but never claim they signed, and publish no
-// set time and no link until the rest is filled in". None of the nine has
+// set time and no link until the rest is filled in". None of them has
 // countersigned, so a rendered "confirmed" next to these names would be a
 // fabricated signature - the one line that has not moved all week.
 describe('the names-only lineup', () => {
@@ -112,13 +112,12 @@ describe('the names-only lineup', () => {
     'Grass Rug',
     'Acadia Rising',
     'Michael Anderson',
-    'Hurricane',
     'Dcoop',
     'Lyons Den',
     'Fellenz',
   ];
 
-  it('is the nine acts of the locked run of show, in order', () => {
+  it('is the eight acts of the locked run of show, in order (Hurricane out 2026-09-10)', () => {
     expect(LINEUP_NAMES).toEqual(RUN_OF_SHOW);
   });
 
@@ -342,5 +341,30 @@ describe('no public page publishes a recurring meeting time', () => {
     ]) {
       expect(ok).not.toMatch(NEAR);
     }
+  });
+});
+
+// Zaal, 2026-09-10: "He knows, strip him today." Hurricane is out, eight acts,
+// no replacement. A note that he is out may stay; a billing may not.
+describe('Hurricane is off the bill', () => {
+  const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
+
+  it('is not billed on any surface that names the acts', () => {
+    expect(LINEUP_NAMES).not.toContain('Hurricane');
+    expect(read('src/app/program/page.tsx')).not.toMatch(/label:\s*'Hurricane'/);
+    expect(read('ops-room/ops-room.src.html')).not.toMatch(/n:"Hurricane"|id:"hurricane"/);
+    expect(read('docs/marketing/press-kit.md')).not.toMatch(/hurricane/i);
+    expect(read('scripts/create-artist-form.gs')).not.toMatch(/'Hurricane - /);
+  });
+
+  // Zaal's standing rule, 2026-09-10: always "Acadia Rising", never the long form.
+  it('bills Acadia Rising by that name only', () => {
+    for (const p of ['docs/marketing/press-kit.md', 'ops-room/ops-room.src.html', 'scripts/create-artist-form.gs', 'src/app/program/page.tsx']) {
+      expect(read(p), p).not.toMatch(/Acadia Rising \(|Women with Rhythm/);
+    }
+  });
+
+  it('is counted as eight wherever the kit states a count', () => {
+    expect(read('docs/marketing/press-kit.md')).not.toMatch(/\bnine\b/i);
   });
 });

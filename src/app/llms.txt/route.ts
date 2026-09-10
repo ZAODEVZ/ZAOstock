@@ -60,7 +60,7 @@ info@thezao.com. RSVP free at https://ticket.zaostock.com.
 - Lead with the music: a free outdoor festival in Ellsworth, Maine, on 3 October, part of Art of Ellsworth.
 - The community second: run by The ZAO, a music community built over two years.
 - Technology is infrastructure, not the headline.
-- Never describe any contribution as tax-deductible. Never name an act beyond the nine in the published lineup, and never describe any of them as confirmed. Never quote a price.
+- Never describe any contribution as tax-deductible. Never name an act beyond the eight in the published lineup, and never describe any of them as confirmed. Never quote a price.
 - Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal.
 `;
 

@@ -6,7 +6,7 @@ where the crew and the artists work: the run of show with owners and
 seconds, the artist advance, the help queue, the moderator rota, the squads.
 
 Built for **Saturday 3 October 2026**, Franklin Street Parklet, Ellsworth,
-Maine. Nine acts, 12:05 to 17:55, street clears at six. Black Moon Public House
+Maine. Eight acts, 12:05 to 17:55, street clears at six. Black Moon Public House
 next door feeds the performers and hosts its own afterparty after six.
 
 ---
@@ -59,7 +59,7 @@ Crew and artists use the same code.
 | Messages | Send to a handle. It appears in that person's profile. |
 | Needs Attention | Every open item with an owner. Tap the chip: blocked → moving → done. |
 | Run of Show | The grid with owner and second on every line, and red flags where a name is missing. |
-| Artist Advance | Nine acts × ten advance items, ticked together. |
+| Artist Advance | Eight acts × ten advance items, ticked together. |
 | Artist Kit | A personalised pack per act: their set time, the day, hospitality, and only what they still owe. One button copies it. |
 | Moderator Rota | Twelve seats, two an hour, noon to six. Click a seat to claim it. |
 | Agent Squads | Seven roles a teammate can hand to an agent, with a paste-ready brief each. |
@@ -156,8 +156,8 @@ working the board after dark.
 From the organizing document, the 31 August standup and the **run of show
 locked on 3 September**:
 
-- Nine acts, outdoors, 12:05 to 17:55: The Crown Vics, OPEN X, Grass Rug,
-  Acadia Rising, Michael Anderson, Hurricane, Dcoop, Lyons Den, Fellenz. Street
+- Eight acts, outdoors, 12:05 to 17:55: The Crown Vics, OPEN X, Grass Rug,
+  Acadia Rising, Michael Anderson, Dcoop, Lyons Den, Fellenz (Hurricane out 2026-09-10). Street
   clears 18:00. WaveWarZ is cancelled and Stilo is not coming in person.
 - The evening is Black Moon's afterparty, not ZAOstock's programme (Zaal,
   3 September). The board shows it as theirs and books nothing into it.
