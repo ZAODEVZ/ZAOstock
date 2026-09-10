@@ -42,8 +42,7 @@ close.
 The event is free to attend and runs outdoors on the parklet from noon until
 six, rain or shine under tent cover from Wallace Events. It is part of the
 9th Annual Art of Ellsworth during Maine Craft Weekend, and is produced by
-ZAO Festivals, the events arm of The ZAO, an independent music community with
-members in more than twenty countries.
+ZAO Festivals, the events arm of The ZAO, an independent music community.
 
 [QUOTE - Zaal]
 

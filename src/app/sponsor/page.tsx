@@ -87,7 +87,6 @@ export default function SponsorPage() {
           <div className="grid grid-cols-2 gap-6">
             <Stat value={ATTENDANCE.inPerson} label="expected in person" />
             <Stat value={ATTENDANCE.online} label="expected online" />
-            <Stat value={ELLSWORTH.driveThrough.value} label={ELLSWORTH.driveThrough.label} />
             <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
             <Stat value={ELLSWORTH.heartEvents.value} label={ELLSWORTH.heartEvents.label} />
             <Stat value={ELLSWORTH.heartSponsors.value} label={ELLSWORTH.heartSponsors.label} />

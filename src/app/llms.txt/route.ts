@@ -25,7 +25,7 @@ The eight acts are named on the site. Each gets its own post with bio and photo 
 
 ## Partners (confirmed, each with a named ZAO contact)
 
-Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz, Bomb Squad (crew, content and merch).
+Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz (co-presenter), Bomb Squad (crew, content and merch), Artizen (funding partner).
 
 ## Sponsors
 
@@ -33,7 +33,7 @@ Sponsors put money behind a named artist or the day. Every sponsor gets the same
 
 ## Why Ellsworth
 
-Every car heading to Acadia National Park passes through; over four million people drove through in 2025. Downtown is newly on the National Historic Register. ZAOstock is measuring what a free street festival does for downtown businesses, an ordinary Saturday against 3 October, and will publish the comparison.
+Every car heading to Acadia National Park passes through. Downtown is newly on the National Historic Register. ZAOstock is measuring what a free street festival does for downtown businesses, an ordinary Saturday against 3 October, and will publish the comparison.
 
 ## Pages
 

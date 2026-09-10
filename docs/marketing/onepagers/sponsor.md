@@ -59,7 +59,6 @@ the number. If it does not, you have that too.
 | Online | about 1,000 |
 | Hours | noon to six outdoors, six onward at Black Moon |
 | Format | one stage at a time; MC and sponsor spots in every changeover |
-| Through Ellsworth in 2025 | over four million people (gateway to Acadia) |
 
 Figures are Zaal's, typed 27 August 2026. WaveWarZ has run 1,452 battles
 online as of 27 August, with 14.23 SOL paid to artists automatically and

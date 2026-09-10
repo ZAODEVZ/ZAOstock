@@ -145,8 +145,7 @@ who played it. (Photos: Paper pulls from the gallery; VERIFY attendance figures
 before printing any.)
 
 **4. Why ZAOstock, why Maine**
-Ellsworth is the gateway to Acadia: 4 million people drove through downtown last
-year. It is where the founder lives. The festival sits inside the 9th annual Art
+Ellsworth is the gateway to Acadia. It is where the founder lives. The festival sits inside the 9th annual Art
 of Ellsworth and Maine Craft Weekend, with statewide promotion already behind
 it, and the Heart of Ellsworth - 28 events and 50+ sponsors in 2025 - as our
 host. We are not starting a scene. We are plugging into one, and bringing our

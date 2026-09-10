@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES } from './site';
 
@@ -58,8 +58,10 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists seven confirmed partners', () => {
-    expect(PARTNERS).toHaveLength(7);
+  it('lists eight confirmed partners', () => {
+    // Eighth since 2026-09-10: Artizen, for funding (Zaal).
+    expect(PARTNERS).toHaveLength(8);
+    expect(PARTNERS.map((p) => p.name)).toContain('Artizen');
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');
@@ -71,12 +73,18 @@ describe('SITE facts', () => {
   // a partner is published only when it is confirmed AND poc names the ZAO team
   // member who owns the relationship - and only half of it was enforced.
   //
-  // COC Concertz is the one known exception: added 2026-08-27 with role and POC
-  // untyped. It is NAMED here rather than waved through, so a second unowned
-  // partner cannot reach the public homepage without this going red.
-  it('gives every published partner a typed role and a named owner, bar the one known exception', () => {
+  // COC Concertz was the one exception from 2026-08-27 until 2026-09-10, when
+  // Zaal typed both halves: POC Thy Revolution, role Co-presenter. There is no
+  // exception now, so a new unowned partner goes red on its own.
+  it('gives every published partner a typed role and a named owner', () => {
     const untyped = PARTNERS.filter((p) => p.role === 'UNSET' || p.poc === 'UNSET').map((p) => p.name);
-    expect(untyped).toEqual(['COC Concertz']);
+    expect(untyped).toEqual([]);
+    const coc = PARTNERS.find((p) => p.name === 'COC Concertz');
+    expect(coc?.poc).toBe('Thy Revolution');
+    expect(coc?.role).toBe('Co-presenter');
+    // The overview one-pager keeps its own list; it must not print UNSET either.
+    const overview = readFileSync(path.join(process.cwd(), 'src/app/onepagers/overview/page.tsx'), 'utf8');
+    expect(overview).not.toMatch(/role:\s*'UNSET'/);
     for (const p of PARTNERS) {
       expect(p.poc.trim()).not.toBe('');
       expect(p.role.trim()).not.toBe('');
@@ -207,6 +215,8 @@ describe('retired claims stay retired', () => {
     [/\b1,?452\b/, 'stale WaveWarZ figure, superseded 2026-09-09'],
     [/18 September/, 'the reveal is 13 September; the 18th replicated into a sibling lane'],
     [/\$ ?25,?000|\$ ?25K/i, '$25K is internal only; $5,000 is the only public figure'],
+    [/four million|\b4 ?million|\b4M\b/i, 'no source for "4 million drove through", MaineDOT included; Zaal: "Drop both" (2026-09-10)'],
+    [/(twenty|\d+\+?)\s+countries/i, 'no member-country list exists; Zaal: "Drop both" (2026-09-10)'],
   ];
 
   for (const [pattern, why] of BARRED) {
@@ -214,6 +224,30 @@ describe('retired claims stay retired', () => {
       expect(surfaces).not.toMatch(pattern);
     });
   }
+
+  // The two press-kit claims Zaal dropped on 2026-09-10 lived in page files and
+  // the press kit, not only in this module, so check every file a reader sees.
+  it('keeps "4 million drove through" and "N countries" off every public file', () => {
+    const roots = ['src/app', 'src/components', 'src/content', 'public', 'docs/marketing/press-kit.md'];
+    const files: string[] = [];
+    for (const r of roots) {
+      const abs = path.join(process.cwd(), r);
+      if (r.endsWith('.md')) { files.push(abs); continue; }
+      for (const f of readdirSync(abs, { recursive: true }) as string[]) {
+        const full = path.join(abs, f);
+        // src/app/llms.txt is a route FOLDER, so test the name AND that it is a file.
+        if (/\.(tsx?|md|html|txt)$/.test(f) && !/\.test\.tsx?$/.test(f) && statSync(full).isFile()) files.push(full);
+      }
+    }
+    const hits = files.flatMap((f) => {
+      const src = readFileSync(f, 'utf8');
+      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i]
+        .filter((re) => re.test(src))
+        .map((re) => `${path.relative(process.cwd(), f)}: ${re.source}`);
+    });
+    expect(files.length).toBeGreaterThan(50);
+    expect(hits).toEqual([]);
+  });
 
   // A guard that cannot fail is not a guard. This proves the check above is
   // actually looking at something, so deleting a constant cannot silently

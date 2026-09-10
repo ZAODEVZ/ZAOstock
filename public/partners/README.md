@@ -14,6 +14,7 @@ colour as supplied. All six trimmed to the mark, 400px tall (2x the 200px max re
 | wavewarz.png | WaveWarZ | Drive "WaveWarz.PNG" (Candy, transparent), 800x800 |
 | coc-concertz.png | COC Concertz | Drive "CocConcertz.jpeg" as supplied (black ground), 400x400 |
 | bomb-squad.png | Bomb Squad | Drive "bmbsqd 1" (emblem, transparent), 281x400 |
+| artizen.png | Artizen | `zao-brand/assets/partners/artizen/Artizen_Logo_RGB_FullColorLarge.png`, Artizen's own RGB full-colour file, transparent, 1206x257, as supplied (added 2026-09-10) |
 
 Due Fri 29 Aug, not yet on disk: Town of Ellsworth, ENTERACT, Web3Metal
 (`docs/marketing/partner-logos.md`). The site shows those as "coming".
