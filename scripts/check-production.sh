@@ -38,6 +38,14 @@
 #
 # All three always run. A failure in one never skips the others, and no exit
 # code is ever read through a pipe.
+#
+# HOW TO READ IT (the operating instruction). Read step 0 first: it says which
+# build every later line is about. On a normal day the output is quiet - "NO
+# FAILURES", "ALL PASS", exit 0 - and the ONLY line that should change from day
+# to day is the preflight INFO line: "pending" falling, then "N of 8 acts
+# published. Still waiting on: ..." as bios and photos arrive. Anything else
+# changing is the signal to look. Quiet does not mean nothing happened; read the
+# INFO lines. The clean-day output was recorded on 2026-09-10 (main 8bfb2b9).
 set -u
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
