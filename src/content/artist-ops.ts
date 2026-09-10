@@ -52,25 +52,26 @@ export type OpsAct = {
 
 /**
  * Eight acts, in running order. Hurricane is out (Zaal, 2026-09-10) and has no
- * page; no act moved, so every time below is the one the form and the memos
- * already give.
+ * page. Retimed the same day (Zaal: seven-minute changeovers, the 30-minute
+ * acts to 33, "option b"): music 12:05 to 17:46. /program is the public source
+ * and a test holds every time here to it.
  */
 export const OPS_ACTS: readonly OpsAct[] = [
-  { key: 'crown-vics', name: 'The Crown Vics', setStart: '12:05', minutes: 30,
+  { key: 'crown-vics', name: 'The Crown Vics', setStart: '12:05', minutes: 33,
     codeSha256: 'e3ff431d71cf5f7c147a6f6d267a4f26dedea7fc82f137d079173ea84f2ff4ca' },
-  { key: 'open-x', name: 'OPEN X', setStart: '12:40', minutes: 40,
+  { key: 'open-x', name: 'OPEN X', setStart: '12:45', minutes: 40,
     codeSha256: '9d4dc8269872799d466ce773635b98c63ebf21ae76755ea3e03a6f2495e4373e' },
-  { key: 'grass-rug', name: 'Grass Rug', setStart: '13:25', minutes: 30,
+  { key: 'grass-rug', name: 'Grass Rug', setStart: '13:32', minutes: 33,
     codeSha256: '23bb7d8cec6d8080324bb8172f8cd2c4dda1d96d0c194193b62253459ecaade8' },
-  { key: 'acadia-rising', name: 'Acadia Rising', setStart: '14:00', minutes: 30,
+  { key: 'acadia-rising', name: 'Acadia Rising', setStart: '14:12', minutes: 33,
     codeSha256: 'e9ff956154b23901cee71a313712cff962bd772da981f7b63fa2273a6184086b' },
-  { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:35', minutes: 30,
+  { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:52', minutes: 33,
     codeSha256: 'b89fdb296171f0a04ebd1dcefa85b13b46dc74e32fe00f3e89397ac06d86b652' },
-  { key: 'dcoop', name: 'DCoop', setStart: '15:45', minutes: 40,
+  { key: 'dcoop', name: 'DCoop', setStart: '15:32', minutes: 40,
     codeSha256: '58cdef916cbce928d46a263d3ffb64639285168051b57b91fc75ebd5f0ad9709' },
-  { key: 'lyons-den', name: 'Lyons Den', setStart: '16:30', minutes: 40,
+  { key: 'lyons-den', name: 'Lyons Den', setStart: '16:19', minutes: 40,
     codeSha256: 'c4e9b93e5e6d06ad10e2e7780d60ff016ef4027dde270c4297e62753755752ae' },
-  { key: 'fellenz', name: 'Fellenz', setStart: '17:15', minutes: 40,
+  { key: 'fellenz', name: 'Fellenz', setStart: '17:06', minutes: 40,
     codeSha256: '21323ff07117cc8842f6984ca063c7072d008e2150696561cf2eca1d486b51ed' },
 ];
 
@@ -147,8 +148,8 @@ export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
   { when: 'Friday 18 September', what: 'Your tech rider, by email to info@thezao.com: who is on stage, what you plug in, what you bring and what you need from us.' },
   { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage. Every act, mandatory, and there is no Saturday alternative. It doubles as a filming and recording night.' },
   { when: 'Saturday 3 October, 10 AM', what: 'Everyone on site. Crew is in from 8.' },
-  { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with five-minute changeovers.' },
-  { when: 'Saturday, 5:55 PM', what: 'Music ends and the street clears at six. Black Moon Public House next door hosts its own evening from six.' },
+  { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with seven-minute changeovers.' },
+  { when: 'Saturday, 5:46 PM', what: 'Music ends and the street clears at six. Black Moon Public House next door hosts its own evening from six.' },
 ];
 
 /** From the ops room's hospitality list, which Steve and Black Moon committed. */

@@ -128,7 +128,7 @@ export const LINEUP_NAMES: readonly string[] = [
 
 /** Rendered beside LINEUP_NAMES. Kept here so a test can hold it to the rules. */
 export const LINEUP_NAMES_NOTE =
-  'Set times, bios and links go up across this week.';
+  'Set times are in the program. Bios and photos go up one artist at a time.';
 
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [
