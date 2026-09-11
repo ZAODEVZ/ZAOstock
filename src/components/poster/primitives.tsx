@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import type { ReactNode, ComponentProps } from 'react';
 
-// The zs-* primitives from DESIGN.md, as React. Tokens come from globals.css;
-// nothing here carries a hex. Motion is limited to the press translate and the
-// card's 1px lift, both off under prefers-reduced-motion via .poster-motion.
+// The zs-* primitives from DESIGN.md, as React, in the front page's look since
+// 2026-09-10 (Zaal: "update all other pages too to this style of branding as
+// the front"): soft shadows and hairlines instead of ink outlines, the fireside
+// button, the pine kicker. Tokens come from globals.css (.site); nothing here
+// carries a hex. Motion is limited to small lifts, off under
+// prefers-reduced-motion via .poster-motion.
 
 function cx(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(' ');
@@ -13,7 +16,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 export function Eyebrow({ children, tone = 'muted', className }: { children: ReactNode; tone?: 'muted' | 'denim'; className?: string }) {
   return (
-    <p className={cx('font-mono text-eyebrow font-bold uppercase tracking-[0.12em] m-0', tone === 'denim' ? 'text-denim-400' : 'text-ink-muted', className)}>
+    <p className={cx('font-sans text-eyebrow font-extrabold uppercase tracking-[0.18em] m-0', tone === 'denim' ? 'text-denim-400' : 'text-ink-muted', className)}>
       {children}
     </p>
   );
@@ -25,12 +28,13 @@ type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 const BUTTON_BASE =
-  'poster-motion inline-flex items-center justify-center gap-2 font-sans font-bold uppercase tracking-[0.04em] whitespace-nowrap rounded-pill border-[2.5px] border-ink-950 shadow-hard transition-[transform,box-shadow,background-color] duration-[120ms] ease-poster active:translate-x-[2px] active:translate-y-[2px] active:shadow-none focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-hard),var(--shadow-focus)] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:translate-x-0 disabled:active:translate-y-0 disabled:active:shadow-hard';
+  'poster-motion inline-flex items-center justify-center gap-2 font-sans font-bold uppercase tracking-[0.08em] whitespace-nowrap rounded-pill transition-[transform,box-shadow,background-color,color] duration-200 ease-poster focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)] disabled:opacity-50 disabled:cursor-not-allowed';
 
 const BUTTON_VARIANT: Record<ButtonVariant, string> = {
-  primary: 'bg-red-600 text-paper-200 hover:bg-red-700 active:bg-red-700',
-  secondary: 'bg-paper-200 text-ink-950 hover:bg-paper-100',
-  ghost: 'bg-transparent text-denim-400 hover:text-denim-500 border-transparent shadow-none underline underline-offset-4 normal-case tracking-normal font-semibold active:translate-x-0 active:translate-y-0',
+  // The fireside gradient is a constant: the same in light and dark mode.
+  primary: 'bg-linear-to-b from-fireside to-ember text-onfill shadow-hard hover:-translate-y-0.5 hover:shadow-hard-lg active:translate-y-0 disabled:hover:translate-y-0',
+  secondary: 'bg-transparent text-red-700 border-[1.5px] border-red-700 hover:bg-red-700/10',
+  ghost: 'bg-transparent text-denim-400 hover:text-denim-500 underline underline-offset-4 normal-case tracking-normal font-semibold',
 };
 
 const BUTTON_SIZE: Record<ButtonSize, string> = {
@@ -75,12 +79,12 @@ export function Button({ variant = 'primary', size = 'md', href, external, class
 
 export function Badge({ tone = 'outline', children, className }: { tone?: 'gold' | 'denim' | 'outline'; children: ReactNode; className?: string }) {
   const tones = {
-    gold: 'bg-gold-400 text-ink-950',
-    denim: 'bg-denim-400 text-paper-200',
-    outline: 'bg-transparent text-ink-950',
+    gold: 'bg-gold-400 text-ink-950 border-transparent',
+    denim: 'bg-denim-400 text-paper-200 border-transparent',
+    outline: 'bg-transparent text-ink-950 border-ink-950/40',
   } as const;
   return (
-    <span className={cx('inline-flex items-center gap-1.5 font-mono text-eyebrow font-bold uppercase tracking-[0.04em] px-3.5 py-1.5 rounded-pill border-2 border-ink-950', tones[tone], className)}>
+    <span className={cx('inline-flex items-center gap-1.5 font-sans text-eyebrow font-extrabold uppercase tracking-[0.14em] px-3 py-1.5 rounded-[3px] border-[1.5px]', tones[tone], className)}>
       {children}
     </span>
   );
@@ -90,8 +94,8 @@ export function Badge({ tone = 'outline', children, className }: { tone?: 'gold'
 
 export function Card({ children, className, interactive, href }: { children: ReactNode; className?: string; interactive?: boolean; href?: string }) {
   const classes = cx(
-    'grain block bg-paper-200 border-2 border-ink-950 rounded-md p-6 shadow-hard overflow-hidden',
-    interactive && 'poster-motion transition-[transform,background-color] duration-[120ms] ease-poster hover:bg-paper-100 hover:-translate-x-px hover:-translate-y-px focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-hard),var(--shadow-focus)]',
+    'block bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] p-6 shadow-hard overflow-hidden',
+    interactive && 'poster-motion transition-[transform,box-shadow] duration-200 ease-poster hover:-translate-y-1 hover:shadow-hard-lg focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-hard),var(--shadow-focus)]',
     className,
   );
   if (href) {
@@ -110,7 +114,7 @@ export function Stat({ value, label, className }: { value: string; label: string
   return (
     <div className={cx('flex flex-col gap-1', className)}>
       <span className="font-display text-h2 leading-none text-red-500 tabular">{value}</span>
-      <span className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted">{label}</span>
+      <span className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-ink-muted">{label}</span>
     </div>
   );
 }
@@ -120,8 +124,9 @@ export function Stat({ value, label, className }: { value: string; label: string
 export function SectionHeader({ eyebrow, title, lede, as: Tag = 'h2', className }: { eyebrow?: string; title: string; lede?: ReactNode; as?: 'h1' | 'h2' | 'h3'; className?: string }) {
   return (
     <div className={cx('flex flex-col gap-3 max-w-[760px]', className)}>
-      {eyebrow ? <Eyebrow tone="denim">{eyebrow}</Eyebrow> : null}
-      <Tag className={cx('font-display font-normal text-ink-950 m-0', Tag === 'h1' ? 'text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1' : 'text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2')}>
+      {/* Her kicker: a small pine label above the heading. */}
+      {eyebrow ? <p className="self-start m-0 font-sans text-eyebrow font-extrabold uppercase tracking-[0.2em] text-paper-200 bg-denim-400 px-3.5 py-1.5 rounded-[3px]">{eyebrow}</p> : null}
+      <Tag className={cx('font-display text-ink-950 m-0', Tag === 'h1' ? 'text-[2.5rem] leading-[0.98] sm:text-[3.75rem]' : 'text-[2rem] leading-[1] sm:text-[2.75rem]')}>
         {title}
       </Tag>
       {lede ? <p className="text-lg text-ink-secondary leading-normal m-0 measure">{lede}</p> : null}
@@ -133,10 +138,10 @@ export function SectionHeader({ eyebrow, title, lede, as: Tag = 'h2', className 
 
 export function InfoStrip({ items, className }: { items: ReadonlyArray<{ label: string; value: string }>; className?: string }) {
   return (
-    <dl className={cx('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-ink-950/60 rounded-md overflow-hidden m-0', className)}>
+    <dl className={cx('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard overflow-hidden m-0', className)}>
       {items.map((item) => (
-        <div key={item.label} className="px-5 py-4 border-t border-ink-950/60 first:border-t-0 sm:[&:nth-child(2)]:border-t-0 sm:border-l sm:odd:border-l-0 lg:border-t-0 lg:border-l lg:first:border-l-0 lg:odd:border-l">
-          <dt className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted mb-1.5">{item.label}</dt>
+        <div key={item.label} className="px-5 py-4 border-t border-gold-500/40 first:border-t-0 sm:[&:nth-child(2)]:border-t-0 sm:border-l sm:odd:border-l-0 lg:border-t-0 lg:border-l lg:first:border-l-0 lg:odd:border-l">
+          <dt className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-ink-muted mb-1.5">{item.label}</dt>
           <dd className="text-sm font-bold text-ink-950 m-0">{item.value}</dd>
         </div>
       ))}
@@ -148,9 +153,9 @@ export function InfoStrip({ items, className }: { items: ReadonlyArray<{ label: 
 
 export function BorderedList({ rows, className, mono }: { rows: ReadonlyArray<{ term: ReactNode; detail: ReactNode }>; className?: string; mono?: boolean }) {
   return (
-    <dl className={cx('border border-ink-950/60 rounded-md overflow-hidden m-0', className)}>
+    <dl className={cx('bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] overflow-hidden m-0', className)}>
       {rows.map((row, i) => (
-        <div key={i} className="grid grid-cols-1 sm:grid-cols-[minmax(140px,auto)_1fr] gap-1 sm:gap-6 px-5 py-3 text-sm border-t border-ink-950/60 first:border-t-0">
+        <div key={i} className="grid grid-cols-1 sm:grid-cols-[minmax(140px,auto)_1fr] gap-1 sm:gap-6 px-5 py-3 text-sm border-t border-gold-500/40 first:border-t-0">
           <dt className={cx('text-ink-muted font-bold tracking-[0.04em] m-0', mono && 'font-mono tabular')}>{row.term}</dt>
           <dd className="text-ink-950 font-semibold m-0">{row.detail}</dd>
         </div>
@@ -162,12 +167,12 @@ export function BorderedList({ rows, className, mono }: { rows: ReadonlyArray<{ 
 /* ---------- Field / Input ---------- */
 
 const INPUT_CLASSES =
-  'font-sans text-base text-ink-950 bg-paper-100 border-2 border-ink-950 rounded-sm px-3.5 py-3 placeholder:text-ink-muted focus:outline-none focus:[box-shadow:var(--shadow-focus)] disabled:opacity-50 disabled:cursor-not-allowed w-full';
+  'font-sans text-base text-ink-950 bg-paper-100 border-[1.5px] border-ink-950/35 rounded-[10px] px-3.5 py-3 placeholder:text-ink-muted focus:outline-none focus:[box-shadow:var(--shadow-focus)] disabled:opacity-50 disabled:cursor-not-allowed w-full';
 
 export function Field({ label, htmlFor, hint, error, children }: { label: string; htmlFor: string; hint?: string; error?: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5 mb-3">
-      <label htmlFor={htmlFor} className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] text-ink-muted">
+      <label htmlFor={htmlFor} className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-ink-muted">
         {label}
       </label>
       {children}
@@ -197,14 +202,14 @@ export function Select(props: ComponentProps<'select'>) {
 
 export function Alert({ tone, title, children }: { tone: 'success' | 'warning' | 'error' | 'info'; title: string; children?: ReactNode }) {
   const tones = {
-    success: 'bg-olive-400 text-ink-950',
-    warning: 'bg-gold-500 text-ink-950',
-    error: 'bg-red-500 text-paper-200',
+    success: 'bg-olive-300 text-ink-950',
+    warning: 'bg-gold-300 text-ink-950',
+    error: 'bg-red-700 text-paper-200',
     info: 'bg-denim-400 text-paper-200',
   } as const;
   return (
-    <div role="status" className={cx('border-2 border-ink-950 rounded-md px-5 py-4 shadow-hard', tones[tone])}>
-      <p className="font-mono text-eyebrow font-bold uppercase tracking-[0.12em] m-0">{title}</p>
+    <div role="status" className={cx('rounded-[14px] px-5 py-4 shadow-hard', tones[tone])}>
+      <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] m-0">{title}</p>
       {children ? <div className="text-sm mt-1.5">{children}</div> : null}
     </div>
   );
@@ -214,7 +219,7 @@ export function Alert({ tone, title, children }: { tone: 'success' | 'warning' |
 
 export function Section({ children, className, id, first }: { children: ReactNode; className?: string; id?: string; first?: boolean }) {
   return (
-    <section id={id} className={cx('py-8 sm:py-12', !first && 'border-t border-ink-950/60', className)}>
+    <section id={id} className={cx('py-12 sm:py-20', !first && 'border-t border-gold-500/30', className)}>
       <div className="wrap">{children}</div>
     </section>
   );

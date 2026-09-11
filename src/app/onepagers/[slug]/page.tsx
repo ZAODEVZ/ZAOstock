@@ -34,7 +34,7 @@ export default async function OnePagerDetailPage({ params }: PageProps) {
   const session = await getStockTeamMember();
   if (pager.visibility !== 'public' && !session) {
     return (
-      <SiteShell>
+      <SiteShell lightOnly>
       <main className="mx-auto max-w-3xl px-4 py-10 text-ink-950">
         <div className="rounded-md border-2 border-ink-950 bg-gold-300 p-6 shadow-hard">
           <h2 className="text-lg font-bold text-gold-600">Sign in required</h2>
@@ -48,7 +48,7 @@ export default async function OnePagerDetailPage({ params }: PageProps) {
   }
 
   return (
-    <SiteShell>
+    <SiteShell lightOnly>
     <main className="mx-auto max-w-3xl px-4 py-10 text-ink-950">
       <div className="mb-6 flex items-center justify-between gap-4 print:hidden">
         <Link href="/onepagers" className="text-sm text-gold-600 hover:underline">

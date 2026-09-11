@@ -9,8 +9,14 @@ const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 describe('the design kit cannot drift from the site it describes', () => {
   it('gives every colour the exact hex the site uses', () => {
     const css = read('src/app/globals.css');
+    // The public pages wear the .site block's values (the front page's look,
+    // 2026-09-10); a token it does not set is a constant from @theme.
+    const start = css.indexOf('.site {');
+    expect(start).toBeGreaterThan(-1);
+    const site = css.slice(start, css.indexOf('}', start));
     const drift = COLOURS.filter((c) => {
-      const m = css.match(new RegExp(`--color-${c.token}:\\s*(#[0-9A-Fa-f]{6})`));
+      const re = new RegExp(`--color-${c.token}:\\s*(#[0-9A-Fa-f]{6})`);
+      const m = site.match(re) ?? css.match(re);
       return !m || m[1].toUpperCase() !== c.hex.toUpperCase();
     }).map((c) => c.token);
     expect(drift).toEqual([]);
@@ -36,13 +42,14 @@ describe('the design kit cannot drift from the site it describes', () => {
     for (const f of ['src/components/poster/Header.tsx', 'src/components/poster/Footer.tsx']) {
       const src = read(f);
       expect(src, f).toContain('SITE.logo.src');
-      // A white knockout on paper is invisible: every placement sits on ink.
-      expect(src, f).toContain('bg-ink-950');
+      // A white knockout on cream is invisible: every placement sits on night,
+      // which stays dark in both modes (ink flips to cream in dark mode).
+      expect(src, f).toContain('bg-night');
     }
     // The homepage carries Candy's GOLD moose since 2026-09-10 (made for any
-    // ground). If it ever places the white one again, it must be on ink.
+    // ground). If it ever places the white one again, it must be on night.
     const home = read('src/app/page.tsx');
-    if (home.includes('SITE.logo.src')) expect(home).toContain('bg-ink-950');
+    if (home.includes('SITE.logo.src')) expect(home).toContain('bg-night');
   });
 
   // RETIRED AND PULLED 2026-09-10. Candy retired the 26 badge as "too similar

@@ -2,10 +2,10 @@ import { SITE } from './site';
 
 // THE DESIGN KIT at /design - marks, colours, type and the rules for using
 // them, each downloadable. Every value is copied from a file on disk, never
-// retyped from memory: the colours from DESIGN.md's primitives table (which is
-// `docs/brand/tokens.reference.css` verbatim), the type from DESIGN.md
-// "Typography". design-kit.test.ts holds every hex to globals.css, so the kit
-// cannot drift from the site it describes.
+// retyped from memory: since 2026-09-10 the colours and heading face are the
+// front page's (Candy's site build, src/app/home.module.css), which replaced
+// DESIGN.md's poster tokens on every public page. design-kit.test.ts holds
+// every hex to globals.css, so the kit cannot drift from the site it describes.
 
 export type KitMark = {
   name: string;
@@ -15,7 +15,7 @@ export type KitMark = {
   alt: string;
   width: number;
   height: number;
-  /** A white knockout needs the ink ground to be seen at all. */
+  /** A white knockout needs a dark ground (night) to be seen at all. */
   dark: boolean;
 };
 
@@ -28,33 +28,43 @@ export const MARKS: readonly KitMark[] = [
 
 export type KitColour = { token: string; hex: string; role: string };
 
-/** DESIGN.md "Primitives", in its order. */
+/**
+ * The front page's palette, sitewide since 2026-09-10 (Zaal's pick: "Front
+ * page's"): Candy's site build, src/app/home.module.css. The first column is
+ * the site's token name, kept so no page changed a class; her own name leads
+ * each role. Values are the light ones; her dark variant takes over when the
+ * viewer's system is dark. The test reads them from globals.css (.site).
+ */
 export const COLOURS: readonly KitColour[] = [
-  { token: 'red-500', hex: '#D2402A', role: 'Primary: the main button, stat values, the accent word in a headline.' },
-  { token: 'red-300', hex: '#E8735C', role: 'Red on ink surfaces.' },
-  { token: 'red-600', hex: '#B93826', role: 'Primary button ground.' },
-  { token: 'red-700', hex: '#9C2F1E', role: 'Primary button hover and press.' },
-  { token: 'gold-400', hex: '#E5AC3B', role: 'Gold badge, focus ring, the "stock" in the wordmark.' },
-  { token: 'gold-300', hex: '#F2D48A', role: 'Gold tint.' },
-  { token: 'gold-500', hex: '#C98F2A', role: 'Gold hover.' },
-  { token: 'gold-600', hex: '#A8721C', role: 'Gold text on paper - the only gold that passes for text.' },
-  { token: 'denim-400', hex: '#2E6494', role: 'Links, section eyebrows, denim badge.' },
-  { token: 'denim-300', hex: '#7FA8C7', role: 'Denim on ink surfaces.' },
-  { token: 'denim-500', hex: '#245078', role: 'Link hover.' },
-  { token: 'denim-600', hex: '#1B3C5C', role: 'Link pressed, denim text on paper.' },
-  { token: 'olive-400', hex: '#7C8A3D', role: 'The fourth ink. Used rarely.' },
-  { token: 'olive-300', hex: '#A4AF6E', role: 'Olive on ink surfaces.' },
-  { token: 'olive-500', hex: '#636F2F', role: 'Olive text on paper.' },
-  { token: 'paper-100', hex: '#F2E6D3', role: 'Page ground.' },
-  { token: 'paper-200', hex: '#FAF3E6', role: 'Cards, header, lighter ground.' },
-  { token: 'ink-950', hex: '#241E15', role: 'Text, borders, shadows, and the dark ground the moose sits on.' },
+  { token: 'red-500', hex: '#C1662C', role: 'Fireside. The accent word in a headline, stat values, the top of the button.' },
+  { token: 'red-700', hex: '#8F3E1E', role: 'Ember. The foot of the button, and fireside when it has to be text.' },
+  { token: 'red-600', hex: '#9F4B1D', role: 'Between the two. Small red text on cream.' },
+  { token: 'red-300', hex: '#E2833F', role: 'Fireside on dark grounds.' },
+  { token: 'gold-400', hex: '#DFA23C', role: 'Sun. Badges, the focus ring, highlights on dark photographs.' },
+  { token: 'gold-300', hex: '#EFCB82', role: 'Sun tint.' },
+  { token: 'gold-500', hex: '#A97C3F', role: 'Brass. Card edges and hairlines.' },
+  { token: 'gold-600', hex: '#86602C', role: 'Brass as text on cream: the only gold that passes for words.' },
+  { token: 'denim-400', hex: '#3F4D31', role: 'Pine. The kicker label above a heading, links.' },
+  { token: 'denim-300', hex: '#8FA26C', role: 'Pine on dark grounds.' },
+  { token: 'denim-500', hex: '#323E27', role: 'Link hover.' },
+  { token: 'denim-600', hex: '#26301D', role: 'Link pressed.' },
+  { token: 'olive-400', hex: '#7C8A3D', role: 'Olive. Used rarely: the success alert.' },
+  { token: 'olive-300', hex: '#A4AF6E', role: 'Olive tint.' },
+  { token: 'olive-500', hex: '#5B662A', role: 'Olive text on cream.' },
+  { token: 'paper-100', hex: '#F2E6CC', role: 'Cream. The page ground.' },
+  { token: 'paper-200', hex: '#FAF3E6', role: 'Cards, and the lighter ground.' },
+  { token: 'ink-950', hex: '#2E2015', role: 'Ink. Text.' },
+  { token: 'night', hex: '#1B130B', role: 'The footer and the moose\'s ground. Dark in both modes.' },
+  { token: 'onfill', hex: '#FFF8EC', role: 'Text on the button and on night.' },
 ];
 
 export type KitFont = { family: string; use: string; weights: string; url: string };
 
-/** DESIGN.md "Typography". All three are open-licence Google Fonts. */
+/** The public pages' three families. Oswald replaced Boogaloo for headings on
+ *  2026-09-10 with the front page's look; Boogaloo stays loaded for /team only.
+ *  All three are open-licence Google Fonts. */
 export const FONTS: readonly KitFont[] = [
-  { family: 'Boogaloo', use: 'Display: every heading, every big number. Never below 22px, never for a paragraph, never bold - it has no bold.', weights: '400', url: 'https://fonts.google.com/specimen/Boogaloo' },
+  { family: 'Oswald', use: 'Headings and big numbers, in capitals, bold. Condensed, so a heading stays short on a phone. Never for a paragraph.', weights: '600, 700', url: 'https://fonts.google.com/specimen/Oswald' },
   { family: 'Rubik', use: 'Body and interface. Buttons and navigation in 700, uppercase, 0.04em tracking.', weights: '400, 500, 600, 700, 800', url: 'https://fonts.google.com/specimen/Rubik' },
   { family: 'Space Mono', use: 'Eyebrows, labels, times and tables. Labels in 700, uppercase, 0.12em tracking.', weights: '400, 700', url: 'https://fonts.google.com/specimen/Space+Mono' },
 ];
@@ -65,7 +75,7 @@ export const RULES: ReadonlyArray<{ title: string; items: readonly string[] }> =
     title: 'The moose',
     items: [
       `Drawn by ${SITE.logo.credit}. Credit the moose to ${SITE.logo.credit}.`,
-      'It is white on transparent. Put it on ink (#241E15) or another dark ground; on paper or a light photo it disappears.',
+      'It is white on transparent. Put it on night (#1B130B) or another dark ground; on cream or a light photo it disappears.',
       'Use the file as supplied. Do not recolour, stretch, rotate, outline or add effects to it, and do not crop the antlers.',
       'Give it room. Nothing sits inside the antlers or touches the edge of the mark.',
     ],
@@ -83,9 +93,9 @@ export const RULES: ReadonlyArray<{ title: string; items: readonly string[] }> =
   {
     title: 'Colour',
     items: [
-      'Paper is the ground, ink is the text, red is the only thing that asks to be clicked.',
+      'Cream is the ground, ink is the text, fireside is the only thing that asks to be clicked.',
       'Never pure white (#FFFFFF) for a surface and never pure black (#000000) for text.',
-      'Gold 400 is never text on paper; it fails contrast. Use gold 600 for gold words.',
+      'Sun and brass are never text on cream; they fail contrast. Use gold 600 for gold words.',
     ],
   },
   {
