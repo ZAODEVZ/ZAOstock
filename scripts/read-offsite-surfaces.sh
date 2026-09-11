@@ -22,8 +22,11 @@
 # a check that fails every day over a page nobody here can edit teaches people
 # to ignore the whole output.
 #
-# When a STALE line disappears, it was fixed at the source: delete its phrase
-# below. When a new stale claim is found, add it here with the truth beside it.
+# When a STALE line disappears it was fixed at the source. KEEP its phrase: it
+# is now a regression guard, and the line comes back if the page slides back.
+# Only a phrase Zaal has ACCEPTED leaves the list, with his reason recorded
+# under ACCEPTED so nobody re-adds it. A new stale claim goes in STALE with
+# the truth beside it.
 
 set -u
 
@@ -35,11 +38,18 @@ SURFACES=(
 # phrase on the page (case-insensitive) | what is true instead
 STALE=(
   "Lineup announced August 2026|the lineup is at zaostock.com/program, and there is no reveal day"
-  "parking lot|it is the Franklin Street Parklet"
   "DJs between every act|the MC and our partners hold the changeovers; there is no DJ between sets"
   "all day|music runs noon to six"
   "ZAO MUSIC EVENTS|it is produced by ZAO Festivals"
 )
+
+# ACCEPTED, not stale (never re-add to STALE):
+# - "Franklin Street parking lot" in Luma's LOCATION field. Zaal, 2026-09-10:
+#   "its the same thing it say aprking lot on the auto maps" - it is the map
+#   provider's own name for the place, the address resolves to the parklet, and
+#   the event description names the Franklin Street Parklet. Fixed-on-Luma
+#   2026-09-10 and kept as guards above: "Lineup announced August 2026",
+#   "DJs between every act", "all day".
 
 unread=0
 for s in "${SURFACES[@]}"; do
