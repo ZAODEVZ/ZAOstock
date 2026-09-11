@@ -40,7 +40,6 @@ STALE=(
   "Lineup announced August 2026|the lineup is at zaostock.com/program, and there is no reveal day"
   "DJs between every act|the MC and our partners hold the changeovers; there is no DJ between sets"
   "all day|music runs noon to six"
-  "ZAO MUSIC EVENTS|it is produced by ZAO Festivals"
 )
 
 # ACCEPTED, not stale (never re-add to STALE):
@@ -50,6 +49,9 @@ STALE=(
 #   the event description names the Franklin Street Parklet. Fixed-on-Luma
 #   2026-09-10 and kept as guards above: "Lineup announced August 2026",
 #   "DJs between every act", "all day".
+# - "ZAO MUSIC EVENTS", the name of the Luma calendar the event sits in. Zaal,
+#   2026-09-11 quick-grill: "Leave it". It names the calendar, not the producer;
+#   the event itself says ZAO Festivals.
 
 unread=0
 for s in "${SURFACES[@]}"; do

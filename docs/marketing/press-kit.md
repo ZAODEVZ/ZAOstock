@@ -106,7 +106,7 @@ section is what a journalist reads.)
 ## Partners
 
 Partners give time, venue and infrastructure, and Artizen supports the funding.
-Each has a confirmed agreement and a named point of contact on the ZAO team.
+Every partner has a named point of contact on the ZAO team.
 
 - Town of Ellsworth - parklet venue
 - Black Moon Public House - the evening, and the official after party

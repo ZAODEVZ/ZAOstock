@@ -217,7 +217,7 @@ export default function HomePage() {
               Our <em>partners</em>
             </h2>
             <p className={s.lede} style={{ margin: '0 auto' }}>
-              Each has a confirmed agreement and a named point of contact on the ZAO team.
+              Every partner has a named point of contact on the ZAO team.
             </p>
             <ul className={s.partnerGrid}>
               {PARTNERS.map((p) => (
