@@ -188,10 +188,9 @@ the crew flips it on reveal day.
   are the only real ones in the repo. This is tracked on the attention board.
 - **The stream has no recorded destination**, no account and no operator, and
   the parklet internet has never been tested. Also on the board.
-- **Twelve moderator seats, none claimed** at the time of writing.
 - **Shared state only works inside the claude.ai artifact host.** Opened from
   zaostock.com/ops the page has no `window.claude`, so every save says "saved on
-  this screen only" and the help queue, rota and lineup switch never leave the
+  this screen only" and the help queue and lineup switch never leave the
   device. Where that state should live is the open question on this rewrite.
 - Audio autoplay depends on browser policy. The page tries on load; if the
   browser refuses, the first click, keypress or scroll anywhere starts it and a
