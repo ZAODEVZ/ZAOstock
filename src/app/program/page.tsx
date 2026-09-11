@@ -33,8 +33,8 @@ export const metadata: Metadata = {
 // the one public place set times live. NONE of them is described as confirmed - not one has
 // countersigned. The battlers are no longer named anywhere, because the block
 // they were named for is off. Steve's own
-// act name is not on disk. The fire performance is DCoop's to time and place;
-// no row until he says. Do not hand-write any other name in.
+// act name is not on disk. There is no fire act (Zaal, 2026-09-11: "Drop the
+// fire act."). Do not hand-write any other name in.
 
 type Venue = 'OUT' | 'IN';
 

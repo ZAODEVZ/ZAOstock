@@ -1,5 +1,8 @@
 # ZAOstock production plan - Saturday 3 October 2026
 
+> **The fire act is DROPPED 2026-09-11 (Zaal: "Drop the fire act.")** Every fire line below is
+> history: no fire slot, no permit paperwork, no performer certificate.
+
 Ellsworth, Maine. Written 26 August 2026, 38 days out. Updated 27 August after
 Zaal's verdict that every act on Steve's list is proposed, not booked, and again
 that evening when he ruled that **music starts at noon** - the 11:00 open is
@@ -256,7 +259,7 @@ list.
 | Mandatory soundcheck night, Friday 2 October | ZAO | Confirmed, going into artist contracts as: **Friday covers every act; Saturday morning is line-check only** (Zaal, 27 Aug). Checks happen at whichever stage the act actually plays, so Friday runs outside and inside. Crew is on site Friday night |
 | WaveWarZ, 4-6pm, including its MC | ZAO | Confirmed |
 | Tent coverage, rain or shine | Wallace Events | **Confirmed and up** - Zaal, 28 Aug 05:1x |
-| **Fire performance - Dcoop** | ZAO | **CONFIRMED by the City** (Roddy, via Zaal 27 August) and **the act is Dcoop**, in addition to his 13:20 music set (Zaal, 22:3x). **Time and place: Dcoop to say** (Zaal, 28 Aug 05:0x) - no proposal from us; asked in his draft |
+| ~~**Fire performance - Dcoop**~~ **DROPPED 2026-09-11 (Zaal: "Drop the fire act.")** | ZAO | **CONFIRMED by the City** (Roddy, via Zaal 27 August) and **the act is Dcoop**, in addition to his 13:20 music set (Zaal, 22:3x). **Time and place: Dcoop to say** (Zaal, 28 Aug 05:0x) - no proposal from us; asked in his draft |
 | Event insurance certificate for the City | ZAO | In progress with a local broker. Permit condition, we own it |
 | City permit and Art of Ellsworth coordination | ZAO | **Roddy is in** - Zaal, 27 August. Paperwork with the City; the certificate form and deadline, circuits, vehicle access and the vendor question still need his answers (city lane) |
 | Stage manager, load-in and strike crew | ZAO | Names wait (Zaal, 27 Aug) |
@@ -613,7 +616,7 @@ open items at the end still stand. The live message is the city lane's
 | Which of Steve's acts are booked | - | - | **ANSWERED** 22:3x: Crown Vics and Steve's own set booked; the other three out. Steve message dropped, handled verbally |
 | The evening | - | - | **SETTLED** 05:0x: Stilo 18:00-20:00, Steve 20:00-22:00, no gap |
 | Does the permit cap an 11:00 start | - | Nothing any more | **WITHDRAWN** - music starts at noon, Zaal 27 August. Never sent |
-| The fire performance | Dcoop | Its time and place | **Dcoop to say** (Zaal, 05:0x). Confirmed by the City; act Dcoop; asked in `msg-dcoop-2026-08-27.md` |
+| ~~The fire performance~~ DROPPED 2026-09-11 (Zaal: "Drop the fire act.") | Dcoop | - | **Dcoop to say** (Zaal, 05:0x). Confirmed by the City; act Dcoop; asked in `msg-dcoop-2026-08-27.md` |
 | The open stretch 15:05-15:45: Werb or one dream act | Zaal | The afternoon's last 40 minutes, the poster | **UNSET** - section 2 |
 | Which gaps are the 10s | Zaal | Ten minutes either way | **PROPOSED** - first and last; his to swap |
 | Changeover cover, 12:45 to 16:00 | The MC plus sponsor spots - decided, no DJ | Every 15-minute gap between sets | **Decided.** MC name waits |

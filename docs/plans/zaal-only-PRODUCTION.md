@@ -42,7 +42,7 @@ structure closed with three dated checks.
 
 ## Later
 
-- Dcoop's fire performance: time and place are Dcoop's to say (your 05:0x) - nothing for you until he answers; the ask is in his draft.
+- ~~Dcoop's fire performance~~: DROPPED 2026-09-11 (Zaal: "Drop the fire act."). Nothing to ask him.
 
 - The 5-minute intro at noon: who speaks and what is said: **a name (waits) and a line** - `ros-5min` Q7.
 - A separate sponsor mic break on top of the spots in every gap: **yes / no** - probably moot.

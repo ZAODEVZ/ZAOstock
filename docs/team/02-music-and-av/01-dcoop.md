@@ -15,8 +15,7 @@ Co-hosted ZAOville. Runs the music and AV lane for ZAOstock, and performs on it.
 
 - Artist liaison and the set schedule
 - Friday soundcheck and sound backups
-- Fire spinning, confirmed by the City on 27 August. The act is DCoop himself,
-  in addition to his own set. Time and place are his to say
+- No fire act: DROPPED 2026-09-11 (Zaal: "Drop the fire act.")
 - Bomb Squad is his relationship: crew, content and merch
 
 ## Known gap

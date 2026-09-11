@@ -11,7 +11,7 @@ tier: STANDARD
 > **SUPERSEDED, 29 August 2026. Do not lift copy from this file.** It was written
 > 20 August and every fact below predates the 23-28 August verdicts: it says 45-minute
 > sets (now about 30), two stages alternating (one venue at a time since 23 August),
-> ~15 artists, an after-party "6 to 8", and a $250/$500/$1,000 tier ladder that was
+> ~15 artists, fire spinning (dropped 11 September), an after-party "6 to 8", and a $250/$500/$1,000 tier ladder that was
 > killed on 27 August. The current words are `docs/sponsor/deck-2026-10-03.md` and the
 > live pages. Kept as the record of the first pitch attempt.
 
@@ -56,7 +56,7 @@ on a slide until Zaal confirms it.
 | Stages | **CONFLICT** - zaostock.com says "One stage"; doc 2310 decision 4 says "both stages alternating" | see Part 3 #1 |
 | Sets | 45 minutes, scripted schedule, no day-of soundchecks; mandatory Friday-night soundcheck doubles as content-capture night | doc 2310 decisions 4-5 |
 | Artists | Target ~15; **8 confirmed** (6 flying in + 2 local) as of 2026-08-20; roughly two-thirds of travel funded; housing is the open nut | doc 2310 decision 7;  (Zaal 2026-08-20) |
-| Extras | Fire spinning (Dcoop, permit pending); iPads at Black Moon running Decentraland so IRL meets virtual; attendee photo gallery (Paper's push server) | doc 2310 |
+| Extras | iPads at Black Moon running Decentraland so IRL meets virtual; attendee photo gallery (Paper's push server) | doc 2310 |
 | Virtual side | 12-6 PM ET virtual window; Aziz is virtual-side team lead; Baraza OBS-to-RTMP stream; Decentraland mirror of Franklin St (LiDAR scan planned) | doc 2316; ;  |
 | Year | Year 1 of an annual festival. "ZAO Festivals presents ZAOstock" | memory project_zao_festivals_umbrella |
 | Why Ellsworth | Zaal lives here (bought a house). Gateway to Acadia: 4M+ people drove through in 2025; downtown just received National Historic Register designation | memory project_zao_stock_pitch_answers; zaostock.com |
@@ -153,7 +153,7 @@ national community to it.
 
 **5. The day**
 12 to 6 PM. ~15 independent artists, 45-minute sets, a scripted schedule. A live
-WaveWarZ battle the crowd votes on. Fire spinning. Short talks between sets on
+WaveWarZ battle the crowd votes on. Short talks between sets on
 music ownership and artist economics. Then the after-party moves indoors to
 Black Moon Public House next door, 6 to 8 PM. Free to attend. Family-friendly.
 [Stage count: see decision #1.]
@@ -228,7 +228,7 @@ weekend that already brings people downtown.
 
 **5. The day**
 Noon to six on the parklet. About 15 live acts, 45 minutes each, on a set
-schedule. Fire spinning. A beer garden run by Black Moon. Then everyone walks
+schedule. A beer garden run by Black Moon. Then everyone walks
 next door to Black Moon for the after-party, 6 to 8. Free, family-friendly, and
 the musicians and crew eat and drink at local spots - Black Moon is already
 covering gift cards for 25 of them and Katina is asking five more places to do

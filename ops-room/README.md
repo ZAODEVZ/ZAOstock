@@ -6,7 +6,7 @@ where the crew and the artists work: the run of show with owners and
 seconds, the artist advance, the help queue, the moderator rota, the squads.
 
 Built for **Saturday 3 October 2026**, Franklin Street Parklet, Ellsworth,
-Maine. Eight acts, 12:05 to 17:55, street clears at six. Black Moon Public House
+Maine. Eight acts, music 12:05 to 17:46, street clears at six. Black Moon Public House
 next door feeds the performers and hosts its own afterparty after six.
 
 ---
@@ -156,19 +156,19 @@ working the board after dark.
 From the organizing document, the 31 August standup and the **run of show
 locked on 3 September**:
 
-- Eight acts, outdoors, 12:05 to 17:55: The Crown Vics, OPEN X, Grass Rug,
+- Eight acts, outdoors, 12:05 to 17:46: The Crown Vics, OPEN X, Grass Rug,
   Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz (Hurricane out 2026-09-10). Street
   clears 18:00. WaveWarZ is cancelled and Stilo is not coming in person.
 - The evening is Black Moon's afterparty, not ZAOstock's programme (Zaal,
   3 September). The board shows it as theirs and books nothing into it.
 - The PA comes from OPEN X, who also play. There is no rental gate.
-- The lineup reveal is Sunday 13 September and reads only acts confirmed in
-  writing. The artist details form is due back Friday 11 September.
-- **Five minutes between every act. If a set runs over it comes out of that
+- There is no reveal day: an act publishes once confirmed in writing, with a
+  bio and a photo. The artist details form has no due date (Zaal, 10 September).
+- **Seven minutes between every act. If a set runs over it comes out of that
   act's own changeover; the next act still starts on time.**
 - Black Moon covers bottled water and electricity, a $20 gift certificate for
   every performer, the basement dressing room and bathroom, and a porta-potty.
-- The City has approved the fire performance. It needs a fire circle.
+- No fire act. The City had approved one; Zaal dropped it on 11 September.
 - Event insurance is quoted; talks with a local broker to get ZAO and the City
   on liability. This was the permit condition.
 - Star 97.7 is a media partner: studio 10 September and 1 October, ads from

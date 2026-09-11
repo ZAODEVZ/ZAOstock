@@ -31,7 +31,7 @@ Finding 3, priced only where a doc already priced it:
 | Blankets (two or three) | **UNSET** | doc 1032 Finding 3 |
 | Sharps container | **UNSET** | doc 1032 Finding 3 |
 | Water and cups at the kit, for the crowd and for burns | **UNSET** | - |
-| Fire extinguisher and a water bucket at the fire act | Dcoop brings his own, per the 17 Aug standup; the water bucket is on Zaal's own event notes from July ("Water bucket for the firestick") | gdoc snapshot:1214, :1261 |
+| ~~Fire extinguisher and a water bucket at the fire act~~ | DROPPED 2026-09-11 (Zaal: "Drop the fire act."). No fire act, so nothing to set out | - |
 | A card in the kit: the contact's name and number, the EMS number, the hospital, the parklet's street address for a 911 call, the Site Lead's number | **UNSET** - write it once the contact is named | - |
 | Where the kit is set out, and by when | In place with the vital crew at **08:00 Saturday** (crew timeline below); no later than the noon door | Zaal, 20:2x |
 
@@ -75,8 +75,10 @@ not ours to assume.
 
 ## 5. Draft - the ask to the Fire Department
 
-> **HELD - WAITING ON DCOOP.** Zaal, 28 Aug 05:1x: this goes only AFTER Dcoop
-> confirms his fire slot. Until then it is not sent and not scheduled.
+> **NO LONGER HELD ON DCOOP.** It was held (Zaal, 28 Aug 05:1x) until Dcoop
+> confirmed a fire slot. The fire act is DROPPED 2026-09-11 (Zaal: "Drop the fire act."), so the
+> fire paragraph is gone and the EMS question stands alone. Whether and when it
+> sends is Zaal's call.
 
 **DO NOT SEND. Nothing sends tonight.** Goes to the Ellsworth Fire Department's
 public contact (in doc 1070), with Roddy told so the City hears it once. Reworked
@@ -88,24 +90,19 @@ from the earlier version: it no longer asks for a person.
 > Hello - my name is Zaal Panthaki and I am one of the organisers of ZAOstock, a
 > free one-day music festival on Saturday 3 October at the Franklin Street
 > Parklet, part of the Art of Ellsworth weekend. Music from noon to six
-> outdoors, then indoors at Black Moon Public House. We expect 200 to 250 people
+> outdoors, then the street clears. We expect 200 to 250 people
 > in person over the day. Crew are on site from 8am, soundcheck is the Friday
 > evening before. The parklet permit is with Roddy Ehrlenbach at Parks and
 > Recreation.
 >
 > One question: will the Fire Chief want any fire or EMS presence on site as a
 > condition of the event, and if so, what and at what cost? I would rather
-> budget for it now than learn it in September.
+> budget for it now than learn it the week of the event.
 >
 > For your file, what we have on our side: a named contact on the day who knows
 > where the first-aid kit is and calls you for anything beyond it; a 25-person
 > kit; and we are looking at an AED. It is a small event and we are not planning
 > a medical post - if you think we should, say so.
->
-> One of our acts involves fire spinning - Roddy at Parks and Recreation has
-> confirmed it. The performer is Dcoop, who also plays a set; he is handling the
-> open-flame paperwork with you separately and brings his own extinguisher and
-> water. Mentioning it so it is not a surprise in the same file.
 >
 > Thank you - happy to come by the station.
 

@@ -63,3 +63,29 @@ describe('the deployed ops room matches its source', () => {
     expect(mb).toBeLessThan(1);
   });
 });
+
+describe('what the ops room says', () => {
+  // The base64 images are stripped first: a run of random letters can spell
+  // anything.
+  const words = (file: string) => readFileSync(file, 'utf8').replace(/data:[a-z]+\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]+/g, '');
+
+  it('has no fire act on it', () => {
+    // Zaal, 2026-09-11: "Drop the fire act." It had been on the public /ops
+    // page as the DCoop row, the roster ("Hip-hop + fire"), a fire circle and
+    // a fire performer's insurance certificate still to chase.
+    for (const file of [SRC, DEPLOYED]) {
+      expect(words(file), path.relative(ROOT, file)).not.toMatch(/\bfire\b/i);
+    }
+  });
+
+  it('gives each run-of-show row one public description', () => {
+    // A row with two pd keys is legal JavaScript and the second silently wins.
+    // OPEN X's row carried DCoop's ("Hip-hop, 40 minutes, with a fire
+    // performance") from 7 September until this test.
+    const rows = readFileSync(SRC, 'utf8').split('\n').filter((l) => /^\s*\{v:"/.test(l));
+    expect(rows.length).toBeGreaterThan(10);
+    for (const row of rows) {
+      expect(row.match(/\bpd:/g)?.length ?? 0, row.slice(0, 80)).toBeLessThanOrEqual(1);
+    }
+  });
+});
