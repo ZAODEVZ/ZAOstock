@@ -120,7 +120,7 @@ contribute positively to the overall experience.
 
 1. Copy this file. Replace `[BRACKETED]` placeholders with the event's real values.
 2. For ZAOstock, the standing values are:
-   - Venue / production: The VEC (DMV events) or ENTERACT (ZAOstock production support)
+   - Venue / production: The VEC (DMV events); for ZAOstock, the Franklin Street Parklet, produced by ZAO Festivals
    - Audio contact: DCoop
    - Interview + retreat host: DCoop
 3. Send to confirmed artists as a PDF / rich-text email, or point them at `/musicians/rider`.
