@@ -264,3 +264,41 @@ describe('the artist form has no due date', () => {
     expect(ARTIST_FORM.askLabel).not.toMatch(/\d/);
   });
 });
+
+// Zaal, 2026-09-11: "Lets say the google form is the contract include anything
+// we would need", with the terms he picked and money left out. The script is the
+// record of what the live form should say.
+describe('the artist form is the contract', () => {
+  const gs = readFileSync(path.join(process.cwd(), 'scripts/create-artist-form.gs'), 'utf8');
+
+  it('carries the terms Zaal picked', () => {
+    expect(gs).toMatch(/on site by 10 AM\. Sets start on time/);
+    expect(gs).toMatch(/comes out of your own changeover/);
+    expect(gs).toMatch(/your responsibility on the day/);
+    expect(gs).toContain(`${SOUNDCHECK.day}, ${SOUNDCHECK.window}`);
+    expect(gs).toMatch(/livestream, film, record and photograph my set/);
+    expect(gs).toMatch(/Anything you would like after the event\?/);
+    expect(gs).toMatch(/Any questions for us\?/);
+  });
+
+  it('promises no second contract', () => {
+    expect(gs).not.toMatch(/follows separately/i);
+  });
+
+  it('puts no money in it', () => {
+    // Code comments may say why; what the artist reads may not carry a figure.
+    const read = gs.replace(/^\s*\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+    expect(read).not.toMatch(/\$\s?\d|\bfee\b|\bpaid\b|\bpayment\b/i);
+  });
+
+  it('asks for the agreement last', () => {
+    const items = [...gs.matchAll(/\.setTitle\('([^']+)'\)/g)].map((m) => m[1]);
+    expect(items.at(-1)).toBe('Your agreement');
+  });
+
+  it('asks for the tech rider in the form, not by a dated email', () => {
+    for (const q of ['What do you plug in?', 'What do you bring?', 'What do you need from us?']) expect(gs).toContain(q);
+    expect(ARTIST_DATES.map((d) => d.when)).not.toContain('Friday 18 September');
+    expect(ARTIST_DATES[0].what).toMatch(/tech rider/);
+  });
+});

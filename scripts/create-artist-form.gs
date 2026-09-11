@@ -46,29 +46,38 @@ var ACTS = [
 function createZaostockArtistForm() {
   var form = FormApp.create('ZAOstock 2026 - Artist Details');
 
+  // THE FORM IS THE CONTRACT (Zaal, 2026-09-11: "Lets say the google form is
+  // the contract include anything we would need"). No separate contract goes
+  // out, so the terms live here, at the top, and the last question is the
+  // agreement. MONEY IS LEFT OUT on purpose (his pick): no fee, no dollar
+  // figure, not even the meal certificate's value.
   form.setDescription(
-    "You're on the bill for " + EVENT + ".\n\n" +
-    'We announce the full lineup this weekend with a post about each artist. ' +
-    'We need four things from you ' + ASK + ': a photo, a short bio, ' +
-    'your city, and your links.\n\n' +
-    'IMPORTANT: submitting this form is what puts you on the public lineup. ' +
-    'We do not publish anyone who has not confirmed in writing, so if we do not ' +
-    'hear from you, you will not appear on the site even though you are on the ' +
-    'running order.\n\n' +
-    'Also please note the SOUNDCHECK RUNS 4PM TO 7PM ON FRIDAY 2 OCTOBER, the ' +
-    'night before the show. It covers every act and there is no Saturday ' +
-    'alternative - Saturday morning is a line check only. A contract with the ' +
-    'full terms follows separately; this form is just the four things plus a ' +
-    'yes or no on the Friday.'
+    "You're on the bill for " + EVENT + '. This form is your agreement to ' +
+    'play. Fill it in ' + ASK + '. Your set time and length are at ' +
+    'zaostock.com/program.\n\n' +
+    'THE TERMS\n' +
+    '- Soundcheck: Friday 2 October, 4 PM to 7 PM, on the parklet stage. Every ' +
+    'act, and there is no Saturday alternative. Saturday morning is a line check only.\n' +
+    '- Saturday: on site by 10 AM. Sets start on time. If your set runs over, it ' +
+    'comes out of your own changeover, and the next act still starts on time.\n' +
+    '- Gear: we provide the stage and a shared PA. Your instruments and gear are ' +
+    'your responsibility on the day. Anything else you need, ask below; until we ' +
+    'confirm an item to you in writing, assume you bring it.\n' +
+    '- Filming: we livestream the day and film, record and photograph every set. ' +
+    'You answer that one below.\n' +
+    '- Hospitality: water at the stage, a Black Moon gift certificate to eat ' +
+    'after your set, and a dressing room with a bathroom in the Black Moon basement.\n\n' +
+    'Submitting this form is what puts you on the public lineup. We publish ' +
+    'nobody who has not confirmed in writing.'
   );
 
   form.setCollectEmail(true);
   form.setProgressBar(true);
   form.setAllowResponseEdits(true);
   form.setConfirmationMessage(
-    'Got it - thank you. That confirms you are playing and puts you on the ' +
-    'public lineup. If you sent a photo link, we will check we can open it. ' +
-    'Any problem, reply to the email that sent you here.'
+    'Got it - thank you. That confirms you are playing on the terms in this ' +
+    'form and puts you on the public lineup. If you sent a photo link, we will ' +
+    'check we can open it. Any problem, write to info@thezao.com.'
   );
 
   form.addListItem()
@@ -79,13 +88,17 @@ function createZaostockArtistForm() {
     .setChoiceValues(ACTS)
     .setRequired(true);
 
+  // The live form also carries "Does your set length work?", added by hand on
+  // 2026-09-10 (its "5 to 10 minutes longer" option removed: the day has 14
+  // minutes of margin). It is not recreated here.
+
   form.addTextItem()
     .setTitle('A link to your photo')
     .setHelpText(
       'One good press shot, landscape if you have it, highest resolution you ' +
       'have. Google Drive, Dropbox, WeTransfer, an Instagram post, anything we ' +
-      'can open. THIS IS THE ONE WE CANNOT MAKE OURSELVES. No link handy? Put ' +
-      '"emailing it" here and reply to our email with the file attached.'
+      'can open. THIS IS THE ONE WE CANNOT MAKE OURSELVES. No link handy? ' +
+      'Write "emailing it" here and send it to info@thezao.com.'
     )
     .setRequired(true);
 
@@ -109,30 +122,13 @@ function createZaostockArtistForm() {
     )
     .setRequired(true);
 
-  form.addCheckboxItem()
-    .setTitle('Confirming you are playing')
-    .setHelpText(
-      'This is the part that puts you on the public lineup. We publish nobody ' +
-      'who has not confirmed in writing.'
-    )
-    .setChoiceValues(['Yes, I confirm I am playing ZAOstock on Saturday 3 October 2026'])
-    .setRequired(true);
-
-  // Folded in from the 'Artist contracts with Friday-night soundcheck clause'
-  // card (due 2026-09-08) rather than sent as a second message. An act should
-  // not be asked for a photo today and a soundcheck commitment tomorrow. This
-  // is an ASK, not a signature - the contract carries the binding term. It is a
-  // question rather than a forced yes so an act with a genuine conflict flags it
-  // instead of abandoning the form. Start time is UNSET in our records, so no
-  // time is stated here.
+  // A question rather than a forced yes, so an act with a genuine conflict
+  // flags it instead of abandoning the form.
   form.addMultipleChoiceItem()
-    .setTitle('Soundcheck is the evening of Friday 2 October. Can you be there?')
-    .setHelpText(
-      'It covers every act and there is no Saturday alternative - Saturday ' +
-      'morning is a line check only. Exact start time to be confirmed.'
-    )
+    .setTitle('Soundcheck is Friday 2 October, 4 PM to 7 PM. Can you be there?')
+    .setHelpText('It covers every act and there is no Saturday alternative.')
     .setChoiceValues([
-      'Yes, I can be there Friday evening 2 October',
+      'Yes, I can be there Friday 2 October, 4 PM to 7 PM',
       'I have a problem with Friday - please get in touch',
     ])
     .setRequired(true);
@@ -153,10 +149,61 @@ function createZaostockArtistForm() {
     ])
     .setRequired(true);
 
+  // THE TECH RIDER, folded in (Zaal, 2026-09-11: "Ask for rider things"). It
+  // was a separate email due Friday 18 September; the same four questions are
+  // asked here instead, so there is one thing to fill in, not two.
+  form.addSectionHeaderItem()
+    .setTitle('Your tech rider')
+    .setHelpText('So the stage is ready for you. Write "nothing" where nothing applies.');
+
+  form.addParagraphTextItem()
+    .setTitle('Who is on stage, and how many people are with you in total?')
+    .setHelpText('Names and what each person plays. The total sets the meals and the dressing-room space.')
+    .setRequired(true);
+
+  form.addParagraphTextItem()
+    .setTitle('What do you plug in?')
+    .setHelpText('Every instrument and voice that needs to go through the PA.')
+    .setRequired(true);
+
+  form.addParagraphTextItem()
+    .setTitle('What do you bring?')
+    .setHelpText('Amps, drums, keyboards, stands, anything you carry on.')
+    .setRequired(true);
+
+  form.addParagraphTextItem()
+    .setTitle('What do you need from us?')
+    .setHelpText('Beyond the stage and the shared PA. Until we confirm an item to you in writing, assume you bring it.')
+    .setRequired(true);
+
+  form.addTextItem()
+    .setTitle('When do you arrive in Ellsworth, and where from?')
+    .setRequired(false);
+
+  form.addMultipleChoiceItem()
+    .setTitle('Will you have merch to sell?')
+    .setChoiceValues(['Yes', 'No'])
+    .setRequired(false);
+
+  form.addParagraphTextItem()
+    .setTitle('Anything you would like after the event?')
+    .setHelpText('A recording of your set, photos, a clip for your socials. Tell us and we will do what we can.')
+    .setRequired(false);
+
+  form.addParagraphTextItem()
+    .setTitle('Any questions for us?')
+    .setRequired(false);
+
   form.addParagraphTextItem()
     .setTitle('Anything else we should know?')
     .setHelpText('Access needs, a name spelling, someone else who handles your bookings. Optional.')
     .setRequired(false);
+
+  // Last, so it is agreed after everything above has been read.
+  form.addCheckboxItem()
+    .setTitle('Your agreement')
+    .setChoiceValues(['Yes, I am playing ZAOstock on Saturday 3 October 2026, on the terms at the top of this form'])
+    .setRequired(true);
 
   var sheet = SpreadsheetApp.create('ZAOstock 2026 - Artist Details (responses)');
   form.setDestination(FormApp.DestinationType.SPREADSHEET, sheet.getId());

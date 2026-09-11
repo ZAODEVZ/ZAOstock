@@ -147,8 +147,7 @@ export const SOUNDCHECK = {
  * the vehicle-access answer and it is not in yet.
  */
 export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
-  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on this page. Photo link, short bio, your city, your links, a yes on playing and a yes or no on Friday soundcheck. Your own post goes up once your details are in.' },
-  { when: 'Friday 18 September', what: 'Your tech rider, by email to info@thezao.com: who is on stage, what you plug in, what you bring and what you need from us.' },
+  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on this page. It is your agreement to play: the terms are at the top. Photo link, short bio, your city, your links, your tech rider (who is on stage, what you plug in, what you bring, what you need from us), and a yes or no on Friday soundcheck and on filming. Your own post goes up once your details are in.' },
   { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage. Every act, mandatory, and there is no Saturday alternative. It doubles as a filming and recording night.' },
   { when: 'Saturday 3 October, 10 AM', what: 'Everyone on site. Crew is in from 8.' },
   { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with seven-minute changeovers.' },
@@ -167,7 +166,7 @@ export const BRING: ReadonlyArray<string> = [
   'Your instruments, and anything you play through beyond the shared PA. Backline is sorted act by act from your rider; until an item is confirmed to you in writing, assume you bring it.',
   'A headcount. Tell us how many people are with you, on stage and in total: it sets the meal certificates and the dressing-room space.',
   'Layers and rain gear. It is rain or shine, under tent cover, in Maine in October.',
-  'Merch, if you sell it. Say so in the last box of the form so we can plan for it.',
+  'Merch, if you sell it. Say so in the form so we can plan for it.',
 ];
 
 /**
