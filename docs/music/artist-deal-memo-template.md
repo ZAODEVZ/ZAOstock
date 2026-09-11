@@ -84,9 +84,9 @@
 # Deal Memo - [Artist Name] - ZAOstock 2026
 
 **Event:** ZAOstock 2026
-**Date:** Friday, October 3, 2026
+**Date:** Saturday, October 3, 2026
 **Location:** Franklin Street Parklet, Ellsworth, Maine
-**Producer:** ZAO Festivals (in collaboration with ENTERACT for production support)
+**Producer:** ZAO Festivals, the events arm of The ZAO
 **Audience format:** Free to attend, outdoor, all-day, family-friendly
 
 ---
@@ -189,7 +189,7 @@ ZAOstock operates at break-even. **A performance fee is agreed privately with ea
 ## Insurance + safety
 
 - ZAOstock is arranging its own event liability insurance through a local broker; the City of Ellsworth requires a copy as a condition of the parklet permit. ZAOstock has no fiscal sponsor, so there is no Fractured Atlas certificate and no tax-deductible path.
-  > *Corrected 2026-08-27.* This line used to say ZAOstock "carries event liability insurance via the production partner (ENTERACT) and Fractured Atlas COI for the venue". Neither was true: no policy is bound yet, and there is no fiscal sponsor. Status lives in `docs/permits/status-2026-08-27.md`.
+  > *Corrected 2026-08-27.* This line used to promise insurance through a production partner and a fiscal sponsor's certificate for the venue. Neither was true: no policy is bound yet, and there is no fiscal sponsor. Status lives in `docs/permits/status-2026-08-27.md`.
 - The artist is responsible for their own gear insurance. ZAOstock provides reasonable security for the stage area but does not insure private equipment.
 - If the artist requires a Certificate of Insurance for their own paperwork, request via email and we will arrange.
 

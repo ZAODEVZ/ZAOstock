@@ -53,7 +53,7 @@ Subject: ZAOstock 2026 - October 3 - lineup invitation for [Artist Name]
 [Manager / Booking Agent name] -
 
 Reaching out to invite [Artist Name] to play the inaugural ZAOstock festival
-on Friday October 3, 2026 in Ellsworth, Maine.
+on Saturday October 3, 2026 in Ellsworth, Maine.
 
 About the event:
 ZAOstock is a one-day outdoor festival produced by ZAO Festivals - the
@@ -70,8 +70,8 @@ What we offer:
 - Recording of the set for [Artist Name]'s own use
 
 Production:
-The festival operates at break-even. ZAO Festivals collaborates with
-ENTERACT for production support. We are happy to share full production
+The festival operates at break-even and is produced by ZAO Festivals,
+the events arm of The ZAO. We are happy to share full production
 details + insurance / safety documentation as we move forward.
 
 Would [Artist Name] be open to a brief intro call to discuss? Happy to
