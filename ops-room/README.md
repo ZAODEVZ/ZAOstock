@@ -3,7 +3,7 @@
 One page that runs the day. The public side is where anyone lands, finds the
 schedule, watches, and asks a human for help. The team side, behind a code, is
 where the crew and the artists work: the run of show with owners and
-seconds, the artist advance, the help queue, the moderator rota, the squads.
+seconds, the artist advance, the help queue, the squads.
 
 Built for **Saturday 3 October 2026**, Franklin Street Parklet, Ellsworth,
 Maine. Eight acts, music 12:05 to 17:46, street clears at six. Black Moon Public House
@@ -61,7 +61,6 @@ Crew and artists use the same code.
 | Run of Show | The grid with owner and second on every line, and red flags where a name is missing. |
 | Artist Advance | Eight acts × ten advance items, ticked together. |
 | Artist Kit | A personalised pack per act: their set time, the day, hospitality, and only what they still owe. One button copies it. |
-| Moderator Rota | Twelve seats, two an hour, noon to six. Click a seat to claim it. |
 | Agent Squads | Seven roles a teammate can hand to an agent, with a paste-ready brief each. |
 | Channels | Where the audience goes. Fill these and the public tiles go live. |
 | Broadcast | Post an announcement to the public side. |
@@ -169,6 +168,7 @@ locked on 3 September**:
 - Black Moon covers bottled water and electricity, a $20 gift certificate for
   every performer, the basement dressing room and bathroom, and a porta-potty.
 - No fire act. The City had approved one; Zaal dropped it on 11 September.
+- No moderated stream (Zaal, 11 September), so there is no moderator rota.
 - Event insurance is quoted; talks with a local broker to get ZAO and the City
   on liability. This was the permit condition.
 - Star 97.7 is a media partner: studio 10 September and 1 October, ads from

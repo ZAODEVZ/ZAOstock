@@ -78,6 +78,14 @@ describe('what the ops room says', () => {
     }
   });
 
+  it('has no moderator rota', () => {
+    // Zaal, 2026-09-11: "No moderated stream". The rota screen, its twelve
+    // seats, the seat badge, the board counter and the chaser squad are gone.
+    for (const file of [SRC, DEPLOYED]) {
+      expect(words(file), path.relative(ROOT, file)).not.toMatch(/moderator|seatCount|renderRota/i);
+    }
+  });
+
   it('gives each run-of-show row one public description', () => {
     // A row with two pd keys is legal JavaScript and the second silently wins.
     // OPEN X's row carried DCoop's ("Hip-hop, 40 minutes, with a fire

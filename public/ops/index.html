@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ZAOstock Ops Room</title>
-<meta name="ops-room-src" content="1ed9cf9fbfad9f7a">
+<meta name="ops-room-src" content="cf8588424e76f983">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
@@ -269,12 +269,6 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
 .item.urgent{box-shadow:inset 4px 0 0 var(--red-500)}
 .empty{padding:28px 16px; text-align:center; color:var(--ink-3); font-size:13.5px}
 
-.rota{display:grid; grid-template-columns:repeat(auto-fill,minmax(164px,1fr)); gap:12px}
-.rslot{border:2px solid var(--ink); border-radius:var(--r-md); padding:11px 12px; background:linear-gradient(168deg, var(--paper-200), var(--surface) 60%, var(--paper-300)); box-shadow:var(--hard), 0 14px 24px -26px rgba(36,30,21,.9); transition:transform .12s var(--ease)}
-.rslot:hover{transform:translateY(-2px)}
-.rslot.part{background:linear-gradient(168deg, #FBEBBE, var(--gold-300) 65%, #EBCB86)}
-.rslot.full{background:linear-gradient(168deg, #C3CB97, var(--olive-300) 60%, var(--olive-400))}
-.rslot .h{font-family:"Space Mono",monospace; font-size:10.5px; font-weight:700; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; gap:6px}
 .rname{display:block; width:100%; text-align:left; background:transparent; border:0; cursor:pointer; font-size:13px; padding:3px 0; min-height:25px}
 .rname.free{color:var(--ink-3); font-style:italic}
 .rname:hover{color:var(--red-600)}
@@ -538,7 +532,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
             <img class="gate-mark" id="mark-gate" alt="">
             <div class="eyebrow" style="margin-bottom:10px">Team only</div>
             <h2 class="disp" style="font-size:34px; margin-bottom:8px">Ops board</h2>
-            <p style="font-size:13.5px; color:var(--ink-2); margin-bottom:18px">Crew, artists and DJs. The run of show with owners and seconds, the artist advance and kits, the help queue, the rota, the squads and what to say to the public right now.</p>
+            <p style="font-size:13.5px; color:var(--ink-2); margin-bottom:18px">Crew, artists and DJs. The run of show with owners and seconds, the artist advance and kits, the help queue, the squads and what to say to the public right now.</p>
             <label class="f" style="text-align:left">Crew code <input id="gate-code" type="password" autocomplete="off" placeholder="Ask in the group chat"></label>
             <div class="row" style="margin-top:14px; justify-content:center"><button class="btn" id="gate-go">Open the board</button></div>
             <p id="gate-err" class="hidden" style="margin-top:12px; color:var(--red-700); font-weight:700"></p>
@@ -667,13 +661,6 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
         </div>
       </section>
 
-      <section class="screen" id="s-rota">
-        <div class="sec">
-          <div class="sec-head"><h2>Moderator rota</h2><span class="rule"></span><span class="note" id="rota-note"></span></div>
-          <div class="rota" id="rota"></div>
-          <p class="foot">Two people an hour, noon to six. Anyone on the team who cannot travel to Ellsworth: this is how you are in the event.</p>
-        </div>
-      </section>
 
       <section class="screen" id="s-squads">
         <div class="sec">
@@ -734,7 +721,7 @@ a.tile:hover{transform:translate(-2px,-3px); box-shadow:var(--hard-lg), 0 26px 4
 </div>
 
 <script id="ops-state" type="application/json">
-{"version":5,"updatedAt":null,"announcements":[],"help":[],"rota":{},"attention":[{"id":"n2","title":"A second for DCoop on AV while he is on stage, covering his set.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager for the parklet. Eight acts, seven-minute changeovers, fourteen minutes of margin on the whole day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day, Steve Peer covers. Hurricane is out (2026-09-10), so the between-sets voice needs a name. DCoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n5","title":"Online moderators, two an hour, noon to six. Twelve seats, none claimed.","owner":"IMan + Rev","state":"blocked"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition. All nine genres answered for the broker on 3 September.","owner":"Zaal","state":"moving"},{"id":"n9","title":"A daytime DJ. Zaal, 2 September: we will have a DJ, sourcing through Nextdoor. The changeovers are built on there being no music between acts, so this changes their shape and takes the MC off being a single point of failure.","owner":"Zaal","state":"moving"},{"id":"n11","title":"The evening, settled 7 September: North Creek at Black Moon, roughly 6 to 9, hosted and underwritten by Black Moon. Theirs, not ours. The site's /program says the same.","owner":"Zaal","state":"done"},{"id":"n12","title":"An owner for Lyons Den. Every other act traces to a person; this one traces to nobody.","owner":"UNASSIGNED","state":"blocked"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream during the afterparty. Black Moon's call now, not ours.","owner":"Steve / Katina","state":"moving"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms back on: RSVP, volunteer and the ideas box.","owner":"IMan","state":"done"},{"id":"a11","title":"Artist rows. The reveal reads only rows with status confirmed. Six acts have no row at all, three are misnamed (DCoop / Coop D'Ville, Hurric4n3Ike, Tom Fellenz). Needed before Saturday 12 September.","owner":"Zaal","state":"blocked"},{"id":"a18","title":"Artist details form goes to all eight acts, back as soon as they can (no due date, Zaal 2026-09-10). Signatures come back through it; the confirm-artist endpoint then sets confirmed.","owner":"Zaal / DCoop","state":"moving"},{"id":"a13","title":"Artist photos and press shots: Drive has 1 of 9. OPEN X, Grass Rug and Michael Anderson have no Drive folder.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? The PA now comes from OPEN X, so this is a question for OPEN X and DCoop, not a rental.","owner":"DCoop","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics, OPEN X, Grass Rug and Acadia Rising, for the meal certificates.","owner":"DCoop","state":"blocked"},{"id":"a17","title":"Written confirmations. Every act said yes verbally (2 September). DCoop has sent the form (10 September). An act publishes only once confirmed with a bio and a photo; there is no reveal day.","owner":"DCoop / Zaal","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d9","title":"The PA comes from OPEN X, who also play. Closes the 11 September rental gate early and takes hired equipment off the insurance.","owner":"Zaal","state":"done"},{"id":"d10","title":"Run of show locked 3 September: nine acts, 12:05 to 17:55, street clears 18:00. WaveWarZ cancelled, Stilo not coming in person.","owner":"Zaal","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
+{"version":5,"updatedAt":null,"announcements":[],"help":[],"attention":[{"id":"n2","title":"A second for DCoop on AV while he is on stage, covering his set.","owner":"UNASSIGNED","state":"blocked"},{"id":"n3","title":"A stage manager for the parklet. Eight acts, seven-minute changeovers, fourteen minutes of margin on the whole day.","owner":"UNASSIGNED","state":"blocked"},{"id":"n4","title":"MC rota. Zaal takes the front of the day, Steve Peer covers. Hurricane is out (2026-09-10), so the between-sets voice needs a name. DCoop asked for the Lyons Den intro.","owner":"Zaal","state":"moving"},{"id":"n6","title":"Photo and video on the day. No photos of any previous event exist at all.","owner":"UNASSIGNED","state":"blocked"},{"id":"n8","title":"Event insurance: quoted, in talks with a local broker to get us and the City on liability. Permit condition. All nine genres answered for the broker on 3 September.","owner":"Zaal","state":"moving"},{"id":"n9","title":"A daytime DJ. Zaal, 2 September: we will have a DJ, sourcing through Nextdoor. The changeovers are built on there being no music between acts, so this changes their shape and takes the MC off being a single point of failure.","owner":"Zaal","state":"moving"},{"id":"n11","title":"The evening, settled 7 September: North Creek at Black Moon, roughly 6 to 9, hosted and underwritten by Black Moon. Theirs, not ours. The site's /program says the same.","owner":"Zaal","state":"done"},{"id":"n12","title":"An owner for Lyons Den. Every other act traces to a person; this one traces to nobody.","owner":"UNASSIGNED","state":"blocked"},{"id":"a1","title":"Stream destination: no platform, account or operator recorded anywhere.","owner":"IMan","state":"blocked"},{"id":"a2","title":"rtmps ingest URL and stream key (Cloudflare Live Input), owed since 22 August.","owner":"Aziz","state":"blocked"},{"id":"a3","title":"Parklet internet never tested outdoors.","owner":"IMan","state":"blocked"},{"id":"a4","title":"Do the Spaces play event audio, or talk and funnel to the build?","owner":"IMan + Rev","state":"blocked"},{"id":"a7","title":"Screens inside Black Moon showing the stream during the afterparty. Black Moon's call now, not ours.","owner":"Steve / Katina","state":"moving"},{"id":"a8","title":"Local recording as well as the stream, so a dropout does not lose the day.","owner":"Aziz","state":"blocked"},{"id":"a9","title":"The ZAOstock Instagram handle is written down nowhere.","owner":"Zaal","state":"blocked"},{"id":"a10","title":"Site forms back on: RSVP, volunteer and the ideas box.","owner":"IMan","state":"done"},{"id":"a11","title":"Artist rows. The reveal reads only rows with status confirmed. Six acts have no row at all, three are misnamed (DCoop / Coop D'Ville, Hurric4n3Ike, Tom Fellenz). Needed before Saturday 12 September.","owner":"Zaal","state":"blocked"},{"id":"a18","title":"Artist details form goes to all eight acts, back as soon as they can (no due date, Zaal 2026-09-10). Signatures come back through it; the confirm-artist endpoint then sets confirmed.","owner":"Zaal / DCoop","state":"moving"},{"id":"a13","title":"Artist photos and press shots: Drive has 1 of 9. OPEN X, Grass Rug and Michael Anderson have no Drive folder.","owner":"Paper / Candy","state":"blocked"},{"id":"a14","title":"Michael Anderson: own keyboard or one provided? The PA now comes from OPEN X, so this is a question for OPEN X and DCoop, not a rental.","owner":"DCoop","state":"blocked"},{"id":"a16","title":"Group sizes for The Crown Vics, OPEN X, Grass Rug and Acadia Rising, for the meal certificates.","owner":"DCoop","state":"blocked"},{"id":"a17","title":"Written confirmations. Every act said yes verbally (2 September). DCoop has sent the form (10 September). An act publishes only once confirmed with a bio and a photo; there is no reveal day.","owner":"DCoop / Zaal","state":"blocked"},{"id":"d1","title":"Event insurance quote obtained. Was the permit condition.","owner":"Zaal","state":"done"},{"id":"d3","title":"Star 97.7 signed as media partner. Studio 10 Sep and 1 Oct, ads from the 19th, trade not cash.","owner":"Zaal","state":"done"},{"id":"d4","title":"Candy flyer finished. 100 copies print this week.","owner":"Candy","state":"done"},{"id":"d5","title":"Website rebuilt on the new branding.","owner":"Paper","state":"done"},{"id":"d6","title":"Black Moon covering water, power, $20 certificates, basement dressing room and bathroom, porta-potty.","owner":"Steve Peer","state":"done"},{"id":"d7","title":"Live online support for the day: IMan and Thy Revolution.","owner":"IMan + Rev","state":"done"},{"id":"d9","title":"The PA comes from OPEN X, who also play. Closes the 11 September rental gate early and takes hired equipment off the insurance.","owner":"Zaal","state":"done"},{"id":"d10","title":"Run of show locked 3 September: nine acts, 12:05 to 17:55, street clears 18:00. WaveWarZ cancelled, Stilo not coming in person.","owner":"Zaal","state":"done"},{"id":"d8","title":"Facebook event live and the City will share it. Open: co-hosts.","owner":"Zaal","state":"moving"}],"channels":{},"artists":{},"messages":[],"passes":[],"lineupPublic":false}
 </script>
 
 <script>
@@ -845,7 +832,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     {d:"Fri 11 Sep", t:"Artist details form: the sooner the better. An act is posted only once it has confirmed and its bio and photo are in."},
     {d:"Sat 12 Sep", t:"Artist posts start, one act at a time, in the order their details come in."},
     {d:"Fri 19 Sep", t:"Star 97.7 30-second ads start rotating. Copy needs to be with Candy before this."},
-    {d:"Fri 26 Sep", t:"Target for a full moderator rota and every artist advance closed."},
+    {d:"Fri 26 Sep", t:"Target for every artist advance closed."},
     {d:"Thu 1 Oct",  t:"Zaal back on Star 97.7 as the week-of reminder."},
     {d:"Fri 2 Oct",  t:"Soundcheck night on the parklet. Every act, mandatory. Streaming chain must work end to end."},
     {d:"Sat 3 Oct",  t:"Crew 08:00. Everyone 10:00. Music 12:05. Street clears 18:00."}
@@ -902,14 +889,12 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
      b:"You are the stream watchdog for ZAOstock on Saturday 3 October.\nEvery 5 minutes from 11:00 to 18:30 Ellsworth time, load the public stream URL as a viewer would and confirm: the player is live, video is moving, audio is present, and viewer count is not zero.\nIf any check fails twice in a row, post to the crew channel: what failed, when it started, and which fallback to try next in this order: 1) reload encoder scene, 2) switch to the second machine, 3) switch carrier on the bonded connection, 4) put up the holding slate and post the delay publicly.\nDo not post about a single failed check. Do not attempt any fix yourself. Report, and name the human who owns the next step."},
     {n:"Spaces herald", who:"Owner: Thy Revolution", p:"Feeds every Space host the same line at the same moment, so six rooms are never describing three different events.",
      b:"You are the herald for the ZAOstock Spaces on Saturday 3 October.\nAt the top of every set change, send all Space hosts one short message: who is on now, who is next, the watch link, and one sentence they can read aloud.\nPull the current and next act from the run of show. Never announce an act flagged as not confirmed in writing.\nIf a set runs over, say so plainly rather than repeating the schedule.\nKeep every message under 40 words. Same words to every host, every time."},
-    {n:"Help router", who:"Owner: rota lead on duty", p:"Triages what comes in from the public help form, so nothing sits unread while everyone assumes someone else has it.",
+    {n:"Help router", who:"Owner: help queue lead on duty", p:"Triages what comes in from the public help form, so nothing sits unread while everyone assumes someone else has it.",
      b:"You are triaging incoming help requests for ZAOstock.\nFor each new request, classify it as: MEDICAL (escalate immediately by name and stop), ACCESS, LOST, STREAM, TRAVEL, ARTIST, or OTHER.\nAssign it to the right lane: parklet crew, Black Moon crew, or online crew, based on where the person says they are.\nDraft a one-sentence reply the human can send as-is. Warm, specific, no apologies, no policy language.\nFlag anything unanswered after 10 minutes. Never answer a medical request yourself."},
     {n:"Clip cutter", who:"Owner: IMan", p:"Logs the moments worth clipping while they happen, so the recap does not mean scrubbing ten hours of video on Sunday.",
      b:"You are logging clip moments during ZAOstock.\nWatch the crew channel and the public chat. Every time a moment lands (a big crowd reaction, a guest appearance, a battle result, a first-time performer finishing), log: timestamp in Ellsworth time, act name, one line on what happened, and how strong it was out of three.\nAt the end of each hour, post the top three of that hour.\nDo not log routine set changes. Do not log anything you did not see evidence of in a channel."},
     {n:"Sponsor spot prompter", who:"Owner: MC rota", p:"The changeovers carry the sponsor reads and they are seven minutes long. This makes sure the right one gets read, once, in the right gap.",
      b:"You are prompting sponsor reads for the ZAOstock MC rota.\nThere is one sponsor spot per changeover, read live, never recorded. Two minutes before each changeover, send whoever has the mic: which sponsor, the exact copy, and how long it should take.\nEvery changeover is seven minutes and there is no recovery slot in the day. If time runs short, cut the event talk and keep the sponsor spot.\nStar 97.7's logo and mentions are contractual. Never skip that one."},
-    {n:"Rota chaser", who:"Owner: Thy Revolution", p:"Twenty moderator slots, two an hour. This one keeps asking until they are full, which is the whole job.",
-     b:"You are filling the ZAOstock moderator rota: two people per hour, noon to 18:00, twelve slots.\nEvery day until 26 September, post the current count and name only the empty hours. Ask for one hour, not a whole day, and name the people who have not yet claimed anything.\nPrioritise anyone on the team who cannot travel to Ellsworth, since this is how they are in the event.\nStop asking a person once they have claimed a slot. Never post a shaming list."},
     {n:"Hourly recap", who:"Owner: Zaal", p:"Writes the hour up while it is fresh, so the post-event campaign starts on Saturday night and not the following week.",
      b:"You are writing hourly recaps during ZAOstock.\nAt the end of each hour, write 60 words on what happened: who played, one specific moment, one number if you have a real one (peak viewers, crowd size), and what is next.\nWrite it so it can be posted as-is. No hype adjectives, no exclamation marks. Specific beats loud.\nUse only facts posted in the crew channels. If you do not have a number, leave it out rather than estimating."}
   ];
@@ -932,7 +917,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     board:'<rect x="1.8" y="2.5" width="12.4" height="11" rx="1.5"/><path d="M5 10.5V7M8 10.5V5M11 10.5V8.5"/>',
     queue:'<path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h7"/>',
     attention:'<path d="M8 2l6 11H2z"/><path d="M8 6.5v3M8 11.3v.01"/>',
-    rota:'<circle cx="8" cy="8" r="6.2"/><path d="M8 4.5V8l2.4 1.5"/>',
     squads:'<circle cx="5.5" cy="6" r="2.2"/><circle cx="11" cy="6" r="1.8"/><path d="M2 13c0-2 1.6-3.3 3.5-3.3S9 11 9 13M10 9.9c1.8 0 3 1.2 3 3.1"/>',
     channels:'<path d="M8 2.5v11M4 5.5v5M12 5.5v5M1.8 7.4v1.2M14.2 7.4v1.2"/>',
     broadcast:'<path d="M3.2 4.2a6.5 6.5 0 000 7.6M12.8 4.2a6.5 6.5 0 010 7.6"/><circle cx="8" cy="8" r="1.8"/>',
@@ -956,7 +940,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     {id:"runofshow", t:"Run of Show",      g:"team",   i:"day"},
     {id:"artists",   t:"Artist Advance",   g:"team",   i:"artists"},
     {id:"kit",       t:"Artist Kit",       g:"team",   i:"kit"},
-    {id:"rota",      t:"Moderator Rota",   g:"team",   i:"rota"},
     {id:"squads",    t:"Agent Squads",     g:"team",   i:"squads"},
     {id:"channels",  t:"Channels",         g:"team",   i:"channels"},
     {id:"broadcast", t:"Broadcast",        g:"team",   i:"broadcast"}
@@ -992,7 +975,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   try { state = JSON.parse($("#ops-state").textContent); } catch (e) { state = {}; }
   state.announcements = state.announcements || [];
   state.help = state.help || [];
-  state.rota = state.rota || {};
   state.attention = state.attention || [];
   state.channels = state.channels || {};
   state.artists = state.artists || {};
@@ -1434,35 +1416,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       box.appendChild(d);
     });
   }
-  function seatCount() { var s = 0, h, r; for (h = 12; h <= 17; h++) { r = state.rota[String(h)] || []; if ((r[0] || "").trim()) s++; if ((r[1] || "").trim()) s++; } return s; }
-  function renderRota() {
-    var box = $("#rota"); box.innerHTML = "";
-    for (var h = 12; h <= 17; h++) {
-      (function (h) {
-        var key = String(h), names = state.rota[key] || ["", ""];
-        var n0 = (names[0] || "").trim(), n1 = (names[1] || "").trim(), got = (n0 ? 1 : 0) + (n1 ? 1 : 0);
-        var card = el("div", "rslot" + (got === 2 ? " full" : got === 1 ? " part" : ""));
-        var head = el("div", "h");
-        head.appendChild(el("span", null, hhmm(h * 60) + " – " + hhmm((h + 1) * 60)));
-        head.appendChild(el("span", "chip " + (got === 2 ? "olive" : got ? "gold" : "red"), got + "/2"));
-        card.appendChild(head);
-        [0, 1].forEach(function (i) {
-          var name = (names[i] || "").trim();
-          var b = el("button", "rname" + (name ? "" : " free"), name || "claim this seat");
-          b.onclick = function () {
-            var v = prompt("Who is covering " + hhmm(h * 60) + " to " + hhmm((h + 1) * 60) + "? (blank to clear)", name);
-            if (v === null) return;
-            var arr = (state.rota[key] || ["", ""]).slice();
-            arr[i] = v.trim(); state.rota[key] = arr;
-            save(v.trim() ? "Booked." : "Cleared.");
-          };
-          card.appendChild(b);
-        });
-        box.appendChild(card);
-      })(h);
-    }
-    $("#rota-note").textContent = seatCount() + " of 12 seats claimed";
-  }
   function renderAgents() {
     var box = $("#agents"); box.innerHTML = "";
     AGENTS.forEach(function (a) {
@@ -1489,7 +1442,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     var ns = nowState(), c = currentSlots(ns), ph = phase(ns);
     var openHelp = state.help.filter(function (h) { return h.status === "open"; }).length;
     var blocked = state.attention.filter(function (a) { return a.state === "blocked"; }).length;
-    var seats = seatCount();
     $("#board-head").textContent = ph === "live" ? "On now: " + (c.now ? c.now.n : "between things")
       : ph === "morning" ? "Event day, before doors"
       : ph === "after" ? "After the event"
@@ -1501,7 +1453,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
     function box(cls, v, label) { var d = el("div", "kpibox " + cls); d.appendChild(el("div", "v", String(v))); d.appendChild(el("div", "k", label)); k.appendChild(d); }
     box(openHelp ? "red" : "olive", openHelp, "help open");
     box(blocked ? "red" : "olive", blocked, "blocked");
-    box(seats === 12 ? "olive" : "gold", seats + "/12", "rota seats");
     box(state.channels.stream ? "olive" : "red", state.channels.stream ? "set" : "none", "stream link");
     box(artifactNs && canWrite ? "olive" : "gold", artifactNs && canWrite ? "shared" : "local", "this board");
     $("#say-box").textContent = sayLine();
@@ -1750,7 +1701,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   function updateBadges() {
     setBadge("queue", state.help.filter(function (h) { return h.status === "open"; }).length, "");
     setBadge("attention", state.attention.filter(function (a) { return a.state === "blocked"; }).length, "");
-    setBadge("rota", 12 - seatCount(), "g");
     var openAdv = 0; ROSTER.forEach(function (a) { openAdv += CHECKS.length - advCount(a.id); });
     setBadge("artists", openAdv, "g");
     setBadge("profile", myMessages().length, "g");
@@ -1758,7 +1708,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
   function render() {
     renderClock(); renderCountdown(); renderNowNext(); renderLounge(); renderPass(); renderProfile(); renderPlayer();
     renderSchedule("#sched-public", true); renderSchedule("#sched-team", false);
-    renderWatch(); renderAnnouncements(); renderQueue(); renderAttention(); renderRota(); renderBoard();
+    renderWatch(); renderAnnouncements(); renderQueue(); renderAttention(); renderBoard();
     renderArtists(); renderKit(); renderMessages();
     updateBadges();
   }
@@ -1957,7 +1907,6 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       openHelp.length ? openHelp.map(function (x) { return "  · " + x.kind + " — " + x.where + " — " + x.msg; }).join("\n") : "  · clear", "",
       "BLOCKED (" + blocked.length + "):",
       blocked.length ? blocked.map(function (x) { return "  · " + x.title + " — " + (x.owner || "no owner"); }).join("\n") : "  · nothing", "",
-      "MODERATOR ROTA: " + seatCount() + "/12 seats claimed", "",
       "PUBLIC LINE RIGHT NOW:", sayLine()
     ].join("\n"), "Report");
   };
