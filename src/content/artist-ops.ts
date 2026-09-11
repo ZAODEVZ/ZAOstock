@@ -147,7 +147,7 @@ export const SOUNDCHECK = {
  * the vehicle-access answer and it is not in yet.
  */
 export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
-  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on this page. It is your agreement to play: the terms are at the top. Photo link, short bio, your city, your links, your tech rider (who is on stage, what you plug in, what you bring, what you need from us), and a yes or no on Friday soundcheck and on filming. Your own post goes up once your details are in.' },
+  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on this page. It is your agreement to play: the terms are at the top. Photo link, short bio, your city, your links, your tech rider (who is on stage, the gear you need from us, what you bring), and a yes or no on Friday soundcheck and on filming. Your own post goes up once your details are in.' },
   { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage. Every act, mandatory, and there is no Saturday alternative. It doubles as a filming and recording night.' },
   { when: 'Saturday 3 October, 10 AM', what: 'Everyone on site. Crew is in from 8.' },
   { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with seven-minute changeovers.' },

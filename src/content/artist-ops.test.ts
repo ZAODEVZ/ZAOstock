@@ -297,7 +297,7 @@ describe('the artist form is the contract', () => {
   });
 
   it('asks for the tech rider in the form, not by a dated email', () => {
-    for (const q of ['What do you plug in?', 'What do you bring?', 'What do you need from us?']) expect(gs).toContain(q);
+    for (const q of ['Who is on stage?', 'What gear do you need from us?', 'What do you bring?']) expect(gs).toContain(q);
     expect(ARTIST_DATES.map((d) => d.when)).not.toContain('Friday 18 September');
     expect(ARTIST_DATES[0].what).toMatch(/tech rider/);
   });
