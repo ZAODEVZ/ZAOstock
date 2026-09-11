@@ -9,10 +9,15 @@ import path from 'path';
 // we 3 metal" (vault decisions/enteract-and-we3metal-are-not-partners.md).
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
-const NOT_PARTNERS = /enteract|web3 ?metal|we3 ?metal/i;
+
+// The estate's full retired set, exactly as ~/bin/zao-retired-names has it
+// (CASELESS, plus SANG as a case-sensitive word), so the templates are held to
+// the same list as every other repo. Change it there first, then here.
+const RETIRED_CASELESS = /magnetiq|songjam|enteract|web3 ?metal|we3 ?metal/i;
+const RETIRED_SANG = /\bSANG\b/;
 
 describe('what the artist templates put in writing', () => {
-  it('names no non-partner in anything copied to an artist', () => {
+  it('names nothing retired in anything copied to an artist', () => {
     const memo = read('docs/music/artist-deal-memo-template.md');
     // The memo body runs from its own title to the usage notes; the Updates
     // log after it is history and is never sent.
@@ -23,7 +28,8 @@ describe('what the artist templates put in writing', () => {
       ['outreach templates', read('docs/music/artist-outreach-templates.md')],
       ['rider template', read('docs/music/artist-rider-template.md')],
     ] as const) {
-      expect(text, name).not.toMatch(NOT_PARTNERS);
+      expect(text, name).not.toMatch(RETIRED_CASELESS);
+      expect(text, name).not.toMatch(RETIRED_SANG);
     }
   });
 
