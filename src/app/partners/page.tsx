@@ -35,7 +35,7 @@ export default function PartnersPage() {
             Partners give time, venue and infrastructure.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Each one has a confirmed agreement and a named point of contact on the ZAO team. Nobody here paid to be listed.
+            Every partner has a named point of contact on the ZAO team. Nobody here paid to be listed.
           </p>
         </div>
       </Section>
