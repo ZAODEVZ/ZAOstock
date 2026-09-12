@@ -16,6 +16,21 @@ import { PARTNERS, SITE } from '@/content/site';
 // - never claims deductibility. The negative disclaimer was struck 2026-08-31;
 //   saying nothing is compliant, asserting a deduction is not
 
+/** MARKETING's file carries instructions above a `---` line and a Sources block below a second one. Render only the middle. */
+export function publishable(markdown: string): string {
+  const parts = markdown.split(/\n---\n/);
+  const middle = parts.length >= 3 ? parts.slice(1, -1).join('\n---\n') : parts.length === 2 ? parts[1] : markdown;
+  // Whole-paragraph italic parentheticals are MARKETING's notes to SITE, not copy.
+  // HTML comments are internal notes too: react-markdown ESCAPES raw HTML rather
+  // than hiding it, so until 2026-09-12 the kit's own "<!-- re-check ... -->"
+  // note was printed on the public page for a journalist to read.
+  return middle
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/^\*\([\s\S]*?\)\*\s*$/gm, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 export const PRESS_KIT_PATH = path.join(process.cwd(), 'docs', 'marketing', 'press-kit.md');
 
 export const PRESS_CONTACT = 'info@thezao.com';

@@ -3,7 +3,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
-import { loadPressKit } from '@/lib/press-kit';
+import { loadPressKit, publishable } from '@/lib/press-kit';
 import { SITE, PARTNERS } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Badge, Button, Card, SectionHeader, PartnerLogo } from '@/components/poster';
 
@@ -30,14 +30,6 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
   },
 };
-
-/** MARKETING's file carries instructions above a `---` line and a Sources block below a second one. Render only the middle. */
-function publishable(markdown: string): string {
-  const parts = markdown.split(/\n---\n/);
-  const middle = parts.length >= 3 ? parts.slice(1, -1).join('\n---\n') : parts.length === 2 ? parts[1] : markdown;
-  // Whole-paragraph italic parentheticals are MARKETING's notes to SITE, not copy.
-  return middle.replace(/^\*\([\s\S]*?\)\*\s*$/gm, '').trim();
-}
 
 type Segment = { markdown: string; hold?: string };
 
