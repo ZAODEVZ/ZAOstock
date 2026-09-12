@@ -6,36 +6,73 @@ import { SITE } from './site';
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 
+/**
+ * The `.site` block of globals.css, brace-counted. The public pages wear its
+ * values (the front page's look, 2026-09-10); a token it does not set is a
+ * constant from @theme, so the caller falls back to the whole file.
+ */
+export function siteBlock(css: string): string {
+  const start = css.indexOf('.site {');
+  if (start < 0) return '';
+  let depth = 0;
+  for (let i = css.indexOf('{', start); i < css.length; i++) {
+    if (css[i] === '{') depth++;
+    else if (css[i] === '}' && --depth === 0) return css.slice(start, i);
+  }
+  return '';
+}
+
+/** The hex a stretch of CSS gives one token, or null. */
+export function tokenIn(css: string, token: string): string | null {
+  return css.match(new RegExp(`--color-${token}:\\s*(#[0-9A-Fa-f]{6})`))?.[1] ?? null;
+}
+
 describe('the design kit cannot drift from the site it describes', () => {
   it('gives every colour the exact hex the site uses', () => {
     const css = read('src/app/globals.css');
-    // The public pages wear the .site block's values (the front page's look,
-    // 2026-09-10); a token it does not set is a constant from @theme.
-    //
-    // Braces are counted rather than cut at the first "}": a nested rule (a
-    // media query inside .site) would truncate the slice, and every token
-    // after it would silently fall through to the @theme value and pass.
-    const start = css.indexOf('.site {');
-    expect(start).toBeGreaterThan(-1);
-    let depth = 0;
-    let end = start;
-    for (let i = css.indexOf('{', start); i < css.length; i++) {
-      if (css[i] === '{') depth++;
-      else if (css[i] === '}' && --depth === 0) { end = i; break; }
-    }
-    expect(end, 'the .site block never closes').toBeGreaterThan(start);
-    const site = css.slice(start, end);
-    // Whatever the block's shape, the test has to see the tokens it holds.
-    expect(site.match(/--color-[a-z0-9-]+:/g) ?? [], 'the .site slice lost tokens').toHaveLength(
-      (css.slice(start).match(/--color-[a-z0-9-]+:/g) ?? []).length -
-        (css.slice(end).match(/--color-[a-z0-9-]+:/g) ?? []).length,
-    );
+    const site = siteBlock(css);
     const drift = COLOURS.filter((c) => {
-      const re = new RegExp(`--color-${c.token}:\\s*(#[0-9A-Fa-f]{6})`);
-      const m = site.match(re) ?? css.match(re);
-      return !m || m[1].toUpperCase() !== c.hex.toUpperCase();
+      const m = tokenIn(site, c.token) ?? tokenIn(css, c.token);
+      return !m || m.toUpperCase() !== c.hex.toUpperCase();
     }).map((c) => c.token);
     expect(drift).toEqual([]);
+  });
+
+  // The slice is what the check above trusts, so it is tested on a fixture
+  // rather than on globals.css, which has no nested block today and so cannot
+  // tell a correct reader from a broken one.
+  //
+  // In the fixture, `.site` nests a media query and then sets --color-x, which
+  // :root sets to a DIFFERENT hex. Cutting at the first "}" ends the block
+  // inside the nest: --color-x is never seen, the check falls back to :root,
+  // and it grades the wrong value as correct.
+  describe('reading the .site block', () => {
+    const FIXTURE = [
+      ':root { --color-x: #111111; }',
+      '.site {',
+      '  --color-a: #AAAAAA;',
+      '  @media (min-width: 40rem) { --color-b: #BBBBBB; }',
+      '  --color-x: #222222;',
+      '}',
+      '.after { --color-c: #CCCCCC; }',
+    ].join('\n');
+
+    /** What the test did until 2026-09-12: stop at the first closing brace. */
+    const firstBrace = (css: string) => css.slice(css.indexOf('.site {'), css.indexOf('}', css.indexOf('.site {')));
+
+    it('keeps every token the block sets, including after a nested rule', () => {
+      expect(siteBlock(FIXTURE).match(/--color-[a-z0-9-]+:/g)).toHaveLength(3);
+      expect(firstBrace(FIXTURE).match(/--color-[a-z0-9-]+:/g)).toHaveLength(2);
+    });
+
+    it('reads the block, not what follows it', () => {
+      expect(siteBlock(FIXTURE)).not.toContain('--color-c');
+    });
+
+    it('grades the value .site sets, where cutting early grades :root', () => {
+      expect(tokenIn(siteBlock(FIXTURE), 'x')).toBe('#222222');
+      expect(tokenIn(firstBrace(FIXTURE), 'x') ?? tokenIn(FIXTURE, 'x')).toBe('#111111');
+    });
   });
 
   it('lists the three families the site actually loads', () => {
