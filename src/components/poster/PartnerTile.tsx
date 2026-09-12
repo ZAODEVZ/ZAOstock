@@ -6,6 +6,9 @@ import { Badge } from './primitives';
 // badges read at the same weight. When no file exists the tile is text only
 // and says so: never a broken image, never a placeholder box.
 //
+// The logo sits on a light plate that never flips: several marks are dark
+// artwork on transparent and would vanish on a dark-mode card.
+//
 // Intrinsic sizes of the files in public/partners/ (DESIGN.md: every image has
 // width and height). A file not listed here still renders; it just cannot
 // reserve its box before load.
@@ -39,9 +42,9 @@ export function PartnerLogo({ src, name, className }: { src: string; name: strin
 export function PartnerTile({ partner, showComing }: { partner: Partner; showComing?: boolean }) {
   const { name, role, logoSrc } = partner;
   return (
-    <li className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4 py-4 flex flex-col gap-3 list-none">
+    <li className="bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard px-4 py-4 flex flex-col gap-3 list-none">
       {logoSrc ? (
-        <div className="h-10 lg:h-12 flex items-center">
+        <div className="h-12 lg:h-14 self-start flex items-center rounded-[8px] bg-onfill px-2">
           <PartnerLogo src={logoSrc} name={name} />
         </div>
       ) : showComing ? (

@@ -145,7 +145,7 @@ export default async function OverviewOnePager() {
   ];
 
   return (
-    <main className="min-h-screen bg-paper-100 text-ink-950 print:bg-white print:text-slate-900">
+    <main className="site site-light min-h-screen bg-paper-100 text-ink-950 print:bg-white print:text-slate-900">
       {/* Top bar */}
       <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-4 print:hidden">
         <Link href="/" className="text-sm text-denim-500 hover:underline">

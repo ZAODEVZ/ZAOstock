@@ -109,7 +109,7 @@ export default function PressPage() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">
           {BADGES.map((b) => (
             <Card key={b.href} className="p-0">
-              <div className={`flex items-center justify-center border-b-2 border-ink-950 p-5 ${b.dark ? 'bg-ink-950' : 'bg-paper-100'}`}>
+              <div className={`flex items-center justify-center border-b-2 border-ink-950 p-5 ${b.dark ? 'bg-night' : 'bg-paper-100'}`}>
                 <Image src={b.href} alt={b.alt} width={SITE.logo.width} height={SITE.logo.height} sizes="240px" className={b.dark ? 'h-[180px] w-auto' : 'h-[180px] w-auto rounded-sm border-2 border-ink-950'} />
               </div>
               <div className="p-5 flex flex-wrap items-center justify-between gap-3">
@@ -130,9 +130,12 @@ export default function PressPage() {
             <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0 mb-3">Partner logos</h3>
             <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 m-0 p-0 list-none">
               {PARTNERS.filter((p) => p.logoSrc).map((p) => (
-                <li key={p.name} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4 py-4 flex items-center justify-between gap-4">
+                <li key={p.name} className="bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard px-4 py-4 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4 min-w-0">
-                    <PartnerLogo src={p.logoSrc!} name={p.name} className="h-10 lg:h-12 w-auto max-w-[120px] shrink-0 object-contain object-left" />
+                    {/* Light plate in both modes: some marks are dark artwork on transparent. */}
+                    <span className="shrink-0 rounded-[8px] bg-onfill px-2 py-1">
+                      <PartnerLogo src={p.logoSrc!} name={p.name} className="h-10 lg:h-12 w-auto max-w-[120px] object-contain object-left" />
+                    </span>
                     <span className="font-sans font-bold text-sm leading-tight text-ink-950">{p.name}</span>
                   </div>
                   <a href={p.logoSrc} download className="shrink-0 text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
