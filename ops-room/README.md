@@ -3,10 +3,10 @@
 One page that runs the day. The public side is where anyone lands, finds the
 schedule, watches, and asks a human for help. The team side, behind a code, is
 where the crew and the artists work: the run of show with owners and
-seconds, the artist advance, the help queue, the moderator rota, the squads.
+seconds, the artist advance, the help queue, the squads.
 
 Built for **Saturday 3 October 2026**, Franklin Street Parklet, Ellsworth,
-Maine. Eight acts, 12:05 to 17:55, street clears at six. Black Moon Public House
+Maine. Eight acts, music 12:05 to 17:46, street clears at six. Black Moon Public House
 next door feeds the performers and hosts its own afterparty after six.
 
 ---
@@ -61,7 +61,6 @@ Crew and artists use the same code.
 | Run of Show | The grid with owner and second on every line, and red flags where a name is missing. |
 | Artist Advance | Eight acts × ten advance items, ticked together. |
 | Artist Kit | A personalised pack per act: their set time, the day, hospitality, and only what they still owe. One button copies it. |
-| Moderator Rota | Twelve seats, two an hour, noon to six. Click a seat to claim it. |
 | Agent Squads | Seven roles a teammate can hand to an agent, with a paste-ready brief each. |
 | Channels | Where the audience goes. Fill these and the public tiles go live. |
 | Broadcast | Post an announcement to the public side. |
@@ -156,19 +155,20 @@ working the board after dark.
 From the organizing document, the 31 August standup and the **run of show
 locked on 3 September**:
 
-- Eight acts, outdoors, 12:05 to 17:55: The Crown Vics, OPEN X, Grass Rug,
+- Eight acts, outdoors, 12:05 to 17:46: The Crown Vics, OPEN X, Grass Rug,
   Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz (Hurricane out 2026-09-10). Street
   clears 18:00. WaveWarZ is cancelled and Stilo is not coming in person.
 - The evening is Black Moon's afterparty, not ZAOstock's programme (Zaal,
   3 September). The board shows it as theirs and books nothing into it.
 - The PA comes from OPEN X, who also play. There is no rental gate.
-- The lineup reveal is Sunday 13 September and reads only acts confirmed in
-  writing. The artist details form is due back Friday 11 September.
-- **Five minutes between every act. If a set runs over it comes out of that
+- There is no reveal day: an act publishes once confirmed in writing, with a
+  bio and a photo. The artist details form has no due date (Zaal, 10 September).
+- **Seven minutes between every act. If a set runs over it comes out of that
   act's own changeover; the next act still starts on time.**
 - Black Moon covers bottled water and electricity, a $20 gift certificate for
   every performer, the basement dressing room and bathroom, and a porta-potty.
-- The City has approved the fire performance. It needs a fire circle.
+- No fire act. The City had approved one; Zaal dropped it on 11 September.
+- No moderated stream (Zaal, 11 September), so there is no moderator rota.
 - Event insurance is quoted; talks with a local broker to get ZAO and the City
   on liability. This was the permit condition.
 - Star 97.7 is a media partner: studio 10 September and 1 October, ads from
@@ -188,10 +188,9 @@ the crew flips it on reveal day.
   are the only real ones in the repo. This is tracked on the attention board.
 - **The stream has no recorded destination**, no account and no operator, and
   the parklet internet has never been tested. Also on the board.
-- **Twelve moderator seats, none claimed** at the time of writing.
 - **Shared state only works inside the claude.ai artifact host.** Opened from
   zaostock.com/ops the page has no `window.claude`, so every save says "saved on
-  this screen only" and the help queue, rota and lineup switch never leave the
+  this screen only" and the help queue and lineup switch never leave the
   device. Where that state should live is the open question on this rewrite.
 - Audio autoplay depends on browser policy. The page tries on load; if the
   browser refuses, the first click, keypress or scroll anywhere starts it and a

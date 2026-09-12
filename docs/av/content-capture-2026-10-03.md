@@ -42,8 +42,8 @@ come out of the after party or Friday night.
 
 ## The problem the review named, still true
 
-The crew who would shoot is Dcoop's, and Dcoop is AV lead, on stage at 14:15,
-and running fire spinning. A photographer and a video shooter are two more
+The crew who would shoot is Dcoop's, and Dcoop is AV lead, on stage at 14:15.
+A photographer and a video shooter are two more
 unnamed roles on top of the five already queued for Zaal at standup. Neither
 is on the grill list yet.
 
