@@ -46,7 +46,9 @@ export type OpsAct = {
   key: string;
   /** Exactly as LINEUP_NAMES spells it. */
   name: string;
-  /** 24h, exactly as /program prints it. A test holds the two together. */
+  /** 24h, exactly as src/content/program.ts has it. A test holds the two together.
+   *  An act reads this on its own backstage page; it is not published (Zaal,
+   *  2026-09-12: "no set times listed publicly"). */
   setStart: string;
   minutes: number;
   /** SHA-256 hex of the code. The code itself is in the private vault. */
@@ -56,8 +58,9 @@ export type OpsAct = {
 /**
  * Eight acts, in running order. Hurricane is out (Zaal, 2026-09-10) and has no
  * page. Retimed the same day (Zaal: seven-minute changeovers, the 30-minute
- * acts to 33, "option b"): music 12:05 to 17:46. /program is the public source
- * and a test holds every time here to it.
+ * acts to 33, "option b"): music 12:05 to 17:46. src/content/program.ts is the
+ * source and a test holds every time here to it. /program publishes the order
+ * only; the clock lives on each act's own backstage page.
  */
 export const OPS_ACTS: readonly OpsAct[] = [
   { key: 'crown-vics', name: 'The Crown Vics', setStart: '12:05', minutes: 33,

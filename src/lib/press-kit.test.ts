@@ -96,6 +96,10 @@ describe('what /press renders out of the kit', () => {
     // public page, two days after /program was corrected.
     const text = publishable(kit);
     expect(text).not.toMatch(/5:55|17:55|five-minute changeover|30 to 40 minute/i);
-    expect(text).toContain('12:05 to 5:46');
+    // No set time for any act, opener included (Zaal, 2026-09-12: "no set times
+    // listed publicly"). The day's boundaries are not a slot, so they stay.
+    expect(text).not.toMatch(/\b\d{1,2}:[0-5]\d\b/);
+    expect(text).toContain('noon to six');
+    expect(text).toContain('seven-minute changeovers');
   });
 });

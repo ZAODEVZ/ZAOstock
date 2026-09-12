@@ -387,7 +387,7 @@ describe('Hurricane is off the bill', () => {
 
   it('is not billed on any surface that names the acts', () => {
     expect(LINEUP_NAMES).not.toContain('Hurricane');
-    expect(read('src/app/program/page.tsx')).not.toMatch(/label:\s*'Hurricane'/);
+    expect(read('src/content/program.ts')).not.toMatch(/label:\s*'Hurricane'/);
     expect(read('ops-room/ops-room.src.html')).not.toMatch(/n:"Hurricane"|id:"hurricane"/);
     expect(read('docs/marketing/press-kit.md')).not.toMatch(/hurricane/i);
     expect(read('scripts/create-artist-form.gs')).not.toMatch(/'Hurricane - /);

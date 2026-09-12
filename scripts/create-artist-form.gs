@@ -73,9 +73,10 @@ function createZaostockArtistForm() {
 
   form.addListItem()
     .setTitle('Which act are you?')
-    // Set times live in ONE public place, /program (Zaal, 2026-09-10). The form
-    // points there and never repeats a time, so the two cannot disagree.
-    .setHelpText('Your set time and length are at zaostock.com/program.')
+    // Set times are NOT public any more (Zaal, 2026-09-12: "no set times listed
+    // publicly"), which reversed the 2026-09-10 call to point here at /program.
+    // Each act has its own page, and the form points at that instead.
+    .setHelpText('Your set time and length are on your own ZAOstock page, the link in the message we sent you.')
     .setChoiceValues(ACTS)
     .setRequired(true);
 

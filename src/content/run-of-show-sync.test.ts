@@ -6,7 +6,7 @@ import { LINEUP_NAMES } from './site';
 /**
  * THE RUN OF SHOW EXISTS IN THREE PLACES. THEY MUST AGREE.
  *
- *   1. src/app/program/page.tsx   BLOCKS - what the public reads
+ *   1. src/content/program.ts      BLOCKS - the run of show (times are internal)
  *   2. ops-room/ops-room.src.html - what the CREW reads on the day
  *   3. the artists table          day_of_start_time - what the API publishes
  *
@@ -24,7 +24,7 @@ import { LINEUP_NAMES } from './site';
  * production. `scripts/reveal-preflight.sh` covers the live side.
  */
 
-const PROGRAM = path.join(process.cwd(), 'src/app/program/page.tsx');
+const PROGRAM = path.join(process.cwd(), 'src/content/program.ts');
 const OPS = path.join(process.cwd(), 'ops-room/ops-room.src.html');
 
 /** `{ time: '12:05', label: 'The Crown Vics'` -> Map(name -> "12:05") */
