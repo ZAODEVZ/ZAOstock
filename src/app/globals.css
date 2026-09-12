@@ -61,6 +61,13 @@
   --shadow-focus: 0 0 0 3px rgba(229, 172, 59, 0.45);
 
   --ease-poster: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Constants for the front page's look (.site, below). They never flip in
+     dark mode: a button, the footer and the moose's ground stay the same. */
+  --color-fireside: #C1662C;
+  --color-ember: #8F3E1E;
+  --color-night: #1B130B;
+  --color-onfill: #FFF8EC;
 }
 
 :root {
@@ -261,4 +268,156 @@ h1, h2, h3, h4 {
     .zs-btn { transition: none; }
     .zs-btn:active { transform: none; }
   }
+}
+
+/* ------------------------------------------------------------------------
+   THE FRONT PAGE'S LOOK, SITEWIDE. Zaal, 2026-09-10: "Gotta update all other
+   pages too to this style of branding as the front"; palette, his pick: "Front
+   page's". The values are Candy's site build (src/app/home.module.css), not her
+   earlier design-system tokens above.
+
+   Scoped to .site, which SiteShell puts on every public page, so /team keeps
+   its own look until after 3 October (DESIGN.md). The token NAMES stay the
+   design system's, so no page changes a class: "red" is now her fireside,
+   "gold" her sun and brass, "denim" her pine. /design lists them by both names.
+
+   Unlayered on purpose: unlayered CSS outranks Tailwind's utility layer, which
+   is what lets one rule here restyle every hand-written heading on 29 pages.
+   ------------------------------------------------------------------------ */
+.site {
+  --color-paper-100: #F2E6CC;
+  --color-paper-200: #FAF3E6;
+  --color-ink-950: #2E2015;
+  --color-ink-secondary: #5A4530;
+  --color-ink-muted: #6B5741;
+
+  --color-red-300: #E2833F;
+  --color-red-500: #C1662C;
+  --color-red-600: #9F4B1D;
+  --color-red-700: #8F3E1E;
+
+  --color-gold-300: #EFCB82;
+  --color-gold-400: #DFA23C;
+  --color-gold-500: #A97C3F;
+  --color-gold-600: #86602C;
+
+  --color-denim-300: #8FA26C;
+  --color-denim-400: #3F4D31;
+  --color-denim-500: #323E27;
+  --color-denim-600: #26301D;
+
+  --color-olive-300: #A4AF6E;
+  --color-olive-400: #7C8A3D;
+  --color-olive-500: #5B662A;
+
+  --shadow-hard: 0 4px 14px rgba(46, 32, 21, 0.16);
+  --shadow-hard-lg: 0 10px 30px rgba(46, 32, 21, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(223, 162, 60, 0.5);
+
+  --font-display: var(--font-oswald), "Arial Narrow", Impact, sans-serif;
+}
+
+/* Her dark variant, following the viewer's system setting as her homepage
+   does. Printable pages opt out with .site-light. Fills that carry dark text
+   (sun, olive) keep it: see the next rule. */
+@media (prefers-color-scheme: dark) {
+  .site:not(.site-light) {
+    color-scheme: dark;
+    --color-paper-100: #1C150D;
+    --color-paper-200: #2C2115;
+    --color-ink-950: #F0E2C4;
+    --color-ink-secondary: #CBB490;
+    --color-ink-muted: #B39D7B;
+
+    --color-red-300: #F0955A;
+    --color-red-500: #E2833F;
+    --color-red-600: #E2833F;
+    --color-red-700: #F0955A;
+
+    --color-gold-600: #D1A659;
+
+    --color-denim-300: #5F7048;
+    --color-denim-400: #8FA26C;
+    --color-denim-500: #A9B98A;
+    --color-denim-600: #C2CFA6;
+
+    --color-olive-500: #A4AF6E;
+
+    --shadow-hard: 0 4px 14px rgba(0, 0, 0, 0.45);
+    --shadow-hard-lg: 0 10px 30px rgba(0, 0, 0, 0.55);
+  }
+  html:has(.site:not(.site-light)) body {
+    background: #1C150D;
+  }
+}
+
+/* Sun, brass and olive grounds are light in both modes, so text on them stays
+   dark in both modes. Without this, dark mode would put cream ink on gold. */
+.site :is(.bg-gold-300, .bg-gold-400, .bg-gold-500, .bg-olive-300, .bg-olive-400, .zs-alert--warning, .zs-alert--success) {
+  --color-ink-950: #2E2015;
+  --color-ink-secondary: #5A4530;
+  --color-ink-muted: #5A4530;
+}
+
+/* Headings in her condensed capitals. */
+.site .font-display {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* The form classes, in her button and field style. */
+.site .zs-form,
+.site .zs-alert {
+  border: 1.5px solid color-mix(in oklab, var(--color-gold-500) 70%, transparent);
+  border-radius: 14px;
+}
+.site .zs-input,
+.site .zs-check {
+  border: 1.5px solid color-mix(in oklab, var(--color-ink-950) 35%, transparent);
+  border-radius: 10px;
+}
+.site .zs-btn {
+  border: 0;
+}
+/* Her sun badge, not a brown slab: the light tint with dark ink. */
+.site .zs-alert--warning {
+  background: var(--color-gold-300);
+}
+.site .zs-alert--success {
+  background: var(--color-olive-300);
+}
+.site .zs-btn--primary {
+  background: linear-gradient(180deg, var(--color-fireside), var(--color-ember));
+  color: var(--color-onfill);
+}
+.site .zs-btn--primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, var(--color-fireside), var(--color-ember));
+  transform: translateY(-2px);
+}
+.site .zs-btn--secondary {
+  background: transparent;
+  border: 1.5px solid var(--color-red-700);
+  color: var(--color-red-700);
+}
+
+
+/* Tailwind bakes the shadow-hard VALUE into its utility at build time, so the
+   soft shadows set on .site above never reach it. These put them back. */
+.site .shadow-hard {
+  box-shadow: var(--shadow-hard);
+}
+.site .shadow-hard-lg,
+.site .hover\:shadow-hard-lg:hover {
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* The poster look's ink outline and screen-print grain, wherever a page drew
+   them by hand, become her brass hairline and a clean surface. */
+.site .border-2.border-ink-950 {
+  border-width: 1.5px;
+  border-color: color-mix(in oklab, var(--color-gold-500) 60%, transparent);
+}
+.site .grain::after {
+  display: none;
 }

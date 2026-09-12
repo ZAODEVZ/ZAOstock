@@ -1,8 +1,16 @@
 # Build on ZAOstock
 
-**For the ZABAL Gamez builder battle, Saturday 29 August noon to Sunday 30 August noon (ET), and anyone else who wants to build something the festival can use on 3 October.**
+**For the ZABAL Gamez builder battle of 29 to 30 August, and anyone else who wants to build something the festival can use on 3 October.**
 
-ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Music from noon on the parklet stage, two hours of WaveWarZ battles from four, then the whole street walks next door into Black Moon Public House at six. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
+> **UPDATED 2026-09-12.** The builder battle itself is over; the brief stays up
+> for anyone still building. Four things changed after this was written and the
+> page said the old version of each until today: **WaveWarZ is not on the
+> 3 October programme** (Zaal, 2026-09-07), **Hurricane is out** (2026-09-10),
+> **ENTERACT and Web3Metal are not partners** (2026-09-10), and the day was
+> **retimed** on 2026-09-10. The facts table below is current; anything above it
+> that still reads as a live battle window is the August brief.
+
+ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Eight acts on the parklet stage, music 12:05 to 5:46, and the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
 
 ## The loop: build, then call Zaal
 
@@ -46,25 +54,25 @@ Build: an Unlock lock on Base for the Pro Ticket (and, if you like, a free key f
 
 What exists:
 
-- Quan (Chris Marshall) is the Decentraland contact and one of the four WaveWarZ battlers on 3 October.
+- Quan (Chris Marshall) is the Decentraland contact.
 - An open item on The ZAO's board: scan the Franklin Street parklet (LiDAR), export a GLB, and stand it up in Decentraland. The "Decentraland x COC x ZAO" Space has been queued since mid-August and not yet held.
 - The livestream chain for 3 October is specified in the repo (`docs/av/livestream-chain-2026-10-03.md`): one stream, outdoors until six, indoors after.
 
 What is missing: any ZAOstock presence in Decentraland.
 
-Build: a Decentraland scene of the parklet stage that plays the 3 October stream on the big screen, carries the partner banner and the badge, and gives the online 1,000 a place to stand together. Quan can tell you what the stage looks like; the badge and logos are in the press kit below.
+Build: a Decentraland scene of the parklet stage that plays the 3 October stream on the big screen, carries the partner banner and the mark, and gives the online 1,000 a place to stand together. The mark and the partner logos are in the press kit below.
 
 ### 4. A WaveWarZ front end for the event
 
 What exists:
 
-- WaveWarZ runs online all year; on 3 October it takes the parklet stage from 16:00 to 18:00. The story at 16:00 (Hurricane with Stilo), rules and bracket at 16:15, Battle 1 at 16:25, a voting window at 16:50, Battle 2 at 17:00, voting at 17:25, the Final at 17:35, the result at 17:55, then Hurricane walks the crowd next door. Battlers: Stilo, Jango, Lui, Quan. Hurricane on the mic. The audience decides, in the street and online.
-- Public stats: `GET https://wavewarz.info/api/public/stats` returns `volume`, `liveBattle`, `artistPayouts`, `traderClaims` and `battles` totals (1,468 battles as of 29 August). The battle site is https://wavewarz.com.
+- WaveWarZ runs online all year. **It is NOT on the 3 October programme** (Zaal, 2026-09-07): the four-to-six window it held is now Lyons Den and Fellenz, and the battlers and the on-mic role went with it. WaveWarZ remains a ZAOstock partner, and its first live battle did happen at ZAO-CHELLA in December 2024.
+- Public stats: `GET https://wavewarz.info/api/public/stats` returns `volume`, `liveBattle`, `artistPayouts`, `traderClaims` and `battles` totals (1,528 battles as of 12 September 2026; it climbs, so re-pull it). The battle site is https://wavewarz.com.
 - The program page: https://zaostock.com/program.
 
 What is missing: the in-person layer. Two hundred people on a street cannot vote on wavewarz.com from a phone in the sun without help, and the stage has no screen output.
 
-Build: a ZAOstock-skinned battle view in two sizes: a big-screen mode for the stage (bracket, who is on, live vote, the sponsor spot between rounds, the result) and a phone mode for the crowd (one tap to vote, one tap to the live battle). Use the poster identity in the press kit so it reads as the same event.
+Build: a ZAOstock-skinned battle view in two sizes: a big-screen mode (bracket, who is on, live vote, the result) and a phone mode (one tap to vote, one tap to the live battle). It is for WaveWarZ online, not for the 3 October stage. Use the identity at https://zaostock.com/design so it reads as the same event.
 
 ### 5. A collaboration and bounty board on POIDH
 
@@ -86,10 +94,10 @@ Build: a ZAOstock collaboration board on POIDH: each open task (a photo set of e
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
 | Cost | Free. Optional Pro Ticket, $50 |
-| Music | Noon to 4 PM live sets; 4 to 6 PM WaveWarZ; 6 to 8 PM DJ set and 8 to 10 PM live set at Black Moon |
+| Music | Eight acts, 12:05 to 5:46, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
 | Expected | 200 to 250 in person, about 1,000 online |
-| Lineup | Lyons Den confirmed; WaveWarZ battlers Stilo, Jango, Lui, Quan with Hurricane on the mic; the rest revealed 1 September |
-| Partners | Town of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, ENTERACT, Web3Metal, Bomb Squad |
+| Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
+| Partners | Town of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Contact | info@thezao.com |
@@ -100,16 +108,16 @@ Where to read more: https://zaostock.com/llms.txt (the whole site in one text fi
 
 - Site repo, public: https://github.com/ZAODEVZ/ZAOstock (Next.js 16, React 19, Tailwind 4, Supabase). Facts live in `src/content/festival.ts` and `src/content/site.ts`; the design system is `DESIGN.md`; brand tokens in `docs/brand/`.
 - Public API today: `GET /api/events` and `GET /api/events/zaostock-2026/lineup` (both degraded while the production database is repointed; the lineup falls back to a committed list). Forms: `POST /api/apply`, `POST /api/musicians/submit`, `POST /api/suggestions`, `POST /api/events/rsvp`.
-- Press kit with the badge (colour and mono) and every partner logo as PNG: https://zaostock.com/press
-- Identity: Boogaloo for display, Rubik for body, Space Mono for labels; paper `#F2E6D3`, ink `#241E15`, red `#D2402A`, gold `#E5AC3B`, denim `#2E6494`, olive `#7C8A3D`. Screen-printed poster, hard ink outlines, no gradients. Credit the badge to Samantha "Candy", CandyToyBox.
+- Press kit and every partner logo as PNG: https://zaostock.com/press. The 2026 badge is retired: the mark is the moose, by attabotty.
+- Identity: marks, colours, type and the rules are at https://zaostock.com/design, which is the one source and stays current. Credit the colour and type system to Samantha "Candy", CandyToyBox, and the moose to attabotty.
 - WaveWarZ public stats: https://wavewarz.info/api/public/stats
 - POIDH: https://poidh.xyz and the poidhz repo above.
 
 ## Rules for anything you ship publicly
 
-1. Names: only Lyons Den and the four battlers plus Hurricane are public before 1 September. The repo carries planning documents with other names; those are not public copy. Do not print them.
+1. Names: the eight acts in the facts table are public and no one else is. The repo carries planning documents with other names, including people no longer involved; those are not public copy. Do not print them.
 2. No prices, tiers or sponsor numbers anywhere; packages are on request. No "tax-deductible", no fiscal sponsor claim: ZAOstock has neither.
-3. Partners are the nine listed above and no one else, however friendly the conversation.
+3. Partners are the eight listed above and no one else, however friendly the conversation.
 4. Attendee-facing words lead with the music. Your tool can run on Base; the festival page does not say so.
 5. Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal, Lyons Den, Dcoop, Fellenz.
 6. No emojis and no em dashes in copy that ships on ZAOstock surfaces.

@@ -95,7 +95,7 @@ Slide 9 prices are UNSET, so a bank ask today is a conversation, not a tier.
 | City of Ellsworth | permit, parklet | verbal with Roddy | Roddy Ehrlenbach (Parks, Rec and Facilities); Amy Kenney (Communications Director - a PROMO conversation nobody has had) |
 | United Insurance | broker | the Jagger email, FIRST today | John Jagger |
 | Brown, Holmes & Milliken | fallback broker | none unless the quote fails | - |
-| Ellsworth Fire Department | open-flame paperwork (Dcoop), the Fire Chief's EMS question | draft held, waiting on Dcoop | public contact in doc 1070 |
+| Ellsworth Fire Department | the Fire Chief's EMS question (the open-flame paperwork is gone: fire act DROPPED 2026-09-11 (Zaal: "Drop the fire act.")) | draft no longer held; Zaal's call | public contact in doc 1070 |
 
 ## What this list is not
 
