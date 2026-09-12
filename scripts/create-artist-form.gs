@@ -57,8 +57,8 @@ function createZaostockArtistForm() {
   // pronunciation), plus the contract edits staged for him that day.
   form.setDescription(
     "You're on the bill for " + EVENT + '. This form is your agreement to ' +
-    'play. Please fill it in ' + ASK + '. Your set time and length are at ' +
-    'zaostock.com/program.\n\n' +
+    'play. Please fill it in ' + ASK + '. Your set time and length are on your ' +
+    'own ZAOstock page, the link in the message we sent you.\n\n' +
     'From Saturday 12 September we post about each artist, one at a time, with ' +
     'your bio and photo, and we keep posting about your performance right up to ' +
     'the day. It would mean a lot if you share those posts with your people too.\n\n' +
@@ -94,16 +94,18 @@ function createZaostockArtistForm() {
 
   form.addListItem()
     .setTitle('Which act are you?')
-    // Set times live in ONE public place, /program (Zaal, 2026-09-10). The form
-    // points there and never repeats a time, so the two cannot disagree.
-    .setHelpText('Your set time and length are at zaostock.com/program.')
+    // Set times are NOT public (Zaal, 2026-09-12: "no set times listed
+    // publicly"), which reversed the 2026-09-10 call to point here at /program.
+    // Each act has its own page, and the form points at that instead. #180
+    // takes the grid off /program; this wording has to match it.
+    .setHelpText('Your set time and length are on your own ZAOstock page, the link in the message we sent you.')
     .setChoiceValues(ACTS)
     .setRequired(true);
 
   // No "longer" option: the day has 14 minutes of margin in all.
   form.addMultipleChoiceItem()
     .setTitle('Does your set length work?')
-    .setHelpText('Your set length is at zaostock.com/program.')
+    .setHelpText('Your set length is on your own ZAOstock page.')
     .setChoiceValues(["Yes, keep it as it is", "I'd like 5 to 10 minutes shorter"])
     .setRequired(true);
 
