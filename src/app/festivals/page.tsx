@@ -149,7 +149,12 @@ export default async function FestivalsPage() {
                     title={m.name}
                   >
                     {m.photo_url ? (
-                      <Image src={m.photo_url} alt={m.name} width={160} height={160} className="h-full w-full object-cover" unoptimized />
+                      /* Optimised on purpose, though these are third-party URLs:
+                         one member photo is hotlinked from i.postimg.cc, which
+                         took over 25 seconds to answer on 2026-09-12 and left
+                         the page loading. Through the optimiser the slow host is
+                         fetched once, server side, and cached. */
+                      <Image src={m.photo_url} alt={m.name} width={160} height={160} sizes="160px" className="h-full w-full object-cover" />
                     ) : (
                       <span aria-label={m.name}>{initials(m.name)}</span>
                     )}
