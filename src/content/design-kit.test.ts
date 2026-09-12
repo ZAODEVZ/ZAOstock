@@ -11,9 +11,25 @@ describe('the design kit cannot drift from the site it describes', () => {
     const css = read('src/app/globals.css');
     // The public pages wear the .site block's values (the front page's look,
     // 2026-09-10); a token it does not set is a constant from @theme.
+    //
+    // Braces are counted rather than cut at the first "}": a nested rule (a
+    // media query inside .site) would truncate the slice, and every token
+    // after it would silently fall through to the @theme value and pass.
     const start = css.indexOf('.site {');
     expect(start).toBeGreaterThan(-1);
-    const site = css.slice(start, css.indexOf('}', start));
+    let depth = 0;
+    let end = start;
+    for (let i = css.indexOf('{', start); i < css.length; i++) {
+      if (css[i] === '{') depth++;
+      else if (css[i] === '}' && --depth === 0) { end = i; break; }
+    }
+    expect(end, 'the .site block never closes').toBeGreaterThan(start);
+    const site = css.slice(start, end);
+    // Whatever the block's shape, the test has to see the tokens it holds.
+    expect(site.match(/--color-[a-z0-9-]+:/g) ?? [], 'the .site slice lost tokens').toHaveLength(
+      (css.slice(start).match(/--color-[a-z0-9-]+:/g) ?? []).length -
+        (css.slice(end).match(/--color-[a-z0-9-]+:/g) ?? []).length,
+    );
     const drift = COLOURS.filter((c) => {
       const re = new RegExp(`--color-${c.token}:\\s*(#[0-9A-Fa-f]{6})`);
       const m = site.match(re) ?? css.match(re);
