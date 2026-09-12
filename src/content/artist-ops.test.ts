@@ -82,7 +82,7 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
   });
 
   it('gives every act the SAME time as /program', () => {
-    const prog = readFileSync(path.join(process.cwd(), 'src/app/program/page.tsx'), 'utf8');
+    const prog = readFileSync(path.join(process.cwd(), 'src/content/program.ts'), 'utf8');
     const times = new Map<string, string>();
     for (const m of prog.matchAll(/time:\s*'(\d{1,2}:\d{2})',\s*label:\s*'([^']+)'/g)) times.set(m[2], m[1]);
     const drift = OPS_ACTS.filter((a) => times.get(a.name) !== a.setStart).map(

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
+import { BLOCKS, publicSlots, type Venue } from '@/content/program';
 
 export const metadata: Metadata = {
   title: 'Program',
@@ -36,99 +37,21 @@ export const metadata: Metadata = {
 // act name is not on disk. The fire performance is DCoop's to time and place;
 // no row until he says. Do not hand-write any other name in.
 
-type Venue = 'OUT' | 'IN';
-
-interface Slot {
-  time: string;
-  label: string;
-  detail?: string;
-  tone?: 'set' | 'gap' | 'open' | 'battle';
-}
-
-interface Block {
-  start: string;
-  end: string;
-  venue: Venue;
-  title: string;
-  lede: string;
-  slots: Slot[];
-}
-
-const BLOCKS: Block[] = [
-  {
-    start: '12:00',
-    end: '18:00',
-    venue: 'OUT',
-    title: 'Live sets',
-    lede: 'Eight independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
-    slots: [
-      // THE RUN OF SHOW, RETIMED 2026-09-10 (Zaal: "lets give 7 mins between
-      // performers and give the 30 mins people some more time", then "option b").
-      // Hurricane's 15:10 set left a 40-minute hole; it is spread across the
-      // day instead. Seven-minute changeovers, the four 30-minute acts now 33,
-      // the 40-minute acts unchanged. Music 12:05 to 17:46, street clears at
-      // 18:00: fourteen minutes of margin on the whole afternoon.
-      //
-      // THIS GRID IS THE ONE PUBLIC SOURCE OF SET TIMES (Zaal, 2026-09-10:
-      // public everywhere at once, /program canonical, the artist form points
-      // here rather than repeating them). OPS_ACTS and the ops room are held to
-      // it by tests.
-      //
-      // Who is PLAYING and when, and nothing more: none of them has
-      // countersigned, and the word "confirmed" appears against no act here.
-      // The API reveal is a separate gate that still reads only
-      // status='confirmed'.
-      { time: '12:00', label: 'Doors. Music starts at noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
-      { time: '12:05', label: 'The Crown Vics', detail: 'Rock n roll dance band. 33 minutes.', tone: 'set' },
-      { time: '12:38', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' },
-      { time: '12:45', label: 'OPEN X', detail: 'Power pop rock. 40 minutes.', tone: 'set' },
-      { time: '13:25', label: 'Changeover', tone: 'gap' },
-      { time: '13:32', label: 'Grass Rug', detail: 'Jam rock band. 33 minutes.', tone: 'set' },
-      { time: '14:05', label: 'Changeover', tone: 'gap' },
-      { time: '14:12', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion. 33 minutes.', tone: 'set' },
-      { time: '14:45', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' },
-      { time: '14:52', label: 'Michael Anderson', detail: 'Solo piano. 33 minutes.', tone: 'set' },
-      { time: '15:25', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' },
-      { time: '15:32', label: 'DCoop', detail: 'Hip-hop. 40 minutes.', tone: 'set' },
-      { time: '16:12', label: 'Changeover', tone: 'gap' },
-      { time: '16:19', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop. 40 minutes.', tone: 'set' },
-      { time: '16:59', label: 'Changeover', tone: 'gap' },
-      { time: '17:06', label: 'Fellenz', detail: 'Rock guitar and soundtrack. 40 minutes. Closes the outdoor block.', tone: 'set' },
-      { time: '17:46', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
-    ],
-  },
-  {
-    start: '18:00',
-    end: '21:00',
-    venue: 'IN',
-    title: 'The evening at Black Moon',
-    // SETTLED 2026-09-07. North Creek, roughly 6 to 9, underwritten by Black Moon
-    // on their own premises and their own licence. Source is Steve Peer's own mail
-    // of 26 August: "underwrite 'North Creek' for the after party. 6 - 9pm (approx.)
-    // on the indoor stage."
-    //
-    // This page previously published 18:00-22:00 as a two-hour DJ set then a live
-    // set. That was the older plan and it overran the evening by an hour against
-    // what the venue owner who is paying for it actually described.
-    //
-    // NOTE THE SCOPE LINE: our insurance covers the 12-6pm OUTDOOR event only
-    // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
-    // block describes their programme, not ours, and should not gain detail we
-    // have not been given.
-    lede: 'At six the street clears. Black Moon next door hosts their own evening, North Creek from 6 to 9 - their stage, their licence, underwritten by them.',
-    slots: [
-      { time: '18:00', label: 'North Creek', detail: 'The after-party, hosted and underwritten by Black Moon on their own stage.', tone: 'set' },
-      { time: '21:00', label: 'Close', detail: 'Approximate. Black Moon keeps its own hours.', tone: 'gap' },
-    ],
-  },
-];
-
 const VENUE: Record<Venue, { name: string; where: string; dot: string }> = {
   OUT: { name: 'Outdoors', where: FESTIVAL.venue, dot: 'bg-gold-400' },
   IN: { name: 'Indoors', where: 'Black Moon Public House, next door', dot: 'bg-denim-400' },
 };
 
-const TONE: Record<NonNullable<Slot['tone']>, string> = {
+/** The bill is published in order, so the row carries its place, not a clock. */
+function order(block: Parameters<typeof publicSlots>[0], index: number): string {
+  // The outdoor bill is a running order. The evening is Black Moon's two rows
+  // and numbering those would read as a bill we programmed.
+  if (block.venue !== 'OUT') return '';
+  const acts = publicSlots(block).slice(0, index + 1).filter((s) => s.tone === 'set');
+  return String(acts.length);
+}
+
+const TONE: Record<'set' | 'gap' | 'open' | 'battle', string> = {
   set: 'text-ink-950 font-extrabold',
   battle: 'text-ink-950 font-extrabold',
   gap: 'text-ink-secondary font-semibold',
@@ -180,16 +103,16 @@ export default function ProgramPage() {
           <Section key={b.start} id={`b-${b.start.replace(':', '')}`}>
             <TwoUp>
               <SectionHeader
-                eyebrow={`${b.start} - ${b.end} · ${v.name}`}
+                eyebrow={`${b.venue === 'OUT' ? 'Noon to six' : 'From six'} · ${v.name}`}
                 title={b.title}
                 lede={b.lede}
               />
               <ol className="list-none m-0 p-0 border border-ink-950/60 rounded-md overflow-hidden">
-                {b.slots.map((s, i) => (
-                  <li key={i} className="grid grid-cols-[72px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
-                    <span className="font-mono text-sm font-bold text-ink-950 tabular pt-0.5">{s.time}</span>
+                {publicSlots(b).map((s, i) => (
+                  <li key={i} className="grid grid-cols-[32px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
+                    <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
                     <span>
-                      <span className={['block text-sm', TONE[s.tone ?? 'set']].join(' ')}>{s.label}</span>
+                      <span className={['block text-sm', TONE[s.tone]].join(' ')}>{s.label}</span>
                       {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
                     </span>
                   </li>
