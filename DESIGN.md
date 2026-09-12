@@ -1,5 +1,14 @@
 # Design System - ZAOstock
 
+> **SUPERSEDED FOR PUBLIC PAGES, 2026-09-10/11.** Every public page now wears the
+> front page's look: Candy's site build (`src/app/home.module.css`), not the
+> poster tokens below. Zaal: "Gotta update all other pages too to this style of
+> branding as the front"; palette, his pick: "Front page's". The values live in
+> `src/app/globals.css` under `.site` (light, and her dark variant by system
+> setting); headings are Oswald in capitals; `/design` lists every colour by the
+> site's token name and her name. **/team keeps this file's look until after
+> 3 October.** Read this file for /team, and for history.
+
 Written 2026-08-27 by the DESIGN lane, from `/design-consultation` run against
 this repo. This file is the contract SITE builds against. It adopts the
 **ZAOstock 26 retro-poster identity** delivered by Samantha "Candy" of

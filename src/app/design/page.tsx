@@ -18,15 +18,16 @@ function ArtGrid({ items, cols }: { items: readonly KitArt[]; cols: string }) {
           key={a.file}
           href={a.file}
           download
-          className="group flex flex-col rounded-md border-2 border-ink-950 bg-paper-200 no-underline hover:bg-paper-100"
+          className="group flex flex-col overflow-hidden rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 shadow-hard no-underline transition-transform hover:-translate-y-0.5"
         >
-          <span className="flex h-[140px] items-center justify-center p-3">
+          {/* A light plate in both modes: the art is drawn for cream. */}
+          <span className="flex h-[140px] items-center justify-center bg-onfill p-3">
             {/* unoptimized: these are Candy's own small webps. Through the optimiser a
                 160px file came back unscaled for a 640w request, and the
                 browser drew it at a quarter of its size. */}
             <Image src={a.file} alt={a.name} width={a.width} height={a.height} unoptimized className="max-h-[116px] max-w-full w-auto h-auto" />
           </span>
-          <span className="flex items-center justify-between gap-2 border-t-2 border-ink-950 px-3 py-2">
+          <span className="flex items-center justify-between gap-2 border-t border-gold-500/40 px-3 py-2">
             <span className="text-sm font-bold text-ink-950">{a.name}</span>
             <span className="font-mono text-[11px] text-ink-muted group-hover:text-ink-950">WEBP</span>
           </span>
@@ -53,7 +54,7 @@ export default function DesignKitPage() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {MARKS.map((m) => (
             <Card key={m.file} className="p-0">
-              <div className={`flex items-center justify-center border-b-2 border-ink-950 p-5 ${m.dark ? 'bg-ink-950' : 'bg-paper-100'}`}>
+              <div className={`flex items-center justify-center border-b-2 border-ink-950 p-5 ${m.dark ? 'bg-night' : 'bg-paper-100'}`}>
                 <Image src={m.file} alt={m.alt} width={m.width} height={m.height} sizes="240px" className="h-[180px] w-auto" />
               </div>
               <div className="p-5 flex flex-wrap items-center justify-between gap-3">
@@ -88,12 +89,13 @@ export default function DesignKitPage() {
 
       <Section id="colours">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-          {/* Provenance, kept on purpose: Candy's colors.css says the palette was
-              sourced from the 2026 badge, which was retired on 2026-09-10. */}
+          {/* The front page's palette since 2026-09-10 (Zaal: "Front page's").
+              Candy's earlier design-system inks, first drawn from the retired
+              2026 badge, are what /team still wears. */}
           <SectionHeader
             eyebrow="Colour"
-            title="The poster inks"
-            lede="Candy's palette. It was first drawn from the 2026 badge, since retired; the colours stay."
+            title="The colours"
+            lede="Candy's palette from her site build, the one every public page wears. The site's token name comes first, her name for the colour in the line. When your system is in dark mode, her dark variant takes over."
           />
           <Button href="/design/zaostock-colours.css" variant="secondary" size="sm">
             Download the palette
@@ -101,8 +103,8 @@ export default function DesignKitPage() {
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {COLOURS.map((c) => (
-            <div key={c.token} className="flex items-start gap-3 rounded-md border-2 border-ink-950 bg-paper-200 p-3">
-              <span className="h-12 w-12 shrink-0 rounded-sm border-2 border-ink-950" style={{ background: c.hex }} aria-hidden />
+            <div key={c.token} className="flex items-start gap-3 rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-3 shadow-hard">
+              <span className="h-12 w-12 shrink-0 rounded-[8px] border border-ink-950/20" style={{ background: c.hex }} aria-hidden />
               <div>
                 <p className="font-mono text-sm font-bold text-ink-950 m-0">
                   {c.token} <span className="font-normal">{c.hex}</span>

@@ -227,7 +227,7 @@ describe('retired claims stay retired', () => {
 
   // The two press-kit claims Zaal dropped on 2026-09-10 lived in page files and
   // the press kit, not only in this module, so check every file a reader sees.
-  it('keeps "4 million drove through" and "N countries" off every public file', () => {
+  it('keeps "4 million drove through", "N countries" and "confirmed agreement" off every public file', () => {
     const roots = ['src/app', 'src/components', 'src/content', 'public', 'docs/marketing/press-kit.md'];
     const files: string[] = [];
     for (const r of roots) {
@@ -241,7 +241,9 @@ describe('retired claims stay retired', () => {
     }
     const hits = files.flatMap((f) => {
       const src = readFileSync(f, 'utf8');
-      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i]
+      // "confirmed agreement": not every partner has a signed one. Zaal,
+      // 2026-09-11, of the partner line: "Soften it".
+      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i, /confirmed agreement/i]
         .filter((re) => re.test(src))
         .map((re) => `${path.relative(process.cwd(), f)}: ${re.source}`);
     });

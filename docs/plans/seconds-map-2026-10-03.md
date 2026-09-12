@@ -18,7 +18,7 @@ that are genuinely unfilled - stage manager, First Aid contact, street pointer.
 |---|---|---|---|
 | 12:05-12:35 | Steve Peer (The Crown Vics) | Venue and door | Katina |
 | 13:15-13:45 | Dcoop | Music and AV lead - the desk | **UNSET** |
-| Dcoop's fire slot (time TBC by Dcoop) | Dcoop | Music and AV lead | **UNSET** - same person as above |
+| ~~Dcoop's fire slot~~ | DROPPED 2026-09-11 (Zaal: "Drop the fire act.") | - | - |
 | 15:10-15:50 | Tom Fellenz | Advisor, event ops | none needed - not an operating role on the day |
 | 16:00-18:00 | Stilo (battling) | Sound | **UNSET** - this is the busiest block of the day |
 | 18:00-20:00 | Stilo (DJ set) | Sound | **UNSET** - same person, four hours total |
@@ -26,9 +26,8 @@ that are genuinely unfilled - stage manager, First Aid contact, street pointer.
 
 ## What this means in practice
 
-**Dcoop needs one second, not two.** The same person covers his 13:15-13:45 set
-and his fire slot. Both are short and both are on the outdoor stage, so one name
-covers roughly 45 minutes of the day.
+**Dcoop needs one second, for his own set.** There is no fire slot any more
+(DROPPED 2026-09-11 (Zaal: "Drop the fire act.")).
 
 **Stilo needs a second for four straight hours**, 16:00-20:00 - through WaveWarZ
 and his own DJ set. This is the largest single gap on the day and the one worth

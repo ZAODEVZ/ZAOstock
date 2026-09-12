@@ -61,8 +61,8 @@ of The ZAO, an independent music community.
 
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back.
-- **Eight acts, 12:05 to 5:55, one stage.** 30 to 40 minute sets with five-minute
-  changeovers. Music ends 5:55 and the street clears at six.
+- **Eight acts, 12:05 to 5:46, one stage.** 33 to 40 minute sets with seven-minute
+  changeovers. Music ends 5:46 and the street clears at six.
 - **Six onward: Black Moon Public House's own evening, next door.** North Creek,
   roughly 6 to 9, **hosted and underwritten by Black Moon on their own stage and
   their own licence.** It is their event, not part of the ZAOstock programme, and
@@ -89,24 +89,25 @@ WaveWarZ is a live music-battle format. Two artists play head to head and the
 audience picks the winner, in person and online. It runs online all year.
 
 **It is NOT on the 3 October programme.** Confirmed off by Zaal, 2026-09-07.
-The four-to-six window it used to hold is Lyons Den at 4:30 and Fellenz at 5:15.
+The four-to-six window it used to hold is Lyons Den at 4:19 and Fellenz at 5:06.
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 
-As of 27 August 2026, WaveWarZ had run 1,452 battles. (Provenance and re-pull
+As of 12 September 2026, WaveWarZ had run 1,528 battles. (Provenance and re-pull
 instructions are in the sources table at the foot of this file, not here - this
 section is what a journalist reads.)
-<!-- re-check: 2026-09-12 -->
-<!-- The 1,452 is a point-in-time count of a live, still-running system, printed
-     on the one page a journalist reads. It was 12 days old before anyone stamped
-     it. Re-pull it before quoting it again, or drop the figure: a stale
+<!-- re-check: 2026-10-01, before any print run. Re-pulled 2026-09-12T14:0xZ from
+     wavewarz.info/api/public/stats: battles.total = 1528. It is a point-in-time
+     count of a live, still-running system, printed on the one page a journalist
+     reads, so re-pull it before quoting it again or drop the figure: a stale
      number quoted to press is worse than no number, because we cannot correct
-     what they have already published. -->
+     what they have already published. src/content/site.ts WAVEWARZ_STATS holds
+     the same number; change both together. -->
 
 ## Partners
 
 Partners give time, venue and infrastructure, and Artizen supports the funding.
-Each has a confirmed agreement and a named point of contact on the ZAO team.
+Every partner has a named point of contact on the ZAO team.
 
 - Town of Ellsworth - parklet venue
 - Black Moon Public House - the evening, and the official after party
@@ -194,7 +195,7 @@ info@thezao.com
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
 | Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
 | Lyons Den public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
-| WaveWarZ 1,452, 27 Aug | `docs/sponsor/deck-2026-10-03.md` slide 6 |
+| WaveWarZ 1,528, 12 Sep | `docs/sponsor/deck-2026-10-03.md` slide 6 |
 | Partners | `src/app/page.tsx:101-112, 546-548` |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |
 | Founder lives in Ellsworth | deck slide 4 |

@@ -6,14 +6,73 @@ import { SITE } from './site';
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 
+/**
+ * The `.site` block of globals.css, brace-counted. The public pages wear its
+ * values (the front page's look, 2026-09-10); a token it does not set is a
+ * constant from @theme, so the caller falls back to the whole file.
+ */
+export function siteBlock(css: string): string {
+  const start = css.indexOf('.site {');
+  if (start < 0) return '';
+  let depth = 0;
+  for (let i = css.indexOf('{', start); i < css.length; i++) {
+    if (css[i] === '{') depth++;
+    else if (css[i] === '}' && --depth === 0) return css.slice(start, i);
+  }
+  return '';
+}
+
+/** The hex a stretch of CSS gives one token, or null. */
+export function tokenIn(css: string, token: string): string | null {
+  return css.match(new RegExp(`--color-${token}:\\s*(#[0-9A-Fa-f]{6})`))?.[1] ?? null;
+}
+
 describe('the design kit cannot drift from the site it describes', () => {
   it('gives every colour the exact hex the site uses', () => {
     const css = read('src/app/globals.css');
+    const site = siteBlock(css);
     const drift = COLOURS.filter((c) => {
-      const m = css.match(new RegExp(`--color-${c.token}:\\s*(#[0-9A-Fa-f]{6})`));
-      return !m || m[1].toUpperCase() !== c.hex.toUpperCase();
+      const m = tokenIn(site, c.token) ?? tokenIn(css, c.token);
+      return !m || m.toUpperCase() !== c.hex.toUpperCase();
     }).map((c) => c.token);
     expect(drift).toEqual([]);
+  });
+
+  // The slice is what the check above trusts, so it is tested on a fixture
+  // rather than on globals.css, which has no nested block today and so cannot
+  // tell a correct reader from a broken one.
+  //
+  // In the fixture, `.site` nests a media query and then sets --color-x, which
+  // :root sets to a DIFFERENT hex. Cutting at the first "}" ends the block
+  // inside the nest: --color-x is never seen, the check falls back to :root,
+  // and it grades the wrong value as correct.
+  describe('reading the .site block', () => {
+    const FIXTURE = [
+      ':root { --color-x: #111111; }',
+      '.site {',
+      '  --color-a: #AAAAAA;',
+      '  @media (min-width: 40rem) { --color-b: #BBBBBB; }',
+      '  --color-x: #222222;',
+      '}',
+      '.after { --color-c: #CCCCCC; }',
+    ].join('\n');
+
+    /** What the test did until 2026-09-12: stop at the first closing brace. */
+    const firstBrace = (css: string) => css.slice(css.indexOf('.site {'), css.indexOf('}', css.indexOf('.site {')));
+
+    it('keeps every token the block sets, including after a nested rule', () => {
+      expect(siteBlock(FIXTURE).match(/--color-[a-z0-9-]+:/g)).toHaveLength(3);
+      expect(firstBrace(FIXTURE).match(/--color-[a-z0-9-]+:/g)).toHaveLength(2);
+    });
+
+    it('reads the block, not what follows it', () => {
+      expect(siteBlock(FIXTURE)).not.toContain('--color-c');
+    });
+
+    it('grades the value .site sets, where cutting early grades :root', () => {
+      expect(tokenIn(siteBlock(FIXTURE), 'x')).toBe('#222222');
+      expect(tokenIn(firstBrace(FIXTURE), 'x') ?? tokenIn(FIXTURE, 'x')).toBe('#111111');
+    });
   });
 
   it('lists the three families the site actually loads', () => {
@@ -36,13 +95,14 @@ describe('the design kit cannot drift from the site it describes', () => {
     for (const f of ['src/components/poster/Header.tsx', 'src/components/poster/Footer.tsx']) {
       const src = read(f);
       expect(src, f).toContain('SITE.logo.src');
-      // A white knockout on paper is invisible: every placement sits on ink.
-      expect(src, f).toContain('bg-ink-950');
+      // A white knockout on cream is invisible: every placement sits on night,
+      // which stays dark in both modes (ink flips to cream in dark mode).
+      expect(src, f).toContain('bg-night');
     }
     // The homepage carries Candy's GOLD moose since 2026-09-10 (made for any
-    // ground). If it ever places the white one again, it must be on ink.
+    // ground). If it ever places the white one again, it must be on night.
     const home = read('src/app/page.tsx');
-    if (home.includes('SITE.logo.src')) expect(home).toContain('bg-ink-950');
+    if (home.includes('SITE.logo.src')) expect(home).toContain('bg-night');
   });
 
   // RETIRED AND PULLED 2026-09-10. Candy retired the 26 badge as "too similar
