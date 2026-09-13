@@ -16,7 +16,7 @@ import path from 'node:path';
  * wrong on their face, which is what these do.
  */
 
-const PAGE = 'src/app/program/page.tsx';
+const PAGE = 'src/content/program.ts';
 const src = readFileSync(path.join(process.cwd(), PAGE), 'utf8');
 
 const times = [...src.matchAll(/time: '(\d{2}):(\d{2})'/g)].map((m) => ({
