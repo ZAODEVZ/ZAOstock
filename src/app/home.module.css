@@ -188,3 +188,18 @@
   .close h2 em { color: #c1662c; }
   .brush { filter: none; }
 }
+
+/* why ellsworth, on the parklet footage (v11 build, 2026-09-13) */
+.ellSection { position: relative; overflow: hidden; }
+.ellBg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.ellBg video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ellBgFade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--cream) 0%, rgba(0, 0, 0, 0) 22%, rgba(0, 0, 0, 0) 78%, var(--cream) 100%), rgba(0, 0, 0, 0.32);
+}
+.ellSection > .wrap { position: relative; z-index: 1; }
+/* Anyone who asks the system for less motion gets the poster frame, still. */
+@media (prefers-reduced-motion: reduce) {
+  .ellBg video { display: none; }
+  .ellBg { background: center / cover no-repeat url("/brand/home/historic_main_street_storefronts.webp"); }
+}

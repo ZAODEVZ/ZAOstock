@@ -12,10 +12,16 @@ import s from './home.module.css';
 // base64-inlined into one 2.6 MB page), and anyone who asks the system for
 // reduced motion gets a still frame and a headline that never fades.
 //
-// The frames are 480x270, which is soft at full screen. Swap in a sharper set
-// when the source video comes, same names, same count.
+// EIGHTY FRAMES since 2026-09-13, from the v11 build Candy and attabotty made
+// together (Zaal: "Both"). The forty we had were the same flight at half the
+// sampling, so the scrub stepped; these are 640x360 and it runs smooth.
+//
+// They are 5.3 MB in all, so they are NOT all preloaded up front: the opening
+// dozen are fetched immediately, the rest once the page has loaded, which keeps
+// the first screen at the shell plus one 78 KB frame.
 
-const FRAMES = Array.from({ length: 40 }, (_, i) => `/brand/home/flight/${String(i).padStart(2, '0')}.webp`);
+const FRAMES = Array.from({ length: 80 }, (_, i) => `/brand/home/flight/${String(i).padStart(2, '0')}.webp`);
+const EAGER = 12;
 const FADE_START = 0.32;
 const FADE_END = 0.58;
 
@@ -31,10 +37,15 @@ export function HomeHero({ children }: { children: ReactNode }) {
       section.current?.classList.add(s.heroStill);
       return;
     }
-    FRAMES.forEach((src) => {
-      const im = new window.Image();
-      im.src = src;
-    });
+    const preload = (from: number, to: number) =>
+      FRAMES.slice(from, to).forEach((src) => {
+        const im = new window.Image();
+        im.src = src;
+      });
+    preload(0, EAGER);
+    const rest = () => preload(EAGER, FRAMES.length);
+    if (document.readyState === 'complete') rest();
+    else window.addEventListener('load', rest, { once: true });
     let current = 0;
     let ticking = false;
     const update = () => {
