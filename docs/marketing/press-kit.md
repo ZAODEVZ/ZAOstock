@@ -61,8 +61,9 @@ of The ZAO, an independent music community.
 
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back.
-- **Eight acts, 12:05 to 5:46, one stage.** 33 to 40 minute sets with seven-minute
-  changeovers. Music ends 5:46 and the street clears at six.
+- **Eight acts, one stage, noon to six.** Music starts at noon and ends before
+  the street clears at six, with seven-minute changeovers between acts.
+  Set times are not published: name the act, not the slot (Zaal, 2026-09-12).
 - **Six onward: Black Moon Public House's own evening, next door.** North Creek,
   roughly 6 to 9, **hosted and underwritten by Black Moon on their own stage and
   their own licence.** It is their event, not part of the ZAOstock programme, and
@@ -89,7 +90,8 @@ WaveWarZ is a live music-battle format. Two artists play head to head and the
 audience picks the winner, in person and online. It runs online all year.
 
 **It is NOT on the 3 October programme.** Confirmed off by Zaal, 2026-09-07.
-The four-to-six window it used to hold is Lyons Den at 4:19 and Fellenz at 5:06.
+The four-to-six window it used to hold is Lyons Den and Fellenz, whose slots are
+not published.
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 

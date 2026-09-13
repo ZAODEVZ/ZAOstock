@@ -1220,8 +1220,9 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       lab.appendChild(el("span", null, which === "now" ? "On now" : "Up next"));
       box.appendChild(lab);
       box.appendChild(el("div", "title", slot ? slotTitle(slot, true) : et));
+      // Where, not when: the public side names the act, never its slot.
       box.appendChild(el("div", "meta", slot
-        ? hhmm(slot.t) + " to " + hhmm(slot.e) + " · " + (slot.v === "in" ? "Black Moon" : slot.v === "out" ? "Franklin Street Parklet" : "Crew call")
+        ? (slot.v === "in" ? "Black Moon" : slot.v === "out" ? "Franklin Street Parklet" : "Crew call")
         : em));
     }
     if (ph === "before") { fill($("#nn-now"), "now", null, "Not yet", "Saturday 3 October. Music at noon."); fill($("#nn-next"), "next", null, "Doors at noon", "Franklin Street Parklet, Ellsworth. Free."); }
@@ -1289,7 +1290,11 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
       rows.forEach(function (s) {
         var d = el("div", "slot" + (s.kind === "gap" ? " gap" : ""));
         if (isEventDay(ns)) { if (c.now === s) d.classList.add("now"); else if (ns.min >= s.e) d.classList.add("past"); }
-        d.appendChild(el("div", "time", hhmm(s.t)));
+        // NO SET TIMES ON THE PUBLIC BOARD (Zaal, 2026-09-12: "no set times
+        // listed publicly"). The column stays so the grid keeps its shape; the
+        // crew view still carries the clock, and an act's own time is on its
+        // own backstage page.
+        d.appendChild(el("div", "time", forPublic ? "" : hhmm(s.t)));
         var mid = el("div");
         mid.appendChild(el("div", "nm", slotTitle(s, forPublic)));
         if (!forPublic) mid.appendChild(el("div", "dt", s.d));
@@ -1300,7 +1305,7 @@ var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
         var right = el("div");
         if (!forPublic && s.flag) right.appendChild(el("span", "chip red", s.flag));
         else if (!forPublic && s.confirmed === false) right.appendChild(el("span", "chip gold", "Not signed"));
-        else if (forPublic && s.kind === "act") right.appendChild(el("span", "chip mute", (s.e - s.t) + " min"));
+
         d.appendChild(right);
         box.appendChild(d);
       });

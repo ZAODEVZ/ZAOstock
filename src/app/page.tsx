@@ -155,8 +155,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. Why Ellsworth */}
-        <section className={s.section} id="ellsworth">
+        {/* 4. Why Ellsworth, over the parklet footage from the v11 build */}
+        <section className={`${s.section} ${s.ellSection}`} id="ellsworth">
+          <div className={s.ellBg} aria-hidden="true">
+            {/* Decorative and silent: autoplay needs muted, and iOS needs
+                playsInline or it opens the fullscreen player. Reduced motion
+                gets the still poster instead, in home.module.css. */}
+            <video src="/brand/home/ellsworth.mp4" poster="/brand/home/historic_main_street_storefronts.webp" autoPlay loop muted playsInline preload="none" />
+            <div className={s.ellBgFade} />
+          </div>
           <div className={s.wrap}>
             <div className={s.ellWrap}>
               <div className={s.ellPhotos}>
