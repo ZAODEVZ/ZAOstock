@@ -357,6 +357,12 @@ h1, h2, h3, h4 {
   --color-ink-950: #2E2015;
   --color-ink-secondary: #5A4530;
   --color-ink-muted: #5A4530;
+  /* Dark mode lifts --color-olive-500 to #A4AF6E, which is exactly
+     --color-olive-300. On an olive ground that painted the text its own
+     background colour and `text-olive-500` vanished. Pin it back to the light
+     value here, scoped to these grounds only, so olive-500 stays a green
+     accent everywhere else. */
+  --color-olive-500: #636F2F;
 }
 
 /* Headings in her condensed capitals. */
