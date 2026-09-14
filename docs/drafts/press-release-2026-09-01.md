@@ -15,12 +15,12 @@ Ellsworth American or anyone else without Zaal.
 
 **SEP 1 REVEAL RULE (Zaal, tapped 27 Aug 21:4x): reveal only acts confirmed IN WRITING by 31 August, whatever the count. Print that list, then "more to come" for the rest.**
 
-1. **The names.** Four confirmed as of Zaal, typed 27 Aug 20:4x: Lyons Den (placed after Dcoop in
+1. **The names.** Four confirmed as of Zaal, typed 27 Aug 20:4x: LyonsDen (placed after Dcoop in
    the running order, Zaal, typed 27 Aug 21:2x), Dcoop, Fellenz, Acadia Rising. Werb and Sen join only
    with a written yes by 31 August. On 31 August Zaal lists the acts confirmed
    in writing; that list, whatever the count, is what the release names, and
    the release keeps "with more to come".
-2. **Spellings settled** (Zaal, typed 27 Aug 19:3x): Lyons Den, Dcoop, Fellenz.
+2. **Spellings settled** (Zaal, typed 27 Aug 19:3x): LyonsDen, Dcoop, Fellenz.
 3. **Music starts at noon** (Zaal, typed 27 Aug 19:3x). The draft says noon. The site's
    `festival.ts` still reads 11 AM until SITE moves it back.
 4. **Quote lines** are UNSET. Two are marked. Zaal writes his own; a Black Moon
@@ -45,10 +45,10 @@ FOR RELEASE 1 SEPTEMBER 2026
 ELLSWORTH, MAINE - ZAOstock, a free one-day music festival on the Franklin
 Street Parklet, has announced its lineup for Saturday 3 October 2026.
 
-Independent artists play the outdoor stage from noon: **[HOLD - Lyons Den,
+Independent artists play the outdoor stage from noon: **[HOLD - LyonsDen,
 Fellenz, Dcoop, Acadia Rising - replace with the list confirmed in writing by
 31 Aug, whatever the count; Werb and Sen only with a written yes]**, with more
-to come. Lyons Den was announced earlier this summer.
+to come. LyonsDen was announced earlier this summer.
 
 From four to six the street turns into WaveWarZ, a live music-battle format
 where artists go head to head and the audience decides, in the street and
@@ -89,7 +89,7 @@ Contact: Zaal Panthaki, info@thezao.com
 | Free, Saturday 3 October 2026, Franklin Street Parklet, Ellsworth | `src/content/festival.ts` |
 | Music starts at noon | Zaal, typed 27 Aug 19:3x |
 | Battlers Stilo, Jango, Lui, Quan; Hurricane MC | Zaal, typed 27 Aug 19:3x; `src/app/team/plan/page.tsx` DAY[1] |
-| Four confirmed acts, names | `src/app/team/plan/page.tsx` DAY[0] minus Werb (Zaal, typed 27 Aug 20:4x); Lyons Den public at `src/app/page.tsx:397` |
+| Four confirmed acts, names | `src/app/team/plan/page.tsx` DAY[0] minus Werb (Zaal, typed 27 Aug 20:4x); LyonsDen public at `src/app/page.tsx:397` |
 | No changeover DJ claimed | Zaal, typed 27 Aug 20:0x: no DJ Aquavantes |
 | WaveWarZ 4-6, audience decides | `src/app/program/page.tsx` BLOCKS[1]; `docs/plans/production-plan-2026-10-03.md` section 4 |
 | Move to Black Moon at six, DJ set then live music to close | Zaal, typed 27 Aug 20:0x running order; `src/app/program/page.tsx` BLOCKS[2-3] lags it |

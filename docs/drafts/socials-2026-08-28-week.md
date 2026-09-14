@@ -24,8 +24,8 @@ all seven.
 | WaveWarZ battlers may be named: Stilo, Jango, Lui, Quan; Hurricane MC | Zaal, typed 27 Aug 19:3x; roster at `src/app/team/plan/page.tsx` DAY[1] |
 | Outdoors until six, then Black Moon next door | `src/app/program/page.tsx` BLOCKS |
 | Evening: Stilo DJs from six, live music to close; no changeover DJ | Zaal, typed 27 Aug 20:0x running order. PRODUCTION's ros-v2 supersedes |
-| Lyons Den confirmed, public | `src/app/page.tsx:397,404` |
-| Four confirmed acts total (names gated until 1 Sep): Lyons Den, Fellenz, Dcoop, Acadia Rising | `src/app/team/plan/page.tsx` DAY[0] minus Werb (Zaal, typed 27 Aug 20:4x) |
+| LyonsDen confirmed, public | `src/app/page.tsx:397,404` |
+| Four confirmed acts total (names gated until 1 Sep): LyonsDen, Fellenz, Dcoop, Acadia Rising | `src/app/team/plan/page.tsx` DAY[0] minus Werb (Zaal, typed 27 Aug 20:4x) |
 | Lineup reveal 1 September | `docs/plans/production-plan-2026-10-03.md` section 6 |
 | Musician submission cutoff **1 September** (moved from 3 Sep by Zaal, 29 Aug) | production plan section 6, locked at the 12 May standup (`docs/standup/2026-05-12-tue-recap.md:36`) |
 | WaveWarZ block, audience decides, in the street and online | `src/app/program/page.tsx` BLOCKS[1] |
@@ -65,7 +65,7 @@ all seven.
 Angle: the two public names, and the reveal date. Quick update.
 
 **Firefly (X + Farcaster /zao)** - 149 chars
-> ZM. Lyons Den is confirmed for ZAOstock, Saturday October 3, Franklin Street, Ellsworth. Free. The rest of the lineup lands September 1. zaostock.com
+> ZM. LyonsDen is confirmed for ZAOstock, Saturday October 3, Franklin Street, Ellsworth. Free. The rest of the lineup lands September 1. zaostock.com
 
 **X GC**
 > ZM. reveal is tuesday. lyons den is already out there, three more names go public on tuesday. if you know them, now is a good week to tell them you are coming.
@@ -74,7 +74,7 @@ Angle: the two public names, and the reveal date. Quick update.
 > ZM. lineup reveal for ZAOstock is september 1. lyons den is the name already public, three more on tuesday, plus the WaveWarZ block. zaostock.com/program
 
 **Telegram**
-> ZM. ZAOstock lineup drops Sept 1. Lyons Den is public already. zaostock.com
+> ZM. ZAOstock lineup drops Sept 1. LyonsDen is public already. zaostock.com
 
 Sources: `src/app/page.tsx:397`, `docs/plans/production-plan-2026-10-03.md`
 section 6, `src/app/team/plan/page.tsx` DAY[0] minus Werb (Zaal, typed 27 Aug 20:4x) = four confirmed, so "three
@@ -170,7 +170,7 @@ Image: the poster's digital version if Candy has it; otherwise
 Announcement size. All seven platforms.
 
 **Firefly** - 251 chars
-> ZM. The ZAOstock lineup. Lyons Den. Fellenz. Dcoop. Acadia Rising. Plus WaveWarZ live in the street. More to come. Saturday October 3, Franklin Street Parklet, Ellsworth, Maine. Outdoors from noon until six, then Black Moon. Free. zaostock.com/program
+> ZM. The ZAOstock lineup. LyonsDen. Fellenz. Dcoop. Acadia Rising. Plus WaveWarZ live in the street. More to come. Saturday October 3, Franklin Street Parklet, Ellsworth, Maine. Outdoors from noon until six, then Black Moon. Free. zaostock.com/program
 
 Tags: UNSET x4. Add handles once collected. Add Werb and Sen to the list only on Zaal's word.
 
@@ -181,13 +181,13 @@ Tags: UNSET x4. Add handles once collected. Add Werb and Sen to the list only on
 > ZM. ZAOstock lineup is public: lyons den, fellenz, dcoop, acadia rising, plus WaveWarZ battles on the parklet stage, and more to come. four sets, then the whole street moves into Black Moon at six with Stilo on the decks. this is what the season has been building toward. zaostock.com/program
 
 **Telegram**
-> ZM. ZAOstock lineup is live: Lyons Den, Fellenz, Dcoop, Acadia Rising + WaveWarZ, more to come. Oct 3, Ellsworth, free. zaostock.com/program
+> ZM. ZAOstock lineup is live: LyonsDen, Fellenz, Dcoop, Acadia Rising + WaveWarZ, more to come. Oct 3, Ellsworth, free. zaostock.com/program
 
 **Discord**
-> ZM. Lineup for ZAOstock, Saturday October 3 in Ellsworth, Maine: Lyons Den, Fellenz, Dcoop and Acadia Rising on the outdoor stage with more to come, WaveWarZ battles after, then Black Moon Public House for the evening. Free to attend. Full schedule at zaostock.com/program. If you are coming, drop your city below so we can see who is travelling.
+> ZM. Lineup for ZAOstock, Saturday October 3 in Ellsworth, Maine: LyonsDen, Fellenz, Dcoop and Acadia Rising on the outdoor stage with more to come, WaveWarZ battles after, then Black Moon Public House for the evening. Free to attend. Full schedule at zaostock.com/program. If you are coming, drop your city below so we can see who is travelling.
 
 **LinkedIn**
-> ZM. ZAOstock, a free one-day independent music festival in Ellsworth, Maine, announced its lineup today: Lyons Den, Fellenz, Dcoop and Acadia Rising, with more to come, plus a live run of WaveWarZ, the online music-battle format that has run 1,452 battles and plays out live on the parklet stage.
+> ZM. ZAOstock, a free one-day independent music festival in Ellsworth, Maine, announced its lineup today: LyonsDen, Fellenz, Dcoop and Acadia Rising, with more to come, plus a live run of WaveWarZ, the online music-battle format that has run 1,452 battles and plays out live on the parklet stage.
 >
 > The day runs on the Franklin Street Parklet until six and then moves next door into Black Moon Public House. It is produced by ZAO Festivals, the events arm of The ZAO, as part of the 9th Annual Art of Ellsworth during Maine Craft Weekend, with eight local and ecosystem partners giving time, venue and infrastructure rather than cash.
 >
@@ -196,7 +196,7 @@ Tags: UNSET x4. Add handles once collected. Add Werb and Sen to the list only on
 > zaostock.com/program
 
 **Facebook**
-> ZM. Here is the ZAOstock lineup for Saturday October 3 on Franklin Street in Ellsworth: Lyons Den, Fellenz, Dcoop and Acadia Rising, all independent artists with more to come, followed by WaveWarZ, where musicians battle live and the crowd picks the winner. Then everybody heads next door to Black Moon for the evening. It is free, it is rain or shine under a tent, and it is part of Art of Ellsworth weekend. Every car heading to Acadia passes through downtown that day, so come early and stay for dinner. zaostock.com
+> ZM. Here is the ZAOstock lineup for Saturday October 3 on Franklin Street in Ellsworth: LyonsDen, Fellenz, Dcoop and Acadia Rising, all independent artists with more to come, followed by WaveWarZ, where musicians battle live and the crowd picks the winner. Then everybody heads next door to Black Moon for the evening. It is free, it is rain or shine under a tent, and it is part of Art of Ellsworth weekend. Every car heading to Acadia passes through downtown that day, so come early and stay for dinner. zaostock.com
 
 Sources: `src/app/team/plan/page.tsx` DAY[0] minus Werb per Zaal, typed 27 Aug 20:4x (four names; the page still shows five
 CONFIRMED); `src/app/page.tsx:397` (two already public); `src/app/program/page.tsx`
@@ -206,7 +206,7 @@ plan section 4 (tent); gdoc Start Here (ZAO Festivals, events arm of The ZAO);
 `src/app/musicians/page.tsx:10` ("music nobody is paying you to make" - the
 X GC line paraphrases the site's own copy).
 
-Spellings confirmed (Zaal, typed 27 Aug 19:3x): Lyons Den, Dcoop, Fellenz.
+Spellings confirmed (Zaal, typed 27 Aug 19:3x): LyonsDen, Dcoop, Fellenz.
 
 Not in any of these posts, deliberately: the four proposed
 acts, the evening act, attendance, sponsors, Heart of Ellsworth, a /press link.
@@ -280,7 +280,7 @@ the reserve and the swap list, not open slots. **Cut that clause** unless Zaal
 says otherwise; the Firefly line does not make the claim.
 
 **Fallback if forms are still off** - Firefly only, 167 chars
-> ZM. Two days since the ZAOstock lineup went public. Lyons Den, Fellenz, Dcoop, Acadia Rising, WaveWarZ, more to come. October 3, Ellsworth, free. Tell one person. zaostock.com
+> ZM. Two days since the ZAOstock lineup went public. LyonsDen, Fellenz, Dcoop, Acadia Rising, WaveWarZ, more to come. October 3, Ellsworth, free. Tell one person. zaostock.com
 
 Source: Tuesday's post; nothing new claimed.
 

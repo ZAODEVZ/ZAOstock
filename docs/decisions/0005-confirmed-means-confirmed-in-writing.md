@@ -14,7 +14,7 @@ The organizers draw a distinction the database does not have.
 
 From the organizing doc, read 2026-09-02, five days before the reveal:
 
-- **Lyons Den** is the only act **confirmed in writing**, which is exactly why it
+- **LyonsDen** is the only act **confirmed in writing**, which is exactly why it
   is the only act on any public surface.
 - **The Crown Vics, Acadia Rising, Dcoop and Fellenz** are internally confirmed
   and locked into the running order, but their written confirmations are not

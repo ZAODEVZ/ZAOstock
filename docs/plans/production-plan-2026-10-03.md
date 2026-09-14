@@ -29,8 +29,8 @@ dropped: a 5-minute intro at noon; **about 30 minutes per act** in the order
 Crown Vics / Sen / Dcoop / Fellenz; Zaal assumes 5-minute changeovers where the
 rule here is 15 (one question back to him); the evening is **Stilo's DJ set
 18:00-19:30, then one of Steve's acts to close**; Werb is not fully confirmed
-and wanted for WaveWarZ; Lyons Den is confirmed and not in the order. Then,
-21:2x: **Lyons Den is fourth, after Dcoop**, and **the changeovers are mixed -
+and wanted for WaveWarZ; LyonsDen is confirmed and not in the order. Then,
+21:2x: **LyonsDen is fourth, after Dcoop**, and **the changeovers are mixed -
 5 for some, 10 where the event gets talked about.** Which gaps are the 10s is
 proposed below; the 5/10 split itself is Zaal's. And 22:0x, Zaal: "Talked to
 Steve and Roddy today, both are in. We can do fire spinning, Roddy confirmed."
@@ -109,7 +109,7 @@ Which gap is which is **proposed** here and marked so.
 | 13:15 - 13:20 | Changeover, **5** (PROPOSED as a 5) | Swap only; the MC keeps it moving. Only real with a shared backline (8.1) |
 | 13:20 - 13:50 | 3. Dcoop | ~30 - Zaal's order. AV cover during his set: name waits |
 | 13:50 - 13:55 | Changeover, **5** (PROPOSED as a 5) | Swap only |
-| 13:55 - 14:25 | 4. Lyons Den | ~30 - **Zaal, 21:2x: after Dcoop** |
+| 13:55 - 14:25 | 4. LyonsDen | ~30 - **Zaal, 21:2x: after Dcoop** |
 | 14:25 - 14:35 | Changeover, **10** (PROPOSED as a 10) | The last gap before the closer: event talk, the WaveWarZ pitch, a sponsor spot |
 | 14:35 - 15:05 | 5. Fellenz | ~30 - Zaal's order. Closes the outdoor block, ends before WaveWarZ |
 | 15:05 - 15:45 | **Open stretch** | About 40 minutes on these numbers. Zaal's dream if time: one of JANGO, Jadyn, Hurricane. Werb (not fully confirmed, wanted for WaveWarZ) has no row - **UNSET**. MC plus sponsor spots hold whatever stays empty |
@@ -155,7 +155,7 @@ where already public; the rest stay generic until 1 September.
 
 | Slot | Act | Tag | Source |
 |------|-----|-----|--------|
-| 12:45 Acadia Rising, 13:20 Dcoop, 13:55 Lyons Den, 14:35 Fellenz (~30 each, Zaal's order) | Four confirmed acts in the order | **Confirmed** | Lineup confirmations, PR #45; the order from Zaal 20:4x and 21:2x |
+| 12:45 Acadia Rising, 13:20 Dcoop, 13:55 LyonsDen, 14:35 Fellenz (~30 each, Zaal's order) | Four confirmed acts in the order | **Confirmed** | Lineup confirmations, PR #45; the order from Zaal 20:4x and 21:2x |
 | No row yet | Werb | **Not fully confirmed** (Zaal, 20:4x). Wanted for WaveWarZ | Was public as confirmed; the site has already pulled that |
 | Open stretch 15:05-15:45, if time | One of JANGO, Jadyn, Hurricane | **PROPOSED** by Zaal, not asked | The dream, 20:4x |
 | 16:00-17:45 | Four battlers and the MC | **WaveWarZ** | Our block, our roster. The voting-window interludes are Hurricane plus sponsor spots - no DJ |
@@ -197,7 +197,7 @@ we have acts for - the opposite problem to a blank. Your standing offer from 15 
 with local acts is now our reserve rather than a need, and it is genuinely
 useful as a reserve, because we have no spare if somebody drops in September.
 
-**Names.** One of the confirmed acts (Lyons Den) is already public; Werb was, and is now shown as unconfirmed. The rest stay off
+**Names.** One of the confirmed acts (LyonsDen) is already public; Werb was, and is now shown as unconfirmed. The rest stay off
 anything published until the reveal on 1 September. This working copy carries
 names in the grid because the order is being built; strip them before this
 goes to you, or it goes after 1 September.
@@ -234,7 +234,7 @@ size is UNSET and it is counted as a line, not a number.
 |-----|--------|-------|
 | Dcoop | 1 | Confirmed act; also fire; also AV lead |
 | Fellenz | 1 | Confirmed act, closes the outdoor block. Same person as the advisor line in the people map - counted once |
-| Lyons Den | 1 | Confirmed act, fourth |
+| LyonsDen | 1 | Confirmed act, fourth |
 | Acadia Rising - Sen with Women with Rhythm | **UNSET** (group) | Confirmed act, second. Size not on disk |
 | The Crown Vics | **UNSET** (group) | Booked, opens at 12:05. **Flag: this is Steve's own act - does he certificate his own band?** |
 | WaveWarZ: Stilo, Jango, Lui, Quan, Hurricane | 5 | Our battle roster and host (ledger tag WaveWarZ, not Confirmed - counted, flagged) |
@@ -654,8 +654,8 @@ in booking either way.
   MC; First Aid is a contact plus a kit. Confirmed 20:46 (RETRO-LOG) with the
   full record in `~/zao-vault/daily/2026-08-27.md`: 5-minute intro; ~30 per act;
   the 20:4x order; 5-minute changeover assumption; Stilo 18:00-19:30 then one
-  of Steve's acts; Werb not fully confirmed; Lyons Den not in the order.
-  21:2x (logged 21:27): Lyons Den fourth after Dcoop; changeovers mixed 5/10.
+  of Steve's acts; Werb not fully confirmed; LyonsDen not in the order.
+  21:2x (logged 21:27): LyonsDen fourth after Dcoop; changeovers mixed 5/10.
   22:0x (logged 22:15): Steve in, Roddy in, fire performance confirmed.
   22:3x (logged 22:59): Crown Vics 12:05 and Steve's set 20:00-22:00 booked; Somes
   Sound, North Creek, Aquavantes out; 19:30-20:00 UNSET; Dcoop is the fire act;

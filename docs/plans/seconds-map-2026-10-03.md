@@ -70,7 +70,7 @@ thirty-minute gap at 14:35. There is no longer a gap: Michael Anderson takes
 that slot on piano, and the day is programmed end to end from 12:00 to 22:00
 with no open time.
 
-The problem then inverted. Lyons Den and Fellenz went to 40 minutes each, which
+The problem then inverted. LyonsDen and Fellenz went to 40 minutes each, which
 pushed the outdoor block onto exactly 16:00 and left no room for the 15-minute
 battle reset that used to sit at 15:45. Zaal's call, 31 August: reclaim the time
 from the changeovers rather than hand over live. The two 10-minute changeovers
@@ -91,7 +91,7 @@ Final outdoor order:
 | 12:05-12:35 | The Crown Vics | 30 |
 | 12:40-13:10 | Acadia Rising | 30 |
 | 13:15-13:45 | Dcoop | 30 |
-| 13:50-14:30 | Lyons Den | 40 |
+| 13:50-14:30 | LyonsDen | 40 |
 | 14:35-15:05 | Michael Anderson | 30 |
 | 15:10-15:50 | Fellenz | 40 |
 | 15:50-16:00 | Battle reset | 10 |

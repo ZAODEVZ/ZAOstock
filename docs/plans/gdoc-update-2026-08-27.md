@@ -217,11 +217,11 @@ distinction, which is how "the grid assumes booked" happened.
 
 **Existing (verbatim, the Artists bullet):**
 ```
-- **Artists** - *a folder per act. Drop your artwork, photos, logo and press shot in your own folder.* Fellenz, Dcoop, Lyons Den, Acadia Rising, The Crown Vics, DJ Aquavantes, Stilo, Jango, Lui, Quan, Hurricane, North Creek and Friends, The Somes Sound, Bomb Squad.
+- **Artists** - *a folder per act. Drop your artwork, photos, logo and press shot in your own folder.* Fellenz, Dcoop, LyonsDen, Acadia Rising, The Crown Vics, DJ Aquavantes, Stilo, Jango, Lui, Quan, Hurricane, North Creek and Friends, The Somes Sound, Bomb Squad.
 ```
 **Replacement:**
 ```
-- **Artists** - *a folder per act. Drop your artwork, photos, logo and press shot in your own folder.* **Confirmed:** Werb, Fellenz, Dcoop, Lyons Den, Acadia Rising. **WaveWarZ block:** Stilo, Jango, Lui, Quan, Hurricane (MC). **Proposed only, from Black Moon's draft:** The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek and Friends. **Unclassified:** Bomb Squad.
+- **Artists** - *a folder per act. Drop your artwork, photos, logo and press shot in your own folder.* **Confirmed:** Werb, Fellenz, Dcoop, LyonsDen, Acadia Rising. **WaveWarZ block:** Stilo, Jango, Lui, Quan, Hurricane (MC). **Proposed only, from Black Moon's draft:** The Crown Vics, DJ Aquavantes, The Somes Sound, North Creek and Friends. **Unclassified:** Bomb Squad.
   *Having one flat list is how the run of show came to assume four proposals were bookings. Keep the three groups separate.*
 ```
 

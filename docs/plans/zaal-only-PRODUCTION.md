@@ -17,7 +17,7 @@ his "maybe"; he types the rest of the order; Steve does not MC; First Aid is a
 named contact plus a kit. All confirmed 20:46 (RETRO-LOG + the daily). Also from the
 daily: 5-minute intro at noon; ~30 per act, order Crown Vics / Sen / Dcoop /
 Fellenz; Stilo 18:00-19:30 then one of Steve's acts closes; Werb not fully
-confirmed; Lyons Den not in the order. 21:2x: Lyons Den fourth after Dcoop;
+confirmed; LyonsDen not in the order. 21:2x: LyonsDen fourth after Dcoop;
 changeovers mixed 5 and 10. 22:0x: Steve in, Roddy in, fire performance
 confirmed by the City. 22:3x: Crown Vics and Steve's own set 20:00-22:00 booked;
 Somes Sound, North Creek, Aquavantes out; fire act is Dcoop; Steve message dropped. 28 Aug 05:0x: Stilo 18:00-20:00,
@@ -28,7 +28,7 @@ structure closed with three dated checks.
 ## Now
 
 1. Indoor PA for Stilo's 18:00-20:00 and Steve's 20:00-22:00: **house system / brought in (whose)** - production plan open item 1; the Somes Sound answer went with them.
-2. The 5/10 changeover assignment - PROPOSED as 10 after Crown Vics, 5 after Sen, 5 after Dcoop, 10 after Lyons Den: **yes / swap (say which)** - production plan section 2, `ros-5min` Q1.
+2. The 5/10 changeover assignment - PROPOSED as 10 after Crown Vics, 5 after Sen, 5 after Dcoop, 10 after LyonsDen: **yes / swap (say which)** - production plan section 2, `ros-5min` Q1.
 3. Werb, not fully confirmed, wanted for WaveWarZ: **WaveWarZ / a set in the open stretch / out** - section 2; the site already shows him unconfirmed.
 4. Fellenz lands 14:35-15:05 on the new order: **fine / hold him to 15:00** - section 2, `ros-5min` Q2.
 5. The open stretch, about 40 minutes at 15:05-15:45: **JANGO / Jadyn / Hurricane / Werb / leave it to the MC** - one fits - section 2, `ros-5min` Q5.

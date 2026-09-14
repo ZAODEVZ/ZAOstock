@@ -66,7 +66,7 @@ Build: a Decentraland scene of the parklet stage that plays the 3 October stream
 
 What exists:
 
-- WaveWarZ runs online all year. **It is NOT on the 3 October programme** (Zaal, 2026-09-07): the four-to-six window it held is now Lyons Den and Fellenz, and the battlers and the on-mic role went with it. WaveWarZ remains a ZAOstock partner, and its first live battle did happen at ZAO-CHELLA in December 2024.
+- WaveWarZ runs online all year. **It is NOT on the 3 October programme** (Zaal, 2026-09-07): the four-to-six window it held is now LyonsDen and Fellenz, and the battlers and the on-mic role went with it. WaveWarZ remains a ZAOstock partner, and its first live battle did happen at ZAO-CHELLA in December 2024.
 - Public stats: `GET https://wavewarz.info/api/public/stats` returns `volume`, `liveBattle`, `artistPayouts`, `traderClaims` and `battles` totals (1,528 battles as of 12 September 2026; it climbs, so re-pull it). The battle site is https://wavewarz.com.
 - The program page: https://zaostock.com/program.
 
@@ -96,7 +96,7 @@ Build: a ZAOstock collaboration board on POIDH: each open task (a photo set of e
 | Cost | Free. Optional Pro Ticket, $50 |
 | Music | Eight acts, 12:05 to 5:46, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
 | Expected | 200 to 250 in person, about 1,000 online |
-| Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
+| Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
 | Partners | Town of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
@@ -119,7 +119,7 @@ Where to read more: https://zaostock.com/llms.txt (the whole site in one text fi
 2. No prices, tiers or sponsor numbers anywhere; packages are on request. No "tax-deductible", no fiscal sponsor claim: ZAOstock has neither.
 3. Partners are the eight listed above and no one else, however friendly the conversation.
 4. Attendee-facing words lead with the music. Your tool can run on Base; the festival page does not say so.
-5. Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal, Lyons Den, Dcoop, Fellenz.
+5. Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal, LyonsDen, Dcoop, Fellenz.
 6. No emojis and no em dashes in copy that ships on ZAOstock surfaces.
 
 ## How to hand it back

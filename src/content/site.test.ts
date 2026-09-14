@@ -30,7 +30,7 @@ describe('SITE facts', () => {
   it('keeps every unconfirmed act out of the public lineup', () => {
     const blob = PUBLIC_LINEUP.join(' ').toLowerCase();
     for (const name of NOT_PUBLIC) expect(blob).not.toContain(name);
-    expect(PUBLIC_LINEUP).toEqual(['Lyons Den']);
+    expect(PUBLIC_LINEUP).toEqual(['LyonsDen']);
   });
 
   // PUBLIC_LINEUP is the website's half of the reveal: the app reads the artists
@@ -121,7 +121,7 @@ describe('the names-only lineup', () => {
     'Acadia Rising',
     'Michael Anderson',
     'DCoop',
-    'Lyons Den',
+    'LyonsDen',
     'Fellenz',
   ];
 
@@ -149,13 +149,13 @@ describe('the names-only lineup', () => {
   });
 
   it('keeps "confirmed" for PUBLIC_LINEUP only, which is a different and narrower claim', () => {
-    expect(PUBLIC_LINEUP).toEqual(['Lyons Den']);
+    expect(PUBLIC_LINEUP).toEqual(['LyonsDen']);
     expect(LINEUP_NAMES.length).toBeGreaterThan(PUBLIC_LINEUP.length);
   });
 });
 
 // Zaal, 2026-09-07: WaveWarZ is OFF the 3 October programme. The locked run of
-// show puts Lyons Den at 16:30 and Fellenz at 17:15 in the window the battle
+// show puts LyonsDen at 16:30 and Fellenz at 17:15 in the window the battle
 // used to hold, so it was already off in practice while four surfaces still
 // advertised it.
 //

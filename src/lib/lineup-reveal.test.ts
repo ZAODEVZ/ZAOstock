@@ -47,7 +47,7 @@ describe('fallback lineup slugs', () => {
 // The site and the app answer "who is playing" from two different places, and on
 // 2026-09-01 they disagree. Measured: the live endpoint returns
 // {"artists":[],"source":"live"} - Supabase is UP and the artists table is simply
-// empty, so this is not the degraded path. Meanwhile the website serves Lyons Den
+// empty, so this is not the degraded path. Meanwhile the website serves LyonsDen
 // from PUBLIC_LINEUP, which is hardcoded in the bundle.
 //
 // At the reveal the website would announce a confirmed act while the mobile app
@@ -55,16 +55,16 @@ describe('fallback lineup slugs', () => {
 //
 // The fallback is deliberately NOT populated to paper over this: lineup-fallback.ts
 // says entries are copied from the real roster and never invented, and nobody here
-// holds Lyons Den's genre, city, bio or photo. Writing blanks to silence a test
+// holds LyonsDen's genre, city, bio or photo. Writing blanks to silence a test
 // would be exactly the fabrication that file exists to prevent.
 //
 // So this pins the disagreement instead of hiding it. It fails the moment anyone
 // changes one side without the other, which forces the decision Zaal owes:
-// either Lyons Den goes into the artists table as confirmed and linked to the
+// either LyonsDen goes into the artists table as confirmed and linked to the
 // event, or it is said out loud that the app is not a reveal surface this year.
 describe('the site and the app must not disagree silently about the lineup', () => {
   it('pins the known gap so changing one side trips the other', () => {
-    expect(PUBLIC_LINEUP).toEqual(['Lyons Den']);
+    expect(PUBLIC_LINEUP).toEqual(['LyonsDen']);
     expect(getFallbackLineup('zaostock')).toEqual([]);
     expect(getFallbackLineup('zaostock-2026')).toEqual([]);
   });

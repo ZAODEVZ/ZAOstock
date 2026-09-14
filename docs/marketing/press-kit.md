@@ -74,7 +74,7 @@ One venue at a time. The day does not split across two rooms.
 ## The lineup
 
 **All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
-OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, Lyons Den, Fellenz.
+OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Fellenz.
 
 **NONE of them has countersigned.** They are booked and locked in the run of show,
 which is a different claim from confirmed. Do not describe any act as confirmed in
@@ -90,7 +90,7 @@ WaveWarZ is a live music-battle format. Two artists play head to head and the
 audience picks the winner, in person and online. It runs online all year.
 
 **It is NOT on the 3 October programme.** Confirmed off by Zaal, 2026-09-07.
-The four-to-six window it used to hold is Lyons Den and Fellenz, whose slots are
+The four-to-six window it used to hold is LyonsDen and Fellenz, whose slots are
 not published.
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
@@ -196,7 +196,7 @@ info@thezao.com
 | Art of Ellsworth, Maine Craft Weekend | `src/app/page.tsx:486,495` |
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
 | Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
-| Lyons Den public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
+| LyonsDen public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
 | WaveWarZ 1,528, 12 Sep | `docs/sponsor/deck-2026-10-03.md` slide 6 |
 | Partners | `src/app/page.tsx:101-112, 546-548` |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |

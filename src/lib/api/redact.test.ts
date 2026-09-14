@@ -3,10 +3,10 @@ import { withoutClaimToken, withoutClaimTokens } from './redact';
 
 describe('withoutClaimToken', () => {
   it('removes claim_token and keeps everything else', () => {
-    const row = { id: 'a1', name: 'Lyons Den', status: 'confirmed', claim_token: 'deadbeefdeadbeef' };
+    const row = { id: 'a1', name: 'LyonsDen', status: 'confirmed', claim_token: 'deadbeefdeadbeef' };
     const out = withoutClaimToken(row);
     expect(out).not.toHaveProperty('claim_token');
-    expect(out).toEqual({ id: 'a1', name: 'Lyons Den', status: 'confirmed' });
+    expect(out).toEqual({ id: 'a1', name: 'LyonsDen', status: 'confirmed' });
   });
 
   it('is a no-op on a row that never had one', () => {

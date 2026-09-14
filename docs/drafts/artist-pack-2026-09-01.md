@@ -28,7 +28,7 @@ On the v7 order as it stands:
 | The Crown Vics | 12:05, about 30 minutes | Opens the day. Booked via Steve |
 | Acadia Rising (Sen, with Women with Rhythm) | 12:45, about 30 minutes | |
 | Dcoop | 13:20, about 30 minutes | Also the fire performance, his time to name |
-| Lyons Den | 13:55, about 30 minutes | Public since 23 August |
+| LyonsDen | 13:55, about 30 minutes | Public since 23 August |
 | Fellenz | 14:35, about 30 minutes | Closes the outdoor block before WaveWarZ |
 | Stilo, Jango, Lui, Quan | WaveWarZ, 16:00-18:00 | Hurricane on the mic. Stilo also DJs 18:00-20:00 |
 | Steve's own act | 20:00-22:00, indoors | Name not on disk; Steve fills his own people in |
