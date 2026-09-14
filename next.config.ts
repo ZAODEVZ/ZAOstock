@@ -77,20 +77,21 @@ const config: NextConfig = {
     return [
       { source: '/lineup', destination: '/program', permanent: false },
       { source: '/sponsors', destination: '/sponsor', permanent: false },
-      // NO REDIRECT FOR LyonsDen YET, AND THE ORDER IS THE WHOLE POINT.
+      // LyonsDen is one word (Zaal, 2026-09-14, quoting the artist). The public
+      // artist slug is derived from the roster name by slugify(), so renaming
+      // that row moved his page to /artist/lyonsden. The old two-word URL was
+      // published first - it is in a newsletter draft and in messages sent to
+      // him - so it keeps working.
       //
-      // The public artist slug is derived from the roster name in the database
-      // by slugify(), NOT from anything in this repo. So the rename to
-      // "LyonsDen" only moves his page once THAT ROW changes.
+      // ORDER, learned the hard way on 2026-09-14: this redirect shipped BEFORE
+      // the row was renamed and took his page down, because it pointed at a URL
+      // that did not exist yet. Destination first, redirect second. The row now
+      // reads "LyonsDen" and /artist/lyonsden serves 200, verified before this
+      // line went back in.
       //
-      // This redirect shipped first, on 2026-09-14, and took his page down: it
-      // sent /artist/lyons-den (the only URL that worked, and the one in the
-      // newsletter) to /artist/lyonsden, which 404s while the row still reads
-      // "Lyons Den". Both URLs were dead for the length of one deploy.
-      //
-      // Put it back the moment the roster row is renamed, not before. A redirect
-      // is only ever as good as the destination existing.
-      // { source: '/artist/lyons-den', destination: '/artist/lyonsden', permanent: false },
+      // Not permanent, same as the two above: a 308 is cached hard by browsers
+      // and would outlive any future change to how slugs are derived.
+      { source: '/artist/lyons-den', destination: '/artist/lyonsden', permanent: false },
     ];
   },
   async rewrites() {
