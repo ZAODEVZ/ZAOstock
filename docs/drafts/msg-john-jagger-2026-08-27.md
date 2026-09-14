@@ -26,7 +26,7 @@ underwriter as a description of the risk:**
    City's stage and tent go in and out across the summer season. Do not assert
    it. Tenting is via Wallace Events.
 
-- **To:** johnjagger@unitedinsurance.net
+- **To:** [his work address, in the private vault]
 - **From:** info@thezao.com
 
 **Subject:** One-day outdoor music festival in Ellsworth, Oct 3 - event insurance quote
