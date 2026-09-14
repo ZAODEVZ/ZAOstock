@@ -6,7 +6,7 @@
 //
 // Overrides relayed to SITE on 2026-08-27 that beat the spec where they
 // differ: attendance stays off the public site (19:3x); Werb is not fully
-// confirmed, so only Lyons Den is public (20:4x); the evening is a DJ set
+// confirmed, so only LyonsDen is public (20:4x); the evening is a DJ set
 // 18:00-20:00, a live set 20:00-22:00 hosted by Black Moon, nothing after
 // 22:00 until the licence hour is typed (ros-v7, 28 Aug).
 //
@@ -69,7 +69,7 @@ export const SITE = {
  * Acts CONFIRMED IN WRITING. This is the narrow claim - it is the only list the
  * site may describe with the word "confirmed". Nothing proposed, ever.
  */
-export const PUBLIC_LINEUP: readonly string[] = ['Lyons Den'];
+export const PUBLIC_LINEUP: readonly string[] = ['LyonsDen'];
 
 /*
  * WHAT PUBLIC_LINEUP IS NOT, measured 2026-09-08.
@@ -118,7 +118,7 @@ export const LINEUP_NAMES: readonly string[] = [
   'Acadia Rising',
   'Michael Anderson',
   'DCoop',
-  'Lyons Den',
+  'LyonsDen',
   'Fellenz',
 ];
 

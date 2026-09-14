@@ -96,7 +96,7 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     // no set times, no member names (Zaal: always "Acadia Rising").
     const LIVE_OPTIONS = [
       'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising',
-      'Michael Anderson', 'DCoop', 'Lyons Den', 'Fellenz',
+      'Michael Anderson', 'DCoop', 'LyonsDen', 'Fellenz',
     ];
     for (const a of OPS_ACTS) {
       const v = new URL(artistFormUrl({ act: a })).searchParams.get(ARTIST_FORM.actEntry);
@@ -161,7 +161,7 @@ describe('actFromFormAnswer - every shape the act question has had', () => {
     const OLD = [
       'The Crown Vics - 12:05 PM, 30 min', 'OPEN X - 12:40 PM, 40 min', 'Grass Rug - 1:25 PM, 30 min',
       'Acadia Rising (Sen Wilde, with Women with Rhythm) - 2:00 PM, 30 min', 'Michael Anderson - 2:35 PM, 30 min',
-      'Dcoop - 3:45 PM, 40 min', 'Lyons Den - 4:30 PM, 40 min', 'Fellenz - 5:15 PM, 40 min',
+      'Dcoop - 3:45 PM, 40 min', 'LyonsDen - 4:30 PM, 40 min', 'Fellenz - 5:15 PM, 40 min',
     ];
     expect(OLD.map((a) => actFromFormAnswer(a)?.name)).toEqual(OPS_ACTS.map((a) => a.name));
     expect(OPS_ACTS.map((a) => actFromFormAnswer(a.name)?.key)).toEqual(OPS_ACTS.map((a) => a.key));

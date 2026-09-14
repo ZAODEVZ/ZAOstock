@@ -57,7 +57,7 @@ Grade: A. Design score: A- with findings 1 to 4 landed; the remaining gap is pho
 - `/program`: run of show v7 - noon intro, about 30 minutes per act, MC
   changeovers, the 15:05 stretch marked Open, WaveWarZ 16:00-18:00 with the
   story at 16:00, DJ set 18:00-20:00, live set 20:00-22:00 at Black Moon. Only
-  Lyons Den and the WaveWarZ battlers named; "Lineup reveal 1 September".
+  LyonsDen and the WaveWarZ battlers named; "Lineup reveal 1 September".
 - `/partners`: new. Six logos, three "Logo coming" tiles, sponsor pointer.
 - `/press`: the kit block - both badges with download, six partner logos with
   download, contact.

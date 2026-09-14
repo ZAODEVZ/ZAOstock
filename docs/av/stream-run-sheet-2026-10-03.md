@@ -64,8 +64,8 @@ last song.
 | 12:45 | 2. ACADIA RISING (Sen), ~30 | STAGE WIDE | Cut on the downbeat | Aziz | |
 | 13:15 | Changeover 5: swap only | HOLD "Next: Dcoop", sponsor bug | No MC segment; HOLD the whole 5 | Aziz | Q12 (only real with shared backline) |
 | 13:20 | 3. DCOOP, ~30 | STAGE WIDE | Cut on the downbeat. AV cover during his set: name waits | Aziz | |
-| 13:50 | Changeover 5: swap only | HOLD "Next: Lyons Den" | HOLD the whole 5 | Aziz | |
-| 13:55 | 4. LYONS DEN, ~30 | STAGE WIDE | Cut on the downbeat | Aziz | Q3 answered |
+| 13:50 | Changeover 5: swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | Aziz | |
+| 13:55 | 4. LYONSDEN, ~30 | STAGE WIDE | Cut on the downbeat | Aziz | Q3 answered |
 | 14:25 | Changeover 10: event talk, WaveWarZ pitch, sponsor spot | MC, SPONSOR, then VIRTUAL if Ohnahji has a guest, else HOLD "Next: Fellenz" | First natural VIRTUAL slot of the day | Ohnahji calls it, Aziz cuts | Guest UNSET |
 | 14:35 | 5. FELLENZ, ~30, closes the outdoor block | STAGE WIDE | Cut on the downbeat | Aziz | Q2 |
 | 15:05 | OPEN STRETCH, about 40 min: one dream act if time, else MC and sponsor spots | If an act: STAGE WIDE. If not: the main VIRTUAL block of the day, Ohnahji's guests and callers, split with the street | This is Ohnahji's window; plan 30 minutes of show for it and drop it if an act lands | Ohnahji | Q4, Q5; guests UNSET |

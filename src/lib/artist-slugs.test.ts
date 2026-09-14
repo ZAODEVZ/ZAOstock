@@ -83,7 +83,10 @@ describe('artist page URLs', () => {
       'acadia-rising',
       'michael-anderson',
       'dcoop',
-      'lyons-den',
+      // One word, and so one slug segment. The old two-word /artist/lyons-den
+      // is kept alive by a redirect in next.config.ts, because it was published
+      // before the rename.
+      'lyonsden',
       'fellenz',
     ]);
   });

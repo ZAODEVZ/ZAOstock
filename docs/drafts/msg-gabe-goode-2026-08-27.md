@@ -6,7 +6,7 @@ sourced and the holds are listed. Drafted 2026-08-27. Contact details are in
 the CRM, not here.
 
 Holds before sending: no /press page exists yet (do not link it); no photo
-beyond the badge; no lineup names beyond Lyons Den until 1 Sep (Werb is not fully confirmed as of 27 Aug 20:4x); no
+beyond the badge; no lineup names beyond LyonsDen until 1 Sep (Werb is not fully confirmed as of 27 Aug 20:4x); no
 attendance figure in the email by choice - Zaal typed 200-250 in person / 1,000 online at 19:3x, so the figure exists if Gabe asks. Start time is noon (Zaal, typed 27 Aug 19:3x).
 
 ---
@@ -31,7 +31,7 @@ Two things I think make it a story rather than a listing. First, we are
 measuring what a free festival does for downtown - an ordinary Saturday
 against 3 October, published combined across the businesses that take part,
 Black Moon first. Second, the lineup goes public on 1 September, with one
-name already out: Lyons Den.
+name already out: LyonsDen.
 
 I am in Ellsworth and happy to sit down any day that suits. If a preview
 around the 1st works for you, I can have the full lineup and the day's

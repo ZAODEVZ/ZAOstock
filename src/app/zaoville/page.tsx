@@ -27,7 +27,7 @@ const LINEUP: Slot[] = [
   { time: '3:00 - 3:45', label: 'Open Mic', type: 'OPEN' },
   { time: '3:45 - 4:05', label: 'DJ Set', type: 'DJ' },
   { time: '4:10 - 4:40', label: 'Ashley', type: 'SET' },
-  { time: '4:50 - 5:20', label: 'Lyons Den', type: 'SET' },
+  { time: '4:50 - 5:20', label: 'LyonsDen', type: 'SET' },
   { time: '5:30 - 6:00', label: 'DCoop', type: 'SET' },
   { time: '6:10 - 6:40', label: 'PROF!T', type: 'SET' },
   { time: '7:00 - 7:30', label: 'John Clark', type: 'SET' },

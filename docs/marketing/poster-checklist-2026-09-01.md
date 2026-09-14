@@ -25,10 +25,10 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | Item | Status | Source | Note |
 |---|---|---|---|
 | Werb | **DO NOT PRINT** until confirmed | Zaal, typed 27 Aug 20:4x | **Not fully confirmed** - Zaal wants him for WaveWarZ. Still named as confirmed on the live site (`src/app/page.tsx:397,404`); SITE flagged. Back to HAVE the moment Zaal says confirmed Prints only with a written yes by 31 Aug |
-| Lyons Den | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404`; Zaal, typed 27 Aug 21:2x | Placed in the running order after Dcoop at 21:2x; the 20:4x flag is closed. Spelling confirmed: Lyons Den |
+| LyonsDen | **HAVE** - confirmed, already public | `src/app/page.tsx:397,404`; Zaal, typed 27 Aug 21:2x | Placed in the running order after Dcoop at 21:2x; the 20:4x flag is closed. Spelling confirmed: LyonsDen |
 | Fellenz | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Fellenz (Zaal 27 Aug) |
 | Dcoop | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Spelling confirmed: Dcoop (Zaal 27 Aug) |
-| Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Lane observation, not a Zaal verdict: also absent from the 20:4x order. Worth the same question as Lyons Den |
+| Acadia Rising | **HAVE** - confirmed, gated until 1 Sep | `src/app/team/plan/page.tsx` DAY[0] | Lane observation, not a Zaal verdict: also absent from the 20:4x order. Worth the same question as LyonsDen |
 | Sen | **UNSET for print** | Zaal, typed 27 Aug 20:4x running order; gdoc Aug 3 ("2 Maine musicians confirmed... Sen is one of them") | In Zaal's order, not on the gated confirmed list. **Question for Zaal: is Sen confirmed for print?** Spelling as typed Prints only with a written yes by 31 Aug |
 | JANGO, Jadyn, Hurricane as acts | **DO NOT PRINT** | Zaal, typed 27 Aug 20:4x: "dream additions... if time" | JANGO and Hurricane already print inside the WaveWarZ block. As separate acts they are not booked |
 | WaveWarZ block | **HAVE** - confirmed block, 4 to 6 outdoors | `docs/plans/production-plan-2026-10-03.md` section 4; `src/app/program/page.tsx` BLOCKS[1] | Print as a block with the names. Battlers cleared for public (Zaal, typed 27 Aug 19:3x): Stilo, Jango, Lui, Quan; Hurricane MCing |
@@ -38,9 +38,9 @@ on a named person) · **DO NOT PRINT** (true today but must not appear).
 | North Creek | **DO NOT PRINT** | same | Proposed only. The evening block prints as "after party at Black Moon", no act |
 | Set order / set times | **DO NOT PRINT** | Zaal, typed 27 Aug 20:0x; PRODUCTION owns the grid | Zaal's running order is noted in section 1b below; times come from PRODUCTION's ros-v2 when it lands. Poster carries names, not a schedule |
 | Roster still four on print day | **BLOCKED - Zaal** | gdoc Links and Assets "Data we cannot see" | "The artist count has already moved three times in four days." Five is the count on the gated page as of 27 Aug. Re-confirm the morning the file goes to print |
-| Name spellings | **HAVE** - Lyons Den, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
+| Name spellings | **HAVE** - LyonsDen, Dcoop, Fellenz (Zaal, typed 27 Aug 19:3x); Acadia Rising as on the site | Zaal, typed 27 Aug 19:3x | Photos still uncollected (gdoc "What we are missing") |
 
-## 1b. The running order, as Zaal typed it - v3 (Zaal, typed 27 Aug 21:2x: Lyons Den added after Dcoop)
+## 1b. The running order, as Zaal typed it - v3 (Zaal, typed 27 Aug 21:2x: LyonsDen added after Dcoop)
 
 Noted for context. **Not for print** - the poster carries names, not times,
 and PRODUCTION owns the grid: take times from its ros-v2 when it lands.
@@ -51,14 +51,14 @@ Supersedes the 20:0x order.
 | 1 | The Crown Vics, ~30 min | **DO NOT PRINT** - proposed until Steve confirms |
 | 2 | Sen, ~30 min | **UNSET** - confirm with Zaal |
 | 3 | Dcoop, ~30 min | yes |
-| 4 | Lyons Den, ~30 min (Zaal, typed 27 Aug 21:2x) | yes |
+| 4 | LyonsDen, ~30 min (Zaal, typed 27 Aug 21:2x) | yes |
 | 5 | Fellenz, ~30 min | yes |
 | then | WaveWarZ - Stilo, Jango, Lui, Quan; Hurricane MC | names yes |
 | if time | JANGO, Jadyn, Hurricane - "dream additions" | **DO NOT PRINT** |
 | evening | Stilo DJ indoors, then one of Steve's acts to close (20:0x) | Stilo yes; closer **DO NOT PRINT** |
 
 Not in this order but still printing as confirmed: **Acadia Rising** (lane
-observation). Lyons Den was added to the order at 21:2x. **Werb** is out of
+observation). LyonsDen was added to the order at 21:2x. **Werb** is out of
 the order and out of print until confirmed. No DJ Aquavantes anywhere.
 
 ## 2. The fixed facts

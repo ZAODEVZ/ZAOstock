@@ -39,7 +39,7 @@ var ACTS = [
   'Acadia Rising',
   'Michael Anderson',
   'DCoop',
-  'Lyons Den',
+  'LyonsDen',
   'Fellenz',
 ];
 

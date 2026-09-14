@@ -71,7 +71,7 @@ export const BLOCKS: Block[] = [
       { time: '15:25', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' , crewFacing: true },
       { time: '15:32', label: 'DCoop', detail: 'Hip-hop.', tone: 'set' },
       { time: '16:12', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '16:19', label: 'Lyons Den', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
+      { time: '16:19', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
       { time: '16:59', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '17:06', label: 'Fellenz', detail: 'Rock guitar and soundtrack. Closes the outdoor block.', tone: 'set' },
       { time: '17:46', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },

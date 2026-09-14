@@ -1,5 +1,19 @@
 # ZAOstock socials - seven days, Fri 28 Aug to Thu 3 Sep 2026
 
+> **SUPERSEDED, 2026-09-14. DO NOT POST FROM THIS FILE.** The week it covers has
+> passed and its facts are dead, not merely stale: **WaveWarZ came off the
+> programme** (Zaal, 2026-09-07), **Hurricane is out** (2026-09-10), **Stilo
+> declined**, so there is no battle block and nobody DJs at six - Black Moon
+> hosts its own evening, which is theirs and not ours. The lineup is **eight
+> acts**, and the reveal these posts build toward did not happen in the shape
+> described. The artist is also spelled **LyonsDen**, one word (Zaal, 2026-09-14,
+> quoting him).
+>
+> **Kept, and deliberately not corrected**, as the record of what was drafted on
+> 27 August. Correcting only the name would leave four accurate names inside
+> posts that still promise a battle block and a DJ set, which reads *more*
+> current, not less. Current social copy is emitted as clipboard clips.
+
 **DRAFTS. Nothing posted.** Zaal posts, top to bottom per platform. Written
 2026-08-27 (Thursday). Lane: MARKETING.
 

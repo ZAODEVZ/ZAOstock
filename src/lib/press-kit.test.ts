@@ -55,7 +55,7 @@ describe('press kit placeholder', () => {
   });
 
   it('names no performer before the reveal', () => {
-    for (const name of ['werb', 'fellenz', 'lyons den', 'dcoop', 'acadia rising', 'stilo', 'north creek', 'aquavantes', 'sen', 'phelan']) {
+    for (const name of ['werb', 'fellenz', 'lyons den', 'lyonsden', 'dcoop', 'acadia rising', 'stilo', 'north creek', 'aquavantes', 'sen', 'phelan']) {
       expect(blob).not.toContain(name);
     }
   });

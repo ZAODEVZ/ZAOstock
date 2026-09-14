@@ -26,7 +26,7 @@ change) · **UNVERIFIED** (cannot be confirmed from anything on disk) ·
 | `src/app/pitch/page.tsx` fiscal lines (109, 355, 378) | "no tax-deductible path - ZAOstock has no fiscal sponsor" | Correct | **CORRECT** - PR #49 held |
 | `src/app/llms.txt/route.ts` | "ZAOstock has no fiscal sponsor, so there is no tax-deductible path" | Correct | **CORRECT** |
 | `src/app/donate/page.tsx` | "not tax-deductible and we cannot issue a receipt" | Correct | **CORRECT** |
-| `src/app/page.tsx` lineup teaser | Names Werb and Lyons Den as confirmed | Both confirmed | **CORRECT** |
+| `src/app/page.tsx` lineup teaser | Names Werb and LyonsDen as confirmed | Both confirmed | **CORRECT** |
 | Public forms | Off behind `PUBLIC_FORMS_ENABLED` | The write path is down | **CORRECT** |
 | `src/lib/lineup-fallback.ts` | Empty; endpoint returns 503 | Roster unreachable | **CORRECT** - an empty fallback is not a lineup |
 

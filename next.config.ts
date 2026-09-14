@@ -77,6 +77,16 @@ const config: NextConfig = {
     return [
       { source: '/lineup', destination: '/program', permanent: false },
       { source: '/sponsors', destination: '/sponsor', permanent: false },
+      // LyonsDen is one word (Zaal, 2026-09-14, quoting the artist). The public
+      // artist slug is derived from the roster name by slugify(), so the rename
+      // moved his page from /artist/lyons-den to /artist/lyonsden on its own.
+      // That old URL is already out in the world - it is in the newsletter draft
+      // and in messages sent to him - so it keeps working.
+      //
+      // Not permanent, for the same reason as the two above: a 308 is cached
+      // hard by browsers and would outlive any future change to how slugs
+      // are derived.
+      { source: '/artist/lyons-den', destination: '/artist/lyonsden', permanent: false },
     ];
   },
   async rewrites() {
