@@ -101,9 +101,14 @@ exactly on time, the endpoint answered correctly, and the bill was empty because
 no row was `confirmed`. Everything worked and the result was still wrong, which
 is why this check exists before the website step rather than after it.
 
-Measured 2026-09-08, five days before the reveal: **0 of 9 acts are confirmed.**
-<!-- measured 2026-09-08T19:19Z - zao-measure --verify "zaostock acts confirmed count" -->
-<!-- re-check: 2026-09-13 -->
+Measured 2026-09-14: **2 of 8 acts are confirmed**, DCoop and Lyons Den, and both
+are published with `pending: 0`. The 8 September measurement said 0 of 9; both
+halves moved. Hurricane came off the bill on 10 September, so it is 8 acts now,
+and the gate has since been proved in the direction that matters: an act reaching
+`confirmed` with a bio and a photo does appear on the bill. The failure mode this
+section exists for is still live for the other six.
+<!-- measured 2026-09-14T12:19Z - zao-measure --verify "zaostock acts confirmed count" (DRIFTED from 0 on 2026-09-08T21:00Z to 2 on 2026-09-14T12:19Z) -->
+<!-- re-check: 2026-09-21 -->
 
 ### 3. The website needs NO deploy - corrected 2026-09-08
 
