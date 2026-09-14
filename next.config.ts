@@ -77,16 +77,20 @@ const config: NextConfig = {
     return [
       { source: '/lineup', destination: '/program', permanent: false },
       { source: '/sponsors', destination: '/sponsor', permanent: false },
-      // LyonsDen is one word (Zaal, 2026-09-14, quoting the artist). The public
-      // artist slug is derived from the roster name by slugify(), so the rename
-      // moved his page from /artist/lyons-den to /artist/lyonsden on its own.
-      // That old URL is already out in the world - it is in the newsletter draft
-      // and in messages sent to him - so it keeps working.
+      // NO REDIRECT FOR LyonsDen YET, AND THE ORDER IS THE WHOLE POINT.
       //
-      // Not permanent, for the same reason as the two above: a 308 is cached
-      // hard by browsers and would outlive any future change to how slugs
-      // are derived.
-      { source: '/artist/lyons-den', destination: '/artist/lyonsden', permanent: false },
+      // The public artist slug is derived from the roster name in the database
+      // by slugify(), NOT from anything in this repo. So the rename to
+      // "LyonsDen" only moves his page once THAT ROW changes.
+      //
+      // This redirect shipped first, on 2026-09-14, and took his page down: it
+      // sent /artist/lyons-den (the only URL that worked, and the one in the
+      // newsletter) to /artist/lyonsden, which 404s while the row still reads
+      // "Lyons Den". Both URLs were dead for the length of one deploy.
+      //
+      // Put it back the moment the roster row is renamed, not before. A redirect
+      // is only ever as good as the destination existing.
+      // { source: '/artist/lyons-den', destination: '/artist/lyonsden', permanent: false },
     ];
   },
   async rewrites() {
