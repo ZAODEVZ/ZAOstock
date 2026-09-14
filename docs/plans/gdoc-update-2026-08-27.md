@@ -172,7 +172,7 @@ The indoor changeover line is now wrong in its detail.
 ```
 **Event insurance** - **Zaal** - **broker identified, intro email owed Fri Aug 28**
 
-**John Jagger, United Insurance** - johnjagger@unitedinsurance.net. *Referred by Laurel on the Heart of Ellsworth promotions committee, via a commercial lender. This replaces the untracked Aug 25 bank conversation.*
+**John Jagger, United Insurance** - [his work address, in the private vault]. *Referred by Laurel on the Heart of Ellsworth promotions committee, via a commercial lender. This replaces the untracked Aug 25 bank conversation.*
 
 *The intro email is drafted and waiting at* `docs/drafts/email-john-jagger-2026-08-27.md`*. It leads on the two things the quote depends on: **the coverage amount the City of Ellsworth requires**, and **whether the City must be named as additional insured**. A broker cannot quote properly without both, and it gates the fire performance.*
 

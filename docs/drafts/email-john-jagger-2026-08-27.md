@@ -3,7 +3,7 @@
 **DO NOT SEND.** Draft only - Zaal sends. **No longer blocked:** the attendance
 figure it was missing was typed on 2026-08-27.
 
-- **To:** johnjagger@unitedinsurance.net
+- **To:** [his work address, in the private vault]
 - **From:** Zaal Panthaki, info@thezao.com
 - **Referred by:** Laurel, Heart of Ellsworth promotions committee (via a
   commercial lender's referral)
