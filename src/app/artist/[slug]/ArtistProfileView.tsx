@@ -3,22 +3,10 @@
 import { useState } from 'react';
 import type { PublicArtist } from '@/lib/artists';
 
-const STATUS_COLOR: Record<string, string> = {
-  wishlist: 'bg-paper-100 text-ink-muted border-ink-950/60',
-  contacted: 'bg-denim-300 text-denim-500 border-ink-950/60',
-  interested: 'bg-gold-300 text-gold-600 border-ink-950/60',
-  confirmed: 'bg-olive-300 text-olive-500 border-ink-950/60',
-  travel_booked: 'bg-olive-300 text-olive-500 border-ink-950/60',
-};
-
-const STATUS_LABEL: Record<string, string> = {
-  wishlist: 'Wishlist',
-  contacted: 'Contacted',
-  interested: 'Interested',
-  confirmed: 'Confirmed',
-  travel_booked: 'Booked',
-};
-
+// The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
+// have that on any of the pages"). Nothing public needs it: getPublicArtists
+// already filters to status 'confirmed', so the pill could only ever read
+// "Confirmed" on a page that exists, which is a label that says nothing.
 interface Props {
   artist: PublicArtist;
   canEdit: boolean;
@@ -138,11 +126,6 @@ export function ArtistProfileView({ artist, canEdit, token }: Props) {
         <div className="flex-1 min-w-0">
           <h1 className="text-2xl font-bold text-ink-950">{artist.name}</h1>
           <div className="flex items-center gap-2 mt-2 flex-wrap">
-            {artist.status !== 'declined' && (
-              <span className={`text-[10px] font-bold px-2 py-1 rounded-full border uppercase ${STATUS_COLOR[artist.status] || STATUS_COLOR.wishlist}`}>
-                {STATUS_LABEL[artist.status] || artist.status}
-              </span>
-            )}
             {points > 0 && (
               <span className="text-[10px] font-bold px-2 py-1 rounded-full border uppercase bg-gold-400 text-gold-600 border-ink-950">
                 {points} ZAOfestivals Point{points === 1 ? '' : 's'}
