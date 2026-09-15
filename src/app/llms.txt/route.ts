@@ -16,7 +16,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 ## The day (one venue at a time)
 
 - Noon to 4 PM, Franklin Street Parklet: independent artists, about 30 minutes each, with our MC and our partners between sets. Music starts at noon.
-- 6 PM, the street clears. Black Moon Public House, next door, hosts their own evening: North Creek, roughly 6 to 9 PM, on their stage and their licence. It is not a second ZAOstock stage.
+- 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with a DJ, run by Steve, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
 - Free to attend. Rain or shine, under tent cover from Wallace Events. Optional Pro Ticket, $50, on /donate.
 
 ## Lineup
@@ -42,11 +42,11 @@ Every car heading to Acadia National Park passes through. Downtown is newly on t
 - https://zaostock.com/partners - every partner, with logos
 - https://zaostock.com/press - press kit: facts, badge files, partner logos, contact
 - https://zaostock.com/sponsor - why, who we are, what a sponsor gets, packages on request
-- https://zaostock.com/meetings - the two open meetings a day, 11:30 AM and 5 PM Eastern
+- https://zaostock.com/meetings - how to reach the team
 - https://zaostock.com/build - the builder kit: five things the festival needs built and how to show them live
 - https://zaostock.com/musicians - for musicians; the way in is email, there is no submission form
-- https://zaostock.com/artists - for visual artists
-- https://zaostock.com/apply - volunteer sign-up
+- https://zaostock.com/artists - lineup directory and artist profiles
+- https://zaostock.com/apply - volunteer sign-up (/volunteer redirects here)
 - https://zaostock.com/donate - Pro Ticket and giving (PayPal or Giveth)
 - https://zaostock.com/ellsworth and /acadia - getting here and the park
 - https://zaostock.com/festivals - the ZAO Festivals series

@@ -97,6 +97,8 @@ const config: NextConfig = {
       // that row moved his page to /artist/tom-fellenz. Redirect /artist/fellenz
       // so any links or bookmarks keep working.
       { source: '/artist/fellenz', destination: '/artist/tom-fellenz', permanent: false },
+      // /volunteer is the intuitive link people guess for volunteering; the canonical route is /apply.
+      { source: '/volunteer', destination: '/apply', permanent: false },
     ];
   },
   async rewrites() {
