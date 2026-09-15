@@ -24,6 +24,7 @@ import { SITE } from '@/content/site';
 const NAV = [
   { href: '/program', label: 'Program' },
   { href: '/artists', label: 'Artists' },
+  { href: '/live', label: 'Live' },
   { href: '/apply', label: 'Volunteer' },
   { href: '/sponsor', label: 'Sponsor' },
   { href: '/press', label: 'Press' },
