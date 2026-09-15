@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/musicians',
     '/musicians/rider',
     '/artists',
+    '/live',
     '/event-organizers',
     '/apply',
     '/suggest',
