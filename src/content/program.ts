@@ -82,22 +82,17 @@ export const BLOCKS: Block[] = [
     end: '21:00',
     venue: 'IN',
     title: 'The evening at Black Moon',
-    // SETTLED 2026-09-07. North Creek, roughly 6 to 9, underwritten by Black Moon
-    // on their own premises and their own licence. Source is Steve Peer's own mail
-    // of 26 August: "underwrite 'North Creek' for the after party. 6 - 9pm (approx.)
-    // on the indoor stage."
-    //
-    // This page previously published 18:00-22:00 as a two-hour DJ set then a live
-    // set. That was the older plan and it overran the evening by an hour against
-    // what the venue owner who is paying for it actually described.
+    // SETTLED 2026-09-14 (Zaal): the ZAOstock after-party at Black Moon Public
+    // House, with a DJ, run by Steve, from six (poster: 6 to 10 PM). Hosted and
+    // underwritten by Black Moon on their own premises and their own licence.
     //
     // NOTE THE SCOPE LINE: our insurance covers the 12-6pm OUTDOOR event only
     // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
     // block describes their programme, not ours, and should not gain detail we
     // have not been given.
-    lede: 'At six the street clears. Black Moon next door hosts their own evening, North Creek from 6 to 9 - their stage, their licence, underwritten by them.',
+    lede: 'At six the street clears. The ZAOstock after-party at Black Moon Public House next door, with a DJ, run by Steve, from six (poster: 6 to 10 PM).',
     slots: [
-      { time: '18:00', label: 'North Creek', detail: 'The after-party, hosted and underwritten by Black Moon on their own stage.', tone: 'set' },
+      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party at Black Moon Public House, with a DJ, run by Steve, from six (poster: 6 to 10 PM).', tone: 'set' },
       { time: '21:00', label: 'Close', detail: 'Approximate. Black Moon keeps its own hours.', tone: 'gap' },
     ],
   },

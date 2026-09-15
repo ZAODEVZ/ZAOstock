@@ -23,7 +23,6 @@ import { SITE } from '@/content/site';
 // white moose sits on night, which stays dark in both modes.
 const NAV = [
   { href: '/program', label: 'Program' },
-  { href: '/musicians', label: 'Musicians' },
   { href: '/artists', label: 'Artists' },
   { href: '/apply', label: 'Volunteer' },
   { href: '/sponsor', label: 'Sponsor' },

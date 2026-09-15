@@ -131,11 +131,10 @@ export const LINEUP_NAMES_NOTE =
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [
   { time: 'Noon - 6 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
-  // SETTLED 2026-09-07: North Creek, roughly 6 to 9, hosted AND underwritten by
-  // Black Moon on their own premises and licence. Source: Steve Peer, 26 August.
-  // Was two rows, 6-8 DJ and 8-10 live, which was the older plan and ran an hour
-  // past what the venue owner paying for it described.
-  { time: '6 - 9 PM', where: 'Black Moon Public House, next door', what: 'North Creek, hosted by Black Moon. Their stage, their evening.' },
+  // SETTLED 2026-09-14 (Zaal): the ZAOstock after-party at Black Moon Public
+  // House, with a DJ, run by Steve, from six (poster: 6 to 10 PM). Hosted and
+  // underwritten by Black Moon on their own premises and licence.
+  { time: '6 - 9 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, with a DJ, run by Steve, from six (poster: 6 to 10 PM).' },
 ] as const;
 
 /**
