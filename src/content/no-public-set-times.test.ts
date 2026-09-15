@@ -30,7 +30,7 @@ describe('no set times in public', () => {
     const outdoor = publicSlots(BLOCKS[0]);
     expect(outdoor.filter((s) => s.tone === 'set').map((s) => s.label)).toEqual([
       'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
-      'DCoop', 'LyonsDen', 'Fellenz',
+      'DCoop', 'LyonsDen', 'Tom Fellenz',
     ]);
     expect(outdoor.some((s) => s.label === 'Changeover')).toBe(false);
   });

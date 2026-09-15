@@ -92,6 +92,11 @@ const config: NextConfig = {
       // Not permanent, same as the two above: a 308 is cached hard by browsers
       // and would outlive any future change to how slugs are derived.
       { source: '/artist/lyons-den', destination: '/artist/lyonsden', permanent: false },
+      // Tom Fellenz is the public billing everywhere (Zaal, 2026-09-14). The public
+      // artist slug is derived from the roster name by slugify(), so renaming
+      // that row moved his page to /artist/tom-fellenz. Redirect /artist/fellenz
+      // so any links or bookmarks keep working.
+      { source: '/artist/fellenz', destination: '/artist/tom-fellenz', permanent: false },
     ];
   },
   async rewrites() {

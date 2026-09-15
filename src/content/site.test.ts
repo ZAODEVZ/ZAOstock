@@ -122,7 +122,7 @@ describe('the names-only lineup', () => {
     'Michael Anderson',
     'DCoop',
     'LyonsDen',
-    'Fellenz',
+    'Tom Fellenz',
   ];
 
   it('is the eight acts of the locked run of show, in order (Hurricane out 2026-09-10)', () => {
