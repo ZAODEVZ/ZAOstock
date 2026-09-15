@@ -77,7 +77,7 @@ export const OPS_ACTS: readonly OpsAct[] = [
     codeSha256: '58cdef916cbce928d46a263d3ffb64639285168051b57b91fc75ebd5f0ad9709' },
   { key: 'lyons-den', name: 'LyonsDen', setStart: '16:19', minutes: 40,
     codeSha256: 'c4e9b93e5e6d06ad10e2e7780d60ff016ef4027dde270c4297e62753755752ae' },
-  { key: 'fellenz', name: 'Fellenz', setStart: '17:06', minutes: 40,
+  { key: 'fellenz', name: 'Tom Fellenz', setStart: '17:06', minutes: 40,
     codeSha256: '21323ff07117cc8842f6984ca063c7072d008e2150696561cf2eca1d486b51ed' },
 ];
 
@@ -193,7 +193,7 @@ export function actFromFormAnswer(answer: string, acts: readonly OpsAct[] = OPS_
   const head = answer.split(' - ')[0].replace(/\([^)]*\)/g, '');
   const key = norm(head);
   if (!key) return null;
-  return acts.find((a) => norm(a.name) === key) ?? null;
+  return acts.find((a) => norm(a.name) === key || norm(a.key) === key) ?? null;
 }
 
 /** One row from the form's Responses sheet, as pasted. Field names are free. */

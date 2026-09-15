@@ -20,6 +20,7 @@ describe('redirects for paths people guess', () => {
 
     expect(bySource['/lineup']?.destination).toBe('/program');
     expect(bySource['/sponsors']?.destination).toBe('/sponsor');
+    expect(bySource['/artist/fellenz']?.destination).toBe('/artist/tom-fellenz');
   });
 
   it('keeps them temporary, so a real /lineup page can be added later', async () => {

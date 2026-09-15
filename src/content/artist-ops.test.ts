@@ -96,7 +96,7 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     // no set times, no member names (Zaal: always "Acadia Rising").
     const LIVE_OPTIONS = [
       'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising',
-      'Michael Anderson', 'DCoop', 'LyonsDen', 'Fellenz',
+      'Michael Anderson', 'DCoop', 'LyonsDen', 'Tom Fellenz',
     ];
     for (const a of OPS_ACTS) {
       const v = new URL(artistFormUrl({ act: a })).searchParams.get(ARTIST_FORM.actEntry);
@@ -157,6 +157,12 @@ describe('actFromFormAnswer - every shape the act question has had', () => {
     }
   });
 
+  it('matches Tom Fellenz in all shapes (original schedule, bare name, full name)', () => {
+    for (const answer of ['Fellenz - 5:15 PM, 40 min', 'Fellenz', 'Tom Fellenz']) {
+      expect(actFromFormAnswer(answer)?.key, answer).toBe('fellenz');
+    }
+  });
+
   it('matches every act from its original option text and its bare name', () => {
     const OLD = [
       'The Crown Vics - 12:05 PM, 30 min', 'OPEN X - 12:40 PM, 40 min', 'Grass Rug - 1:25 PM, 30 min',
@@ -203,6 +209,14 @@ describe('latestPerAct - one act, several submissions', () => {
     const { byAct } = latestPerAct([renamed, old]);
     expect(byAct.size).toBe(1);
     expect(byAct.get('dcoop')).toBe(renamed);
+  });
+
+  it('groups the old Fellenz and new Tom Fellenz shapes as one act', () => {
+    const old = row('9/9/2026 11:38:50', 'Fellenz - 5:15 PM, 40 min', 'Bio.', '');
+    const renamed = row('9/14/2026 21:00:00', 'Tom Fellenz', 'Bio.', 'https://x/f.jpg');
+    const { byAct } = latestPerAct([renamed, old]);
+    expect(byAct.size).toBe(1);
+    expect(byAct.get('fellenz')).toBe(renamed);
   });
 
   it('keeps answers that match no act, rather than dropping them', () => {

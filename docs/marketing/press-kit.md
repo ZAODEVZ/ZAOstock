@@ -74,7 +74,7 @@ One venue at a time. The day does not split across two rooms.
 ## The lineup
 
 **All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
-OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Fellenz.
+OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz.
 
 **NONE of them has countersigned.** They are booked and locked in the run of show,
 which is a different claim from confirmed. Do not describe any act as confirmed in
@@ -90,7 +90,7 @@ WaveWarZ is a live music-battle format. Two artists play head to head and the
 audience picks the winner, in person and online. It runs online all year.
 
 **It is NOT on the 3 October programme.** Confirmed off by Zaal, 2026-09-07.
-The four-to-six window it used to hold is LyonsDen and Fellenz, whose slots are
+The four-to-six window it used to hold is LyonsDen and Tom Fellenz, whose slots are
 not published.
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.

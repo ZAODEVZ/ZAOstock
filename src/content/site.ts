@@ -119,7 +119,7 @@ export const LINEUP_NAMES: readonly string[] = [
   'Michael Anderson',
   'DCoop',
   'LyonsDen',
-  'Fellenz',
+  'Tom Fellenz',
 ];
 
 /** Rendered beside LINEUP_NAMES. Kept here so a test can hold it to the rules. */

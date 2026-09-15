@@ -40,7 +40,7 @@ var ACTS = [
   'Michael Anderson',
   'DCoop',
   'LyonsDen',
-  'Fellenz',
+  'Tom Fellenz',
 ];
 
 function createZaostockArtistForm() {
