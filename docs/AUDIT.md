@@ -16,7 +16,18 @@ Two repos:
 > stayed loud after it stopped being true, at the top of the document people read
 > first. Items 2 and 3 are UNVERIFIED from this seat: they need a real device and
 > an EAS build, which cannot be measured from here.
-> <!-- re-check: 2026-09-15 -->
+>
+> **Re-checked 2026-09-16, still true, still unmeasurable from this seat -
+> not a blind bump.** `bettercallzaal/zao-festivals` (the mobile repo #2 and
+> #3 live in) has had no push since 2026-08-25T18:44Z - three weeks with no
+> commit, so nothing has moved on either item since the last check. No local
+> checkout at `/tmp/zaostock-app` to build from even if this seat could run
+> `eas build` (it cannot - Zaal's own terminal only, see #2). The condition
+> that would resolve this: Zaal runs the EAS build himself. Re-check again
+> only after that happens, not on a calendar - a date-only re-check on an
+> item nobody has touched just re-confirms the same "cannot measure" every
+> time and trains the reader to stop reading it.
+> <!-- re-check: 2026-09-23 -->
 
 ### 1. ~~Production is pointed at the wrong Supabase database~~ — RESOLVED
 
@@ -56,7 +67,10 @@ Verify: `curl https://zaostock.com/api/events` should return real event JSON, no
 ### 2. Push notifications capability was never synced (real device required)
 **UNVERIFIED from this seat as of 2026-09-08** - needs a real device and an EAS
 build. Neither is measurable from here, so this is neither confirmed open nor
-closed. <!-- re-check: 2026-09-15 -->
+closed. **Re-checked 2026-09-16: still unverified, and still cannot be -
+`bettercallzaal/zao-festivals` has had no push since 2026-08-25T18:44Z, three
+weeks with no build attempt on record.** The re-check condition is Zaal
+running the command below, not a date. <!-- re-check: 2026-09-23 -->
 Build 13 failed on this and was never retried until this session. Run from a **real Terminal.app window**, not through Claude Code:
 ```
 cd /tmp/zaostock-app   # or wherever the mobile repo is checked out locally
@@ -66,7 +80,9 @@ Expect a prompt about syncing provisioning/capabilities — confirm yes.
 
 ### 3. Fresh TestFlight build once #2 is confirmed
 **UNVERIFIED from this seat.** Note the precondition changed: this used to wait on
-#1 and #2. #1 is resolved, so only #2 gates it. <!-- re-check: 2026-09-15 -->
+#1 and #2. #1 is resolved, so only #2 gates it. **Re-checked 2026-09-16: #2 is
+still unconfirmed (see above), so this is still gated on it, unchanged.**
+<!-- re-check: 2026-09-23 -->
 ```
 cd /tmp/zaostock-app
 eas build --platform ios --profile production
