@@ -100,7 +100,18 @@ export const getRosterArtists = cache(async function getRosterArtists(): Promise
 
   if (error || !data) return [];
 
-  return data.filter(isOnBill).map((a) => ({
+  // setOrder is the act's RANK on the bill (1..roster.length), not the raw
+  // set_order column. Bug found 2026-09-16 (zaal-dotfiles-2d, reading
+  // /artist/lyonsden live): Hurricane held slot 6 before he was declined
+  // 2026-09-10 and his set_order was never reassigned, so the column reads
+  // 1,2,3,4,5,[6=Hurricane, excluded by isOnBill],7,8,9 - DCoop, LyonsDen and
+  // Tom Fellenz carry the raw values 7, 8, 9, one higher than their true
+  // position once Hurricane drops out of the count. The column is a stable
+  // ordering key, not a dense 1..N sequence, and never was - assuming
+  // otherwise last night was the bug. Recomputed here from the FILTERED
+  // array's own index, which is correct by construction regardless of how
+  // many rows are excluded or why.
+  return data.filter(isOnBill).map((a, i) => ({
     id: a.id,
     name: a.name,
     slug: slugify(a.name),
@@ -115,7 +126,7 @@ export const getRosterArtists = cache(async function getRosterArtists(): Promise
     cypher_role: a.cypher_role || '',
     points_earned: a.points_earned || 0,
     volunteer_eligible: Boolean(a.volunteer_eligible),
-    setOrder: a.set_order,
+    setOrder: i + 1,
   }));
 });
 
