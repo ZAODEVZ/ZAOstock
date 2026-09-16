@@ -247,3 +247,55 @@ export function latestPerAct(
   }
   return { byAct, unmatched };
 }
+
+/**
+ * THE "WHAT WE STILL NEED FROM YOU" CARD.
+ *
+ * Zaal, 2026-09-16 (relayed by the seat): "lets prep a message for each one to
+ * ask the important things and share their backstage page, lets also improve
+ * that" - the messages are the seat's, this card is the backstage page's own
+ * version of the same ask, live and always current instead of a snapshot in a
+ * message that goes stale the moment a form lands.
+ *
+ * Pure function, no database import here on purpose: the caller (the page)
+ * fetches the row via `getArtistOpsStatus` in `@/lib/artists`, and this file
+ * turns four fields into a list of missing items. Keeping it pure is what
+ * makes the red control below possible without mocking Supabase.
+ *
+ * The four fields, and why each is its own check rather than inferred from
+ * another: `formReturned` and `filmingConsent` are NOT derivable from bio or
+ * photo - Grass Rug has a bio without a form back, and LyonsDen had bio and
+ * photo entered by hand with no form submission at all (clip
+ * clip-20260914-084122-zaostock-page-review-asks-0914). Measured 2026-09-15,
+ * projects/zaostock-artist-assets-2026-09-15.csv: DCoop and LyonsDen are the
+ * only two acts with both bio and photo in, and both still show "?" on
+ * filming - which is exactly the case this card exists to surface without
+ * anyone re-asking a question already answered on record.
+ */
+export type ArtistOpsStatus = {
+  bio: string;
+  photoUrl: string;
+  /** null = not yet asked or not yet back. true = returned. false = declined. */
+  formReturned: boolean | null;
+  /** null = not yet answered. true = yes. false = no. Never inferred from anything else. */
+  filmingConsent: boolean | null;
+};
+
+export type MissingItem = { label: string; detail: string };
+
+export function missingItems(status: ArtistOpsStatus): MissingItem[] {
+  const items: MissingItem[] = [];
+  if (!status.bio.trim()) {
+    items.push({ label: 'Bio', detail: 'A few lines about you, in the form below.' });
+  }
+  if (!status.photoUrl.trim()) {
+    items.push({ label: 'Photo', detail: 'One good press shot, highest resolution you have, in the form below.' });
+  }
+  if (status.formReturned !== true) {
+    items.push({ label: 'The form', detail: "Your details form isn't back yet - it's right here on this page." });
+  }
+  if (status.filmingConsent === null) {
+    items.push({ label: 'Filming', detail: 'Say yes or no to filming - the one box that matters most.' });
+  }
+  return items;
+}

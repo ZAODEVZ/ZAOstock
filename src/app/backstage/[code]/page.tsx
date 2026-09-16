@@ -10,7 +10,9 @@ import {
   addMinutes,
   clock12,
   findActByCode,
+  missingItems,
 } from '@/content/artist-ops';
+import { getArtistOpsStatus, slugify } from '@/lib/artists';
 import { SiteShell, Section, SectionHeader, Eyebrow, Card, BorderedList } from '@/components/poster';
 import { ArtistForm } from '../ArtistForm';
 
@@ -34,6 +36,11 @@ export default async function BackstagePage({ params }: Props) {
 
   const setEnd = addMinutes(act.setStart, act.minutes);
 
+  // Never lets a query failure or a name mismatch take the rest of the page
+  // down with it - see the comment on getArtistOpsStatus.
+  const status = await getArtistOpsStatus(act.name).catch(() => null);
+  const missing = status ? missingItems(status) : null;
+
   return (
     <SiteShell>
       <Section first className="pt-10 sm:pt-14">
@@ -44,6 +51,33 @@ export default async function BackstagePage({ params }: Props) {
             title="You are on the bill."
             lede={`ZAOstock, ${FESTIVAL.dateLabel}, at the ${FESTIVAL.venue} in downtown ${FESTIVAL.city}. This page is yours: your set, the weekend, and what to bring. Please do not share the link.`}
           />
+
+          {missing && missing.length > 0 && (
+            <Card>
+              <Eyebrow tone="denim" className="mb-2">What we still need from you</Eyebrow>
+              <ul className="text-sm text-ink-950 m-0 pl-5 space-y-2">
+                {missing.map((m) => (
+                  <li key={m.label}>
+                    <strong>{m.label}.</strong> {m.detail}
+                  </li>
+                ))}
+              </ul>
+              <a href="#form" className="text-sm font-bold underline text-ink-950 mt-3 inline-block">
+                Jump to the form
+              </a>
+            </Card>
+          )}
+
+          {missing && missing.length === 0 && (
+            <Card>
+              <Eyebrow tone="denim" className="mb-2">Your page is live</Eyebrow>
+              <p className="text-sm text-ink-950 m-0">
+                <a href={`https://zaostock.com/artist/${slugify(act.name)}`} className="underline font-bold">
+                  zaostock.com/artist/{slugify(act.name)}
+                </a>
+              </p>
+            </Card>
+          )}
 
           <Card>
             <Eyebrow className="mb-2">Your set</Eyebrow>
