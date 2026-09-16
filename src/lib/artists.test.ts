@@ -6,6 +6,7 @@ const { getSupabaseAdmin } = vi.hoisted(() => ({ getSupabaseAdmin: vi.fn() }));
 vi.mock('@/lib/db/supabase', () => ({ getSupabaseAdmin }));
 
 import { getArtistBySlug, getRosterArtists, isOnBill, slugify } from './artists';
+import { OPS_ACTS } from '@/content/artist-ops';
 
 describe('isOnBill - the red control for the eight-act scope', () => {
   // Real rows, measured against the live database 2026-09-15.
@@ -130,5 +131,46 @@ describe('getRosterArtists - setOrder is a dense rank, not the raw column (2026-
     getSupabaseAdmin.mockReturnValue(supabaseStub(NINE_ROWS_WITH_A_GAP));
     const roster = await getRosterArtists();
     expect(roster.find((a) => a.name === 'Tom Fellenz')!.setOrder).toBe(8);
+  });
+});
+
+// OPS_ACTS (src/content/artist-ops.ts) IS HAND-MAINTAINED - the codes behind
+// it live in the private vault, so the list of eight cannot itself be read
+// from the database. It is only correct as long as someone edits it every
+// time the on-bill roster changes. Queued by the seat 2026-09-16: a status
+// change (an act declined, a new one confirmed) with no matching OPS_ACTS
+// edit would not 404 the backstage page (findActByCode does not touch the
+// roster at all) - it would 404 that act's /artist/<slug>/flyer instead,
+// silently, the first time anyone tried the "Your flyer" block or opened a
+// share link, because the flyer route's slug comes from getArtistBySlug
+// (the real roster), not from OPS_ACTS.
+//
+// This can only check that CODE reflects CODE - it re-uses the real nine-row
+// gap fixture above (the true production shape, Hurricane declined mid-list)
+// rather than inventing a simplified one, and cannot catch a live database
+// edit nobody also made here. scripts/reveal-preflight.sh is the live half
+// of this same chain for LINEUP_NAMES; this is its OPS_ACTS counterpart.
+describe('OPS_ACTS mirrors the on-bill roster (2026-09-16, queued by the seat)', () => {
+  it('names the same eight acts as getRosterArtists, same running order', async () => {
+    getSupabaseAdmin.mockReturnValue(supabaseStub(NINE_ROWS_WITH_A_GAP));
+    const roster = await getRosterArtists();
+    expect(OPS_ACTS.map((a) => a.name)).toEqual(roster.map((a) => a.name));
+  });
+
+  // THE RED CONTROL, on the CHECK itself rather than on real data (real
+  // OPS_ACTS cannot be mutated from a test, and does not currently have a
+  // stale entry - that is what the test above just proved). A hand-built
+  // stand-in list, shaped like OPS_ACTS but naming an act the mock roster no
+  // longer has, must be caught, not waved through, or this guard is
+  // decorative.
+  it('catches a stand-in ops list naming an act that dropped off the bill', async () => {
+    const rowsWithoutFellenz = NINE_ROWS_WITH_A_GAP.filter((r) => r.name !== 'Tom Fellenz');
+    getSupabaseAdmin.mockReturnValue(supabaseStub(rowsWithoutFellenz));
+    const roster = await getRosterArtists();
+    const rosterNames = new Set(roster.map((a) => a.name));
+
+    const staleOpsList = [{ name: 'DCoop' }, { name: 'LyonsDen' }, { name: 'Tom Fellenz' }];
+    const stale = staleOpsList.filter((a) => !rosterNames.has(a.name));
+    expect(stale.map((a) => a.name)).toEqual(['Tom Fellenz']);
   });
 });
