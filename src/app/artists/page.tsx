@@ -72,7 +72,7 @@ const LINEUP_ARTISTS: readonly LineupArtistEntry[] = [
     order: '06',
     name: 'DCoop',
     slug: 'dcoop',
-    genre: 'Hip-hop',
+    genre: 'Hip-hop, reggae, rock, punk, tribal, country, EDM and R&B',
     highlight: 'Lyricism and community energy',
   },
   {

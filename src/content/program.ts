@@ -69,7 +69,7 @@ export const BLOCKS: Block[] = [
       { time: '14:45', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' , crewFacing: true },
       { time: '14:52', label: 'Michael Anderson', detail: 'Solo piano.', tone: 'set' },
       { time: '15:25', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' , crewFacing: true },
-      { time: '15:32', label: 'DCoop', detail: 'Hip-hop.', tone: 'set' },
+      { time: '15:32', label: 'DCoop', detail: 'Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B.', tone: 'set' },
       { time: '16:12', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '16:19', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
       { time: '16:59', label: 'Changeover', tone: 'gap' , crewFacing: true },
