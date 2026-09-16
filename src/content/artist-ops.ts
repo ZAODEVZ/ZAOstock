@@ -150,7 +150,7 @@ export const SOUNDCHECK = {
  * the vehicle-access answer and it is not in yet.
  */
 export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
-  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on this page. It is your agreement to play: the terms are at the top. Photo link, short bio, your city, your links, your tech rider (who is on stage, the gear you need from us, what you bring), and a yes or no on Friday soundcheck and on filming. Your own post goes up once your details are in.' },
+  { when: ARTIST_FORM.askLabel, what: 'The artist details form, on your own backstage page: whatever is still missing, only the items you have not answered yet. Photo, short bio, your city, your links, your tech rider (who is on stage, the gear you need from us, what you bring), and a yes or no on soundcheck and on filming. Your own post goes up once your details are in.' },
   { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage. Every act, mandatory, and there is no Saturday alternative. It doubles as a filming and recording night.' },
   { when: 'Saturday 3 October, 10 AM', what: 'Everyone on site. Crew is in from 8.' },
   { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with seven-minute changeovers.' },
@@ -249,53 +249,94 @@ export function latestPerAct(
 }
 
 /**
- * THE "WHAT WE STILL NEED FROM YOU" CARD.
+ * THE "WHAT WE STILL NEED FROM YOU" ASKS.
  *
- * Zaal, 2026-09-16 (relayed by the seat): "lets prep a message for each one to
- * ask the important things and share their backstage page, lets also improve
- * that" - the messages are the seat's, this card is the backstage page's own
- * version of the same ask, live and always current instead of a snapshot in a
- * message that goes stale the moment a form lands.
+ * v1, 2026-09-16: four checks (bio, photo, a form-returned flag, filming)
+ * behind a link to an embedded Google Form. Zaal reviewed the live page the
+ * same night: "not great at all for the artists" - too long, looked like a
+ * public site page, the embedded form was the problem. His words: "honestly
+ * we need a different form for each artist and just a line or something, or
+ * just ask them for the 4 things." Ruled: no Google Form embed on this page
+ * at all - seven NATIVE fields, asked only when missing, submitted straight
+ * to the row. `formReturned` is retired as a field (the granular items below
+ * are what "the form" always meant); the column stays in the database,
+ * unread, per the never-delete convention.
  *
  * Pure function, no database import here on purpose: the caller (the page)
  * fetches the row via `getArtistOpsStatus` in `@/lib/artists`, and this file
- * turns four fields into a list of missing items. Keeping it pure is what
- * makes the red control below possible without mocking Supabase.
+ * turns seven fields into a list of asks. Keeping it pure is what makes the
+ * red control below possible without mocking Supabase.
  *
- * The four fields, and why each is its own check rather than inferred from
- * another: `formReturned` and `filmingConsent` are NOT derivable from bio or
- * photo - Grass Rug has a bio without a form back, and LyonsDen had bio and
- * photo entered by hand with no form submission at all (clip
- * clip-20260914-084122-zaostock-page-review-asks-0914). Measured 2026-09-15,
- * projects/zaostock-artist-assets-2026-09-15.csv: DCoop and LyonsDen are the
- * only two acts with both bio and photo in, and both still show "?" on
- * filming - which is exactly the case this card exists to surface without
- * anyone re-asking a question already answered on record.
+ * Every field is its own check, none inferred from another - Grass Rug has a
+ * bio with nothing else back, LyonsDen had bio and photo entered by hand
+ * with no rider, no city and no filming answer on record at all. Bundling
+ * any two of these into one check would have hidden real gaps behind
+ * whichever field happened to be filled first.
  */
 export type ArtistOpsStatus = {
   bio: string;
   photoUrl: string;
-  /** null = not yet asked or not yet back. true = returned. false = declined. */
-  formReturned: boolean | null;
+  city: string;
+  socials: string;
+  /** "Who is on stage, the gear you need from us, what you bring" - one field. */
+  rider: string;
+  /** null = not yet answered. true = yes. false = no. Never inferred from anything else. */
+  soundcheckConfirmed: boolean | null;
   /** null = not yet answered. true = yes. false = no. Never inferred from anything else. */
   filmingConsent: boolean | null;
 };
 
-export type MissingItem = { label: string; detail: string };
+export type AskKind = 'text' | 'textarea' | 'url' | 'yesno';
+
+export type MissingItem = {
+  key: keyof ArtistOpsStatus;
+  label: string;
+  detail: string;
+  kind: AskKind;
+};
 
 export function missingItems(status: ArtistOpsStatus): MissingItem[] {
   const items: MissingItem[] = [];
   if (!status.bio.trim()) {
-    items.push({ label: 'Bio', detail: 'A few lines about you, in the form below.' });
+    items.push({ key: 'bio', label: 'Bio', detail: 'A few lines about you.', kind: 'textarea' });
   }
   if (!status.photoUrl.trim()) {
-    items.push({ label: 'Photo', detail: 'One good press shot, highest resolution you have, in the form below.' });
+    items.push({
+      key: 'photoUrl',
+      label: 'Photo',
+      detail: 'A link to one good press shot, highest resolution you have.',
+      kind: 'url',
+    });
   }
-  if (status.formReturned !== true) {
-    items.push({ label: 'The form', detail: "Your details form isn't back yet - it's right here on this page." });
+  if (!status.city.trim()) {
+    items.push({ key: 'city', label: 'City', detail: 'Where you are based.', kind: 'text' });
+  }
+  if (!status.socials.trim()) {
+    items.push({ key: 'socials', label: 'Links', detail: 'X, Farcaster, Spotify, SoundCloud, website - whatever you have.', kind: 'text' });
+  }
+  if (!status.rider.trim()) {
+    items.push({
+      key: 'rider',
+      label: 'Who and what',
+      detail: 'Who is on stage, the gear you need from us, and what you bring yourself.',
+      kind: 'textarea',
+    });
+  }
+  if (status.soundcheckConfirmed === null) {
+    items.push({
+      key: 'soundcheckConfirmed',
+      label: 'Soundcheck',
+      detail: `Yes or no to ${SOUNDCHECK.day}, ${SOUNDCHECK.window} - mandatory, no Saturday alternative.`,
+      kind: 'yesno',
+    });
   }
   if (status.filmingConsent === null) {
-    items.push({ label: 'Filming', detail: 'Say yes or no to filming - the one box that matters most.' });
+    items.push({
+      key: 'filmingConsent',
+      label: 'Filming',
+      detail: 'Say yes or no to filming - the one box that matters most.',
+      kind: 'yesno',
+    });
   }
   return items;
 }
