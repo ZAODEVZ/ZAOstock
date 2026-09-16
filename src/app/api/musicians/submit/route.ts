@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { rateLimitPublicForm } from '@/lib/api/rate-limit';
+import { submissionUnstored } from '@/lib/api/submission-fallback';
 
 const submitSchema = z.object({
   name: z.string().trim().min(1, 'Artist name required').max(200),
@@ -21,6 +22,8 @@ const submitSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  // Held outside the try so an unexpected failure still logs what the person sent.
+  let payload: unknown;
   try {
     const limited = rateLimitPublicForm(request, 'musicians-submit');
     if (limited) return limited;
@@ -28,6 +31,7 @@ export async function POST(request: NextRequest) {
     const parsedBody = await parseJsonBody(request);
     if (!parsedBody.ok) return parsedBody.response;
     const body = parsedBody.data;
+    payload = body;
     const parsed = submitSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -56,7 +60,13 @@ export async function POST(request: NextRequest) {
       genre: d.genre || '',
       socials: d.socials || '',
       bio: d.bio || '',
-      status: 'submitted',
+      // A fresh submission starts where every hand-added prospect starts -
+      // 'wishlist' is the lowest rung of the pipeline the team already
+      // triages from (src/app/team/ArtistPipeline.tsx STATUS_ORDER). There
+      // is no separate 'submitted' status: the six-value artists_status_check
+      // constraint never had one, so every insert here violated it and was
+      // discarded - the exact "Could Not Submit Right Now" failure this fixes.
+      status: 'wishlist',
       cypher_interested: d.cypher_interested,
       needs_travel: d.needs_travel,
       travel_from: d.travel_from || '',
@@ -64,13 +74,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('[musicians/submit] insert error', error);
-      return NextResponse.json({ error: 'Could not submit right now' }, { status: 500 });
+      return submissionUnstored('musicians/submit', d, error);
     }
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (err) {
-    console.error('[musicians/submit] unexpected', err);
-    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
+    return submissionUnstored('musicians/submit', payload, err);
   }
 }

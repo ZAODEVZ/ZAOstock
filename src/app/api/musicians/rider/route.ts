@@ -5,6 +5,7 @@ import { generateClaimToken, slugify } from '@/lib/artists';
 import { ENV } from '@/lib/env';
 import { parseJsonBody } from '@/lib/api/parse-json';
 import { rateLimitPublicForm } from '@/lib/api/rate-limit';
+import { submissionUnstored } from '@/lib/api/submission-fallback';
 
 // Confirmed-artist rider intake. Public form at /musicians/rider.
 // Closes the loop the artist deal memo promises ("technical rider intake form").
@@ -100,6 +101,8 @@ function formatRiderBlock(d: z.infer<typeof riderSchema>): string {
 }
 
 export async function POST(request: NextRequest) {
+  // Held outside the try so an unexpected failure still logs what the person sent.
+  let payload: unknown;
   try {
     const limited = rateLimitPublicForm(request, 'musicians-rider');
     if (limited) return limited;
@@ -107,6 +110,7 @@ export async function POST(request: NextRequest) {
     const parsedBody = await parseJsonBody(request);
     if (!parsedBody.ok) return parsedBody.response;
     const body = parsedBody.data;
+    payload = body;
     const parsed = riderSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -232,8 +236,7 @@ export async function POST(request: NextRequest) {
         }
       }
       if (updateError) {
-        console.error('[musicians/rider] update error', updateError);
-        return NextResponse.json({ error: 'Could not save your rider right now' }, { status: 500 });
+        return submissionUnstored('musicians/rider', d, updateError);
       }
     } else {
       claimToken = generateClaimToken();
@@ -243,7 +246,11 @@ export async function POST(request: NextRequest) {
         contact_email: d.contact_email,
         socials: d.socials || '',
         bio: d.bio || '',
-        status: 'submitted',
+        // Same fix as musicians/submit: 'submitted' is not one of the six
+        // values artists_status_check allows, so this insert always violated
+        // it and was silently discarded. 'wishlist' is the real starting
+        // status every new prospect gets.
+        status: 'wishlist',
         claim_token: claimToken,
         notes: riderBlock,
       };
@@ -253,8 +260,7 @@ export async function POST(request: NextRequest) {
         .select('id')
         .single();
       if (insertError || !inserted) {
-        console.error('[musicians/rider] insert error', insertError);
-        return NextResponse.json({ error: 'Could not save your rider right now' }, { status: 500 });
+        return submissionUnstored('musicians/rider', d, insertError);
       }
       artistId = inserted.id;
     }
@@ -272,7 +278,6 @@ export async function POST(request: NextRequest) {
       { status: 201 },
     );
   } catch (err) {
-    console.error('[musicians/rider] unexpected', err);
-    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
+    return submissionUnstored('musicians/rider', payload, err);
   }
 }
