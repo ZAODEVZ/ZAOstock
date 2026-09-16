@@ -235,12 +235,25 @@ describe('latestPerAct - one act, several submissions', () => {
 
 // Zaal, 2026-09-10: there is no reveal day. Every backstage page is the landing
 // page for a message that says so, and must not contradict it.
+//
+// The 2026-09-16 redesign moved the promise text out of page.tsx's own JSX
+// and into ARTIST_DATES (this file), which the page renders by mapping over
+// - so a raw grep of page.tsx's source for that sentence would now check the
+// wrong file and pass for the wrong reason (the sentence living ANYWHERE,
+// coincidentally, not the page actually rendering it). Checks page.tsx's
+// source for what must NEVER appear there, and ARTIST_DATES - the actual
+// data the page renders - for what must.
 describe('the backstage page promises no reveal day', () => {
-  it('names no reveal date, no Sunday, and no reveal label', () => {
+  it('names no reveal date, no Sunday, and no reveal label in the page source', () => {
     const page = readFileSync(path.join(process.cwd(), 'src/app/backstage/[code]/page.tsx'), 'utf8');
     expect(page).not.toContain('lineupRevealLabel');
     expect(page).not.toMatch(/Sunday|13 September/);
-    expect(page).toContain('The form is what puts you in it.');
+  });
+
+  it('renders the "own post goes up" promise via ARTIST_DATES, which the page maps over', () => {
+    const page = readFileSync(path.join(process.cwd(), 'src/app/backstage/[code]/page.tsx'), 'utf8');
+    expect(page, 'page.tsx must actually render ARTIST_DATES for this to be true').toMatch(/ARTIST_DATES\.map/);
+    expect(ARTIST_DATES.some((d) => d.what.includes('Your own post goes up once your details are in.'))).toBe(true);
   });
 });
 
@@ -319,62 +332,99 @@ describe('the artist form is the contract', () => {
   });
 });
 
-describe('missingItems - the backstage "what we still need from you" card', () => {
+describe('missingItems - the backstage native asks (redesigned 2026-09-16)', () => {
   const COMPLETE: ArtistOpsStatus = {
     bio: 'A real bio, not empty.',
     photoUrl: 'https://example.com/press.jpg',
-    formReturned: true,
+    city: 'Bar Harbor, Maine',
+    socials: 'x.com/example',
+    rider: 'Solo, need a DI box.',
+    soundcheckConfirmed: true,
     filmingConsent: true,
   };
 
   // THE RED CONTROL, verbatim from the ask: "an act whose row has bio and
-  // photo and filming must not show the ask." formReturned true too, since a
-  // complete row means nothing outstanding.
+  // photo and filming must not show the ask" - widened here to all seven
+  // fields, since the redesign added five more.
   it('shows nothing for a complete row', () => {
     expect(missingItems(COMPLETE)).toEqual([]);
   });
 
-  it('flags a missing bio', () => {
-    const labels = missingItems({ ...COMPLETE, bio: '' }).map((m) => m.label);
-    expect(labels).toEqual(['Bio']);
+  it('flags a missing bio as a textarea ask', () => {
+    const items = missingItems({ ...COMPLETE, bio: '' });
+    expect(items.map((m) => m.label)).toEqual(['Bio']);
+    expect(items[0].kind).toBe('textarea');
   });
 
   it('flags a missing bio that is only whitespace', () => {
-    const labels = missingItems({ ...COMPLETE, bio: '   \n  ' }).map((m) => m.label);
-    expect(labels).toEqual(['Bio']);
+    expect(missingItems({ ...COMPLETE, bio: '   \n  ' }).map((m) => m.label)).toEqual(['Bio']);
   });
 
-  it('flags a missing photo', () => {
-    const labels = missingItems({ ...COMPLETE, photoUrl: '' }).map((m) => m.label);
-    expect(labels).toEqual(['Photo']);
+  it('flags a missing photo as a url ask', () => {
+    const items = missingItems({ ...COMPLETE, photoUrl: '' });
+    expect(items.map((m) => m.label)).toEqual(['Photo']);
+    expect(items[0].kind).toBe('url');
   });
 
-  // Grass Rug's actual shape, 2026-09-15: bio in hand, no form back yet. Bio
-  // alone must not read as "the form is back" - they are independent facts.
-  it('flags a missing form even when bio and photo are both in', () => {
-    const labels = missingItems({ ...COMPLETE, formReturned: null }).map((m) => m.label);
-    expect(labels).toEqual(['The form']);
+  it('flags a missing city independently of bio and photo', () => {
+    expect(missingItems({ ...COMPLETE, city: '' }).map((m) => m.label)).toEqual(['City']);
   });
 
-  it('flags an explicitly declined form the same as a not-yet-returned one', () => {
-    const labels = missingItems({ ...COMPLETE, formReturned: false }).map((m) => m.label);
-    expect(labels).toEqual(['The form']);
+  it('flags missing links independently', () => {
+    expect(missingItems({ ...COMPLETE, socials: '' }).map((m) => m.label)).toEqual(['Links']);
   });
 
-  // DCoop and LyonsDen's actual shape, 2026-09-15: bio, photo and form all
-  // in, filming still "?". This is THE case the card exists to surface.
+  // LyonsDen's actual shape before his rider landed: bio and photo entered
+  // by hand, nothing else on record. Bio/photo alone must not read as
+  // "the rider is in" - independent facts.
+  it('flags a missing rider even when bio and photo are both in', () => {
+    expect(missingItems({ ...COMPLETE, rider: '' }).map((m) => m.label)).toEqual(['Who and what']);
+  });
+
+  it('flags an unanswered soundcheck as its own ask', () => {
+    const items = missingItems({ ...COMPLETE, soundcheckConfirmed: null });
+    expect(items.map((m) => m.label)).toEqual(['Soundcheck']);
+    expect(items[0].kind).toBe('yesno');
+  });
+
+  it('does not read a "no" to soundcheck as missing - a real answer, not silence', () => {
+    expect(missingItems({ ...COMPLETE, soundcheckConfirmed: false })).toEqual([]);
+  });
+
+  // DCoop and LyonsDen's actual shape, 2026-09-15: everything else in,
+  // filming still "?". This is THE case the card exists to surface.
   it('flags only filming when everything else is in', () => {
-    const labels = missingItems({ ...COMPLETE, filmingConsent: null }).map((m) => m.label);
-    expect(labels).toEqual(['Filming']);
+    expect(missingItems({ ...COMPLETE, filmingConsent: null }).map((m) => m.label)).toEqual(['Filming']);
   });
 
   it('does not read a "no" to filming as missing - a real answer, not silence', () => {
-    const labels = missingItems({ ...COMPLETE, filmingConsent: false }).map((m) => m.label);
-    expect(labels).toEqual([]);
+    expect(missingItems({ ...COMPLETE, filmingConsent: false })).toEqual([]);
   });
 
-  it('lists everything for a brand-new row', () => {
-    const labels = missingItems({ bio: '', photoUrl: '', formReturned: null, filmingConsent: null }).map((m) => m.label);
-    expect(labels).toEqual(['Bio', 'Photo', 'The form', 'Filming']);
+  it('lists all seven for a brand-new row, in a stable order', () => {
+    const labels = missingItems({
+      bio: '',
+      photoUrl: '',
+      city: '',
+      socials: '',
+      rider: '',
+      soundcheckConfirmed: null,
+      filmingConsent: null,
+    }).map((m) => m.label);
+    expect(labels).toEqual(['Bio', 'Photo', 'City', 'Links', 'Who and what', 'Soundcheck', 'Filming']);
+  });
+
+  it('every item carries a key matching an ArtistOpsStatus field, for the page to key inputs on', () => {
+    const items = missingItems({
+      bio: '',
+      photoUrl: '',
+      city: '',
+      socials: '',
+      rider: '',
+      soundcheckConfirmed: null,
+      filmingConsent: null,
+    });
+    const validKeys: Array<keyof ArtistOpsStatus> = ['bio', 'photoUrl', 'city', 'socials', 'rider', 'soundcheckConfirmed', 'filmingConsent'];
+    for (const item of items) expect(validKeys).toContain(item.key);
   });
 });
