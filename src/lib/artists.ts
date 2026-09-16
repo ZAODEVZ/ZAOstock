@@ -136,3 +136,42 @@ export async function verifyClaimToken(slug: string, token: string): Promise<str
   if (slugify(data.name) !== slug) return null;
   return data.id;
 }
+
+// FOR THE BACKSTAGE PAGE ONLY - not part of PublicArtist, not read by the
+// public site. `form_returned` and `filming_consent` are ops fields (2026-09-16
+// migration add_form_and_filming_tracking_to_artists) that nobody outside the
+// act and Zaal needs to see, so they live in their own narrow query rather
+// than widening the shared public type. Matched by exact name against
+// OPS_ACTS (src/content/artist-ops.ts:name) - artist-ops.test.ts holds
+// OPS_ACTS to LINEUP_NAMES, but NOTHING holds LINEUP_NAMES to this table's
+// `name` column, so a rename on one side without the other (the exact
+// LyonsDen/Fellenz failure mode, twice already) returns null here rather
+// than throwing. The page must treat null as "skip the card", never as an
+// error - the rest of the page (set time, what to bring) does not depend on
+// this query and must not go down with it.
+export async function getArtistOpsStatus(name: string): Promise<{
+  bio: string;
+  photoUrl: string;
+  formReturned: boolean | null;
+  filmingConsent: boolean | null;
+} | null> {
+  const supabase = getSupabaseAdmin();
+  const { data: event } = await supabase.from('events').select('id').eq('slug', 'zaostock').maybeSingle();
+  if (!event) return null;
+
+  const { data, error } = await supabase
+    .from('artists')
+    .select('bio, photo_url, form_returned, filming_consent')
+    .eq('event_id', event.id)
+    .eq('name', name)
+    .maybeSingle();
+
+  if (error || !data) return null;
+
+  return {
+    bio: data.bio || '',
+    photoUrl: data.photo_url || '',
+    formReturned: data.form_returned,
+    filmingConsent: data.filming_consent,
+  };
+}

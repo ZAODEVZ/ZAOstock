@@ -11,7 +11,9 @@ import {
   artistFormUrl,
   actFromFormAnswer,
   latestPerAct,
+  missingItems,
   responseTime,
+  type ArtistOpsStatus,
   type FormResponse,
   clock12,
   findActByCode,
@@ -314,5 +316,65 @@ describe('the artist form is the contract', () => {
     for (const q of ['Who is on stage?', 'What gear do you need from us?', 'What do you bring?']) expect(gs).toContain(q);
     expect(ARTIST_DATES.map((d) => d.when)).not.toContain('Friday 18 September');
     expect(ARTIST_DATES[0].what).toMatch(/tech rider/);
+  });
+});
+
+describe('missingItems - the backstage "what we still need from you" card', () => {
+  const COMPLETE: ArtistOpsStatus = {
+    bio: 'A real bio, not empty.',
+    photoUrl: 'https://example.com/press.jpg',
+    formReturned: true,
+    filmingConsent: true,
+  };
+
+  // THE RED CONTROL, verbatim from the ask: "an act whose row has bio and
+  // photo and filming must not show the ask." formReturned true too, since a
+  // complete row means nothing outstanding.
+  it('shows nothing for a complete row', () => {
+    expect(missingItems(COMPLETE)).toEqual([]);
+  });
+
+  it('flags a missing bio', () => {
+    const labels = missingItems({ ...COMPLETE, bio: '' }).map((m) => m.label);
+    expect(labels).toEqual(['Bio']);
+  });
+
+  it('flags a missing bio that is only whitespace', () => {
+    const labels = missingItems({ ...COMPLETE, bio: '   \n  ' }).map((m) => m.label);
+    expect(labels).toEqual(['Bio']);
+  });
+
+  it('flags a missing photo', () => {
+    const labels = missingItems({ ...COMPLETE, photoUrl: '' }).map((m) => m.label);
+    expect(labels).toEqual(['Photo']);
+  });
+
+  // Grass Rug's actual shape, 2026-09-15: bio in hand, no form back yet. Bio
+  // alone must not read as "the form is back" - they are independent facts.
+  it('flags a missing form even when bio and photo are both in', () => {
+    const labels = missingItems({ ...COMPLETE, formReturned: null }).map((m) => m.label);
+    expect(labels).toEqual(['The form']);
+  });
+
+  it('flags an explicitly declined form the same as a not-yet-returned one', () => {
+    const labels = missingItems({ ...COMPLETE, formReturned: false }).map((m) => m.label);
+    expect(labels).toEqual(['The form']);
+  });
+
+  // DCoop and LyonsDen's actual shape, 2026-09-15: bio, photo and form all
+  // in, filming still "?". This is THE case the card exists to surface.
+  it('flags only filming when everything else is in', () => {
+    const labels = missingItems({ ...COMPLETE, filmingConsent: null }).map((m) => m.label);
+    expect(labels).toEqual(['Filming']);
+  });
+
+  it('does not read a "no" to filming as missing - a real answer, not silence', () => {
+    const labels = missingItems({ ...COMPLETE, filmingConsent: false }).map((m) => m.label);
+    expect(labels).toEqual([]);
+  });
+
+  it('lists everything for a brand-new row', () => {
+    const labels = missingItems({ bio: '', photoUrl: '', formReturned: null, filmingConsent: null }).map((m) => m.label);
+    expect(labels).toEqual(['Bio', 'Photo', 'The form', 'Filming']);
   });
 });
