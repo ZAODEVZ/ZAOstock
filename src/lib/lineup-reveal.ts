@@ -19,9 +19,12 @@
  * NO photo. Under the old gate he would have published photo-less the moment
  * the date passed. Under this one he waits until his photo is in the row.
  *
- * Both public readers use this one predicate - the lineup API the ZAO Festivals
- * app calls, and getPublicArtists() behind /artist/<slug> - so the site and the
- * app cannot publish different acts.
+ * This predicate still gates the lineup API the ZAO Festivals app calls - the
+ * app only ever sees fully-confirmed acts, unchanged. It no longer gates
+ * /artist/<slug>: RULING 2026-09-15, every act's page renders (blanks where
+ * nothing exists), scoped instead by src/lib/artists.ts's getRosterArtists()
+ * to the eight-act bill. The site and the app deliberately show different
+ * things now - the app the reveal, the site the whole roster.
  */
 export type PublishCandidate = {
   status?: string | null;

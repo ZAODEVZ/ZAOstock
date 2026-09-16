@@ -3,8 +3,10 @@ import { isPublishable } from './lineup-reveal';
 import { getFallbackLineup } from './lineup-fallback';
 import { PUBLIC_LINEUP } from '@/content/site';
 
-// The public /artist/<slug> pages and the public lineup show an act only once
-// its row is complete (isPublishable), and the fallback lineup must answer to the slug the
+// The public lineup API (the reveal the ZAO Festivals app reads) shows an act
+// only once its row is complete (isPublishable) - /artist/<slug> stopped using
+// this gate 2026-09-15 (see lineup-reveal.ts) and now renders every act on the
+// bill. The fallback lineup must answer to the slug the
 // events table actually uses ('zaostock') as well as the one the mobile app
 // calls ('zaostock-2026'). Both were wrong on 2026-08-28 (Iman's audit, items
 // 05 and 06).

@@ -4,16 +4,19 @@ import { useState } from 'react';
 import type { PublicArtist } from '@/lib/artists';
 
 // The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
-// have that on any of the pages"). Nothing public needs it: getPublicArtists
-// already filters to status 'confirmed', so the pill could only ever read
-// "Confirmed" on a page that exists, which is a label that says nothing.
+// have that on any of the pages"). Still true after the 2026-09-15 ruling
+// (every act's page renders, not just confirmed ones): a pill reading
+// "wishlist" on a public page would announce which acts have not signed yet,
+// which is worse than no pill.
 interface Props {
   artist: PublicArtist;
   canEdit: boolean;
   token: string;
+  /** Size of the eight-act roster, for "Act N of total". */
+  total: number;
 }
 
-export function ArtistProfileView({ artist, canEdit, token }: Props) {
+export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
   const [bio, setBio] = useState(artist.bio);
   const [photoUrl, setPhotoUrl] = useState(artist.photo_url);
   const [logoUrl, setLogoUrl] = useState(artist.logo_url);
@@ -124,6 +127,14 @@ export function ArtistProfileView({ artist, canEdit, token }: Props) {
           </div>
         )}
         <div className="flex-1 min-w-0">
+          {/* Slot only, no clock time - the 2026-09-15 ruling asked for "slot
+              and set time from the running order", but set times stay off
+              every public surface (Zaal, 2026-09-12; enforced by
+              no-public-set-times.test.ts for /program). Flagged for Zaal to
+              confirm rather than guessed onto a live page. */}
+          <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-1">
+            Act {artist.setOrder} of {total}
+          </p>
           <h1 className="text-2xl font-bold text-ink-950">{artist.name}</h1>
           <div className="flex items-center gap-2 mt-2 flex-wrap">
             {points > 0 && (

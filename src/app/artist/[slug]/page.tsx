@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getArtistBySlug, verifyClaimToken } from '@/lib/artists';
+import { getArtistBySlug, getRosterArtists, verifyClaimToken } from '@/lib/artists';
 import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
@@ -36,12 +36,15 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
   if (!artist) notFound();
 
   const canEdit = token ? Boolean(await verifyClaimToken(slug, token)) : false;
+  // Cheap: getRosterArtists() is react-cache()'d, so this reuses the same
+  // fetch getArtistBySlug already made this request rather than re-querying.
+  const total = (await getRosterArtists()).length;
 
   return (
     <SiteShell>
       <Section first className="pt-10 sm:pt-14">
         <div className="max-w-[760px] space-y-6">
-          <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} />
+          <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} total={total} />
           <Card>
             <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
             <p className="text-sm text-ink-secondary m-0">

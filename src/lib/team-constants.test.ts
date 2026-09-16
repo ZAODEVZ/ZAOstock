@@ -58,10 +58,19 @@ describe('only a written confirmation reaches the public', () => {
     expect(PUBLISHABLE_ARTIST_STATUSES).toEqual(['confirmed']);
   });
 
-  // The rule is worth nothing if the queries drift from it. Both public readers
-  // of the artists table must filter on exactly the publishable set.
-  it('matches what the two public queries actually filter on', () => {
-    const readers = ['src/lib/artists.ts', 'src/app/api/events/[slug]/lineup/route.ts'];
+  // The rule is worth nothing if the query drifts from it. Until 2026-09-15
+  // this list held both src/lib/artists.ts and the lineup route - they were
+  // the "two public readers" the comment above meant. RULING 2026-09-15
+  // (grill 22:1x): /artist/<slug> now renders every act on the eight-act
+  // bill, blanks where nothing exists, scoped by src/lib/artists.ts's
+  // isOnBill() (set_order IS NOT NULL AND status != 'declined') rather than
+  // isPublishable - so artists.ts genuinely no longer filters on
+  // status='confirmed' and dropped out of this list on purpose. The lineup
+  // API is UNCHANGED and is now the only reader this test needs to check -
+  // it is still the reveal the ZAO Festivals app reads, and still shows
+  // only fully-confirmed acts.
+  it('matches what the public reveal query actually filters on', () => {
+    const readers = ['src/app/api/events/[slug]/lineup/route.ts'];
     expect(PUBLISHABLE_ARTIST_STATUSES).toHaveLength(1);
     const only = PUBLISHABLE_ARTIST_STATUSES[0];
     for (const rel of readers) {
