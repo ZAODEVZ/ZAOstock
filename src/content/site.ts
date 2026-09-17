@@ -181,7 +181,7 @@ export const SOCIALS = [
 
 // `textOnly` is set EXPLICITLY (not just an absent logoSrc) whenever a
 // confirmed partner has no logo file yet. 2026-09-16 site audit + Zaal:
-// Town of Ellsworth was the only confirmed partner rendering bare, by
+// City of Ellsworth was the only confirmed partner rendering bare, by
 // omission rather than by decision - nothing forced anyone adding a partner
 // to notice they'd skipped a logo. site.test.ts asserts every confirmed
 // partner sets logoSrc or textOnly, so a new entry with neither fails that
@@ -197,9 +197,18 @@ export type Partner = { name: string; role: string; poc: string; confirmed: bool
 // POC is Thy Revolution (Zaal, 2026-09-10: "poc is thyrev"), role Co-presenter
 // (Zaal's pick the same day). No partner is untyped any more.
 const ALL_PARTNERS = [
-  // Zaal is sourcing the Town seal/wordmark himself (ellsworthmaine.gov or a
+  // Zaal is sourcing the City seal/wordmark himself (ellsworthmaine.gov or a
   // licensed file he provides) - do not scrape one. textOnly until it lands.
-  { name: 'Town of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true, textOnly: true },
+  //
+  // "City of Ellsworth", not "Town" - Zaal, 2026-09-17. Corrected here after
+  // shipping "Town" by mistake in the 2026-09-16 textOnly fix. Evidence:
+  // ellsworthamerican.com and heartofellsworth.org both say "City of
+  // Ellsworth" (2 to 0 over "Town"), the municipal Facebook page is "City of
+  // Ellsworth", and Maine Craft Weekend lists Ellsworth as a Featured City.
+  // ellsworthmaine.gov itself returns a zero-byte body to curl from this
+  // machine, so the authority is unreadable here - this is Zaal's word plus
+  // four secondary sources, not a live fetch of the .gov site.
+  { name: 'City of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true, textOnly: true },
   { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true, logoSrc: '/partners/black-moon.png' },
   { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true, logoSrc: '/partners/star-977.png' },
   { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
@@ -216,7 +225,7 @@ const ALL_PARTNERS = [
   { name: 'Artizen', role: 'Funding partner', poc: 'Zaal', confirmed: true, logoSrc: '/partners/artizen.png' },
   // WE THE MEDIA: Zaal, 2026-09-16 grill, role and poc his words exactly.
   // Zaal is getting the WE THE MEDIA logo himself and will drop it in
-  // ~/zao-vault/inbox - textOnly until it lands, same as Town of Ellsworth.
+  // ~/zao-vault/inbox - textOnly until it lands, same as City of Ellsworth.
   { name: 'WE THE MEDIA', role: 'Media and content capture', poc: 'Zaal', confirmed: true, textOnly: true },
 ] satisfies Partner[];
 

@@ -6,7 +6,7 @@ import { SiteShell, Section, Eyebrow, Button, SectionHeader, PartnerTile } from 
 // The partner page. Same PARTNERS list as the homepage strip and the press
 // kit, so the three cannot drift. A partner appears only when confirmed; a
 // logo appears only when the file is in public/partners/. A partner whose
-// logo is still due (Town of Ellsworth) shows a "Logo coming" badge, not a
+// logo is still due (City of Ellsworth) shows a "Logo coming" badge, not a
 // blank. ENTERACT and Web3Metal are not partners (Zaal, 2026-09-10). Heart of Ellsworth stays
 // off until confirmed in writing (src/content/site.ts).
 
