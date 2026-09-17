@@ -138,6 +138,32 @@ export const DAY = [
 ] as const;
 
 /**
+ * THE ESTATE'S CHANNELS, not ZAOstock-branded ones - there is no dedicated
+ * @ZAOstock handle on any platform. 2026-09-16, 17 days out: a seat audit
+ * found zaostock.com carried zero social links anywhere, so a visitor with
+ * no other channel had no way to follow the festival back. Every href below
+ * was independently checked live the same day this was written (curl 200,
+ * or for YouTube a flat-playlist fetch) except Facebook, which returns a
+ * login/checkpoint wall to curl and to the Chrome extension from this
+ * machine (ZAOOS doc 2495) - those two are verified by reference to the
+ * estate's socials map and the thezao.com footer, not by an independent
+ * fetch from here.
+ *
+ * NOT LISTED, on purpose: TikTok (the handle on the socials map is flagged
+ * stale/unverified) and Bluesky, Reddit, Threads, Lens (no ZAO account found
+ * on any of them). Do not add one back without verifying it live first.
+ */
+export const SOCIALS = [
+  { platform: 'X', href: 'https://x.com/thezaodao', label: 'ZAO on X' },
+  { platform: 'Instagram', href: 'https://instagram.com/zaofestivals/', label: 'ZAO Festivals on Instagram' },
+  { platform: 'YouTube', href: 'https://youtube.com/@thezaodao', label: 'ZAO on YouTube' },
+  { platform: 'Facebook', href: 'https://facebook.com/zaofestivals', label: 'ZAO Festivals on Facebook' },
+  { platform: 'Facebook Event', href: 'https://facebook.com/events/28051455107809318', label: 'ZAOstock event on Facebook' },
+  { platform: 'Discord', href: 'https://discord.com/invite/ACJyYQH3BE', label: 'ZAO on Discord' },
+  { platform: 'Telegram', href: 'https://telegram.thezao.com', label: 'ZAO on Telegram' },
+] as const;
+
+/**
  * RETIRED 2026-09-09. There were two exported meeting times here, 11:30 AM and
  * 5 PM Eastern, "every day until 3 October", rendered on /meetings and promised
  * to the public.
