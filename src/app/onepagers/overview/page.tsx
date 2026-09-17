@@ -69,7 +69,7 @@ const PILLARS: Pillar[] = [
 ];
 
 const PARTNERS: Partner[] = [
-  { name: 'Town of Ellsworth', role: 'Venue partner — Franklin St Parklet', confirmed: true },
+  { name: 'City of Ellsworth', role: 'Venue partner — Franklin St Parklet', confirmed: true },
   { name: 'Black Moon Public House', role: 'The evening, indoors + official after-party', confirmed: true },
   // Heart of Ellsworth removed 2026-08-14: official-partner status not yet
   // approved by them. Do not re-add without written confirmation.
