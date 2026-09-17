@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES } from './site';
 
@@ -58,14 +58,33 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists eight confirmed partners', () => {
-    // Eighth since 2026-09-10: Artizen, for funding (Zaal).
-    expect(PARTNERS).toHaveLength(8);
+  it('lists nine confirmed partners', () => {
+    // Ninth since 2026-09-16: WE THE MEDIA, media and content capture (Zaal).
+    expect(PARTNERS).toHaveLength(9);
     expect(PARTNERS.map((p) => p.name)).toContain('Artizen');
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
+    expect(PARTNERS.map((p) => p.name)).toContain('WE THE MEDIA');
     expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');
     for (const p of PARTNERS) expect(p.confirmed).toBe(true);
+  });
+
+  // THE 2026-09-16 AUDIT FINDING: Town of Ellsworth was the only confirmed
+  // partner with no logoSrc, rendering bare by omission - nothing forced
+  // anyone adding a partner to notice they'd skipped a logo. `textOnly` must
+  // now be set explicitly whenever logoSrc is absent, so a partner with
+  // neither is a red control here rather than a silent bare render live.
+  it('gives every confirmed partner a logo file or an explicit text-only mark, never neither', () => {
+    const bare = PARTNERS.filter((p) => !p.logoSrc && p.textOnly !== true).map((p) => p.name);
+    expect(bare).toEqual([]);
+  });
+
+  it('every logoSrc resolves to a real file in public/partners', () => {
+    for (const p of PARTNERS) {
+      if (!p.logoSrc) continue;
+      const abs = path.join(process.cwd(), 'public', p.logoSrc);
+      expect(existsSync(abs), `${p.name}: ${p.logoSrc}`).toBe(true);
+    }
   });
 
   // The test above was called '...and only partners with a POC field' and made
