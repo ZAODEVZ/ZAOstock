@@ -34,4 +34,15 @@ describe('what /build tells a builder', () => {
     expect(body).not.toMatch(/5:55|17:55|revealed 1 September|reveal date is/i);
     expect(body).toContain('12:05 to 5:46');
   });
+
+  // THE 2026-09-16 AUDIT FINDING: the glossary/spellings list said "Dcoop"
+  // (lowercase c) and bare "Fellenz" - the two headliners' public billing per
+  // commit d388b55 "branding: adopt Tom Fellenz as public billing everywhere"
+  // (#194) and site.ts LINEUP_NAMES ('DCoop', 'Tom Fellenz'). Checks every
+  // mention in the doc, not just the glossary line the audit happened to
+  // flag - a bare "Fellenz" or lowercase "Dcoop" is wrong wherever it is.
+  it('spells DCoop and Tom Fellenz correctly everywhere, not just in the glossary', () => {
+    expect(body).not.toMatch(/\bDcoop\b/);
+    expect(body).not.toMatch(/(?<!Tom )\bFellenz\b/);
+  });
 });
