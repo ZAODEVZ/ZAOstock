@@ -112,7 +112,7 @@ section is what a journalist reads.)
 Partners give time, venue and infrastructure, and Artizen supports the funding.
 Every partner has a named point of contact on the ZAO team.
 
-- Town of Ellsworth - parklet venue
+- City of Ellsworth - parklet venue
 - Black Moon Public House - the evening, and the official after party
 - Star 97.7 - local radio promotion
 - Wallace Events - event equipment and tenting

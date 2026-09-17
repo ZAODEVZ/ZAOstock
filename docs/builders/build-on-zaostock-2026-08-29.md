@@ -97,7 +97,7 @@ Build: a ZAOstock collaboration board on POIDH: each open task (a photo set of e
 | Music | Eight acts, 12:05 to 5:46, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
 | Expected | 200 to 250 in person, about 1,000 online |
 | Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
-| Partners | Town of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen |
+| Partners | City of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Contact | info@thezao.com |

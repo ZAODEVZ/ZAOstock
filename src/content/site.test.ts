@@ -69,7 +69,7 @@ describe('SITE facts', () => {
     for (const p of PARTNERS) expect(p.confirmed).toBe(true);
   });
 
-  // THE 2026-09-16 AUDIT FINDING: Town of Ellsworth was the only confirmed
+  // THE 2026-09-16 AUDIT FINDING: City of Ellsworth was the only confirmed
   // partner with no logoSrc, rendering bare by omission - nothing forced
   // anyone adding a partner to notice they'd skipped a logo. `textOnly` must
   // now be set explicitly whenever logoSrc is absent, so a partner with

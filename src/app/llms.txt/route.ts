@@ -34,7 +34,7 @@ The ${LINEUP_NAMES.length} acts are named on the site. Each gets its own post wi
 
 ## Partners (confirmed, each with a named ZAO contact)
 
-Town of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz (co-presenter), Bomb Squad (crew, content and merch), Artizen (funding partner).
+City of Ellsworth (parklet venue), Black Moon Public House (the evening and the official after-party), Star 97.7 (local radio promotion), Wallace Events (event equipment and tenting), WaveWarZ (live music-battle format, online all year, NOT on the 3 October programme), COC Concertz (co-presenter), Bomb Squad (crew, content and merch), Artizen (funding partner).
 
 ## Sponsors
 
