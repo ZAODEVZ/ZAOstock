@@ -20,9 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${artist.name} | ZAOstock Artist`,
     description: artist.bio.slice(0, 160) || `${artist.name} at ZAOstock, Oct 3 2026 in Ellsworth Maine.`,
+    alternates: { canonical: `/artist/${slug}` },
     openGraph: {
       title: `${artist.name} | ZAOstock`,
       description: artist.bio.slice(0, 160) || `${artist.name} - ${artist.genre || 'music'}`,
+      url: `https://zaostock.com/artist/${slug}`,
       images: artist.photo_url ? [artist.photo_url] : [],
     },
   };
