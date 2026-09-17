@@ -153,18 +153,27 @@ export const DAY = [
  * again. /meetings now says how to reach us instead of when to turn up.
  */
 
-export type Partner = { name: string; role: string; poc: string; confirmed: boolean; logoSrc?: string };
+// `textOnly` is set EXPLICITLY (not just an absent logoSrc) whenever a
+// confirmed partner has no logo file yet. 2026-09-16 site audit + Zaal:
+// Town of Ellsworth was the only confirmed partner rendering bare, by
+// omission rather than by decision - nothing forced anyone adding a partner
+// to notice they'd skipped a logo. site.test.ts asserts every confirmed
+// partner sets logoSrc or textOnly, so a new entry with neither fails that
+// test rather than silently rendering bare like this one did.
+export type Partner = { name: string; role: string; poc: string; confirmed: boolean; logoSrc?: string; textOnly?: true };
 
 // PARTNER GATING RULES (strict): a partner appears only if confirmed === true
 // (locked agreement, not "in conversation") and poc is the ZAO team member who
 // owns the relationship. logoSrc only once the file exists in public/partners/
-// (six do since 28 Aug; Town of Ellsworth's is still due). Heart of Ellsworth is deliberately NOT listed: on the
+// (seven do as of 2026-09-16). Heart of Ellsworth is deliberately NOT listed: on the
 // 2026-08-13 call Chesnee Barney said official-partner status and logo use
 // have to clear internally first. COC Concertz added 2026-08-27 (Zaal, 20:3x).
 // POC is Thy Revolution (Zaal, 2026-09-10: "poc is thyrev"), role Co-presenter
 // (Zaal's pick the same day). No partner is untyped any more.
-export const PARTNERS: readonly Partner[] = [
-  { name: 'Town of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true },
+const ALL_PARTNERS = [
+  // Zaal is sourcing the Town seal/wordmark himself (ellsworthmaine.gov or a
+  // licensed file he provides) - do not scrape one. textOnly until it lands.
+  { name: 'Town of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true, textOnly: true },
   { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true, logoSrc: '/partners/black-moon.png' },
   { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true, logoSrc: '/partners/star-977.png' },
   { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
@@ -179,7 +188,13 @@ export const PARTNERS: readonly Partner[] = [
   // Artizen: Zaal, 2026-09-10, "also add artizen for funding as a parter". No
   // amount is stated anywhere, on purpose: none has been given for public copy.
   { name: 'Artizen', role: 'Funding partner', poc: 'Zaal', confirmed: true, logoSrc: '/partners/artizen.png' },
-].filter((p) => p.confirmed);
+  // WE THE MEDIA: Zaal, 2026-09-16 grill, role and poc his words exactly.
+  // Zaal is getting the WE THE MEDIA logo himself and will drop it in
+  // ~/zao-vault/inbox - textOnly until it lands, same as Town of Ellsworth.
+  { name: 'WE THE MEDIA', role: 'Media and content capture', poc: 'Zaal', confirmed: true, textOnly: true },
+] satisfies Partner[];
+
+export const PARTNERS: readonly Partner[] = ALL_PARTNERS.filter((p) => p.confirmed);
 
 /** What every partner gets, whatever the tier (site-fix brief, 28 Aug). */
 export const DELIVERABLES = [
