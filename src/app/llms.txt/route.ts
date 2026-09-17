@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { SITE } from '@/content/site';
+import { SITE, LINEUP_NAMES } from '@/content/site';
+import { FESTIVAL } from '@/content/festival';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -7,6 +8,14 @@ export const revalidate = 3600;
 // The whole public site in one text file for agents and crawlers. Facts
 // match src/content/festival.ts and src/content/site.ts; rewritten 29 Aug
 // 2026 (the previous copy carried retired tiers, prices and a funding path).
+//
+// The day-window and act-count lines are INTERPOLATED from FESTIVAL.window
+// and LINEUP_NAMES.length rather than typed as their own literal, after the
+// 2026-09-16 site audit found this file still said "Noon to 4 PM" and "about
+// 30 minutes each" - stale since the window moved to 12-6 and set lengths
+// went to 33/40 minutes with seven-minute changeovers (not a uniform ~30).
+// llms.txt.test.ts holds this file to the same two sources so it cannot
+// drift from them silently again the way it did here.
 const CONTENT = `# ZAOstock
 
 > A free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators (100+ members, weekly sessions since 30 July 2024).
@@ -15,13 +24,13 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 
 ## The day (one venue at a time)
 
-- Noon to 4 PM, Franklin Street Parklet: independent artists, about 30 minutes each, with our MC and our partners between sets. Music starts at noon.
+- ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with seven-minute changeovers, with our MC and our partners between sets. Music starts at noon.
 - 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with a DJ, run by Steve, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
 - Free to attend. Rain or shine, under tent cover from Wallace Events. Optional Pro Ticket, $50, on /donate.
 
 ## Lineup
 
-The eight acts are named on the site. Each gets its own post with bio and photo as their details come in.
+The ${LINEUP_NAMES.length} acts are named on the site. Each gets its own post with bio and photo as their details come in.
 
 ## Partners (confirmed, each with a named ZAO contact)
 

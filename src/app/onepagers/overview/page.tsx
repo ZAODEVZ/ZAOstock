@@ -329,22 +329,11 @@ export default async function OverviewOnePager() {
             <div className="text-base font-bold text-ink-950 print:text-slate-900">Partners</div>
             <ul className="mt-2 divide-y divide-white/5 print:divide-slate-200">
               {PARTNERS.map((p) => (
-                <li key={p.name} className="flex items-center justify-between py-2">
-                  <div>
-                    <div className="text-sm font-semibold text-ink-950 print:text-slate-900">
-                      {p.name}
-                    </div>
-                    {p.role && <div className="text-xs text-ink-muted print:text-ink-muted">{p.role}</div>}
+                <li key={p.name} className="py-2">
+                  <div className="text-sm font-semibold text-ink-950 print:text-slate-900">
+                    {p.name}
                   </div>
-                  <span
-                    className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-                      p.confirmed
-                        ? 'bg-olive-300 text-ink-950 print:bg-emerald-100 print:text-emerald-800'
-                        : 'bg-paper-100/50 text-ink-950 print:bg-slate-200 print:text-slate-700'
-                    }`}
-                  >
-                    {p.confirmed ? 'Confirmed' : 'In conversation'}
-                  </span>
+                  {p.role && <div className="text-xs text-ink-muted print:text-ink-muted">{p.role}</div>}
                 </li>
               ))}
             </ul>
