@@ -5,6 +5,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getOnePager } from '@/lib/onepagers';
 import { getStockCounts, getPublicMembers } from '@/lib/members';
+import { daysUntil } from '@/lib/days-until';
 import { CopyButton } from '../[slug]/CopyButton';
 import { PrintButton } from '../[slug]/PrintButton';
 
@@ -118,10 +119,6 @@ const HOW_TO = [
     cta: { label: 'Briefings', href: '/onepagers' },
   },
 ];
-
-function daysUntil(iso: string): number {
-  return Math.max(0, Math.ceil((new Date(iso).getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
-}
 
 export default async function OverviewOnePager() {
   const [pager, counts, members, session] = await Promise.all([
