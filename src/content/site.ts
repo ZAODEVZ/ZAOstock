@@ -350,6 +350,63 @@ export const PRO_ROUND = {
 
 /** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */
 export const PAYPAL_URL = 'https://paypal.com/paypalme/zaalpanthaki';
+/**
+ * CARD AND ONCHAIN CHECKOUT, wired 2026-09-17.
+ *
+ * Zaal on the 15 September call: card payments are NOT live, the PayPal link is
+ * the only door, and IMan does Stripe and Unlock. This is that wiring, and it is
+ * deliberately the whole of it, because the two things that actually open a money
+ * door cannot be created from this repo:
+ *
+ * - STRIPE_LINKS: one Stripe Payment Link per tier, made in the dashboard of the
+ *   account the money lands in. A Payment Link is just a URL, so the site holds no
+ *   Stripe secret, no webhook and no server route. Two strings get pasted here.
+ * - UNLOCK_CHECKOUT_URL: The ZAO decided on 7 August 2026 that Unlock on Base is
+ *   the membership rail (docs/builders/build-on-zaostock-2026-08-29.md), and that
+ *   same doc records that nothing on Unlock exists for ZAOstock yet. Deploying the
+ *   lock spends gas from a ZAO wallet, so the lock comes first and the URL second.
+ *
+ * Until both exist they stay UNSET, exactly like TEAM_DOC_URL in
+ * src/lib/team-status.ts. UNSET renders NOTHING: no button, no href, no mention of
+ * card payment anywhere on the site. The pages then behave precisely as they did
+ * before this change, which is PayPal only. That is the point. A half-wired money
+ * door that renders a dead button is worse than the PayPal-only page it replaced.
+ *
+ * The two helpers below are the only way to read these values. They return null
+ * rather than a string, so no caller can build an href out of the literal text
+ * UNSET, and they refuse any URL that is not on the real checkout host: a
+ * dashboard link, a link on some other domain or a typo resolves to null and the
+ * button simply stays away. src/content/checkout.test.ts pins all of that.
+ */
+const UNSET = 'UNSET';
+
+/** Stripe Payment Links, keyed by SupportTier id. UNSET means it does not exist yet. */
+export const STRIPE_LINKS: Readonly<Record<string, string>> = {
+  supporter: UNSET,
+  pro: UNSET,
+};
+
+/** The Pro Ticket's onchain checkout on Base. UNSET means the lock does not exist yet. */
+export const UNLOCK_CHECKOUT_URL: string = UNSET;
+
+/** Stripe Payment Links live on exactly one host. Anything else is not a checkout. */
+const STRIPE_LINK_PREFIX = 'https://buy.stripe.com/';
+const UNLOCK_CHECKOUT_PREFIX = 'https://app.unlock-protocol.com/';
+
+/** The card link for a tier, or null while it is UNSET or not a Payment Link. */
+export function stripeLinkFor(
+  tierId: string,
+  links: Readonly<Record<string, string>> = STRIPE_LINKS,
+): string | null {
+  const url = links[tierId];
+  return url && url.startsWith(STRIPE_LINK_PREFIX) ? url : null;
+}
+
+/** The onchain checkout, or null while the lock does not exist. */
+export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | null {
+  return url.startsWith(UNLOCK_CHECKOUT_PREFIX) ? url : null;
+}
+
 
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
