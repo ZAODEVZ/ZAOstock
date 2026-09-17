@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SERIES, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL } from '@/content/site';
+import { SITE, SERIES, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -96,10 +96,23 @@ export default function DonatePage() {
                     <li key={g}>{g}</li>
                   ))}
                 </ul>
-                <div className="mt-4">
+                {/* PayPal is the door that exists today. The card and onchain doors below
+                    render only once their URLs exist; see CARD AND ONCHAIN CHECKOUT in
+                    src/content/site.ts. Until then this is exactly the old one-button block. */}
+                <div className="mt-4 flex flex-wrap gap-2">
                   <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
                     Chip in {tier.price}
                   </Button>
+                  {stripeLinkFor(tier.id) ? (
+                    <Button href={stripeLinkFor(tier.id) as string} external variant="secondary">
+                      Pay by card
+                    </Button>
+                  ) : null}
+                  {tier.id === PRO_TICKET.id && unlockCheckoutUrl() ? (
+                    <Button href={unlockCheckoutUrl() as string} external variant="secondary">
+                      Pay onchain
+                    </Button>
+                  ) : null}
                 </div>
               </Card>
             ))}
