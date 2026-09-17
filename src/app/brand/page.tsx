@@ -312,7 +312,7 @@ export default function BrandPage() {
         <SectionHeader eyebrow="Usage" title="One line each." className="mb-4" />
         <ul className="text-sm text-ink-secondary measure space-y-2 pl-5 m-0">
           <li>Ground is paper, text is ink - not white and black.</li>
-          <li>The moose is the mark; there is no separate "red logo".</li>
+          <li>The moose is the mark; there is no separate &ldquo;red logo&rdquo;.</li>
           <li>Credit whoever made it - attabotty for the primary mark, Candy (CandyToyBox) for everything else on this page.</li>
           <li>Nothing here is final until it is live on zaostock.com - this is the library, not a promise.</li>
         </ul>
