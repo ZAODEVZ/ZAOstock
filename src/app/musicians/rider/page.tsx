@@ -7,7 +7,7 @@ import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
 export const metadata: Metadata = {
-  title: 'Artist Rider · ZAOstock',
+  title: 'Artist Rider',
   description:
     'Confirmed for the ZAOstock lineup? Complete your performance & participation rider - schedule, equipment, backing tracks, merch, interview, and retreat.',
   robots: { index: false, follow: false },

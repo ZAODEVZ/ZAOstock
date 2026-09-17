@@ -3,7 +3,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
 
 export const metadata: Metadata = {
-  title: 'For Event Organizers · ZAOstock',
+  title: 'For Event Organizers',
   description:
     'Built a community? Run your own ZAO. ZAOstock is the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next one could be yours - in your city, with your community, under the umbrella.',
   alternates: { canonical: '/event-organizers' },

@@ -15,11 +15,14 @@ export const dynamic = 'force-static';
 const KIT_PATH = path.join(process.cwd(), 'docs', 'builders', 'build-on-zaostock-2026-08-29.md');
 
 export const metadata: Metadata = {
-  title: 'Build on ZAOstock',
+  // absolute: "ZAOstock" is already part of the phrase, not a removable
+  // suffix - a plain string here would double to "Build on ZAOstock |
+  // ZAOstock" under the root layout's template (measured live 2026-09-17).
+  title: { absolute: 'Build on ZAOstock' },
   description: 'Five things the festival needs built, what exists, where it plugs in, and how to show it live: the builder kit for ZAOstock 2026.',
   alternates: { canonical: '/build' },
   openGraph: {
-    title: 'Build on ZAOstock | ZAOstock',
+    title: 'Build on ZAOstock',
     description: 'Five things the festival needs built, what exists, where it plugs in, and how to show it live.',
     url: 'https://zaostock.com/build',
     images: [OG_IMAGE],
