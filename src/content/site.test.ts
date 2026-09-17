@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS } from './site';
 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
 // that live here until PRODUCTION's file absorbs them.
@@ -121,6 +121,61 @@ describe('SITE facts', () => {
     const blob = JSON.stringify({ SITE, TIERS }).toLowerCase();
     expect(blob).not.toContain('tax-deductible');
     expect(blob).not.toContain('501(c)');
+  });
+});
+
+// THE 2026-09-16 AUDIT FINDING: zaostock.com carried zero social links
+// anywhere. Every href here was independently verified live (curl 200, or
+// for YouTube a flat-playlist fetch) except Facebook, which returns a
+// login/checkpoint wall to curl from this machine - those two are
+// verified-by-reference, not by an independent fetch, and stay in this list
+// on that basis. Nothing NOT on this exact list may be added without the
+// same live check: no invented ZAOstock-branded handle exists, TikTok is
+// flagged stale on the socials map, and no ZAO account was found on
+// Bluesky, Reddit, Threads or Lens.
+describe('SOCIALS - only the seven verified estate channels', () => {
+  it('lists exactly these seven platforms, no more, no fewer', () => {
+    expect(SOCIALS.map((s) => s.platform)).toEqual([
+      'X',
+      'Instagram',
+      'YouTube',
+      'Facebook',
+      'Facebook Event',
+      'Discord',
+      'Telegram',
+    ]);
+  });
+
+  it('every href is exactly the verified URL, not a ZAOstock-branded guess', () => {
+    const byPlatform = Object.fromEntries(SOCIALS.map((s) => [s.platform, s.href]));
+    expect(byPlatform.X).toBe('https://x.com/thezaodao');
+    expect(byPlatform.Instagram).toBe('https://instagram.com/zaofestivals/');
+    expect(byPlatform.YouTube).toBe('https://youtube.com/@thezaodao');
+    expect(byPlatform.Facebook).toBe('https://facebook.com/zaofestivals');
+    expect(byPlatform['Facebook Event']).toBe('https://facebook.com/events/28051455107809318');
+    expect(byPlatform.Discord).toBe('https://discord.com/invite/ACJyYQH3BE');
+    expect(byPlatform.Telegram).toBe('https://telegram.thezao.com');
+  });
+
+  // THE RED CONTROL. A platform with no ZAO account at all must never appear,
+  // no matter how it is spelled or cased.
+  it('never lists TikTok, Bluesky, Reddit, Threads or Lens', () => {
+    const blob = JSON.stringify(SOCIALS).toLowerCase();
+    for (const banned of ['tiktok', 'bluesky', 'bsky', 'reddit', 'threads', 'lens.xyz', 'hey.xyz']) {
+      expect(blob).not.toContain(banned);
+    }
+  });
+
+  it('every entry has real label text, not an icon-only link with nothing for a screen reader', () => {
+    for (const s of SOCIALS) {
+      expect(s.label.trim()).not.toBe('');
+      expect(s.platform.trim()).not.toBe('');
+    }
+  });
+
+  it('no public surface tags a @ZAOSTOCK placeholder handle - none exists', () => {
+    const blob = JSON.stringify({ PARTNERS, SOCIALS, SITE, DAY }).toLowerCase();
+    expect(blob).not.toContain('@zaostock');
   });
 });
 

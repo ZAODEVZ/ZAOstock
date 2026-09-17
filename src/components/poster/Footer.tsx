@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { SITE } from '@/content/site';
+import { SITE, SOCIALS } from '@/content/site';
 
 // Night in both modes, carrying on from the homepage's closing section. The
 // white moose needs a dark ground, and night is one that never flips.
@@ -31,12 +31,26 @@ export function Footer() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-2 sm:items-end">
+        <div className="flex flex-col gap-3 sm:items-end">
           <nav aria-label="Footer" className="flex flex-wrap gap-5">
             {LINKS.map((l) => (
               <Link key={l.href} href={l.href} className="font-sans text-xs font-bold uppercase tracking-[0.1em] text-onfill/70 hover:text-onfill">
                 {l.label}
               </Link>
+            ))}
+          </nav>
+          <nav aria-label="ZAOstock on social media" className="flex flex-wrap gap-5">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="font-sans text-xs font-bold uppercase tracking-[0.1em] text-onfill/70 hover:text-onfill"
+              >
+                {s.platform}
+              </a>
             ))}
           </nav>
         </div>
