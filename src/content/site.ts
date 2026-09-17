@@ -398,8 +398,11 @@ export function stripeLinkFor(
   tierId: string,
   links: Readonly<Record<string, string>> = STRIPE_LINKS,
 ): string | null {
-  const url = links[tierId];
-  return url && url.startsWith(STRIPE_LINK_PREFIX) ? url : null;
+  // Own keys only, and only a string. `links[tierId]` alone reaches through the
+  // prototype chain, so 'toString' found a function, passed `url &&`, and then
+  // threw on .startsWith instead of returning null.
+  const url = Object.hasOwn(links, tierId) ? links[tierId] : undefined;
+  return typeof url === 'string' && url.startsWith(STRIPE_LINK_PREFIX) ? url : null;
 }
 
 /** The onchain checkout, or null while the lock does not exist. */

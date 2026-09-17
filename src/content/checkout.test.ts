@@ -45,6 +45,21 @@ describe('an unset rail renders nothing', () => {
     }
   });
 
+  it('hands back null, and never throws, for a tier id that names something on Object.prototype', () => {
+    // links[tierId] reaches through the prototype chain: 'toString' finds a
+    // function, `url &&` is truthy, and a function has no .startsWith, so the
+    // helper THREW instead of returning null. Unreachable while tier ids are a
+    // static const and no page reads searchParams, but the documented contract
+    // is "returns null so no caller can build an href", and a throw on a
+    // checkout page is a 500 the day a tier is routed from a URL segment.
+    // Found by the review lane, 2026-09-17.
+    for (const id of ['toString', 'constructor', '__proto__', 'hasOwnProperty', 'valueOf']) {
+      expect(() => stripeLinkFor(id)).not.toThrow();
+      expect(stripeLinkFor(id)).toBeNull();
+      expect(stripeLinkFor(id, { pro: REAL_STRIPE })).toBeNull();
+    }
+  });
+
   it('hands back the link once it is a real one', () => {
     expect(stripeLinkFor('pro', { pro: REAL_STRIPE })).toBe(REAL_STRIPE);
     expect(unlockCheckoutUrl(REAL_UNLOCK)).toBe(REAL_UNLOCK);
