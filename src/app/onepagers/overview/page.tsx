@@ -15,7 +15,10 @@ const FESTIVAL_DATE = '2026-10-03T12:00:00-04:00';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'ZAOstock 2026 — Overview',
+    // absolute: "ZAOstock" is already part of the phrase - a plain string
+    // here would double to "ZAOstock 2026 — Overview | ZAOstock" under the
+    // root layout's template (measured live 2026-09-17).
+    title: { absolute: 'ZAOstock 2026 — Overview' },
     description:
       'ZAO Festivals presents ZAOstock — a one-day artist-built music festival in Ellsworth, Maine. October 3, 2026.',
     alternates: { canonical: '/onepagers/overview' },

@@ -6,7 +6,7 @@ import { ArtistForm } from './ArtistForm';
 // The form with no code at all. Zaal, 2026-09-10: the code is for the
 // background page, never for the form.
 export const metadata: Metadata = {
-  title: 'Artist details | ZAOstock',
+  title: 'Artist details',
   robots: { index: false, follow: false },
 };
 

@@ -6,11 +6,14 @@ import { getStockTeamMember } from '@/lib/auth/session';
 import { listOnePagers } from '@/lib/onepagers';
 
 export const metadata: Metadata = {
-  title: 'ZAOstock One-Pagers',
+  // absolute: "ZAOstock" is already part of the phrase - a plain string
+  // here would double to "ZAOstock One-Pagers | ZAOstock" under the root
+  // layout's template (measured live 2026-09-17).
+  title: { absolute: 'ZAOstock One-Pagers' },
   description: 'Briefing docs for sponsors, partners, venues, and city contacts.',
   alternates: { canonical: '/onepagers' },
   openGraph: {
-    title: 'ZAOstock One-Pagers | ZAOstock',
+    title: 'ZAOstock One-Pagers',
     description: 'Briefing docs for sponsors, partners, venues, and city contacts.',
     url: 'https://zaostock.com/onepagers',
     images: [OG_IMAGE],

@@ -6,7 +6,7 @@ import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Badge, Button, Card } from '@/components/poster';
 
 export const metadata: Metadata = {
-  title: 'Artists · ZAOstock 2026',
+  title: 'Artists',
   description:
     'The 2026 ZAOstock lineup. Eight independent acts on the Franklin Street Parklet stage, Saturday 3 October in Ellsworth, Maine.',
   alternates: { canonical: '/artists' },

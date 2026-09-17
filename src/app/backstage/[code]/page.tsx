@@ -21,7 +21,7 @@ import { BackstageAsks } from './BackstageAsks';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Backstage | ZAOstock',
+  title: 'Backstage',
   robots: { index: false, follow: false },
 };
 

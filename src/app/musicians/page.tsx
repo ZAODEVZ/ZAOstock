@@ -3,7 +3,7 @@ import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
 
 export const metadata: Metadata = {
-  title: 'For Musicians · ZAOstock',
+  title: 'For Musicians',
   description:
     'Made music nobody is paying you to make? You are who we built this for. ZAOstock is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. Every artist on stage was discovered through The ZAO.',
   alternates: { canonical: '/musicians' },

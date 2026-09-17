@@ -52,4 +52,16 @@ describe('generateMetadata for /artist/[slug]', () => {
     const meta = await generateMetadata(params('nobody'));
     expect(meta.title).toBe('Artist not found');
   });
+
+  // THE RED CONTROL FOR THE 2026-09-17 AUDIT FINDING. The root layout applies
+  // a `%s | ZAOstock` title template to any plain-string title. A title of
+  // `"${name} | ZAOstock Artist"` is not exempt from that template, so it
+  // rendered live as "Tom Fellenz | ZAOstock Artist | ZAOstock" on all eight
+  // artist pages - measured via curl, not assumed. `title.absolute` is the
+  // fix: it opts out of the parent template entirely.
+  it('uses title.absolute so the root layout does not double the "| ZAOstock" suffix', async () => {
+    getArtistBySlug.mockResolvedValue(ARTIST);
+    const meta = await generateMetadata(params('dcoop'));
+    expect(meta.title).toEqual({ absolute: 'DCoop | ZAOstock Artist' });
+  });
 });

@@ -18,7 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!artist) return { title: 'Artist not found' };
 
   return {
-    title: `${artist.name} | ZAOstock Artist`,
+    // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
+    // a plain string here doubles the suffix (measured live 2026-09-17:
+    // "Tom Fellenz | ZAOstock Artist | ZAOstock" on all eight artist pages).
+    title: { absolute: `${artist.name} | ZAOstock Artist` },
     description: artist.bio.slice(0, 160) || `${artist.name} at ZAOstock, Oct 3 2026 in Ellsworth Maine.`,
     alternates: { canonical: `/artist/${slug}` },
     openGraph: {
