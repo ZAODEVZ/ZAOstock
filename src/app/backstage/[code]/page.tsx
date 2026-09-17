@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE } from '@/content/site';
-import {
-  ARTIST_DATES,
-  BRING,
-  PROVIDED,
-  SOUNDCHECK,
-  addMinutes,
-  clock12,
-  findActByCode,
-  missingItems,
-} from '@/content/artist-ops';
-import { getArtistOpsStatus, slugify } from '@/lib/artists';
-import { BackstageAsks } from './BackstageAsks';
+import { ARTIST_DATES, BRING, PROVIDED, SOUNDCHECK, addMinutes, clock12, findActByCode } from '@/content/artist-ops';
+import { slugify } from '@/lib/artists';
 
 // One page per act, gated by the code in the URL. No site nav, no footer -
 // this is a private sheet, not a page of the public site, per Zaal's
 // 2026-09-16 review: the old version "looked like a public site page" and
 // that was part of what made it feel wrong to fill in.
+//
+// NO ON-PAGE FORM as of 2026-09-17 (Zaal: "remove the form and just ask
+// them in the message what we still need from each of them"). The native
+// fill-in-fields form this replaced (2026-09-16, BackstageAsks +
+// PATCH /api/backstage/<code>) is still the write mechanism when the seat
+// or Zaal enters what an artist sends back - the PATCH route is untouched -
+// but the artist is never shown a form to fill in themselves. The ask now
+// lives in the outreach message sent to each artist (per-artist, computed
+// from missingItems() at send time), and the reply channel is the email
+// line at the bottom of this page.
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
@@ -35,10 +35,6 @@ export default async function BackstagePage({ params }: Props) {
   if (!act) notFound();
 
   const setEnd = addMinutes(act.setStart, act.minutes);
-  // Never lets a query failure or a name mismatch take the rest of the page
-  // down with it - see the comment on getArtistOpsStatus.
-  const status = await getArtistOpsStatus(act.name).catch(() => null);
-  const missing = status ? missingItems(status) : null;
 
   return (
     <div className="site min-h-[100dvh] bg-paper-100 text-ink-950">
@@ -74,28 +70,16 @@ export default async function BackstagePage({ params }: Props) {
           </div>
         </section>
 
-        {missing && missing.length > 0 && (
-          <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
-            <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-denim-400 m-0 mb-3">
-              What we still need from you
-            </p>
-            <BackstageAsks code={code} missing={missing} />
-          </section>
-        )}
-
-        {missing && missing.length === 0 && (
-          <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
-            <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-denim-400 m-0 mb-2">
-              You are all set
-            </p>
-            <p className="text-sm text-ink-950 m-0">
-              Your page is live:{' '}
-              <a href={`https://zaostock.com/artist/${slugify(act.name)}`} className="underline font-bold">
-                zaostock.com/artist/{slugify(act.name)}
-              </a>
-            </p>
-          </section>
-        )}
+        <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
+          <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-denim-400 m-0 mb-2">
+            Your page
+          </p>
+          <p className="text-sm text-ink-950 m-0">
+            <a href={`https://zaostock.com/artist/${slugify(act.name)}`} className="underline font-bold">
+              zaostock.com/artist/{slugify(act.name)}
+            </a>
+          </p>
+        </section>
 
         <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
           <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-ink-muted m-0 mb-2">
