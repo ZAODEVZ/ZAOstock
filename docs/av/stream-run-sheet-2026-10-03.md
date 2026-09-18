@@ -1,124 +1,152 @@
 # ZAOstock stream run sheet, 3 October 2026
 
-The stream as a show. Built 28 August 2026 from `docs/plans/ros-5min-2026-10-03.md`
-v7 (on `ws/fold-2026-08-28`, PR #57): times, acts and gaps are the ros's;
-nothing on stage is moved here. This file says what the viewer sees and hears
-at each of those times, and who cues it.
+The stream as a show: what the viewer sees and hears at each point of the day,
+and who cues it. Times, acts and gaps come from `src/content/program.ts`
+`BLOCKS`, which is the run of show. **Nothing on stage is moved here.**
 
-Two owners, per Zaal (26 Aug): **Aziz owns whether it is broadcasting** (rig,
-encoder, scenes, destinations, recording). **Ohnahji owns what is on it**
-(segments, guests, callers, chat, the stream as a show). Where a cue is
-Zaal's or the MC's, it says so. UNSET where nobody has said.
+> **REWRITTEN 2026-09-18.** The first version was built on 28 August from ros
+> v7 and had gone badly out of date. It ran **five acts** (the day has eight),
+> it still gave **Hurricane** the 15:45 hand-off and a **WaveWarZ** block from
+> 16:00, both off the programme since 2026-09-07 and 09-10, it used the old
+> 30-minute sets with 5 and 10 minute changeovers rather than the 09-10 retime,
+> and it named **Aziz and Ohnahji** as the two owners, which the 15 September
+> call replaced. A sheet that misleads the person running the show is worse
+> than no sheet, and this one is read on the day.
 
-Window per doc 2316: 12:00 to 18:00 ET, crew of 5 to 10 in two-hour slots.
-Music starts at noon (Zaal, 27 Aug). Whether anything streams after 18:00 is
-UNSET (section 5).
+**Set times appear in this file on purpose.** It is a crew document, not a
+public one. Zaal's rule of 2026-09-12 is that no set time is published: not on
+the site, not in posts. Do not "fix" this file by removing the clock, and do
+not copy rows out of it into anything public.
+
+## Who owns it
+
+**Zaal runs the stream, video and audio, with the venue AV team** (15 September
+call). He emailed for an AV contact and went to the site that evening to
+confirm the audio can run through the interface. That replaces the 26 August
+split of Aziz on the rig and Ohnahji on the show; neither name is load bearing
+here any more, and where this sheet says a cue is somebody's, it means whoever
+Zaal has on that job on the day.
+
+**IMan and Thy Revolution run the online side** (co-leads since 31 August):
+roughly 1,000 people online against 200 to 250 on the street.
+
+Still UNSET, and each one changes a cue below: the camera count, who holds the
+MC mic, the sound operator's name, the partner list on the desk, and whether
+anyone is producing a guest segment.
+
+## What the viewer is told, settled 15 September
+
+- **zaostock.com/live is the main link.** Everywhere else carries it. It is the
+  link that goes in every post, every bio and every reply.
+- **If the stream drops, the Telegram chat is the channel** (`telegram.thezao.com`).
+  Anyone on the ground sees it, and if Zaal misses it someone tells him. The
+  /live page says so beside the player, so a viewer looking at a dead picture
+  does not have to guess.
+- **Watch parties have no single format.** One channel carries clean event
+  audio from a ZAO account; every other host takes that audio and does their
+  own take on it in their own room. Zaal posts the full list on the day.
+- **No platform is named publicly until a run passes.**
+  `docs/av/livestream-chain-2026-10-03.md` item 8. The stream test has no date
+  yet, and `WATCH_HREF` on /live stays null until it passes.
 
 ## Scenes and overlays, named once
 
-Scene names are the roles, not the Baraza collection's labels; map them in OBS
-once the collection question (v2 export) is settled.
+Scene names are roles, not the Baraza collection's labels; map them in OBS once
+the collection question is settled.
 
 | Scene | What it is | Audio |
 |-------|------------|-------|
-| PRE-SHOW | Holding card: ZAOstock mark, "starts at noon", sponsor logos, date | Music bed, UNSET source; not the outdoor PA |
+| PRE-SHOW | Holding card: ZAOstock mark, "starts at noon", partner logos, date | Music bed, UNSET source; not the outdoor PA |
 | STAGE WIDE | Main camera on the stage | Desk main outs |
 | STAGE CLOSE | Second camera or a zoomed shot, if a second camera exists (UNSET) | Desk main outs |
 | MC | Same camera on whoever holds the MC mic; lower-third "ZAOstock" | Desk, MC mic up |
-| SPONSOR | Sponsor sting or card; live MC read over STAGE WIDE if Q8 says live | Desk, or the sting's own audio |
-| HOLD | "Next up: ___" card with the next act, sponsor bug, tip or Respect QR | Music bed or desk ambience |
-| VIRTUAL | Ohnahji's segment: guest or caller, split with a stage shot | Guest audio, ducked stage |
-| WAVEWARZ | Stage wide with the WaveWarZ overlay; vote overlay only if Q18 says the vote is live | Desk |
-| MOVE | "We are walking next door" card, or a handheld shot of the walk if a camera goes | Desk until strike, then bed |
-| SIGN-OFF | Thanks card, where the recording will live, sponsor logos | Music bed |
+| PARTNER | Partner card, or a live MC read over STAGE WIDE | Desk, or the card's own audio |
+| HOLD | "Next up: ___" card with the next act, partner bug | Music bed or desk ambience |
+| MOVE | "We are walking next door" card, or a handheld shot of the walk | Desk until strike, then bed |
+| SIGN-OFF | Thanks card, where the recording will live, partner logos | Music bed |
 | BRB | Fault card, "back in a moment" | Silence or bed |
 
-Always on: corner bug (ZAOstock), ticker with the next act, sponsor logo
-rotation (list UNSET, sponsor deck), tip or Respect QR (from the archived
-zaostream plan; whether it is used is UNSET). Lower-third with the act name
-fades in at each act's first bar and out after 20 seconds; on again at the
-last song.
+Always on: corner bug (ZAOstock), ticker with the next act, partner logo
+rotation (list UNSET). The lower-third with the act name fades in at each act's
+first bar and out after 20 seconds, and comes back on at the last song.
 
-## Before the stream
+**There is no WAVEWARZ scene.** WaveWarZ came off the 3 October programme on
+2026-09-07.
 
-| Time | Cue | Owner | Status |
-|------|-----|-------|--------|
-| Fri 2 Oct, soundcheck | Stage 2 test end to end: desk audio, camera, parklet uplink, every destination, local recording, indoor screen. `docs/av/test-plan-obs-rtmp-2026-10-03.md` | Aziz rig, Ohnahji watches the show side | Must pass before Saturday |
-| 08:00 | Stream desk powered where it will sit; box per the 28 Aug test result | Aziz | Box UNSET until the test |
-| 08:15 | Desk main outs into the interface or USB; level check against the PA line checks | Aziz with the sound operator (name waits) | Interface UNSET, gated on the 28 Aug test |
-| 10:30 | Stream rig check (ros row): camera framed, overlays render, bridge up, destinations armed but not live, local recording path has space | Aziz | Space needed: about 16 GB for six hours at 6 Mbps |
-| 10:30 | Show side check: run order card matches the ros, sponsor list on the desk, virtual guests confirmed for their slots, chat moderator logged in | Ohnahji | Guests UNSET, moderator UNSET |
-| 11:00 | MC mic check on stage; stream hears it | Aziz, MC (name waits) | |
-| 11:45 | Content: the empty street shot, recorded not streamed | Shooter (name waits) | |
-| 11:50 | Go live on PRE-SHOW to every destination. PROPOSED: ten minutes early so a noon click lands on a picture | Aziz | PROPOSED, Zaal or Ohnahji to confirm |
-| 11:50 | Post the live links: X (WaveWarZ), YouTube (ZAO channel), Twitch, Farcaster via Firefly (Farcaster is a post, not a destination) | Ohnahji, or MARKETING per the socials rule | Who posts UNSET |
-| 11:55 | Local recording ON. Check the file is growing | Aziz | |
+## Before the day
 
-## The day, cue by cue
+| When | What | Who |
+|------|------|-----|
+| No date yet | **The stream test.** The one thing gating the watch link. Suggestion on the desk: run it at the Friday soundcheck, when the AV team, the desk, the PA and the acts are all on site anyway | Zaal, and he pins IMan when he runs it |
+| Fri 2 Oct, 4 to 7 PM | Soundcheck, every act, mandatory. The end to end test belongs beside it: desk audio, camera, parklet uplink, destinations, local recording | Zaal with the venue AV team |
 
-| Time | On stage (ros v7) | On screen | Cue | Owner | Q or UNSET |
-|------|-------------------|-----------|-----|-------|------------|
-| 12:00 | INTRO on the mic, 5 min | MC, lower-third "Welcome to ZAOstock" | Cut PRE-SHOW to MC at the first word | Aziz | Q7: who speaks, what is said |
-| 12:05 | 1. THE CROWN VICS, 30 | STAGE WIDE, lower-third at first bar | Cut on the downbeat | Aziz | |
-| 12:35 | Changeover 10: MC talks the event, the 6pm move, Art of Ellsworth, plus a sponsor spot | MC, then SPONSOR, then HOLD with "Next: Acadia Rising" | Sponsor spot as the MC reads it; HOLD for the last two minutes | Aziz cuts, Ohnahji calls the order | Q1 (10 confirmed?), Q8 (live or sting) |
-| 12:45 | 2. ACADIA RISING (Sen), ~30 | STAGE WIDE | Cut on the downbeat | Aziz | |
-| 13:15 | Changeover 5: swap only | HOLD "Next: Dcoop", sponsor bug | No MC segment; HOLD the whole 5 | Aziz | Q12 (only real with shared backline) |
-| 13:20 | 3. DCOOP, ~30 | STAGE WIDE | Cut on the downbeat. AV cover during his set: name waits | Aziz | |
-| 13:50 | Changeover 5: swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | Aziz | |
-| 13:55 | 4. LYONSDEN, ~30 | STAGE WIDE | Cut on the downbeat | Aziz | Q3 answered |
-| 14:25 | Changeover 10: event talk, WaveWarZ pitch, sponsor spot | MC, SPONSOR, then VIRTUAL if Ohnahji has a guest, else HOLD "Next: Fellenz" | First natural VIRTUAL slot of the day | Ohnahji calls it, Aziz cuts | Guest UNSET |
-| 14:35 | 5. FELLENZ, ~30, closes the outdoor block | STAGE WIDE | Cut on the downbeat | Aziz | Q2 |
-| 15:05 | OPEN STRETCH, about 40 min: one dream act if time, else MC and sponsor spots | If an act: STAGE WIDE. If not: the main VIRTUAL block of the day, Ohnahji's guests and callers, split with the street | This is Ohnahji's window; plan 30 minutes of show for it and drop it if an act lands | Ohnahji | Q4, Q5; guests UNSET |
-| 15:45 | Battle stage reset: MC and sponsor spots, hands to Hurricane | MC, SPONSOR, HOLD "WaveWarZ at 4" | Sponsor spots read live | Aziz | |
-| 16:00 | WAVEWARZ STORY, Hurricane with Stilo. Lights on | STAGE CLOSE on the two of them, WaveWarZ overlay on; capture this clean (content-capture row 6a) | Cut to close, lower-thirds for both | Aziz; the clip is the content shooter's too | Q16 length, Q17 lights |
-| 16:15 | Rules, bracket, how to vote | WAVEWARZ, vote instructions as an on-screen card (online vote link, UNSET what it is) | Card on for the whole explanation | Ohnahji supplies the card, Aziz shows it | Q18 |
-| 16:25 | Battle 1 | WAVEWARZ, battler lower-thirds; vote overlay if live | Cut with the flow; no HOLD | Aziz | Q18 |
-| 16:50 | Voting window: Hurricane plus sponsor spots | WAVEWARZ with a "vote now" card, then SPONSOR | Vote card up the whole window | Ohnahji | Q19 |
-| 17:00 | Battle 2 | WAVEWARZ | | Aziz | |
-| 17:25 | Voting window | As 16:50 | | Ohnahji | |
-| 17:35 | FINAL. Low sun, sunset 18:12 | WAVEWARZ; exposure check as the light drops | Camera exposure is the cue here, not the scene | Aziz | Q17 lights, Q20 prize |
-| 17:55 | Result. Hurricane walks the crowd next door. Stilo plays out on the outdoor PA | WAVEWARZ for the result, then MOVE | Result card if a winner name is allowed on screen (UNSET) | Aziz | Q20 |
-| 18:00 | Outdoor PA strike begins. THE MOVE. Stilo DJ set 18:00 to 20:00 inside | MOVE, then SIGN-OFF | Stream audio source ends with the strike; switch to bed before the desk goes | Aziz | Section 5: does anything stream after this |
-| 18:05 | | SIGN-OFF card two minutes, then stop streaming on every destination | Stop recording after the stream, not before; confirm the file closed | Aziz | |
-| 18:10 | | | Copy the local recording off the box before anything is powered down; where it lands: ArDrive, folder UNSET (content-capture) | Aziz | UNSET |
+## Saturday, before noon
 
-## Faults, what the viewer sees
+| Time | What | Who | Notes |
+|------|------|-----|-------|
+| 08:00 | Stream desk powered where it will sit | Rig lead | Which box UNSET |
+| 08:15 | Desk main outs into the interface or USB, level check against the PA line checks | Rig lead with the sound operator | OPEN X brings and runs the PA all day |
+| 10:30 | Rig check: camera framed, overlays render, destinations armed but not live, recording path has space | Rig lead | About 16 GB for six hours at 6 Mbps |
+| 10:30 | Show side check: the run order card matches this sheet, partner list on the desk | Online side, IMan and Rev | |
+| 11:00 | MC mic check on stage, and the stream hears it | Rig lead, MC | MC name UNSET |
+| 11:50 | Go live on PRE-SHOW, ten minutes early so a noon click lands on a picture | Rig lead | |
+| 11:50 | Post the live link: zaostock.com/live, everywhere at once. The link, never a platform | Online side | |
+| 11:55 | Local recording ON, and check the file is growing | Rig lead | A dropout must not lose the day |
 
-| Fault | Screen | Who calls it |
-|-------|--------|--------------|
-| Desk audio lost | STAGE WIDE with camera audio if the camera has a mic, else BRB | Aziz |
-| Camera lost | HOLD with desk audio; the show continues as radio | Aziz |
-| Uplink drops | Nothing to cut; OBS keeps recording locally. Restream or Cloudflare shows the destinations' own "offline" until reconnect; on reconnect, BRB for ten seconds then back | Aziz. Fallback matrix link 5 |
-| One destination fails | Others continue; do not stop the stream to fix one platform | Ohnahji notes it in chat |
-| Act overruns | Nothing on screen changes; overrun rule is the stage manager's (YES, 27 Aug) | Stage manager (name waits) |
+## The day
 
-## Virtual crew slots
+Eight acts, seven-minute changeovers, music 12:05 to 17:46, street clears at
+18:00. Two changeovers carry the MC and a partner spot; the rest are a swap
+behind a HOLD card.
 
-Doc 2316: 5 to 10 people, any two-hour slot counts. Three slots cover the
-window; two people per slot is the minimum for a chat moderator and a segment
-producer. Every name UNSET.
+| Time | What | Scene | Cue | Notes |
+|------|------|-------|-----|-------|
+| 12:00 | Welcome on the mic, 5 min | PRE-SHOW to MC | Cut at the first word | Who speaks and what is said: UNSET |
+| 12:05 | 1. THE CROWN VICS, 33 | STAGE WIDE, lower-third at first bar | Cut on the downbeat | Opens the day |
+| 12:38 | Changeover 7: the MC, the six o'clock move, Art of Ellsworth, a partner spot | MC, then PARTNER, then HOLD "Next: OPEN X" | HOLD for the last two minutes | |
+| 12:45 | 2. OPEN X, 40 | STAGE WIDE | Cut on the downbeat | They also run the PA all day |
+| 13:25 | Changeover 7: swap only | HOLD "Next: Grass Rug" | HOLD the whole 7 | |
+| 13:32 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | |
+| 14:05 | Changeover 7: swap only | HOLD "Next: Acadia Rising" | HOLD the whole 7 | |
+| 14:12 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | Routed through Sen |
+| 14:45 | Changeover 7: the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | |
+| 14:52 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | Solo piano, brings his own keyboard |
+| 15:25 | Changeover 7: the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | |
+| 15:32 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | He is also the music and AV lead, so AV cover during his own set is an open role |
+| 16:12 | Changeover 7: swap only | HOLD "Next: LyonsDen" | HOLD the whole 7 | |
+| 16:19 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | Filming consent still outstanding: settle it before the first bar |
+| 16:59 | Changeover 7: swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 7 | |
+| 17:06 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | |
+| 17:46 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | |
+| 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | |
 
-| Slot | Rig (Aziz's side) | Show (Ohnahji's side) |
-|------|-------------------|-----------------------|
-| 12:00 to 14:00 | Aziz, plus UNSET | Ohnahji, chat moderator UNSET |
-| 14:00 to 16:00 | UNSET | UNSET; the 14:25 and 15:05 VIRTUAL slots are in this shift |
-| 16:00 to 18:00 | UNSET | UNSET; vote cards and the result |
+**Overrun rule (Zaal, 27 Aug):** an act that runs over loses the time from its
+own changeover and the next act still starts on the grid. The stream follows
+the grid, not the overrun.
 
-## 5. After 18:00
+## If it drops
 
-The window ends at 18:00 and the outdoor rig is being struck. Streaming the
-indoor evening (Stilo 18:00 to 20:00, Steve's set 20:00 to 22:00) would need a
-camera and an audio feed from the house PA inside Black Moon, neither of which
-is planned. **UNSET.** If Zaal wants the evening on the stream, that is a
-second rig, not a longer run of this one.
+1. Cut to BRB. Do not leave a frozen frame up.
+2. Say it in the **Telegram chat**, one line, what is happening.
+3. Local recording keeps rolling whatever the uplink is doing.
+4. When it is back, cut to STAGE WIDE on the next downbeat, not mid-song.
+5. Post once in Telegram that it is back. Nothing else needs saying.
+
+## After 18:00
+
+The outdoor rig is being struck and the evening moves next door to Black Moon
+Public House, which is their stage and their licence. **The stream ends with
+the parklet.** Streaming the evening would need a camera and a feed off the
+house PA inside Black Moon, neither of which is planned, so it is a second rig
+rather than a longer run of this one. zaostock.com/live tells a remote viewer
+the evening is in person, and the desk carries the question if Zaal wants that
+changed.
 
 ## What this sheet cannot fill
 
-- Q7, Q8, Q16, Q18, Q19, Q20 from the ros: intro words, sponsor spots live or
-  recorded, story length, vote on screen or not, who reads sponsor spots in
-  the voting windows, prize. Each changes a cue above.
-- Ohnahji's guests for 14:25 and the 15:05 block.
-- Whether a second camera exists (STAGE CLOSE), gated on the 28 Aug test like
-  the rest of the gear.
-- The online vote link and whether a winner's name goes on screen.
-- Every crew name.
+- The camera count, and therefore whether STAGE CLOSE exists at all.
+- Who holds the MC mic, and the words of the noon welcome.
+- The partner list on the desk, and whether spots are read live or played.
+- The sound operator's name, and AV cover during DCoop's own set.
+- Whether anyone is producing a guest segment for the online side.
+- The stream test date, which gates the watch link on /live.
