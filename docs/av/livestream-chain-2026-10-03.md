@@ -8,6 +8,27 @@ Ownership (Zaal, 26 Aug, grill item 28): **Aziz owns the rig and Restream.
 Ohnahji owns scheduling and guests.** Aziz owns whether it is broadcasting,
 Ohnahji owns what is on it.
 
+## Update, 15 September 2026: Zaal runs it
+
+On the round two call that evening Zaal said, in his own words, that **he runs the
+stream, video and audio, with the venue AV team**. He had emailed for an AV contact
+and gone to the site that evening to confirm the audio can run through the interface.
+
+That supersedes the ownership line above for 3 October. The chain below is still the
+chain, and links 1, 2, 5, 6, 8, 9 and 10 are still untested, but the person answering
+for it on the day is Zaal.
+
+Also settled on that call, and now on the public page (`src/app/live/page.tsx`,
+`src/content/live.ts`):
+
+- **zaostock.com/live is the main watch link.** Everywhere else carries it.
+- **If the stream drops, the Telegram chat is the channel.**
+- **Watch parties have no single format.** One channel carries clean event audio from
+  a ZAO account; every other host takes that audio and does their own take. Zaal posts
+  the full list of places to watch on the day.
+- **The stream test has no date yet**, and item 8 below still holds until it passes:
+  no platform is named publicly. `WATCH_HREF` on /live stays null until then.
+
 ## The chain, link by link
 
 | # | Link | What it is | Proven? | Owner | Notes |
