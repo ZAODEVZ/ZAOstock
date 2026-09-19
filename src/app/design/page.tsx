@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Section, SectionHeader, Card, Button, Eyebrow, Badge } from '@/components/poster';
 import { COLOURS, FONTS, MARKS, RULES, SIGNS, ILLUSTRATIONS, type KitArt } from '@/content/design-kit';
+import { getPosterFiles } from '@/lib/poster';
 
 export const metadata: Metadata = {
   title: 'Design kit',
@@ -46,6 +47,7 @@ function ArtGrid({ items, cols }: { items: readonly KitArt[]; cols: string }) {
 }
 
 export default function DesignKitPage() {
+  const poster = getPosterFiles();
   return (
     <SiteShell>
       <Section first className="pt-10 sm:pt-14">
@@ -94,6 +96,28 @@ export default function DesignKitPage() {
         <ArtGrid items={ILLUSTRATIONS} cols="grid-cols-2 sm:grid-cols-4" />
         <p className="text-[13px] text-ink-muted mt-4 m-0">Signage and illustrations by Samantha &ldquo;Candy&rdquo;, CandyToyBox.</p>
       </Section>
+
+      {poster && (
+        <Section id="poster">
+          <SectionHeader eyebrow="Poster" title="The event poster" lede="Candy's final poster, unaltered. Ask before printing." className="mb-6" />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Card className="p-5 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-sans font-extrabold text-base text-ink-950 m-0">Print file</p>
+                <p className="text-[13px] text-ink-muted m-0 mt-0.5">{poster.printExt}, unaltered from Candy&apos;s file.</p>
+              </div>
+              <Button href={poster.printUrl} external variant="secondary" size="sm">Download</Button>
+            </Card>
+            <Card className="p-5 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-sans font-extrabold text-base text-ink-950 m-0">Social crop</p>
+                <p className="text-[13px] text-ink-muted m-0 mt-0.5">JPG, 1080 x 1350. The full poster, padded to fit - nothing cropped out.</p>
+              </div>
+              <Button href={poster.socialUrl} external variant="secondary" size="sm">Download</Button>
+            </Card>
+          </div>
+        </Section>
+      )}
 
       <Section id="colours">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
