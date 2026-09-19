@@ -180,7 +180,7 @@ export default function HomePage() {
                   Why <em style={{ color: 'var(--sun)' }}>Ellsworth</em>
                 </h2>
                 <p>
-                  The gateway to Acadia National Park. {ELLSWORTH.historic} The Heart of Ellsworth ran {ELLSWORTH.heartEvents.value} events with {ELLSWORTH.heartSponsors.value} sponsors in 2025, and ZAOstock builds on that momentum, adding a new music experience to Ellsworth's growing calendar of downtown events.
+                  The gateway to Acadia National Park. {ELLSWORTH.historic} The Heart of Ellsworth ran {ELLSWORTH.heartEvents.value} events with {ELLSWORTH.heartSponsors.value} sponsors in 2025, and ZAOstock builds on that momentum, adding a new music experience to Ellsworth&apos;s growing calendar of downtown events.
                 </p>
                 <p style={{ marginTop: 16 }}>
                   <Link href="/ellsworth" className={s.link} style={{ color: 'inherit' }}>
