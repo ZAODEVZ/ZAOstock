@@ -74,8 +74,9 @@ const PILLARS: Pillar[] = [
 const PARTNERS: Partner[] = [
   { name: 'City of Ellsworth', role: 'Venue partner — Franklin St Parklet', confirmed: true },
   { name: 'Black Moon Public House', role: 'The evening, indoors + official after-party', confirmed: true },
-  // Heart of Ellsworth removed 2026-08-14: official-partner status not yet
-  // approved by them. Do not re-add without written confirmation.
+  // Heart of Ellsworth removed 2026-08-14 pending written confirmation.
+  // Confirmed 2026-09-18 by their own email asking to be listed; re-added.
+  { name: 'Heart of Ellsworth', role: 'Community partner, Art of Ellsworth: Maine Craft Weekend', confirmed: true },
   { name: 'Star 97.7', role: 'Local radio promotion', confirmed: true },
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format, online all year', confirmed: true },
