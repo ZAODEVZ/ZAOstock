@@ -28,7 +28,7 @@ What exists:
 
 - A team dashboard at https://zaostock.com/team (4-letter code login for the organizing team): members, todos, volunteers, RSVPs, sponsors, notes, activity, budget.
 - Eight "circles" (workgroups anyone can join) at https://zaostock.com/circles. The page exists; its API is failing in production today (a database mismatch, being fixed).
-- Public intake forms that already write to the dashboard: volunteer sign-up (https://zaostock.com/apply), musician submissions (https://zaostock.com/musicians/submit), ideas (https://zaostock.com/suggest), and the artist rider (https://zaostock.com/musicians/rider).
+- Public intake forms that already write to the dashboard: volunteer sign-up (https://zaostock.com/apply), musician submissions (the page is gone, removed 2026-09-01 - the `POST /api/musicians/submit` route below still exists but nothing on the site calls it), ideas (https://zaostock.com/suggest), and the artist rider (https://zaostock.com/musicians/rider).
 - The run of show in five-minute rows, the production plan, the AV spec and the livestream chain, all in the public repo under `docs/plans/` and `docs/av/`.
 
 What is missing: a day-of view. Stage manager, MC, crews and volunteers each need one screen that says what is happening now, what is next, who is where, and what changed. Today that lives in a markdown table.
