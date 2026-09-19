@@ -63,7 +63,7 @@ export const BLOCKS: Block[] = [
       { time: '12:38', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' , crewFacing: true },
       { time: '12:45', label: 'OPEN X', detail: 'Power pop rock.', tone: 'set' },
       { time: '13:25', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '13:32', label: 'Grass Rug', detail: 'Jam rock band.', tone: 'set' },
+      { time: '13:32', label: 'Grass Rug', detail: 'Indie jam rock.', tone: 'set' },
       { time: '14:05', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '14:12', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion.', tone: 'set' },
       { time: '14:45', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' , crewFacing: true },

@@ -51,7 +51,7 @@ const LINEUP_ARTISTS: readonly LineupArtistEntry[] = [
     order: '03',
     name: 'Grass Rug',
     slug: 'grass-rug',
-    genre: 'Jam rock band',
+    genre: 'Indie jam rock',
     highlight: 'Improvisational jam rock grooves',
   },
   {
