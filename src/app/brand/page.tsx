@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, SectionHeader, Card } from '@/components/poster';
-import { FONTS } from '@/content/design-kit';
+import { COLOURS, FONTS } from '@/content/design-kit';
 
 // The brand asset library. Zaal, 2026-09-16: "we need all this ZAOstock on
 // the website stat" (a screenshot of Candy's Telegram file drop) - this page
@@ -182,13 +182,24 @@ const TEXTURES: Asset[] = [
   },
 ];
 
+// Hex values come from design-kit.ts's COLOURS (the /design page's own
+// source, itself matching globals.css's live .site scope) rather than being
+// typed here a second time - two copies is how Red 500 went stale for a
+// year while /design stayed current. A token missing from COLOURS throws at
+// build time instead of silently falling back to a guessed hex.
+function liveHex(token: string): string {
+  const c = COLOURS.find((c) => c.token === token);
+  if (!c) throw new Error(`design-kit.ts has no COLOURS entry for token "${token}"`);
+  return c.hex;
+}
+
 const PALETTE: Array<{ name: string; hex: string; note?: string }> = [
-  { name: 'Red 500', hex: '#C1662C', note: "fireside - the brand's primary, the live .site value" },
-  { name: 'Gold 400', hex: '#E5AC3B' },
-  { name: 'Denim 400', hex: '#2E6494' },
-  { name: 'Olive 400', hex: '#7C8A3D' },
-  { name: 'Paper 100', hex: '#F2E6D3', note: 'ground - not white' },
-  { name: 'Ink 950', hex: '#241E15', note: 'text - not black' },
+  { name: 'Red 500', hex: liveHex('red-500'), note: "fireside - the brand's primary" },
+  { name: 'Gold 400', hex: liveHex('gold-400') },
+  { name: 'Denim 400', hex: liveHex('denim-400'), note: 'pine' },
+  { name: 'Olive 400', hex: liveHex('olive-400') },
+  { name: 'Paper 100', hex: liveHex('paper-100'), note: 'ground - not white' },
+  { name: 'Ink 950', hex: liveHex('ink-950'), note: 'text - not black' },
 ];
 
 // A checkerboard, not a flat tint: some marks here are white-on-transparent,
