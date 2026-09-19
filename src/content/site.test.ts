@@ -58,14 +58,16 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists nine confirmed partners', () => {
+  it('lists ten confirmed partners', () => {
     // Ninth since 2026-09-16: WE THE MEDIA, media and content capture (Zaal).
-    expect(PARTNERS).toHaveLength(9);
+    // Tenth since 2026-09-18: Heart of Ellsworth, confirmed in writing by
+    // their own email asking to be listed; Zaal said yes to all of it.
+    expect(PARTNERS).toHaveLength(10);
     expect(PARTNERS.map((p) => p.name)).toContain('Artizen');
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).toContain('WE THE MEDIA');
-    expect(PARTNERS.map((p) => p.name)).not.toContain('Heart of Ellsworth');
+    expect(PARTNERS.map((p) => p.name)).toContain('Heart of Ellsworth');
     for (const p of PARTNERS) expect(p.confirmed).toBe(true);
   });
 

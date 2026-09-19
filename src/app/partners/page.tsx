@@ -7,8 +7,8 @@ import { SiteShell, Section, Eyebrow, Button, SectionHeader, PartnerTile } from 
 // kit, so the three cannot drift. A partner appears only when confirmed; a
 // logo appears only when the file is in public/partners/. A partner whose
 // logo is still due (City of Ellsworth) shows a "Logo coming" badge, not a
-// blank. ENTERACT and Web3Metal are not partners (Zaal, 2026-09-10). Heart of Ellsworth stays
-// off until confirmed in writing (src/content/site.ts).
+// blank. ENTERACT and Web3Metal are not partners (Zaal, 2026-09-10). Heart of Ellsworth was
+// off until confirmed in writing; confirmed 2026-09-18 by their own email, now listed (src/content/site.ts).
 
 export const metadata: Metadata = {
   title: 'Partners',

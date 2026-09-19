@@ -98,7 +98,7 @@ export default function EllsworthPage() {
           <section>
             <SectionHeader className="mb-5" eyebrow="About Ellsworth" title="The town, in its own words." />
             <p className="text-base text-ink-secondary mb-4 measure">
-              A short film about downtown Ellsworth, made by Heart of Ellsworth.
+              A short film about downtown Ellsworth, made by Heart of Ellsworth, a ZAOstock community partner.
             </p>
             <div className="rounded-md border-2 border-ink-950 bg-paper-200 overflow-hidden aspect-video shadow-hard">
               <iframe

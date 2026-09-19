@@ -227,6 +227,13 @@ const ALL_PARTNERS = [
   // Zaal is getting the WE THE MEDIA logo himself and will drop it in
   // ~/zao-vault/inbox - textOnly until it lands, same as City of Ellsworth.
   { name: 'WE THE MEDIA', role: 'Media and content capture', poc: 'Zaal', confirmed: true, textOnly: true },
+  // Heart of Ellsworth: confirmed IN WRITING 2026-09-18, their own email to
+  // Zaal asking to be listed "as a sponsor or community partner", Zaal: "yes
+  // to all". Before this it was kept off until confirmed in writing (doc 2279).
+  // Community partner, not sponsor: no money is stated anywhere. They produce
+  // Art of Ellsworth: Maine Craft Weekend (eighth year), which ZAOstock is part
+  // of. Logo not yet received; textOnly until it lands in ~/zao-vault/inbox.
+  { name: 'Heart of Ellsworth', role: 'Community partner, Art of Ellsworth: Maine Craft Weekend', poc: 'Zaal', confirmed: true, textOnly: true },
 ] satisfies Partner[];
 
 export const PARTNERS: readonly Partner[] = ALL_PARTNERS.filter((p) => p.confirmed);
