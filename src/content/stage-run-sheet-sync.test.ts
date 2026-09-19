@@ -73,8 +73,13 @@ describe('the evening, as ruled on 14 September', () => {
 describe('what the sheet still owes a name', () => {
   // A one-pager that quietly drops an open role reads as settled. These three
   // decide who is standing where while DCoop is on stage at 15:32.
-  it('says the third stage manager is contested, rather than picking one', () => {
-    expect(sheet).toMatch(/Steve Peer, the other says Maseo/);
+  it('names the third stage manager, ruled 2026-09-18, not left contested', () => {
+    // Card 9829: "Steve Peer stage-manages; Maceo is on video." The sheet used
+    // to say the name was contested between Steve Peer and "Maseo" - both the
+    // spelling and the open-question framing were wrong once this landed.
+    expect(sheet).toMatch(/Steve Peer, ruled 2026-09-18/);
+    expect(sheet).not.toMatch(/contested|Maseo/);
+    expect(sheet).toMatch(/Maceo is on video/);
   });
 
   it('keeps the between-sets mic open, and says whose it was', () => {

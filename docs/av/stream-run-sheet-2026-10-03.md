@@ -46,8 +46,9 @@ anyone is producing a guest segment.
   audio from a ZAO account; every other host takes that audio and does their
   own take on it in their own room. Zaal posts the full list on the day.
 - **No platform is named publicly until a run passes.**
-  `docs/av/livestream-chain-2026-10-03.md` item 8. The stream test has no date
-  yet, and `WATCH_HREF` on /live stays null until it passes.
+  `docs/av/livestream-chain-2026-10-03.md` item 8. The stream test is set for
+  19 to 21 September (ruled 2026-09-18), and `WATCH_HREF` on /live stays null
+  until it passes.
 
 ## Scenes and overlays, named once
 
@@ -77,7 +78,7 @@ first bar and out after 20 seconds, and comes back on at the last song.
 
 | When | What | Who |
 |------|------|-----|
-| No date yet | **The stream test.** The one thing gating the watch link. Suggestion on the desk: run it at the Friday soundcheck, when the AV team, the desk, the PA and the acts are all on site anyway | Zaal, and he pins IMan when he runs it |
+| 19 to 21 Sept (ruled 2026-09-18) | **The stream test.** The one thing gating the watch link | Zaal, and he pins IMan when he runs it |
 | Fri 2 Oct, 4 to 7 PM | Soundcheck, every act, mandatory. The end to end test belongs beside it: desk audio, camera, parklet uplink, destinations, local recording | Zaal with the venue AV team |
 
 ## Saturday, before noon
@@ -149,4 +150,3 @@ changed.
 - The partner list on the desk, and whether spots are read live or played.
 - The sound operator's name, and AV cover during DCoop's own set.
 - Whether anyone is producing a guest segment for the online side.
-- The stream test date, which gates the watch link on /live.
