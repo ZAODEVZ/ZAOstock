@@ -63,7 +63,8 @@ of The ZAO, an independent music community.
   to back.
 - **Eight acts, one stage, noon to six.** Music starts at noon and ends before
   the street clears at six, with seven-minute changeovers between acts.
-  Set times are not published: name the act, not the slot (Zaal, 2026-09-12).
+  Set times are not published.
+  <!-- Zaal, 2026-09-12: name the act, not the slot. Internal style note, not press copy. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
   after-party at Black Moon Public House, with a DJ, run by Steve, from six
   (poster: 6 to 10 PM), **hosted and underwritten by Black Moon on their own
@@ -77,10 +78,11 @@ One venue at a time. The day does not split across two rooms.
 **All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
 OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz.
 
-**NONE of them has countersigned.** They are booked and locked in the run of show,
-which is a different claim from confirmed. Do not describe any act as confirmed in
-press copy. The API and the /artist pages publish each act only once it has
-confirmed in writing and its bio and photo are in.
+<!-- NONE of them has countersigned. They are booked and locked in the run of
+     show, which is a different claim from confirmed. Do not describe any act
+     as confirmed in press copy - the API and the /artist pages publish each
+     act only once it has confirmed in writing and its bio and photo are in.
+     Internal instruction to whoever writes press copy, not press copy itself. -->
 
 *(The gate is per act and reads the artists table, not this file. Never list an
 act marked proposed.)*
@@ -90,9 +92,10 @@ act marked proposed.)*
 WaveWarZ is a live music-battle format. Two artists play head to head and the
 audience picks the winner, in person and online. It runs online all year.
 
-**It is NOT on the 3 October programme.** Confirmed off by Zaal, 2026-09-07.
-The four-to-six window it used to hold is LyonsDen and Tom Fellenz, whose slots are
-not published.
+**It is NOT on the 3 October programme.**
+<!-- Confirmed off by Zaal, 2026-09-07. The four-to-six window it used to hold
+     is LyonsDen and Tom Fellenz, whose slots are not published. Internal
+     dating/sourcing, not press copy. -->
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 
