@@ -97,6 +97,12 @@ const config: NextConfig = {
       // that row moved his page to /artist/tom-fellenz. Redirect /artist/fellenz
       // so any links or bookmarks keep working.
       { source: '/artist/fellenz', destination: '/artist/tom-fellenz', permanent: false },
+      // Zaal typed https://zaostock.com/artist as the lineup page (2026-09-19).
+      // It has never been a route - the real index is /artists (plural), and
+      // /artist only exists as the dynamic /artist/[slug] segment, which does
+      // not match with no slug. No internal link ever pointed at the bare
+      // singular form, so this is purely for someone typing or pasting it.
+      { source: '/artist', destination: '/artists', permanent: false },
       // /volunteer is the intuitive link people guess for volunteering; the canonical route is /apply.
       { source: '/volunteer', destination: '/apply', permanent: false },
     ];

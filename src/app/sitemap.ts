@@ -1,4 +1,6 @@
 import type { MetadataRoute } from 'next';
+import { LINEUP_NAMES } from '@/content/site';
+import { slugify } from '@/lib/artists';
 
 const BASE = 'https://zaostock.com';
 
@@ -36,6 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/press',
     '/design',
+    // /artist/<slug> pages render for every act on the bill since the
+    // 2026-09-15 ruling (no reveal gate on the site, unlike the app's lineup
+    // API) - missing here since they shipped, so newsletters linking these
+    // for two weeks had nothing pointing search at them. Same source
+    // (LINEUP_NAMES + slugify) that artist-slugs.test.ts holds every act's
+    // URL to, so this list can't drift from the real routes.
+    ...LINEUP_NAMES.map((name) => `/artist/${slugify(name)}`),
   ];
 
   return routes.map((path) => ({

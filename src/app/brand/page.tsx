@@ -85,14 +85,21 @@ const LOGOS: Asset[] = [
     use: 'Same mark, a second export. Use the primary mark unless this one fits a spot better.',
   },
   {
-    name: 'The moose, white on black',
+    // Measured 2026-09-19 after a sweep flagged this: the file is 82%
+    // transparent (alpha histogram), and the opaque 18% samples near-white
+    // (~224,224,224), not black. The old "white on black" / "opaque black
+    // background" label described a file this one has never been - fixed to
+    // what it measures as. It vanishes on a light page for the same reason
+    // the /design moose does; a true black-background export is a separate
+    // ask to Candy, not this fix.
+    name: 'The moose, near-white on transparent',
     src: '/brand/logos/zaostock-moose-alt-4000.png',
     width: 4000,
     height: 4000,
     bytes: '598 KB',
-    format: 'PNG, opaque black background',
+    format: 'PNG, transparent (82% alpha=0)',
     credit: 'Candy (CandyToyBox)',
-    use: 'Dark-background placements where a transparent file would need its own dark card behind it.',
+    use: 'Dark-background placements - the mark itself is near-white, so it needs a dark card behind it.',
   },
   {
     name: 'ZAOSTOCK, brush lettering',
