@@ -209,7 +209,8 @@ const ALL_PARTNERS = [
   // ellsworthmaine.gov itself returns a zero-byte body to curl from this
   // machine, so the authority is unreadable here - this is Zaal's word plus
   // four secondary sources, not a live fetch of the .gov site.
-  { name: 'City of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true, textOnly: true },
+  // Logo: the city's own 2026 mark, ellsworthmaine.gov/wp-content/uploads/2026/05/COE-logo-2026-2.png (1081x539), fetched 2026-09-19, resampled to 400px tall.
+  { name: 'City of Ellsworth', role: 'Parklet venue', poc: 'Zaal', confirmed: true, logoSrc: '/partners/city-of-ellsworth.png' },
   { name: 'Black Moon Public House', role: 'The evening, and the official after-party', poc: 'Zaal', confirmed: true, logoSrc: '/partners/black-moon.png' },
   { name: 'Star 97.7', role: 'Local radio promotion', poc: 'Zaal', confirmed: true, logoSrc: '/partners/star-977.png' },
   { name: 'Wallace Events', role: 'Event equipment and tenting', poc: 'Zaal', confirmed: true, logoSrc: '/partners/wallace-events.png' },
@@ -227,14 +228,16 @@ const ALL_PARTNERS = [
   // WE THE MEDIA: Zaal, 2026-09-16 grill, role and poc his words exactly.
   // Zaal is getting the WE THE MEDIA logo himself and will drop it in
   // ~/zao-vault/inbox - textOnly until it lands, same as City of Ellsworth.
-  { name: 'WE THE MEDIA', role: 'Media and content capture', poc: 'Zaal', confirmed: true, textOnly: true },
+  // Logo: Zaal sent it 2026-09-19 (400x400 square emblem), resampled to 400px tall.
+  { name: 'WE THE MEDIA', role: 'Media and content capture', poc: 'Zaal', confirmed: true, logoSrc: '/partners/we-the-media.png' },
   // Heart of Ellsworth: confirmed IN WRITING 2026-09-18, their own email to
   // Zaal asking to be listed "as a sponsor or community partner", Zaal: "yes
   // to all". Before this it was kept off until confirmed in writing (doc 2279).
   // Community partner, not sponsor: no money is stated anywhere. They produce
   // Art of Ellsworth: Maine Craft Weekend (eighth year), which ZAOstock is part
   // of. Logo not yet received; textOnly until it lands in ~/zao-vault/inbox.
-  { name: 'Heart of Ellsworth', role: 'Community partner, Art of Ellsworth: Maine Craft Weekend', poc: 'Zaal', confirmed: true, textOnly: true },
+  // Logo: Cara's own file, emailed to Zaal 2026-09-19 (image003.png, 1600x632, transparent), resampled to 400px tall.
+  { name: 'Heart of Ellsworth', role: 'Community partner, Art of Ellsworth: Maine Craft Weekend', poc: 'Zaal', confirmed: true, logoSrc: '/partners/heart-of-ellsworth.png' },
 ] satisfies Partner[];
 
 export const PARTNERS: readonly Partner[] = ALL_PARTNERS.filter((p) => p.confirmed);
