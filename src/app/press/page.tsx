@@ -95,7 +95,7 @@ export default function PressPage() {
         <SectionHeader
           eyebrow="Press kit"
           title="Files you can use today."
-          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Photos and artist bios are not available yet; ask.`}
+          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Artist bios and photos are going up per act as each is confirmed - see /artists for what's live now, or ask for the rest.`}
           className="mb-6"
         />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">

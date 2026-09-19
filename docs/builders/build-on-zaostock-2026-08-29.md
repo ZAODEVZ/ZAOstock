@@ -2,15 +2,12 @@
 
 **For the ZABAL Gamez builder battle of 29 to 30 August, and anyone else who wants to build something the festival can use on 3 October.**
 
-> **UPDATED 2026-09-12.** The builder battle itself is over; the brief stays up
-> for anyone still building. Four things changed after this was written and the
-> page said the old version of each until today: **WaveWarZ is not on the
-> 3 October programme** (Zaal, 2026-09-07), **Hurricane is out** (2026-09-10),
-> **ENTERACT and Web3Metal are not partners** (2026-09-10), and the day was
-> **retimed** on 2026-09-10. The facts table below is current; anything above it
-> that still reads as a live battle window is the August brief.
+> **UPDATED 2026-09-19.** The builder battle itself is over; the brief stays up
+> for anyone still building. Set times are not public. The facts table below
+> is current; anything above it that still reads as a live battle window is
+> the August brief.
 
-ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Eight acts on the parklet stage, music 12:05 to 5:46, and the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
+ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Eight acts on the parklet stage, noon to six, and the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
 
 ## The loop: build, then call Zaal
 
@@ -54,7 +51,7 @@ Build: an Unlock lock on Base for the Pro Ticket (and, if you like, a free key f
 
 What exists:
 
-- Quan (Chris Marshall) is the Decentraland contact.
+- Quan is the Decentraland contact.
 - An open item on The ZAO's board: scan the Franklin Street parklet (LiDAR), export a GLB, and stand it up in Decentraland. The "Decentraland x COC x ZAO" Space has been queued since mid-August and not yet held.
 - The livestream chain for 3 October is specified in the repo (`docs/av/livestream-chain-2026-10-03.md`): one stream, outdoors until six, indoors after.
 
@@ -94,10 +91,10 @@ Build: a ZAOstock collaboration board on POIDH: each open task (a photo set of e
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
 | Cost | Free. Optional Pro Ticket, $50 |
-| Music | Eight acts, 12:05 to 5:46, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
+| Music | Eight acts, noon to six, one stage. Set times are not public. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
 | Expected | 200 to 250 in person, about 1,000 online |
 | Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
-| Partners | City of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen |
+| Partners | City of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen, WE THE MEDIA, Heart of Ellsworth |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Contact | info@thezao.com |
@@ -117,7 +114,7 @@ Where to read more: https://zaostock.com/llms.txt (the whole site in one text fi
 
 1. Names: the eight acts in the facts table are public and no one else is. The repo carries planning documents with other names, including people no longer involved; those are not public copy. Do not print them.
 2. No prices, tiers or sponsor numbers anywhere; packages are on request. No "tax-deductible", no fiscal sponsor claim: ZAOstock has neither.
-3. Partners are the eight listed above and no one else, however friendly the conversation.
+3. Partners are the ones listed above and no one else, however friendly the conversation.
 4. Attendee-facing words lead with the music. Your tool can run on Base; the festival page does not say so.
 5. Spellings: ZAOstock, ZAOville, WaveWarZ, ZABAL Gamez, The ZAO, COC Concertz, ZAO-PALOOZA, ZAO-CHELLA, BetterCallZaal, LyonsDen, DCoop, Tom Fellenz.
 6. No emojis and no em dashes in copy that ships on ZAOstock surfaces.

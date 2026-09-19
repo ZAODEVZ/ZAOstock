@@ -30,9 +30,21 @@ describe('what /build tells a builder', () => {
     expect(body).toMatch(/NOT on the 3 October programme/);
   });
 
-  it('has the retimed day and no reveal date', () => {
-    expect(body).not.toMatch(/5:55|17:55|revealed 1 September|reveal date is/i);
-    expect(body).toContain('12:05 to 5:46');
+  it('has no public set times and no reveal date', () => {
+    // Zaal, 2026-09-12: no set times listed publicly, anywhere - reversed the
+    // 09-10 call this doc's "12:05 to 5:46" assertion used to guard. Checked
+    // against the summary line and the Music fact row specifically, not the
+    // whole document - the August bounty deadline elsewhere in the doc
+    // ("11:59 PM PT") is a real clock time that has nothing to do with the
+    // festival's own set times.
+    const summaryLine = body.split('\n').find((l) => l.startsWith('ZAOstock is a free'));
+    const musicRow = body.split('\n').find((l) => l.startsWith('| Music |'));
+    expect(summaryLine).toBeDefined();
+    expect(musicRow).toBeDefined();
+    for (const line of [summaryLine, musicRow]) {
+      expect(line, line).not.toMatch(/\b\d{1,2}:[0-5]\d\b/);
+    }
+    expect(body).not.toMatch(/revealed 1 September|reveal date is/i);
   });
 
   // THE 2026-09-16 AUDIT FINDING: the glossary/spellings list said "Dcoop"
