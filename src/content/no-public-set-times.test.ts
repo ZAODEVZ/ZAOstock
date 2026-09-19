@@ -43,7 +43,18 @@ describe('no set times in public', () => {
     expect(jsxText.filter((l) => CLOCK.test(l) && /className|>/.test(l))).toEqual([]);
   });
 
-  it('keeps the clock off the public ops board', () => {
+  // Zaal, seat grill 2026-09-19 (vault decisions/grill-2026-09-19-seat-
+  // afternoon.md): "Let's keep it for everyone." /ops stays public as it is -
+  // no gate, no /ops/<code> route, no takedown. Accepted exception to the
+  // no-set-times rule above, for that one page only.
+  //
+  // What this test does NOT guarantee: that a visitor to /ops/index.html
+  // cannot see a set time. `forPublic` is a client-side display toggle, not
+  // access control - both views render from the same embedded JSON, so every
+  // s.t sits in the raw page source regardless of which one is showing.
+  // Renamed 2026-09-19 after the old name read as that promise, which the
+  // deployed page has never kept.
+  it("keeps the clock out of the ops board's public-facing render text", () => {
     for (const f of ['ops-room/ops-room.src.html', 'public/ops/index.html']) {
       const src = read(f);
       expect(src, f).toContain('forPublic ? "" : hhmm(s.t)');
