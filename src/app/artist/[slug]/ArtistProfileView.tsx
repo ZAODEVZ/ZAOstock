@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { PublicArtist } from '@/lib/artists';
+import { parseSocials } from '@/lib/socials';
 
 // The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
 // have that on any of the pages"). Still true after the 2026-09-15 ruling
@@ -197,14 +198,15 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
             <div>
               <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-1">Links</p>
               <p className="text-xs text-ink-muted break-words flex flex-wrap gap-x-3 gap-y-1">
-                {socials.trim().split(/[\s,]+/).filter(Boolean).map((link, i) => {
-                  const href = /^https?:\/\//i.test(link) ? link : `https://${link}`;
-                  return (
-                    <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-950">
-                      {link}
+                {parseSocials(socials).map((token, i) =>
+                  token.href ? (
+                    <a key={i} href={token.href} target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-950">
+                      {token.text}
                     </a>
-                  );
-                })}
+                  ) : (
+                    <span key={i}>{token.text}</span>
+                  )
+                )}
               </p>
             </div>
           )}
