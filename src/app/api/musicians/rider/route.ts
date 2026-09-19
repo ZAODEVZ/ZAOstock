@@ -43,7 +43,7 @@ const riderSchema = z.object({
   retreat_availability: z.string().trim().max(1000).optional(),
 
   acknowledged: z.literal(true, {
-    errorMap: () => ({ message: 'Acknowledgement is required to submit the rider' }),
+    error: 'Acknowledgement is required to submit the rider',
   }),
   signature: z.string().trim().min(1, 'Type your name to acknowledge').max(200),
 
