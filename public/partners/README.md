@@ -18,3 +18,6 @@ colour as supplied. All six trimmed to the mark, 400px tall (2x the 200px max re
 
 Due Fri 29 Aug, not yet on disk: Town of Ellsworth, ENTERACT, Web3Metal
 (`docs/marketing/partner-logos.md`). The site shows those as "coming".
+| heart-of-ellsworth.png | Heart of Ellsworth | Cara Romano's file by email 2026-09-19 (image003.png 1600x632, transparent), resampled to 1013x400 |
+| we-the-media.png | WE THE MEDIA | Zaal, 2026-09-19, square emblem 400x400 |
+| city-of-ellsworth.png | City of Ellsworth | the city's 2026 mark from ellsworthmaine.gov (COE-logo-2026-2.png, 1081x539), resampled to 802x400 |
