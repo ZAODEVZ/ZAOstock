@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import Image from 'next/image';
-import Link from 'next/link';
 import { InstagramEmbed } from './InstagramEmbed';
 import { getPublicMembers, type PublicMember } from '@/lib/members';
 import { FESTIVAL } from '@/content/festival';
@@ -139,14 +138,17 @@ export default async function FestivalsPage() {
           ) : (
             <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 list-none m-0 p-0">
               {team.map((m, i) => (
-                <li key={m.id}>
-                  <Link
-                    href={`/team/m/${m.slug}`}
+                <li key={m.id} className="flex flex-col items-center gap-1">
+                  {/* /team/m/<slug> 404s - the team dashboard was retired
+                      2026-08-29 (src/lib/team-status.ts, TEAM_DASHBOARD_RETIRED).
+                      This tile used to link there; found dead by scripts/t7-sweep.mjs
+                      2026-09-19. No page to link to, so it's a plain tile with the
+                      name printed underneath rather than hidden in a title attribute. */}
+                  <div
                     className={[
-                      'poster-motion flex aspect-square items-center justify-center overflow-hidden rounded-md border border-ink-950/60 font-sans font-extrabold text-sm text-center px-2 transition-transform duration-[120ms] ease-poster hover:-translate-x-px hover:-translate-y-px focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]',
+                      'flex aspect-square w-full items-center justify-center overflow-hidden rounded-md border border-ink-950/60 font-sans font-extrabold text-sm text-center px-2',
                       TILE_TONES[i % TILE_TONES.length],
                     ].join(' ')}
-                    title={m.name}
                   >
                     {m.photo_url ? (
                       /* Optimised on purpose, though these are third-party URLs:
@@ -158,7 +160,8 @@ export default async function FestivalsPage() {
                     ) : (
                       <span aria-label={m.name}>{initials(m.name)}</span>
                     )}
-                  </Link>
+                  </div>
+                  <p className="text-[11px] text-ink-muted m-0 truncate max-w-full">{m.name}</p>
                 </li>
               ))}
             </ul>
