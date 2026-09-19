@@ -4,9 +4,10 @@ import { defineConfig, devices } from '@playwright/test';
 // research library): confirm what a real visitor sees, not what the code
 // intends to render. Runs against the LIVE site by default - PayPal, Stripe
 // and Unlock are all external hosts this repo cannot stand up locally, and
-// `stripeLinkFor` / `unlockCheckoutUrl` read live env vars that only exist in
-// Vercel Production, not in this checkout. Set E2E_BASE_URL to point at a
-// preview deployment instead.
+// `stripeLinkFor` / `unlockCheckoutUrl` read STRIPE_LINKS / UNLOCK_CHECKOUT_URL
+// in src/content/site.ts, which are plain string constants (not env vars) -
+// they flip only when someone edits that file and the change deploys. Set
+// E2E_BASE_URL to point at a preview deployment instead.
 //
 // Read-only: no test here submits a payment form, enters card details, or
 // completes a checkout. Every assertion is about which door is visible and
