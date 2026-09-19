@@ -191,9 +191,10 @@ export type Partner = { name: string; role: string; poc: string; confirmed: bool
 // PARTNER GATING RULES (strict): a partner appears only if confirmed === true
 // (locked agreement, not "in conversation") and poc is the ZAO team member who
 // owns the relationship. logoSrc only once the file exists in public/partners/
-// (seven do as of 2026-09-16). Heart of Ellsworth is deliberately NOT listed: on the
-// 2026-08-13 call Chesnee Barney said official-partner status and logo use
-// have to clear internally first. COC Concertz added 2026-08-27 (Zaal, 20:3x).
+// (seven do as of 2026-09-16). Heart of Ellsworth was held off the list until
+// confirmed in writing (see the entry below, added 2026-09-18) - the
+// 2026-08-13 call with Chesnee Barney is what set that bar, not a standing
+// exclusion. COC Concertz added 2026-08-27 (Zaal, 20:3x).
 // POC is Thy Revolution (Zaal, 2026-09-10: "poc is thyrev"), role Co-presenter
 // (Zaal's pick the same day). No partner is untyped any more.
 const ALL_PARTNERS = [
