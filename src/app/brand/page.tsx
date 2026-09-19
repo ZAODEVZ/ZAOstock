@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, SectionHeader, Card } from '@/components/poster';
+import { FONTS } from '@/content/design-kit';
 
 // The brand asset library. Zaal, 2026-09-16: "we need all this ZAOstock on
 // the website stat" (a screenshot of Candy's Telegram file drop) - this page
@@ -182,7 +183,7 @@ const TEXTURES: Asset[] = [
 ];
 
 const PALETTE: Array<{ name: string; hex: string; note?: string }> = [
-  { name: 'Red 500', hex: '#D2402A', note: "the badge red - the brand's primary" },
+  { name: 'Red 500', hex: '#C1662C', note: "fireside - the brand's primary, the live .site value" },
   { name: 'Gold 400', hex: '#E5AC3B' },
   { name: 'Denim 400', hex: '#2E6494' },
   { name: 'Olive 400', hex: '#7C8A3D' },
@@ -297,15 +298,26 @@ export default function BrandPage() {
 
       <Section id="type">
         <SectionHeader eyebrow="Type" title="Font." className="mb-4" />
-        <Card className="max-w-[520px]">
-          <p className="font-display text-3xl text-ink-950 m-0 mb-2">Boogaloo</p>
-          <p className="text-sm text-ink-secondary m-0">
-            Display headlines only - body copy stays in the sans. Used site-wide via <code>--font-display</code>.
-          </p>
-          <a href="/fonts/Boogaloo-Regular.ttf" download className="mt-3 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
-            Download the font file
-          </a>
-        </Card>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {FONTS.map((f) => (
+            <Card key={f.family}>
+              <p className="text-3xl text-ink-950 m-0 mb-2" style={{ fontFamily: f.family }}>{f.family}</p>
+              <p className="text-sm text-ink-secondary m-0">{f.use}</p>
+              <a href={f.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+                Get the font
+              </a>
+            </Card>
+          ))}
+          <Card>
+            <p className="font-display text-3xl text-ink-950 m-0 mb-2">Boogaloo</p>
+            <p className="text-sm text-ink-secondary m-0">
+              An earlier display face, not the live one - <code>--font-display</code> now maps to Oswald above. Kept here for anything already built on it.
+            </p>
+            <a href="/fonts/Boogaloo-Regular.ttf" download className="mt-3 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+              Download the font file
+            </a>
+          </Card>
+        </div>
       </Section>
 
       <Section id="rules">
