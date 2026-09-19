@@ -25,6 +25,11 @@ export const LOGO_SIZE: Record<string, { width: number; height: number }> = {
   '/partners/coc-concertz.png': { width: 400, height: 400 },
   '/partners/bomb-squad.png': { width: 281, height: 400 },
   '/partners/artizen.png': { width: 1206, height: 257 },
+  // 2026-09-19: three more, and the test below is why these lines exist. #235
+  // shipped the files without them and the check went red on main.
+  '/partners/heart-of-ellsworth.png': { width: 1012, height: 400 },
+  '/partners/we-the-media.png': { width: 400, height: 400 },
+  '/partners/city-of-ellsworth.png': { width: 802, height: 400 },
 };
 
 export function PartnerLogo({ src, name, className }: { src: string; name: string; className?: string }) {
