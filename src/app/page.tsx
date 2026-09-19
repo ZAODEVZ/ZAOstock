@@ -41,10 +41,16 @@ export const metadata: Metadata = {
 
 // The bill in running order, split into three panels. Names only: set times
 // live in one public place, /program.
+//
+// Closing is the last THREE acts, not two - Zaal, relayed 2026-09-19: "Just
+// move dcoop", matching his 14 Sept headliners ruling and the Day 270
+// newsletter edition, which already treats DCoop/LyonsDen/Fellenz as one
+// closing block. Grouping label only: the running order stays 1-8, /program
+// is untouched, still no times anywhere.
 const PANELS = [
   { kicker: 'Opening', img: '/brand/elements/acoustic_guitar_yellow.webp', acts: LINEUP_NAMES.slice(0, 3) },
-  { kicker: 'The afternoon', img: '/brand/home/electric_guitar_blue_semihollow.webp', acts: LINEUP_NAMES.slice(3, 6) },
-  { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(6) },
+  { kicker: 'The afternoon', img: '/brand/home/electric_guitar_blue_semihollow.webp', acts: LINEUP_NAMES.slice(3, 5) },
+  { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(5) },
 ] as const;
 
 const PLUG_IN = [
