@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, SectionHeader, Card } from '@/components/poster';
+import { COLOURS, FONTS } from '@/content/design-kit';
 
 // The brand asset library. Zaal, 2026-09-16: "we need all this ZAOstock on
 // the website stat" (a screenshot of Candy's Telegram file drop) - this page
@@ -84,14 +85,21 @@ const LOGOS: Asset[] = [
     use: 'Same mark, a second export. Use the primary mark unless this one fits a spot better.',
   },
   {
-    name: 'The moose, white on black',
+    // Measured 2026-09-19 after a sweep flagged this: the file is 82%
+    // transparent (alpha histogram), and the opaque 18% samples near-white
+    // (~224,224,224), not black. The old "white on black" / "opaque black
+    // background" label described a file this one has never been - fixed to
+    // what it measures as. It vanishes on a light page for the same reason
+    // the /design moose does; a true black-background export is a separate
+    // ask to Candy, not this fix.
+    name: 'The moose, near-white on transparent',
     src: '/brand/logos/zaostock-moose-alt-4000.png',
     width: 4000,
     height: 4000,
     bytes: '598 KB',
-    format: 'PNG, opaque black background',
+    format: 'PNG, transparent (82% alpha=0)',
     credit: 'Candy (CandyToyBox)',
-    use: 'Dark-background placements where a transparent file would need its own dark card behind it.',
+    use: 'Dark-background placements - the mark itself is near-white, so it needs a dark card behind it.',
   },
   {
     name: 'ZAOSTOCK, brush lettering',
@@ -181,13 +189,24 @@ const TEXTURES: Asset[] = [
   },
 ];
 
+// Hex values come from design-kit.ts's COLOURS (the /design page's own
+// source, itself matching globals.css's live .site scope) rather than being
+// typed here a second time - two copies is how Red 500 went stale for a
+// year while /design stayed current. A token missing from COLOURS throws at
+// build time instead of silently falling back to a guessed hex.
+function liveHex(token: string): string {
+  const c = COLOURS.find((c) => c.token === token);
+  if (!c) throw new Error(`design-kit.ts has no COLOURS entry for token "${token}"`);
+  return c.hex;
+}
+
 const PALETTE: Array<{ name: string; hex: string; note?: string }> = [
-  { name: 'Red 500', hex: '#D2402A', note: "the badge red - the brand's primary" },
-  { name: 'Gold 400', hex: '#E5AC3B' },
-  { name: 'Denim 400', hex: '#2E6494' },
-  { name: 'Olive 400', hex: '#7C8A3D' },
-  { name: 'Paper 100', hex: '#F2E6D3', note: 'ground - not white' },
-  { name: 'Ink 950', hex: '#241E15', note: 'text - not black' },
+  { name: 'Red 500', hex: liveHex('red-500'), note: "fireside - the brand's primary" },
+  { name: 'Gold 400', hex: liveHex('gold-400') },
+  { name: 'Denim 400', hex: liveHex('denim-400'), note: 'pine' },
+  { name: 'Olive 400', hex: liveHex('olive-400') },
+  { name: 'Paper 100', hex: liveHex('paper-100'), note: 'ground - not white' },
+  { name: 'Ink 950', hex: liveHex('ink-950'), note: 'text - not black' },
 ];
 
 // A checkerboard, not a flat tint: some marks here are white-on-transparent,
@@ -297,15 +316,26 @@ export default function BrandPage() {
 
       <Section id="type">
         <SectionHeader eyebrow="Type" title="Font." className="mb-4" />
-        <Card className="max-w-[520px]">
-          <p className="font-display text-3xl text-ink-950 m-0 mb-2">Boogaloo</p>
-          <p className="text-sm text-ink-secondary m-0">
-            Display headlines only - body copy stays in the sans. Used site-wide via <code>--font-display</code>.
-          </p>
-          <a href="/fonts/Boogaloo-Regular.ttf" download className="mt-3 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
-            Download the font file
-          </a>
-        </Card>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {FONTS.map((f) => (
+            <Card key={f.family}>
+              <p className="text-3xl text-ink-950 m-0 mb-2" style={{ fontFamily: f.family }}>{f.family}</p>
+              <p className="text-sm text-ink-secondary m-0">{f.use}</p>
+              <a href={f.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+                Get the font
+              </a>
+            </Card>
+          ))}
+          <Card>
+            <p className="font-display text-3xl text-ink-950 m-0 mb-2">Boogaloo</p>
+            <p className="text-sm text-ink-secondary m-0">
+              An earlier display face, not the live one - <code>--font-display</code> now maps to Oswald above. Kept here for anything already built on it.
+            </p>
+            <a href="/fonts/Boogaloo-Regular.ttf" download className="mt-3 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+              Download the font file
+            </a>
+          </Card>
+        </div>
       </Section>
 
       <Section id="rules">

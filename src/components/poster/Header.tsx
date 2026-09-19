@@ -52,23 +52,29 @@ export function Header() {
               {n.label}
             </Link>
           ))}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          {/* RSVP stays outside the hamburger on every width - it is the
+              site-wide primary action (see the comment above), so a mobile
+              visitor should never have to open the menu to find it. */}
           <Link href="/tickets" className={RSVP}>
             RSVP
           </Link>
-        </nav>
 
-        <button
-          type="button"
-          className="sm:hidden flex flex-col justify-center gap-[5px] w-10 h-9 px-2 border-[1.5px] border-ink-950/40 rounded-[8px] bg-transparent focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]"
-          aria-label={open ? 'Close navigation' : 'Open navigation'}
-          aria-expanded={open}
-          aria-controls="site-nav-mobile"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="block h-0.5 bg-ink-950" />
-          <span className="block h-0.5 bg-ink-950" />
-          <span className="block h-0.5 bg-ink-950" />
-        </button>
+          <button
+            type="button"
+            className="sm:hidden flex flex-col justify-center gap-[5px] w-10 h-9 px-2 border-[1.5px] border-ink-950/40 rounded-[8px] bg-transparent focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]"
+            aria-label={open ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={open}
+            aria-controls="site-nav-mobile"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="block h-0.5 bg-ink-950" />
+            <span className="block h-0.5 bg-ink-950" />
+            <span className="block h-0.5 bg-ink-950" />
+          </button>
+        </div>
       </div>
 
       {open ? (
@@ -83,9 +89,6 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <Link href="/tickets" onClick={() => setOpen(false)} className={`${RSVP} self-start`}>
-              RSVP
-            </Link>
           </div>
         </nav>
       ) : null}

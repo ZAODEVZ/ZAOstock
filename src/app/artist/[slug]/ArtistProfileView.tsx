@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { PublicArtist } from '@/lib/artists';
+import { parseSocials } from '@/lib/socials';
 
 // The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
 // have that on any of the pages"). Still true after the 2026-09-15 ruling
@@ -196,7 +197,17 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
           {socials.trim() && (
             <div>
               <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-1">Links</p>
-              <p className="text-xs text-ink-muted break-words">{socials}</p>
+              <p className="text-xs text-ink-muted break-words flex flex-wrap gap-x-3 gap-y-1">
+                {parseSocials(socials).map((token, i) =>
+                  token.href ? (
+                    <a key={i} href={token.href} target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-950">
+                      {token.text}
+                    </a>
+                  ) : (
+                    <span key={i}>{token.text}</span>
+                  )
+                )}
+              </p>
             </div>
           )}
 
@@ -317,11 +328,6 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
         </div>
       )}
 
-      {!canEdit && (
-        <p className="text-[11px] text-ink-muted italic text-center">
-          To edit this profile you need the claim link from your artist signup confirmation.
-        </p>
-      )}
     </section>
   );
 }

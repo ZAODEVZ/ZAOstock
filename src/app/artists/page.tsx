@@ -86,8 +86,8 @@ const LINEUP_ARTISTS: readonly LineupArtistEntry[] = [
     order: '08',
     name: 'Tom Fellenz',
     slug: 'tom-fellenz',
-    genre: 'Rock guitar and soundtrack',
-    highlight: 'Closes the outdoor block on the parklet stage',
+    genre: 'Solo Instrumental Acoustic Guitar',
+    highlight: 'Closes out the Outdoor Festival on the parklet stage',
   },
 ];
 

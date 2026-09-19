@@ -4,6 +4,7 @@ import { getArtistBySlug, getRosterArtists, verifyClaimToken } from '@/lib/artis
 import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
+import { OG_IMAGE, truncateAtWord } from '@/lib/meta';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,18 +18,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const artist = await getArtistBySlug(slug).catch(() => null);
   if (!artist) return { title: 'Artist not found' };
 
+  const description = artist.bio
+    ? truncateAtWord(artist.bio, 160)
+    : `${artist.name} at ZAOstock, Oct 3 2026 in Ellsworth Maine.`;
+
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
     // a plain string here doubles the suffix (measured live 2026-09-17:
     // "Tom Fellenz | ZAOstock Artist | ZAOstock" on all eight artist pages).
     title: { absolute: `${artist.name} | ZAOstock Artist` },
-    description: artist.bio.slice(0, 160) || `${artist.name} at ZAOstock, Oct 3 2026 in Ellsworth Maine.`,
+    description,
     alternates: { canonical: `/artist/${slug}` },
     openGraph: {
       title: `${artist.name} | ZAOstock`,
-      description: artist.bio.slice(0, 160) || `${artist.name} - ${artist.genre || 'music'}`,
+      description,
       url: `https://zaostock.com/artist/${slug}`,
-      images: artist.photo_url ? [artist.photo_url] : [],
+      // Falls back to the site's own OG image rather than an empty array -
+      // measured live 2026-09-19: the four acts with no photo yet shared
+      // with no image at all on any social platform.
+      images: artist.photo_url ? [artist.photo_url] : [OG_IMAGE],
     },
   };
 }
