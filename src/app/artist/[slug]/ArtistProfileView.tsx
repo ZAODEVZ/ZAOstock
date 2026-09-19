@@ -196,7 +196,16 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
           {socials.trim() && (
             <div>
               <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-1">Links</p>
-              <p className="text-xs text-ink-muted break-words">{socials}</p>
+              <p className="text-xs text-ink-muted break-words flex flex-wrap gap-x-3 gap-y-1">
+                {socials.trim().split(/[\s,]+/).filter(Boolean).map((link, i) => {
+                  const href = /^https?:\/\//i.test(link) ? link : `https://${link}`;
+                  return (
+                    <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-950">
+                      {link}
+                    </a>
+                  );
+                })}
+              </p>
             </div>
           )}
 
@@ -317,11 +326,6 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
         </div>
       )}
 
-      {!canEdit && (
-        <p className="text-[11px] text-ink-muted italic text-center">
-          To edit this profile you need the claim link from your artist signup confirmation.
-        </p>
-      )}
     </section>
   );
 }
