@@ -89,11 +89,13 @@ export default function EllsworthPage() {
             DOUBLE GATE, both must clear before HOE_VIDEO_URL is set:
             1. Chesnee Barney's hold (ZAOOS doc 2279, 2026-08-13): the video is NOT
                public until Heart of Ellsworth runs its own planned push - their
-               YouTube is mid-migration off an old Gmail.
+               YouTube is mid-migration off an old Gmail. Still open as of
+               2026-09-19, unrelated to the partner status below.
             2. A real hosted URL exists (none does yet, for the same reason).
             When both clear: set the const, done. Copy below is deliberately about
-            the TOWN - Heart of Ellsworth is credited as the video's maker, never
-            framed as a ZAOstock partner (not approved; see doc 2279). */}
+            the TOWN, with Heart of Ellsworth credited as the video's maker - and,
+            as of their 2026-09-18 written confirmation (site.ts PARTNERS), now
+            also framed as a ZAOstock community partner, matching /partners. */}
         {HOE_VIDEO_URL ? (
           <section>
             <SectionHeader className="mb-5" eyebrow="About Ellsworth" title="The town, in its own words." />
