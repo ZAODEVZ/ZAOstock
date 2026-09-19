@@ -21,6 +21,7 @@ describe('redirects for paths people guess', () => {
     expect(bySource['/lineup']?.destination).toBe('/program');
     expect(bySource['/sponsors']?.destination).toBe('/sponsor');
     expect(bySource['/artist/fellenz']?.destination).toBe('/artist/tom-fellenz');
+    expect(bySource['/artist']?.destination).toBe('/artists');
     expect(bySource['/volunteer']?.destination).toBe('/apply');
   });
 
