@@ -303,9 +303,12 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     name: 'Supporter',
     price: '$20',
     amount: 20,
-    // Uncapped on purpose. The cap on the Pro Ticket exists because a 1:1 costs
-    // real time; nothing here is scarce, so nothing needs rationing.
-    spots: null,
+    // Capped at 50 on 2026-09-20 by Zaal's decision. The cap is enforced by
+    // Stripe's restrictions[completed_sessions][limit] on
+    // plink_1UHsQYKEKqFBqu9oZADCzFQ9, NOT by this file - this string is
+    // display copy only. Editing this number does not change what Stripe
+    // sells; editing the Stripe restriction does.
+    spots: '50 spots',
     blurb: 'The straightforward one. It pays for the day and puts your name on it.',
     gets: [
       'Supports the festival: artist fees, materials, production costs.',
@@ -394,7 +397,7 @@ const UNSET = 'UNSET';
 /** Stripe Payment Links, keyed by SupportTier id. UNSET means it does not exist yet. */
 export const STRIPE_LINKS: Readonly<Record<string, string>> = {
   supporter: 'https://buy.stripe.com/6oU28sc9ZdZ4ev87tUawo00',
-  pro: UNSET,
+  pro: 'https://buy.stripe.com/6oU8wQ6PF9IO5YCeWmawo01',
 };
 
 /** The Pro Ticket's onchain checkout on Base. UNSET means the lock does not exist yet. */

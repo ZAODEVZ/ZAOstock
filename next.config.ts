@@ -105,6 +105,14 @@ const config: NextConfig = {
       { source: '/artist', destination: '/artists', permanent: false },
       // /volunteer is the intuitive link people guess for volunteering; the canonical route is /apply.
       { source: '/volunteer', destination: '/apply', permanent: false },
+      // Zaal typed /support into Stripe's business_profile.support_url, not
+      // /contact - confirmed from Stripe's own API 2026-09-20 22:3x. Stripe's
+      // pending verification (business_model_verification.support) names that
+      // exact URL, and a reviewer may click it, so this has to resolve without
+      // him touching Stripe again. Not permanent, same reasoning as every
+      // other redirect in this file: a 308 outlives any future decision to
+      // give /support a page of its own.
+      { source: '/support', destination: '/contact', permanent: false },
     ];
   },
   async rewrites() {
