@@ -7,11 +7,11 @@ import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader, BorderedList 
 
 export const metadata: Metadata = {
   title: 'Volunteer',
-  description: 'Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on Saturday 3 October 2026.',
+  description: `Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on ${FESTIVAL.dateLabel}.`,
   alternates: { canonical: '/apply' },
   openGraph: {
     title: 'Volunteer | ZAOstock',
-    description: 'Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on Saturday 3 October 2026.',
+    description: `Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on ${FESTIVAL.dateLabel}.`,
     url: 'https://zaostock.com/apply',
     images: [OG_IMAGE],
   },

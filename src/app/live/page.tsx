@@ -6,11 +6,11 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Countd
 
 export const metadata: Metadata = {
   title: 'Live',
-  description: 'Watch ZAOstock 2026 from anywhere. The stream, the running order, and every way to follow along on Saturday, October 3.',
+  description: `Watch ZAOstock 2026 from anywhere. The stream, the running order, and every way to follow along on ${FESTIVAL.dateLabel}.`,
   alternates: { canonical: '/live' },
   openGraph: {
     title: 'Live | ZAOstock',
-    description: 'Watch ZAOstock 2026 from anywhere on Saturday, October 3.',
+    description: `Watch ZAOstock 2026 from anywhere on ${FESTIVAL.dateLabel}.`,
     url: 'https://zaostock.com/live',
     images: [OG_IMAGE],
   },

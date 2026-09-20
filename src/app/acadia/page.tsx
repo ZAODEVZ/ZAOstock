@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ZAO Guide to Acadia National Park | ZAOstock',
     description:
-      'Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, October 3, 2026.',
+      `Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/acadia',
     images: [OG_IMAGE],
   },
