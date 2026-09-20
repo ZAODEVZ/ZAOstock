@@ -21,18 +21,31 @@ const PAGES = [TICKETS, DONATE];
 const REAL_STRIPE = 'https://buy.stripe.com/test_aEU5kF3dK2mQ0Ss288';
 const REAL_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
 
+// Tier ids that are deliberately live today - the only exemption from "an
+// unset rail renders nothing" below. Marking a tier live is a one-line,
+// visible edit here, same job the old hardcoded-UNSET assertion did, but
+// this version still covers every tier NOT in the set - including ones
+// added after this was written (src/content/site.ts's SUPPORT_TIERS), so a
+// new tier is exercised by this test the day it exists rather than silently
+// skipped. Issue #258.
+const LIVE_TIERS = new Set(['supporter']);
+
 describe('an unset rail renders nothing', () => {
   // Supporter's real link landed 2026-09-20 (plink_1UHsQYKEKqFBqu9oZADCzFQ9).
-  // Pro Ticket and Unlock stay unset - both still render nothing below.
-  it('is still unset for pro and Unlock', () => {
-    expect(STRIPE_LINKS.pro).toBe('UNSET');
+  it('is still unset for Unlock', () => {
     expect(UNLOCK_CHECKOUT_URL).toBe('UNSET');
   });
 
-  it('hands back null for the still-unset rails, and the real link for the one that is live', () => {
-    expect(stripeLinkFor('pro')).toBeNull();
-    expect(stripeLinkFor('supporter')).toBe(STRIPE_LINKS.supporter);
+  it('hands back null for every tier that is not deliberately live', () => {
+    for (const tier of SUPPORT_TIERS) {
+      if (LIVE_TIERS.has(tier.id)) continue;
+      expect(stripeLinkFor(tier.id)).toBeNull();
+    }
     expect(unlockCheckoutUrl()).toBeNull();
+  });
+
+  it('hands back the real link for a tier marked live', () => {
+    for (const id of LIVE_TIERS) expect(stripeLinkFor(id)).toBe(STRIPE_LINKS[id]);
   });
 
   it('refuses a URL that is not on the checkout host', () => {
