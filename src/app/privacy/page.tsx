@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/privacy',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard('Privacy | ZAOstock', 'What ZAOstock collects and how it is used.'),
 };
 
 export default function PrivacyPage() {

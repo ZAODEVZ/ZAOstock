@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
     type: 'website',
   },
+  twitter: twitterCard(
+    'ZAOville Pool Party | ZAO Festivals | ZAOstock',
+    'Laurel, Maryland, Saturday 25 July 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
+  ),
 };
 
 interface Slot {

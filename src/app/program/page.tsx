@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/program',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Program | ZAOstock',
+    'Outdoors from noon, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
+  ),
 };
 
 // Source of truth: docs/plans/ros-5min-2026-10-03.md (v7, 28 Aug 05:0x) and

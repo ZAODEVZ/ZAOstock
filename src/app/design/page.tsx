@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, SectionHeader, Card, Button, Eyebrow, Badge } from '@/components/poster';
 import { COLOURS, FONTS, MARKS, RULES, SIGNS, ILLUSTRATIONS, type KitArt } from '@/content/design-kit';
 import { getPosterFiles } from '@/lib/poster';
@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/design',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Design kit | ZAOstock',
+    'The ZAOstock marks, colours, type and the rules for using them. Every file downloads.',
+  ),
 };
 
 // One tile per piece of Candy's artwork: the image on paper, its name, and the

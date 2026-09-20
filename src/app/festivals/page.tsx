@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import { InstagramEmbed } from './InstagramEmbed';
 import { getPublicMembers, type PublicMember } from '@/lib/members';
@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
     type: 'website',
   },
+  twitter: twitterCard(
+    'ZAO Festivals | ZAOstock',
+    'A series of community-owned, artist-built music festivals. Free, fair, owned by the people who show up. Flagship: ZAOstock 2026.',
+  ),
 };
 
 // The team roster reads the database at request time; the rest is static.

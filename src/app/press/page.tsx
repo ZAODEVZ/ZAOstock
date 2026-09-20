@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/press',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Press | ZAOstock',
+    'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
+  ),
 };
 
 type Segment = { markdown: string; hold?: string };

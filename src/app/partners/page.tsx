@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE, PARTNERS } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, PartnerTile } from '@/components/poster';
 
@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/partners',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Partners | ZAOstock',
+    'Partners give time, venue and infrastructure. Saturday 3 October 2026, Ellsworth, Maine.',
+  ),
 };
 
 export default function PartnersPage() {

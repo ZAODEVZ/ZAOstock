@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { WATCH_PARTIES, fallbackChannelHref } from '@/content/live';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Countdown } from '@/components/poster';
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/live',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard('Live | ZAOstock', 'Watch ZAOstock 2026 from anywhere on Saturday, October 3.'),
 };
 
 // The stream chain (docs/av/livestream-chain-2026-10-03.md) is untested past

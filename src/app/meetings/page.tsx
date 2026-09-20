@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList, Card } from '@/components/poster';
 
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/meetings',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard('Meetings | ZAOstock', 'How to get involved in building ZAOstock before 3 October.'),
 };
 
 export default function MeetingsPage() {

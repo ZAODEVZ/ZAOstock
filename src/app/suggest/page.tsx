@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { SuggestForm } from './SuggestForm';
 import { SiteShell, Section, Eyebrow, Badge, SectionHeader } from '@/components/poster';
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/suggest',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Suggestions | ZAOstock',
+    'Drop a suggestion for ZAOstock. Anyone can submit. We credit the contributors.',
+  ),
 };
 
 export const dynamic = 'force-dynamic';

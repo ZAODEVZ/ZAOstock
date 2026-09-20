@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { SiteShell, Eyebrow, Button, SectionHeader } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/ellsworth',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Visiting Ellsworth, Maine | ZAOstock',
+    'Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. October 3, 2026.',
+  ),
 };
 
 // ---------------------------------------------------------------------------

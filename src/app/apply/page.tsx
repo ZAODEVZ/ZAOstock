@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { ApplyForm } from './ApplyForm';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/apply',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Volunteer | ZAOstock',
+    'Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on Saturday 3 October 2026.',
+  ),
 };
 
 const ROLES: Array<{ value: string; label: string; hint: string }> = [

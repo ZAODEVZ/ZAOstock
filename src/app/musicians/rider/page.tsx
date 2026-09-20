@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { RiderForm } from './RiderForm';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
 import { formIsLive, emailByDesign } from '@/lib/forms-status';
@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/musicians/rider',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Artist Rider · ZAOstock',
+    'Confirmed for the ZAOstock lineup? Complete your performance & participation rider.',
+  ),
 };
 
 export default function RiderPage() {

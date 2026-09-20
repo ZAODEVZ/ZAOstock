@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, SectionHeader, Card } from '@/components/poster';
 import { COLOURS, FONTS } from '@/content/design-kit';
 
@@ -40,6 +40,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/brand',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Brand | ZAOstock',
+    'ZAOstock brand assets: logos, posters, textures and the palette.',
+  ),
 };
 
 type Asset = {

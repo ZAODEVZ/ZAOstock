@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Button } from '@/components/poster';
 
@@ -27,6 +27,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/build',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Build on ZAOstock',
+    'Five things the festival needs built, what exists, where it plugs in, and how to show it live.',
+  ),
 };
 
 export default function BuildPage() {
