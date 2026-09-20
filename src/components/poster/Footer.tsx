@@ -11,6 +11,7 @@ const LINKS = [
   { href: '/build', label: 'Build' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
+  { href: '/contact', label: 'Contact' },
   { href: '/ellsworth', label: 'Ellsworth' },
   { href: '/acadia', label: 'Acadia' },
 ];
