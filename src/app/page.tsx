@@ -29,11 +29,11 @@ import s from './home.module.css';
 export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
   description:
-    'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026. Independent artists, one stage, music from noon.',
+    `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}. Independent artists, one stage, music from noon.`,
   alternates: { canonical: '/' },
   openGraph: {
     title: 'ZAOstock 2026',
-    description: 'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026.',
+    description: `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}.`,
     url: 'https://zaostock.com',
     images: [OG_IMAGE],
   },
@@ -85,7 +85,7 @@ export default function HomePage() {
             <em>Parklet</em>
           </h1>
           <div className={`${s.details} ${s.anim} ${s.d4}`}>
-            Ellsworth, Maine &nbsp;&bull;&nbsp; <b>Saturday, October 3, 2026</b> &nbsp;&bull;&nbsp; Free, all ages
+            Ellsworth, Maine &nbsp;&bull;&nbsp; <b>{FESTIVAL.dateLabel}</b> &nbsp;&bull;&nbsp; Free, all ages
           </div>
           <div className={`${s.cta} ${s.anim} ${s.d4}`}>
             <a href={FESTIVAL.rsvpUrl} target="_blank" rel="noopener noreferrer" className={s.btn}>

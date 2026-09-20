@@ -2,17 +2,17 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE } from '@/content/site';
+import { SITE, LINEUP_NAMES } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Badge, Button, Card } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Artists',
   description:
-    'The 2026 ZAOstock lineup. Eight independent acts on the Franklin Street Parklet stage, Saturday 3 October in Ellsworth, Maine.',
+    `The 2026 ZAOstock lineup. ${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   alternates: { canonical: '/artists' },
   openGraph: {
     title: 'Artists · ZAOstock 2026',
-    description: 'Eight independent acts on the Franklin Street Parklet stage, Saturday 3 October in Ellsworth, Maine.',
+    description: `${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
     url: 'https://zaostock.com/artists',
     images: [OG_IMAGE],
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Artists · ZAOstock 2026',
-    description: 'Eight independent acts on the Franklin Street Parklet stage, Saturday 3 October in Ellsworth, Maine.',
+    description: `${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   },
 };
 

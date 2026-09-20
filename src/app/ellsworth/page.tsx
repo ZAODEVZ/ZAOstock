@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Visiting Ellsworth, Maine | ZAOstock',
     description:
-      'Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. October 3, 2026.',
+      `Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/ellsworth',
     images: [OG_IMAGE],
   },
@@ -80,7 +80,7 @@ export default function EllsworthPage() {
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
             Crossroads of Downeast Maine and the gateway to Acadia National Park. Home to ZAOstock on
-            October 3, 2026 at the Franklin Street Parklet, as part of the 9th Annual Art of Ellsworth
+            {' '}{FESTIVAL.dateLabel} at the {FESTIVAL.venue}, as part of the 9th Annual Art of Ellsworth
             during Maine Craft Weekend.
           </p>
         </section>

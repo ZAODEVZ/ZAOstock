@@ -8,11 +8,11 @@ import { BLOCKS, publicSlots, type Venue } from '@/content/program';
 
 export const metadata: Metadata = {
   title: 'Program',
-  description: 'Day-of schedule for ZAOstock, Saturday 3 October 2026. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.',
+  description: `Day-of schedule for ZAOstock, ${FESTIVAL.dateLabel}. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.`,
   alternates: { canonical: '/program' },
   openGraph: {
     title: 'Program | ZAOstock',
-    description: 'Outdoors from noon, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
+    description: `Outdoors from noon, indoors from six. ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
     url: 'https://zaostock.com/program',
     images: [OG_IMAGE],
   },

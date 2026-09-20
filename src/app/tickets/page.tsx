@@ -26,7 +26,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 export const metadata: Metadata = {
   title: 'Tickets',
   description:
-    'ZAOstock 2026 is free to attend. RSVP to hold a spot, or take a Pro Ticket to help fund the day. Ellsworth, Maine, 3 October 2026.',
+    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or take a Pro Ticket to help fund the day. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
     title: 'Tickets | ZAOstock',
