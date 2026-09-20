@@ -22,15 +22,16 @@ const REAL_STRIPE = 'https://buy.stripe.com/test_aEU5kF3dK2mQ0Ss288';
 const REAL_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
 
 describe('an unset rail renders nothing', () => {
-  it('is unset today, on both rails', () => {
-    // Delete these two lines the day the real links land. They are here so that
-    // pasting a link is a visible, deliberate change to this file as well.
-    expect(Object.values(STRIPE_LINKS).every((v) => v === 'UNSET')).toBe(true);
+  // Supporter's real link landed 2026-09-20 (plink_1UHsQYKEKqFBqu9oZADCzFQ9).
+  // Pro Ticket and Unlock stay unset - both still render nothing below.
+  it('is still unset for pro and Unlock', () => {
+    expect(STRIPE_LINKS.pro).toBe('UNSET');
     expect(UNLOCK_CHECKOUT_URL).toBe('UNSET');
   });
 
-  it('hands back null, never the word UNSET', () => {
-    for (const tier of SUPPORT_TIERS) expect(stripeLinkFor(tier.id)).toBeNull();
+  it('hands back null for the still-unset rails, and the real link for the one that is live', () => {
+    expect(stripeLinkFor('pro')).toBeNull();
+    expect(stripeLinkFor('supporter')).toBe(STRIPE_LINKS.supporter);
     expect(unlockCheckoutUrl()).toBeNull();
   });
 

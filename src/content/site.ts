@@ -393,7 +393,7 @@ const UNSET = 'UNSET';
 
 /** Stripe Payment Links, keyed by SupportTier id. UNSET means it does not exist yet. */
 export const STRIPE_LINKS: Readonly<Record<string, string>> = {
-  supporter: UNSET,
+  supporter: 'https://buy.stripe.com/6oU28sc9ZdZ4ev87tUawo00',
   pro: UNSET,
 };
 
