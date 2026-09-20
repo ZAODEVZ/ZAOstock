@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE } from '@/content/site';
+import { FESTIVAL } from '@/content/festival';
 import { ARTIST_DATES, BRING, PROVIDED, SOUNDCHECK, addMinutes, clock12, findActByCode } from '@/content/artist-ops';
 import { slugify } from '@/lib/artists';
 
@@ -45,7 +46,7 @@ export default async function BackstagePage({ params }: Props) {
           </p>
           <h1 className="font-display font-normal text-[2rem] leading-[1.05] text-ink-950 m-0">{act.name}</h1>
           <p className="text-sm text-ink-secondary mt-2 mb-0">
-            You are on the ZAOstock bill, Saturday 3 October, Franklin Street Parklet, Ellsworth. This page is yours -
+            You are on the ZAOstock bill, {FESTIVAL.dateLabel}, {FESTIVAL.venue}, Ellsworth. This page is yours -
             please do not share the link.
           </p>
         </div>
@@ -57,7 +58,7 @@ export default async function BackstagePage({ params }: Props) {
           {/* eslint-disable-next-line @next/next/no-img-element -- a generated route, not a static asset next/image can optimize */}
           <img
             src={`/artist/${slugify(act.name)}/flyer`}
-            alt={`${act.name} - ZAOstock, Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine`}
+            alt={`${act.name} - ZAOstock, ${FESTIVAL.dateLabel}, ${FESTIVAL.venue}, ${FESTIVAL.city}`}
             className="w-full rounded-[10px] border-[1.5px] border-ink-950/20"
           />
           <div className="mt-3 flex flex-wrap gap-4">

@@ -1,11 +1,12 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { FESTIVAL } from '@/content/festival';
 
 // The moose on ink, beside the wordmark on paper, at 1200x630, per docs/design/redesign-2026-08-28.md. Every
 // route inherits it unless a page sets its own openGraph.images. Rendered once
 // at build; the mono badge (86 KB) keeps the response small.
-export const alt = 'ZAOstock 2026: a free, one-day, artist-built music festival in Ellsworth, Maine. Saturday 3 October 2026.';
+export const alt = `ZAOstock 2026: a free, one-day, artist-built music festival in Ellsworth, Maine. ${FESTIVAL.dateLabel}.`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

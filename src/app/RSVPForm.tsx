@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { formIsLive } from '@/lib/forms-status';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
+import { FESTIVAL } from '@/content/festival';
 
 interface RSVPFormProps {
   eventSlug: string;
@@ -22,7 +23,7 @@ export function RSVPForm({ eventSlug }: RSVPFormProps) {
   // It kept accepting names and email addresses and discarding every one of
   // them, exactly the failure FormsUnavailable exists to prevent.
   if (!formIsLive('rsvp')) {
-    return <FormsUnavailable action="get on the list for Oct 3" subject="ZAOstock - RSVP" include={['Your name', 'The email to reach you on']} />;
+    return <FormsUnavailable action={`get on the list for ${FESTIVAL.shortDate}`} subject="ZAOstock - RSVP" include={['Your name', 'The email to reach you on']} />;
   }
 
   async function handleSubmit(e: React.FormEvent) {

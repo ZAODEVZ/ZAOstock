@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE, DELIVERABLES, ATTENDANCE, ELLSWORTH, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
+import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, Stat, SectionHeader, BorderedList } from '@/components/poster';
 
 // One sponsor page, absorbing /sponsor/deck and /pitch (both redirect here).
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/sponsor' },
   openGraph: {
     title: 'Sponsor | ZAOstock',
-    description: 'Put your name on the busiest weekend of the fall. Saturday 3 October 2026, Ellsworth, Maine.',
+    description: `Put your name on the busiest weekend of the fall. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
     url: 'https://zaostock.com/sponsor',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'Sponsor | ZAOstock',
-    'Put your name on the busiest weekend of the fall. Saturday 3 October 2026, Ellsworth, Maine.',
+    `Put your name on the busiest weekend of the fall. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
   ),
 };
 
@@ -40,7 +41,7 @@ const WHY = [
     body: 'Nobody chooses between your door and a ticket.',
   },
   {
-    title: 'We measure an ordinary Saturday against 3 October, and publish it.',
+    title: `We measure an ordinary Saturday against ${FESTIVAL.shortDate}, and publish it.`,
     body: 'If it works for downtown businesses, you have the number. If it does not, you have that too.',
   },
 ] as const;
@@ -61,7 +62,7 @@ export default function SponsorPage() {
             Put your name on the busiest weekend of the fall.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Saturday 3 October 2026. Franklin Street Parklet, downtown Ellsworth, Maine, then Black Moon Public House next door. Free to attend, music from noon.
+            {FESTIVAL.dateLabel}. {FESTIVAL.venue}, downtown Ellsworth, Maine, then Black Moon Public House next door. Free to attend, music from noon.
           </p>
           <div className="mt-7 flex flex-wrap gap-3 no-print">
             <Button href="#get">What you get</Button>

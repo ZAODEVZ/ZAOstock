@@ -101,11 +101,11 @@ export default function ArtistsPage() {
             The 2026 Lineup.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Eight independent acts back to back on the {FESTIVAL.venue} in {FESTIVAL.city}.
+            {LINEUP_NAMES.length} independent acts back to back on the {FESTIVAL.venue} in {FESTIVAL.city}.
             Outdoors from noon to six. Free admission, rain or shine.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Badge tone="gold">Eight acts · Playing in order</Badge>
+            <Badge tone="gold">{LINEUP_NAMES.length} acts &middot; Playing in order</Badge>
             <span className="text-sm text-ink-muted">
               Bios and photos go up one artist at a time as details are confirmed.
             </span>

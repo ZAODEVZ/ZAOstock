@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
+import { FESTIVAL } from '@/content/festival';
 
 export const metadata: Metadata = {
   title: 'For Musicians',
   description:
-    'Made music nobody is paying you to make? You are who we built this for. ZAOstock is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. Every artist on stage was discovered through The ZAO.',
+    `Made music nobody is paying you to make? You are who we built this for. ZAOstock is a one-day outdoor festival in Ellsworth Maine on ${FESTIVAL.shortDate}. Every artist on stage was discovered through The ZAO.`,
   alternates: { canonical: '/musicians' },
   openGraph: {
     title: 'For Musicians · ZAOstock 2026',
-    description: 'Made music nobody is paying you to make? Submit for the lineup. October 3, 2026. Ellsworth, Maine.',
+    description: `Made music nobody is paying you to make? Submit for the lineup. ${FESTIVAL.shortDate}. ${FESTIVAL.city}.`,
     url: 'https://zaostock.com/musicians',
     images: [OG_IMAGE],
     type: 'website',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'For Musicians · ZAOstock 2026',
-    description: 'Made music nobody is paying you to make? Submit for the lineup. October 3, 2026.',
+    description: `Made music nobody is paying you to make? Submit for the lineup. ${FESTIVAL.shortDate}.`,
   },
 };
 
@@ -27,7 +28,7 @@ export default function MusiciansPage() {
       personaSlug="musicians"
       personaLabel="Musicians"
       hero="Made music nobody is paying you to make? You are who we built this for."
-      subhead="ZAOstock is a one-day outdoor festival in Ellsworth Maine on October 3, 2026. Every artist on stage was discovered through The ZAO, a community of 100+ independent musicians who actually support each other's work."
+      subhead={`ZAOstock is a one-day outdoor festival in Ellsworth Maine on ${FESTIVAL.shortDate}. Every artist on stage was discovered through The ZAO, a community of 100+ independent musicians who actually support each other's work.`}
       youGet={[
         'A real stage in front of a real audience, on Franklin Street and on the livestream.',
         'A recording of your set and photos from the day, included in the recap reel.',
@@ -43,8 +44,8 @@ export default function MusiciansPage() {
         { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest', primary: true },
       ]}
       facts={[
-        { term: 'Date', detail: 'Saturday 3 October 2026, music from noon' },
-        { term: 'Where', detail: 'Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six' },
+        { term: 'Date', detail: `${FESTIVAL.dateLabel}, music from noon` },
+        { term: 'Where', detail: `${FESTIVAL.venue}, ${FESTIVAL.city}; Black Moon Public House next door from six` },
         { term: 'Soundcheck', detail: 'Friday 2 October, artists only' },
         { term: 'Set length', detail: 'Settled with you when your slot is' },
         { term: 'Pay', detail: 'Not pay-to-play. Independent and ZAO-vetted only' },

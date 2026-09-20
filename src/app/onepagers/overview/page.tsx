@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { TIERS } from '@/content/site';
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
+import { FESTIVAL } from '@/content/festival';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getOnePager } from '@/lib/onepagers';
 import { getStockCounts, getPublicMembers } from '@/lib/members';
@@ -11,8 +12,6 @@ import { PrintButton } from '../[slug]/PrintButton';
 
 export const dynamic = 'force-dynamic';
 
-const FESTIVAL_DATE = '2026-10-03T12:00:00-04:00';
-
 export async function generateMetadata(): Promise<Metadata> {
   return {
     // absolute: "ZAOstock" is already part of the phrase - a plain string
@@ -20,18 +19,18 @@ export async function generateMetadata(): Promise<Metadata> {
     // root layout's template (measured live 2026-09-17).
     title: { absolute: 'ZAOstock 2026 — Overview' },
     description:
-      'ZAO Festivals presents ZAOstock — a one-day artist-built music festival in Ellsworth, Maine. October 3, 2026.',
+      `ZAO Festivals presents ZAOstock — a one-day artist-built music festival in Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
     alternates: { canonical: '/onepagers/overview' },
     openGraph: {
       url: 'https://zaostock.com/onepagers/overview',
       images: [OG_IMAGE],
       title: 'ZAOstock 2026 — Overview',
       description:
-        'ZAO Festivals presents ZAOstock — October 3, 2026 at the Franklin Street Parklet, Ellsworth, Maine.',
+        `ZAO Festivals presents ZAOstock — ${FESTIVAL.shortDate} at the ${FESTIVAL.venue}, ${FESTIVAL.city}.`,
     },
     twitter: twitterCard(
       'ZAOstock 2026 — Overview',
-      'ZAO Festivals presents ZAOstock — October 3, 2026 at the Franklin Street Parklet, Ellsworth, Maine.',
+      `ZAO Festivals presents ZAOstock — ${FESTIVAL.shortDate} at the ${FESTIVAL.venue}, ${FESTIVAL.city}.`,
     ),
   };
 }
@@ -136,7 +135,7 @@ export default async function OverviewOnePager() {
     getStockTeamMember().catch(() => null),
   ]);
 
-  const days = daysUntil(FESTIVAL_DATE);
+  const days = daysUntil(FESTIVAL.date);
   const teamCount = (members ?? []).length;
   const sponsorAmount = counts?.sponsorsCommittedAmount ?? 0;
   const sponsorCount = counts?.sponsorsCommitted ?? 0;
@@ -254,7 +253,7 @@ export default async function OverviewOnePager() {
                 The festival
               </div>
               <p className="mt-2 text-sm leading-relaxed text-ink-950 print:text-slate-700">
-                One-day outdoor festival at the Franklin Street Parklet in downtown Ellsworth.
+                One-day outdoor festival at the {FESTIVAL.venue} in downtown Ellsworth.
                 Independent + ZAO-vetted artists, multiple acts, day-into-evening. Programmed
                 end-to-end by The ZAO community.
               </p>

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const description = artist.bio
     ? truncateAtWord(artist.bio, 160)
-    : `${artist.name} at ZAOstock, Oct 3 2026 in Ellsworth Maine.`;
+    : `${artist.name} at ZAOstock, ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
 
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -

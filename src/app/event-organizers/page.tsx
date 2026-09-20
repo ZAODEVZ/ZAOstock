@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
+import { FESTIVAL } from '@/content/festival';
 
 export const metadata: Metadata = {
   title: 'For Event Organizers',
@@ -49,7 +50,7 @@ export default function EventOrganizersPage() {
         { term: 'ZAO-PALOOZA', detail: 'New York City, 2024' },
         { term: 'ZAO-CHELLA', detail: 'Miami, Wynwood, during Art Basel, December 2024' },
         { term: 'ZAOville', detail: 'Laurel, Maryland, July 2026' },
-        { term: 'ZAOstock', detail: 'Ellsworth, Maine, 3 October 2026 - the first in Maine' },
+        { term: 'ZAOstock', detail: `${FESTIVAL.city}, ${FESTIVAL.shortDate} - the first in Maine` },
         { term: 'Next', detail: '2027, your city' },
       ]}
       footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (New York City, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both proved the model."

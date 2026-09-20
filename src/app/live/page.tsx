@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/live',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Live | ZAOstock', 'Watch ZAOstock 2026 from anywhere on Saturday, October 3.'),
+  twitter: twitterCard('Live | ZAOstock', `Watch ZAOstock 2026 from anywhere on ${FESTIVAL.dateLabel}.`),
 };
 
 // The stream chain (docs/av/livestream-chain-2026-10-03.md) is untested past

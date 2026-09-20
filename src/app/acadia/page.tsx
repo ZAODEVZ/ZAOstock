@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: twitterCard(
     'ZAO Guide to Acadia National Park | ZAOstock',
-    'Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, October 3, 2026.',
+    `Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, ${FESTIVAL.shortDate}.`,
   ),
 };
 
