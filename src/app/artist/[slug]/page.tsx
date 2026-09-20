@@ -4,7 +4,7 @@ import { getArtistBySlug, getRosterArtists, verifyClaimToken } from '@/lib/artis
 import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
-import { OG_IMAGE, truncateAtWord } from '@/lib/meta';
+import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,6 +38,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       // with no image at all on any social platform.
       images: artist.photo_url ? [artist.photo_url] : [OG_IMAGE],
     },
+    // Same fallback as openGraph.images above, for the same reason: an
+    // artist with no photo yet must degrade to the festival card, never to
+    // a broken image link.
+    twitter: twitterCard(`${artist.name} | ZAOstock`, description, artist.photo_url ? [artist.photo_url] : [OG_IMAGE.url]),
   };
 }
 

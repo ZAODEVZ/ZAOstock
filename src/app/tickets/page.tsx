@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/tickets',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'Tickets | ZAOstock',
+    'Free to attend. RSVP to hold a spot, or chip in to help fund the day.',
+  ),
 };
 
 export default function TicketsPage() {

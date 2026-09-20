@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell } from '@/components/poster';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { listOnePagers } from '@/lib/onepagers';
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/onepagers',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard('ZAOstock One-Pagers', 'Briefing docs for sponsors, partners, venues, and city contacts.'),
 };
 
 export const dynamic = 'force-dynamic';

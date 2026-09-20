@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'ZAOstock 2026',
+    'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026.',
+  ),
 };
 
 // The bill in running order, split into three panels. Names only: set times

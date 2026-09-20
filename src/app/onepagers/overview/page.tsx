@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { TIERS } from '@/content/site';
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { getStockTeamMember } from '@/lib/auth/session';
 import { getOnePager } from '@/lib/onepagers';
 import { getStockCounts, getPublicMembers } from '@/lib/members';
@@ -29,6 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         'ZAO Festivals presents ZAOstock — October 3, 2026 at the Franklin Street Parklet, Ellsworth, Maine.',
     },
+    twitter: twitterCard(
+      'ZAOstock 2026 — Overview',
+      'ZAO Festivals presents ZAOstock — October 3, 2026 at the Franklin Street Parklet, Ellsworth, Maine.',
+    ),
   };
 }
 

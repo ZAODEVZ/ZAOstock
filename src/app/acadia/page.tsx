@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { OG_IMAGE } from '@/lib/meta';
+import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Eyebrow, Button, SectionHeader } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 
@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com/acadia',
     images: [OG_IMAGE],
   },
+  twitter: twitterCard(
+    'ZAO Guide to Acadia National Park | ZAOstock',
+    'Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, October 3, 2026.',
+  ),
 };
 
 // ---------------------------------------------------------------------------
