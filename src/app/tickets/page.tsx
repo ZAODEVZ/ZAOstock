@@ -3,6 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
+import { StripeBuyButton } from './StripeBuyButton';
 
 // WHY THIS PAGE EXISTS
 //
@@ -116,7 +117,13 @@ export default function TicketsPage() {
                 <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
                   Chip in {tier.price}
                 </Button>
-                {stripeLinkFor(tier.id) ? (
+                {tier.id === PRO_TICKET.id ? (
+                  // Zaal's own Buy Button - a second front-end onto the same
+                  // Payment Link as stripeLinkFor(tier.id), not a new door.
+                  // Replaces the plain link below rather than sitting beside
+                  // it. See StripeBuyButton.tsx for the tradeoffs.
+                  <StripeBuyButton />
+                ) : stripeLinkFor(tier.id) ? (
                   <Button href={stripeLinkFor(tier.id) as string} external variant="secondary">
                     Pay by card
                   </Button>
