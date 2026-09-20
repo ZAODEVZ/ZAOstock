@@ -28,12 +28,18 @@ const REAL_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
 // added after this was written (src/content/site.ts's SUPPORT_TIERS), so a
 // new tier is exercised by this test the day it exists rather than silently
 // skipped. Issue #258.
-const LIVE_TIERS = new Set(['supporter']);
+const LIVE_TIERS = new Set(['supporter', 'pro']);
 
 describe('an unset rail renders nothing', () => {
-  // Supporter's real link landed 2026-09-20 (plink_1UHsQYKEKqFBqu9oZADCzFQ9).
-  it('is still unset for Unlock', () => {
+  // Both tiers went live 2026-09-20 - supporter (plink_1UHsQYKEKqFBqu9oZADCzFQ9)
+  // then pro (plink_1UHtB3KEKqFBqu9owZalGOH0). With every current SUPPORT_TIERS
+  // entry in LIVE_TIERS, the loop below has nothing left to iterate - it would
+  // pass trivially and stop meaning anything. `future-tier` keeps this test
+  // actually exercising the null path regardless of how many real tiers are
+  // live, independent of what SUPPORT_TIERS happens to contain today.
+  it('is still unset for Unlock and for a tier id that does not exist yet', () => {
     expect(UNLOCK_CHECKOUT_URL).toBe('UNSET');
+    expect(stripeLinkFor('future-tier')).toBeNull();
   });
 
   it('hands back null for every tier that is not deliberately live', () => {
