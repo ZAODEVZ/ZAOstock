@@ -79,7 +79,7 @@
 .tagrow span:nth-child(1) { background: var(--fireside); }
 .tagrow span:nth-child(2) { background: var(--pine); }
 .tagrow span:nth-child(3) { background: var(--brass); }
-.logo { width: min(300px, 58vw, 30svh); height: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.5)); }
+.logo { display: block; margin: 0 auto; width: min(300px, 58vw, 30svh); height: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.5)); }
 .big { font-size: clamp(44px, min(10vw, 12svh), 128px); line-height: 0.9; margin-top: 4px; color: #fdf3e0; letter-spacing: -1px; }
 .big em { font-style: normal; color: #dfa23c; text-shadow: 3px 0 0 #c1662c; }
 .details { margin-top: 14px; color: #f3e9d4; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
