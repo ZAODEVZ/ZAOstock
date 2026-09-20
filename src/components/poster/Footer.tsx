@@ -10,6 +10,7 @@ const LINKS = [
   { href: '/partners', label: 'Partners' },
   { href: '/build', label: 'Build' },
   { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
   { href: '/ellsworth', label: 'Ellsworth' },
   { href: '/acadia', label: 'Acadia' },
 ];

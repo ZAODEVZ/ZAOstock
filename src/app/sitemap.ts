@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/onepagers/overview',
     '/zaoville',
     '/privacy',
+    '/terms',
     '/press',
     '/design',
     // /artist/<slug> pages render for every act on the bill since the
