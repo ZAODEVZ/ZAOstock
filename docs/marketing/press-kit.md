@@ -171,7 +171,7 @@ comparison combined across the businesses that take part.
 ## Assets
 
 The mark is the moose, drawn by attabotty. Colours, fonts and usage rules:
-zaostock.com/design.
+zaostock.com/brand.
 
 - The moose, primary mark (white on transparent): `/brand/logos/zaostock26_moose.png`
 
