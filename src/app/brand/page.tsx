@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
-import { SiteShell, Section, Eyebrow, SectionHeader, Card } from '@/components/poster';
+import { SiteShell, Section, Eyebrow, SectionHeader, Card, Button } from '@/components/poster';
 import { COLOURS, FONTS } from '@/content/design-kit';
+import { FESTIVAL } from '@/content/festival';
+import { LINEUP_NAMES } from '@/content/site';
+import { CopyBlock } from './CopyBlock';
 
 // The brand asset library. Zaal, 2026-09-16: "we need all this ZAOstock on
 // the website stat" (a screenshot of Candy's Telegram file drop) - this page
@@ -180,6 +183,64 @@ const POSTERS: Asset[] = [
   },
 ];
 
+const SOCIAL: Asset[] = [
+  {
+    name: 'Profile picture',
+    src: '/brand/social/profile-1000x1000.png',
+    width: 1000,
+    height: 1000,
+    bytes: '~120 KB',
+    format: 'PNG',
+    credit: 'attabotty (moose), composited for this crop',
+    use: 'Square avatar - Discord, X, Instagram, LinkedIn.',
+  },
+  {
+    name: 'Cover / banner',
+    src: '/brand/social/cover-1500x500.png',
+    width: 1500,
+    height: 500,
+    bytes: '~90 KB',
+    format: 'PNG',
+    credit: 'attabotty (moose), composited for this crop',
+    use: 'Wide banner - X header, Facebook cover, LinkedIn banner.',
+  },
+  {
+    name: 'Story / post',
+    src: '/brand/social/story-1080x1920.png',
+    width: 1080,
+    height: 1920,
+    bytes: '~180 KB',
+    format: 'PNG',
+    credit: 'attabotty (moose), composited for this crop',
+    use: 'Tall - Instagram/Facebook Story, TikTok, a full-screen post.',
+  },
+];
+
+// Three lengths, the same facts every time - not retyped, so a date or
+// venue change on this page can never drift from what /brand's own
+// download links point at.
+const COPY_BLOCKS = [
+  {
+    label: 'Short (social bio, ~150 chars)',
+    text: `ZAOstock - ${LINEUP_NAMES.length} acts, ${FESTIVAL.dateLabel}, ${FESTIVAL.venue}, ${FESTIVAL.city}. ${FESTIVAL.admission}.`,
+  },
+  {
+    label: 'Medium (one paragraph)',
+    text: `ZAOstock is a free, independent music festival on ${FESTIVAL.dateLabel} at the ${FESTIVAL.venue} in ${FESTIVAL.city} - ${LINEUP_NAMES.length} acts, ${FESTIVAL.window}, ${FESTIVAL.admission.toLowerCase()}. The evening continues at ${FESTIVAL.afterParty.name}, ${FESTIVAL.afterParty.note}.`,
+  },
+  {
+    label: 'Long (press-style)',
+    text: `ZAOstock returns to ${FESTIVAL.city} on ${FESTIVAL.dateLabel}, bringing ${LINEUP_NAMES.length} independent acts to the ${FESTIVAL.venue} for a free, all-ages afternoon of music, ${FESTIVAL.window}. There is no ticket cost and no gate. When the outdoor stage wraps, the night moves ${FESTIVAL.afterParty.note} to ${FESTIVAL.afterParty.name} for the official after-party. ZAOstock is built and run by an independent community of musicians and digital creators - not a label, not a venue chain.`,
+  },
+];
+
+const TASKS: Array<{ label: string; href: string }> = [
+  { label: 'I need a logo', href: '#logos' },
+  { label: 'I need a poster', href: '#posters' },
+  { label: 'I need a social image', href: '#social' },
+  { label: 'I need words to paste', href: '#copy' },
+];
+
 const TEXTURES: Asset[] = [
   {
     name: 'Cracked cement',
@@ -272,12 +333,58 @@ export default function BrandPage() {
           <p className="text-lg text-ink-secondary measure m-0">
             Logos, posters, a texture, the palette and the font. If you are building anything with the ZAOstock name on it, start here.
           </p>
+          <div className="flex flex-wrap gap-3 mt-6">
+            {TASKS.map((t) => (
+              <Button key={t.href} href={t.href} variant="secondary" size="sm">
+                {t.label}
+              </Button>
+            ))}
+          </div>
+          <div className="mt-4">
+            {/* A plain anchor, not the Button/Link primitive - this is a
+                public/ static file, not an app route, and every other
+                download on this page (AssetCard below) is a plain <a
+                download> for the same reason. */}
+            <a
+              href="/brand/zaostock-brand-kit.zip"
+              download
+              className="poster-motion inline-flex items-center justify-center gap-2 font-sans font-bold uppercase tracking-[0.08em] whitespace-nowrap rounded-pill bg-linear-to-b from-fireside to-ember text-onfill shadow-hard hover:-translate-y-0.5 hover:shadow-hard-lg text-sm px-[26px] py-[13px]"
+            >
+              Download everything (.zip)
+            </a>
+          </div>
         </div>
       </Section>
 
       <Section id="logos">
         <SectionHeader eyebrow="Marks" title="Logos." className="mb-4" />
         <AssetGrid assets={LOGOS} checker />
+        <div className="mt-4 bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard p-5">
+          <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-ink-muted m-0 mb-3">
+            The near-white moose, on light vs. dark
+          </p>
+          <div className="grid grid-cols-2 gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
+            <img
+              src="/brand/logos/zaostock-moose-alt-4000.png"
+              alt="The near-white moose on a light background - nearly invisible"
+              className="w-full h-32 object-contain rounded-[10px] p-2"
+              style={{ backgroundColor: liveHex('paper-100') }}
+              loading="lazy"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
+            <img
+              src="/brand/logos/zaostock-moose-alt-4000.png"
+              alt="The near-white moose on a dark background - the way to actually use it"
+              className="w-full h-32 object-contain rounded-[10px] p-2"
+              style={{ backgroundColor: liveHex('ink-950') }}
+              loading="lazy"
+            />
+          </div>
+          <p className="text-xs text-ink-secondary mt-3 mb-0">
+            Left: on Paper 100, the mark all but disappears. Right: on Ink 950, it reads. Always give this file a dark card.
+          </p>
+        </div>
       </Section>
 
       <Section id="posters">
@@ -299,6 +406,14 @@ export default function BrandPage() {
             Download
           </a>
         </Card>
+      </Section>
+
+      <Section id="social">
+        <SectionHeader eyebrow="Ready-made" title="Social crops." className="mb-4" />
+        <p className="text-sm text-ink-secondary measure mb-4">
+          The moose, pre-sized for a profile picture, a cover and a story - already composited onto Ink 950 so it never vanishes on a transparent background.
+        </p>
+        <AssetGrid assets={SOCIAL} />
       </Section>
 
       <Section id="palette">
@@ -340,6 +455,18 @@ export default function BrandPage() {
             </a>
           </Card>
         </div>
+      </Section>
+
+      <Section id="copy">
+        <SectionHeader eyebrow="Words" title="Paste-ready copy." className="mb-4" />
+        <p className="text-sm text-ink-secondary measure mb-4">
+          Three lengths, same facts - pulled from the site&rsquo;s own event data, not retyped.
+        </p>
+        <ul className="grid grid-cols-1 gap-4 m-0 p-0">
+          {COPY_BLOCKS.map((c) => (
+            <CopyBlock key={c.label} label={c.label} text={c.text} />
+          ))}
+        </ul>
       </Section>
 
       <Section id="rules">
