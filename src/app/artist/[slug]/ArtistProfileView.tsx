@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { PublicArtist } from '@/lib/artists';
 import { parseSocials } from '@/lib/socials';
+import { FESTIVAL } from '@/content/festival';
 
 // The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
 // have that on any of the pages"). Still true after the 2026-09-15 ruling
@@ -108,7 +109,7 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
             Volunteer eligible unlocked
           </p>
           <p className="text-[11px] text-ink-950 mt-0.5">
-            You are now on the roster for Oct 3. See you at the parklet.
+            You are now on the roster for {FESTIVAL.shortDate}. See you at the parklet.
           </p>
         </div>
       )}
@@ -357,7 +358,7 @@ function ContributorPath({
         </p>
       </div>
       <p className="text-[11px] text-ink-muted leading-relaxed">
-        Each step earns 1 ZAOfestivals Point (paid post-event). Complete all steps to be eligible to work the event as a volunteer on Oct 3.
+        Each step earns 1 ZAOfestivals Point (paid post-event). Complete all steps to be eligible to work the event as a volunteer on {FESTIVAL.shortDate}.
       </p>
       <ol className="space-y-2">
         {steps.map((s, i) => (

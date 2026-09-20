@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: twitterCard(
     'Program | ZAOstock',
-    'Outdoors from noon, indoors from six. Saturday 3 October 2026 in Ellsworth, Maine.',
+    `Outdoors from noon, indoors from six. ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   ),
 };
 
@@ -143,7 +143,7 @@ export default function ProgramPage() {
           <Card>
             <Eyebrow className="mb-2">Spend it in Ellsworth</Eyebrow>
             <p className="text-sm text-ink-secondary m-0">
-              The point of putting this on Franklin Street is to show what a day like this does for the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past. We are measuring what 3 October does for this block, and the number only exists if you make it.
+              The point of putting this on Franklin Street is to show what a day like this does for the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past. We are measuring what {FESTIVAL.shortDate} does for this block, and the number only exists if you make it.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <Button href={FESTIVAL.rsvpUrl} external size="sm">

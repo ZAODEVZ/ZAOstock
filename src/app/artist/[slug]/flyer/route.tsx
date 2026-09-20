@@ -5,6 +5,7 @@ import path from 'node:path';
 import { NextRequest } from 'next/server';
 import sharp from 'sharp';
 import { getArtistBySlug } from '@/lib/artists';
+import { FESTIVAL } from '@/content/festival';
 
 /**
  * GET /artist/<slug>/flyer[?variant=ig] - a per-artist share flyer.
@@ -144,7 +145,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
                 {artist.name}
               </div>
               <div style={{ display: 'flex', fontSize: infoSize, marginTop: 16, color: GOLD, lineHeight: 1.35 }}>
-                Saturday 3 October &middot; Franklin Street Parklet, Ellsworth, Maine &middot; free &middot; noon to six
+                {FESTIVAL.dateLabel} &middot; {FESTIVAL.venue}, {FESTIVAL.city} &middot; free &middot; noon to six
               </div>
             </div>
           </div>

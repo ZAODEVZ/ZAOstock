@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: twitterCard(
     'ZAOstock 2026',
-    'A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. Saturday 3 October 2026.',
+    `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}.`,
   ),
 };
 
@@ -142,7 +142,7 @@ export default function HomePage() {
               The <em>lineup</em>
             </h2>
             <p className={s.lede}>
-              Eight independent acts, back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
+              {LINEUP_NAMES.length} independent acts, back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
               <Link href="/program" className={s.link}>
                 The running order
               </Link>

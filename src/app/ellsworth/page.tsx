@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: twitterCard(
     'Visiting Ellsworth, Maine | ZAOstock',
-    'Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. October 3, 2026.',
+    `Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. ${FESTIVAL.shortDate}.`,
   ),
 };
 
@@ -34,7 +34,7 @@ const GETTING_HERE: { mode: string; detail: string }[] = [
   { mode: 'By car', detail: 'About 40 min (30 mi) from Bangor, ~3 hrs (135 mi) from Portland, and ~5 hrs from Boston. Route 1 / Route 1A run right through downtown.' },
   { mode: 'Bangor International (BGR)', detail: 'Nearest major airport, ~40 min away. A direct shuttle bus runs to Ellsworth twice daily (~35 min). Best bet for most travelers.' },
   { mode: 'Hancock County-Bar Harbor (BHB)', detail: 'Smaller regional airport ~20 min away, with seasonal Cape Air service (including from Boston). Closest to the venue.' },
-  { mode: 'Parking', detail: 'A public parking lot plus free street parking right near the Franklin Street Parklet - no shuttle needed.' },
+  { mode: 'Parking', detail: `A public parking lot plus free street parking right near the ${FESTIVAL.venue} - no shuttle needed.` },
 ];
 
 const STAY: { name: string; note: string }[] = [

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: twitterCard(
     'Volunteer | ZAOstock',
-    'Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on Saturday 3 October 2026.',
+    `Sign up to volunteer at ZAOstock, a free community music festival in Ellsworth, Maine on ${FESTIVAL.dateLabel}.`,
   ),
 };
 
@@ -68,7 +68,7 @@ export default function ApplyPage() {
             <Card>
               <Eyebrow className="mb-2">Not sure yet?</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
-                Apply anyway. We reach out within a few days, answer questions, and you can opt out any time before 3 October.
+                Apply anyway. We reach out within a few days, answer questions, and you can opt out any time before {FESTIVAL.shortDate}.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/program" variant="secondary" size="sm">

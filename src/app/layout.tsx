@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Boogaloo, Oswald, Rubik, Space_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import { FESTIVAL } from '@/content/festival';
 import './globals.css';
 
 // Three families per DESIGN.md: Boogaloo for display, Rubik for body and UI,
@@ -39,11 +40,11 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: { default: 'ZAOstock 2026', template: '%s | ZAOstock' },
-  description: 'A one-day artist-built music festival in downtown Ellsworth, Maine. October 3, 2026. Run by The ZAO.',
+  description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}. Run by The ZAO.`,
   metadataBase: new URL('https://zaostock.com'),
   openGraph: {
     title: 'ZAOstock 2026',
-    description: 'A one-day artist-built music festival in downtown Ellsworth, Maine. October 3, 2026.',
+    description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com',
     siteName: 'ZAOstock',
     type: 'website',
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ZAOstock 2026',
-    description: 'A one-day artist-built music festival in downtown Ellsworth, Maine. October 3, 2026.',
+    description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
   },
 };
 
@@ -64,13 +65,13 @@ const eventJsonLd = {
   '@type': 'MusicEvent',
   name: 'ZAOstock 2026',
   description: 'A free, one-day, artist-built music festival in downtown Ellsworth, Maine. Run by The ZAO.',
-  startDate: '2026-10-03T12:00:00-04:00',
+  startDate: FESTIVAL.date,
   endDate: '2026-10-03T18:00:00-04:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
   location: {
     '@type': 'Place',
-    name: 'Franklin Street Parklet',
+    name: FESTIVAL.venue,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Ellsworth',

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE, PARTNERS } from '@/content/site';
+import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, PartnerTile } from '@/components/poster';
 
 // The partner page. Same PARTNERS list as the homepage strip and the press
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/partners' },
   openGraph: {
     title: 'Partners | ZAOstock',
-    description: 'Partners give time, venue and infrastructure. Saturday 3 October 2026, Ellsworth, Maine.',
+    description: `Partners give time, venue and infrastructure. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
     url: 'https://zaostock.com/partners',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'Partners | ZAOstock',
-    'Partners give time, venue and infrastructure. Saturday 3 October 2026, Ellsworth, Maine.',
+    `Partners give time, venue and infrastructure. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
   ),
 };
 

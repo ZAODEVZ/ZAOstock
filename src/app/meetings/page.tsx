@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE } from '@/content/site';
+import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList, Card } from '@/components/poster';
 
 // Replaces /circles. This page published two fixed daily meetings, 11:30 and
@@ -16,11 +17,11 @@ export const metadata: Metadata = {
   alternates: { canonical: '/meetings' },
   openGraph: {
     title: 'Meetings | ZAOstock',
-    description: 'How to get involved in building ZAOstock before 3 October.',
+    description: `How to get involved in building ZAOstock before ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/meetings',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Meetings | ZAOstock', 'How to get involved in building ZAOstock before 3 October.'),
+  twitter: twitterCard('Meetings | ZAOstock', `How to get involved in building ZAOstock before ${FESTIVAL.shortDate}.`),
 };
 
 export default function MeetingsPage() {
