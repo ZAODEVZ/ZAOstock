@@ -19,6 +19,34 @@ updates:
       minor-and-patch:
         update-types: ["minor", "patch"]
     labels: ["dependencies"]
+    ignore:
+      # ESLint 10 CANNOT be adopted here, and it is not our code that blocks it.
+      #
+      # Measured 2026-09-20: eslint-plugin-react 7.37.5 - the latest PUBLISHED
+      # version, not a stale pin - still declares `peerDependencies.eslint` as
+      # "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7". It has never claimed ESLint
+      # 10 support. eslint-config-next bundles it, and ESLint 10 removed the
+      # rule-context API it calls, so `npm run lint` dies before linting a file:
+      #
+      #     TypeError: Error while loading rule 'react/display-name':
+      #     contextOrFilename.getFilename is not a function
+      #
+      # #185 was opened for this bump, sat red for weeks with the diagnosis in
+      # its comments, and was merged anyway on 2026-09-20 - taking the whole
+      # repo's lint down and, because CI was one job then, skipping 431 tests
+      # with it. It was reverted in #262 nine minutes later.
+      #
+      # Dependabot would reopen it every Monday, and the next person to see a
+      # routine-looking eslint bump has no reason to suspect it. So the bump is
+      # refused at the source rather than by whoever is on the tools that week.
+      #
+      # LIFT THIS the moment eslint-plugin-react ships a release whose peer
+      # range admits eslint 10. Check with:
+      #     npm view eslint-plugin-react peerDependencies.eslint
+      # Minor and patch eslint updates are deliberately NOT ignored - only the
+      # major is blocked, so 9.x security fixes still arrive.
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
