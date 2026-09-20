@@ -6,8 +6,29 @@ on:
   push:
     branches: [main]
 
+# LINT IS A SEPARATE JOB, AND THE REASON IS A REAL OUTAGE.
+#
+# On 2026-09-20 the ESLint 10 bump (#185) merged while red. Every step here
+# used to live in ONE job, in order, so `npm run lint` exiting 2 meant `test`
+# and `build` were reported as SKIPPED rather than run:
+#
+#     success  npm run typecheck
+#     failure  npm run lint
+#     skipped  npm run test      <- 431 tests did not execute
+#     skipped  npm run build
+#
+# For nine minutes main reported red on every push while asserting nothing
+# about correctness, and any genuine failure in that window would have been
+# indistinguishable from the lint crash. A style check took the correctness
+# gates offline with it.
+#
+# Two jobs means a lint failure can never hide a test failure again, and the
+# checks list says which of the two broke without opening a log. The cost is
+# one extra `npm ci`, which the npm cache makes cheap, and both jobs run in
+# parallel so the wall clock does not move.
 jobs:
   check:
+    name: typecheck, tests, build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -17,6 +38,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
-      - run: npm run lint
       - run: npm run test
       - run: npm run build
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
