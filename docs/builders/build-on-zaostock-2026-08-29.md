@@ -69,7 +69,7 @@ What exists:
 
 What is missing: the in-person layer. Two hundred people on a street cannot vote on wavewarz.com from a phone in the sun without help, and the stage has no screen output.
 
-Build: a ZAOstock-skinned battle view in two sizes: a big-screen mode (bracket, who is on, live vote, the result) and a phone mode (one tap to vote, one tap to the live battle). It is for WaveWarZ online, not for the 3 October stage. Use the identity at https://zaostock.com/design so it reads as the same event.
+Build: a ZAOstock-skinned battle view in two sizes: a big-screen mode (bracket, who is on, live vote, the result) and a phone mode (one tap to vote, one tap to the live battle). It is for WaveWarZ online, not for the 3 October stage. Use the identity at https://zaostock.com/brand so it reads as the same event.
 
 ### 5. A collaboration and bounty board on POIDH
 
@@ -107,7 +107,7 @@ Where to read more: https://zaostock.com/llms.txt (the whole site in one text fi
 - Site repo, public: https://github.com/ZAODEVZ/ZAOstock (Next.js 16, React 19, Tailwind 4, Supabase). Facts live in `src/content/festival.ts` and `src/content/site.ts`; the design system is `DESIGN.md`; brand tokens in `docs/brand/`.
 - Public API today: `GET /api/events` and `GET /api/events/zaostock-2026/lineup` (both degraded while the production database is repointed; the lineup falls back to a committed list). Forms: `POST /api/apply`, `POST /api/musicians/submit`, `POST /api/suggestions`, `POST /api/events/rsvp`.
 - Press kit and every partner logo as PNG: https://zaostock.com/press. The 2026 badge is retired: the mark is the moose, by attabotty.
-- Identity: marks, colours, type and the rules are at https://zaostock.com/design, which is the one source and stays current. Credit the colour and type system to Samantha "Candy", CandyToyBox, and the moose to attabotty.
+- Identity: marks, colours, type and the rules are at https://zaostock.com/brand, which is the one source and stays current. Credit the colour and type system to Samantha "Candy", CandyToyBox, and the moose to attabotty.
 - WaveWarZ public stats: https://wavewarz.info/api/public/stats
 - POIDH: https://poidh.xyz and the poidhz repo above.
 
