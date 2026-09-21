@@ -75,7 +75,7 @@ const PILLARS: Pillar[] = [
 ];
 
 const PARTNERS: Partner[] = [
-  { name: 'City of Ellsworth', role: 'Venue partner — Franklin St Parklet', confirmed: true },
+  { name: 'City of Ellsworth', role: `Venue partner — ${FESTIVAL.shortVenue}`, confirmed: true },
   { name: 'Black Moon Public House', role: 'The evening, indoors + official after-party', confirmed: true },
   // Heart of Ellsworth removed 2026-08-14 pending written confirmation.
   // Confirmed 2026-09-18 by their own email asking to be listed; re-added.
@@ -143,7 +143,7 @@ export default async function OverviewOnePager() {
 
   const stats: Stat[] = [
     { value: 'Oct 3', label: '2026', sub: 'Noon - late' },
-    { value: 'Ellsworth', label: 'Maine', sub: 'Franklin St Parklet' },
+    { value: 'Ellsworth', label: 'Maine', sub: FESTIVAL.shortVenue },
     { value: `${days}`, label: 'days to go', sub: 'as of today' },
     { value: `${teamCount}`, label: 'team members', sub: '8 circles' },
   ];
