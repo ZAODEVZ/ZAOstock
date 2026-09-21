@@ -61,6 +61,11 @@ export default function DesignKitPage() {
           title="The ZAOstock look, to take away."
           lede="Our marks, colours and type, with the few rules that keep them looking right. Every file downloads. For press copy and partner logos, see the press page."
         />
+        <div className="mt-4">
+          <Button href="/brand" variant="secondary" size="sm">
+            The full brand kit - logos, posters, textures, social crops
+          </Button>
+        </div>
       </Section>
 
       <Section id="marks">
