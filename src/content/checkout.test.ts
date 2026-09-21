@@ -200,8 +200,20 @@ describe('the pages cannot render a dead door', () => {
     }
   });
 
-  it('keeps PayPal, which is the door that actually works today', () => {
-    for (const p of PAGES) expect(read(p)).toContain('${PAYPAL_URL}/${tier.amount}');
+  it('keeps PayPal on /donate, the fuller "other ways to give" page', () => {
+    expect(read(DONATE)).toContain('${PAYPAL_URL}/${tier.amount}');
+  });
+
+  it('drops PayPal from /tickets - card only, Zaal live, 2026-09-21: "no paypal"', () => {
+    const src = read(TICKETS);
+    expect(src).not.toContain('PAYPAL_URL');
+    // The removed button's exact JSX pattern, not the bare phrase "Chip in" -
+    // that survives in the page's own headline copy ("Chip in if you can")
+    // and section eyebrow, which are not the PayPal button.
+    expect(src).not.toContain('Chip in {tier.price}');
+    // /tickets still points PayPal-seekers at /donate in its own FAQ copy,
+    // so the word "PayPal" surviving in prose (not a button) is correct.
+    expect(src).toContain('PayPal for fiat or Giveth for crypto, at /donate');
   });
 
   it('says nothing about paying by card while no card rail exists', () => {
