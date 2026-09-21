@@ -234,8 +234,11 @@ const ALL_PARTNERS = [
   // Zaal asking to be listed "as a sponsor or community partner", Zaal: "yes
   // to all". Before this it was kept off until confirmed in writing (doc 2279).
   // Community partner, not sponsor: no money is stated anywhere. They produce
-  // Art of Ellsworth: Maine Craft Weekend (eighth year), which ZAOstock is part
-  // of. Logo not yet received; textOnly until it lands in ~/zao-vault/inbox.
+  // Art of Ellsworth: Maine Craft Weekend - ninth year, per Cara Romano
+  // (Heart of Ellsworth), email to Zaal 2026-09-21: "we started this program
+  // in the second year of Heart's existence" confirming the "9th Annual"
+  // figure already used in SERIES/STATS/press-kit.md. Matches; nothing else
+  // to change.
   // Logo: Cara's own file, emailed to Zaal 2026-09-19 (image003.png, 1600x632, transparent), resampled to 400px tall.
   { name: 'Heart of Ellsworth', role: 'Community partner, Art of Ellsworth: Maine Craft Weekend', poc: 'Zaal', confirmed: true, logoSrc: '/partners/heart-of-ellsworth.png' },
 ] satisfies Partner[];
