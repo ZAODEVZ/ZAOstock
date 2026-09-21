@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
-import { InstagramEmbed } from './InstagramEmbed';
+import { InstagramLinks } from './InstagramLinks';
 import { getPublicMembers, type PublicMember } from '@/lib/members';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
@@ -53,11 +53,12 @@ const PRINCIPLES = [
   { k: '03', t: 'Free and fair', b: 'Free to attend. Artists paid fairly and transparently. Built in public, every step shared.' },
 ] as const;
 
-// Instagram posts/reels to embed. This is where the real ZAO-CHELLA / ZAO-PALOOZA
-// recap media lives (@zaofestivals).
-const INSTAGRAM: string[] = [
-  'https://www.instagram.com/reel/DDa-oPBJ7G7/', // ZAO-CHELLA 2024 Miami recap
-  'https://www.instagram.com/reel/DDLVvNuu5_3/', // ZAO-CHELLA 2024 coverage
+// Instagram posts/reels to link out to. This is where the real ZAO-CHELLA /
+// ZAO-PALOOZA recap media lives (@zaofestivals). Link-out cards, not an
+// embed - see InstagramLinks.tsx for why.
+const INSTAGRAM = [
+  { url: 'https://www.instagram.com/reel/DDa-oPBJ7G7/', label: 'ZAO-CHELLA 2024 Miami recap' },
+  { url: 'https://www.instagram.com/reel/DDLVvNuu5_3/', label: 'ZAO-CHELLA 2024 coverage' },
 ];
 
 const TILE_TONES = ['bg-paper-200 text-ink-950', 'bg-denim-300/40 text-denim-600', 'bg-gold-300 text-gold-600'] as const;
@@ -176,7 +177,7 @@ export default async function FestivalsPage() {
       {INSTAGRAM.length > 0 ? (
         <Section id="recap">
           <SectionHeader eyebrow="From the festivals" title="What it looked like." className="mb-6" />
-          <InstagramEmbed urls={INSTAGRAM} />
+          <InstagramLinks posts={INSTAGRAM} />
         </Section>
       ) : null}
 

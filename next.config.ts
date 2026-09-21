@@ -59,7 +59,10 @@ const config: NextConfig = {
               "connect-src 'self' https://api.stripe.com",
               // docs.google.com: the artist details form, embedded on /backstage.
               // js.stripe.com: the buy button's checkout iframe.
-              "frame-src 'self' https://platform.twitter.com https://www.instagram.com https://docs.google.com https://js.stripe.com",
+              // instagram.com dropped 2026-09-21: /festivals no longer embeds
+              // Instagram posts via iframe, it links out instead - see
+              // InstagramLinks.tsx for why.
+              "frame-src 'self' https://platform.twitter.com https://docs.google.com https://js.stripe.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
