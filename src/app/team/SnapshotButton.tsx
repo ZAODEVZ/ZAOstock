@@ -1,5 +1,7 @@
 'use client';
 
+import { FESTIVAL } from '@/content/festival';
+
 interface Sponsor {
   name: string;
   track: string;
@@ -39,7 +41,7 @@ interface Props {
   budget: BudgetEntry[];
 }
 
-const FESTIVAL_DATE = new Date('2026-10-03T12:00:00-04:00');
+const FESTIVAL_DATE = new Date(FESTIVAL.date);
 
 function daysUntil(target: Date): number {
   const now = new Date();
@@ -74,7 +76,7 @@ function buildMarkdown({ sponsors, artists, milestones, budget }: Props): string
   const lines: string[] = [];
   lines.push(`# ZAOstock Snapshot - ${today}`);
   lines.push('');
-  lines.push(`${days} days until Oct 3, 2026.`);
+  lines.push(`${days} days until ${FESTIVAL.shortDate}.`);
   lines.push('');
   lines.push('## Festival Health');
   lines.push('');

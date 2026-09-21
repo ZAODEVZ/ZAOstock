@@ -109,6 +109,12 @@ function stripComments(text) {
     .join('\n');
 }
 
+// src/app/error.tsx: the root error boundary, deliberately dependency-free
+// and client-only (see its own header comment) so the fallback page can't
+// break if festival.ts ever does. Its venue mention is a one-time, hand-
+// verified exception, not something this check should chase.
+const EXCLUDED_FILES = new Set(['src/app/error.tsx']);
+
 function walkTsxFiles(dir) {
   const out = [];
   for (const entry of readdirSync(dir)) {
@@ -133,9 +139,10 @@ function main() {
   const hits = [];
 
   for (const file of files) {
+    const rel = path.relative(ROOT, file);
+    if (EXCLUDED_FILES.has(rel)) continue;
     const raw = readFileSync(file, 'utf8');
     const stripped = stripComments(raw);
-    const rel = path.relative(ROOT, file);
 
     for (const fact of facts) {
       if (fact.isActCount) {
