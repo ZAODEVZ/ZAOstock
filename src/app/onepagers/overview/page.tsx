@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { TIERS } from '@/content/site';
+import { TIERS, SOCIALS } from '@/content/site';
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
@@ -84,7 +84,12 @@ const PARTNERS: Partner[] = [
   { name: 'Wallace Events', role: 'Event equipment + tenting', confirmed: true },
   { name: 'WaveWarZ', role: 'Live music-battle format, online all year', confirmed: true },
   { name: 'COC Concertz', role: 'Co-presenter', confirmed: true },
+  { name: 'Bomb Squad', role: 'Crew, content and merch', confirmed: true },
   { name: 'Artizen', role: 'Funding partner', confirmed: true },
+  // WE THE MEDIA: added 2026-09-16, confirmed with logo 2026-09-19 - was
+  // missing from this page's own copy of the partner list (audit,
+  // 2026-09-21) while src/content/site.ts PARTNERS already had it.
+  { name: 'WE THE MEDIA', role: 'Media and content capture', confirmed: true },
 ].filter((p) => p.confirmed);
 
 // SPONSOR_TIERS used to be defined here, with its own names and its own
@@ -452,7 +457,15 @@ export default async function OverviewOnePager() {
                   </Link>
                 </li>
                 <li>Farcaster: /thezao</li>
-                <li>X: @thezao_</li>
+                <li>
+                  X:{' '}
+                  <a
+                    href={SOCIALS.find((s) => s.platform === 'X')!.href}
+                    className="text-denim-500 hover:underline print:text-denim-500"
+                  >
+                    @{new URL(SOCIALS.find((s) => s.platform === 'X')!.href).pathname.slice(1)}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
