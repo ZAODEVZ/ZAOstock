@@ -122,7 +122,7 @@ export default function HomePage() {
               </div>
               <div className={s.dayVisual}>
                 <div className={s.frame}>
-                  <Image src="/brand/elements/sign_franklin_st_parklet.webp" alt="A Franklin Street Parklet street sign" width={620} height={350} unoptimized />
+                  <Image src="/brand/elements/sign_franklin_st_parklet.webp" alt={`A ${FESTIVAL.venue} street sign`} width={620} height={350} unoptimized />
                 </div>
                 <div className={s.sunBadge}>
                   Rain or
