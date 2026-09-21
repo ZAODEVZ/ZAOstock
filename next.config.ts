@@ -20,8 +20,17 @@ const config: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
           {
+            // payment=(self "https://js.stripe.com"): found by actually
+            // loading the Pro Ticket buy button and reading the console,
+            // not assumed. An unlisted feature defaults to `self` only, so
+            // Stripe's cross-origin checkout iframe was silently denied the
+            // Payment Request API - "Potential permissions policy
+            // violation: payment is not allowed in this document." That
+            // API is what puts Apple Pay / Google Pay in the button rather
+            // than card-only, and Google Pay was turned on for this
+            // account today specifically so it would show.
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            value: 'camera=(), microphone=(), geolocation=(), payment=(self "https://js.stripe.com")',
           },
           {
             key: 'Strict-Transport-Security',
@@ -38,13 +47,19 @@ const config: NextConfig = {
             key: 'Content-Security-Policy-Report-Only',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline'",
+              // https://js.stripe.com: the Pro Ticket buy button on /tickets
+              // (stripe-buy-button.js). Added ahead of the header ever being
+              // enforced, not after - a page taking money is the worst place
+              // to discover a silent CSP break the day this becomes a real
+              // Content-Security-Policy instead of Report-Only.
+              "script-src 'self' 'unsafe-inline' https://js.stripe.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https://pbs.twimg.com https://i.imgur.com https://imgur.com https://i.postimg.cc https://postimg.cc",
               "font-src 'self' data:",
-              "connect-src 'self'",
+              "connect-src 'self' https://api.stripe.com",
               // docs.google.com: the artist details form, embedded on /backstage.
-              "frame-src 'self' https://platform.twitter.com https://www.instagram.com https://docs.google.com",
+              // js.stripe.com: the buy button's checkout iframe.
+              "frame-src 'self' https://platform.twitter.com https://www.instagram.com https://docs.google.com https://js.stripe.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
