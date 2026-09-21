@@ -407,6 +407,11 @@ export const UNLOCK_CHECKOUT_URL: string = UNSET;
 const STRIPE_LINK_PREFIX = 'https://buy.stripe.com/';
 const UNLOCK_CHECKOUT_PREFIX = 'https://app.unlock-protocol.com/';
 
+/** Base mainnet's chain id. The ZAO decided 7 August 2026 that Unlock on Base
+ * (mainnet, not a testnet) is the membership rail - see the block comment
+ * above. Any lock naming a different network in a checkout URL is refused. */
+const BASE_MAINNET_CHAIN_ID = 8453;
+
 /** The card link for a tier, or null while it is UNSET or not a Payment Link. */
 export function stripeLinkFor(
   tierId: string,
@@ -419,9 +424,65 @@ export function stripeLinkFor(
   return typeof url === 'string' && url.startsWith(STRIPE_LINK_PREFIX) ? url : null;
 }
 
-/** The onchain checkout, or null while the lock does not exist. */
+/**
+ * The onchain checkout, or null while the lock does not exist or the URL
+ * fails a check.
+ *
+ * Real Unlock checkout URLs come in two shapes (confirmed against
+ * unlock-protocol/unlock's own blog examples, 2026-09-21): a long form
+ * carrying `?paywallConfig=<url-encoded JSON>`, whose `locks` map states
+ * each lock's `network` (chain id) explicitly, and a short form carrying
+ * only `?id=<uuid>`, a reference to a config stored server-side by Unlock,
+ * which names no network in the URL at all.
+ *
+ * The hazard this closes (flagged by two peer lanes, 2026-09-21, before
+ * Zaal tests Unlock on Base Sepolia): a Base Sepolia (testnet, chain id
+ * 84532) checkout URL starts with the same https://app.unlock-protocol.com/
+ * prefix as a real Base mainnet one, so the prefix check alone cannot tell
+ * them apart. If a Sepolia link were ever pasted into UNLOCK_CHECKOUT_URL,
+ * this site would render a live "Pay onchain" button selling a worthless
+ * test key.
+ *
+ * This closes it for the long form only: when paywallConfig is present,
+ * every lock's network must be BASE_MAINNET_CHAIN_ID or the URL is
+ * refused - an allowlist of exactly what The ZAO decided, not a denylist
+ * of known testnet ids, so an unlisted or future testnet chain id is
+ * refused too, not just the one this comment names.
+ *
+ * KNOWN GAP, left open rather than hidden: the short `id=` form carries no
+ * network at all, so this check cannot verify it either way - it passes
+ * through unchanged, same as before this guard existed. Closing that gap
+ * would need checking the id against Unlock's own API at build or request
+ * time, which this file deliberately does not do (see the block comment
+ * above on why this file holds no server calls). Until ZAOstock's real
+ * checkout link is in hand, prefer confirming it uses the long
+ * paywallConfig form before pasting it into UNLOCK_CHECKOUT_URL.
+ */
 export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | null {
-  return url.startsWith(UNLOCK_CHECKOUT_PREFIX) ? url : null;
+  if (!url.startsWith(UNLOCK_CHECKOUT_PREFIX)) return null;
+
+  let paywallConfigRaw: string | null;
+  try {
+    paywallConfigRaw = new URL(url).searchParams.get('paywallConfig');
+  } catch {
+    return null;
+  }
+  if (!paywallConfigRaw) return url; // short `id=` form - see KNOWN GAP above
+
+  let config: unknown;
+  try {
+    config = JSON.parse(paywallConfigRaw);
+  } catch {
+    return null; // a paywallConfig present but unparseable is not a real checkout
+  }
+
+  const locks = (config as { locks?: Record<string, { network?: number }> } | null)?.locks;
+  if (!locks || typeof locks !== 'object') return url; // no locks map to check against
+
+  for (const lock of Object.values(locks)) {
+    if (lock?.network !== undefined && lock.network !== BASE_MAINNET_CHAIN_ID) return null;
+  }
+  return url;
 }
 
 

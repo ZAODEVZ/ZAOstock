@@ -86,6 +86,57 @@ describe('an unset rail renders nothing', () => {
   });
 });
 
+describe('unlockCheckoutUrl refuses a testnet lock', () => {
+  // Real shapes, confirmed against unlock-protocol/unlock's own blog examples
+  // 2026-09-21 - a checkout URL's paywallConfig names each lock's network
+  // (chain id) explicitly. 8453 = Base mainnet, the rail The ZAO decided on;
+  // 84532 = Base Sepolia, the testnet Zaal was ruled to test on first.
+  const baseMainnetUrl =
+    'https://app.unlock-protocol.com/checkout?paywallConfig=' +
+    encodeURIComponent(JSON.stringify({ locks: { '0xLOCK': { network: 8453 } } }));
+  const baseSepoliaUrl =
+    'https://app.unlock-protocol.com/checkout?paywallConfig=' +
+    encodeURIComponent(JSON.stringify({ locks: { '0xLOCK': { network: 84532 } } }));
+
+  it('accepts a checkout URL whose lock is on Base mainnet', () => {
+    expect(unlockCheckoutUrl(baseMainnetUrl)).toBe(baseMainnetUrl);
+  });
+
+  it('refuses a checkout URL whose lock is on Base Sepolia (or any non-mainnet network)', () => {
+    // This is the exact hazard flagged by two peer lanes 2026-09-21: same
+    // https://app.unlock-protocol.com/ prefix as a real link, so only the
+    // paywallConfig's own network field can tell them apart.
+    expect(unlockCheckoutUrl(baseSepoliaUrl)).toBeNull();
+    // Not just the one named testnet - any network that is not exactly Base
+    // mainnet is refused, including Ethereum mainnet (1) and Goerli (5).
+    for (const network of [1, 5, 11155111]) {
+      const url =
+        'https://app.unlock-protocol.com/checkout?paywallConfig=' +
+        encodeURIComponent(JSON.stringify({ locks: { '0xLOCK': { network } } }));
+      expect(unlockCheckoutUrl(url)).toBeNull();
+    }
+  });
+
+  it('refuses if even one lock in a multi-lock config is off Base mainnet', () => {
+    const mixed =
+      'https://app.unlock-protocol.com/checkout?paywallConfig=' +
+      encodeURIComponent(JSON.stringify({ locks: { '0xA': { network: 8453 }, '0xB': { network: 84532 } } }));
+    expect(unlockCheckoutUrl(mixed)).toBeNull();
+  });
+
+  it('still passes the short id= form through unchanged - documented gap, not a regression', () => {
+    // No paywallConfig at all means no network to check - see the KNOWN GAP
+    // note on unlockCheckoutUrl itself. Pinned here so nobody "fixes" this
+    // case without reading that note first.
+    expect(unlockCheckoutUrl(REAL_UNLOCK)).toBe(REAL_UNLOCK);
+  });
+
+  it('refuses an unparseable paywallConfig rather than guessing', () => {
+    const malformed = 'https://app.unlock-protocol.com/checkout?paywallConfig=%7Bnot-json';
+    expect(unlockCheckoutUrl(malformed)).toBeNull();
+  });
+});
+
 describe('every tier keeps its door', () => {
   it('has a STRIPE_LINKS key for every tier, so a rename cannot drop one', () => {
     for (const tier of SUPPORT_TIERS) expect(STRIPE_LINKS).toHaveProperty(tier.id);
