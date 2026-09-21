@@ -340,6 +340,9 @@ export default function BrandPage() {
                 {t.label}
               </Button>
             ))}
+            <Button href="/design" variant="secondary" size="sm">
+              The design kit - colour tokens, type rules, usage guidelines
+            </Button>
           </div>
           <div className="mt-4">
             {/* A plain anchor, not the Button/Link primitive - this is a
