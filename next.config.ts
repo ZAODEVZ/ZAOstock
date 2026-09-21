@@ -59,10 +59,16 @@ const config: NextConfig = {
               "connect-src 'self' https://api.stripe.com",
               // docs.google.com: the artist details form, embedded on /backstage.
               // js.stripe.com: the buy button's checkout iframe.
-              // instagram.com dropped 2026-09-21: /festivals no longer embeds
-              // Instagram posts via iframe, it links out instead - see
-              // InstagramLinks.tsx for why.
-              "frame-src 'self' https://platform.twitter.com https://docs.google.com https://js.stripe.com",
+              // instagram.com dropped 2026-09-21 (#273): /festivals no
+              // longer embeds Instagram posts via iframe, it links out
+              // instead - see InstagramLinks.tsx for why.
+              // platform.twitter.com dropped 2026-09-21: no component in the
+              // repo ever loaded a Twitter/X widget iframe. Grepped for
+              // twitter-tweet / TwitterEmbed / any twitter.com iframe usage
+              // before removing - none found. An allowlist entry with no
+              // backing usage is exactly the kind of drift this
+              // Report-Only header exists to catch before it goes live.
+              "frame-src 'self' https://docs.google.com https://js.stripe.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
