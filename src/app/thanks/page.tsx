@@ -39,7 +39,7 @@ export default function ThanksPage() {
       <div className="max-w-[760px] space-y-8">
         <div className="space-y-2">
           <Eyebrow tone="denim">Confirmed</Eyebrow>
-          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">You&apos;re in.</h1>
+          <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">You&apos;re in.</h1>
           <p className="text-lg text-ink-secondary measure">
             Your receipt is on its way by email from Stripe. If anything looks off, email{' '}
             <a href={`mailto:${SITE.contact}?subject=ZAOstock%20ticket%20question`} className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
@@ -50,7 +50,7 @@ export default function ThanksPage() {
         </div>
 
         <section className="space-y-2">
-          <h2 className="font-display font-normal text-h3 text-ink-950">The day</h2>
+          <h2 className="font-display text-h3 text-ink-950">The day</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
             {FESTIVAL.dateLabel}, {FESTIVAL.window}. {FESTIVAL.venue}, {FESTIVAL.city}.
           </p>
@@ -61,7 +61,7 @@ export default function ThanksPage() {
         </Suspense>
 
         <section className="space-y-2">
-          <h2 className="font-display font-normal text-h3 text-ink-950">Before you go</h2>
+          <h2 className="font-display text-h3 text-ink-950">Before you go</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
             Weather, refunds, filming, and entry conditions are all on our{' '}
             <a href="/terms" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">

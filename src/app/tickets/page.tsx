@@ -47,7 +47,7 @@ export default function TicketsPage() {
       <Section first className="pt-12 sm:pt-16">
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.admission}</Eyebrow>
-          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
+          <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
             Come for nothing. Chip in if you can.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
@@ -64,7 +64,7 @@ export default function TicketsPage() {
               <Eyebrow>Free · RSVP</Eyebrow>
               <span className="font-mono text-eyebrow text-ink-muted">What most people want</span>
             </div>
-            <h2 className="font-display font-normal text-h3 text-ink-950 m-0">Hold a spot</h2>
+            <h2 className="font-display text-h3 text-ink-950 m-0">Hold a spot</h2>
             <p className="text-sm text-ink-secondary m-0 mt-2">
               Free, and it takes a moment. It is not a ticket you have to show at the door, because there is no door.
               It tells us how much water, seating and shelter to plan for.
@@ -80,7 +80,7 @@ export default function TicketsPage() {
               <Eyebrow>Optional</Eyebrow>
               <span className="font-mono text-eyebrow text-ink-muted">Not required</span>
             </div>
-            <h2 className="font-display font-normal text-h3 text-ink-950 m-0">Nothing else to buy</h2>
+            <h2 className="font-display text-h3 text-ink-950 m-0">Nothing else to buy</h2>
             <p className="text-sm text-ink-secondary m-0 mt-2">
               Neither paid tier gets you a better spot, an earlier entry or a different view. Both are ways to fund the
               day, not ways to buy a better one.
@@ -103,7 +103,7 @@ export default function TicketsPage() {
                 <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
                 {tier.spots ? <Eyebrow>{tier.spots}</Eyebrow> : null}
               </div>
-              <h3 className="font-display font-normal text-h3 text-ink-950 m-0 mt-2">{tier.name}</h3>
+              <h3 className="font-display text-h3 text-ink-950 m-0 mt-2">{tier.name}</h3>
               <p className="text-sm text-ink-secondary m-0 mt-1">{tier.blurb}</p>
               <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
                 {tier.gets.map((g) => (
