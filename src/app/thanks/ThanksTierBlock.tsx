@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { FESTIVAL } from '@/content/festival';
 
 // `tier` is UNVERIFIED display state - Stripe's redirect can carry
 // ?tier=pro, but the site has no way to confirm what was actually bought
@@ -9,12 +10,17 @@ import { useSearchParams } from 'next/navigation';
 // purchase - it only changes which paragraph renders, and the page must
 // still read sensibly with no param at all.
 //
-// Pro Ticket 1:1 booking mechanism is an OPEN QUESTION as of 2026-09-20 -
-// do not invent a booking link. Zaal has a Cal.com booker
-// (cal.com/bettercallzaal/zabal-games-workshop-slot) but that is the
-// ZABAL Gamez workshop slot, not a ZAOstock thing, and pointing Pro
-// buyers at it would be wrong. Until there's a real answer, this says
-// he'll be in touch by email.
+// Booking link is deliberately Zaal's existing generic Cal.com event
+// (cal.com/bettercallzaal/30min), chosen over building a dedicated event
+// type - his call, 2026-09-20. Because the link is generic, the two
+// things a dedicated event type would carry structurally have to be
+// carried by this copy instead, and neither is decorative:
+//   - the date: the link has no end date, so nothing stops a booking
+//     into November unless the copy says "before the event"
+//   - "mention your Pro Ticket": the link is shared with every other
+//     booking on his calendar, so this line is the only signal he has for
+//     matching a booking back to a sale (needed around FESTIVAL.date to
+//     confirm all Pro buyers claimed their 1:1)
 export function ThanksTierBlock() {
   const params = useSearchParams();
   const tier = params.get('tier');
@@ -25,7 +31,16 @@ export function ThanksTierBlock() {
     <section className="space-y-2">
       <h2 className="font-display font-normal text-h3 text-ink-950">Your 1:1</h2>
       <p className="text-base text-ink-950 leading-relaxed measure">
-        Zaal will be in touch by email to set up your 1:1 - no need to book anything yourself right now.
+        Book a slot that suits you:{' '}
+        <a
+          href="https://cal.com/bettercallzaal/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-denim-400 hover:text-denim-500 underline underline-offset-4"
+        >
+          cal.com/bettercallzaal/30min
+        </a>
+        . Please book before {FESTIVAL.shortDate}, and mention your Pro Ticket when you do.
       </p>
     </section>
   );
