@@ -49,6 +49,7 @@ of The ZAO, an independent music community.
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosts its own evening from six |
 | Cost | Free to attend |
+| RSVP | ticket.zaostock.com |
 | Music starts | Noon |
 | Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
 | Weather | Rain or shine, under tent cover from Wallace Events |
@@ -123,6 +124,8 @@ Every partner has a named point of contact on the ZAO team.
 - COC Concertz - co-presenter
 - Bomb Squad - crew, content and merch
 - Artizen - funding partner
+- WE THE MEDIA - media and content capture
+- Heart of Ellsworth - community partner, Art of Ellsworth: Maine Craft Weekend
 
 *(SITE: mirror `src/app/page.tsx` PARTNERS so this list cannot drift. COC
 Concertz is a partner per Zaal, typed 27 Aug 20:3x; add it and Bomb Squad there. "Community
@@ -175,7 +178,8 @@ zaostock.com/brand.
 
 - The moose, primary mark (white on transparent): `/brand/logos/zaostock26_moose.png`
 
-Artist photos and stage photos: not yet available. Ask.
+Artist photos and stage photos: not yet available before the day. WE THE MEDIA
+is capturing on 3 October; ask for post-event assets.
 
 ## For press
 
@@ -202,7 +206,9 @@ info@thezao.com
 | Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
 | LyonsDen public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
 | WaveWarZ 1,528, 12 Sep | `docs/sponsor/deck-2026-10-03.md` slide 6 |
-| Partners | `src/app/page.tsx:101-112, 546-548` |
+| Partners, incl. WE THE MEDIA and Heart of Ellsworth | `src/content/site.ts` PARTNERS (site-fix brief 2026-09-21: page.tsx line numbers this row used to cite had already moved) |
+| RSVP URL | `src/content/festival.ts` FESTIVAL.rsvpUrl |
+| WE THE MEDIA is capturing on the day | `src/content/site.ts` PARTNERS role, "Media and content capture" |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |
 | Founder lives in Ellsworth | deck slide 4 |
 | Acadia 4M, Historic Register, Heart of Ellsworth 28 events / 50+ sponsors | `src/app/page.tsx:261-264` |
