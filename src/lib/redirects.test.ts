@@ -24,6 +24,7 @@ describe('redirects for paths people guess', () => {
     expect(bySource['/artist']?.destination).toBe('/artists');
     expect(bySource['/volunteer']?.destination).toBe('/apply');
     expect(bySource['/support']?.destination).toBe('/contact');
+    expect(bySource['/ticket']?.destination).toBe('/tickets');
   });
 
   it('keeps them temporary, so a real /lineup page can be added later', async () => {
