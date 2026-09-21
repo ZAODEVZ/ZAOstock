@@ -28,7 +28,7 @@ export default function DonatePage() {
       <Section first className="pt-12 sm:pt-16">
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">Two ways to give</Eyebrow>
-          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Fund the music.</h1>
+          <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Fund the music.</h1>
           <p className="text-lg text-ink-secondary measure m-0">
             ZAOstock 2026 is a free, community-built, one-day music festival in Ellsworth, Maine on {FESTIVAL.shortDate}. Funds cover artist pay and the materials for the day. The festival runs at break-even.
           </p>
@@ -42,7 +42,7 @@ export default function DonatePage() {
               <Eyebrow>Fiat · PayPal</Eyebrow>
               <span className="font-mono text-eyebrow text-ink-muted">Fastest path</span>
             </div>
-            <h2 className="font-display font-normal text-h3 text-ink-950 m-0">Send via PayPal</h2>
+            <h2 className="font-display text-h3 text-ink-950 m-0">Send via PayPal</h2>
             <p className="text-sm text-ink-secondary m-0 mt-2">
               Direct to <span className="font-mono text-ink-950">paypal.me/zaalpanthaki</span>, the project&apos;s collection account. Card or PayPal balance.
             </p>
@@ -64,7 +64,7 @@ export default function DonatePage() {
               <Eyebrow>Crypto · Giveth</Eyebrow>
               <span className="font-mono text-eyebrow text-ink-muted">Wallet required</span>
             </div>
-            <h2 className="font-display font-normal text-h3 text-ink-950 m-0">Send via Giveth</h2>
+            <h2 className="font-display text-h3 text-ink-950 m-0">Send via Giveth</h2>
             <p className="text-sm text-ink-secondary m-0 mt-2">
               Wallet to wallet to <span className="font-mono text-ink-950">thezao.eth</span>. USDC on Base preferred; works on Ethereum, Base, Optimism, Polygon, Gnosis, Arbitrum and Celo. No platform cut on Giveth; GIVbacks from $5.
             </p>
@@ -92,7 +92,7 @@ export default function DonatePage() {
                   <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
                   {tier.spots ? <Eyebrow>{tier.spots}</Eyebrow> : null}
                 </div>
-                <h3 className="font-display font-normal text-h3 text-ink-950 m-0 mt-2">{tier.name}</h3>
+                <h3 className="font-display text-h3 text-ink-950 m-0 mt-2">{tier.name}</h3>
                 <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
                   {tier.gets.map((g) => (
                     <li key={g}>{g}</li>

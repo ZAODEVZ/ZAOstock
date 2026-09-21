@@ -29,7 +29,7 @@ export function ThanksTierBlock() {
 
   return (
     <section className="space-y-2">
-      <h2 className="font-display font-normal text-h3 text-ink-950">Your 1:1</h2>
+      <h2 className="font-display text-h3 text-ink-950">Your 1:1</h2>
       <p className="text-base text-ink-950 leading-relaxed measure">
         Book a slot that suits you:{' '}
         <a
