@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { SITE } from '@/content/site';
 
-// Six links plus the RSVP button. /team is not in the nav. Hamburger under
+// Seven links plus the RSVP button. /team is not in the nav. Hamburger under
 // 640px is the only stateful thing in the shell.
 //
 // The button points at /tickets, NOT straight at FESTIVAL.rsvpUrl. It used to go
@@ -14,8 +14,12 @@ import { SITE } from '@/content/site';
 // open /donate. /tickets leads with the same free RSVP, so the fast path is one
 // extra click, and the paid option finally exists in the funnel.
 //
-// The LABEL stays "RSVP" on purpose. "Tickets" reads as "this costs money" on a
-// festival whose whole proposition is free admission.
+// The BUTTON'S label stays "RSVP" on purpose - "Tickets" reads as "this costs
+// money" on a festival whose whole proposition is free admission. The nav LINK
+// below is a different thing: Zaal, 2026-09-21, asked for "Tickets" in the top
+// bar directly (both point at the same /tickets page as the RSVP button; the
+// nav link exists so "tickets" as a word is findable without relying on
+// someone reading "RSVP" as "where support tiers live").
 //
 // In the front page's look since 2026-09-10: a cream bar with a hairline, her
 // fireside button. The bar is 66px tall; the homepage hero pins itself under
@@ -23,6 +27,7 @@ import { SITE } from '@/content/site';
 // white moose sits on night, which stays dark in both modes.
 const NAV = [
   { href: '/program', label: 'Program' },
+  { href: '/tickets', label: 'Tickets' },
   { href: '/artists', label: 'Artists' },
   { href: '/live', label: 'Live' },
   { href: '/apply', label: 'Volunteer' },

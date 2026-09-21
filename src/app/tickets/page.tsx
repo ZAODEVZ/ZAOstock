@@ -119,7 +119,17 @@ export default function TicketsPage() {
                   stretched to that height and turned into a giant orange oval - caught
                   from a live screenshot on 2026-09-20, not predicted. */}
               <div className="mt-4 flex flex-wrap items-start gap-2">
-                <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
+                {/* Always secondary, on both tiers. This used to be primary on
+                    the Pro tier from when it was the only button on the card -
+                    a normal "make the premium tier pop" pattern. Once the card
+                    option (StripeBuyButton, a full-size embedded widget) landed
+                    beside it, that same styling made the PayPal link the loud
+                    solid-orange button next to a plain-looking widget, so a
+                    glance-and-click favored PayPal by accident. Flagged live by
+                    Zaal, 2026-09-21: "the tickets page still takes us to paypal
+                    sometimes." Equal weight lets whichever option someone
+                    actually wants stand on its own. */}
+                <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant="secondary">
                   Chip in {tier.price}
                 </Button>
                 {tier.id === PRO_TICKET.id ? (
