@@ -112,8 +112,13 @@ export default function TicketsPage() {
               </ul>
               {/* PayPal is the door that exists today. The card and onchain doors below
                   render only once their URLs exist; see CARD AND ONCHAIN CHECKOUT in
-                  src/content/site.ts. Until then this is exactly the old one-button block. */}
-              <div className="mt-4 flex flex-wrap gap-2">
+                  src/content/site.ts. Until then this is exactly the old one-button block.
+                  items-start: without it, flex's default align-items:stretch matches
+                  every child to the tallest one on the line. The Stripe Buy Button's own
+                  card renders ~230px tall, so the plain pill Button (border-radius:9999px)
+                  stretched to that height and turned into a giant orange oval - caught
+                  from a live screenshot on 2026-09-20, not predicted. */}
+              <div className="mt-4 flex flex-wrap items-start gap-2">
                 <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
                   Chip in {tier.price}
                 </Button>
