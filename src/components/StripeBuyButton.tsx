@@ -43,7 +43,16 @@ export function StripeBuyButton() {
   return (
     <>
       <Script src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
-      <stripe-buy-button buy-button-id={BUY_BUTTON_ID} publishable-key={PUBLISHABLE_KEY} />
+      {/* Stripe renders this custom element inside a closed shadow DOM, so its
+          white card can never pick up the site's own palette - in dark mode
+          that's a stark white rectangle floating on a near-black card
+          (--color-paper-200 goes to #2C2115). Framing it with the site's own
+          card border/shadow/padding tokens gives it a deliberate boundary in
+          both themes, rather than leaving a foreign widget to float bare.
+          Caught from a live screenshot in dark mode, 2026-09-21. */}
+      <div className="rounded-[14px] border-[1.5px] border-gold-500/60 shadow-hard p-2 bg-paper-100">
+        <stripe-buy-button buy-button-id={BUY_BUTTON_ID} publishable-key={PUBLISHABLE_KEY} />
+      </div>
     </>
   );
 }
