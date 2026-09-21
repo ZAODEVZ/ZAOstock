@@ -3,7 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
-import { StripeBuyButton } from './StripeBuyButton';
+import { StripeBuyButton } from '@/components/StripeBuyButton';
 
 // WHY THIS PAGE EXISTS
 //
