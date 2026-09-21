@@ -43,7 +43,7 @@ export default function EventOrganizersPage() {
         'Honest financial reporting. Same break-even ethos that shapes ZAOstock.',
       ]}
       ctas={[
-        { label: 'Schedule a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAOstock%20Event%20Organizer%20Intro', primary: true },
+        { label: 'Email for a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAOstock%20Event%20Organizer%20Intro', primary: true },
         { label: 'Ask about hosting a city', href: 'mailto:info@thezao.com?subject=ZAOstock%20City%20Host%20Inquiry' },
       ]}
       facts={[
