@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 import { StripeBuyButton } from '@/components/StripeBuyButton';
 
@@ -110,36 +110,25 @@ export default function TicketsPage() {
                   <li key={g}>{g}</li>
                 ))}
               </ul>
-              {/* PayPal is the door that exists today. The card and onchain doors below
-                  render only once their URLs exist; see CARD AND ONCHAIN CHECKOUT in
-                  src/content/site.ts. Until then this is exactly the old one-button block.
-                  items-start: without it, flex's default align-items:stretch matches
-                  every child to the tallest one on the line. The Stripe Buy Button's own
-                  card renders ~230px tall, so the plain pill Button (border-radius:9999px)
-                  stretched to that height and turned into a giant orange oval - caught
-                  from a live screenshot on 2026-09-20, not predicted. */}
+              {/* Card only. PayPal sat here as a second door until Zaal, live,
+                  2026-09-21: "no paypal" - card is the door now, full stop.
+                  It's the only action on the card, so it reads as primary
+                  rather than one of several equal-weight options (that equal-
+                  weight styling was the fix for a PayPal-vs-card bias problem
+                  that no longer applies once PayPal is gone). Right under the
+                  bullet list, not floating beside another button - same ask,
+                  "closer to just the top". items-start: without it, flex's
+                  default align-items:stretch matches every child to the
+                  tallest one on the line, and the Stripe Buy Button's own
+                  card renders ~230px tall. */}
               <div className="mt-4 flex flex-wrap items-start gap-2">
-                {/* Always secondary, on both tiers. This used to be primary on
-                    the Pro tier from when it was the only button on the card -
-                    a normal "make the premium tier pop" pattern. Once the card
-                    option (StripeBuyButton, a full-size embedded widget) landed
-                    beside it, that same styling made the PayPal link the loud
-                    solid-orange button next to a plain-looking widget, so a
-                    glance-and-click favored PayPal by accident. Flagged live by
-                    Zaal, 2026-09-21: "the tickets page still takes us to paypal
-                    sometimes." Equal weight lets whichever option someone
-                    actually wants stand on its own. */}
-                <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant="secondary">
-                  Chip in {tier.price}
-                </Button>
                 {tier.id === PRO_TICKET.id ? (
                   // Zaal's own Buy Button - a second front-end onto the same
                   // Payment Link as stripeLinkFor(tier.id), not a new door.
-                  // Replaces the plain link below rather than sitting beside
-                  // it. See StripeBuyButton.tsx for the tradeoffs.
+                  // See StripeBuyButton.tsx for the tradeoffs.
                   <StripeBuyButton />
                 ) : stripeLinkFor(tier.id) ? (
-                  <Button href={stripeLinkFor(tier.id) as string} external variant="secondary">
+                  <Button href={stripeLinkFor(tier.id) as string} external variant="primary">
                     Pay by card
                   </Button>
                 ) : null}
