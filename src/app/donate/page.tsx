@@ -109,7 +109,12 @@ export default function DonatePage() {
                     the same container - without it the Buy Button's own ~230px card
                     stretches the PayPal pill button into an oval. */}
                 <div className="mt-4 flex flex-wrap items-start gap-2">
-                  <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant={tier.id === 'pro' ? 'primary' : 'secondary'}>
+                  {/* Always secondary - see tickets/page.tsx's comment on the
+                      same button. Primary-on-pro was a leftover from when
+                      PayPal was the only button on this card; next to the
+                      embedded Stripe widget it made PayPal the accidental
+                      default click. Zaal, 2026-09-21. */}
+                  <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant="secondary">
                     Chip in {tier.price}
                   </Button>
                   {tier.id === PRO_TICKET.id ? (
