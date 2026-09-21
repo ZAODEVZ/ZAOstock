@@ -128,6 +128,10 @@ const config: NextConfig = {
       // other redirect in this file: a 308 outlives any future decision to
       // give /support a page of its own.
       { source: '/support', destination: '/contact', permanent: false },
+      // Zaal typed https://zaostock.com/ticket (singular) 2026-09-20 looking
+      // for the page with RSVP + both paid tiers. The real route is /tickets
+      // (plural) - same shape as /artist -> /artists above.
+      { source: '/ticket', destination: '/tickets', permanent: false },
     ];
   },
   async rewrites() {
