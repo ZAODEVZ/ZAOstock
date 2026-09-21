@@ -12,7 +12,8 @@
     "test:e2e": "playwright test",
     "check:exposure": "node scripts/check-supabase-exposure.mjs",
     "check:mobile-overflow": "node scripts/mobile-overflow-check.mjs",
-    "check:facts": "node scripts/check-fact-dedup.mjs"
+    "check:facts": "node scripts/check-fact-dedup.mjs",
+    "check:review": "node scripts/check-pr-review.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

@@ -67,3 +67,20 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check:facts
+
+  # Its own job: audits security and database invariants (Rule 9 red control,
+  # Rule 7c pinned head SHA, credentials leaks, SQL injection, RLS boundaries).
+  # Fails loudly on its own without hiding other CI assertions.
+  review:
+    name: security & database review gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:review
