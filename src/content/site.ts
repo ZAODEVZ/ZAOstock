@@ -425,14 +425,24 @@ export function stripeLinkFor(
 }
 
 /**
+ * A checkout URL's short `?id=<uuid>` form (see the function doc below)
+ * names no network at all, so it can only be verified by hand, once. Each
+ * entry here is an id Zaal has confirmed points at a real Base MAINNET
+ * lock - add one only after that confirmation, never speculatively. Empty
+ * today: nothing has been confirmed yet, so every `id=` URL is refused
+ * until one is added here on purpose.
+ */
+const KNOWN_MAINNET_CONFIG_IDS: ReadonlySet<string> = new Set([]);
+
+/**
  * The onchain checkout, or null while the lock does not exist or the URL
  * fails a check.
  *
  * Real Unlock checkout URLs come in two shapes (confirmed against
  * unlock-protocol/unlock's own blog examples, 2026-09-21): a long form
- * carrying `?paywallConfig=<url-encoded JSON>`, whose `locks` map states
- * each lock's `network` (chain id) explicitly, and a short form carrying
- * only `?id=<uuid>`, a reference to a config stored server-side by Unlock,
+ * carrying `?paywallConfig=<url-encoded JSON>`, whose `locks` map can
+ * state each lock's `network` (chain id), and a short form carrying only
+ * `?id=<uuid>`, a reference to a config stored server-side by Unlock,
  * which names no network in the URL at all.
  *
  * The hazard this closes (flagged by two peer lanes, 2026-09-21, before
@@ -443,31 +453,42 @@ export function stripeLinkFor(
  * this site would render a live "Pay onchain" button selling a worthless
  * test key.
  *
- * This closes it for the long form only: when paywallConfig is present,
- * every lock's network must be BASE_MAINNET_CHAIN_ID or the URL is
- * refused - an allowlist of exactly what The ZAO decided, not a denylist
- * of known testnet ids, so an unlisted or future testnet chain id is
- * refused too, not just the one this comment names.
- *
- * KNOWN GAP, left open rather than hidden: the short `id=` form carries no
- * network at all, so this check cannot verify it either way - it passes
- * through unchanged, same as before this guard existed. Closing that gap
- * would need checking the id against Unlock's own API at build or request
- * time, which this file deliberately does not do (see the block comment
- * above on why this file holds no server calls). Until ZAOstock's real
- * checkout link is in hand, prefer confirming it uses the long
- * paywallConfig form before pasting it into UNLOCK_CHECKOUT_URL.
+ * THIS IS AN ALLOWLIST, NOT A DENYLIST - it must refuse what it cannot
+ * verify, not only what it can see and dislikes. A first version of this
+ * function (2026-09-21) refused an explicit wrong network but let through
+ * a lock with no `network` field at all, an empty or missing `locks` map,
+ * and any `id=` URL - Unlock's own config docs list per-lock `network` as
+ * "recommended", not required, so "no network stated" is a legal config a
+ * testnet lock can produce, and it was slipping through. Caught by a peer
+ * lane's adversarial test run against the actual code, not a review of
+ * the comment - fixed the same day. Every path below now defaults to
+ * refuse:
+ * - no paywallConfig at all -> refused, UNLESS the `id=` value is on
+ *   KNOWN_MAINNET_CONFIG_IDS above (empty until Zaal confirms a real one)
+ * - paywallConfig present but unparseable, or with no locks map, or an
+ *   empty one -> refused
+ * - any lock whose network is missing OR is not exactly
+ *   BASE_MAINNET_CHAIN_ID -> refused
+ * - accepted only when there is at least one lock and every one of them
+ *   states BASE_MAINNET_CHAIN_ID explicitly
  */
 export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | null {
   if (!url.startsWith(UNLOCK_CHECKOUT_PREFIX)) return null;
 
-  let paywallConfigRaw: string | null;
+  let parsed: URL;
   try {
-    paywallConfigRaw = new URL(url).searchParams.get('paywallConfig');
+    parsed = new URL(url);
   } catch {
     return null;
   }
-  if (!paywallConfigRaw) return url; // short `id=` form - see KNOWN GAP above
+
+  const paywallConfigRaw = parsed.searchParams.get('paywallConfig');
+  if (!paywallConfigRaw) {
+    // Short `id=` form: nothing here states a network, so only an id Zaal
+    // has already confirmed points at Base mainnet may pass.
+    const id = parsed.searchParams.get('id');
+    return id !== null && KNOWN_MAINNET_CONFIG_IDS.has(id) ? url : null;
+  }
 
   let config: unknown;
   try {
@@ -477,12 +498,10 @@ export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | n
   }
 
   const locks = (config as { locks?: Record<string, { network?: number }> } | null)?.locks;
-  if (!locks || typeof locks !== 'object') return url; // no locks map to check against
+  const entries = locks && typeof locks === 'object' ? Object.values(locks) : [];
+  if (entries.length === 0) return null; // nothing to verify means nothing is verified
 
-  for (const lock of Object.values(locks)) {
-    if (lock?.network !== undefined && lock.network !== BASE_MAINNET_CHAIN_ID) return null;
-  }
-  return url;
+  return entries.every((lock) => lock?.network === BASE_MAINNET_CHAIN_ID) ? url : null;
 }
 
 

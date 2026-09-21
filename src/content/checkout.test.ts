@@ -19,7 +19,14 @@ const DONATE = 'src/app/donate/page.tsx';
 const PAGES = [TICKETS, DONATE];
 
 const REAL_STRIPE = 'https://buy.stripe.com/test_aEU5kF3dK2mQ0Ss288';
-const REAL_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
+// A "real" Unlock checkout URL must state a lock on Base mainnet (8453) -
+// see unlockCheckoutUrl's own doc comment for why this is an allowlist, not
+// a denylist. The short id= form (no network stated at all) is exercised
+// separately below, where it is refused by default.
+const REAL_UNLOCK =
+  'https://app.unlock-protocol.com/checkout?paywallConfig=' +
+  encodeURIComponent(JSON.stringify({ locks: { '0xLOCK': { network: 8453 } } }));
+const SHORT_ID_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
 
 // Tier ids that are deliberately live today - the only exemption from "an
 // unset rail renders nothing" below. Marking a tier live is a one-line,
@@ -124,16 +131,41 @@ describe('unlockCheckoutUrl refuses a testnet lock', () => {
     expect(unlockCheckoutUrl(mixed)).toBeNull();
   });
 
-  it('still passes the short id= form through unchanged - documented gap, not a regression', () => {
-    // No paywallConfig at all means no network to check - see the KNOWN GAP
-    // note on unlockCheckoutUrl itself. Pinned here so nobody "fixes" this
-    // case without reading that note first.
-    expect(unlockCheckoutUrl(REAL_UNLOCK)).toBe(REAL_UNLOCK);
-  });
-
   it('refuses an unparseable paywallConfig rather than guessing', () => {
     const malformed = 'https://app.unlock-protocol.com/checkout?paywallConfig=%7Bnot-json';
     expect(unlockCheckoutUrl(malformed)).toBeNull();
+  });
+
+  // This is an ALLOWLIST: every path below defaults to refuse, not just the
+  // one explicit-wrong-network case above. A first version of this guard
+  // (2026-09-21) got this backwards - it refused only what it could see and
+  // dislike, so a lock that simply omitted `network` (a legal Unlock config;
+  // the field is "recommended", not required) slipped through as accepted.
+  // Caught by a peer lane running the actual function against real inputs,
+  // not by reading the comment. Each case below is one of the holes that
+  // run found, pinned so none of them reopens silently.
+  it('refuses a lock with no network field at all, even though that is a legal Unlock config', () => {
+    const noNetwork =
+      'https://app.unlock-protocol.com/checkout?paywallConfig=' +
+      encodeURIComponent(JSON.stringify({ locks: { '0xLOCK': {} } }));
+    expect(unlockCheckoutUrl(noNetwork)).toBeNull();
+  });
+
+  it('refuses a paywallConfig with no locks map, or an empty one', () => {
+    const noLocks = 'https://app.unlock-protocol.com/checkout?paywallConfig=' + encodeURIComponent(JSON.stringify({}));
+    const emptyLocks =
+      'https://app.unlock-protocol.com/checkout?paywallConfig=' + encodeURIComponent(JSON.stringify({ locks: {} }));
+    expect(unlockCheckoutUrl(noLocks)).toBeNull();
+    expect(unlockCheckoutUrl(emptyLocks)).toBeNull();
+  });
+
+  it('refuses the short id= form by default - nothing is on the confirmed-mainnet allowlist yet', () => {
+    // The id= form names no network at all, so it can only be trusted once
+    // Zaal has confirmed by hand that a specific id points at a real Base
+    // mainnet lock, added deliberately to KNOWN_MAINNET_CONFIG_IDS in
+    // site.ts. That set is empty today, so every id= URL is refused - this
+    // is the fixed behavior, not the gap the first version left open.
+    expect(unlockCheckoutUrl(SHORT_ID_UNLOCK)).toBeNull();
   });
 });
 
