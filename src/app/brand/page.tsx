@@ -240,6 +240,7 @@ const TASKS: Array<{ label: string; href: string }> = [
   { label: 'I need a poster', href: '#posters' },
   { label: 'I need a social image', href: '#social' },
   { label: 'I need words to paste', href: '#copy' },
+  { label: 'I need audio', href: '#audio' },
 ];
 
 const TEXTURES: Asset[] = [
@@ -487,6 +488,29 @@ export default function BrandPage() {
         <Section id="textures">
           <SectionHeader eyebrow="Surface" title="Textures." className="mb-4" />
           <AssetGrid assets={TEXTURES} />
+        </Section>
+
+        <Section id="audio">
+          <SectionHeader eyebrow="Sound" title="Radio and the spot." className="mb-4" />
+          <p className="text-sm text-ink-secondary measure mb-4">
+            Use these as they are, or cut them up. The 30-second spot is the one to drop under a video.
+          </p>
+          <Card className="max-w-[520px] mb-4">
+            <p className="text-sm font-bold mb-2">The ZAOstock spot, 30 seconds</p>
+            <audio src="/brand/audio/zaostock-commercial-30s.mp3" controls preload="none" className="w-full" />
+            <p className="text-xs text-ink-muted mt-3 mb-0">MP3 &middot; 0:30 &middot; 695 KB</p>
+            <a href="/brand/audio/zaostock-commercial-30s.mp3" download className="mt-2 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+              Download
+            </a>
+          </Card>
+          <Card className="max-w-[520px]">
+            <p className="text-sm font-bold mb-2">Zaal on the radio, 10 September 2026</p>
+            <audio src="/brand/audio/zaostock-radio-interview-2026-09-10.mp3" controls preload="none" className="w-full" />
+            <p className="text-xs text-ink-muted mt-3 mb-0">MP3 &middot; 7:39 &middot; 18 MB &middot; The full interview about the festival</p>
+            <a href="/brand/audio/zaostock-radio-interview-2026-09-10.mp3" download className="mt-2 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+              Download
+            </a>
+          </Card>
         </Section>
 
         <Section id="video">
