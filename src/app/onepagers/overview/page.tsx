@@ -463,7 +463,7 @@ export default async function OverviewOnePager() {
                     href={SOCIALS.find((s) => s.platform === 'X')!.href}
                     className="text-denim-500 hover:underline print:text-denim-500"
                   >
-                    @thezaodao
+                    @{new URL(SOCIALS.find((s) => s.platform === 'X')!.href).pathname.slice(1)}
                   </a>
                 </li>
               </ul>
