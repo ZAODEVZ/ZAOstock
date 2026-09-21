@@ -52,3 +52,18 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+
+  # Its own job, same reasoning as the split above: this check's job is to
+  # fail loudly and by itself, never to take typecheck/test/build down with
+  # it if a page hardcodes a fact that's drifted from festival.ts/site.ts.
+  facts:
+    name: fact-dedup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:facts
