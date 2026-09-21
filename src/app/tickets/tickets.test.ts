@@ -75,6 +75,19 @@ describe('the festival stays free', () => {
   });
 });
 
+describe('the Pro Ticket checkout stays in sync across both pages', () => {
+  // /donate had the old plain "Pay by card" link for Pro long after /tickets
+  // moved to the embedded Stripe Buy Button (#265 only touched /tickets) -
+  // same $50 tier, two different checkout experiences depending which page a
+  // visitor landed on. Caught in a full-site review, 2026-09-21.
+  it('renders the same StripeBuyButton component on both pages', () => {
+    for (const p of [TICKETS, DONATE]) {
+      expect(code(p)).toContain("from '@/components/StripeBuyButton'");
+      expect(code(p)).toContain('<StripeBuyButton />');
+    }
+  });
+});
+
 describe('the paid tiers stay deletable', () => {
   // The 2 September agenda may drop them. If it does, exactly one Section comes
   // out of this page - this fails loudly if they get smeared across it instead.
