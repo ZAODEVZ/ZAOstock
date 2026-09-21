@@ -236,6 +236,7 @@ const COPY_BLOCKS = [
 
 const TASKS: Array<{ label: string; href: string }> = [
   { label: 'I need a logo', href: '#logos' },
+  { label: 'How do I use it', href: '#usage' },
   { label: 'I need a poster', href: '#posters' },
   { label: 'I need a social image', href: '#social' },
   { label: 'I need words to paste', href: '#copy' },
@@ -387,26 +388,115 @@ export default function BrandPage() {
         </div>
       </Section>
 
-      <Section id="posters">
-        <SectionHeader eyebrow="Reference" title="Posters." className="mb-4" />
-        <AssetGrid assets={POSTERS} />
+      <Section id="usage">
+        <SectionHeader eyebrow="How to use it" title="Clear space, minimum size, and what not to do." className="mb-4" />
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div className="bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard p-5">
+            <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-ink-muted m-0 mb-3">Clear space</p>
+            <div className="flex items-center justify-center bg-ink-950 rounded-[10px] p-8">
+              {/* The padding above (p-8, 32px) is a visual stand-in for "leave
+                  room" - illustrative, not a measured ratio. The rule in the
+                  copy below is the real one. */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
+              <img src="/brand/logos/zaostock26_moose_600.png" alt="The moose with clear space around it" className="w-32 h-32 object-contain" />
+            </div>
+            <p className="text-xs text-ink-secondary mt-3 mb-0">
+              Keep empty space around the mark equal to at least 10% of its own width on every side - nothing else (text, another
+              logo, an edge of the frame) inside that margin. The mark is a dense, detailed illustration; crowding it is what
+              breaks it first, before size does.
+            </p>
+          </div>
+          <div className="bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard p-5">
+            <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-ink-muted m-0 mb-3">Minimum size</p>
+            <div className="flex items-end justify-center gap-4 bg-ink-950 rounded-[10px] p-4">
+              {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
+              <img src="/brand/logos/zaostock26_moose_600.png" alt="The moose at 32px - too small" width={32} height={32} />
+              {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
+              <img src="/brand/logos/zaostock26_moose_600.png" alt="The moose at 64px - the floor" width={64} height={64} />
+            </div>
+            <p className="text-xs text-ink-secondary mt-3 mb-0">
+              Never render the full mark (moose + wordmark) below <strong>64px</strong> wide. Determined by actually rendering it at
+              16 through 96px and looking, not assumed: the ZAOSTOCK wordmark inside the mark is illegible under ~40px and still
+              marginal at 48px - 64px is the first size where it reads cleanly. Need something smaller than that? Use the
+              web-sized or alt-render mark on its own, or the wordmark-only lettering file above, not a shrunk full mark.
+            </p>
+          </div>
+        </div>
+        <div className="mt-4 bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard p-5">
+          <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-ink-muted m-0 mb-3">Don&rsquo;t</p>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {/* Each "don't" below is the SAME real logo file, distorted with a
+                CSS transform to demonstrate the misuse - not a real exported
+                asset, nothing here is downloadable or meant to be copied. */}
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center justify-center bg-ink-950 rounded-[10px] p-4 w-full h-28">
+                {/* eslint-disable-next-line @next/next/no-img-element -- illustrative CSS distortion, not a real asset */}
+                <img src="/brand/logos/zaostock26_moose_600.png" alt="Don't stretch it" className="w-full h-full object-fill" />
+              </div>
+              <p className="text-xs text-ink-muted m-0">Don&rsquo;t stretch it</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center justify-center bg-ink-950 rounded-[10px] p-4 w-full h-28">
+                {/* eslint-disable-next-line @next/next/no-img-element -- illustrative CSS distortion, not a real asset */}
+                <img src="/brand/logos/zaostock26_moose_600.png" alt="Don't skew it" className="w-20 h-20 object-contain [transform:skew(-18deg,8deg)]" />
+              </div>
+              <p className="text-xs text-ink-muted m-0">Don&rsquo;t skew it</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div
+                className="flex items-center justify-center rounded-[10px] p-4 w-full h-28"
+                style={{ backgroundImage: 'repeating-linear-gradient(45deg, #e0ddaa 0 8px, #b3392c 8px 16px, #4a6741 16px 24px)' }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- illustrative misuse, real asset on a busy background */}
+                <img src="/brand/logos/zaostock26_moose_600.png" alt="Don't place it on a busy background" className="w-20 h-20 object-contain" />
+              </div>
+              <p className="text-xs text-ink-muted m-0">Don&rsquo;t bury it in a busy background</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center justify-center bg-ink-950 rounded-[10px] p-4 w-full h-28">
+                {/* eslint-disable-next-line @next/next/no-img-element -- illustrative CSS distortion, not a real asset */}
+                <img
+                  src="/brand/logos/zaostock26_moose_600.png"
+                  alt="Don't add a drop shadow or glow"
+                  className="w-20 h-20 object-contain [filter:drop-shadow(0_0_10px_#e0ddaa)_drop-shadow(4px_6px_0_#b3392c)]"
+                />
+              </div>
+              <p className="text-xs text-ink-muted m-0">Don&rsquo;t add a drop shadow or glow</p>
+            </div>
+          </div>
+        </div>
       </Section>
 
-      <Section id="textures">
-        <SectionHeader eyebrow="Surface" title="Textures." className="mb-4" />
-        <AssetGrid assets={TEXTURES} />
-      </Section>
+      <details className="group">
+        <summary className="cursor-pointer list-none px-6 sm:px-0">
+          <div className="flex items-center gap-2 py-3">
+            <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-ink-muted">More assets</span>
+            <span className="text-xs text-ink-muted">Posters, textures, the logo animation - reference material, open to browse</span>
+            <span className="ml-auto text-ink-muted transition-transform group-open:rotate-180">&#9660;</span>
+          </div>
+        </summary>
 
-      <Section id="video">
-        <SectionHeader eyebrow="Motion" title="Logo animation." className="mb-4" />
-        <Card className="max-w-[520px]">
-          <video src="/brand/video/logo-draw-animation.mp4" controls muted loop playsInline className="w-full rounded-[10px] border-[1.5px] border-ink-950/20" />
-          <p className="text-xs text-ink-muted mt-3 mb-0">MP4 &middot; 1.77 MB &middot; Credit: Candy (CandyToyBox)</p>
-          <a href="/brand/video/logo-draw-animation.mp4" download className="mt-2 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
-            Download
-          </a>
-        </Card>
-      </Section>
+        <Section id="posters">
+          <SectionHeader eyebrow="Reference" title="Posters." className="mb-4" />
+          <AssetGrid assets={POSTERS} />
+        </Section>
+
+        <Section id="textures">
+          <SectionHeader eyebrow="Surface" title="Textures." className="mb-4" />
+          <AssetGrid assets={TEXTURES} />
+        </Section>
+
+        <Section id="video">
+          <SectionHeader eyebrow="Motion" title="Logo animation." className="mb-4" />
+          <Card className="max-w-[520px]">
+            <video src="/brand/video/logo-draw-animation.mp4" controls muted loop playsInline className="w-full rounded-[10px] border-[1.5px] border-ink-950/20" />
+            <p className="text-xs text-ink-muted mt-3 mb-0">MP4 &middot; 1.77 MB &middot; Credit: Candy (CandyToyBox)</p>
+            <a href="/brand/video/logo-draw-animation.mp4" download className="mt-2 inline-block text-sm font-bold underline underline-offset-4 text-ink-950">
+              Download
+            </a>
+          </Card>
+        </Section>
+      </details>
 
       <Section id="social">
         <SectionHeader eyebrow="Ready-made" title="Social crops." className="mb-4" />

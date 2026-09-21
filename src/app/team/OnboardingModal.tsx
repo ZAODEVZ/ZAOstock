@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { FESTIVAL } from '@/content/festival';
 
 const STORAGE_KEY = 'zaostock-onboarding-seen-v1';
 
@@ -65,7 +66,7 @@ export function OnboardingModal({ memberName }: { memberName: string }) {
 
         <div className="bg-[#0a1628] border border-white/[0.06] rounded-lg p-3">
           <p className="text-[11px] text-gray-500">
-            ZAOstock operates at break-even. Every dollar goes to artists and production. Oct 3 2026, Franklin Street Parklet, Ellsworth ME.
+            ZAOstock operates at break-even. Every dollar goes to artists and production. {FESTIVAL.shortDate}, {FESTIVAL.venue}, Ellsworth ME.
           </p>
         </div>
 
