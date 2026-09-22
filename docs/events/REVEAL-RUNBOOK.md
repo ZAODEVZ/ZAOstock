@@ -101,14 +101,19 @@ exactly on time, the endpoint answered correctly, and the bill was empty because
 no row was `confirmed`. Everything worked and the result was still wrong, which
 is why this check exists before the website step rather than after it.
 
-Measured 2026-09-14: **2 of 8 acts are confirmed**, DCoop and LyonsDen, and both
-are published with `pending: 0`. The 8 September measurement said 0 of 9; both
-halves moved. Hurricane came off the bill on 10 September, so it is 8 acts now,
-and the gate has since been proved in the direction that matters: an act reaching
-`confirmed` with a bio and a photo does appear on the bill. The failure mode this
-section exists for is still live for the other six.
+Measured 2026-09-22: **5 of 8 acts are confirmed** - The Crown Vics, Michael
+Anderson, DCoop, LyonsDen and Tom Fellenz - each published with a bio and a
+photo. The count has moved twice: 0 of 9 on 8 September, 2 of 8 on 14 September,
+5 of 8 today. Hurricane came off the bill on 10 September, so it is 8 acts.
+
+The gate keeps proving itself in the direction that matters: an act reaching
+`confirmed` with a bio and a photo does appear on the bill, and three more have
+since made that trip. **The failure mode this section exists for is live for the
+remaining three: OPEN X, Grass Rug and Acadia Rising.** Eleven days out, those
+three are on the poster and not in the API.
 <!-- measured 2026-09-14T12:19Z - zao-measure --verify "zaostock acts confirmed count" (DRIFTED from 0 on 2026-09-08T21:00Z to 2 on 2026-09-14T12:19Z) -->
-<!-- re-check: 2026-09-21 -->
+<!-- re-checked 2026-09-22T12:47Z - GET https://zaostock.com/api/events/zaostock/lineup returned 5 artists, each with photo_url and bio (DRIFTED from 2 on 2026-09-14T12:19Z to 5 on 2026-09-22T12:47Z) -->
+<!-- re-check: 2026-09-29 -->
 
 ### 3. The website needs NO deploy - corrected 2026-09-08
 
