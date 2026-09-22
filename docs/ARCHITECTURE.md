@@ -185,7 +185,9 @@ egress quota (402 until 2026-09-21), and warned `zaostock-2026` might 404 once
 the quota refilled. That was true on the day it was written. It then sat here
 unchanged while the alias shipped and both endpoints started answering - a claim
 about an external service that stayed loud after it stopped being true, which is
-the exact failure this repo now guards against. <!-- re-check: 2026-09-21 -->
+the exact failure this repo now guards against.
+<!-- re-checked 2026-09-22: /api/events/zaostock/lineup and /api/events/zaostock-2026/lineup both 200 with the same first artist (The Crown Vics, id aedc603c); /api/events/not-a-festival/lineup 404s {"error":"Event not found"}, so the 200s are the alias answering and not a catch-all. Still closed. -->
+<!-- re-check: 2026-10-20 -->
 
 </details>
 
