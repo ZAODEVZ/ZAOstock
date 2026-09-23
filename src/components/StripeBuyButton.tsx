@@ -18,16 +18,14 @@ import Script from 'next/script';
 // button on the site, so revoking it in the Stripe dashboard breaks all of
 // them at once until this file is redeployed with the new key.
 const BUY_BUTTONS: Partial<Record<'fan' | 'supporter' | 'pro', string>> = {
-  // `fan` was pasted from Zaal directly, matched by eye against
-  // STRIPE_LINKS.fan's Payment Link - NOT yet verified against Stripe's
-  // API the way `pro`'s checkout_url was. This session had no Stripe
-  // secret key available to run that check. Re-verify before relying on
-  // it for real money, same as pro's was confirmed.
+  // `fan` and `supporter` were pasted from Zaal directly, matched by eye
+  // against their own STRIPE_LINKS Payment Link - NOT yet verified against
+  // Stripe's API the way `pro`'s checkout_url was. This session had no
+  // Stripe secret key available to run that check. Re-verify both before
+  // relying on either for real money, same as pro's was confirmed.
   fan: 'buy_btn_1UIyccKEKqFBqu9oamQBf5ls',
+  supporter: 'buy_btn_1UJ01jKEKqFBqu9o9a6drc7d',
   pro: 'buy_btn_1UHtBXKEKqFBqu9ohduWCZ4s',
-  // supporter: 'buy_btn_...' - paste here once Zaal has generated one from
-  // the dashboard for the Supporter Payment Link, and verify it against
-  // Stripe's API the way pro's was before shipping.
 };
 const PUBLISHABLE_KEY = 'pk_live_51UHquZKEKqFBqu9oPJuVUHbRwP6jsljrV22MSKEQn7m7VxOHoGeMTawhznBcCTgF2j5Z9JpBSvGgFMiorJOwoqtG00YBk0xUJF';
 
