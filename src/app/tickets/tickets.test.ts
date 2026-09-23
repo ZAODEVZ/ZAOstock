@@ -33,9 +33,9 @@ describe('prices have ONE source', () => {
     }
   });
 
-  it('carries the two tiers Zaal asked for, cheapest first', () => {
-    expect(SUPPORT_TIERS.map((t) => t.price)).toEqual(['$20', '$50']);
-    expect(SUPPORT_TIERS.map((t) => t.amount)).toEqual([20, 50]);
+  it('carries the three tiers Zaal asked for, cheapest first', () => {
+    expect(SUPPORT_TIERS.map((t) => t.price)).toEqual(['$1', '$20', '$50']);
+    expect(SUPPORT_TIERS.map((t) => t.amount)).toEqual([1, 20, 50]);
     expect(PRO_TICKET.price).toBe('$50');
     expect(PAYPAL_URL).toBe('https://paypal.com/paypalme/zaalpanthaki');
   });
@@ -146,7 +146,7 @@ describe('the funding goal states its own rule', () => {
   });
 
   it('says which tiers count, so the rule travels with the number', () => {
-    expect(PRO_ROUND.goal.toLowerCase()).toContain('either tier');
+    expect(PRO_ROUND.goal.toLowerCase()).toContain('any tier');
     expect(PRO_ROUND.countsRule).toBeTruthy();
   });
 

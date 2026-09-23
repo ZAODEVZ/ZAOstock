@@ -35,11 +35,11 @@ const SHORT_ID_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
 // added after this was written (src/content/site.ts's SUPPORT_TIERS), so a
 // new tier is exercised by this test the day it exists rather than silently
 // skipped. Issue #258.
-const LIVE_TIERS = new Set(['supporter', 'pro']);
+const LIVE_TIERS = new Set(['fan', 'supporter', 'pro']);
 
 describe('an unset rail renders nothing', () => {
-  // Both tiers went live 2026-09-20 - supporter (plink_1UHsQYKEKqFBqu9oZADCzFQ9)
-  // then pro (plink_1UHtB3KEKqFBqu9owZalGOH0). With every current SUPPORT_TIERS
+  // supporter (plink_1UHsQYKEKqFBqu9oZADCzFQ9) and pro (plink_1UHtB3KEKqFBqu9owZalGOH0)
+  // went live 2026-09-20; fan (STRIPE_LINKS.fan) went live 2026-09-23. With every current SUPPORT_TIERS
   // entry in LIVE_TIERS, the loop below has nothing left to iterate - it would
   // pass trivially and stop meaning anything. `future-tier` keeps this test
   // actually exercising the null path regardless of how many real tiers are

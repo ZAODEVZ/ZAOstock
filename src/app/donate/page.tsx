@@ -83,7 +83,7 @@ export default function DonatePage() {
           <SectionHeader
             eyebrow="Pro Ticket"
             title="Free to attend. The first round of crowdfunding starts now."
-            lede={`ZAOstock is free for anyone who wants to show up. We are raising the next ${PRO_ROUND.roundTotal} toward making it happen, at ${SUPPORT_TIERS[0].price} or ${PRO_TICKET.price}. ${PRO_ROUND.countsRule} Both credit you by name.`}
+            lede={`ZAOstock is free for anyone who wants to show up. We are raising the next ${PRO_ROUND.roundTotal} toward making it happen, at ${SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or ${PRO_TICKET.price}. ${PRO_ROUND.countsRule} Every tier credits you by name.`}
           />
           <div className="flex flex-col gap-4">
             {SUPPORT_TIERS.map((tier) => (
@@ -117,7 +117,7 @@ export default function DonatePage() {
                     Chip in {tier.price}
                   </Button>
                   {hasBuyButton(tier.id) ? (
-                    <StripeBuyButton tierId={tier.id as 'supporter' | 'pro'} />
+                    <StripeBuyButton tierId={tier.id as 'fan' | 'supporter' | 'pro'} />
                   ) : stripeLinkFor(tier.id) ? (
                     <Button href={stripeLinkFor(tier.id) as string} external variant="secondary">
                       Pay by card
