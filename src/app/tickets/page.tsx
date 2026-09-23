@@ -3,7 +3,6 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
-import { StripeBuyButton } from '@/components/StripeBuyButton';
 
 // WHY THIS PAGE EXISTS
 //
@@ -117,17 +116,18 @@ export default function TicketsPage() {
                   weight styling was the fix for a PayPal-vs-card bias problem
                   that no longer applies once PayPal is gone). Right under the
                   bullet list, not floating beside another button - same ask,
-                  "closer to just the top". items-start: without it, flex's
-                  default align-items:stretch matches every child to the
-                  tallest one on the line, and the Stripe Buy Button's own
-                  card renders ~230px tall. */}
+                  "closer to just the top".
+                  Both tiers now share the exact same button (not the
+                  embedded <stripe-buy-button> for Pro). Zaal, 2026-09-23:
+                  "fix the right to look like the left" - the Buy Button
+                  renders in a closed shadow DOM, so its white Stripe-default
+                  card can never be restyled from outside (see
+                  StripeBuyButton.tsx, kept only as a spare, unused here).
+                  This still goes to the exact same Stripe checkout: the Buy
+                  Button's own checkout_url matches the pro tier's own
+                  stripeLinkFor value exactly, verified against Stripe's API. */}
               <div className="mt-4 flex flex-wrap items-start gap-2">
-                {tier.id === PRO_TICKET.id ? (
-                  // Zaal's own Buy Button - a second front-end onto the same
-                  // Payment Link as stripeLinkFor(tier.id), not a new door.
-                  // See StripeBuyButton.tsx for the tradeoffs.
-                  <StripeBuyButton />
-                ) : stripeLinkFor(tier.id) ? (
+                {stripeLinkFor(tier.id) ? (
                   <Button href={stripeLinkFor(tier.id) as string} external variant="primary">
                     Pay by card
                   </Button>
