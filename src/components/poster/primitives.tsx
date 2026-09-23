@@ -27,17 +27,20 @@ export function Eyebrow({ children, tone = 'muted', className }: { children: Rea
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
-const BUTTON_BASE =
+// Exported so a component that cannot use <Button> itself (e.g. AddToCalendar's
+// .ics link, which needs a `download` attribute Button's <a> path has no prop
+// for) can still build the exact same visual class string.
+export const BUTTON_BASE =
   'poster-motion inline-flex items-center justify-center gap-2 font-sans font-bold uppercase tracking-[0.08em] whitespace-nowrap rounded-pill transition-[transform,box-shadow,background-color,color] duration-200 ease-poster focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)] disabled:opacity-50 disabled:cursor-not-allowed';
 
-const BUTTON_VARIANT: Record<ButtonVariant, string> = {
+export const BUTTON_VARIANT: Record<ButtonVariant, string> = {
   // The fireside gradient is a constant: the same in light and dark mode.
   primary: 'bg-linear-to-b from-fireside to-ember text-onfill shadow-hard hover:-translate-y-0.5 hover:shadow-hard-lg active:translate-y-0 disabled:hover:translate-y-0',
   secondary: 'bg-transparent text-red-700 border-[1.5px] border-red-700 hover:bg-red-700/10',
   ghost: 'bg-transparent text-denim-400 hover:text-denim-500 underline underline-offset-4 normal-case tracking-normal font-semibold',
 };
 
-const BUTTON_SIZE: Record<ButtonSize, string> = {
+export const BUTTON_SIZE: Record<ButtonSize, string> = {
   sm: 'text-sm px-[18px] py-[9px]',
   md: 'text-sm px-[26px] py-[13px]',
   lg: 'text-base px-[34px] py-[17px]',
