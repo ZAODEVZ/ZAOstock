@@ -64,10 +64,41 @@ describe('fallback lineup slugs', () => {
 // changes one side without the other, which forces the decision Zaal owes:
 // either LyonsDen goes into the artists table as confirmed and linked to the
 // event, or it is said out loud that the app is not a reveal surface this year.
+//
+// RESOLVED 2026-09-23. The artists table now carries the bill: the live endpoint
+// answered source "live", published true, pending 0, 8 artists, LyonsDen among
+// them. The fallback was populated as a verbatim copy of that response, so the
+// pin above has done its job and becomes the invariant it was protecting: every
+// name the site hardcodes must be on the bill the app would serve when Supabase
+// is down.
 describe('the site and the app must not disagree silently about the lineup', () => {
-  it('pins the known gap so changing one side trips the other', () => {
-    expect(PUBLIC_LINEUP).toEqual(['LyonsDen']);
-    expect(getFallbackLineup('zaostock')).toEqual([]);
-    expect(getFallbackLineup('zaostock-2026')).toEqual([]);
+  it('every name the site hardcodes is in the committed fallback', () => {
+    const names = getFallbackLineup('zaostock').map((a) => a.name);
+    for (const n of PUBLIC_LINEUP) expect(names).toContain(n);
+  });
+});
+
+// The degraded path serves this file to the ZAO Festivals app when Supabase is
+// down (route.ts: degraded()). An empty array there is a 503 on show day; a
+// half-filled entry is a broken card. Pinned to the 2026-09-23 copy.
+describe('the committed fallback is a real bill', () => {
+  const bill = getFallbackLineup('zaostock');
+
+  it('carries the eight confirmed acts', () => {
+    expect(bill).toHaveLength(8);
+  });
+
+  it('every act has a unique id, a name, a bio and a photo', () => {
+    expect(new Set(bill.map((a) => a.id)).size).toBe(bill.length);
+    for (const a of bill) {
+      expect(a.name.trim()).not.toBe('');
+      expect(a.bio.trim()).not.toBe('');
+      expect(a.photo_url.trim()).not.toBe('');
+    }
+  });
+
+  it('is ordered by set_order', () => {
+    const orders = bill.map((a) => a.set_order ?? Infinity);
+    expect(orders).toEqual([...orders].sort((x, y) => x - y));
   });
 });
