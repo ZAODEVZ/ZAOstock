@@ -81,18 +81,21 @@ describe('the Pro Ticket checkout stays in sync across both pages', () => {
   // same $50 tier, two different checkout experiences depending which page a
   // visitor landed on. Caught in a full-site review, 2026-09-21.
   //
-  // REWRITTEN 2026-09-23. Zaal: "fix the right to look like the left" - the
-  // embedded <stripe-buy-button> renders in a closed shadow DOM, so its
-  // white Stripe-default card could never be restyled to match the site.
-  // Both pages now render Pro Ticket through the exact same helper as every
-  // other tier (stripeLinkFor), so the drift this test guards against can no
-  // longer happen by construction: there is only one code path left to take.
-  it('renders every tier, Pro included, through the same helper - no special case left to drift', () => {
+  // REWRITTEN AGAIN 2026-09-23. Zaal reversed the same-day call above:
+  // "i like the embed... this page should have those both on the first
+  // screen" - so the embedded widget is back, but the drift risk this test
+  // guards against is unchanged: whichever tier has a Buy Button id must
+  // render as the embedded widget on BOTH pages, not one. Both pages go
+  // through the exact same hasBuyButton()/StripeBuyButton() gate rather
+  // than special-casing PRO_TICKET.id, so there is only one code path to
+  // drift out of sync.
+  it('renders every tier through the same hasBuyButton gate on both pages, no special case', () => {
     for (const p of [TICKETS, DONATE]) {
       const src = code(p);
-      expect(src).not.toContain("from '@/components/StripeBuyButton'");
-      expect(src).not.toContain('<StripeBuyButton');
-      expect(src).not.toMatch(/tier\.id === PRO_TICKET\.id\s*\?/);
+      expect(src).toContain("from '@/components/StripeBuyButton'");
+      expect(src).toContain('hasBuyButton(tier.id)');
+      expect(src).toContain('<StripeBuyButton tierId=');
+      expect(src).not.toMatch(/tier\.id === PRO_TICKET\.id\s*\?\s*\n?\s*<StripeBuyButton/);
       expect(src).toContain('stripeLinkFor(tier.id)');
     }
   });
