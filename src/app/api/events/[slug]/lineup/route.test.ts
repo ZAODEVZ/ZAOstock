@@ -315,8 +315,12 @@ describe('the per-artist gate: confirmed, with a bio and a photo', () => {
       seen.add((await (await GET(req, { params })).json()).withheld);
     }
     expect([...seen].sort()).toEqual(['awaiting-bio-or-photo', 'no-confirmed-acts']);
-    const src = readFileSync(path.join(process.cwd(), 'src/app/api/events/[slug]/lineup/route.ts'), 'utf8');
-    const codes = [...src.matchAll(/'([a-z-]+)' as const\)/g)].map((m) => m[1]).sort();
+    // The literal codes moved to src/lib/lineup.ts on 2026-09-23, shared with
+    // the /live page - this route re-exports whatever that module returns.
+    const src = readFileSync(path.join(process.cwd(), 'src/lib/lineup.ts'), 'utf8');
+    const withheldLine = src.split('\n').find((l) => l.includes('withheld:'));
+    const afterField = withheldLine?.split('withheld:')[1] ?? '';
+    const codes = [...afterField.matchAll(/'([a-z-]+)'/g)].map((m) => m[1]).sort();
     expect(codes).toEqual(['awaiting-bio-or-photo', 'no-confirmed-acts']);
   });
 

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
-import { SiteShell, Section, Eyebrow, Button } from '@/components/poster';
+import { SiteShell, Section, Eyebrow, Button, AddToCalendar } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
 import { ThanksTierBlock } from './ThanksTierBlock';
@@ -54,6 +54,7 @@ export default function ThanksPage() {
           <p className="text-base text-ink-950 leading-relaxed measure">
             {FESTIVAL.dateLabel}, {FESTIVAL.window}. {FESTIVAL.venue}, {FESTIVAL.city}.
           </p>
+          <AddToCalendar className="mt-1" />
         </section>
 
         <Suspense fallback={null}>

@@ -69,8 +69,11 @@ describe('only a written confirmation reaches the public', () => {
   // API is UNCHANGED and is now the only reader this test needs to check -
   // it is still the reveal the ZAO Festivals app reads, and still shows
   // only fully-confirmed acts.
+  // 2026-09-23: the query moved to src/lib/lineup.ts, shared with the /live
+  // page (getPublicLineup) so a server component can read it directly
+  // without an internal HTTP round-trip. The route now just calls it.
   it('matches what the public reveal query actually filters on', () => {
-    const readers = ['src/app/api/events/[slug]/lineup/route.ts'];
+    const readers = ['src/lib/lineup.ts'];
     expect(PUBLISHABLE_ARTIST_STATUSES).toHaveLength(1);
     const only = PUBLISHABLE_ARTIST_STATUSES[0];
     for (const rel of readers) {

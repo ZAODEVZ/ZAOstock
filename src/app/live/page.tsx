@@ -2,7 +2,9 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { WATCH_PARTIES, fallbackChannelHref } from '@/content/live';
-import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Countdown } from '@/components/poster';
+import { getPublicLineup } from '@/lib/lineup';
+import { slugify } from '@/lib/artists';
+import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Live',
@@ -32,8 +34,13 @@ const WATCH_HREF: string | null = null;
 // A viewer staring at a dead player on 3 October could not learn any of it
 // here. See src/content/live.ts for the decisions and their source.
 
-export default function LivePage() {
+export default async function LivePage() {
   const fallbackHref = fallbackChannelHref();
+  const lineup = await getPublicLineup('zaostock');
+  // Names and order only - never the clock. Zaal, 2026-09-12: "no set times
+  // listed publicly. Not on the site, not in posts, not in the reveal copy."
+  // src/content/program.ts is the one place that rule is spelled out in full.
+  const acts = lineup.artists;
 
   return (
     <SiteShell>
@@ -45,6 +52,8 @@ export default function LivePage() {
             {FESTIVAL.dateLabel}, {FESTIVAL.window}, from {FESTIVAL.venue} in {FESTIVAL.city}. This page is where the stream plays. Bookmark it.
           </p>
           <Countdown className="mt-4" />
+          <LocalStartTime className="mt-1" />
+          <AddToCalendar className="mt-4" />
         </div>
       </Section>
 
@@ -124,6 +133,42 @@ export default function LivePage() {
           </div>
         </TwoUp>
       </Section>
+
+      {acts.length > 0 ? (
+        <Section>
+          <SectionHeader
+            eyebrow="Who's on"
+            title="Follow along with each act, in order."
+            lede="No set times here - see the program for the shape of the day. This is who's playing, in the order they play."
+          />
+          <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
+            {acts.map((act, i) => {
+              const links = (act.socials ?? '').trim().split(/\s+/).filter(Boolean);
+              return (
+                <li key={act.id}>
+                  <Card className="flex items-center gap-3">
+                    <span className="font-mono text-eyebrow text-ink-muted w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                    <div className="min-w-0">
+                      <a href={`/artist/${slugify(act.name)}`} className="font-sans font-extrabold text-ink-950 hover:text-red-700 truncate block">
+                        {act.name}
+                      </a>
+                      {links.length > 0 ? (
+                        <div className="flex flex-wrap gap-x-2 text-sm">
+                          {links.map((href) => (
+                            <a key={href} href={href} target="_blank" rel="noreferrer" className="text-red-700 font-bold truncate">
+                              {href.replace(/^https?:\/\/(www\.)?/, '')}
+                            </a>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </Card>
+                </li>
+              );
+            })}
+          </ol>
+        </Section>
+      ) : null}
 
       <Section>
         <Card>
