@@ -1,26 +1,35 @@
 import Script from 'next/script';
 
-// Zaal's own Buy Button, pasted from the Stripe dashboard. This is the same
-// Payment Link as STRIPE_LINKS.pro (buy_btn_1UHtBXKEKqFBqu9ohduWCZ4s's own
+// Zaal's own Buy Buttons, pasted from the Stripe dashboard. `pro`'s Payment
+// Link is STRIPE_LINKS.pro (buy_btn_1UHtBXKEKqFBqu9ohduWCZ4s's own
 // checkout_url matches STRIPE_LINKS.pro exactly, verified against Stripe's
 // API) - a second front-end onto the SAME link, not a new product or price.
-// REPLACES the Pro tier's "Pay by card" button rendered via stripeLinkFor;
-// the two must never sit next to each other on the page.
+// Zaal, 2026-09-23: "i like the embed... this page should have those both
+// on the first screen" - both tiers render through this component once a
+// tier has an id here.
+//
+// `supporter` is UNSET on purpose. Adding a real id here without verifying
+// it against Stripe's API the way `pro`'s was is exactly the mistake the
+// comment below warns about - a wrong paste renders a broken widget with no
+// automated check to catch it, unlike stripeLinkFor()'s host guard for a
+// plain link.
 //
 // pk_live_... below is a PUBLISHABLE key - designed for client-side code,
 // safe in the repo. Not routed through an env var for secrecy (there is
-// none to protect); it lives here for tidiness, next to the button id it
+// none to protect); it lives here for tidiness, next to the button ids it
 // belongs with.
-//
-// IMPORTANT TRADE-OFF, on the record rather than discovered later: this
-// bypasses stripeLinkFor()'s host guard entirely. That guard exists so a
-// wrong paste into STRIPE_LINKS renders nothing instead of a dead or wrong
-// link - a buy-button id is just a string with no equivalent check
-// available. If Stripe ever needs a second Buy Button (e.g. Supporter),
-// there is no automated way to confirm a pasted id is real; verify it
-// against Stripe's API before shipping, the way this one was.
-const BUY_BUTTON_ID = 'buy_btn_1UHtBXKEKqFBqu9ohduWCZ4s';
+const BUY_BUTTONS: Partial<Record<'supporter' | 'pro', string>> = {
+  pro: 'buy_btn_1UHtBXKEKqFBqu9ohduWCZ4s',
+  // supporter: 'buy_btn_...' - paste here once Zaal has generated one from
+  // the dashboard for the Supporter Payment Link, and verify it against
+  // Stripe's API the way pro's was before shipping.
+};
 const PUBLISHABLE_KEY = 'pk_live_51UHquZKEKqFBqu9oPJuVUHbRwP6jsljrV22MSKEQn7m7VxOHoGeMTawhznBcCTgF2j5Z9JpBSvGgFMiorJOwoqtG00YBk0xUJF';
+
+/** Whether a tier has a real Buy Button id on file, without exposing the id itself. */
+export function hasBuyButton(tierId: string): boolean {
+  return tierId in BUY_BUTTONS && Boolean(BUY_BUTTONS[tierId as keyof typeof BUY_BUTTONS]);
+}
 
 // React 19 moved the JSX namespace under React itself (React.JSX), not the
 // old ambient global `JSX` - augmenting that no longer does anything here.
@@ -39,7 +48,10 @@ declare module 'react' {
   }
 }
 
-export function StripeBuyButton() {
+export function StripeBuyButton({ tierId }: { tierId: 'supporter' | 'pro' }) {
+  const buyButtonId = BUY_BUTTONS[tierId];
+  if (!buyButtonId) return null;
+
   return (
     <>
       <Script src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
@@ -51,7 +63,7 @@ export function StripeBuyButton() {
           both themes, rather than leaving a foreign widget to float bare.
           Caught from a live screenshot in dark mode, 2026-09-21. */}
       <div className="rounded-[14px] border-[1.5px] border-gold-500/60 shadow-hard p-2 bg-paper-100">
-        <stripe-buy-button buy-button-id={BUY_BUTTON_ID} publishable-key={PUBLISHABLE_KEY} />
+        <stripe-buy-button buy-button-id={buyButtonId} publishable-key={PUBLISHABLE_KEY} />
       </div>
     </>
   );

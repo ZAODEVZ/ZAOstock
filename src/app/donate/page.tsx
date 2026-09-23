@@ -3,6 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SERIES, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
+import { StripeBuyButton, hasBuyButton } from '@/components/StripeBuyButton';
 
 export const metadata: Metadata = {
   title: 'Donate',
@@ -100,14 +101,13 @@ export default function DonatePage() {
                 {/* PayPal is the door that exists today. The card and onchain doors below
                     render only once their URLs exist; see CARD AND ONCHAIN CHECKOUT in
                     src/content/site.ts. Until then this is exactly the old one-button block.
-                    Both tiers now share the exact same button - not the
-                    embedded <stripe-buy-button> for Pro. Zaal, 2026-09-23: "fix the
-                    right to look like the left" (on /tickets; matched here too so the
-                    two pages don't drift again the way #265 did). The Buy Button
-                    renders in a closed shadow DOM and can never be restyled from
-                    outside; this still goes to the exact same Stripe checkout, its
-                    checkout_url matches the pro tier's own stripeLinkFor value
-                    exactly. */}
+                    Zaal, 2026-09-23: "i like the embed... this page should have those
+                    both on the first screen" - kept in sync with /tickets so the two
+                    pages don't drift again the way #265 did. Every tier with a Buy
+                    Button id on file (StripeBuyButton.tsx) renders that; a tier
+                    without one falls back to the plain link. items-start: without it
+                    the embedded button's own ~230px card stretches the PayPal pill
+                    button into an oval. */}
                 <div className="mt-4 flex flex-wrap items-start gap-2">
                   {/* Always secondary - Primary-on-pro was a leftover from when
                       PayPal was the only button on this card; next to a second
@@ -116,7 +116,9 @@ export default function DonatePage() {
                   <Button href={`${PAYPAL_URL}/${tier.amount}`} external variant="secondary">
                     Chip in {tier.price}
                   </Button>
-                  {stripeLinkFor(tier.id) ? (
+                  {hasBuyButton(tier.id) ? (
+                    <StripeBuyButton tierId={tier.id as 'supporter' | 'pro'} />
+                  ) : stripeLinkFor(tier.id) ? (
                     <Button href={stripeLinkFor(tier.id) as string} external variant="secondary">
                       Pay by card
                     </Button>
