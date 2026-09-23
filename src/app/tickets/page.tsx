@@ -20,9 +20,10 @@ import { StripeBuyButton, hasBuyButton } from '@/components/StripeBuyButton';
 // /donate reads. If item 5 on the 2 September agenda drops the paid tiers, delete
 // the one Section marked SUPPORT TIERS below and nothing else on this page changes.
 //
-// Two tiers as of 2026-09-01, $20 and $50, cheapest first. NEITHER IS ADMISSION:
-// the copy below says so twice, because "tickets" plus two prices is exactly the
-// shape a reader mistakes for a paywall on a free festival.
+// Three tiers as of 2026-09-23 ($1, $20, $50, cheapest first) - the $1 Fan
+// tier added same day as the Buy Button reversal below. NO TIER IS ADMISSION:
+// the copy below says so twice, because "tickets" plus a list of prices is
+// exactly the shape a reader mistakes for a paywall on a free festival.
 
 export const metadata: Metadata = {
   title: 'Tickets',
@@ -96,7 +97,7 @@ export default function TicketsPage() {
           title="Two ways to pay for a day that costs nothing to attend."
           lede="Still free at the gate. This is patronage, not admission: it covers artist fees, materials and production for a festival that charges nobody to turn up."
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-6">
           {SUPPORT_TIERS.map((tier) => (
             <Card key={tier.id}>
               <div className="flex items-baseline justify-between gap-3">
@@ -129,7 +130,7 @@ export default function TicketsPage() {
                   dead while its Buy Button is still pending. */}
               <div className="mt-4 flex flex-wrap items-start gap-2">
                 {hasBuyButton(tier.id) ? (
-                  <StripeBuyButton tierId={tier.id as 'supporter' | 'pro'} />
+                  <StripeBuyButton tierId={tier.id as 'fan' | 'supporter' | 'pro'} />
                 ) : stripeLinkFor(tier.id) ? (
                   <Button href={stripeLinkFor(tier.id) as string} external variant="primary">
                     Pay by card
@@ -163,11 +164,11 @@ export default function TicketsPage() {
                 { term: 'Do I need the RSVP', detail: 'No. It helps us plan numbers, that is all. Turn up either way.' },
                 {
                   term: 'Does paying get me in earlier',
-                  detail: 'No. Neither tier changes anything about the day. The higher one adds a 1:1 with the team before the event; both credit you as a supporter.',
+                  detail: 'No. No tier changes anything about the day. Only the Pro Ticket adds a 1:1 with the team before the event; every tier credits you as a supporter.',
                 },
                 {
                   term: 'What is the difference between them',
-                  detail: 'Only the 1:1. Both support the festival and both credit you by name.',
+                  detail: 'Only the 1:1 on the Pro Ticket. Every tier supports the festival and credits you by name.',
                 },
                 { term: 'Other ways to give', detail: 'PayPal for fiat or Giveth for crypto, at /donate.' },
                 { term: 'Questions', detail: SITE.contact },

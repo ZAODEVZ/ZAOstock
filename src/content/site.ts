@@ -302,6 +302,18 @@ export interface SupportTier {
 
 export const SUPPORT_TIERS: readonly SupportTier[] = [
   {
+    id: 'fan',
+    name: 'Fan',
+    price: '$1',
+    amount: 1,
+    spots: null,
+    blurb: 'The smallest way in. Every dollar counts toward the round.',
+    gets: [
+      'Supports the festival: artist fees, materials, production costs.',
+      'Credited as a supporter on the festival page.',
+    ],
+  },
+  {
     id: 'supporter',
     name: 'Supporter',
     price: '$20',
@@ -333,17 +345,22 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
   },
 ] as const;
 
-/** The Pro Ticket, by name, for the copy that speaks about it specifically. */
-export const PRO_TICKET = SUPPORT_TIERS[1];
+/**
+ * The Pro Ticket, by name, for the copy that speaks about it specifically.
+ * Found by id, not index - SUPPORT_TIERS gained a cheaper 'fan' tier in
+ * front of it on 2026-09-23, and an index would have silently pointed at
+ * the wrong tier the moment the ladder reordered again.
+ */
+export const PRO_TICKET = SUPPORT_TIERS.find((t) => t.id === 'pro')!;
 
 /**
  * Round one of crowdfunding. The $1,000 target predates the $20 tier, and
  * 20 x $50 = $1,000 exactly, so the goal was originally DEFINED as "sell the
  * Pro Ticket round" rather than "raise a thousand dollars".
  *
- * WHAT COUNTS, decided 2026-09-01: every support dollar, at either tier. Two
+ * WHAT COUNTS, decided 2026-09-01: every support dollar, at any tier. Two
  * reasons. It funds a free festival, so a dollar is a dollar and the page says
- * in words that neither tier buys access. And the alternative produces a figure
+ * in words that no tier buys access. And the alternative produces a figure
  * that lies - twenty $20 supporters would raise $400 while a $50-only tracker
  * still read zero.
  *
@@ -360,9 +377,9 @@ export const PRO_ROUND = {
   count: 20,
   countWord: 'twenty',
   roundTotal: '$1,000',
-  goal: 'Round 1 goal: $1,000, counting every supporter at either tier',
+  goal: 'Round 1 goal: $1,000, counting every supporter at any tier',
   /** Rendered next to any progress figure, so the rule travels with the number. */
-  countsRule: 'Every supporter counts, at either tier.',
+  countsRule: 'Every supporter counts, at any tier.',
 } as const;
 
 /** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */
@@ -399,6 +416,7 @@ const UNSET = 'UNSET';
 
 /** Stripe Payment Links, keyed by SupportTier id. UNSET means it does not exist yet. */
 export const STRIPE_LINKS: Readonly<Record<string, string>> = {
+  fan: 'https://buy.stripe.com/6oU5kE7TJ6wC9aO15wawo02',
   supporter: 'https://buy.stripe.com/6oU28sc9ZdZ4ev87tUawo00',
   pro: 'https://buy.stripe.com/6oU8wQ6PF9IO5YCeWmawo01',
 };
