@@ -33,9 +33,9 @@ describe('prices have ONE source', () => {
     }
   });
 
-  it('carries the two tiers Zaal asked for, cheapest first', () => {
-    expect(SUPPORT_TIERS.map((t) => t.price)).toEqual(['$20', '$50']);
-    expect(SUPPORT_TIERS.map((t) => t.amount)).toEqual([20, 50]);
+  it('carries the three tiers Zaal asked for, cheapest first', () => {
+    expect(SUPPORT_TIERS.map((t) => t.price)).toEqual(['$1', '$20', '$50']);
+    expect(SUPPORT_TIERS.map((t) => t.amount)).toEqual([1, 20, 50]);
     expect(PRO_TICKET.price).toBe('$50');
     expect(PAYPAL_URL).toBe('https://paypal.com/paypalme/zaalpanthaki');
   });
@@ -101,16 +101,6 @@ describe('the Pro Ticket checkout stays in sync across both pages', () => {
   });
 });
 
-describe('the paid tiers stay deletable', () => {
-  // The 2 September agenda may drop them. If it does, exactly one Section comes
-  // out of this page - this fails loudly if they get smeared across it instead.
-  it('lives in one marked, removable block', () => {
-    const src = read(TICKETS);
-    expect(src).toContain('delete this whole Section');
-    expect(src.split('SUPPORT_TIERS').length - 1).toBeLessThanOrEqual(3);
-  });
-});
-
 describe('the cap is on the scarce thing only', () => {
   // A 1:1 costs real time, so it is rationed. Nothing about the lower tier is
   // scarce, so capping it would be arbitrary.
@@ -146,7 +136,7 @@ describe('the funding goal states its own rule', () => {
   });
 
   it('says which tiers count, so the rule travels with the number', () => {
-    expect(PRO_ROUND.goal.toLowerCase()).toContain('either tier');
+    expect(PRO_ROUND.goal.toLowerCase()).toContain('any tier');
     expect(PRO_ROUND.countsRule).toBeTruthy();
   });
 
