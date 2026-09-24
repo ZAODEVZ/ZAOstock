@@ -98,23 +98,61 @@ our own computer and our own uplink. Read them knowing the first three of those 
 no longer be ours. They are left in place rather than rewritten because nobody here
 has measured the replacement.
 
+## Update, 24 September 2026: Aziz is out, link 6 is superseded
+
+Zaal, verbatim: "Aziz as streaming partner is out we will use baraza after
+event but for event we will just go simple Fellenz will help with stream and
+I'll daily [daisy] chain that to our socials." Card 9655 closed with all of
+this on it.
+
+This settles what the 23 September update above left open:
+
+- **Aziz is out as streaming partner for 3 October**, not just "topology
+  moved" - the rig, Cloudflare and Restream path he owned is not part of the
+  3 October plan at all.
+- **Link 6 (below) is now SUPERSEDED, correcting yesterday's "treat as
+  OPEN."** It is off the critical path because the topology changed - a
+  daisy-chain off Fellenz's own stream needs no Cloudflare ingest or
+  Aziz-owned key - not because Aziz delivered it. Those are different facts.
+- **Baraza is the POST-EVENT plan, not the 3 October plan.** The "Baraza
+  rig" section further down is a status read, not a live 3 Oct dependency.
+- **Link 1's owner is Ryan Miller (OPEN X), not Steve.** Steve is off the
+  desk question; card 9993 carries the open ask (make, model, clean feed
+  out).
+
+**Still open, and still not to be read as settled by this update:** where
+Friday's test physically happens, and what uplink Fellenz brings on 3
+October - see the 23 September section above, unchanged. With Aziz's path
+gone the chain is shorter, but one person's gear and one person's internet
+now carry the whole broadcast, which is what makes those two questions more
+load-bearing, not less.
+
+Cards 1379 and 1381 (recurring calendar sync with Aziz, connect Aziz with
+Iman) are left untouched here - they may matter for reasons unrelated to
+streaming and are not this doc's call to close.
+
 ## The chain, link by link
 
 | # | Link | What it is | Proven? | Owner | Notes |
 |---|------|------------|---------|-------|-------|
-| 1 | Source, audio | Main outs of the on-site desk into an audio interface, or the desk's own USB out (Fellenz, 24 Aug) | No. Desk is UNSET (Steve's PA) | Steve for the desk, UNSET for the interface | No interface owned or bought |
+| 1 | Source, audio | Main outs of the on-site desk into an audio interface, or the desk's own USB out (Fellenz, 24 Aug) | No. Desk is UNSET | Ryan Miller (OPEN X) - manages audio for the day, as of 24 Sep. Steve is off this question | Desk make, model and clean-feed-out is the open ask on card 9993 |
 | 2 | Source, video | Cameras at the parklet. Count and operators UNSET. Archived plan named an ATEM switcher from a prior ZAO event, UNVERIFIED | No | UNSET | Phones as backup, per the archived plan |
 | 3 | Streaming computer | Two candidates, both stay until today's test decides (Zaal, 28 Aug): (a) the Windows desktop at home, Ryzen 5 3600, GTX 1660 (NVENC, Turing), 16 GB, Win 10 Pro 22H2, OBS 32.2.1, specs measured 20 Aug; (b) a laptop, specs UNSET, OBS install UNSET | (a) yes, as a machine; (b) no | Aziz (rig), Zaal (hardware and the test) | Which box goes to the parklet, or whether the feed comes to the house, is what the 28 Aug test settles |
 | 4 | Encoder | OBS, h264_nvenc, CBR 6000 kbps, 1920x1080, 30 fps, keyframe 2 s, AAC 160 kbps 48 kHz, FLV | **Yes.** ffmpeg at exactly these settings, 10.1 s, 7,908,052 bytes, ~6.3 Mbps, verified with ffprobe, 20 Aug | Aziz | Everything up to the network hop |
 | 5 | Uplink | Internet at the parklet | **No. Untested by anyone.** Zaal's house: 948 Mbps up, Fidium fiber, measured 20 Aug. That is not the parklet | UNSET | A 6 Mbps stream is 0.6 percent of the house link; the parklet has no number at all |
-| 6 | **Ingest** | **Aziz's rtmps ingest URL and stream key** (Cloudflare Live Input, per baraza-tv `STREAMING-BACKEND.md` and `obs/WINDOWS-SETUP.md` section 6) | **No. THE untested link.** Owed by Aziz since the 22 Aug test date | Aziz | Nothing local substitutes. If one thing gets chased, this |
+| 6 | **Ingest** | **Aziz's rtmps ingest URL and stream key** (Cloudflare Live Input, per baraza-tv `STREAMING-BACKEND.md` and `obs/WINDOWS-SETUP.md` section 6) | **SUPERSEDED, 24 Sep - off the critical path.** Not delivered; the topology changed so it is no longer needed. See the 24 September update above | Aziz (was) | Fellenz's own stream needs no Cloudflare ingest or Aziz-owned key |
 | 7 | Restream | In Zaal's own verdict ("Aziz = rig + Restream"). Zaal's account already runs the weekday stream to Twitch, YouTube, X | Account exists. Its place in this chain is decided by today's test, both topologies run (Zaal, 28 Aug) | Aziz, Zaal runs the test | Section 2 |
 | 8 | Destinations | Zaal, 28 Aug: X on the WaveWarZ account, YouTube on the ZAO channel, Twitch, and "as many places as we can include in the stream test". Candidate list in section 3 | No. Named, not yet streamed to | Aziz, Zaal for logins | Deck slide 7 note still holds: no platform name public until the stream has run once |
 | 9 | Recording | Local OBS record on the desktop, and/or Cloudflare Stream Live recording at the ingest | No. Neither configured | Aziz | The Doc wants local capture so a dropout does not lose the day |
 | 10 | Indoor mirror | Screens inside Black Moon showing the outdoor stream | No. "To build" in the production plan | ZAO, no name | Needs links 1 to 8 first |
 
-Proven links: 3 and 4. Untested links: 1, 2, 5, 6, 8, 9, 10. Link 7 exists but
-is unplaced. The one that gates a test of everything downstream is **link 6**.
+Proven links: 3 and 4 - but see the 24 September update above: those describe
+Aziz's now-superseded rig, not Fellenz's stream, so "proven" no longer means
+"part of the 3 October path." Untested links under the live topology: 1
+(Ryan's audio out), 2, 5 (now Fellenz's own uplink, not a parklet-provided
+one), 8, 9, 10. Link 6 is superseded, not gating anything. The open gate now
+is where Friday's test happens and what uplink Fellenz brings - see the
+24 September update, not this table.
 
 ## Two topologies, and the 28 August test runs BOTH
 
@@ -224,6 +262,20 @@ but it changes who the Aziz draft is addressed to and whether the Motomoto
 plugin relay is a second message or the same one.
 
 ## What unblocks a full test, in order
+
+**SUPERSEDED as of 24 September 2026** - written for the Aziz-owned
+topology, which the 24 September update above replaced. Kept for history;
+do not act on it. The live list is:
+
+1. Where Friday's test physically happens - UNKNOWN as of 24 September
+   (cards 9632, 9663).
+2. What internet Fellenz brings on 3 October - the single uplink the whole
+   broadcast now depends on (link 5, redefined).
+3. Ryan Miller: desk make, model, and whether it has a clean feed out
+   (card 9993, link 1).
+4. Friday's test itself, then Friday 2 October end to end from the parklet.
+
+The original, superseded list:
 
 1. Aziz: rtmps ingest URL and stream key (link 6), needed for topology A only;
    topology B can run this morning without it.
