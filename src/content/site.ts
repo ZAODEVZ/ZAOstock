@@ -34,24 +34,32 @@ export const SITE = {
   submissionCutoffLabel: '1 September',
   submissionCutoffDate: '2026-09-01',
   soundcheckNight: 'Friday 2 October',
-  // Corrected 2026-09-24 on Zaal's word: "rain or shine under tent cover,
-  // stop saying this since its not true" and, asked which half, "we are going
-  // inside if its bad".
+  // Corrected 2026-09-24, TWICE, and the second pass is the one that matters.
   //
-  // THE TENT IS REAL. docs/permits/rain-plan-2026-10-03.md records the Wallace
-  // tent CONFIRMED and up on the parklet since 2026-08-28, from Zaal himself.
-  // What was untrue is the PROMISE the sentence makes: "rain or shine under
-  // tent cover" tells a reader we play outdoors whatever the weather does, and
-  // we do not - bad weather moves the day inside. The tent covers the ordinary
-  // case, not the bad one, and the old line could not tell those apart.
+  // Zaal: "rain or shine under tent cover, stop saying this since its not true".
+  // Asked which half: "we are going inside if its bad".
   //
-  // Not cancelling is still true: 3 October is fixed inside Art of Ellsworth
-  // and there is no rain date. Black Moon confirmed on 2026-09-24 that they can
-  // take the DAY, not only the evening, which is what makes the new line safe.
+  // THE TENT IS REAL - docs/permits/rain-plan-2026-10-03.md has the Wallace tent
+  // confirmed and up on the parklet since 2026-08-28, from Zaal. What was untrue
+  // is what the old sentence PROMISED: "rain or shine under tent cover" tells a
+  // reader we play outdoors whatever the weather does, and we do not.
   //
-  // This string is the SOURCE. /program, /llms.txt and the press kit read it.
-  // Do not add a tent back to any of them without a confirmed tent.
-  weather: 'Rain or shine. If the weather turns, the day moves inside to Black Moon Public House next door.',
+  // THE FIRST FIX WAS WORSE AND IT SHIPPED INTO A PR. It read "the day moves
+  // inside to Black Moon Public House next door", which src/content/site.test.ts
+  // forbids on every public surface: their posted occupancy has never been given
+  // to us, and our insurance covers the OUTDOOR day only - a position that holds
+  // only while their evening is not one continuous ZAOstock event. The guard
+  // could not catch it because this file was not in its FILES list and "the day"
+  // was not in its SUBJECT list. Both are fixed in that test now.
+  //
+  // Zaal settled the substance: "thats all ok its not our event its run by
+  // blackmoon we arej ust saying after party". So we do not relocate anything.
+  // We do not cancel, the street is open to the sky, and the bar next door is a
+  // bar next door. That is the whole true claim.
+  //
+  // This string is the SOURCE. /program and /llms.txt read it. Do not add a
+  // tent, and do not add a sentence that moves a crowd indoors.
+  weather: 'Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it.',
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
   producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
@@ -271,7 +279,27 @@ export const DELIVERABLES = [
 ] as const;
 
 /** Zaal, typed 27 Aug 19:3x. Public on /sponsor per the 28 Aug site-fix brief; nowhere else. */
-export const ATTENDANCE = { inPerson: '200-250', online: 'about 1,000' } as const;
+// NOT PUBLISHED, and not to be published without Zaal saying so in the moment.
+//
+// Zaal, 2026-09-24: "dont say these number anywhere". Asked to pin the figure,
+// he said the expectation is over 100 in person and that "the old 200-250 was
+// optimistic" - so the number that had been on /sponsor and in /llms.txt since
+// 27 August was both stale and higher than the truth, in front of the people
+// being asked for money. It came off both surfaces the same day.
+//
+// Kept rather than removed because it is the record of what was quoted, to
+// whom, and when: 200-250 in person / about 1,000 online went into the sponsor
+// page, /llms.txt, the sponsor one-pager and the business outreach messages.
+// Anyone reconciling what a sponsor was told needs to be able to find it.
+//
+// Nothing imports this. That is deliberate. If a surface needs an attendance
+// figure again, get the number from Zaal that day - do not read it from here.
+export const ATTENDANCE_NOT_PUBLISHED = {
+  quoted: { inPerson: '200-250', online: 'about 1,000' },
+  quotedFrom: '2026-08-27',
+  withdrawn: '2026-09-24',
+  currentExpectation: 'over 100 in person; Zaal has not given a range to publish',
+} as const;
 
 export type Tier = { name: string; gets: string; price: null | string };
 

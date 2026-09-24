@@ -170,7 +170,7 @@ export const BRING: ReadonlyArray<string> = [
   'A headcount. Tell us how many people are with you, on stage and in total: it sets the meal certificates and the dressing-room space.',
   // An act reads this to decide what to pack, so a tent that may not exist is the
   // worst place to promise one. Corrected 2026-09-24.
-  'Layers and rain gear. It is Maine in October and the street is open to the sky. We do not cancel for weather - if it turns, the day moves inside to Black Moon next door.',
+  'Layers and rain gear. It is Maine in October and the street is open to the sky, and we do not cancel for weather.',
   'Merch, if you sell it. Say so in the form so we can plan for it.',
 ];
 

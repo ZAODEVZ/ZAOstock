@@ -33,8 +33,9 @@ export default function TermsPage() {
         <section className="space-y-2">
           <h2 className="font-display font-normal text-h3 text-ink-950">Weather</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
-            {FESTIVAL.dateLabel} is rain or shine - we don&apos;t cancel for weather. In the worst case, the
-            day moves indoors to {FESTIVAL.afterParty.name} Public House, {FESTIVAL.afterParty.note}. Check{' '}
+            {FESTIVAL.dateLabel} is rain or shine - we don&apos;t cancel for weather, and the parklet is
+            open to the sky, so dress for it. {FESTIVAL.afterParty.name} Public House next door hosts its
+            own evening; that is their room and their event, not a second ZAOstock stage. Check{' '}
             <a href="/live" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               zaostock.com/live
             </a>{' '}

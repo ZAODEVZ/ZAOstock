@@ -26,7 +26,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 
 - ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with seven-minute changeovers, with our MC and our partners between sets. Music starts at noon.
 - 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with a DJ, run by Steve, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
-- Free to attend. Rain or shine - if the weather turns, the day moves inside to Black Moon Public House next door. Optional Pro Ticket, $50, on /donate.
+- Free to attend. Rain or shine - we do not cancel for weather; the parklet is open to the sky. Optional Pro Ticket, $50, on /donate.
 
 ## Lineup
 
@@ -38,7 +38,7 @@ City of Ellsworth (parklet venue), Black Moon Public House (the evening and the 
 
 ## Sponsors
 
-Sponsors put money behind a named artist or the day. Every sponsor gets the same four surfaces: the parklet banner, the programme, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Expected attendance: 200 to 250 in person, about 1,000 online. Sponsorship is a marketing spend, direct with The ZAO.
+Sponsors put money behind a named artist or the day. Every sponsor gets the same four surfaces: the parklet banner, the programme, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Sponsorship is a marketing spend, direct with The ZAO.
 
 ## Why Ellsworth
 

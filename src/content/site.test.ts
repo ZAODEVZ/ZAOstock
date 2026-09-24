@@ -356,14 +356,31 @@ describe('retired claims stay retired', () => {
  * cleanly over four live instances of "walks next door".
  */
 describe('no public surface claims the crowd goes indoors', () => {
+  // TWO HOLES, both found on 2026-09-24 when a change went straight through
+  // this guard and into a pull request.
+  //
+  // 1. site.ts was NOT here. It is the SOURCE: /program renders `SITE.weather`
+  //    and /llms.txt reads the same constant, so the sentence is assembled from
+  //    a file the guard never opened. A guard that reads four files by name
+  //    cannot see a claim injected from a fifth.
+  // 2. terms/page.tsx was NOT here either, and it had been carrying "the day
+  //    moves indoors to Black Moon Public House" live on main the whole time -
+  //    on the page closest to a legal promise.
   const FILES = [
     'src/app/page.tsx',
     'src/app/program/page.tsx',
     'src/app/llms.txt/route.ts',
     'src/app/sponsor/page.tsx',
+    'src/app/terms/page.tsx',
+    'src/content/site.ts',
+    'src/content/festival.ts',
   ];
 
-  const SUBJECT = /(the whole street|everyone|everybody|the whole day|the crowd|all of us)/i;
+  // "the day" was missing. The list had "the whole day", so "the day moves
+  // inside to Black Moon Public House next door" matched nothing and passed a
+  // suite of 448 tests. The near-miss is in the cases below so it cannot be
+  // narrowed back out.
+  const SUBJECT = /(the whole street|everyone|everybody|the whole day|the day|the crowd|all of us|the street)/i;
   const MOTION = /(walks?|moves?|heads?|goes|go|piles?|files?|streams?)/i;
   const INSIDE = /(next door|inside|indoors|into black moon|in to black moon|in\b)/i;
   const CLAIM = new RegExp(`${SUBJECT.source}[^.!?\\n]{0,60}\\b${MOTION.source}\\b[^.!?\\n]{0,60}${INSIDE.source}`, 'i');
@@ -385,6 +402,12 @@ describe('no public surface claims the crowd goes indoors', () => {
       'Everyone moves next door into Black Moon.',
       'the whole street walks in',
       'At six the street clears and the whole day walks inside.',
+      // The 2026-09-24 near-miss, verbatim. It was written into SITE.weather,
+      // rendered by /program and /llms.txt, and passed because "the day" was
+      // not a SUBJECT and site.ts was not a FILE.
+      'Rain or shine. If the weather turns, the day moves inside to Black Moon Public House next door.',
+      'Rain or shine - if the weather turns, the day moves inside to Black Moon Public House next door.',
+      'In the worst case, the day moves indoors to Black Moon Public House.',
     ]) {
       expect(live).toMatch(CLAIM);
     }
@@ -395,6 +418,11 @@ describe('no public surface claims the crowd goes indoors', () => {
       'At six the street clears, and Black Moon next door hosts their own evening.',
       'North Creek, hosted by Black Moon. Their stage, their evening.',
       'Black Moon Public House, next door',
+      // The wording that replaced the near-miss on 2026-09-24. If this ever
+      // starts matching, the rule has been widened past what it is for: saying
+      // the bar next door exists is not claiming our crowd relocates into it.
+      'Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it.',
+      'Black Moon Public House next door hosts its own evening; that is their room and their event, not a second ZAOstock stage.',
     ]) {
       expect(ok).not.toMatch(CLAIM);
     }

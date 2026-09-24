@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
-import { SITE, DELIVERABLES, ATTENDANCE, ELLSWORTH, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
+import { SITE, DELIVERABLES, ELLSWORTH, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, Stat, SectionHeader, BorderedList } from '@/components/poster';
 
@@ -90,8 +90,6 @@ export default function SponsorPage() {
             </ol>
           </div>
           <div className="grid grid-cols-2 gap-6">
-            <Stat value={ATTENDANCE.inPerson} label="expected in person" />
-            <Stat value={ATTENDANCE.online} label="expected online" />
             <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
             <Stat value={ELLSWORTH.heartEvents.value} label={ELLSWORTH.heartEvents.label} />
             <Stat value={ELLSWORTH.heartSponsors.value} label={ELLSWORTH.heartSponsors.label} />
