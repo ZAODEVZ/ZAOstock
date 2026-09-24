@@ -3,7 +3,6 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
-import { StripeBuyButton, hasBuyButton } from '@/components/StripeBuyButton';
 
 // WHY THIS PAGE EXISTS
 //
@@ -19,9 +18,15 @@ import { StripeBuyButton, hasBuyButton } from '@/components/StripeBuyButton';
 // standalone RSVP card plus a second "nothing else to buy" filler card) and the
 // separate SUPPORT TIERS section with ONE grid of four equal-weight cards -
 // Free/RSVP alongside the three paid tiers, each shaped like the Pro Ticket
-// card he pointed at (price, name, one-line blurb, a couple of bullets, the
-// embedded Buy Button or RSVP button at the bottom). No tier is admission -
-// the Free tile still says so, in as few words as the redesign leaves room for.
+// card he pointed at (price, name, one-line blurb, a couple of bullets, a
+// button at the bottom). No tier is admission - the Free tile still says so,
+// in as few words as the redesign leaves room for.
+//
+// SAME DAY, second pass: the embedded <stripe-buy-button> broke this exact
+// grid (overflowed its Card once every tier had a Buy Button id on file -
+// see the button-rendering comment below), so every card now uses the same
+// plain pill button as Free's "RSVP free", per Zaal pointing at the broken
+// screenshot: "this UI isnt great lets just do the [RSVP FREE] style".
 //
 // The paid tiles read SUPPORT_TIERS from src/content/site.ts, the same source
 // /donate reads.
@@ -96,20 +101,18 @@ export default function TicketsPage() {
                   weight styling was the fix for a PayPal-vs-card bias problem
                   that no longer applies once PayPal is gone). Right under the
                   bullet list, not floating beside another button - same ask,
-                  "closer to just the top". items-start: without it, flex's
-                  default align-items:stretch matches every child to the
-                  tallest one on the line, and the embedded button's own
-                  card renders ~230px tall.
-                  Zaal, 2026-09-23: "i like the embed... this page should have
-                  those both on the first screen" - reversal of an earlier
-                  same-day call to drop it. Every tier with a Buy Button id
-                  on file (see StripeBuyButton.tsx) renders that; a tier
-                  without one falls back to the plain link so it is never
-                  dead while its Buy Button is still pending. */}
+                  "closer to just the top".
+                  Zaal, 2026-09-24, pointing at a live screenshot: "this UI
+                  isnt great lets just do the [RSVP FREE pill] style" - the
+                  embedded <stripe-buy-button> broke the 4-column grid, its
+                  white card and blue Buy button both overflowing their
+                  Card's right edge once every tier had a Buy Button id on
+                  file. Every tier now renders the exact same plain pill as
+                  Free's "RSVP free" button (Button variant="primary"), so
+                  all four cards match. StripeBuyButton.tsx is untouched for
+                  reuse elsewhere; this page just stops calling it. */}
               <div className="mt-4 flex flex-wrap items-start gap-2">
-                {hasBuyButton(tier.id) ? (
-                  <StripeBuyButton tierId={tier.id as 'fan' | 'supporter' | 'pro'} />
-                ) : stripeLinkFor(tier.id) ? (
+                {stripeLinkFor(tier.id) ? (
                   <Button href={stripeLinkFor(tier.id) as string} external variant="primary">
                     Pay by card
                   </Button>
