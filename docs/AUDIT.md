@@ -27,7 +27,24 @@ Two repos:
 > only after that happens, not on a calendar - a date-only re-check on an
 > item nobody has touched just re-confirms the same "cannot measure" every
 > time and trains the reader to stop reading it.
-> <!-- re-check: 2026-09-23 -->
+>
+> **Re-verified 2026-09-24, and the guard fired to force it.** The marker below
+> came due on 2026-09-23 and `src/content/recheck.test.ts` failed the build on
+> `main`, which is the mechanism working. The re-verification, run today:
+> `gh api repos/bettercallzaal/zao-festivals --jq .pushed_at` returns
+> **`2026-08-25T18:44:44Z`** - 30 days, unchanged since the 2026-09-16 check, so
+> items 2 and 3 still stand exactly as written. **Nothing here was bumped
+> blind.**
+>
+> **The mismatch this exposed, recorded rather than papered over:** these three
+> items declare an EVENT re-check condition (Zaal runs `eas build`) while the
+> guard understands only DATES. So the guard will keep firing on a calendar for
+> items whose own text says not to re-check on a calendar. The date below is
+> moved past the festival to 2026-10-10 rather than to a week out, because
+> firing again during festival week is noise on a build nobody can act on. If
+> the guard fires on 2026-10-10 and the mobile repo is still untouched, the fix
+> is an event-aware marker in `recheck.test.ts`, not a fourth bump.
+> <!-- re-check: 2026-10-10 -->
 
 ### 1. ~~Production is pointed at the wrong Supabase database~~ — RESOLVED
 
@@ -69,8 +86,10 @@ Verify: `curl https://zaostock.com/api/events` should return real event JSON, no
 build. Neither is measurable from here, so this is neither confirmed open nor
 closed. **Re-checked 2026-09-16: still unverified, and still cannot be -
 `bettercallzaal/zao-festivals` has had no push since 2026-08-25T18:44Z, three
-weeks with no build attempt on record.** The re-check condition is Zaal
-running the command below, not a date. <!-- re-check: 2026-09-23 -->
+weeks with no build attempt on record. Re-verified 2026-09-24: `pushed_at` is
+still `2026-08-25T18:44:44Z` (GitHub API, this repo's own metadata), now 30
+days, so no build attempt has been made since.** The re-check condition is Zaal
+running the command below, not a date. <!-- re-check: 2026-10-10 -->
 Build 13 failed on this and was never retried until this session. Run from a **real Terminal.app window**, not through Claude Code:
 ```
 cd /tmp/zaostock-app   # or wherever the mobile repo is checked out locally
@@ -81,8 +100,10 @@ Expect a prompt about syncing provisioning/capabilities — confirm yes.
 ### 3. Fresh TestFlight build once #2 is confirmed
 **UNVERIFIED from this seat.** Note the precondition changed: this used to wait on
 #1 and #2. #1 is resolved, so only #2 gates it. **Re-checked 2026-09-16: #2 is
-still unconfirmed (see above), so this is still gated on it, unchanged.**
-<!-- re-check: 2026-09-23 -->
+still unconfirmed (see above), so this is still gated on it, unchanged.
+Re-verified 2026-09-24: #2 is still unconfirmed on the same evidence, so this is
+still gated, still unchanged.**
+<!-- re-check: 2026-10-10 -->
 ```
 cd /tmp/zaostock-app
 eas build --platform ios --profile production
