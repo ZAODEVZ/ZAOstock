@@ -31,7 +31,12 @@ Maine Craft Weekend)
 ## What ZAOstock provides
 
 - Stage (already standing), PA, monitors, a sound operator for the day
-- Tent coverage, rain or shine (Wallace Events, confirmed)
+- Rain or shine, and we do not cancel. The street is open to the sky; if the
+  weather turns the day moves inside to Black Moon Public House next door,
+  which Black Moon confirmed on 2026-09-24 they can take for the DAY and not
+  only the evening. There IS a Wallace Events tent and it has been up since
+  28 August - this line no longer says "tent coverage, rain or shine" because
+  that told an act the tent was the bad-weather answer, and it is not.
 - Recording of your set (audio and video); you receive a copy - window UNSET
 - Water and power on site (Black Moon); a dressing room and bathroom in Black
   Moon's basement, performers only, wristband access

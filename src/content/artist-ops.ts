@@ -168,7 +168,9 @@ export const PROVIDED: ReadonlyArray<string> = [
 export const BRING: ReadonlyArray<string> = [
   'Your instruments, and anything you play through beyond the shared PA. Backline is sorted act by act from your rider; until an item is confirmed to you in writing, assume you bring it.',
   'A headcount. Tell us how many people are with you, on stage and in total: it sets the meal certificates and the dressing-room space.',
-  'Layers and rain gear. It is rain or shine, under tent cover, in Maine in October.',
+  // An act reads this to decide what to pack, so a tent that may not exist is the
+  // worst place to promise one. Corrected 2026-09-24.
+  'Layers and rain gear. It is Maine in October and the street is open to the sky. We do not cancel for weather - if it turns, the day moves inside to Black Moon next door.',
   'Merch, if you sell it. Say so in the form so we can plan for it.',
 ];
 

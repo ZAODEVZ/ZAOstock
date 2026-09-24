@@ -34,7 +34,24 @@ export const SITE = {
   submissionCutoffLabel: '1 September',
   submissionCutoffDate: '2026-09-01',
   soundcheckNight: 'Friday 2 October',
-  weather: 'Rain or shine, under tent cover.',
+  // Corrected 2026-09-24 on Zaal's word: "rain or shine under tent cover,
+  // stop saying this since its not true" and, asked which half, "we are going
+  // inside if its bad".
+  //
+  // THE TENT IS REAL. docs/permits/rain-plan-2026-10-03.md records the Wallace
+  // tent CONFIRMED and up on the parklet since 2026-08-28, from Zaal himself.
+  // What was untrue is the PROMISE the sentence makes: "rain or shine under
+  // tent cover" tells a reader we play outdoors whatever the weather does, and
+  // we do not - bad weather moves the day inside. The tent covers the ordinary
+  // case, not the bad one, and the old line could not tell those apart.
+  //
+  // Not cancelling is still true: 3 October is fixed inside Art of Ellsworth
+  // and there is no rain date. Black Moon confirmed on 2026-09-24 that they can
+  // take the DAY, not only the evening, which is what makes the new line safe.
+  //
+  // This string is the SOURCE. /program, /llms.txt and the press kit read it.
+  // Do not add a tent back to any of them without a confirmed tent.
+  weather: 'Rain or shine. If the weather turns, the day moves inside to Black Moon Public House next door.',
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
   producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
