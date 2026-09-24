@@ -75,29 +75,36 @@ describe('the festival stays free', () => {
   });
 });
 
-describe('the Pro Ticket checkout stays in sync across both pages', () => {
+describe('the Pro Ticket checkout URL stays in sync across both pages', () => {
   // /donate had the old plain "Pay by card" link for Pro long after /tickets
   // moved to the embedded Stripe Buy Button (#265 only touched /tickets) -
   // same $50 tier, two different checkout experiences depending which page a
   // visitor landed on. Caught in a full-site review, 2026-09-21.
   //
-  // REWRITTEN AGAIN 2026-09-23. Zaal reversed the same-day call above:
-  // "i like the embed... this page should have those both on the first
-  // screen" - so the embedded widget is back, but the drift risk this test
-  // guards against is unchanged: whichever tier has a Buy Button id must
-  // render as the embedded widget on BOTH pages, not one. Both pages go
-  // through the exact same hasBuyButton()/StripeBuyButton() gate rather
-  // than special-casing PRO_TICKET.id, so there is only one code path to
-  // drift out of sync.
-  it('renders every tier through the same hasBuyButton gate on both pages, no special case', () => {
+  // REWRITTEN AGAIN 2026-09-24. Zaal reversed the 2026-09-23 "bring the
+  // embed back" call for /tickets specifically, pointing at a live
+  // screenshot of the new 4-card grid: "this UI isnt great lets just do
+  // the [RSVP FREE pill] style" - the embedded <stripe-buy-button> was
+  // overflowing its Card once every tier had a Buy Button id on file, in
+  // that narrow grid. /tickets now renders every paid tier through the
+  // plain stripeLinkFor() button only, same style as Free's RSVP button.
+  // /donate keeps the embedded widget - its cards are roughly half-page
+  // wide, not a 4-across grid, and nobody has reported that layout
+  // overflowing. This is a DELIBERATE divergence in which WIDGET renders,
+  // not the #265 kind of drift: what #265 actually guards against, and
+  // what this test now pins directly, is that both pages read the SAME
+  // checkout URL for a given tier from the SAME helper - so the money
+  // never goes anywhere different depending which page you're on, even
+  // though the two pages are now allowed to look different getting there.
+  it("both pages read every paid tier's checkout URL from the same stripeLinkFor helper, no special case", () => {
     for (const p of [TICKETS, DONATE]) {
       const src = code(p);
-      expect(src).toContain("from '@/components/StripeBuyButton'");
-      expect(src).toContain('hasBuyButton(tier.id)');
-      expect(src).toContain('<StripeBuyButton tierId=');
-      expect(src).not.toMatch(/tier\.id === PRO_TICKET\.id\s*\?\s*\n?\s*<StripeBuyButton/);
       expect(src).toContain('stripeLinkFor(tier.id)');
+      expect(src).not.toMatch(/tier\.id === PRO_TICKET\.id\s*\?\s*\n?\s*<StripeBuyButton/);
     }
+    expect(code(TICKETS)).not.toContain("from '@/components/StripeBuyButton'");
+    expect(code(DONATE)).toContain("from '@/components/StripeBuyButton'");
+    expect(code(DONATE)).toContain('hasBuyButton(tier.id)');
   });
 });
 
