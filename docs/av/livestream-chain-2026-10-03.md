@@ -33,19 +33,31 @@ Also settled on that call, and now on the public page (`src/app/live/page.tsx`,
 
 Zaal, in conversation on 23 September, after speaking to Tom Fellenz:
 
-- **There is a test stream on Friday 25 September, 6-7pm EST.** It supersedes the
-  line above that says "the stream test has no date yet". It also does not satisfy
-  research doc 2509's Section 3, which requires the parklet uplink test run at a
-  Saturday-midday-equivalent load and says in as many words that a quiet weekday
-  evening will not do. A clean result on Friday does not close the uplink question.
+- **There is a test stream on Friday 25 September, "6-7 pm est" in Zaal's words.**
+  It supersedes the line above that says "the stream test has no date yet". Note the
+  timezone: 25 September is inside daylight time, so Eastern local that evening is
+  EDT. Read as Eastern local it is 6-7pm EDT; read as literal EST it is 7-8pm EDT.
+  His words are kept as typed and the reading is not guessed - confirm with him.
+- **IF that test happens at the parklet, it still does not answer link 5.** Research
+  doc 2509 Section 3 asks for the uplink test to run "at a Saturday-midday-equivalent
+  load if at all possible - specifically midday-to-early-afternoon", and an early
+  Friday evening plainly falls outside that positive window. (2509 also says "not a
+  quiet weekday evening"; that clause is arguable here, since Black Moon is a bar on
+  a Friday night. The midday window is the part that is not arguable.) Section 3 only
+  bears on this at all if the test is at the parklet, which is unestablished below.
 - **Fellenz brings his own computer and takes the audio input from Ryan**, who is the
   main stage manager (Zaal, earlier grill: "Ryan from open x is Main stage manager").
   Fellenz streams it, and **ZAO daisy-chains off that stream** out to our audience.
 - **It is one input.** Single camera, single stream. Watch parties take that input and
   output it however each host wants - which matches the watch-party line above.
-- **Ohnahji is dropping out** and will not be there in person (Zaal, 23 September);
-  a watch party from him is possible. The 26 August ownership line above gives him
-  scheduling and guests. That half is now unowned.
+- **Ohnahji is dropping out** and will not be there in person (Zaal, 23 September):
+  "Ohnahji is dropping out not there irl maybe he will do a watch party". The
+  26 August ownership line above gives him scheduling and guests. That role is **cut,
+  not vacant** - `zao-vault/decisions/grill-2026-09-23-seat-afternoon.md` item 8
+  records the architecture as "No on-air segments, no callers, no hosts on our side.
+  That role leaves with Ohnahji and is not being refilled." Nobody needs to be found
+  for it. (An earlier draft of this section called it "unowned", which would have sent
+  someone looking for a replacement; that was the seat's gloss, not the record.)
 
 **What this does NOT establish, and nobody should read it as establishing:**
 
@@ -55,11 +67,18 @@ Zaal, in conversation on 23 September, after speaking to Tom Fellenz:
   someone is standing there, since that leg needs no ingest key.
 - **What uplink Fellenz brings on 3 October.** If ZAO piggybacks off his stream, the
   pipe out of the parklet is HIS internet, not ours - and link 5 below, plus every
-  carrier figure in doc 2509, is about an uplink we provide. Nobody has asked him.
+  carrier figure in doc 2509, is about an uplink we provide. **No record that anyone
+  has asked him.**
   Searched on 23 September without finding it: the cowork tracker (`parklet`,
   `upload speed`, `stream`, `black moon`), and the vault for "test stream" and
-  "fellenz". **Not searched:** the ZAO Festivals Telegram chat, where Zaal has said
-  much of this lives.
+  "fellenz". A second lane repeated the search independently on 23 September: the
+  evening grill record (its item 1 reads the location as "unstated"), a vault-wide
+  grep pairing Fellenz with uplink, internet, hotspot, starlink, computer or stream
+  (375 files mention him, none pair him with those), and this repo at head (70 files
+  mention him; the only uplink or stream hits were these very lines). **Not searched
+  by either:** the ZAO Festivals Telegram chat, where Zaal has said much of this
+  lives. Context, not a finding: Fellenz's GitHub profile self-reports the SF Bay
+  Area, so a remote Friday test is plausible and nothing here rules it in or out.
 - **Whether link 6, Aziz's rtmps ingest, is still on the critical path.** Doc 2509
   establishes it is not needed for topology B (OBS straight to Restream) or for any
   uplink test. It says nothing about a daisy-chain off a third party's stream, which
