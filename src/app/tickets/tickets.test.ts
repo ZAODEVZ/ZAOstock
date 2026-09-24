@@ -101,16 +101,6 @@ describe('the Pro Ticket checkout stays in sync across both pages', () => {
   });
 });
 
-describe('the paid tiers stay deletable', () => {
-  // The 2 September agenda may drop them. If it does, exactly one Section comes
-  // out of this page - this fails loudly if they get smeared across it instead.
-  it('lives in one marked, removable block', () => {
-    const src = read(TICKETS);
-    expect(src).toContain('delete this whole Section');
-    expect(src.split('SUPPORT_TIERS').length - 1).toBeLessThanOrEqual(3);
-  });
-});
-
 describe('the cap is on the scarce thing only', () => {
   // A 1:1 costs real time, so it is rationed. Nothing about the lower tier is
   // scarce, so capping it would be arbitrary.
