@@ -52,12 +52,21 @@ Zaal, in conversation on 23 September, after speaking to Tom Fellenz:
   output it however each host wants - which matches the watch-party line above.
 - **Ohnahji is dropping out** and will not be there in person (Zaal, 23 September):
   "Ohnahji is dropping out not there irl maybe he will do a watch party". The
-  26 August ownership line above gives him scheduling and guests. That role is **cut,
-  not vacant** - `zao-vault/decisions/grill-2026-09-23-seat-afternoon.md` item 8
-  records the architecture as "No on-air segments, no callers, no hosts on our side.
-  That role leaves with Ohnahji and is not being refilled." Nobody needs to be found
-  for it. (An earlier draft of this section called it "unowned", which would have sent
-  someone looking for a replacement; that was the seat's gloss, not the record.)
+  26 August ownership line above gives him scheduling and guests. **That role looks
+  cut rather than vacant, and here is exactly what that rests on.** Zaal's own words,
+  `zao-vault/decisions/grill-2026-09-23-seat-afternoon.md` item 8, 15:52: *"its all
+  one input of the single cam / single stream and our watch parties will take that
+  input and output it the way that they want to most"*. The same entry then draws the
+  consequence - "No on-air segments, no callers, no hosts on our side. That role
+  leaves with Ohnahji and is not being refilled" - but **that sentence is the seat's
+  reading of his words, not his words**, and this doc should not launder one into the
+  other. His line describes one clean feed with the output layer outside ZAO, which
+  leaves no on-air role to fill; it does not itself say the role was deleted. So:
+  do not go looking for a replacement host on the strength of this, and if the
+  distinction matters for a decision, ask him. (An earlier draft of this section
+  called the role "unowned", which would have sent someone hunting for a replacement,
+  and a later one quoted the gloss as though it were the record. Both were the seat's,
+  not his.)
 
 **What this does NOT establish, and nobody should read it as establishing:**
 
