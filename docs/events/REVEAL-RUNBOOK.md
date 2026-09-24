@@ -101,19 +101,26 @@ exactly on time, the endpoint answered correctly, and the bill was empty because
 no row was `confirmed`. Everything worked and the result was still wrong, which
 is why this check exists before the website step rather than after it.
 
-Measured 2026-09-22: **5 of 8 acts are confirmed** - The Crown Vics, Michael
-Anderson, DCoop, LyonsDen and Tom Fellenz - each published with a bio and a
-photo. The count has moved twice: 0 of 9 on 8 September, 2 of 8 on 14 September,
-5 of 8 today. Hurricane came off the bill on 10 September, so it is 8 acts.
+**Re-measured 2026-09-24, five days before this marker was due, and the answer
+changed: 8 of 8 acts are confirmed.** The Crown Vics, OPEN X, Grass Rug, Acadia
+Rising, Michael Anderson, DCoop, LyonsDen and Tom Fellenz - every one with a
+`photo_url` and a `bio`. The count has now moved four times: 0 of 9 on 8
+September, 2 of 8 on 14 September, 5 of 8 on 22 September, 8 of 8 today.
+Hurricane came off the bill on 10 September, so it is 8 acts.
 
-The gate keeps proving itself in the direction that matters: an act reaching
-`confirmed` with a bio and a photo does appear on the bill, and three more have
-since made that trip. **The failure mode this section exists for is live for the
-remaining three: OPEN X, Grass Rug and Acadia Rising.** Eleven days out, those
-three are on the poster and not in the API.
+**The failure mode this section exists for is no longer live.** As of 22
+September OPEN X, Grass Rug and Acadia Rising were on the poster and not in the
+API - the exact shape that would have produced an empty bill on the day with
+every part of the machinery working. All three have since made the trip, so the
+poster and the API now agree.
+
+The gate proved itself in both directions: it caught a real gap on 22 September
+and it shows the gap closed on 24 September, both times from the endpoint rather
+than from anyone's recollection.
 <!-- measured 2026-09-14T12:19Z - zao-measure --verify "zaostock acts confirmed count" (DRIFTED from 0 on 2026-09-08T21:00Z to 2 on 2026-09-14T12:19Z) -->
 <!-- re-checked 2026-09-22T12:47Z - GET https://zaostock.com/api/events/zaostock/lineup returned 5 artists, each with photo_url and bio (DRIFTED from 2 on 2026-09-14T12:19Z to 5 on 2026-09-22T12:47Z) -->
-<!-- re-check: 2026-09-29 -->
+<!-- re-checked 2026-09-24T17:51Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (DRIFTED from 5 on 2026-09-22T12:47Z to 8 on 2026-09-24T17:51Z) -->
+<!-- re-check: 2026-10-02 -->
 
 ### 3. The website needs NO deploy - corrected 2026-09-08
 

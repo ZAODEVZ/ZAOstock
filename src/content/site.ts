@@ -567,9 +567,11 @@ export const ZAO = {
 
 /** Deck slide 6, measured 2026-08-27. Re-pull from wavewarz.info/api/public/stats before print. */
 export const WAVEWARZ_STATS = {
-  // Re-pulled 2026-09-12T14:0xZ from wavewarz.info/api/public/stats, which
-  // returned battles.total = 1528 (it was 1,508 on 9 September, and 1,452 on
-  // 27 August). The 27 August figure
+  // Re-pulled 2026-09-24T17:51Z from wavewarz.info/api/public/stats, which
+  // returned battles.total = 1573 (it was 1,528 on 12 September, 1,508 on
+  // 9 September, and 1,452 on 27 August). 45 battles in the twelve days since
+  // the last pull, which is why this is re-pulled and not remembered.
+  // The 27 August figure
   // was refreshed in the sponsor deck hours before this file, which is exactly
   // the shape this codebase keeps getting caught by: a correction that reaches
   // one surface and not its sibling. This is the SOURCE, so the deck and the
@@ -577,7 +579,7 @@ export const WAVEWARZ_STATS = {
   // remembered to edit both.
   //
   // It is a SNAPSHOT and it climbs, so it goes stale downward in credibility.
-  // re-check 2026-10-01, before any print run.
-  asOf: '12 September 2026',
-  battles: { value: '1,528', label: 'battles run' },
+  // re-check 2026-10-02, before any print run.
+  asOf: '24 September 2026',
+  battles: { value: '1,573', label: 'battles run' },
 } as const;
