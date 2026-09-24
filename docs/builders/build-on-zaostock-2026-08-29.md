@@ -64,7 +64,7 @@ Build: a Decentraland scene of the parklet stage that plays the 3 October stream
 What exists:
 
 - WaveWarZ runs online all year. **It is NOT on the 3 October programme** (Zaal, 2026-09-07): the four-to-six window it held is now LyonsDen and Tom Fellenz, and the battlers and the on-mic role went with it. WaveWarZ remains a ZAOstock partner, and its first live battle did happen at ZAO-CHELLA in December 2024.
-- Public stats: `GET https://wavewarz.info/api/public/stats` returns `volume`, `liveBattle`, `artistPayouts`, `traderClaims` and `battles` totals (1,528 battles as of 12 September 2026; it climbs, so re-pull it). The battle site is https://wavewarz.com.
+- Public stats: `GET https://wavewarz.info/api/public/stats` returns `volume`, `liveBattle`, `artistPayouts`, `traderClaims` and `battles` totals (1,573 battles as of 24 September 2026; it climbs - 45 in the twelve days before that pull - so re-pull it rather than quoting this line). The battle site is https://wavewarz.com.
 - The program page: https://zaostock.com/program.
 
 What is missing: the in-person layer. Two hundred people on a street cannot vote on wavewarz.com from a phone in the sun without help, and the stage has no screen output.

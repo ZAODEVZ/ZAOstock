@@ -100,11 +100,14 @@ audience picks the winner, in person and online. It runs online all year.
 WaveWarZ remains a confirmed partner and its first live battle really did happen at
 ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
 
-As of 12 September 2026, WaveWarZ had run 1,528 battles. (Provenance and re-pull
+As of 24 September 2026, WaveWarZ had run 1,573 battles. (Provenance and re-pull
 instructions are in the sources table at the foot of this file, not here - this
 section is what a journalist reads.)
-<!-- re-check: 2026-10-01, before any print run. Re-pulled 2026-09-12T14:0xZ from
-     wavewarz.info/api/public/stats: battles.total = 1528. It is a point-in-time
+<!-- re-check: 2026-10-02, before any print run. Re-pulled 2026-09-24T17:51Z from
+     wavewarz.info/api/public/stats: battles.total = 1573, up from 1528 on
+     2026-09-12. That is 45 battles in twelve days, which is the whole reason
+     this marker exists: the figure printed on 12 September was already wrong
+     by the 24th. It is a point-in-time
      count of a live, still-running system, printed on the one page a journalist
      reads, so re-pull it before quoting it again or drop the figure: a stale
      number quoted to press is worse than no number, because we cannot correct
@@ -205,7 +208,7 @@ info@thezao.com
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
 | Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
 | LyonsDen public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
-| WaveWarZ 1,528, 12 Sep | `docs/sponsor/deck-2026-10-03.md` slide 6 |
+| WaveWarZ 1,573, 24 Sep | `wavewarz.info/api/public/stats`, re-pulled 2026-09-24T17:51Z. **The source, not a document.** This row used to cite `docs/sponsor/deck-2026-10-03.md` slide 6 for "1,528", and that slide said 1,452 - a provenance row pointing at a file carrying a different number. Cite the endpoint. |
 | Partners, incl. WE THE MEDIA and Heart of Ellsworth | `src/content/site.ts` PARTNERS (site-fix brief 2026-09-21: page.tsx line numbers this row used to cite had already moved) |
 | RSVP URL | `src/content/festival.ts` FESTIVAL.rsvpUrl |
 | WE THE MEDIA is capturing on the day | `src/content/site.ts` PARTNERS role, "Media and content capture" |
