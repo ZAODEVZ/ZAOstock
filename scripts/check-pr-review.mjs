@@ -28,6 +28,12 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 
 const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AKIA[0-9A-Z]{16}|(?:api_key|apikey|secret|private_key|auth_token)\s*[:=]\s*["'][0-9a-zA-Z_\-]{20,}["'])/i;
+// A base64 data URI is a known false-positive class for the patterns above: a
+// large enough random-looking blob (an embedded image easily runs past
+// 100,000 characters) will contain a coincidental "AKIA..." or "secret=..."
+// shaped substring by chance alone. Strip the payload before either secret
+// check runs, so the blob itself is never what a match is found inside.
+const RE_DATA_URI_BASE64 = /data:[^;,'"]+;base64,[A-Za-z0-9+/=]+/g;
 const PAT_PUBLIC_SECRET = /(?<![A-Za-z0-9_])NEXT_PUBLIC_(?:[A-Za-z0-9_]*(?:SECRET|PRIVATE_KEY|TOKEN)|GEMINI_API_KEY|PINATA_JWT)\s*=\s*["'][^"']+/;
 const RE_RAW_SQL = /\.(?:query|execute|\$queryRaw|\$executeRawUnsafe)\s*\(\s*`[^`]*\$\{/;
 const RE_SERVICE_ROLE_CLIENT = /(?:SUPABASE_SERVICE_ROLE_KEY|createAdminClient)/;
@@ -94,7 +100,7 @@ function getHeadSha() {
   return r.status === 0 ? r.stdout.trim() : "UNKNOWN_HEAD";
 }
 
-function auditFile(relPath) {
+export function auditFile(relPath) {
   if (isTestFile(relPath) || relPath.endsWith("check-pr-review.mjs") || relPath.endsWith("zao-review-gate")) {
     return [];
   }
@@ -120,10 +126,12 @@ function auditFile(relPath) {
       continue;
     }
 
-    if (PAT_PUBLIC_SECRET.test(line)) {
+    const lineForSecretCheck = line.replace(RE_DATA_URI_BASE64, "data:<omitted>;base64,<omitted>");
+
+    if (PAT_PUBLIC_SECRET.test(lineForSecretCheck)) {
       findings.push({ category: "security", line: lineNum, msg: "Secret assigned to NEXT_PUBLIC variable" });
     }
-    const secMatch = line.match(RE_HARDCODED_SECRET);
+    const secMatch = lineForSecretCheck.match(RE_HARDCODED_SECRET);
     if (secMatch) {
       const token = secMatch[0].toLowerCase();
       if (!["dummy", "fake", "example", "xxx", "placeholder", "test"].some((ign) => token.includes(ign))) {
@@ -195,4 +203,9 @@ function main() {
   }
 }
 
-main();
+// Guarded so a test can `import { auditFile } from "./check-pr-review.mjs"`
+// without running the whole gate (git calls, process.exit) as an import side
+// effect - main() only fires when this file is the process entrypoint.
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}
