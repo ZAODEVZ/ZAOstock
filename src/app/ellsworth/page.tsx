@@ -30,11 +30,20 @@ export const metadata: Metadata = {
 // Gated - see the section comment below before ever setting this.
 const HOE_VIDEO_URL: string | null = null;
 
+// Franklin Street itself has been closed to vehicles for the parklet season
+// since 10 May 2026 (City of Ellsworth, "Franklin Street to Close for Seasonal
+// Parklet"), so the old "free street parking right near the venue" line was
+// wrong for the one street that actually matters - corrected 2026-09-25 after
+// Zaal asked for a parking map. Franklin Street Parking Lot (free, all-day)
+// and Ellsworth City Hall's own lot (also where the event's porta-potty sits,
+// per Roddy Ehrlenbach, City of Ellsworth) are both a short walk from the
+// parklet. No exact addresses found for either in public sources - the map
+// below is the more reliable pointer than a street address would be.
 const GETTING_HERE: { mode: string; detail: string }[] = [
   { mode: 'By car', detail: 'About 40 min (30 mi) from Bangor, ~3 hrs (135 mi) from Portland, and ~5 hrs from Boston. Route 1 / Route 1A run right through downtown.' },
   { mode: 'Bangor International (BGR)', detail: 'Nearest major airport, ~40 min away. A direct shuttle bus runs to Ellsworth twice daily (~35 min). Best bet for most travelers.' },
   { mode: 'Hancock County-Bar Harbor (BHB)', detail: 'Smaller regional airport ~20 min away, with seasonal Cape Air service (including from Boston). Closest to the venue.' },
-  { mode: 'Parking', detail: `A public parking lot plus free street parking right near the ${FESTIVAL.venue} - no shuttle needed.` },
+  { mode: 'Parking', detail: `Franklin Street itself has no vehicle parking during the parklet season. Use the free Franklin Street Parking Lot or Ellsworth City Hall's own lot instead - both a short walk from the ${FESTIVAL.venue}. Map below.` },
 ];
 
 const STAY: { name: string; note: string }[] = [
@@ -128,6 +137,21 @@ export default function EllsworthPage() {
                 <p className="text-sm text-ink-secondary mt-1 m-0">{g.detail}</p>
               </div>
             ))}
+          </div>
+          {/* Zaal, 2026-09-25: "there is public parking all around, we should
+              make a map" - a live embed rather than a static image, since it
+              stays correct if the City ever renames or moves a lot; no API
+              key needed for this basic embed form. Centered on the parklet
+              itself so both named lots (Franklin Street Parking Lot, City
+              Hall's own lot) show as nearby landmarks on the same map. */}
+          <div className="mt-3 rounded-md border-2 border-ink-950 bg-paper-200 overflow-hidden shadow-hard">
+            <iframe
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${FESTIVAL.venue}, Ellsworth, ME`)}&output=embed`}
+              title={`Map of parking near ${FESTIVAL.venue}, Ellsworth, Maine`}
+              className="w-full h-[320px] border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </section>
 
