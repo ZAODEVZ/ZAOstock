@@ -134,9 +134,12 @@ describe('the form stays open', () => {
   });
 });
 
-describe('the Friday soundcheck', () => {
-  it('is 4 to 7 PM on Friday 2 October (Zaal, 2026-09-10)', () => {
-    expect(SOUNDCHECK).toEqual({ day: 'Friday 2 October', window: '4 PM to 7 PM' });
+describe('the Saturday soundcheck', () => {
+  // Moved 2026-09-24 (Zaal, live): "lets say sat 9:30 am is when soundcheck
+  // will start have pople say by 11 am they have to be there" - replaces the
+  // original Friday 2 October, 4-7pm block (Zaal, 2026-09-10).
+  it('starts 9:30 AM Saturday 3 October, arrive by 11 AM (Zaal, 2026-09-24)', () => {
+    expect(SOUNDCHECK).toEqual({ day: 'Saturday 3 October', window: 'starts 9:30 AM - be there by 11 AM' });
   });
 });
 
@@ -301,7 +304,7 @@ describe('the artist form is the contract', () => {
   const gs = readFileSync(path.join(process.cwd(), 'scripts/create-artist-form.gs'), 'utf8');
 
   it('carries the terms Zaal picked', () => {
-    expect(gs).toMatch(/on site by 10 AM\. Sets start on time/);
+    expect(gs).toMatch(/on site by 11 AM\. Sets start on time/);
     expect(gs).toMatch(/comes out of your own changeover/);
     expect(gs).toMatch(/your responsibility on the day/);
     expect(gs).toContain(`${SOUNDCHECK.day}, ${SOUNDCHECK.window}`);
