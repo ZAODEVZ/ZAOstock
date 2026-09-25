@@ -10,9 +10,22 @@
 # `/backstage/<code>` URL in the file is checked against <base-url>, whatever
 # host the file itself names.
 #
-# Per act, PASS needs ALL of: HTTP 200, the act marker the page renders, an
-# iframe whose src is the public form, and no "reveal" / "13 September" /
+# Per act, PASS needs ALL of: HTTP 200, an <h1> carrying that act's real name
+# (OPS_ACTS in src/content/artist-ops.ts), and no "reveal" / "13 September" /
 # "Sunday" anywhere on the page (there is no reveal day since 2026-09-10).
+#
+# CORRECTED 2026-09-24. The two checks this replaced - a `data-backstage-act`
+# marker and an embedded Google Form iframe - tested for things that were
+# already gone from the live page 8 days before this script was next run.
+# Zaal, 2026-09-16: "remove the form and just ask them in the message what
+# we still need from each of them" - the on-page form went away entirely
+# (src/app/backstage/[code]/page.tsx's own top comment records the ruling),
+# and no `data-backstage-act` attribute has ever existed in that component.
+# Result: every one of the 8 real links FAILED against a checker looking for
+# artifacts the redesign deliberately removed, while the pages themselves
+# were rendering correctly - confirmed by reading the actual served text of
+# two pages by hand. 8-for-8 failing the first time a checker runs is the
+# checker, not the pages (a near-universal result is the instrument).
 # A failing page is re-checked once after RETRY_WAIT seconds (default 45) and
 # the output names the pass that decided it. Two controls run in the same
 # invocation and MUST come back the other way, or the whole run fails:
@@ -39,6 +52,35 @@ fetch() { # url -> writes body to $TMP/body, echoes status
   curl -s -o "$TMP/body" -w '%{http_code}' --max-time 30 -A 'verify-backstage/1 (anonymous)' "$1"
 }
 
+# Real act names, `key: name` from src/content/artist-ops.ts's OPS_ACTS - kept
+# here rather than parsed from the TypeScript, same reasoning as FORM_ID above
+# (a literal is easier to audit than a parser, and this list changes only when
+# the lineup does, which is a hand-edit either way).
+act_name() {
+  case "$1" in
+    crown-vics) echo 'The Crown Vics' ;;
+    open-x) echo 'OPEN X' ;;
+    grass-rug) echo 'Grass Rug' ;;
+    acadia-rising) echo 'Acadia Rising' ;;
+    michael-anderson) echo 'Michael Anderson' ;;
+    dcoop) echo 'DCoop' ;;
+    lyons-den) echo 'LyonsDen' ;;
+    fellenz) echo 'Tom Fellenz' ;;
+    *) echo '' ;;
+  esac
+}
+
+# The name inside an <h1 ...>...</h1> on the fetched body, real text not a
+# marker attribute - matches src/app/backstage/[code]/page.tsx's own
+# `<h1 ...>{act.name}</h1>`.
+has_act_name() {
+  local name="$1"
+  grep -oE '<h1[^>]*>[^<]*' "$TMP/body" | grep -qF "$name"
+}
+
+# Only /backstage with NO code still embeds this - the public intake form
+# (src/app/backstage/ArtistForm.tsx). The per-act pages dropped their own
+# embed entirely on 2026-09-17; do not use this for check_act.
 has_form() { grep -q "docs.google.com/forms/d/e/$FORM_ID/viewform" "$TMP/body" && grep -q '<iframe' "$TMP/body"; }
 
 # A stale promise on the page is a failure too. Every one of these pages is
@@ -72,15 +114,18 @@ if [ "$N" -ne 8 ]; then echo "FAIL  expected 8 codes in the links file, found $N
 RETRY_WAIT="${RETRY_WAIT:-45}"
 
 check_act() { # code key -> sets VERDICT (PASS|FAIL) and DETAIL
-  local code="$1" key="$2" st stale
+  local code="$1" key="$2" st stale name
+  name="$(act_name "$key")"
   st=$(fetch "$BASE/backstage/$code")
   stale=$(stale_hits)
-  if [ "$st" = 200 ] && grep -q "data-backstage-act=\"$key\"" "$TMP/body" && has_form && [ "$stale" = 0 ]; then
-    VERDICT=PASS; DETAIL="200, act marker, form iframe, no stale reveal promise"
+  if [ -z "$name" ]; then
+    VERDICT=FAIL; DETAIL="unknown key \"$key\" - not in this script's act_name() table, add it there first"
+  elif [ "$st" = 200 ] && has_act_name "$name" && [ "$stale" = 0 ]; then
+    VERDICT=PASS; DETAIL="200, h1 says \"$name\", no stale reveal promise"
   elif [ "$st" = 200 ] && [ "$stale" != 0 ]; then
     VERDICT=FAIL; DETAIL="status=200 but $stale stale reveal/date hit(s): $(grep -o -i -E "$STALE" "$TMP/body" | sort | uniq -c | tr -s ' ' | tr '\n' ';')"
   else
-    VERDICT=FAIL; DETAIL="status=$st marker=$(grep -c "data-backstage-act=\"$key\"" "$TMP/body" || true) form=$(has_form && echo yes || echo no)"
+    VERDICT=FAIL; DETAIL="status=$st, expected h1 \"$name\": $(has_act_name "$name" && echo found || echo NOT FOUND)"
   fi
 }
 
@@ -103,7 +148,11 @@ for code in $CODES; do
 done
 
 st=$(fetch "$BASE/backstage/not-a-real-code-zz9999")
-if [ "$st" = 404 ] && ! grep -q 'data-backstage-act=' "$TMP/body"; then
+any_act_rendered=0
+for code in $CODES; do
+  if has_act_name "$(act_name "${code%-*}")"; then any_act_rendered=1; break; fi
+done
+if [ "$st" = 404 ] && [ "$any_act_rendered" = 0 ]; then
   echo "PASS  control: made-up code -> 404, no act rendered"
 else
   echo "FAIL  control: made-up code -> $st (the gate is not gating)"; fails=$((fails+1))
