@@ -102,6 +102,30 @@ export default function PressPage() {
           lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Artist bios and photos are going up per act as each is confirmed - see /artists for what's live now, or ask for the rest.`}
           className="mb-6"
         />
+        {/* The confirmed 2026 lineup poster - the finished piece, not a design
+            reference. Full library at /brand#poster. */}
+        <Card className="p-0 mb-4 overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-[160px_1fr]">
+            <a href="/brand/posters/2026-lineup-poster-1600x2000.png" download className="block border-b-2 border-ink-950 bg-paper-100 sm:border-b-0 sm:border-r-2">
+              {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
+              <img
+                src="/brand/posters/2026-lineup-poster-1600x2000.png"
+                alt="ZAOstock 2026 confirmed lineup poster"
+                className="w-full h-full object-cover"
+              />
+            </a>
+            <div className="p-5 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-sans font-extrabold text-base text-ink-950 m-0">2026 lineup poster</p>
+                <p className="text-[13px] text-ink-muted m-0 mt-0.5">PNG, full lineup + all 2026 partner marks, 1600&times;2000</p>
+              </div>
+              <Button href="/brand/posters/2026-lineup-poster-1600x2000.png" external variant="secondary" size="sm">
+                Download
+              </Button>
+            </div>
+          </div>
+        </Card>
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">
           {BADGES.map((b) => (
             <Card key={b.href} className="p-0">

@@ -237,7 +237,7 @@ const COPY_BLOCKS = [
 const TASKS: Array<{ label: string; href: string }> = [
   { label: 'I need a logo', href: '#logos' },
   { label: 'How do I use it', href: '#usage' },
-  { label: 'I need a poster', href: '#posters' },
+  { label: 'I need the poster', href: '#poster' },
   { label: 'I need a social image', href: '#social' },
   { label: 'I need words to paste', href: '#copy' },
   { label: 'I need audio', href: '#audio' },
@@ -357,6 +357,53 @@ export default function BrandPage() {
             >
               Download everything (.zip)
             </a>
+          </div>
+        </div>
+      </Section>
+
+      {/* THE confirmed poster, not a reference. Zaal shared it 2026-09-25 as
+          "we do have a confirmed flyer" - the real, finished, print piece
+          with the full 8-act lineup and every 2026 partner logo, distinct
+          from the abstract/reference posters further down this page (those
+          are design references Candy supplied before the lineup locked;
+          this is the shipped artifact). Given equal prominence to Logos,
+          not buried in the collapsed "More assets" section, because this is
+          the one thing a press contact or a partner actually wants first.
+
+          Credit: not stated when Zaal shared this file - add a name here
+          once he confirms who designed it, same as the "flagged to the seat"
+          pattern used elsewhere on this page rather than guessing.
+
+          Source file was a web-compressed 1600x2000 copy (300dpi print
+          original mentioned but not received) - good for on-site display
+          and digital sharing; ask Zaal for the true print source before
+          sending this specific file to an actual print vendor. */}
+      <Section id="poster">
+        <SectionHeader eyebrow="The poster" title="The confirmed 2026 lineup poster." className="mb-4" />
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[360px_1fr] items-start">
+          <a href="/brand/posters/2026-lineup-poster-1600x2000.png" download className="block">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised, matches every other AssetCard image on this page */}
+            <img
+              src="/brand/posters/2026-lineup-poster-1600x2000.png"
+              alt={`ZAOstock 2026 confirmed lineup poster - One Street. One Stage. ${FESTIVAL.dateLabel}, ${FESTIVAL.venue}, ${FESTIVAL.city}.`}
+              className="w-full rounded-[14px] border-[1.5px] border-gold-500/60 shadow-hard"
+            />
+          </a>
+          <div className="flex flex-col gap-3">
+            <p className="text-sm text-ink-secondary measure m-0">
+              The finished piece - full lineup, date, venue and every 2026 partner mark. This is what goes on a wall, in a press
+              email, or anywhere the festival needs to look real and locked, not a work-in-progress reference.
+            </p>
+            <p className="text-xs text-ink-muted m-0">1600&times;2000 &middot; PNG &middot; web/digital resolution</p>
+            <div>
+              <a
+                href="/brand/posters/2026-lineup-poster-1600x2000.png"
+                download
+                className="inline-block text-sm font-bold underline underline-offset-4 text-ink-950"
+              >
+                Download the poster
+              </a>
+            </div>
           </div>
         </div>
       </Section>
