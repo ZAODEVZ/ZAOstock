@@ -64,7 +64,11 @@ const TONE: Record<'set' | 'gap' | 'open' | 'battle', string> = {
 
 const GOOD_TO_KNOW = [
   `${FESTIVAL.admission}. No ticket, no wristband for the street.`,
-  `${SITE.weather} Tent cover from Wallace Events.`,
+  // "Tent cover from Wallace Events." used to be appended here. Removed
+  // 2026-09-24 - not because the tent is fake (it is up, and has been since
+  // 28 August) but because pairing it with "rain or shine" promised that the
+  // tent is the bad-weather answer. It is not; the room next door is.
+  SITE.weather,
   'One venue at a time. Nothing plays in two rooms at once.',
   'Black Moon is open through the day, walkable, right next door.',
   'Each artist gets their own post with their bio and photo, in the order their details come in. Times can shift by a few minutes on the day.',
