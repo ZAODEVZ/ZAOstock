@@ -385,7 +385,7 @@ export default function BrandPage() {
             {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised, matches every other AssetCard image on this page */}
             <img
               src="/brand/posters/2026-lineup-poster-1600x2000.png"
-              alt="ZAOstock 2026 confirmed lineup poster - One Street. One Stage. Saturday October 3, 2026, Franklin Street Parklet, Ellsworth, Maine."
+              alt={`ZAOstock 2026 confirmed lineup poster - One Street. One Stage. ${FESTIVAL.dateLabel}, ${FESTIVAL.venue}, ${FESTIVAL.city}.`}
               className="w-full rounded-[14px] border-[1.5px] border-gold-500/60 shadow-hard"
             />
           </a>
