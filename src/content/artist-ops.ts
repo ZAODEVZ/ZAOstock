@@ -58,26 +58,28 @@ export type OpsAct = {
 /**
  * Eight acts, in running order. Hurricane is out (Zaal, 2026-09-10) and has no
  * page. Retimed the same day (Zaal: seven-minute changeovers, the 30-minute
- * acts to 33, "option b"): music 12:05 to 17:46. src/content/program.ts is the
- * source and a test holds every time here to it. /program publishes the order
- * only; the clock lives on each act's own backstage page.
+ * acts to 33, "option b"), then nudged 2026-09-25 (Zaal: "closer to on the
+ * 5 min mark") so every start lands on a clean five-minute mark: music 12:05
+ * to 17:40. src/content/program.ts is the source and a test holds every time
+ * here to it. /program publishes the order only; the clock lives on each
+ * act's own backstage page.
  */
 export const OPS_ACTS: readonly OpsAct[] = [
   { key: 'crown-vics', name: 'The Crown Vics', setStart: '12:05', minutes: 33,
     codeSha256: 'e3ff431d71cf5f7c147a6f6d267a4f26dedea7fc82f137d079173ea84f2ff4ca' },
   { key: 'open-x', name: 'OPEN X', setStart: '12:45', minutes: 40,
     codeSha256: '9d4dc8269872799d466ce773635b98c63ebf21ae76755ea3e03a6f2495e4373e' },
-  { key: 'grass-rug', name: 'Grass Rug', setStart: '13:32', minutes: 33,
+  { key: 'grass-rug', name: 'Grass Rug', setStart: '13:30', minutes: 33,
     codeSha256: '23bb7d8cec6d8080324bb8172f8cd2c4dda1d96d0c194193b62253459ecaade8' },
-  { key: 'acadia-rising', name: 'Acadia Rising', setStart: '14:12', minutes: 33,
+  { key: 'acadia-rising', name: 'Acadia Rising', setStart: '14:10', minutes: 33,
     codeSha256: 'e9ff956154b23901cee71a313712cff962bd772da981f7b63fa2273a6184086b' },
-  { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:52', minutes: 33,
+  { key: 'michael-anderson', name: 'Michael Anderson', setStart: '14:50', minutes: 33,
     codeSha256: 'b89fdb296171f0a04ebd1dcefa85b13b46dc74e32fe00f3e89397ac06d86b652' },
-  { key: 'dcoop', name: 'DCoop', setStart: '15:32', minutes: 40,
+  { key: 'dcoop', name: 'DCoop', setStart: '15:30', minutes: 40,
     codeSha256: '58cdef916cbce928d46a263d3ffb64639285168051b57b91fc75ebd5f0ad9709' },
-  { key: 'lyons-den', name: 'LyonsDen', setStart: '16:19', minutes: 40,
+  { key: 'lyons-den', name: 'LyonsDen', setStart: '16:15', minutes: 40,
     codeSha256: 'c4e9b93e5e6d06ad10e2e7780d60ff016ef4027dde270c4297e62753755752ae' },
-  { key: 'fellenz', name: 'Tom Fellenz', setStart: '17:06', minutes: 40,
+  { key: 'fellenz', name: 'Tom Fellenz', setStart: '17:00', minutes: 40,
     codeSha256: '21323ff07117cc8842f6984ca063c7072d008e2150696561cf2eca1d486b51ed' },
 ];
 
@@ -161,7 +163,7 @@ export const SOUNDCHECK = {
 export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
   { when: ARTIST_FORM.askLabel, what: 'The artist details form, on your own backstage page: whatever is still missing, only the items you have not answered yet. Photo, short bio, your city, your links, your tech rider (who is on stage, the gear you need from us, what you bring), and a yes or no on soundcheck and on filming. Your own post goes up once your details are in.' },
   { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage, staggered through the block - not everyone needs to be there right at 9:30, but the last slot is 11 AM. Let us know what time you will be there and we will hold it for you. Crew is in from 8.' },
-  { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with seven-minute changeovers.' },
+  { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with five- to seven-minute changeovers.' },
   { when: 'Saturday, 5:46 PM', what: 'Music ends and the street clears at six. Black Moon Public House next door hosts its own evening from six.' },
 ];
 

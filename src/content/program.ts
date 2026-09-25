@@ -43,11 +43,15 @@ export const BLOCKS: Block[] = [
     lede: 'Eight independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
     slots: [
       // THE RUN OF SHOW, RETIMED 2026-09-10 (Zaal: "lets give 7 mins between
-      // performers and give the 30 mins people some more time", then "option b").
-      // Hurricane's 15:10 set left a 40-minute hole; it is spread across the
-      // day instead. Seven-minute changeovers, the four 30-minute acts now 33,
-      // the 40-minute acts unchanged. Music 12:05 to 17:46, street clears at
-      // 18:00: fourteen minutes of margin on the whole afternoon.
+      // performers and give the 30 mins people some more time", then "option b"),
+      // THEN NUDGED 2026-09-25 (Zaal: "clean up the times... closer to on the
+      // 5 min mark") so every set starts on a clean five-minute mark. Hurricane's
+      // 15:10 set left a 40-minute hole; it is spread across the day instead.
+      // The four 30-minute acts are 33 minutes, the 40-minute acts unchanged.
+      // Changeovers are seven minutes after a 33-minute set, five after a
+      // 40-minute one - the shorter gap is what keeps every start on the grid.
+      // Music 12:05 to 17:40, street clears at 18:00: twenty minutes of margin
+      // on the whole afternoon.
       //
       // THIS GRID IS THE ONE PUBLIC SOURCE OF SET TIMES (Zaal, 2026-09-10:
       // public everywhere at once, /program canonical, the artist form points
@@ -63,18 +67,18 @@ export const BLOCKS: Block[] = [
       { time: '12:38', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' , crewFacing: true },
       { time: '12:45', label: 'OPEN X', detail: 'Power pop rock.', tone: 'set' },
       { time: '13:25', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '13:32', label: 'Grass Rug', detail: 'Indie jam rock.', tone: 'set' },
-      { time: '14:05', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '14:12', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion.', tone: 'set' },
-      { time: '14:45', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' , crewFacing: true },
-      { time: '14:52', label: 'Michael Anderson', detail: 'Solo piano.', tone: 'set' },
-      { time: '15:25', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' , crewFacing: true },
-      { time: '15:32', label: 'DCoop', detail: 'Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B.', tone: 'set' },
-      { time: '16:12', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '16:19', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
-      { time: '16:59', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '17:06', label: 'Tom Fellenz', detail: 'Solo Instrumental Acoustic Guitar. Closes out the Outdoor Festival!', tone: 'set' },
-      { time: '17:46', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
+      { time: '13:30', label: 'Grass Rug', detail: 'Indie jam rock.', tone: 'set' },
+      { time: '14:03', label: 'Changeover', tone: 'gap' , crewFacing: true },
+      { time: '14:10', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion.', tone: 'set' },
+      { time: '14:43', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' , crewFacing: true },
+      { time: '14:50', label: 'Michael Anderson', detail: 'Solo piano.', tone: 'set' },
+      { time: '15:23', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' , crewFacing: true },
+      { time: '15:30', label: 'DCoop', detail: 'Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B.', tone: 'set' },
+      { time: '16:10', label: 'Changeover', tone: 'gap' , crewFacing: true },
+      { time: '16:15', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
+      { time: '16:55', label: 'Changeover', tone: 'gap' , crewFacing: true },
+      { time: '17:00', label: 'Tom Fellenz', detail: 'Solo Instrumental Acoustic Guitar. Closes out the Outdoor Festival!', tone: 'set' },
+      { time: '17:40', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
     ],
   },
   {

@@ -6,7 +6,7 @@ where the crew and the artists work: the run of show with owners and
 seconds, the artist advance, the help queue, the squads.
 
 Built for **Saturday 3 October 2026**, Franklin Street Parklet, Ellsworth,
-Maine. Eight acts, music 12:05 to 17:46, street clears at six. Black Moon Public House
+Maine. Eight acts, music 12:05 to 17:40, street clears at six. Black Moon Public House
 next door feeds the performers and hosts its own afterparty after six.
 
 ---
@@ -155,7 +155,7 @@ working the board after dark.
 From the organizing document, the 31 August standup and the **run of show
 locked on 3 September**:
 
-- Eight acts, outdoors, 12:05 to 17:46: The Crown Vics, OPEN X, Grass Rug,
+- Eight acts, outdoors, 12:05 to 17:40: The Crown Vics, OPEN X, Grass Rug,
   Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz (Hurricane out 2026-09-10). Street
   clears 18:00. WaveWarZ is cancelled and Stilo is not coming in person.
 - The evening is Black Moon's afterparty, not ZAOstock's programme (Zaal,
