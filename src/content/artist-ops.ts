@@ -160,7 +160,7 @@ export const SOUNDCHECK = {
  */
 export const ARTIST_DATES: ReadonlyArray<{ when: string; what: string }> = [
   { when: ARTIST_FORM.askLabel, what: 'The artist details form, on your own backstage page: whatever is still missing, only the items you have not answered yet. Photo, short bio, your city, your links, your tech rider (who is on stage, the gear you need from us, what you bring), and a yes or no on soundcheck and on filming. Your own post goes up once your details are in.' },
-  { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage. Every act, mandatory, staggered through the block - not everyone needs to be there right at 9:30. Crew is in from 8.' },
+  { when: `${SOUNDCHECK.day}, ${SOUNDCHECK.window}`, what: 'Soundcheck on the parklet stage, staggered through the block - not everyone needs to be there right at 9:30, but the last slot is 11 AM. Let us know what time you will be there and we will hold it for you. Crew is in from 8.' },
   { when: 'Saturday, noon', what: 'Doors, a five-minute welcome on the mic, then music from 12:05. One stage, sets back to back with seven-minute changeovers.' },
   { when: 'Saturday, 5:46 PM', what: 'Music ends and the street clears at six. Black Moon Public House next door hosts its own evening from six.' },
 ];
@@ -336,7 +336,7 @@ export function missingItems(status: ArtistOpsStatus): MissingItem[] {
     items.push({
       key: 'soundcheckConfirmed',
       label: 'Soundcheck',
-      detail: `Yes or no to ${SOUNDCHECK.day}, ${SOUNDCHECK.window} - mandatory.`,
+      detail: `Let us know what time you will be there, ${SOUNDCHECK.day}, ${SOUNDCHECK.window}.`,
       kind: 'yesno',
     });
   }
