@@ -69,17 +69,21 @@ function splitFiles(stdout) {
 
 // Returns { files, determinable }. determinable=false means the range could
 // not be computed (e.g. a shallow clone with no origin/main ref) - the caller
-// must treat that as UNKNOWN, never as "zero changed files".
-function getChangedFiles() {
-  const rDirty = spawnSync("git", ["diff", "--name-only", "HEAD"], { encoding: "utf8" });
+// must treat that as UNKNOWN, never as "zero changed files". `cwd` defaults
+// to the real process cwd in production; a test passes a scratch repo's path
+// so this can run against a constructed git history instead of this repo.
+export function getChangedFiles(cwd = process.cwd()) {
+  const git = (args) => spawnSync("git", args, { encoding: "utf8", cwd });
+
+  const rDirty = git(["diff", "--name-only", "HEAD"]);
   if (rDirty.status === 0 && rDirty.stdout.trim()) {
     return { files: splitFiles(rDirty.stdout), determinable: true };
   }
 
-  let hasMainRef = spawnSync("git", ["rev-parse", "--verify", "-q", "origin/main"], { encoding: "utf8" }).status === 0;
+  let hasMainRef = git(["rev-parse", "--verify", "-q", "origin/main"]).status === 0;
   if (!hasMainRef) {
-    spawnSync("git", ["fetch", "origin", "main", "--depth=1"], { encoding: "utf8" });
-    hasMainRef = spawnSync("git", ["rev-parse", "--verify", "-q", "origin/main"], { encoding: "utf8" }).status === 0;
+    git(["fetch", "origin", "main", "--depth=1"]);
+    hasMainRef = git(["rev-parse", "--verify", "-q", "origin/main"]).status === 0;
   }
   if (!hasMainRef) {
     return { files: null, determinable: false };
@@ -88,7 +92,7 @@ function getChangedFiles() {
   // Two-dot form: a direct tree comparison between origin/main and HEAD, not
   // merge-base arithmetic - it needs both commits present, not shared
   // ancestry, so it still works when either side is a shallow, depth=1 fetch.
-  const rRange = spawnSync("git", ["diff", "--name-only", "origin/main", "HEAD"], { encoding: "utf8" });
+  const rRange = git(["diff", "--name-only", "origin/main", "HEAD"]);
   if (rRange.status !== 0) {
     return { files: null, determinable: false };
   }
