@@ -64,7 +64,7 @@ function createZaostockArtistForm() {
     'the day. It would mean a lot if you share those posts with your people too.\n\n' +
     'THE TERMS\n' +
     '- Soundcheck: Saturday 3 October, 9:30 AM to noon, on the parklet stage, staggered ' +
-    'through the block. Let us know what time you will be there.\n' +
+    'through the block - the last slot is 11 AM. Let us know what time you will be there.\n' +
     '- Saturday: on site by 11 AM. Sets start on time. If your set runs over, it ' +
     'comes out of your own changeover, and the next act still starts on time.\n' +
     '- Gear: we provide the stage and a shared PA. Your instruments and gear are ' +
