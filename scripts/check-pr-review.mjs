@@ -57,16 +57,36 @@ function findZaoReviewGate() {
   return null;
 }
 
+function splitFiles(stdout) {
+  return stdout.trim() ? stdout.trim().split("\n").map((f) => f.trim()).filter(Boolean) : [];
+}
+
+// Returns { files, determinable }. determinable=false means the range could
+// not be computed (e.g. a shallow clone with no origin/main ref) - the caller
+// must treat that as UNKNOWN, never as "zero changed files".
 function getChangedFiles() {
   const rDirty = spawnSync("git", ["diff", "--name-only", "HEAD"], { encoding: "utf8" });
   if (rDirty.status === 0 && rDirty.stdout.trim()) {
-    return rDirty.stdout.trim().split("\n").map((f) => f.trim()).filter(Boolean);
+    return { files: splitFiles(rDirty.stdout), determinable: true };
   }
-  const rLast = spawnSync("git", ["diff", "--name-only", "HEAD~1...HEAD"], { encoding: "utf8" });
-  if (rLast.status === 0 && rLast.stdout.trim()) {
-    return rLast.stdout.trim().split("\n").map((f) => f.trim()).filter(Boolean);
+
+  let hasMainRef = spawnSync("git", ["rev-parse", "--verify", "-q", "origin/main"], { encoding: "utf8" }).status === 0;
+  if (!hasMainRef) {
+    spawnSync("git", ["fetch", "origin", "main", "--depth=1"], { encoding: "utf8" });
+    hasMainRef = spawnSync("git", ["rev-parse", "--verify", "-q", "origin/main"], { encoding: "utf8" }).status === 0;
   }
-  return [];
+  if (!hasMainRef) {
+    return { files: null, determinable: false };
+  }
+
+  // Two-dot form: a direct tree comparison between origin/main and HEAD, not
+  // merge-base arithmetic - it needs both commits present, not shared
+  // ancestry, so it still works when either side is a shallow, depth=1 fetch.
+  const rRange = spawnSync("git", ["diff", "--name-only", "origin/main", "HEAD"], { encoding: "utf8" });
+  if (rRange.status !== 0) {
+    return { files: null, determinable: false };
+  }
+  return { files: splitFiles(rRange.stdout), determinable: true };
 }
 
 function getHeadSha() {
@@ -134,11 +154,18 @@ function main() {
   }
 
   const headSha = getHeadSha();
-  const changedFiles = getChangedFiles();
+  const { files: changedFiles, determinable } = getChangedFiles();
 
   console.log(`[check-pr-review] target @ HEAD ${headSha}`);
+
+  if (!determinable) {
+    console.log("  UNKNOWN: could not determine the changed-file range (origin/main unreachable, even after a fetch)");
+    console.log("\nOVERALL VERDICT: UNKNOWN");
+    process.exit(2);
+  }
+
   if (changedFiles.length === 0) {
-    console.log("  no changed files to review");
+    console.log("  no changed files versus origin/main - working tree matches base");
     console.log("  OVERALL VERDICT: PASS");
     process.exit(0);
   }
