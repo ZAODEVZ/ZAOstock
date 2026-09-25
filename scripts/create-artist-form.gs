@@ -63,9 +63,9 @@ function createZaostockArtistForm() {
     'your bio and photo, and we keep posting about your performance right up to ' +
     'the day. It would mean a lot if you share those posts with your people too.\n\n' +
     'THE TERMS\n' +
-    '- Soundcheck: Friday 2 October, 4 PM to 7 PM, on the parklet stage. Every ' +
-    'act, and there is no Saturday alternative. Saturday morning is a line check only.\n' +
-    '- Saturday: on site by 10 AM. Sets start on time. If your set runs over, it ' +
+    '- Soundcheck: Saturday 3 October, 9:30 AM to noon - be there by 11 AM at the latest. ' +
+    'On the parklet stage. Every act, mandatory, staggered through the block.\n' +
+    '- Saturday: on site by 11 AM. Sets start on time. If your set runs over, it ' +
     'comes out of your own changeover, and the next act still starts on time.\n' +
     '- Gear: we provide the stage and a shared PA. Your instruments and gear are ' +
     'your responsibility on the day. Tick what you need from us below; until we ' +
@@ -142,14 +142,15 @@ function createZaostockArtistForm() {
   // A question rather than a forced yes, so an act with a genuine conflict
   // flags it instead of abandoning the form.
   form.addMultipleChoiceItem()
-    .setTitle('Soundcheck is Friday 2 October, 4pm to 7pm. Can you be there?')
+    .setTitle('Soundcheck is Saturday 3 October, 9:30 AM to noon. Can you be there by 11 AM?')
     .setHelpText(
-      'It covers every act and there is no Saturday alternative - Saturday ' +
-      'morning is a line check only. Soundcheck runs 4pm to 7pm on Friday 2 October.'
+      'It covers every act, on the parklet stage, the same morning as your set, ' +
+      'staggered through the block since not everyone can be there right at 9:30. ' +
+      'You need to be there by 11 AM at the latest.'
     )
     .setChoiceValues([
-      'Yes, I can be there Friday evening 2 October',
-      'I have a problem with Friday - please get in touch',
+      'Yes, I can be there by 11 AM Saturday 3 October',
+      'I have a problem with that time - please get in touch',
     ])
     .setRequired(true);
 

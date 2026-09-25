@@ -1,5 +1,16 @@
 # Friday 2 October 2026: soundcheck night, AV run sheet
 
+> **SUPERSEDED 2026-09-24. Zaal, live: "friday is seteting up decoretione
+> etc."** Friday 2 October is setup and decorations - that is the whole of
+> it. It is NOT a soundcheck night and NOT the AV/streaming test night this
+> doc describes below. Artist soundcheck moved to Saturday 3 October,
+> 9:30 AM to noon (`src/content/artist-ops.ts`, `SOUNDCHECK`). This leaves
+> everything item 4 below names - the full outdoor PA, the end-to-end
+> streaming chain, the indoor rig/DJ check - with no confirmed slot at
+> all. Kept below for history, not deleted and not silently rewritten;
+> read everything under this notice as describing a plan that is no
+> longer the plan.
+
 Written 27 August 2026. Built from the AV LIST and RUN OF SHOW tabs of the
 Doc snapshot and the production plan. The Doc says four things about Friday
 and nothing else; everything the Doc does not say is UNSET here, not guessed.
