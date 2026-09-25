@@ -63,8 +63,8 @@ function createZaostockArtistForm() {
     'your bio and photo, and we keep posting about your performance right up to ' +
     'the day. It would mean a lot if you share those posts with your people too.\n\n' +
     'THE TERMS\n' +
-    '- Soundcheck: Saturday 3 October, 9:30 AM to noon - be there by 11 AM at the latest. ' +
-    'On the parklet stage. Every act, mandatory, staggered through the block.\n' +
+    '- Soundcheck: Saturday 3 October, 9:30 AM to noon, on the parklet stage, staggered ' +
+    'through the block. Let us know what time you will be there.\n' +
     '- Saturday: on site by 11 AM. Sets start on time. If your set runs over, it ' +
     'comes out of your own changeover, and the next act still starts on time.\n' +
     '- Gear: we provide the stage and a shared PA. Your instruments and gear are ' +
@@ -142,15 +142,15 @@ function createZaostockArtistForm() {
   // A question rather than a forced yes, so an act with a genuine conflict
   // flags it instead of abandoning the form.
   form.addMultipleChoiceItem()
-    .setTitle('Soundcheck is Saturday 3 October, 9:30 AM to noon. Can you be there by 11 AM?')
+    .setTitle('What time will you be there for soundcheck?')
     .setHelpText(
-      'It covers every act, on the parklet stage, the same morning as your set, ' +
-      'staggered through the block since not everyone can be there right at 9:30. ' +
-      'You need to be there by 11 AM at the latest.'
+      'Saturday 3 October, 9:30 AM to noon - be there by 11 AM at the latest. It covers ' +
+      'every act, on the parklet stage, the same morning as your set, staggered through ' +
+      'the block since not everyone can be there right at 9:30.'
     )
     .setChoiceValues([
-      'Yes, I can be there by 11 AM Saturday 3 October',
-      'I have a problem with that time - please get in touch',
+      'I will be there by 11 AM Saturday 3 October',
+      'I have a different time in mind - please get in touch',
     ])
     .setRequired(true);
 
