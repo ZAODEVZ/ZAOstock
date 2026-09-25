@@ -26,8 +26,8 @@ holds the role for exactly the window the lead is performing.**
 |---|---|---|---|
 | 12:05-12:38 | Steve Peer (The Crown Vics) | Venue and door on the Black Moon side; he is also the route to two acts | **Katina** |
 | 12:45-13:25 | OPEN X | **The PA.** They bring it and run it all day (Zaal, 15 Sept) | **UNSET, and this one is new** |
-| 15:32-16:12 | DCoop | Music and AV lead, which is the desk. He is also one of the three stage managers | **UNSET. This is the gap to solve first** |
-| 17:06-17:46 | Tom Fellenz | Advisor, event ops | None needed, not an operating role on the day |
+| 15:30-16:10 | DCoop | Music and AV lead, which is the desk. He is also one of the three stage managers | **UNSET. This is the gap to solve first** |
+| 17:00-17:40 | Tom Fellenz | Advisor, event ops | None needed, not an operating role on the day |
 | 18:00 onward | Steve (after-party DJ, Black Moon) | Venue and door | **Katina**, and see the door question below |
 
 ## What this means in practice
@@ -38,7 +38,7 @@ desk, and nobody has been named. This is not in any earlier version of this file
 because the PA arrangement was settled on the 15 September call, after the file
 was last touched.
 
-**DCoop needs a second for his own set**, 15:32 to 16:12. He holds the music and
+**DCoop needs a second for his own set**, 15:30 to 16:10. He holds the music and
 AV lead, which is the desk, and he is one of the three stage managers, so the
 same forty minutes need two holes filled, not one.
 
@@ -60,7 +60,7 @@ people; that split was replaced on the 15 September call.
 
 | Role | Note |
 |---|---|
-| Third stage manager | Zaal and DCoop are two. The third name is contested: one 15 September answer says Steve Peer, the other says Maseo. It decides who holds the stage while DCoop plays at 15:32 |
+| Third stage manager | Zaal and DCoop are two. The third name is contested: one 15 September answer says Steve Peer, the other says Maseo. It decides who holds the stage while DCoop plays at 15:30 |
 | First Aid contact | **DUE NOW.** Parked by Zaal on 31 August "until ~18 September, 15 days out", which is today. The Fire Chief question waits behind it |
 | Sound, 12:00 to 18:00 | One name for the whole day, or OPEN X plus a second for their own set |
 | Street pointer | 18:00, during the move next door |
@@ -81,8 +81,8 @@ for the LyonsDen intro, which is one slot already spoken for.
 ## The order this file is built on
 
 The run of show is `src/content/program.ts` `BLOCKS`, and it is the only copy
-anything here should be read against. Eight acts, seven-minute changeovers, music
-12:05 to 17:46, street clears at 18:00. This file used to carry its own copy of
+anything here should be read against. Eight acts, five- to seven-minute
+changeovers, music 12:05 to 17:40, street clears at 18:00. This file used to carry its own copy of
 the order, from 31 August, with six acts and a battle reset at 15:50. It does not
 any more, because that is how this file came to be describing a day nobody is
 running.

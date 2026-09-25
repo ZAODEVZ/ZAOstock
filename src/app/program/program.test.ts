@@ -39,13 +39,16 @@ describe('the published run of show', () => {
   });
 
   // 17:55 until 2026-09-10, when the day was retimed around Hurricane's empty
-  // slot (seven-minute changeovers, the 30-minute acts to 33). Now 17:46.
-  it('starts at noon and the OUTDOOR block ends 17:46, fourteen minutes before the street clears', () => {
+  // slot (seven-minute changeovers, the 30-minute acts to 33). Then 17:46 until
+  // 2026-09-25, when Zaal asked for the times "closer to on the 5 min mark" -
+  // shortening the changeover after a 40-minute set from 7 to 5 keeps every
+  // set start on the grid and moves the end to 17:40.
+  it('starts at noon and the OUTDOOR block ends 17:40, twenty minutes before the street clears', () => {
     expect(times[0].label).toBe('12:00');
     // times[] spans the whole page, evening block included, so scope this to the
     // outdoor half rather than to the last slot on the page.
     const outdoor = times.filter((t) => t.minutes < 18 * 60);
-    expect(outdoor.at(-1)?.label).toBe('17:46');
+    expect(outdoor.at(-1)?.label).toBe('17:40');
   });
 
   // Was "six sets, not the five of v7" while the sets were unnamed placeholders.

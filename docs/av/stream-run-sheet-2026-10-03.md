@@ -96,9 +96,9 @@ first bar and out after 20 seconds, and comes back on at the last song.
 
 ## The day
 
-Eight acts, seven-minute changeovers, music 12:05 to 17:46, street clears at
-18:00. Two changeovers carry the MC and a partner spot; the rest are a swap
-behind a HOLD card.
+Eight acts, five- to seven-minute changeovers, music 12:05 to 17:40, street
+clears at 18:00. Two changeovers carry the MC and a partner spot; the rest are
+a swap behind a HOLD card.
 
 | Time | What | Scene | Cue | Notes |
 |------|------|-------|-----|-------|
@@ -106,19 +106,19 @@ behind a HOLD card.
 | 12:05 | 1. THE CROWN VICS, 33 | STAGE WIDE, lower-third at first bar | Cut on the downbeat | Opens the day |
 | 12:38 | Changeover 7: the MC, the six o'clock move, Art of Ellsworth, a partner spot | MC, then PARTNER, then HOLD "Next: OPEN X" | HOLD for the last two minutes | |
 | 12:45 | 2. OPEN X, 40 | STAGE WIDE | Cut on the downbeat | They also run the PA all day |
-| 13:25 | Changeover 7: swap only | HOLD "Next: Grass Rug" | HOLD the whole 7 | |
-| 13:32 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | |
-| 14:05 | Changeover 7: swap only | HOLD "Next: Acadia Rising" | HOLD the whole 7 | |
-| 14:12 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | Routed through Sen |
-| 14:45 | Changeover 7: the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | |
-| 14:52 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | Solo piano, brings his own keyboard |
-| 15:25 | Changeover 7: the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | |
-| 15:32 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | He is also the music and AV lead, so AV cover during his own set is an open role |
-| 16:12 | Changeover 7: swap only | HOLD "Next: LyonsDen" | HOLD the whole 7 | |
-| 16:19 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | Filming consent still outstanding: settle it before the first bar |
-| 16:59 | Changeover 7: swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 7 | |
-| 17:06 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | |
-| 17:46 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | |
+| 13:25 | Changeover 5: swap only | HOLD "Next: Grass Rug" | HOLD the whole 5 | |
+| 13:30 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | |
+| 14:03 | Changeover 7: swap only | HOLD "Next: Acadia Rising" | HOLD the whole 7 | |
+| 14:10 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | Routed through Sen |
+| 14:43 | Changeover 7: the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | |
+| 14:50 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | Solo piano, brings his own keyboard |
+| 15:23 | Changeover 7: the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | |
+| 15:30 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | He is also the music and AV lead, so AV cover during his own set is an open role |
+| 16:10 | Changeover 5: swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | |
+| 16:15 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | Filming consent still outstanding: settle it before the first bar |
+| 16:55 | Changeover 5: swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | |
+| 17:00 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | |
+| 17:40 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | |
 | 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | |
 
 **Overrun rule (Zaal, 27 Aug):** an act that runs over loses the time from its
