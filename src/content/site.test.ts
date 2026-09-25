@@ -535,3 +535,103 @@ describe('the retired "NFT NYC" framing', () => {
     }
   });
 });
+
+// "rain or shine under tent cover" - Zaal, 2026-09-24 16:5x: "stop saying this
+// since its not true". The parklet is open to the sky; the Wallace tent covers
+// the stage, not the crowd.
+//
+// It was corrected across seven src/ surfaces that day and the count was
+// reported as complete. It was not. On 2026-09-25 11:5x the sentence was still
+// being served, verbatim, by
+//
+//     https://zaostock.com/design/colors.html   ->  200, "Rain or shine, under tent cover."
+//
+// as demo copy inside an alert component. Every guard above reads a
+// hand-written list of .ts/.tsx files under src/, so a claim sitting in a
+// static .html file under public/ was unreachable by construction - not missed,
+// unreadable. The same page also promised "Lineup is announced 1 September",
+// three weeks stale.
+//
+// Two changes, because either alone leaves the hole:
+//  1. The four demo alert strings now say "Sample alert copy. Not a festival
+//     fact." A design demo that quotes real copy becomes a public claim that
+//     nobody is maintaining.
+//  2. This guard WALKS public/ instead of naming files. A list cannot cover a
+//     file that does not exist yet, and public/ is where a stray .html lands.
+describe('the retired "under tent cover" promise', () => {
+  const TENT = /under\s+(the\s+)?tent\s+cover/i;
+
+  const htmlUnderPublic = (): string[] => {
+    const root = path.join(process.cwd(), 'public');
+    if (!existsSync(root)) return [];
+    return (readdirSync(root, { recursive: true }) as string[])
+      .filter((f) => f.endsWith('.html'))
+      .map((f) => path.join('public', f));
+  };
+
+  // A walk that returns nothing is indistinguishable from a walk that found
+  // nothing wrong. Prove the walk can see before trusting what it did not find.
+  it('the walk actually reaches public/', () => {
+    const files = htmlUnderPublic();
+    expect(files.length, 'no .html found under public/ - the walk is blind').toBeGreaterThan(0);
+    expect(files, 'the file that carried the live claim must be in scope').toContain(
+      path.join('public', 'design', 'colors.html'),
+    );
+  });
+
+  it('the rule fires on the wording that was live', () => {
+    for (const live of [
+      'Rain or shine, under tent cover.',
+      'rain or shine under tent cover',
+      'Rain or shine, under the tent cover.',
+    ]) {
+      expect(live).toMatch(TENT);
+    }
+  });
+
+  it('does not fire on the wording that is correct', () => {
+    for (const ok of [
+      'Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it.',
+      'Tent cover from Wallace Events over the stage.',
+      'The stage is under cover; the parklet is open to the sky.',
+    ]) {
+      expect(ok).not.toMatch(TENT);
+    }
+  });
+
+  for (const rel of [
+    'src/content/site.ts',
+    'src/content/festival.ts',
+    'src/app/page.tsx',
+    'src/app/program/page.tsx',
+    'src/app/llms.txt/route.ts',
+    'src/app/terms/page.tsx',
+    'src/app/sponsor/page.tsx',
+  ]) {
+    it(`${rel} does not promise tent cover`, () => {
+      const lines = readFileSync(path.join(process.cwd(), rel), 'utf8')
+        .split('\n')
+        .filter((l) => !l.trim().startsWith('//') && !l.trim().startsWith('*'));
+      const hit = lines.find((l) => TENT.test(l));
+      expect(hit ? `${rel}: ${hit.trim()}` : null).toBeNull();
+    });
+  }
+
+  it('no .html under public/ promises tent cover, or moves the crowd indoors', () => {
+    const SUBJECT = /(the whole street|everyone|everybody|the whole day|the day|the crowd|all of us|the street)/i;
+    const MOTION = /(walks?|moves?|heads?|goes|go|piles?|files?|streams?)/i;
+    const INSIDE = /(next door|inside|indoors|into black moon|in to black moon)/i;
+    const CLAIM = new RegExp(`${SUBJECT.source}[^.!?\\n]{0,60}\\b${MOTION.source}\\b[^.!?\\n]{0,60}${INSIDE.source}`, 'i');
+
+    // matchAll, not match. Reporting only the first hit per file turns one
+    // fix into N runs: this guard found three separate live claims in
+    // public/design/ and surfaced them one at a time until it was changed.
+    const bad: string[] = [];
+    for (const rel of htmlUnderPublic()) {
+      const body = readFileSync(path.join(process.cwd(), rel), 'utf8');
+      for (const m of body.matchAll(new RegExp(TENT.source, 'gi'))) bad.push(`${rel}: ${m[0]}`);
+      for (const m of body.matchAll(new RegExp(CLAIM.source, 'gi'))) bad.push(`${rel}: ${m[0]}`);
+    }
+    expect(bad).toEqual([]);
+  });
+});
