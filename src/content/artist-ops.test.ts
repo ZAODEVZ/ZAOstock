@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { BLOCKS } from './program';
 import { createHash } from 'crypto';
 import { readFileSync } from 'fs';
 import path from 'path';
@@ -441,5 +442,49 @@ describe('missingItems - the backstage native asks (redesigned 2026-09-16)', () 
     });
     const validKeys: Array<keyof ArtistOpsStatus> = ['bio', 'photoUrl', 'city', 'socials', 'rider', 'soundcheckConfirmed', 'filmingConsent'];
     for (const item of items) expect(validKeys).toContain(item.key);
+  });
+});
+
+// THE END TIME MUST COME FROM THE SAME SCHEDULE AS THE SET TIMES.
+//
+// 2026-09-25: PR #312 shifted every set start onto a clean 5-minute mark, and
+// program.ts correctly moved the finish to 17:40. ARTIST_DATES kept its own
+// hardcoded copy, 'Saturday, 5:46 PM', and nothing compared the two - so all
+// eight live backstage pages told artists that music ends at a time six
+// minutes after it does, while /program said otherwise on the same site.
+//
+// Two numbers for one fact, in two files, with no check between them. This is
+// that check: the music-end row in ARTIST_DATES must match the last entry in
+// program.ts, whatever either of them says next.
+describe('the music-end time agrees with the programme', () => {
+  // NOT "the last time in BLOCKS" - that is 21:00, the Black Moon evening.
+  // Match the row that SAYS music ends, so the two files are compared on the
+  // same fact rather than on position. (Both errors were made writing this
+  // test: the walk first read a key that does not exist and the blind-walk
+  // guard caught it, then it read the wrong row and the assertion did.)
+  const musicEndsAt = () => {
+    const slots = BLOCKS.flatMap((b) => b.slots ?? []);
+    expect(slots.length, 'no slots found in BLOCKS - the walk is blind').toBeGreaterThan(5);
+    const row = slots.find((sl) => /music ends/i.test(sl.label));
+    expect(row, 'no slot in program.ts says music ends').toBeTruthy();
+    return row!.time;
+  };
+
+  const to12h = (hhmm: string) => {
+    const [h, m] = hhmm.split(':').map(Number);
+    const hour = h % 12 === 0 ? 12 : h % 12;
+    return `${hour}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
+  };
+
+  it('ARTIST_DATES states the same finish as program.ts', () => {
+    const row = ARTIST_DATES.find((d) => /music ends/i.test(d.what));
+    expect(row, 'no ARTIST_DATES row mentions music ending').toBeTruthy();
+    expect(row!.when).toContain(to12h(musicEndsAt()));
+  });
+
+  it('the comparison can fail - a control on the check itself', () => {
+    // If this ever passes against a wrong value the test above is decorative.
+    expect(to12h('17:46')).not.toEqual(to12h(musicEndsAt()));
+    expect(to12h('17:40')).toEqual('5:40 PM');
   });
 });
