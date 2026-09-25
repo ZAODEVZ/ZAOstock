@@ -82,6 +82,23 @@ export default async function BackstagePage({ params }: Props) {
           </p>
         </section>
 
+        {/* Zaal, 2026-09-25: "update the backstages to also have a link to
+            the brand page". The flyer above is generated per-act; /brand is
+            everything else - the confirmed lineup poster, the logo, partner
+            marks, paste-ready copy - for an act that wants to promote its
+            own set beyond just the flyer. */}
+        <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
+          <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-denim-400 m-0 mb-2">
+            Promote your set
+          </p>
+          <p className="text-sm text-ink-secondary m-0 mb-3">
+            The confirmed lineup poster, the ZAOstock logo, and paste-ready copy - if you want to post about your own set.
+          </p>
+          <a href="https://zaostock.com/brand" className="underline font-bold text-sm text-ink-950">
+            zaostock.com/brand
+          </a>
+        </section>
+
         <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
           <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-ink-muted m-0 mb-2">
             Your set
