@@ -162,7 +162,7 @@ function createZaostockArtistForm() {
     .setTitle('Filming, photos and livestream')
     .setHelpText(
       'We livestream the day and film, record and photograph every set, ' +
-      'including the Friday soundcheck. This lets us share yours, live and afterwards.'
+      'including Saturday morning soundcheck. This lets us share yours, live and afterwards.'
     )
     .setChoiceValues([
       'Yes, ZAOstock and The ZAO can livestream, film, record and photograph my set and use it in future content',
