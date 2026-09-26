@@ -6,6 +6,7 @@ import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH } from '@/content/site';
 import { SiteShell, Countdown } from '@/components/poster';
 import { HomeHero } from './HomeHero';
+import { EllsworthBackground } from './EllsworthBackground';
 import s from './home.module.css';
 
 // THE HOMEPAGE IN CANDY'S LOOK. Zaal, 2026-09-10, of her site build: "this is
@@ -167,13 +168,7 @@ export default function HomePage() {
 
         {/* 4. Why Ellsworth, over the parklet footage from the v11 build */}
         <section className={`${s.section} ${s.ellSection}`} id="ellsworth">
-          <div className={s.ellBg} aria-hidden="true">
-            {/* Decorative and silent: autoplay needs muted, and iOS needs
-                playsInline or it opens the fullscreen player. Reduced motion
-                gets the still poster instead, in home.module.css. */}
-            <video src="/brand/home/ellsworth.mp4" poster="/brand/home/historic_main_street_storefronts.webp" autoPlay loop muted playsInline preload="none" />
-            <div className={s.ellBgFade} />
-          </div>
+          <EllsworthBackground />
           <div className={s.wrap}>
             <div className={s.ellWrap}>
               <div className={s.ellPhotos}>
