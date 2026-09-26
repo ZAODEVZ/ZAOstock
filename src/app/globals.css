@@ -427,3 +427,35 @@ h1, h2, h3, h4 {
 .site .grain::after {
   display: none;
 }
+
+/* ------------------------------------------------------------------------
+   SUNLIGHT & OUTDOOR HIGH-CONTRAST MODE FOR /program
+   Addresses day-of mobile legibility in direct sunlight on Franklin Street.
+   Elevates muted/secondary text to full ink contrast, reinforces borders,
+   and optimizes slot separation without breaking the retro-poster palette.
+   Activated via .sunlight-active or automatically via prefers-contrast: more.
+   ------------------------------------------------------------------------ */
+.site #program-schedule-container.sunlight-active,
+@media (prefers-contrast: more) {
+  .site #program-schedule-container {
+    --color-ink-secondary: var(--color-ink-950);
+    --color-ink-muted: var(--color-ink-950);
+  }
+  .site #program-schedule-container .program-slots-list {
+    border-width: 2px;
+    border-color: var(--color-ink-950);
+    box-shadow: 3px 3px 0 var(--color-ink-950);
+  }
+  .site #program-schedule-container .program-slot-item {
+    background-color: var(--color-paper-200);
+    border-top: 2px solid var(--color-ink-950);
+  }
+  .site #program-schedule-container .program-slot-num {
+    color: var(--color-ink-950);
+    font-weight: 800;
+  }
+  .site #program-schedule-container .program-slot-detail {
+    color: var(--color-ink-950);
+    opacity: 0.95;
+  }
+}
