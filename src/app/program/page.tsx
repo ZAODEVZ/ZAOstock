@@ -5,6 +5,7 @@ import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 import { BLOCKS, publicSlots, type Venue } from '@/content/program';
+import { ProgramControls } from './ProgramControls';
 
 export const metadata: Metadata = {
   title: 'Program',
@@ -103,33 +104,37 @@ export default function ProgramPage() {
             ))}
           </dl>
         </div>
+
+        <ProgramControls />
       </Section>
 
-      {BLOCKS.map((b) => {
-        const v = VENUE[b.venue];
-        return (
-          <Section key={b.start} id={`b-${b.start.replace(':', '')}`}>
-            <TwoUp>
-              <SectionHeader
-                eyebrow={`${b.venue === 'OUT' ? 'Noon to six' : 'From six'} · ${v.name}`}
-                title={b.title}
-                lede={b.lede}
-              />
-              <ol className="list-none m-0 p-0 border border-ink-950/60 rounded-md overflow-hidden">
-                {publicSlots(b).map((s, i) => (
-                  <li key={i} className="grid grid-cols-[32px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
-                    <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
-                    <span>
-                      <span className={['block text-sm', TONE[s.tone]].join(' ')}>{s.label}</span>
-                      {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </TwoUp>
-          </Section>
-        );
-      })}
+      <div id="program-schedule-container">
+        {BLOCKS.map((b) => {
+          const v = VENUE[b.venue];
+          return (
+            <Section key={b.start} id={`b-${b.start.replace(':', '')}`}>
+              <TwoUp>
+                <SectionHeader
+                  eyebrow={`${b.venue === 'OUT' ? 'Noon to six' : 'From six'} · ${v.name}`}
+                  title={b.title}
+                  lede={b.lede}
+                />
+                <ol className="list-none m-0 p-0 border border-ink-950/60 rounded-md overflow-hidden program-slots-list">
+                  {publicSlots(b).map((s, i) => (
+                    <li key={i} className="grid grid-cols-[32px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60 program-slot-item">
+                      <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5 program-slot-num">{s.tone === 'set' ? order(b, i) : ''}</span>
+                      <span>
+                        <span className={['block text-sm program-slot-label', TONE[s.tone]].join(' ')}>{s.label}</span>
+                        {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5 program-slot-detail">{s.detail}</span> : null}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </TwoUp>
+            </Section>
+          );
+        })}
+      </div>
 
       <Section>
         <TwoUp>
