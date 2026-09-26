@@ -67,7 +67,8 @@ export default async function LivePage() {
           <p className="text-sm text-ink-secondary m-0 mt-3">
             <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream is offline outside{' '}
             {FESTIVAL.window} on {FESTIVAL.dateLabel} - that is expected before doors and after the outdoor block ends, not a broken
-            player. Twitch shows its own offline screen either way, or watch straight from{' '}
+            player. (One exception: this same channel also carries a pre-party stream today, Saturday 26 September, 4 to 6 PM Eastern.)
+            Twitch shows its own offline screen either way, or watch straight from{' '}
             <a href={watchHref()} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
               Twitch
             </a>{' '}
