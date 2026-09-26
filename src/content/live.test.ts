@@ -2,16 +2,17 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { SOCIALS } from '@/content/site';
-import { WATCH_PARTIES, fallbackChannelHref } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, TWITCH_CHANNEL, watchHref, embedSrc } from '@/content/live';
 
 // /live is the one link everywhere else carries (Zaal, 15 September), so on
 // 3 October it is where the online audience lands, and the online audience is
-// the bigger half of the day. These tests hold the three things a viewer needs
-// from it that no stream test gates: where to go when the player dies, what a
-// watch party is, and the rule that no platform is named before a run passes.
+// the bigger half of the day. These tests hold the things a viewer needs from
+// it: the confirmed watch destination, where to go when the player dies, what
+// a watch party is, and that the evening is in person.
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 const LIVE = 'src/app/live/page.tsx';
+const LIVE_CONTENT = 'src/content/live.ts';
 
 describe('the fallback channel', () => {
   it('is the Telegram chat, read from the one socials source', () => {
@@ -38,21 +39,55 @@ describe('the fallback channel', () => {
   });
 });
 
-describe('no platform is named before a run passes', () => {
-  // docs/av/livestream-chain-2026-10-03.md, item 8, and Zaal on 15 September:
-  // "no platform named publicly before a run passes". The destinations are all
-  // candidates and none has been streamed to.
-  it('names no streaming destination anywhere on the page', () => {
-    const src = read(LIVE).toLowerCase();
-    for (const platform of ['youtube', 'twitch', 'restream', 'x.com', 'cloudflare', 'kick', 'rumble', 'zoom']) {
-      expect(src, platform).not.toContain(platform);
+/**
+ * THE CONFIRMED WATCH DESTINATION.
+ *
+ * Zaal, 2026-09-25, after Fellenz's software-chain test passed: Twitch,
+ * channel zaofestivals - the platform docs/av item 8 held back until a run
+ * passed. Verified independently before this constant was trusted: twitch.tv
+ * returns HTTP 200 for a channel that does not exist, so a status check alone
+ * proves nothing; the real signal was the page's og:title meta tag.
+ *
+ * This is the test Dotfiles asked for by name: it must fail if the channel
+ * goes back to null, or if the string changes without this file changing
+ * with it - this is the one page thousands of people may hit at once on
+ * 3 October, and it should never be silently pointed at the wrong channel or
+ * quietly regress to no player at all.
+ */
+describe('the confirmed Twitch channel', () => {
+  it('is zaofestivals, and the page embeds it', () => {
+    expect(TWITCH_CHANNEL).toBe('zaofestivals');
+    expect(read(LIVE)).toContain('embedSrc()');
+  });
+
+  it('the embed URL carries the channel and a parent matching production', () => {
+    const src = embedSrc();
+    expect(src).toContain('channel=zaofestivals');
+    expect(src).toContain('parent=zaostock.com');
+  });
+
+  it('the external watch link points straight at twitch.tv/zaofestivals', () => {
+    expect(watchHref()).toBe('https://twitch.tv/zaofestivals');
+  });
+
+  it('never carries a stream key - only the channel name is public', () => {
+    // The hard rule from Dotfiles: if any part of the implementation seems to
+    // want the key, the approach is wrong. This pins the invariant at the
+    // CODE level - comments are stripped first, since this file's own
+    // explanatory comments legitimately use the phrase "stream key" to
+    // describe the rule, and that prose is not the thing being guarded
+    // against.
+    const stripComments = (src: string) => src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+    for (const file of [LIVE_CONTENT, LIVE]) {
+      const code = stripComments(read(file));
+      expect(code, file).not.toMatch(/stream.?key/i);
+      expect(code, file).not.toMatch(/process\.env\.[A-Z_]*TWITCH/);
+      expect(code, file).not.toMatch(/oauth/i);
     }
   });
 
-  it('keeps the watch link a single null constant, still gated on the test', () => {
-    const src = read(LIVE);
-    expect(src).toContain('const WATCH_HREF: string | null = null;');
-    expect(src).toContain('{WATCH_HREF ? (');
+  it('the iframe has a real title, for the one page thousands may hit at once', () => {
+    expect(read(LIVE)).toContain('title="ZAOstock live on Twitch"');
   });
 });
 
@@ -72,10 +107,17 @@ describe('watch parties', () => {
   });
 });
 
-describe('the evening', () => {
-  // The after-party is at Black Moon from six (ruled 14 September, ZAOstock
-  // #195). Nobody has said the stream follows it indoors, and the indoor mirror
-  // is "to build" in the AV doc, so the page may not imply it does.
+describe('before the stream starts and after it ends', () => {
+  // Twitch's own player shows its offline screen outside the broadcast
+  // window, so the "dead player" failure mode Dotfiles flagged is Twitch's
+  // problem to solve and it already does - but the page says so itself too,
+  // rather than relying only on a viewer recognising Twitch's own UI.
+  it('tells a viewer that offline outside the show window is expected, not broken', () => {
+    const src = read(LIVE);
+    expect(src).toContain('Nothing playing?');
+    expect(src).toMatch(/stream is offline/);
+  });
+
   it('tells a remote viewer the stream ends with the parklet', () => {
     const src = read(LIVE);
     expect(src).toContain('The stream runs with the parklet.');

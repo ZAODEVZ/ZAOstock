@@ -19,10 +19,43 @@ import { SOCIALS } from './site';
  *   own take on it. On the day Zaal posts and emails the full list of places to
  *   watch along with a community.
  *
- * What is NOT here, on purpose: any platform name. docs/av item 8 holds that no
- * platform is named publicly before a run passes, and no run has passed. The
- * page's WATCH_HREF is still null for the same reason.
+ * THE PLATFORM, CONFIRMED 2026-09-25. Zaal, after Fellenz's software-chain
+ * test passed: "fellenz streaming test went well he has zaofestivals twitch
+ * stream key can we add that to the embed for /live i will daischain of that
+ * to my streaming platforms and tell everyone to go to zaostock.com/live."
+ * docs/av item 8's "no platform named before a run passes" gate is what held
+ * TWITCH_CHANNEL back until now - the run passed, so it is named.
+ *
+ * THE STREAM KEY IS NOT HERE, AND MUST NEVER BE. Only the channel NAME is
+ * public; the embed needs nothing else. The key lives in Zaal's broadcaster
+ * software alone (Dotfiles, 2026-09-25: "if any part of your implementation
+ * seems to want the key, stop and say so, because it means the approach is
+ * wrong").
+ *
+ * Verified independently before trusting the channel name: twitch.tv returns
+ * HTTP 200 for a channel that does not exist - a control check against
+ * zzz-not-a-real-channel-zzz also returned 200, so a bare status check proves
+ * nothing. The real signal is the page's `og:title` meta tag: "zaofestivals -
+ * Twitch" for the confirmed channel, empty for the control. Re-run that check
+ * before trusting this constant if the channel is ever in doubt again.
  */
+export const TWITCH_CHANNEL = 'zaofestivals';
+
+/** The externally-linkable watch page - Twitch's own UI, chat included. */
+export function watchHref(channel: string = TWITCH_CHANNEL): string {
+  return `https://twitch.tv/${channel}`;
+}
+
+/**
+ * The embeddable player URL. Twitch refuses to load in an iframe unless
+ * `parent` matches the embedding page's hostname exactly (no scheme, no
+ * path) - zaostock.com for production, localhost so this can be previewed
+ * with `npm run dev` before it ships. Muted so the browser's autoplay policy
+ * does not silently block the whole player; a viewer unmutes with one click.
+ */
+export function embedSrc(channel: string = TWITCH_CHANNEL): string {
+  return `https://player.twitch.tv/?channel=${channel}&parent=zaostock.com&parent=localhost&muted=true`;
+}
 
 export type WatchParty = {
   /** Who is hosting, as they want to be named. */
