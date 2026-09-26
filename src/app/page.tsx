@@ -187,7 +187,7 @@ export default function HomePage() {
               <div className={s.ellCopy}>
                 <div className={s.kicker}>Downeast Maine</div>
                 <h2 className={s.title}>
-                  Why <em style={{ color: 'var(--sun)' }}>Ellsworth</em>
+                  Why <em>Ellsworth</em>
                 </h2>
                 <p>
                   The gateway to Acadia National Park. {ELLSWORTH.historic} The Heart of Ellsworth ran {ELLSWORTH.heartEvents.value} events with {ELLSWORTH.heartSponsors.value} sponsors in 2025, and ZAOstock builds on that momentum, adding a new music experience to Ellsworth&apos;s growing calendar of downtown events.
