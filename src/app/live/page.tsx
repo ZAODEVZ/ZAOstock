@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime } from '@/components/poster';
@@ -56,13 +56,22 @@ export default async function LivePage() {
 
       <Section>
         <Card>
-          <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
-            <iframe
-              src={embedSrc()}
-              className="w-full h-full"
-              allowFullScreen
-              title="ZAOstock live on Twitch"
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4">
+            <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
+              <iframe
+                src={embedSrc()}
+                className="w-full h-full"
+                allowFullScreen
+                title="ZAOstock live on Twitch"
+              />
+            </div>
+            <div className="h-[300px] lg:h-auto rounded-[10px] overflow-hidden">
+              <iframe
+                src={chatEmbedSrc()}
+                className="w-full h-full"
+                title="ZAOstock Twitch chat"
+              />
+            </div>
           </div>
           <p className="text-sm text-ink-secondary m-0 mt-3">
             <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream is offline outside{' '}
@@ -146,24 +155,22 @@ export default async function LivePage() {
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
             {acts.map((act, i) => {
-              const links = (act.socials ?? '').trim().split(/\s+/).filter(Boolean);
+              const slug = slugify(act.name);
               return (
                 <li key={act.id}>
                   <Card className="flex items-center gap-3">
                     <span className="font-mono text-eyebrow text-ink-muted w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                     <div className="min-w-0">
-                      <a href={`/artist/${slugify(act.name)}`} className="font-sans font-extrabold text-ink-950 hover:text-red-700 truncate block">
+                      <a href={`/artist/${slug}`} className="font-sans font-extrabold text-ink-950 hover:text-red-700 truncate block">
                         {act.name}
                       </a>
-                      {links.length > 0 ? (
-                        <div className="flex flex-wrap gap-x-2 text-sm">
-                          {links.map((href) => (
-                            <a key={href} href={href} target="_blank" rel="noreferrer" className="text-red-700 font-bold truncate">
-                              {href.replace(/^https?:\/\/(www\.)?/, '')}
-                            </a>
-                          ))}
-                        </div>
-                      ) : null}
+                      {/* Zaal, 2026-09-26: point every act at its own ZAOstock
+                          page rather than scattering external social links here -
+                          that page (ArtistProfileView.tsx) is where all of an
+                          act's socials already render. */}
+                      <a href={`/artist/${slug}`} className="text-sm text-red-700 font-bold truncate block">
+                        zaostock.com/artist/{slug}
+                      </a>
                     </div>
                   </Card>
                 </li>
