@@ -150,7 +150,7 @@ export const LINEUP_NAMES: readonly string[] = [
 /**
  * DISPLAY NAME, decoupled from IDENTITY on purpose.
  *
- * Zaal ruled (25 Sept grill) that a reader should see "LyonsDen Rez Muzik" -
+ * Zaal ruled (26 Sept grill) that a reader should see "LyonsDen Rez Muzik" -
  * but LINEUP_NAMES's bare "LyonsDen" is load-bearing in three places that
  * cannot move: the artist form's live Google dropdown (artistFormUrl() in
  * artist-ops.ts prefills the bare name; the real form still says "LyonsDen"
