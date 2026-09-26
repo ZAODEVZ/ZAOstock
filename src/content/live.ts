@@ -57,6 +57,16 @@ export function embedSrc(channel: string = TWITCH_CHANNEL): string {
   return `https://player.twitch.tv/?channel=${channel}&parent=zaostock.com&parent=localhost&muted=true`;
 }
 
+/**
+ * Twitch's chat embed - same parent-domain rule as the player. Lets a remote
+ * viewer talk to the room instead of only watching it, which is the one
+ * feature the page did not have for the ~1,000-online half of the day. A
+ * viewer needs a Twitch account to post; reading needs nothing.
+ */
+export function chatEmbedSrc(channel: string = TWITCH_CHANNEL): string {
+  return `https://www.twitch.tv/embed/${channel}/chat?parent=zaostock.com&parent=localhost`;
+}
+
 export type WatchParty = {
   /** Who is hosting, as they want to be named. */
   host: string;
