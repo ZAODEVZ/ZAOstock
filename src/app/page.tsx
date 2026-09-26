@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
+import EllsworthVideo from '@/components/EllsworthVideo';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH } from '@/content/site';
@@ -168,10 +169,10 @@ export default function HomePage() {
         {/* 4. Why Ellsworth, over the parklet footage from the v11 build */}
         <section className={`${s.section} ${s.ellSection}`} id="ellsworth">
           <div className={s.ellBg} aria-hidden="true">
-            {/* Decorative and silent: autoplay needs muted, and iOS needs
-                playsInline or it opens the fullscreen player. Reduced motion
-                gets the still poster instead, in home.module.css. */}
-            <video src="/brand/home/ellsworth.mp4" poster="/brand/home/historic_main_street_storefronts.webp" autoPlay loop muted playsInline preload="none" />
+            {/* Decorative and silent. The video fetches only once this
+                section is visible, and never on Save-Data, 2g-class
+                connections, or reduced motion (poster covers all cases). */}
+            <EllsworthVideo />
             <div className={s.ellBgFade} />
           </div>
           <div className={s.wrap}>
