@@ -62,7 +62,7 @@ describe('the stage-manager run sheet follows the run of show', () => {
 
 describe('the evening, as ruled on 14 September', () => {
   it('is the after-party at Black Moon with Steve on the decks', () => {
-    expect(sheet).toMatch(/After-party at Black Moon, DJ run by Steve, from six/);
+    expect(sheet).toMatch(/After-party at Black Moon, North Creek, hosted by Black Moon, from six/);
   });
 
   it('does not invent a close time Black Moon has not given', () => {

@@ -67,9 +67,9 @@ of The ZAO, an independent music community.
   Set times are not published.
   <!-- Zaal, 2026-09-12: name the act, not the slot. Internal style note, not press copy. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
-  after-party at Black Moon Public House, with a DJ, run by Steve, from six
-  (poster: 6 to 10 PM), **hosted and underwritten by Black Moon on their own
-  stage and their own licence.** It is their event, not part of the ZAOstock
+  after-party at Black Moon Public House, with North Creek, hosted by Black Moon,
+  from six (poster: 6 to 10 PM), **hosted and underwritten by Black Moon on
+  their own stage and their own licence.** It is their event, not part of the ZAOstock
   programme, and ZAOstock's cover is the outdoor day only.
 
 One venue at a time. The day does not split across two rooms.
