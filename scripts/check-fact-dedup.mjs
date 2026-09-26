@@ -139,7 +139,7 @@ function main() {
   const hits = [];
 
   for (const file of files) {
-    const rel = path.relative(ROOT, file);
+    const rel = path.relative(ROOT, file).replace(/\\/g, '/');
     if (EXCLUDED_FILES.has(rel)) continue;
     const raw = readFileSync(file, 'utf8');
     const stripped = stripComments(raw);
