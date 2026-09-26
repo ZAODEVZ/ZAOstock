@@ -86,17 +86,21 @@ export const BLOCKS: Block[] = [
     end: '21:00',
     venue: 'IN',
     title: 'The evening at Black Moon',
-    // SETTLED 2026-09-14 (Zaal): the ZAOstock after-party at Black Moon Public
-    // House, with a DJ, run by Steve, from six (poster: 6 to 10 PM). Hosted and
-    // underwritten by Black Moon on their own premises and their own licence.
+    // SETTLED 2026-09-14 (Zaal), CORRECTED 2026-09-26: the ZAOstock after-party
+    // at Black Moon Public House, with North Creek, hosted by Black Moon, from
+    // six (poster: 6 to 10 PM). Hosted and underwritten by Black Moon on their
+    // own premises and their own licence. Steve's own email (26 Sept, "ZaoFest26
+    // Invoices") names the act: "underwrite 'North Creek' for the after party" -
+    // he underwrites it, he does not perform it, and every surface that said
+    // "a DJ, run by Steve" was wrong on that point.
     //
     // NOTE THE SCOPE LINE: our insurance covers the 12-6pm OUTDOOR event only
     // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
     // block describes their programme, not ours, and should not gain detail we
     // have not been given.
-    lede: 'At six the street clears. The ZAOstock after-party at Black Moon Public House next door, with a DJ, run by Steve, from six (poster: 6 to 10 PM).',
+    lede: 'At six the street clears. The ZAOstock after-party at Black Moon Public House next door, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM).',
     slots: [
-      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party at Black Moon Public House, with a DJ, run by Steve, from six (poster: 6 to 10 PM).', tone: 'set' },
+      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party at Black Moon Public House, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM).', tone: 'set' },
       { time: '21:00', label: 'Close', detail: 'Approximate. Black Moon keeps its own hours.', tone: 'gap' },
     ],
   },

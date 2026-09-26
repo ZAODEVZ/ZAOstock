@@ -25,7 +25,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 ## The day (one venue at a time)
 
 - ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with seven-minute changeovers, with our MC and our partners between sets. Music starts at noon.
-- 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with a DJ, run by Steve, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
+- 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
 - Free to attend. Rain or shine - we do not cancel for weather; the parklet is open to the sky. Optional Pro Ticket, $50, on /donate.
 
 ## Lineup

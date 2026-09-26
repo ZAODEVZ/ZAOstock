@@ -90,3 +90,14 @@ describe('the published run of show', () => {
     expect(src).not.toMatch(/tone: 'open'/);
   });
 });
+
+describe('the rendered page shows LyonsDen\'s display name, not just the identity', () => {
+  // src/content/program.ts's own BLOCKS data stays bare "LyonsDen" (identity -
+  // see DISPLAY_NAMES in site.ts for why). The PAGE wraps it with
+  // displayName() at render time, so a reader sees "LyonsDen Rez Muzik"
+  // without any identity/routing surface moving.
+  it('page.tsx renders displayName(), not the bare label directly', () => {
+    const page = readFileSync(path.join(process.cwd(), 'src/app/program/page.tsx'), 'utf8');
+    expect(page).toContain('displayName(s.label)');
+  });
+});

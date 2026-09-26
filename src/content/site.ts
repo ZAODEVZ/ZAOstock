@@ -147,6 +147,35 @@ export const LINEUP_NAMES: readonly string[] = [
   'Tom Fellenz',
 ];
 
+/**
+ * DISPLAY NAME, decoupled from IDENTITY on purpose.
+ *
+ * Zaal ruled (25 Sept grill) that a reader should see "LyonsDen Rez Muzik" -
+ * but LINEUP_NAMES's bare "LyonsDen" is load-bearing in three places that
+ * cannot move: the artist form's live Google dropdown (artistFormUrl() in
+ * artist-ops.ts prefills the bare name; the real form still says "LyonsDen"
+ * and this repo cannot edit it), the sitemap (sitemap.ts derives every
+ * artist URL as slugify(name), so a longer name would 404 the real
+ * /artist/lyonsden route), and the DB join (artist-ops.ts's own comment:
+ * "the exact LyonsDen/Fellenz failure mode, twice already" - a name
+ * mismatch between LINEUP_NAMES and the artists table silently drops an
+ * act's bio/photo card).
+ *
+ * So the identity - LINEUP_NAMES, OPS_ACTS.name, the slug, the sitemap, the
+ * form prefill - stays bare. Only the few places a human actually READS the
+ * name (the /program slot label, the artist page heading) go through
+ * displayName() instead. Dotfiles, 2026-09-26: "his ruling was about what
+ * the reader SEES, not about identities."
+ */
+export const DISPLAY_NAMES: Readonly<Record<string, string>> = {
+  LyonsDen: 'LyonsDen Rez Muzik',
+};
+
+/** Falls back to the identity itself - every non-renamed act, and every non-act label (Changeover, Doors, Close) that flows through the same render path. */
+export function displayName(name: string): string {
+  return DISPLAY_NAMES[name] ?? name;
+}
+
 /** Rendered beside LINEUP_NAMES. Kept here so a test can hold it to the rules. */
 // No set times in public (Zaal, 2026-09-12), so this no longer sends anyone to
 // the program for one. The program publishes the order.
@@ -156,10 +185,9 @@ export const LINEUP_NAMES_NOTE =
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [
   { time: 'Noon - 6 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
-  // SETTLED 2026-09-14 (Zaal): the ZAOstock after-party at Black Moon Public
-  // House, with a DJ, run by Steve, from six (poster: 6 to 10 PM). Hosted and
-  // underwritten by Black Moon on their own premises and licence.
-  { time: '6 - 9 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, with a DJ, run by Steve, from six (poster: 6 to 10 PM).' },
+  // SETTLED 2026-09-14 (Zaal), CORRECTED 2026-09-26: North Creek, not Steve
+  // himself - see src/content/program.ts for the source quote and reasoning.
+  { time: '6 - 9 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM).' },
 ] as const;
 
 /**

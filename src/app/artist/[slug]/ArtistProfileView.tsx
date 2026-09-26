@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { PublicArtist } from '@/lib/artists';
 import { parseSocials } from '@/lib/socials';
 import { FESTIVAL } from '@/content/festival';
+import { displayName } from '@/content/site';
 
 // The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
 // have that on any of the pages"). Still true after the 2026-09-15 ruling
@@ -137,7 +138,7 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
           <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-1">
             Act {artist.setOrder} of {total}
           </p>
-          <h1 className="text-2xl font-bold text-ink-950">{artist.name}</h1>
+          <h1 className="text-2xl font-bold text-ink-950">{displayName(artist.name)}</h1>
           <div className="flex items-center gap-2 mt-2 flex-wrap">
             {points > 0 && (
               <span className="text-[10px] font-bold px-2 py-1 rounded-full border uppercase bg-gold-400 text-gold-600 border-ink-950">

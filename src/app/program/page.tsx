@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE } from '@/content/site';
+import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 import { BLOCKS, publicSlots, type Venue } from '@/content/program';
 
@@ -120,7 +120,7 @@ export default function ProgramPage() {
                   <li key={i} className="grid grid-cols-[32px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
                     <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
                     <span>
-                      <span className={['block text-sm', TONE[s.tone]].join(' ')}>{s.label}</span>
+                      <span className={['block text-sm', TONE[s.tone]].join(' ')}>{displayName(s.label)}</span>
                       {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
                     </span>
                   </li>
