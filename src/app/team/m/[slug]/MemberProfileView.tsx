@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { parseLinks, type PublicMember } from '@/lib/members-shared';
@@ -26,9 +27,11 @@ export function MemberProfileView({ member }: Props) {
     <section className="bg-gradient-to-br from-[#f5a623]/10 via-transparent to-transparent rounded-2xl p-6 border border-white/[0.08] space-y-4">
       <div className="flex items-start gap-4">
         {showPhoto ? (
-          <img
+          <Image
             src={member.photo_url}
             alt={member.name}
+            width={96}
+            height={96}
             onError={() => setPhotoBroken(true)}
             className="w-24 h-24 rounded-full object-cover border-2 border-[#f5a623]/40 flex-shrink-0"
           />
