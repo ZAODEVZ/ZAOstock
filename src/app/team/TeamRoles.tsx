@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { slugify, parseLinks, type ParsedLink } from '@/lib/members-shared';
 import { HelpIcon } from './HelpIcon';
 
@@ -130,7 +131,7 @@ export function TeamRoles({ members }: { members: Member[] }) {
 function MemberCard({ member: m }: { member: Member }) {
   const [photoBroken, setPhotoBroken] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
-  const showPhoto = m.photo_url && m.photo_url.trim() && !photoBroken;
+  const photoSrc = m.photo_url?.trim() ? m.photo_url : undefined;
   const initials = m.name
     .split(/\s+/)
     .map((w) => w[0])
@@ -154,10 +155,12 @@ function MemberCard({ member: m }: { member: Member }) {
 
   return (
     <div className="bg-[#0d1b2a] rounded-lg border border-white/[0.06] p-3 flex items-start gap-3">
-      {showPhoto ? (
-        <img
-          src={m.photo_url}
+      {photoSrc && !photoBroken ? (
+        <Image
+          src={photoSrc}
           alt={m.name}
+          width={48}
+          height={48}
           onError={() => setPhotoBroken(true)}
           className="w-12 h-12 rounded-full object-cover border border-white/[0.08] flex-shrink-0"
         />
