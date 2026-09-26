@@ -1,7 +1,15 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS } from './site';
+
+// slugify() (from '@/lib/artists') sits beside the Supabase admin client,
+// unresolvable under vitest without this - same fix sitemap.test.ts and
+// artist-slugs.test.ts use.
+vi.mock('server-only', () => ({}));
+
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName } from './site';
+import { slugify } from '@/lib/artists';
+import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
 // The rules festival.test.ts enforces for festival.ts, applied to the facts
 // that live here until PRODUCTION's file absorbs them.
@@ -227,6 +235,47 @@ describe('the names-only lineup', () => {
   it('keeps "confirmed" for PUBLIC_LINEUP only, which is a different and narrower claim', () => {
     expect(PUBLIC_LINEUP).toEqual(['LyonsDen']);
     expect(LINEUP_NAMES.length).toBeGreaterThan(PUBLIC_LINEUP.length);
+  });
+});
+
+/**
+ * DISPLAY_NAMES / displayName() - the identity/display split (Dotfiles,
+ * 2026-09-26): a reader may see "LyonsDen Rez Muzik", but LINEUP_NAMES,
+ * OPS_ACTS.name, the artist slug, the sitemap and the live Google Form
+ * prefill all stay bare "LyonsDen" - a rename on any of those silently
+ * breaks a real system (see the comment on DISPLAY_NAMES itself). These
+ * tests pin that every identity surface is untouched by the display change.
+ */
+describe('DISPLAY_NAMES - a typo here cannot create a ghost act', () => {
+  it('every key names a real act in LINEUP_NAMES', () => {
+    for (const key of Object.keys(DISPLAY_NAMES)) {
+      expect(LINEUP_NAMES, key).toContain(key);
+    }
+  });
+
+  it('falls back to the identity for every act not in the map, and for non-act labels', () => {
+    for (const name of LINEUP_NAMES) {
+      if (!(name in DISPLAY_NAMES)) expect(displayName(name)).toBe(name);
+    }
+    expect(displayName('Changeover')).toBe('Changeover');
+    expect(displayName('Doors. Music starts at noon.')).toBe('Doors. Music starts at noon.');
+  });
+
+  it('LyonsDen displays as "LyonsDen Rez Muzik"', () => {
+    expect(displayName('LyonsDen')).toBe('LyonsDen Rez Muzik');
+  });
+});
+
+describe('identity surfaces are unmoved by the display rename', () => {
+  it('the artist form still prefills the bare identity, not the display name', () => {
+    const lyonsDen = OPS_ACTS.find((a) => a.name === 'LyonsDen');
+    expect(lyonsDen, 'LyonsDen must still exist as an identity in OPS_ACTS').toBeDefined();
+    const url = new URL(artistFormUrl({ act: lyonsDen! }));
+    expect(url.searchParams.get(ARTIST_FORM.actEntry)).toBe('LyonsDen');
+  });
+
+  it('the artist URL slug for LyonsDen is unchanged', () => {
+    expect(slugify('LyonsDen')).toBe('lyonsden');
   });
 });
 
