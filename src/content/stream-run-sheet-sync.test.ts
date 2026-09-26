@@ -47,12 +47,20 @@ describe('the stream run sheet follows the run of show', () => {
     expect(cueRows().map((r) => r.minutes)).toEqual(OPS_ACTS.map((a) => a.minutes));
   });
 
-  // Two kinds of line legitimately name a dropped act: the rewrite banner, which
-  // exists to say what was removed, and the one sentence that tells an operator
-  // there is deliberately no WAVEWARZ scene. Everything else is a live cue.
+  // Three kinds of line legitimately name WaveWarZ or a gone act: the rewrite
+  // banner, which exists to say what was removed; the sentence that tells an
+  // operator there is deliberately no WAVEWARZ scene; and the MC script's own
+  // changeover 4 line (MC script v1, 2026-09-26), where Zaal talks to the crowd
+  // about the WaveWarZ format itself - a spoken mention, not a scene cue, and
+  // not the dropped battle block. Everything else is a live cue.
   const cues = sheet
     .split('\n')
-    .filter((l) => !l.trim().startsWith('>') && !/There is no WAVEWARZ scene/.test(l))
+    .filter(
+      (l) =>
+        !l.trim().startsWith('>') &&
+        !/There is no WAVEWARZ scene/.test(l) &&
+        !/Zaal on WaveWarZ and the supporter page/.test(l),
+    )
     .join('\n');
 
   it('cues nobody who is off the programme', () => {
