@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { WATCH_PARTIES, fallbackChannelHref } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
-import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Live',
@@ -19,15 +19,12 @@ export const metadata: Metadata = {
   twitter: twitterCard('Live | ZAOstock', `Watch ZAOstock 2026 from anywhere on ${FESTIVAL.dateLabel}.`),
 };
 
-// The stream chain (docs/av/livestream-chain-2026-10-03.md) is untested past
-// the encoder: no platform, account or ingest is confirmed, and that doc's own
-// rule is not to name a platform publicly before a run passes. So this page
-// holds the slot without a link or an embed until that test does. Whoever
-// lands the confirmed watch link drops it into WATCH_HREF below; nothing else
-// on the page needs to change.
-const WATCH_HREF: string | null = null;
+// The stream test passed 2026-09-25 (Fellenz's software chain) and Zaal named
+// the platform: Twitch, channel zaofestivals. See src/content/live.ts for the
+// verification, the source quote, and the hard rule that the stream KEY never
+// enters this repo - only the channel name, which is public.
 
-// EVERYTHING ELSE ON THIS PAGE IS NOT GATED ON THAT TEST, and that is the point
+// EVERYTHING BELOW THE PLAYER IS NOT GATED ON THAT TEST, and that is the point
 // of the 2026-09-17 pass. Three things were settled on the 15 September round
 // two call and none of them had reached the page: who to follow when the stream
 // drops, what a watch party actually is, and that the evening is in person.
@@ -59,17 +56,23 @@ export default async function LivePage() {
 
       <Section>
         <Card>
-          <div className="aspect-video w-full rounded-[10px] border border-dashed border-gold-500/50 bg-paper-200 flex flex-col items-center justify-center gap-2 text-center p-6">
-            <span className="font-mono text-eyebrow uppercase tracking-[0.1em] text-ink-muted">Stream not live yet</span>
-            <p className="text-sm text-ink-secondary m-0 max-w-[440px]">
-              The player goes here once the watch link is confirmed. Check back closer to {FESTIVAL.shortDate}, or on the day itself.
-            </p>
-            {WATCH_HREF ? (
-              <Button href={WATCH_HREF} external className="mt-2">
-                Watch now
-              </Button>
-            ) : null}
+          <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
+            <iframe
+              src={embedSrc()}
+              className="w-full h-full"
+              allowFullScreen
+              title="ZAOstock live on Twitch"
+            />
           </div>
+          <p className="text-sm text-ink-secondary m-0 mt-3">
+            <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream is offline outside{' '}
+            {FESTIVAL.window} on {FESTIVAL.dateLabel} - that is expected before doors and after the outdoor block ends, not a broken
+            player. Twitch shows its own offline screen either way, or watch straight from{' '}
+            <a href={watchHref()} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
+              Twitch
+            </a>{' '}
+            directly.
+          </p>
           {fallbackHref ? (
             <p className="text-sm text-ink-secondary m-0 mt-4">
               <span className="font-sans font-extrabold text-ink-950">If the picture stops on the day,</span> go to the{' '}
