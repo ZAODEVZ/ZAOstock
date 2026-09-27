@@ -18,6 +18,13 @@ import { displayName } from './site';
 // MUSIC_ENDS_MS is 17:40, not 18:00 (the street-clears time countdown.ts
 // uses): Zaal ruled the strip should point at Black Moon as soon as the last
 // act (Tom Fellenz) finishes, not wait for the extra 20 minutes of strike time.
+//
+// DAY_START_MS marks the start of 3 October itself (Dotfiles review of #331):
+// the bare "Doors at noon." reads as today only on the day - a visitor on
+// 27 September or any other date before that needs the date said out loud, or
+// the line lies by omission. The DATE is fine to publish (Zaal, 2026-08-10:
+// only performer names and any date OTHER than Oct 3 are unpublishable); it is
+// only the TIME that stays banned.
 
 const DAY_SLOTS = BLOCKS[0].slots;
 
@@ -32,17 +39,21 @@ function slotMs(slot: Slot): number {
 }
 
 const MUSIC_ENDS_MS = slotMs(DAY_SLOTS[DAY_SLOTS.length - 1]); // the 17:40 "Music ends" gap slot
+const DAY_START_MS = DOORS_MS - 12 * 60 * 60 * 1000; // 3 October, 00:00 ET
 
 export type NowNextState =
   | { phase: 'before'; message: string }
   | { phase: 'live'; onNow: string | null; onNext: string | null }
   | { phase: 'after'; message: string };
 
-const BEFORE_MESSAGE = 'Doors at noon.';
+const BEFORE_MESSAGE_TODAY = 'Doors at noon.';
+const BEFORE_MESSAGE_DATED = 'Doors at noon on Saturday 3 October.';
 const AFTER_MESSAGE = "That's a wrap outside. Next door at Black Moon: North Creek hosts the after-party, from six.";
 
 export function nowNextState(now: number): NowNextState {
-  if (now < DOORS_MS) return { phase: 'before', message: BEFORE_MESSAGE };
+  if (now < DOORS_MS) {
+    return { phase: 'before', message: now < DAY_START_MS ? BEFORE_MESSAGE_DATED : BEFORE_MESSAGE_TODAY };
+  }
   if (now >= MUSIC_ENDS_MS) return { phase: 'after', message: AFTER_MESSAGE };
 
   let current: Slot | null = null;

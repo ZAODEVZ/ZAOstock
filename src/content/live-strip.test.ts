@@ -1,16 +1,25 @@
 import { describe, expect, it } from 'vitest';
 import { nowNextState } from './live-strip';
 
-// 3 October 2026 is EDT (DST ends the following month), so -04:00 is the
-// correct offset for every boundary below. Each instant is written as a wall
-// clock, not derived from minutes, so a reader can check them by eye.
+// 3 October 2026 and 27 September 2026 are both EDT (DST ends the following
+// month), so -04:00 is the correct offset for every boundary below. Each
+// instant is written as a wall clock, not derived from minutes, so a reader
+// can check them by eye.
 const et = (time: string) => Date.parse(`2026-10-03T${time}:00-04:00`);
+const etOn = (date: string, time: string) => Date.parse(`2026-${date}T${time}:00-04:00`);
 
 describe('nowNextState', () => {
-  it('is "before" until noon, and never names an act or a time', () => {
+  it('is "before" until noon on the day itself, bare, and never names an act or a time', () => {
     const state = nowNextState(et('11:59'));
     expect(state.phase).toBe('before');
     expect(state).toMatchObject({ phase: 'before', message: "Doors at noon." });
+  });
+
+  it('says the date out loud when the visitor is not on 3 October (Dotfiles review of #331)', () => {
+    // The date is public everywhere already (Zaal, 2026-08-10); only the
+    // TIME stays banned. "Doors at noon." alone, days early, reads as today.
+    const state = nowNextState(etOn('09-27', '20:00'));
+    expect(state).toMatchObject({ phase: 'before', message: 'Doors at noon on Saturday 3 October.' });
   });
 
   it('names The Crown Vics on now and OPEN X up next once the first set starts', () => {
