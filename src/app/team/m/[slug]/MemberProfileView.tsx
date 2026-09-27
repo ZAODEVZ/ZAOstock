@@ -26,6 +26,7 @@ export function MemberProfileView({ member }: Props) {
     <section className="bg-gradient-to-br from-[#f5a623]/10 via-transparent to-transparent rounded-2xl p-6 border border-white/[0.08] space-y-4">
       <div className="flex items-start gap-4">
         {showPhoto ? (
+          // eslint-disable-next-line @next/next/no-img-element -- member photo_url is an arbitrary user-supplied external URL; next/image cannot optimize unknown hosts, and these are 48-96px avatars on an authenticated dashboard, not a public LCP image
           <img
             src={member.photo_url}
             alt={member.name}

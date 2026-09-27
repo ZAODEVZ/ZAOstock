@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { SITE, LINEUP_NAMES } from '@/content/site';
+import { LINEUP_NAMES } from '@/content/site';
 import { FESTIVAL } from '@/content/festival';
 
 export const dynamic = 'force-dynamic';
