@@ -4,7 +4,7 @@ import { FESTIVAL } from '@/content/festival';
 import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
-import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip, Button } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Live',
@@ -50,7 +50,15 @@ export default async function LivePage() {
           </p>
           <Countdown className="mt-4" />
           <LocalStartTime className="mt-1" />
-          <AddToCalendar className="mt-4" />
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <AddToCalendar />
+            {/* Watching from home has no other way to give. Zaal, 2026-09-27:
+                "we deff need a place for ppl to just go to the live website
+                and one button is the donate button." */}
+            <Button href="/donate" variant="secondary">
+              Donate
+            </Button>
+          </div>
         </div>
       </Section>
 
