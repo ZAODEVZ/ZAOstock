@@ -7,8 +7,9 @@ runs the stream, and neither is a document a new crew member can read cold to
 learn who is in charge of what, when to show up, or where the bathroom is.
 
 **UNSET stays UNSET here.** Where the source itself has no answer yet, this
-brief says so rather than guessing - tracker card 9992 (crew roster) and #39
-(shirt colour with Candy) are both still open as of 2026-09-26.
+brief says so rather than guessing - tracker card 9992 (crew roster) is still
+open, and #39 (crew shirts) is now partly answered: the colour is settled,
+count and sizes are not.
 
 ## Call time
 
@@ -39,7 +40,7 @@ is the source, not this brief and not the form).
 | Stream rig lead | **UNSET** | `docs/av/stream-run-sheet-2026-10-03.md` |
 | Online side (stream + moderation) | Iman, Thy Revolution | Co-leads since 31 August; roughly 1,000 online against 200-250 on the street |
 | Crew (names, load-in/event-run/load-out) | **UNSET** | Tracker card 9992 - a written roster with a contact and role for each person does not exist yet |
-| Crew shirt colour, count, sizes, artwork | **UNSET** | Tracker card #39, with Candy |
+| Crew shirt | **Coyote brown ZAOstock hoodie.** Front: "2026 ZAOSTOCK" with the moose. Back: "ZAOstock 26" and the eight acts (Zaal, 2026-09-27; proof `~/zao-vault/projects/zaostock-crew-hoodie-coyote-brown-2026.png`). Count and sizes: **UNSET** | Tracker card #39, with Candy. The print spells "LYONS DEN" as two words - it is already printed, do not chase it |
 
 ## The clock
 
@@ -110,7 +111,7 @@ day for one set.
 ## What this brief cannot fill
 
 - Crew names, contacts and roles for load-in, event-run and load-out (card 9992).
-- Shirt colour, count, sizes, artwork (card #39).
+- Shirt count and sizes (card #39, colour and artwork are now set).
 - The Google Drive folder link (cards 9807, #119).
 - Which urgent care, its Saturday hours, and a phone number.
 - Whether food can come outside the parklet.

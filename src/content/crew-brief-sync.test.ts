@@ -47,9 +47,15 @@ describe('the crew brief follows the run of show', () => {
     expect(sheet).not.toMatch(/Steve Peer covers.*front of the day/i);
   });
 
-  it('marks the crew roster and shirt colour UNSET rather than inventing names', () => {
+  it('marks the crew roster UNSET rather than inventing names', () => {
     expect(sheet).toMatch(/Crew \(names.*\|\s*\*\*UNSET\*\*/);
-    expect(sheet).toMatch(/shirt colour.*\|\s*\*\*UNSET\*\*/i);
+  });
+
+  it('names the crew shirt (coyote brown, ruled 2026-09-27) and leaves count and sizes UNSET', () => {
+    expect(sheet).toMatch(/Coyote brown ZAOstock hoodie/);
+    expect(sheet).toMatch(/Count and sizes:\s*\*\*UNSET\*\*/);
+    // The print itself spells it as two words - not a typo to fix here.
+    expect(sheet).toMatch(/"LYONS DEN" as two words/);
   });
 
   it('names the Google Drive ruling and leaves the folder link UNSET', () => {
