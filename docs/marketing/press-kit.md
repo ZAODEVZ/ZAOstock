@@ -49,10 +49,10 @@ of The ZAO, an independent music community.
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosts its own evening from six |
 | Cost | Free to attend |
-| RSVP | ticket.zaostock.com |
+| RSVP | zaostock.com/tickets |
 | Music starts | Noon |
 | Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
-| Weather | Rain or shine, under tent cover from Wallace Events |
+| Weather | Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it. |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Schedule | zaostock.com/program |
