@@ -51,7 +51,10 @@ for (const [side, base] of [['pr', BASE], ['prod', PROD]]) {
         rec.status = res ? res.status() : null;
         const h = await page.evaluate(() => document.documentElement.scrollHeight);
         const w = page.viewportSize().width;
-        await page.screenshot({ path: join(OUT, 'shots', file), clip: { x: 0, y: 0, width: w, height: Math.min(h, MAX_H) } });
+        // fullPage is what lets the clip reach past the first screen. Without it
+        // Playwright cuts every shot at the viewport (664px on the phone
+        // profile), which the first run on GitHub did, 16 shots out of 16.
+        await page.screenshot({ path: join(OUT, 'shots', file), fullPage: true, clip: { x: 0, y: 0, width: w, height: Math.min(h, MAX_H) } });
         rec.overflowX = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
       } catch (e) {
         rec.error = String(e.message || e).slice(0, 300);
