@@ -92,9 +92,14 @@ export default function HomePage() {
             Ellsworth, Maine &nbsp;&bull;&nbsp; <b>{FESTIVAL.dateLabel}</b> &nbsp;&bull;&nbsp; Free, all ages
           </div>
           <div className={`${s.cta} ${s.anim} ${s.d4}`}>
-            <a href={FESTIVAL.rsvpUrl} target="_blank" rel="noopener noreferrer" className={s.btn}>
+            {/* /tickets, not FESTIVAL.rsvpUrl direct - the same fix Header.tsx
+                already carries (its own comment explains why): a straight
+                Luma link skips the Pro Ticket funnel entirely. This was the
+                site's single biggest CTA still doing that. Flagged by Poidhz,
+                2026-09-27, measured via a live redirect diff. */}
+            <Link href="/tickets" className={s.btn}>
               RSVP free
-            </a>
+            </Link>
           </div>
           <Countdown onDark className={s.count} />
         </HomeHero>
@@ -264,9 +269,9 @@ export default function HomePage() {
               <br />
               <em>Franklin Street</em>
             </h2>
-            <a href={FESTIVAL.rsvpUrl} target="_blank" rel="noopener noreferrer" className={s.btn}>
+            <Link href="/tickets" className={s.btn}>
               RSVP free
-            </a>
+            </Link>
             <Image className={s.brush} src="/brand/home/zaostock_brush_lettering_black.webp" alt="ZAOstock" width={700} height={235} unoptimized />
             <Link href="/festivals" className={s.link} style={{ color: 'inherit', fontSize: 14 }}>
               What came before: the ZAO Festivals series
