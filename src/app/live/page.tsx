@@ -4,7 +4,7 @@ import { FESTIVAL } from '@/content/festival';
 import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
-import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'Live',
@@ -55,6 +55,7 @@ export default async function LivePage() {
       </Section>
 
       <Section>
+        <NowNextStrip className="mb-4 max-w-[420px]" />
         <Card>
           <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
             <iframe
