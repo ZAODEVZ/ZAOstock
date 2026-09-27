@@ -203,3 +203,8 @@
   .ellBg video { display: none; }
   .ellBg { background: center / cover no-repeat url("/brand/home/historic_main_street_storefronts.webp"); }
 }
+/* Phones on cellular shouldn't have to download the full autoplay video; poster frame instead. */
+@media (max-width: 768px) {
+  .ellBg video { display: none; }
+  .ellBg { background: center / cover no-repeat url("/brand/home/historic_main_street_storefronts.webp"); }
+}
