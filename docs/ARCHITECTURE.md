@@ -15,7 +15,7 @@ One Next.js app serving two audiences out of one codebase and one database.
 
 ```
                     ┌─────────────────────────────┐
-   public visitor ─▶│  35 public pages            │
+   public visitor ─▶│  35 non-team pages          │
                     │  /  /program  /pitch  ...   │──┐
                     └─────────────────────────────┘  │
                                                      │   ┌──────────────┐
@@ -73,7 +73,7 @@ separate jobs so one failure cannot hide another: `typecheck` + `test` + `build`
 ```
 src/
   app/
-    (35 public pages)       the festival site
+    (35 non-team pages)     the festival site, plus the private /backstage/<code> sheets
     team/                   the dashboard, behind a session
     api/                    43 route handlers
       events/[slug]/lineup  public lineup, consumed by the mobile app
