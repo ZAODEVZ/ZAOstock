@@ -91,7 +91,7 @@ first bar and out after 20 seconds, and comes back on at the last song.
 | Time | What | Who | Notes |
 |------|------|-----|-------|
 | 08:00 | Stream desk powered where it will sit | Rig lead | Which box UNSET |
-| 08:15 | Desk main outs into the interface or USB, level check against the PA line checks | Rig lead with the sound operator | OPEN X brings and runs the PA all day |
+| 08:15 | Desk main outs into the interface or USB, level check against the PA line checks | Rig lead with Ryan Miller (OPEN X) | OPEN X brings and runs the PA all day; Ryan provides sound reinforcement noon to six, invoiced with OPEN X's own performance (Zaal, invoice shared 2026-09-27) |
 | 10:30 | Rig check: camera framed, overlays render, destinations armed but not live, recording path has space | Rig lead | About 16 GB for six hours at 6 Mbps |
 | 10:30 | Show side check: the run order card matches this sheet, partner list on the desk | Online side, IMan and Rev | |
 | 11:00 | MC mic check on stage, and the stream hears it | Rig lead, MC | MC is Zaal (ruled 2026-09-26) |
@@ -168,5 +168,5 @@ destination for it.
 
 - The camera count, and therefore whether STAGE CLOSE exists at all.
 - The partner list on the desk, and whether spots are read live or played.
-- The sound operator's name, and AV cover during DCoop's own set.
+- AV cover during DCoop's own set (sound operator is named now: Ryan Miller, OPEN X).
 - Whether anyone is producing a guest segment for the online side.
