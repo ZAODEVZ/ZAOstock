@@ -94,9 +94,12 @@ day for one set.
   the crew who are in from 8, one-to-one, nothing else. No crew line on
   Steve's invoice.
 - **If someone is hurt:** find any crew member; there is no dedicated First
-  Aid post or named medic (Zaal's ruling). For anything serious, the nearest
-  urgent care - which one, its Saturday hours and a phone number are all
-  **UNSET** and not yet verified by any lane.
+  Aid post or named medic (Zaal's ruling). Non-emergency: **ConvenientMD
+  Urgent Care, 235 High St, Ellsworth** - about four minutes from Franklin
+  Street, walk-in, open 8 AM to 8 PM daily (Zaal, 2026-09-27; source
+  convenientmd.com/locations/ellsworth-me-urgent-care). Anything serious:
+  **911**, then Northern Light Maine Coast Hospital ER. Phone number for
+  ConvenientMD: **UNSET**.
 
 ## Media destination
 
@@ -113,6 +116,6 @@ day for one set.
 - Crew names, contacts and roles for load-in, event-run and load-out (card 9992).
 - Shirt count and sizes (card #39, colour and artwork are now set).
 - The Google Drive folder link (cards 9807, #119).
-- Which urgent care, its Saturday hours, and a phone number.
+- ConvenientMD's phone number (address and hours are now set).
 - Whether food can come outside the parklet.
 - The exact porta-potty count and booking.
