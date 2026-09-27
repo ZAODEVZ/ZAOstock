@@ -153,7 +153,10 @@ export default function ProgramPage() {
               The point of putting this on Franklin Street is to show what a day like this does for the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past. We are measuring what {FESTIVAL.shortDate} does for this block, and the number only exists if you make it.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <Button href={FESTIVAL.rsvpUrl} external size="sm">
+              {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the
+                  homepage hero and Header.tsx: a straight Luma link skips
+                  the Pro Ticket funnel. Poidhz, 2026-09-27, measured live. */}
+              <Button href="/tickets" size="sm">
                 RSVP free
               </Button>
               <Button href="/ellsworth" variant="secondary" size="sm">
