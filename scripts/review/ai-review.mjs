@@ -23,7 +23,8 @@
  * 0, so the workflow can be merged before the key exists.
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const ART = process.env.ARTIFACT || 'review-artifact';
 const OUT = process.env.OUT || 'review.md';
@@ -118,4 +119,10 @@ async function main() {
   console.log('wrote review');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) await main();
+// import.meta.url percent-encodes, process.argv[1] does not - a raw string
+// compare silently skips main() whenever the repo path contains a space.
+// Same fix as check-pr-review.mjs and check-fact-dedup.mjs (#325); this file
+// postdates that PR so merging it will not reach here. Poidhz, 2026-09-27,
+// measured on Node v23.3.0 with a four-way probe (absolute/relative/space/
+// symlink paths).
+if (process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1])) await main();
