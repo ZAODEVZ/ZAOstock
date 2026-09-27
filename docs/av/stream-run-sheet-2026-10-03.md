@@ -84,7 +84,7 @@ first bar and out after 20 seconds, and comes back on at the last song.
 | When | What | Who |
 |------|------|-----|
 | 19 to 21 Sept (ruled 2026-09-18) | **The stream test.** The one thing gating the watch link | Zaal, and he pins IMan when he runs it |
-| Fri 2 Oct, 4 to 7 PM | Soundcheck, every act, mandatory. The end to end test belongs beside it: desk audio, camera, parklet uplink, destinations, local recording | Zaal with the venue AV team |
+| Fri 2 Oct, 2 to 6 PM | Setup and decorating at the parklet with volunteers - the stream and wifi test runs first, decorations after, artists welcome from 4 (Zaal, ruled 2026-09-27). This is not the per-act soundcheck (Saturday 9:30-noon, below) and it is narrower than the full end-to-end PA/streaming-chain test the earlier plan wanted - only "stream and wifi" is confirmed, not desk audio, camera or local recording | Zaal with the venue AV team |
 
 ## Saturday, before noon
 

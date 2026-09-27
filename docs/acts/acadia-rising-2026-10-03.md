@@ -5,6 +5,15 @@ production plan as of 28 August 2026 (ros-5min v7). Every figure that Zaal
 has not typed is UNSET. The template's own stale lines (a Friday date, 25-minute
 sets, "DJs run between sets", a day-of soundcheck window) are not carried.
 
+> **STALE BEYOND THE FRIDAY/SOUNDCHECK ROWS, 2026-09-27.** This whole memo
+> predates the current eight-act, 12:05-17:40 grid (`src/content/program.ts`)
+> - the position, WaveWarZ and any indoor late set below are off the
+> programme, and Zaal's standing rule is "Acadia Rising", never the long
+> form. Only the Friday and Soundcheck rows are corrected as part of today's
+> fix; the rest is history, not current truth. The live source for backstage
+> facts is `src/content/artist-ops.ts` (`ARTIST_DATES`, `OPS_ACTS`), not this
+> file.
+
 **Event:** ZAOstock 2026 - **Saturday 3 October 2026**
 **Where:** Franklin Street Parklet, Ellsworth, Maine - outdoors, one stage;
 everything moves next door into Black Moon Public House at 18:00
@@ -24,8 +33,9 @@ Maine Craft Weekend)
 | Changeovers | Two of the day's four changeovers are 5 minutes (a swap, nothing else) and two are 10 (the MC talks the event, a sponsor spot). Which is which is proposed, not final. There is no DJ between sets |
 | Overrun rule | **Yes (Zaal, 27 Aug):** an act that runs over loses the time from its own changeover, and the next act still starts on the grid. Said out loud at the stage manager's walk, 11:30 |
 | Backline | A shared backline (one kit, one set of amps up all day, you swap guitars and pedals) is proposed and not yet decided - it is what makes a 5-minute changeover real. Bring what you cannot share; tell Dcoop what you need beyond guitars and pedals |
-| Soundcheck | **Friday 2 October, mandatory, every act**, at the stage you play. Saturday morning is line-check only (confirm, not check). Friday time: UNSET |
-| Saturday call time | UNSET - crew is on site by 10:00; your call time will be told to you with the Friday time |
+| Friday | Friday 2 October, 2 to 6 PM: we are setting up and decorating the parklet. Come by if you like - no soundcheck, nothing about your set depends on it (Zaal, 2026-09-27) |
+| Soundcheck | Saturday 3 October, 9:30 AM to noon, staggered - be there by 11 AM at the latest. Not mandatory: let us know what time you will be there (moved off Friday, Zaal, 2026-09-24 and 2026-09-25) |
+| Saturday call time | UNSET - crew is on site by 10:00 |
 | MC between sets | ZAO crew, not the venue; name to come |
 
 ## What ZAOstock provides
@@ -45,7 +55,7 @@ Maine Craft Weekend)
 
 ## What you provide
 
-- The set, on the grid, and the Friday soundcheck
+- The set, on the grid, and Saturday soundcheck
 - Technical needs to Dcoop (music and AV lead) - date UNSET
 - A headshot and a short bio for the reveal - date UNSET
 - One share of the lineup announcement
