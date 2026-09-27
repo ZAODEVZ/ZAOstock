@@ -1,0 +1,104 @@
+# Crew brief - ZAOstock, Saturday 3 October 2026
+
+One page for the people working the day, not the people watching it. It exists
+because a search for "crew" across this repo returned nothing before it -
+`docs/plans/run-sheet-2026-10-03.md` runs the stage, `docs/av/stream-run-sheet-2026-10-03.md`
+runs the stream, and neither is a document a new crew member can read cold to
+learn who is in charge of what, when to show up, or where the bathroom is.
+
+**UNSET stays UNSET here.** Where the source itself has no answer yet, this
+brief says so rather than guessing - tracker card 9992 (crew roster) and #39
+(shirt colour with Candy) are both still open as of 2026-09-26.
+
+## Call time
+
+**Vital crew: 8 AM. Everyone else: by 10 AM.** (Zaal, 27 Aug grill round 2;
+`docs/plans/production-plan-2026-10-03.md`.) Friday 2 October, 4 to 7 PM, is
+mandatory soundcheck for every act - there is no Saturday alternative.
+
+## Roles
+
+| Role | Who | Notes |
+|---|---|---|
+| Stage managers | Zaal, DCoop, Steve Peer (ruled 2026-09-18) | Steve covers the stage while DCoop plays at 15:30 |
+| MC, the whole day | **Zaal** (ruled 2026-09-26: "im going to mc today") | Supersedes the earlier plan of Zaal on the front of the day only with Steve covering, and DCoop's own ask to give the LyonsDen intro - neither stands. Script v1: `~/zao-vault/projects/zaostock-mc-script-2026-10-03.md`, unreviewed by Zaal |
+| Sound / PA | Ryan Miller (OPEN X) | Runs audio all day as part of OPEN X's own performance; OPEN X brings the PA |
+| Video | Maceo | Not stage management |
+| Stream rig lead | **UNSET** | `docs/av/stream-run-sheet-2026-10-03.md` |
+| Online side (stream + moderation) | Iman, Thy Revolution | Co-leads since 31 August; roughly 1,000 online against 200-250 on the street |
+| Crew (names, load-in/event-run/load-out) | **UNSET** | Tracker card 9992 - a written roster with a contact and role for each person does not exist yet |
+| Crew shirt colour, count, sizes, artwork | **UNSET** | Tracker card #39, with Candy |
+
+## The clock
+
+Same grid as `docs/plans/run-sheet-2026-10-03.md`, held to `src/content/program.ts`
+`BLOCKS` by `src/content/crew-brief-sync.test.ts` - do not hand-edit the times
+below without updating the source.
+
+| Time | What |
+|---|---|
+| 08:00 | Vital crew on site. PA power-up. Line checks only |
+| 10:00 | Everyone on site. First Aid kit and named contact, signage, wayfinding, merch if allowed |
+| 11:00 | MC mic check; partner spot scripts on the desk |
+| 11:30 | Stage manager's walk: every act on site; the overrun rule said out loud |
+| 12:00 | Doors. Music starts at noon. |
+| 12:05 | 1. The Crown Vics (33) |
+| 12:38 | Changeover (7) |
+| 12:45 | 2. OPEN X (40) |
+| 13:25 | Changeover (5) |
+| 13:30 | 3. Grass Rug (33) |
+| 14:03 | Changeover (7) |
+| 14:10 | 4. Acadia Rising (33) |
+| 14:43 | Changeover (7) |
+| 14:50 | 5. Michael Anderson (33) |
+| 15:23 | Changeover (7) |
+| 15:30 | 6. DCoop (40) |
+| 16:10 | Changeover (5) |
+| 16:15 | 7. LyonsDen (40) |
+| 16:55 | Changeover (5) |
+| 17:00 | 8. Tom Fellenz (40), closes the outdoor block |
+| 17:40 | Music ends. The street clears at six |
+| 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
+| 21:00 | Close, approximate. Black Moon keeps its own hours |
+
+**Overrun rule:** an act that runs over loses the time from its own
+changeover, and the next act still starts on the grid. Nobody holds the whole
+day for one set.
+
+## Bathrooms and food (MC script v1 housekeeping lines)
+
+- **Bathrooms:** the porta-potty is in the city parking lot right here; Black
+  Moon has restrooms inside. More units are agreed in principle (Steve's
+  drafted reply says yes) but the count and booking are still **UNSET** -
+  Zaal's to answer and book.
+- **Food and drink:** Black Moon next door is the food all day. Whether food
+  can come out to the parklet is **UNSET** until Steve answers - say "grab
+  something at Black Moon" and nothing about outside until then.
+- **Crew breakfast:** Zaal, grill 2026-09-26 midday, final answer after an
+  earlier pizza idea was superseded the same minute: "or maybe not pizza lets
+  jsut talk to people indiviually get breakfas tbut tahts it" - breakfast for
+  the crew who are in from 8, one-to-one, nothing else. No crew line on
+  Steve's invoice.
+- **If someone is hurt:** find any crew member; there is no dedicated First
+  Aid post or named medic (Zaal's ruling). For anything serious, the nearest
+  urgent care - which one, its Saturday hours and a phone number are all
+  **UNSET** and not yet verified by any lane.
+
+## Media destination
+
+**Google Drive only** (Zaal, grill 2026-09-26 midday,
+`~/zao-vault/decisions/grill-2026-09-26-seat-midday.md` item 2). Folder link:
+**UNSET** until Zaal shares it (tracker card 9807, #119).
+
+- **WE THE MEDIA uploads the capture.**
+- **Iman uploads phone shots.**
+- **Same day** - nothing sits on a device overnight.
+
+## What this brief cannot fill
+
+- Crew names, contacts and roles for load-in, event-run and load-out (card 9992).
+- Shirt colour, count, sizes, artwork (card #39).
+- The Google Drive folder link (cards 9807, #119).
+- Which urgent care, its Saturday hours, and a phone number.
+- Whether food can come outside the parklet.
+- The exact porta-potty count and booking.

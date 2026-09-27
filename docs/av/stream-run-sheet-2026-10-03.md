@@ -148,6 +148,22 @@ rather than a longer run of this one. zaostock.com/live tells a remote viewer
 the evening is in person, and the desk carries the question if Zaal wants that
 changed.
 
+## Media destination
+
+**Google Drive only** (Zaal, grill 2026-09-26 midday,
+`~/zao-vault/decisions/grill-2026-09-26-seat-midday.md` item 2: "Google Drive
+only" - not the recommended Drive-then-ArDrive, one place, shared with Iman
+and WE THE MEDIA). Folder link: **UNSET** - the folder itself has not been
+created yet (tracker card 9807, #119; Zaal's click).
+
+- **WE THE MEDIA uploads their capture** - the local recording this sheet's
+  "Local recording ON" row starts, plus any additional footage they shoot.
+- **Iman uploads phone shots.**
+- **When: the same day.** Nothing sits on a device overnight.
+
+Until the folder link lands, hold what is captured rather than guessing a
+destination for it.
+
 ## What this sheet cannot fill
 
 - The camera count, and therefore whether STAGE CLOSE exists at all.
