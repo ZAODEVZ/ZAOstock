@@ -74,12 +74,17 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
   // 2026-09-25 ("closer to on the 5 min mark"): the changeover after a
   // 40-minute set is 5 minutes rather than 7, which is what keeps every
   // start on a clean five-minute mark (33+7=40 and 40+5=45 are both
-  // multiples of 5; 40+7 is not).
-  it('runs the day on five- to seven-minute changeovers, music 12:05 to 17:40, every start on a 5-minute mark', () => {
+  // multiples of 5; 40+7 is not). Rebalanced 2026-09-27: the first three
+  // changeovers move to the next tier for more buffer (7 becomes 12, 5
+  // becomes 10 - both still keep every start on the grid), and OPEN X drops
+  // from 40 to 33 minutes.
+  it('runs the day on five- to twelve-minute changeovers, the first three widened for buffer, music 12:05 to 17:50, every start on a 5-minute mark', () => {
     expect(OPS_ACTS[0].setStart).toBe('12:05');
     for (let i = 1; i < OPS_ACTS.length; i++) {
       const prev = OPS_ACTS[i - 1];
-      const changeover = prev.minutes === 40 ? 5 : 7;
+      const base = prev.minutes === 40 ? 5 : 7;
+      const widened = prev.minutes === 40 ? 10 : 12;
+      const changeover = i <= 3 ? widened : base;
       expect(OPS_ACTS[i].setStart, `${prev.name} -> ${OPS_ACTS[i].name}`).toBe(
         addMinutes(addMinutes(prev.setStart, prev.minutes), changeover),
       );
@@ -88,8 +93,8 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
       expect(Number(a.setStart.split(':')[1]) % 5, `${a.name} setStart ${a.setStart}`).toBe(0);
     }
     const last = OPS_ACTS[OPS_ACTS.length - 1];
-    expect(addMinutes(last.setStart, last.minutes)).toBe('17:40');
-    expect(OPS_ACTS.map((a) => a.minutes)).toEqual([33, 40, 33, 33, 33, 40, 40, 40]);
+    expect(addMinutes(last.setStart, last.minutes)).toBe('17:50');
+    expect(OPS_ACTS.map((a) => a.minutes)).toEqual([33, 33, 33, 33, 33, 40, 40, 40]);
   });
 
   it('gives every act the SAME time as /program', () => {

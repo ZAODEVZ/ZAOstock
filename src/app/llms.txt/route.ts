@@ -16,6 +16,12 @@ export const revalidate = 3600;
 // went to 33/40 minutes with seven-minute changeovers (not a uniform ~30).
 // llms.txt.test.ts holds this file to the same two sources so it cannot
 // drift from them silently again the way it did here.
+//
+// The changeover-length phrase below is NOT sourced the same way (no single
+// constant holds it) - updated by hand 2026-09-27 when the first three
+// changeovers widened from 7 to 12 minutes. It names no clock time, so it
+// does not touch the "no set times listed publicly" rule, but it can go
+// stale again the same way the window and act count already did once.
 const CONTENT = `# ZAOstock
 
 > A free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, ${FESTIVAL.dateLabel}. Part of the 9th Annual Art of Ellsworth during Maine Craft Weekend. Produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators (100+ members, weekly sessions since 30 July 2024).
@@ -24,7 +30,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 
 ## The day (one venue at a time)
 
-- ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with seven-minute changeovers, with our MC and our partners between sets. Music starts at noon.
+- ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with five- to twelve-minute changeovers, with our MC and our partners between sets. Music starts at noon.
 - 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
 - Free to attend. Rain or shine - we do not cancel for weather; the parklet is open to the sky. Optional Pro Ticket, $50, on /donate.
 
