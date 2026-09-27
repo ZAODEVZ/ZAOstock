@@ -73,7 +73,7 @@ export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
       id: "9385596c-75c5-441a-ac77-b95a0c38ff15",
       name: "OPEN X",
       genre: "Power pop rock",
-      city: "",
+      city: "Down East Maine",
       bio: "OPEN X is best described as a bombastic, genre-blurring American rock power pop trio known for their cinematic sound, classical influences, and spectacular stadium-sized live shows. While rooted in alternative rock, OPEN X seamlessly blends progressive rock, heavy metal, and modern pop. They are famous for thick, heavy guitar riffs contrasted against delicate vocal melodies. A massive part of their identity is Ryan Miller's dramatic, soaring and emotional vocal delivery. Despite having only three members, they produce an incredibly dense, symphonic wall of sound, anchored by driving basslines and precise, hard-hitting percussion.",
       photo_url: "https://zaostock.com/artists/open-x-logo.webp",
       socials: "https://openxofficial.com",
