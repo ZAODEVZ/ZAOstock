@@ -22,7 +22,7 @@
  * With no ANTHROPIC_API_KEY it writes a short "reviewer inert" note and exits
  * 0, so the workflow can be merged before the key exists.
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -125,4 +125,7 @@ async function main() {
 // postdates that PR so merging it will not reach here. Poidhz, 2026-09-27,
 // measured on Node v23.3.0 with a four-way probe (absolute/relative/space/
 // symlink paths).
-if (process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1])) await main();
+// realpath on both sides: Node gives import.meta.url the real path but leaves
+// argv[1] as typed, so a symlinked entrypoint would otherwise skip main().
+const isMain = (() => { try { return realpathSync(fileURLToPath(import.meta.url)) === realpathSync(resolve(process.argv[1] || '')); } catch { return false; } })();
+if (isMain) await main();
