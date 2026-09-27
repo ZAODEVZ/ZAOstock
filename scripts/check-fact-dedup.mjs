@@ -98,15 +98,36 @@ function actCountPattern(count) {
 
 /** Strip comment-only lines so a comment naming a fact for its own sake
  * (like this file's own header) doesn't count as rendered copy. Mirrors
- * tickets.test.ts's code() helper. */
+ * tickets.test.ts's code() helper.
+ *
+ * A per-line prefix check (does the trimmed line start with `//`, `*` or
+ * `/*`) is not enough for a JSX comment: `{/* ... *\/}` opens with `{/*`,
+ * not `/*`, and this codebase's own convention (see ellsworth/page.tsx,
+ * program/page.tsx) wraps its continuation lines as plain indented prose
+ * with no per-line marker at all - so only the opening line was ever
+ * caught. Found 2026-09-27 when an explanatory multi-line JSX comment
+ * naming the act count tripped this check; several already-merged JSX
+ * comments in this exact style had been silently unstripped before that,
+ * just without a flagged phrase in their continuation lines to expose it.
+ * Track open/close state instead, so everything between `{/*` and `*\/}`
+ * is dropped regardless of how each continuation line is written. */
 function stripComments(text) {
-  return text
-    .split('\n')
-    .filter((l) => {
-      const t = l.trim();
-      return !t.startsWith('//') && !t.startsWith('*') && !t.startsWith('/*');
-    })
-    .join('\n');
+  const lines = [];
+  let inJsxComment = false;
+  for (const l of text.split('\n')) {
+    const t = l.trim();
+    if (inJsxComment) {
+      if (t.includes('*/')) inJsxComment = false;
+      continue;
+    }
+    if (t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) continue;
+    if (t.startsWith('{/*')) {
+      if (!t.includes('*/')) inJsxComment = true;
+      continue;
+    }
+    lines.push(l);
+  }
+  return lines.join('\n');
 }
 
 // src/app/error.tsx: the root error boundary, deliberately dependency-free

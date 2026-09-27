@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, displayName } from '@/content/site';
+import { SITE, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 import { BLOCKS, publicSlots, type Venue } from '@/content/program';
 import { SOUNDCHECK } from '@/content/artist-ops';
@@ -90,8 +90,14 @@ export default function ProgramPage() {
               Music from noon on the {FESTIVAL.venue}. At six the street clears, and their own evening starts inside Black Moon next door.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <Badge tone="gold">Meet the artists, one at a time</Badge>
-              <span className="text-sm text-ink-muted">{LINEUP_NAMES.join(', ')}. {LINEUP_NAMES_NOTE}</span>
+              {/* The plain comma-separated name list this used to carry was
+                  redundant with the ordered schedule just below it on this
+                  same page - and a worse UI of the same lineup. Zaal,
+                  2026-09-27: "this hould be a good UI of all the artists."
+                  The badge now links to the real one. */}
+              <Link href="/artists">
+                <Badge tone="gold">Meet the artists, one at a time</Badge>
+              </Link>
             </div>
           </div>
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 m-0">
