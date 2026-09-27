@@ -622,11 +622,15 @@ export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | n
  */
 export const ZAO_ELLSWORTH_FACEBOOK_URL: string = UNSET;
 
-const FACEBOOK_URL_PREFIX = 'https://facebook.com/';
+// A browser address bar as often shows the www. form as the bare one, and a
+// pasted URL should not silently fail for that reason alone (Dotfiles,
+// 2026-09-27, found while reviewing #357: the single-prefix version would
+// have rendered nothing for a real, correctly-pasted Page URL).
+const FACEBOOK_URL_PREFIXES = ['https://facebook.com/', 'https://www.facebook.com/'];
 
 /** The ZAO Ellsworth Facebook Page URL, or null while it is UNSET or not a facebook.com link. */
 export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL): string | null {
-  return url.startsWith(FACEBOOK_URL_PREFIX) ? url : null;
+  return FACEBOOK_URL_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
 }
 
 export const TIERS: readonly Tier[] = [
