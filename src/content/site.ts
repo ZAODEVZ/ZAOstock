@@ -605,6 +605,29 @@ export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | n
   return entries.every((lock) => lock?.network === BASE_MAINNET_CHAIN_ID) ? url : null;
 }
 
+/**
+ * ZAO ELLSWORTH - a new, ongoing local chapter, ruled 2026-09-27
+ * (zao-vault decisions/grill-2026-09-27-orchestrator-batch-5.md, commit
+ * 69d93004): "New local chapter, own Page." It gets its own Facebook
+ * Page, kept separate from the ZAOstock event Page in SOCIALS above - ZAO
+ * Ellsworth outlives Saturday, so the site should point people at the
+ * thing they can still join afterward, not at an event that will be over.
+ *
+ * The Page does not exist yet. "ZAO Ellsworth" appeared in no vault file
+ * or repo before this ruling - checked with a 683-file red control on
+ * "ellsworth" alone before it was even proposed, so this is a genuinely
+ * new name, not a rename. UNSET renders nothing, same pattern as
+ * STRIPE_LINKS above: a link to a Page that does not exist yet is worse
+ * than no link. Paste the real URL here once Zaal or Iman creates it.
+ */
+export const ZAO_ELLSWORTH_FACEBOOK_URL: string = UNSET;
+
+const FACEBOOK_URL_PREFIX = 'https://facebook.com/';
+
+/** The ZAO Ellsworth Facebook Page URL, or null while it is UNSET or not a facebook.com link. */
+export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL): string | null {
+  return url.startsWith(FACEBOOK_URL_PREFIX) ? url : null;
+}
 
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
