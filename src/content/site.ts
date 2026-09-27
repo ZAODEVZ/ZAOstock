@@ -294,6 +294,13 @@ const ALL_PARTNERS = [
   // to change.
   // Logo: Cara's own file, emailed to Zaal 2026-09-19 (image003.png, 1600x632, transparent), resampled to 400px tall.
   { name: 'Heart of Ellsworth', role: 'Community partner, Art of Ellsworth: Maine Craft Weekend', poc: 'Zaal', confirmed: true, logoSrc: '/partners/heart-of-ellsworth.png' },
+  // Baraza: Zaal, Motomoto x Zaal call, 2026-09-16 (tracker card 9793):
+  // "i honestly i should add barraza to our partners for zao stock as well".
+  // Baraza is Motomoto's AI-voice media distribution project; Motomoto (Aziz)
+  // is ZAOstock's virtual lead (zaostock-roster-and-channels-2026-08-31.md),
+  // so he is the ZAO team member who owns this relationship, same pattern as
+  // DCoop/Bomb Squad. No logo exists yet - textOnly until one lands.
+  { name: 'Baraza', role: 'AI-voice media distribution', poc: 'Motomoto', confirmed: true, textOnly: true },
 ] satisfies Partner[];
 
 export const PARTNERS: readonly Partner[] = ALL_PARTNERS.filter((p) => p.confirmed);

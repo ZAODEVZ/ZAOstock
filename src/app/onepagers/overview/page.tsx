@@ -90,6 +90,9 @@ const PARTNERS: Partner[] = [
   // missing from this page's own copy of the partner list (audit,
   // 2026-09-21) while src/content/site.ts PARTNERS already had it.
   { name: 'WE THE MEDIA', role: 'Media and content capture', confirmed: true },
+  // Baraza: added 2026-09-27, tracker card 9793 - see src/content/site.ts
+  // PARTNERS for the source quote and reasoning.
+  { name: 'Baraza', role: 'AI-voice media distribution', confirmed: true },
 ].filter((p) => p.confirmed);
 
 // SPONSOR_TIERS used to be defined here, with its own names and its own

@@ -129,6 +129,7 @@ Every partner has a named point of contact on the ZAO team.
 - Artizen - funding partner
 - WE THE MEDIA - media and content capture
 - Heart of Ellsworth - community partner, Art of Ellsworth: Maine Craft Weekend
+- Baraza - AI-voice media distribution
 
 *(SITE: mirror `src/app/page.tsx` PARTNERS so this list cannot drift. COC
 Concertz is a partner per Zaal, typed 27 Aug 20:3x; add it and Bomb Squad there. "Community
