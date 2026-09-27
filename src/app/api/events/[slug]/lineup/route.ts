@@ -26,9 +26,10 @@ import { getPublicLineup } from '@/lib/lineup';
 
 /**
  * Supabase answered AND there is a roster: cache at the edge, so the cache can
- * carry us through a later outage.
+ * carry us through a later outage. s-maxage is 60, not 300, so a day-of lineup
+ * correction reaches /live and embeds within about a minute (Zaal, 2026-09-27).
  */
-const LIVE_CACHE = 'public, s-maxage=300, stale-while-revalidate=86400';
+const LIVE_CACHE = 'public, s-maxage=60, stale-while-revalidate=86400';
 
 /**
  * Supabase answered and the roster is EMPTY. Still 200 and still

@@ -216,6 +216,8 @@ describe('GET /api/events/[slug]/lineup', () => {
 
     expect(res.status).toBe(200);
     expect(res.headers.get('Cache-Control')).toContain('stale-while-revalidate');
+    // a day-of correction must reach /live within about a minute
+    expect(res.headers.get('Cache-Control')).toContain('s-maxage=60,');
   });
 
   // THIS TEST USED TO ASSERT THE BUG.
