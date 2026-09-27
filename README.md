@@ -94,7 +94,9 @@ ZAOstock is the first feature graduate.
 
 ## Public surface
 
-35 page entrypoints outside the retired `/team` dashboard. One is the private, code-gated `/backstage/<code>` sheet for each act. The public ones people actually land on:
+35 page entrypoints outside the retired `/team` dashboard. Two are backstage: the public
+`/backstage` artist-details form, and the private, code-gated `/backstage/<code>` sheet for
+each act. The ones people actually land on:
 
 - `/` - festival landing page
 - `/program` - day-of schedule, one venue at a time (parklet until six, then Black Moon)
