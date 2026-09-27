@@ -5,6 +5,7 @@ import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
 import { BLOCKS, publicSlots, type Venue } from '@/content/program';
+import { SOUNDCHECK } from '@/content/artist-ops';
 
 export const metadata: Metadata = {
   title: 'Program',
@@ -72,7 +73,9 @@ const GOOD_TO_KNOW = [
   'One venue at a time. Nothing plays in two rooms at once.',
   'Black Moon is open through the day, walkable, right next door.',
   'Each artist gets their own post with their bio and photo, in the order their details come in. Times can shift by a few minutes on the day.',
-  'Friday 2 October is soundcheck night, artists only.',
+  // Was "Friday 2 October is soundcheck night". Soundcheck moved to Saturday
+  // on 2026-09-24 (#305); Friday is setup and decorating.
+  `Soundcheck is the morning of ${SOUNDCHECK.day}, artists only.`,
 ];
 
 export default function ProgramPage() {

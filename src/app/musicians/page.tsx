@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
 import { FESTIVAL } from '@/content/festival';
+import { SOUNDCHECK } from '@/content/artist-ops';
 
 export const metadata: Metadata = {
   title: 'For Musicians',
@@ -37,7 +38,7 @@ export default function MusiciansPage() {
       weAsk={[
         'A set window. The length is settled with you when your slot is.',
         'Standard technical rider - we will work with what you need.',
-        'Soundcheck night is Friday 2 October. Be there.',
+        `Soundcheck is ${SOUNDCHECK.day}, ${SOUNDCHECK.window}.`,
         'Help share when we post your slot. We do the heavy lift on socials, you amplify.',
       ]}
       ctas={[
@@ -46,7 +47,7 @@ export default function MusiciansPage() {
       facts={[
         { term: 'Date', detail: `${FESTIVAL.dateLabel}, music from noon` },
         { term: 'Where', detail: `${FESTIVAL.venue}, ${FESTIVAL.city}; Black Moon Public House next door from six` },
-        { term: 'Soundcheck', detail: 'Friday 2 October, artists only' },
+        { term: 'Soundcheck', detail: `${SOUNDCHECK.day}, 9:30 AM to noon, artists only` },
         { term: 'Set length', detail: 'Settled with you when your slot is' },
         { term: 'Pay', detail: 'Not pay-to-play. Independent and ZAO-vetted only' },
       ]}
