@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { SOCIALS } from '@/content/site';
-import { WATCH_PARTIES, fallbackChannelHref, TWITCH_CHANNEL, watchHref, embedSrc } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, TWITCH_CHANNEL, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
 
 // /live is the one link everywhere else carries (Zaal, 15 September), so on
 // 3 October it is where the online audience lands, and the online audience is
@@ -88,6 +88,13 @@ describe('the confirmed Twitch channel', () => {
 
   it('the iframe has a real title, for the one page thousands may hit at once', () => {
     expect(read(LIVE)).toContain('title="ZAOstock live on Twitch"');
+  });
+
+  it('the chat embed carries the channel and a parent matching production', () => {
+    const src = chatEmbedSrc();
+    expect(src).toContain('/zaofestivals/chat');
+    expect(src).toContain('parent=zaostock.com');
+    expect(read(LIVE)).toContain('chatEmbedSrc()');
   });
 });
 
