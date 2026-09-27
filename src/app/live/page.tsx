@@ -31,6 +31,13 @@ export const metadata: Metadata = {
 // A viewer staring at a dead player on 3 October could not learn any of it
 // here. See src/content/live.ts for the decisions and their source.
 
+// The running order is read straight from Supabase at render, not through the
+// lineup API, so without this the page is prerendered and a day-of lineup
+// correction would reach /live only on the next deploy. 60s ISR (Zaal,
+// 2026-09-27, board #137). Artists are confirmed by hand DB write, so there is
+// no confirm hook to call revalidatePath from.
+export const revalidate = 60;
+
 export default async function LivePage() {
   const fallbackHref = fallbackChannelHref();
   const lineup = await getPublicLineup('zaostock');
