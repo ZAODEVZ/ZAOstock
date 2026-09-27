@@ -12,9 +12,21 @@ brief says so rather than guessing - tracker card 9992 (crew roster) and #39
 
 ## Call time
 
-**Vital crew: 8 AM. Everyone else: by 10 AM.** (Zaal, 27 Aug grill round 2;
-`docs/plans/production-plan-2026-10-03.md`.) Friday 2 October, 4 to 7 PM, is
-mandatory soundcheck for every act - there is no Saturday alternative.
+**Vital crew: 8 AM Saturday. Everyone else: by 10 AM Saturday.** (Zaal, 27
+Aug grill round 2; `docs/plans/production-plan-2026-10-03.md`.)
+
+## Friday 2 October: setup and decorating, not soundcheck
+
+**2 to 6 PM, at the parklet, with volunteers** - Zaal's tap, grill
+2026-09-27 09:4x, on the recommended option: the stream and wifi test runs
+first, decorations after, **artists welcome from 4 PM**. This is NOT a
+soundcheck - nothing on stage is checked today, and nothing about any act's
+set depends on showing up. Soundcheck itself moved off Friday entirely on
+2026-09-24 (Zaal, live: "lets say sat 9:30 am is when soundcheck will
+start"); the live Google Form still calling Friday a soundcheck is a known,
+deliberately-left drift (Zaal, grill 2026-09-26 evening, #88: "Leave it, the
+backstage pages are the source" - `src/content/artist-ops.ts` `ARTIST_DATES`
+is the source, not this brief and not the form).
 
 ## Roles
 
@@ -38,6 +50,7 @@ below without updating the source.
 | Time | What |
 |---|---|
 | 08:00 | Vital crew on site. PA power-up. Line checks only |
+| 9:30 AM to noon | Artist soundcheck, staggered through the block, be there by 11 AM at the latest - not mandatory, an ask (Zaal, 2026-09-24/25, moved off Friday) |
 | 10:00 | Everyone on site. First Aid kit and named contact, signage, wayfinding, merch if allowed |
 | 11:00 | MC mic check; partner spot scripts on the desk |
 | 11:30 | Stage manager's walk: every act on site; the overrun rule said out loud |
