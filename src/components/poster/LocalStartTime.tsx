@@ -12,12 +12,12 @@ export function LocalStartTime({ className }: { className?: string }) {
     () => () => {},
     () => {
       const start = new Date(FESTIVAL.date);
-    const zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const formatted = new Intl.DateTimeFormat(undefined, {
-      hour: 'numeric',
-      minute: start.getMinutes() === 0 ? undefined : '2-digit',
-      timeZoneName: 'short',
-    }).format(start);
+      const zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const formatted = new Intl.DateTimeFormat(undefined, {
+        hour: 'numeric',
+        minute: start.getMinutes() === 0 ? undefined : '2-digit',
+        timeZoneName: 'short',
+      }).format(start);
       // Skip the line entirely for a viewer who happens to already be on
       // Eastern - the page already says "noon ET", repeating it as "12 PM ET"
       // a second time is noise, not help.
