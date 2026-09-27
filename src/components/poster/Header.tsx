@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { SITE } from '@/content/site';
 
-// Seven links plus the RSVP button. /team is not in the nav. Hamburger under
-// 640px is the only stateful thing in the shell.
+// Seven links plus the RSVP button. /team is not in the nav. The hamburger
+// stays visible below 1024px so the full nav does not overflow tablet widths.
 //
 // The button points at /tickets, NOT straight at FESTIVAL.rsvpUrl. It used to go
 // direct to the Luma RSVP, which meant the site-wide primary action skipped past
@@ -51,7 +51,7 @@ export function Header() {
           <span className="font-display text-[21px] leading-none">ZAOstock</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden sm:flex items-center gap-5">
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-5">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="font-sans text-xs font-bold uppercase tracking-[0.1em] text-ink-secondary hover:text-red-700">
               {n.label}
@@ -69,7 +69,7 @@ export function Header() {
 
           <button
             type="button"
-            className="sm:hidden flex flex-col justify-center gap-[5px] w-10 h-9 px-2 border-[1.5px] border-ink-950/40 rounded-[8px] bg-transparent focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]"
+            className="lg:hidden flex flex-col justify-center gap-[5px] w-10 h-9 px-2 border-[1.5px] border-ink-950/40 rounded-[8px] bg-transparent focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]"
             aria-label={open ? 'Close navigation' : 'Open navigation'}
             aria-expanded={open}
             aria-controls="site-nav-mobile"
@@ -86,7 +86,7 @@ export function Header() {
         <nav
           id="site-nav-mobile"
           aria-label="Primary"
-          className="sm:hidden wrap pb-4"
+          className="lg:hidden wrap pb-4"
         >
           <div className="flex flex-col gap-3 p-4 bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard-lg">
             {NAV.map((n) => (
