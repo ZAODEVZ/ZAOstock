@@ -19,6 +19,7 @@ describe('redirects for paths people guess', () => {
     const bySource = Object.fromEntries(redirects.map((r) => [r.source, r]));
 
     expect(bySource['/lineup']?.destination).toBe('/program');
+    expect(bySource['/schedule']?.destination).toBe('/program');
     expect(bySource['/sponsors']?.destination).toBe('/sponsor');
     expect(bySource['/artist/fellenz']?.destination).toBe('/artist/tom-fellenz');
     expect(bySource['/artist']?.destination).toBe('/artists');

@@ -100,6 +100,7 @@ const config: NextConfig = {
   async redirects() {
     return [
       { source: '/lineup', destination: '/program', permanent: false },
+      { source: '/schedule', destination: '/program', permanent: false },
       { source: '/sponsors', destination: '/sponsor', permanent: false },
       // LyonsDen is one word (Zaal, 2026-09-14, quoting the artist). The public
       // artist slug is derived from the roster name by slugify(), so renaming
