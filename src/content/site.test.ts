@@ -707,4 +707,11 @@ describe('ZAO Ellsworth footer link renders nothing until the Page exists', () =
     const real = 'https://facebook.com/zaoellsworth';
     expect(zaoEllsworthFacebookUrl(real)).toBe(real);
   });
+
+  it('also accepts the www. form - a browser address bar shows it just as often', () => {
+    // Found 2026-09-27 (Dotfiles, reviewing #357): the single-prefix version
+    // would have rendered nothing for a real, correctly-pasted Page URL.
+    const withWww = 'https://www.facebook.com/zaoellsworth';
+    expect(zaoEllsworthFacebookUrl(withWww)).toBe(withWww);
+  });
 });
