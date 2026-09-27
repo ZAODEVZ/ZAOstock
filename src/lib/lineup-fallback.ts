@@ -135,7 +135,7 @@ export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
       genre: "Solo Instrumental Acoustic Guitar",
       city: "SF Bay Area",
       bio: "A dynamic acoustic guitar instrumentalist, Tom has broad performance experience across event stages, clubs, cafes, house concerts and online/virtual platforms. His sets showcase a blend of influences, with his original music styled by 70s and 80s progressive rock, smooth jazz, and acoustic folk. His playing style has a cinematic quality, having listeners say his music takes them on immersive journeys, from introspective motivation to making your mark in the world; all from one guitar.",
-      photo_url: "https://pbs.twimg.com/profile_images/2062609763637293056/iU6Pe_nU_400x400.jpg",
+      photo_url: "/artists/tom-fellenz.webp",
       socials: "https://fellenz.net",
       set_order: 9,
     },
