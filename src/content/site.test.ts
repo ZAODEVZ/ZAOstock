@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -685,5 +685,26 @@ describe('the retired "under tent cover" promise', () => {
       for (const m of body.matchAll(new RegExp(CLAIM.source, 'gi'))) bad.push(`${rel}: ${m[0]}`);
     }
     expect(bad).toEqual([]);
+  });
+});
+
+describe('ZAO Ellsworth footer link renders nothing until the Page exists', () => {
+  // Same pattern as checkout.test.ts's Stripe/Unlock rails: a link to a
+  // Page that does not exist yet is worse than no link, so UNSET must
+  // resolve to null, not to a broken href.
+  it('is still UNSET, and the helper hands back null for it', () => {
+    expect(ZAO_ELLSWORTH_FACEBOOK_URL).toBe('UNSET');
+    expect(zaoEllsworthFacebookUrl()).toBeNull();
+  });
+
+  it('refuses a URL that is not on facebook.com', () => {
+    for (const wrong of ['https://instagram.com/zaoellsworth', 'facebook.com/zaoellsworth', 'https://fb.com/zaoellsworth', '']) {
+      expect(zaoEllsworthFacebookUrl(wrong)).toBeNull();
+    }
+  });
+
+  it('hands back the real link once it is a real one', () => {
+    const real = 'https://facebook.com/zaoellsworth';
+    expect(zaoEllsworthFacebookUrl(real)).toBe(real);
   });
 });
