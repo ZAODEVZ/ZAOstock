@@ -94,7 +94,7 @@ ZAOstock is the first feature graduate.
 
 ## Public surface
 
-24 public routes. The ones people actually land on:
+35 public pages outside the retired `/team` dashboard. The ones people actually land on:
 
 - `/` - festival landing page
 - `/program` - day-of schedule, one venue at a time (parklet until six, then Black Moon)
@@ -109,11 +109,7 @@ ZAOstock is the first feature graduate.
 - `/ellsworth`, `/acadia`, `/festivals`, `/zaoville`, `/event-organizers`,
   `/suggest`, `/artist/<slug>`, `/onepagers/<slug>`, `/privacy`
 
-Behind a login:
-
-- `/team` - team dashboard (4-letter code, or wallet)
-- `/team/m/<slug>` - public member profile
-- `/team/help` - dashboard help docs
+The `/team` dashboard is retired (see [`docs/decisions/0001-team-dashboard-retired.md`](docs/decisions/0001-team-dashboard-retired.md)). Its pages remain in the tree pending the second stage of removal. The `/team/m/<slug>` route returns 404; login, token and wallet routes return 410.
 
 There is also an API surface consumed by the **ZAO Festivals mobile app**, which
 does not live in this repo - see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
