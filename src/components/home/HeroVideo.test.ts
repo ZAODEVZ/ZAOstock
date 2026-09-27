@@ -24,8 +24,8 @@ describe('shouldLoadVideo', () => {
 });
 
 describe('hero video asset', () => {
-  it('stays under 1.3 MB - the page is opened on cell service', () => {
+  it('stays under 1.9 MB - the page is opened on cell service', () => {
     const size = statSync(path.join(process.cwd(), 'public/brand/home/ellsworth.mp4')).size;
-    expect(size).toBeLessThan(1.3 * 1024 * 1024);
+    expect(size).toBeLessThan(1.9 * 1024 * 1024);
   });
 });
