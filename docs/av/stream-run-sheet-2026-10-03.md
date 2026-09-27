@@ -30,9 +30,14 @@ Zaal has on that job on the day.
 **IMan and Thy Revolution run the online side** (co-leads since 31 August):
 roughly 1,000 people online against 200 to 250 on the street.
 
-Still UNSET, and each one changes a cue below: the camera count, who holds the
-MC mic, the sound operator's name, the partner list on the desk, and whether
-anyone is producing a guest segment.
+**Zaal holds the MC mic** (his ruling, 2026-09-26: "im going to mc today"). A
+v1 script exists for every changeover and the welcome/close, unreviewed by
+Zaal - `~/zao-vault/projects/zaostock-mc-script-2026-10-03.md`. The MC column
+below is that script, condensed to what each cue needs.
+
+Still UNSET, and each one changes a cue below: the camera count, the sound
+operator's name, the partner list on the desk, and whether anyone is
+producing a guest segment.
 
 ## What the viewer is told, settled 15 September
 
@@ -89,7 +94,7 @@ first bar and out after 20 seconds, and comes back on at the last song.
 | 08:15 | Desk main outs into the interface or USB, level check against the PA line checks | Rig lead with the sound operator | OPEN X brings and runs the PA all day |
 | 10:30 | Rig check: camera framed, overlays render, destinations armed but not live, recording path has space | Rig lead | About 16 GB for six hours at 6 Mbps |
 | 10:30 | Show side check: the run order card matches this sheet, partner list on the desk | Online side, IMan and Rev | |
-| 11:00 | MC mic check on stage, and the stream hears it | Rig lead, MC | MC name UNSET |
+| 11:00 | MC mic check on stage, and the stream hears it | Rig lead, MC | MC is Zaal (ruled 2026-09-26) |
 | 11:50 | Go live on PRE-SHOW, ten minutes early so a noon click lands on a picture | Rig lead | |
 | 11:50 | Post the live link: zaostock.com/live, everywhere at once. The link, never a platform | Online side | |
 | 11:55 | Local recording ON, and check the file is growing | Rig lead | A dropout must not lose the day |
@@ -100,26 +105,26 @@ Eight acts, five- to seven-minute changeovers, music 12:05 to 17:40, street
 clears at 18:00. Two changeovers carry the MC and a partner spot; the rest are
 a swap behind a HOLD card.
 
-| Time | What | Scene | Cue | Notes |
-|------|------|-------|-----|-------|
-| 12:00 | Welcome on the mic, 5 min | PRE-SHOW to MC | Cut at the first word | Who speaks and what is said: UNSET |
-| 12:05 | 1. THE CROWN VICS, 33 | STAGE WIDE, lower-third at first bar | Cut on the downbeat | Opens the day |
-| 12:38 | Changeover 7: the MC, the six o'clock move, Art of Ellsworth, a partner spot | MC, then PARTNER, then HOLD "Next: OPEN X" | HOLD for the last two minutes | |
-| 12:45 | 2. OPEN X, 40 | STAGE WIDE | Cut on the downbeat | They also run the PA all day |
-| 13:25 | Changeover 5: swap only | HOLD "Next: Grass Rug" | HOLD the whole 5 | |
-| 13:30 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | |
-| 14:03 | Changeover 7: swap only | HOLD "Next: Acadia Rising" | HOLD the whole 7 | |
-| 14:10 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | Routed through Sen |
-| 14:43 | Changeover 7: the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | |
-| 14:50 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | Solo piano, brings his own keyboard |
-| 15:23 | Changeover 7: the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | |
-| 15:30 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | He is also the music and AV lead, so AV cover during his own set is an open role |
-| 16:10 | Changeover 5: swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | |
-| 16:15 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | Filming consent still outstanding: settle it before the first bar |
-| 16:55 | Changeover 5: swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | |
-| 17:00 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | |
-| 17:40 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | |
-| 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | |
+| Time | What | Scene | Cue | MC (script v1) | Notes |
+|------|------|-------|-----|-----------------|-------|
+| 12:00 | Welcome on the mic, 5 min | PRE-SHOW to MC | Cut at the first word | Zaal: who he is, what ZAOstock is, the shape of the day, three housekeeping lines, thanks City of Ellsworth/Black Moon/Heart of Ellsworth, intros The Crown Vics | |
+| 12:05 | 1. THE CROWN VICS, 33 | STAGE WIDE, lower-third at first bar | Cut on the downbeat | | Opens the day |
+| 12:38 | Changeover 1 (7 min): the MC, the six o'clock move, Art of Ellsworth, a partner spot | MC, then PARTNER, then HOLD "Next: OPEN X" | HOLD for the last two minutes | Zaal thanks Star 97.7 and Wallace Events, then intros OPEN X | |
+| 12:45 | 2. OPEN X, 40 | STAGE WIDE | Cut on the downbeat | | They also run the PA all day |
+| 13:25 | Changeover 2 (5 min): swap only | HOLD "Next: Grass Rug" | HOLD the whole 5 | Zaal credits WE THE MEDIA (filming) and Bomb Squad (merch/crew), then intros Grass Rug | |
+| 13:30 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | | |
+| 14:03 | Changeover 3 (7 min): swap only | HOLD "Next: Acadia Rising" | HOLD the whole 7 | Zaal thanks COC Concertz/Thy Revolution and Artizen, then intros Acadia Rising | |
+| 14:10 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | | Routed through Sen |
+| 14:43 | Changeover 4 (7 min): the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | Zaal on WaveWarZ and the supporter page, then intros Michael Anderson | |
+| 14:50 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | | Solo piano, brings his own keyboard |
+| 15:23 | Changeover 5 (7 min): the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | THE ROLL CALL - Zaal thanks all ten partners by name, then intros DCoop | |
+| 15:30 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | | He is also the music and AV lead, so AV cover during his own set is an open role |
+| 16:10 | Changeover 6 (5 min): swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | Zaal flags the eating window (Black Moon, next door), then intros LyonsDen Rez Muzik himself | Supersedes the earlier DCoop-gives-the-intro plan; Zaal is sole MC all day |
+| 16:15 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | | Filming consent still outstanding: settle it before the first bar |
+| 16:55 | Changeover 7 (5 min): swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | Zaal thanks the crew (names UNSET, from crew roster), then intros Tom Fellenz, closing the outdoor stage | |
+| 17:00 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | | |
+| 17:40 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | Zaal: eight-act roll call, thanks partners and crew, points to Black Moon/North Creek, closes with thezao.com | |
+| 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | | | |
 
 **Overrun rule (Zaal, 27 Aug):** an act that runs over loses the time from its
 own changeover and the next act still starts on the grid. The stream follows
@@ -146,7 +151,6 @@ changed.
 ## What this sheet cannot fill
 
 - The camera count, and therefore whether STAGE CLOSE exists at all.
-- Who holds the MC mic, and the words of the noon welcome.
 - The partner list on the desk, and whether spots are read live or played.
 - The sound operator's name, and AV cover during DCoop's own set.
 - Whether anyone is producing a guest segment for the online side.
