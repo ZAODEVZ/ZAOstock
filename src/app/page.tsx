@@ -95,6 +95,9 @@ export default function HomePage() {
             <a href={FESTIVAL.rsvpUrl} target="_blank" rel="noopener noreferrer" className={s.btn}>
               RSVP free
             </a>
+            <Link href="/program" className={s.programCta}>
+              See the running order
+            </Link>
           </div>
           <Countdown onDark className={s.count} />
         </HomeHero>

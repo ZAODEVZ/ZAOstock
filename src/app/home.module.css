@@ -84,7 +84,15 @@
 .big em { font-style: normal; color: #dfa23c; text-shadow: 3px 0 0 #c1662c; }
 .details { margin-top: 14px; color: #f3e9d4; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
 .details b { color: #fff; font-weight: 800; }
-.cta { margin-top: 20px; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 20px; }
+.programCta {
+  min-height: 48px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--ink); border-radius: 999px; padding: 14px 24px;
+  background: var(--cream); color: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+.programCta:hover { background: var(--frame); }
+.programCta:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
 .count { margin-top: 12px; font-family: var(--font-mono), ui-monospace, monospace; font-size: 13px; font-weight: 700; color: #f3e9d4; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
 .runway {
   position: absolute; z-index: 2; left: 0; right: 0; bottom: 4px; height: 54px;
