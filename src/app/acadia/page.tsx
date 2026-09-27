@@ -141,7 +141,10 @@ export default function AcadiaPage() {
             {FESTIVAL.dateLabel}. {FESTIVAL.venue}, {FESTIVAL.city}. {FESTIVAL.admission}, music from noon.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Button href={FESTIVAL.rsvpUrl} external>
+            {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the
+                homepage hero and Header.tsx: a straight Luma link skips
+                the Pro Ticket funnel. Poidhz, 2026-09-27, measured live. */}
+            <Button href="/tickets">
               RSVP free
             </Button>
             <Button href="/program" variant="secondary">
