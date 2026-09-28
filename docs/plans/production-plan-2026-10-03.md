@@ -302,7 +302,7 @@ Finance, not here.
 | Tom Fellenz | 1 | Public billing on program.ts: "Solo instrumental acoustic guitar" |
 | DCoop | 1 | No band mentioned anywhere on record; treated as solo pending his own confirmation - not the same certainty as Michael Anderson or Fellenz |
 | LyonsDen | 1 | Bio describes a solo, self-produced independent artist; no bandmates named |
-| Acadia Rising | 1 | Zaal, 2026-09-28 afternoon: "its just sen performing". Sen Wilde plays solo; Women in Rhythm are not on stage |
+| Acadia Rising | 1 | Zaal, 2026-09-28 afternoon: "its just sen performing" (zao-vault decisions/grill-2026-09-28-zaostock-afternoon.md, item 0). Sen Wilde plays solo; Women in Rhythm are not on stage |
 | Aziz, Ohnahji, Motomoto (virtual crew) | **Excluded** | Zaal, card #264: not on site |
 
 **18 performers, no act UNSET** (filled 2026-09-28 when Zaal confirmed
