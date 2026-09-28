@@ -20,26 +20,36 @@ import { getPublicLineup } from '@/lib/lineup';
 // "we could not find out" are different claims, and conflating them is how a
 // broken surface reads as a working one.
 //
-// The same rule has a second edge, on the LIVE path rather than the failure
-// path: an empty list that Supabase really did return is a true answer, but it
-// must not be CACHED like a settled one. See EMPTY_LIVE_CACHE below.
-
-/**
- * Supabase answered AND there is a roster: cache at the edge, so the cache can
- * carry us through a later outage. s-maxage is 60, not 300, so a day-of lineup
- * correction reaches /live and embeds within about a minute (Zaal, 2026-09-27).
- */
-const LIVE_CACHE = 'public, s-maxage=60, stale-while-revalidate=86400';
-
-/**
- * Supabase answered and the roster is EMPTY. Still 200 and still
- * `source: 'live'`, but the most perishable answer this route can give - see
- * git history on this file for the 2026-09-01 incident this guards against.
- */
-const EMPTY_LIVE_CACHE = 'public, s-maxage=30';
-
-/** Serving the committed fallback: cache briefly, so we retry Supabase often. */
-const FALLBACK_CACHE = 'public, s-maxage=60';
+// NO EDGE CACHING. There used to be one (s-maxage=60/30, stale-while-revalidate
+// for the fallback path) - removed 2026-09-28.
+//
+// THE EDGE CACHE WAS WORKING, AND THAT WAS THE PROBLEM, NOT THE FIX FOR IT. An
+// earlier version of this comment said the opposite - that x-vercel-cache
+// stayed MISS on every request, so the cache was never actually caching. That
+// reading was taken once, right after a deploy, which resets the edge entry -
+// every request in that window is a legitimate MISS, and it does not
+// generalise. Measured properly the same day (Vault lane, cross-checked
+// independently right after): a plain request came back `x-vercel-cache: HIT`
+// with `age` climbing request over request (14, then later 55, 56, 57 -
+// seconds since the entry was written), and one sample caught `age: 338` -
+// Vercel's edge was holding a copy nearly six minutes old and serving it. A
+// day-of artist-record fix failing to reach a plain request while a
+// cache-busted one saw it immediately (the original incident this fix answers)
+// is exactly what that HIT/age evidence explains: Vercel's edge, not browser
+// heuristic caching, was the layer serving stale.
+//
+// What both readings agree on, and what is still true: the Cache-Control that
+// actually reaches the wire is a bare `public`, with every s-maxage/
+// stale-while-revalidate directive from the code stripped off it before it
+// gets there. So the number in the code was never the number being served -
+// there was no reliable way to tune it from here, only to remove it.
+//
+// Nobody calls this route in volume. Zaal's own ruling: "it should be right or
+// removed." Against a cache that turned out to be working fine and holding a
+// stale artist roster for minutes at a time, `no-store` is the fix - not
+// because nothing was cacheable, but because what was being served could not
+// be trusted to match what the code asked for.
+const NO_CACHE = 'no-store';
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -60,7 +70,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   if (result.source === 'fallback') {
     return NextResponse.json(
       { artists: result.artists, source: 'fallback' as const, as_of: result.as_of, degraded: true },
-      { headers: { 'Cache-Control': FALLBACK_CACHE } },
+      { headers: { 'Cache-Control': NO_CACHE } },
     );
   }
 
@@ -73,12 +83,12 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         withheld: result.withheld,
         pending: result.pending,
       },
-      { headers: { 'Cache-Control': EMPTY_LIVE_CACHE } },
+      { headers: { 'Cache-Control': NO_CACHE } },
     );
   }
 
   return NextResponse.json(
     { artists: result.artists, source: 'live' as const, published: true, pending: result.pending },
-    { headers: { 'Cache-Control': LIVE_CACHE } },
+    { headers: { 'Cache-Control': NO_CACHE } },
   );
 }
