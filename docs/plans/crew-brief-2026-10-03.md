@@ -111,6 +111,37 @@ day for one set.
 - **Iman uploads phone shots.**
 - **Same day** - nothing sits on a device overnight.
 
+## Rain plan (card 9991)
+
+**The plan: tent by default, Black Moon if it is severe.** Zaal's ruling,
+2026-09-24 morning (`decisions/grill-2026-09-24-seat-morning.md`, item 6,
+recorded as: tent by default, Black Moon if it is severe). Ordinary rain
+stays under the tent; the move indoors is for weather that forces it - not
+a threshold written down anywhere yet, just a call Zaal and Steve make
+together.
+
+- **Who calls it, by when:** Zaal and Steve, made Friday 2 October (setup
+  and decorating day, see above) with an 08:00 Saturday re-look. Ordinary
+  rain does not trigger this - the festival is rain or shine, the parklet is
+  open to the sky. This is for weather that forces it.
+- **Still open, from the same ruling:** Black Moon has not agreed in writing
+  to take the DAY part, only the evening after-party - the 2026-09-24 ruling
+  itself named this as one of two things it did not yet have (the other is
+  the published-threshold gap noted above). Whoever is talking to Black Moon
+  needs this in writing before the plan can be called settled, let alone
+  published.
+- **What moves:** UNSET. Whether it's all eight acts in the outdoor running
+  order, a shortened set, or something else has not been decided by anyone -
+  Black Moon's own capacity for a full changeover cycle is unmeasured.
+  Crew: do not announce or plan an indoor show's shape until this is
+  answered.
+- **The stream moves with it.** Black Moon's own wifi is untested for a
+  live feed - flag this before the day, not during it, to whoever is
+  running the stream (see card 9632, the one stream test: Mon 28 Sep 9:30
+  at the parklet, cellular first, plus Fri 2 Oct).
+- Katina and Steve need a line about this from Zaal - drafted in clip
+  zaostock-rain-plan-katina-steve-draft (inbox/clips), his own send.
+
 ## What this brief cannot fill
 
 - Crew names, contacts and roles for load-in, event-run and load-out (card 9992).
