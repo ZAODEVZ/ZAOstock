@@ -229,7 +229,6 @@ export function BioEditor({ memberName, initialBio, initialLinks, initialPhotoUr
           {showPhoto && (
             <Image
               src={photoUrl}
-              
               alt="Preview"
               width={80}
               height={80}
