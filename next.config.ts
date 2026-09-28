@@ -8,6 +8,12 @@ const config: NextConfig = {
       { protocol: 'https', hostname: 'imgur.com' },
       { protocol: 'https', hostname: 'i.postimg.cc' },
       { protocol: 'https', hostname: 'postimg.cc' },
+      // Every current artist photo_url that isn't already a relative path is
+      // an absolute https://zaostock.com/... URL (self-hosted .webp files) -
+      // needed for the artist photo's next/image swap (Polish item 13, doc
+      // 2507). next/image validates every absolute src against this list
+      // regardless of whether it happens to match the deploying domain.
+      { protocol: 'https', hostname: 'zaostock.com' },
     ],
   },
   async headers() {

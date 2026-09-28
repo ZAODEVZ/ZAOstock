@@ -5,6 +5,8 @@ import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
 import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
+import { displayName } from '@/content/site';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -55,27 +57,58 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
   const canEdit = token ? Boolean(await verifyClaimToken(slug, token)) : false;
   // Cheap: getRosterArtists() is react-cache()'d, so this reuses the same
   // fetch getArtistBySlug already made this request rather than re-querying.
-  const total = (await getRosterArtists()).length;
+  const roster = await getRosterArtists();
+  const total = roster.length;
 
   return (
     <SiteShell>
       <Section first className="pt-10 sm:pt-14">
-        <div className="max-w-[760px] space-y-6">
-          <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} total={total} />
-          <Card>
-            <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
-            <p className="text-sm text-ink-secondary m-0">
-              {artist.name} is on the ZAOstock roster for {FESTIVAL.dateLabel} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <Button href="/" size="sm">
-                Festival info
-              </Button>
-              <Button href="/program" variant="secondary" size="sm">
-                Program
-              </Button>
-            </div>
-          </Card>
+        <div className="lg:flex lg:items-start lg:gap-8">
+          <div className="max-w-[760px] space-y-6">
+            <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} total={total} />
+            <Card>
+              <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
+              <p className="text-sm text-ink-secondary m-0">
+                {artist.name} is on the ZAOstock roster for {FESTIVAL.dateLabel} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Button href="/" size="sm">
+                  Festival info
+                </Button>
+                <Button href="/program" variant="secondary" size="sm">
+                  Program
+                </Button>
+              </div>
+            </Card>
+          </div>
+          {/* Desktop only (Polish item 14, doc 2507): at 1440px the card is
+              capped at max-w-[760px], leaving roughly half the screen flat.
+              Purely additive - hidden entirely below lg, so mobile is
+              unchanged. Not sticky: this page has no long scroll of its own
+              content for a sticky rail to track against. */}
+          <aside className="hidden lg:block w-64 flex-shrink-0 mt-0">
+            <Card>
+              <Eyebrow className="mb-3">Act order</Eyebrow>
+              <ol className="space-y-2 text-sm">
+                {roster.map((a) => (
+                  <li key={a.slug}>
+                    {a.slug === slug ? (
+                      <span className="font-bold text-ink-950">
+                        {a.setOrder}. {displayName(a.name)}
+                      </span>
+                    ) : (
+                      <Link
+                        href={`/artist/${a.slug}`}
+                        className="text-ink-secondary hover:text-ink-950 hover:underline"
+                      >
+                        {a.setOrder}. {displayName(a.name)}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </Card>
+          </aside>
         </div>
       </Section>
     </SiteShell>
