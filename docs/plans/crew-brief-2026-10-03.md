@@ -57,23 +57,23 @@ below without updating the source.
 | 11:30 | Stage manager's walk: every act on site; the overrun rule said out loud |
 | 12:00 | Doors. Music starts at noon. |
 | 12:05 | 1. The Crown Vics (33) |
-| 12:38 | Changeover (7) |
-| 12:45 | 2. OPEN X (40) |
-| 13:25 | Changeover (5) |
-| 13:30 | 3. Grass Rug (33) |
-| 14:03 | Changeover (7) |
-| 14:10 | 4. Acadia Rising (33) |
-| 14:43 | Changeover (7) |
-| 14:50 | 5. Michael Anderson (33) |
-| 15:23 | Changeover (7) |
-| 15:30 | 6. DCoop (40) |
-| 16:10 | Changeover (5) |
-| 16:15 | 7. LyonsDen (40) |
-| 16:55 | Changeover (5) |
-| 17:00 | 8. Tom Fellenz (40), closes the outdoor block |
-| 17:40 | Music ends. The street clears at six |
+| 12:38 | Changeover (12) |
+| 12:50 | 2. OPEN X (33) |
+| 13:23 | Changeover (12) |
+| 13:35 | 3. Grass Rug (33) |
+| 14:08 | Changeover (12) |
+| 14:20 | 4. Acadia Rising (33) |
+| 14:53 | Changeover (7) |
+| 15:00 | 5. Michael Anderson (33) |
+| 15:33 | Changeover (7) |
+| 15:40 | 6. DCoop (40) |
+| 16:20 | Changeover (5) |
+| 16:25 | 7. LyonsDen (40) |
+| 17:05 | Changeover (5) |
+| 17:10 | 8. Tom Fellenz (40), closes the outdoor block |
+| 17:50 | Music ends. Closing remarks (Zaal), the last ten minutes before the street clears at six |
 | 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
-| 21:00 | Close, approximate. Black Moon keeps its own hours |
+| 22:00 | Close, approximate. Black Moon keeps its own hours |
 
 **Overrun rule:** an act that runs over loses the time from its own
 changeover, and the next act still starts on the grid. Nobody holds the whole
