@@ -462,7 +462,7 @@ describe('missingItems - the backstage native asks (redesigned 2026-09-16)', () 
 // that check: the music-end row in ARTIST_DATES must match the last entry in
 // program.ts, whatever either of them says next.
 describe('the music-end time agrees with the programme', () => {
-  // NOT "the last time in BLOCKS" - that is 21:00, the Black Moon evening.
+  // NOT "the last time in BLOCKS" - that is 22:00, the Black Moon evening.
   // Match the row that SAYS music ends, so the two files are compared on the
   // same fact rather than on position. (Both errors were made writing this
   // test: the walk first read a key that does not exist and the blind-walk
