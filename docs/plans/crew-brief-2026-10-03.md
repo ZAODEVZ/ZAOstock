@@ -73,7 +73,7 @@ below without updating the source.
 | 17:10 | 8. Tom Fellenz (40), closes the outdoor block |
 | 17:50 | Music ends. The street clears at six |
 | 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
-| 21:00 | Close, approximate. Black Moon keeps its own hours |
+| 22:00 | Close, approximate. Black Moon keeps its own hours |
 
 **Overrun rule:** an act that runs over loses the time from its own
 changeover, and the next act still starts on the grid. Nobody holds the whole

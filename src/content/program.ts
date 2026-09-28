@@ -105,12 +105,15 @@ export const BLOCKS: Block[] = [
     // Invoices") names the act: "underwrite 'North Creek' for the after party" -
     // he underwrites it, he does not perform it, and every surface that said
     // "a DJ, run by Steve" was wrong on that point. The poster's own "DJ" line
-    // is North Creek, the same act (Zaal, 2026-09-27: "Dj is same as act").
+    // is North Creek, the same act - RELAYED, not witnessed directly by this
+    // lane (Zaal, 2026-09-27, via the grill lane's cross-session message:
+    // "Dj is same as act").
     //
     // Close was 21:00, contradicting this block's own "poster: 6 to 10 PM"
     // four lines away - caught 2026-09-27 and routed to Zaal via Vault
-    // (commit ea47f007). His ruling: "6-10pm is right", so Close moves to
-    // 22:00 and this block's `end` with it.
+    // (commit ea47f007). DIRECT CONFIRMATION (Zaal, 2026-09-27, Dotfiles'
+    // own seat, by picker in Dotfiles' pane): "Yes, 10 PM is right." Close
+    // moves to 22:00 and this block's `end` with it.
     //
     // NOTE THE SCOPE LINE: our insurance covers the 12-6pm OUTDOOR event only
     // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
