@@ -6,6 +6,7 @@ import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
 import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
 import { displayName } from '@/content/site';
+import { zaoMediaFor } from '@/content/zao-media';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
@@ -59,6 +60,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
   // fetch getArtistBySlug already made this request rather than re-querying.
   const roster = await getRosterArtists();
   const total = roster.length;
+  const media = zaoMediaFor(artist.name);
 
   return (
     <SiteShell>
@@ -73,6 +75,28 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
               text wrap instead of forcing the row wider than the viewport. */}
           <div className="flex-1 min-w-0 max-w-[760px] space-y-6">
             <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} total={total} />
+            {media.length > 0 && (
+              <Card>
+                <Eyebrow className="mb-2">ZAO media</Eyebrow>
+                <p className="text-sm text-ink-secondary m-0 mb-3">
+                  The ZAO&apos;s own coverage of {displayName(artist.name)}, from the daily newsletter.
+                </p>
+                <ul className="space-y-2 text-sm m-0 p-0 list-none">
+                  {media.map((item) => (
+                    <li key={item.url}>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-ink-950 underline hover:no-underline"
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            )}
             <Card>
               <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
