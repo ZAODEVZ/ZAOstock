@@ -60,6 +60,11 @@ export const BLOCKS: Block[] = [
       // Anderson), three 40-minute acts (DCoop, LyonsDen, Tom Fellenz).
       // Music 12:05 to 17:50, street clears at 18:00: ten minutes of margin.
       //
+      // CLOSING REMARKS ADDED 2026-09-27: Tom Fellenz, by text - "should for
+      // sure be in your run of show" - Zaal: "Good point thx", then "add your
+      // closing remarks at 5:50pm". No new time: it lands in Fellenz's own
+      // closing slot, which already existed.
+      //
       // THIS GRID IS THE ONE PUBLIC SOURCE OF SET TIMES (Zaal, 2026-09-10:
       // public everywhere at once, /program canonical, the artist form points
       // here rather than repeating them). OPS_ACTS and the ops room are held to
@@ -85,7 +90,7 @@ export const BLOCKS: Block[] = [
       { time: '16:25', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
       { time: '17:05', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '17:10', label: 'Tom Fellenz', detail: 'Solo Instrumental Acoustic Guitar. Closes out the Outdoor Festival!', tone: 'set' },
-      { time: '17:50', label: 'Music ends. The street clears at six.', detail: 'Black Moon next door hosts their own evening from six.', tone: 'gap' },
+      { time: '17:50', label: 'Music ends. Closing remarks, then the street clears at six.', detail: 'Zaal thanks everyone and sends them to Black Moon next door, hosting their own evening from six.', tone: 'gap' },
     ],
   },
   {
