@@ -207,7 +207,12 @@ describe('GET /api/events/[slug]/lineup', () => {
     expect(body.reason).toBe('upstream-unavailable');
   });
 
-  it('lets a live lineup WITH A ROSTER be edge-cached, so the cache can cover a later outage', async () => {
+  // No edge caching as of 2026-09-28 (see the NO_CACHE comment in route.ts) -
+  // production was serving `cache-control: public` with every s-maxage/
+  // stale-while-revalidate directive already stripped off the wire, so the
+  // cache this used to assert was never actually caching anything, just
+  // inviting stale browser reads. Every branch now answers no-store.
+  it('never caches a live lineup WITH A ROSTER, at the edge or the browser', async () => {
     getSupabaseAdmin.mockReturnValue(
       supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1, ...COMPLETE }] }),
     );
@@ -215,22 +220,10 @@ describe('GET /api/events/[slug]/lineup', () => {
     const res = await GET(req, { params });
 
     expect(res.status).toBe(200);
-    expect(res.headers.get('Cache-Control')).toContain('stale-while-revalidate');
-    // a day-of correction must reach /live within about a minute
-    expect(res.headers.get('Cache-Control')).toContain('s-maxage=60,');
+    expect(res.headers.get('Cache-Control')).toBe('no-store');
   });
 
-  // THIS TEST USED TO ASSERT THE BUG.
-  //
-  // It was the test above, stubbed with `artists: []`, and it passed - so the
-  // suite was pinning a 24-hour stale window onto an EMPTY roster and calling
-  // that the desired behaviour. Production returns {"artists":[],"source":"live"}
-  // today and the edge already answers it X-Vercel-Cache: HIT, so the thing
-  // being pinned was the 7 September reveal failing to reach the mobile app for
-  // up to a day, quietly. Rewritten 2026-09-01.
-  //
-  // An empty live answer is still true and still 200. It just must not be held.
-  it('does not hold an EMPTY live roster in a long stale window', async () => {
+  it('never caches an EMPTY live roster either', async () => {
     getSupabaseAdmin.mockReturnValue(supabaseStub({ artists: [] }));
 
     const res = await GET(req, { params });
@@ -239,7 +232,7 @@ describe('GET /api/events/[slug]/lineup', () => {
     expect(res.status).toBe(200);
     expect(body.source).toBe('live');
     expect(body.artists).toEqual([]);
-    expect(res.headers.get('Cache-Control')).not.toContain('stale-while-revalidate');
+    expect(res.headers.get('Cache-Control')).toBe('no-store');
   });
 });
 
@@ -367,9 +360,9 @@ describe('the per-artist gate: confirmed, with a bio and a photo', () => {
       expect(incomplete.withheld).toBe('awaiting-bio-or-photo');
     });
 
-    it('still refuses to cache the empty answer for long', async () => {
+    it('never caches the empty answer at all', async () => {
       const res = await GET(req, { params });
-      expect(res.headers.get('Cache-Control')).toContain('s-maxage=30');
+      expect(res.headers.get('Cache-Control')).toBe('no-store');
     });
   });
 });

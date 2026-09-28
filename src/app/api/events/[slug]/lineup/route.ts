@@ -20,26 +20,21 @@ import { getPublicLineup } from '@/lib/lineup';
 // "we could not find out" are different claims, and conflating them is how a
 // broken surface reads as a working one.
 //
-// The same rule has a second edge, on the LIVE path rather than the failure
-// path: an empty list that Supabase really did return is a true answer, but it
-// must not be CACHED like a settled one. See EMPTY_LIVE_CACHE below.
-
-/**
- * Supabase answered AND there is a roster: cache at the edge, so the cache can
- * carry us through a later outage. s-maxage is 60, not 300, so a day-of lineup
- * correction reaches /live and embeds within about a minute (Zaal, 2026-09-27).
- */
-const LIVE_CACHE = 'public, s-maxage=60, stale-while-revalidate=86400';
-
-/**
- * Supabase answered and the roster is EMPTY. Still 200 and still
- * `source: 'live'`, but the most perishable answer this route can give - see
- * git history on this file for the 2026-09-01 incident this guards against.
- */
-const EMPTY_LIVE_CACHE = 'public, s-maxage=30';
-
-/** Serving the committed fallback: cache briefly, so we retry Supabase often. */
-const FALLBACK_CACHE = 'public, s-maxage=60';
+// NO EDGE CACHING. There used to be one (s-maxage=60/30, stale-while-revalidate
+// for the fallback path) - removed 2026-09-28. Measured directly against
+// production that day: `curl -D- https://zaostock.com/api/events/zaostock/lineup`
+// returned `cache-control: public` with every s-maxage/stale-while-revalidate
+// directive stripped off the wire, and `x-vercel-cache: MISS` with `age: 0` on
+// every single request, including back to back ones. So the edge cache was
+// never actually caching anything - the only live effect of the header was a
+// bare `public` reaching browsers with no max-age, which is exactly the shape
+// that invites heuristic client-side caching (RFC 7234 4.2.2) and is the
+// mechanism a day-of artist-record fix failed to reach a plain request while a
+// cache-busted one saw it immediately (Vault lane, 2026-09-28). Nobody calls
+// this route in volume - Zaal's own ruling that day: "it should be right or
+// removed." A cache that was never caching, promising freshness it did not
+// keep, was neither - `no-store` is what was actually true the whole time.
+const NO_CACHE = 'no-store';
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -60,7 +55,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   if (result.source === 'fallback') {
     return NextResponse.json(
       { artists: result.artists, source: 'fallback' as const, as_of: result.as_of, degraded: true },
-      { headers: { 'Cache-Control': FALLBACK_CACHE } },
+      { headers: { 'Cache-Control': NO_CACHE } },
     );
   }
 
@@ -73,12 +68,12 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         withheld: result.withheld,
         pending: result.pending,
       },
-      { headers: { 'Cache-Control': EMPTY_LIVE_CACHE } },
+      { headers: { 'Cache-Control': NO_CACHE } },
     );
   }
 
   return NextResponse.json(
     { artists: result.artists, source: 'live' as const, published: true, pending: result.pending },
-    { headers: { 'Cache-Control': LIVE_CACHE } },
+    { headers: { 'Cache-Control': NO_CACHE } },
   );
 }
