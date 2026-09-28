@@ -62,8 +62,8 @@ export const BLOCKS: Block[] = [
       //
       // CLOSING REMARKS ADDED 2026-09-27: Tom Fellenz, by text - "should for
       // sure be in your run of show" - Zaal: "Good point thx", then "add your
-      // closing remarks at 5:50pm". No new time: it lands in Fellenz's own
-      // closing slot, which already existed.
+      // closing remarks at 5:50pm", then "Let's add it as last 10 mins" - the
+      // existing 17:50-18:00 margin before the street clears, not a new slot.
       //
       // THIS GRID IS THE ONE PUBLIC SOURCE OF SET TIMES (Zaal, 2026-09-10:
       // public everywhere at once, /program canonical, the artist form points
@@ -90,7 +90,7 @@ export const BLOCKS: Block[] = [
       { time: '16:25', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
       { time: '17:05', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '17:10', label: 'Tom Fellenz', detail: 'Solo Instrumental Acoustic Guitar. Closes out the Outdoor Festival!', tone: 'set' },
-      { time: '17:50', label: 'Music ends. Closing remarks, then the street clears at six.', detail: 'Zaal thanks everyone and sends them to Black Moon next door, hosting their own evening from six.', tone: 'gap' },
+      { time: '17:50', label: 'Music ends. Closing remarks, the last ten minutes before the street clears at six.', detail: 'Zaal thanks everyone and sends them to Black Moon next door, hosting their own evening from six.', tone: 'gap' },
     ],
   },
   {
