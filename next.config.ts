@@ -1,20 +1,11 @@
 import type { NextConfig } from 'next';
+import { OPTIMIZABLE_IMAGE_HOSTS } from './src/lib/optimizable-image-hosts';
 
 const config: NextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'pbs.twimg.com' },
-      { protocol: 'https', hostname: 'i.imgur.com' },
-      { protocol: 'https', hostname: 'imgur.com' },
-      { protocol: 'https', hostname: 'i.postimg.cc' },
-      { protocol: 'https', hostname: 'postimg.cc' },
-      // Every current artist photo_url that isn't already a relative path is
-      // an absolute https://zaostock.com/... URL (self-hosted .webp files) -
-      // needed for the artist photo's next/image swap (Polish item 13, doc
-      // 2507). next/image validates every absolute src against this list
-      // regardless of whether it happens to match the deploying domain.
-      { protocol: 'https', hostname: 'zaostock.com' },
-    ],
+    // One shared list with ArtistProfileView.tsx's canOptimize() - see
+    // src/lib/optimizable-image-hosts.ts for why this used to be two lists.
+    remotePatterns: OPTIMIZABLE_IMAGE_HOSTS.map((hostname) => ({ protocol: 'https' as const, hostname })),
   },
   async headers() {
     return [

@@ -6,6 +6,7 @@ import type { PublicArtist } from '@/lib/artists';
 import { parseSocials } from '@/lib/socials';
 import { FESTIVAL } from '@/content/festival';
 import { displayName } from '@/content/site';
+import { OPTIMIZABLE_IMAGE_HOSTS } from '@/lib/optimizable-image-hosts';
 
 // This field is artist-editable (the "Photo URL" input below, placeholder
 // "your X / Farcaster pfp") - an artist can paste ANY host at any time.
@@ -14,21 +15,23 @@ import { displayName } from '@/content/site';
 // 2026-09-27 (ZAOstock #236, team photos): it broke the page before
 // onError could ever fire, which is a much worse failure than the plain
 // <img> it replaced. So next/image is only used for a src on this known-
-// safe list (kept in sync with next.config.ts); anything else - including
-// every future artist-pasted pfp - stays a plain <img> with the existing
-// onError fallback, which degrades gracefully for any host.
-const OPTIMIZABLE_HOSTS = new Set([
-  'zaostock.com',
-  'pbs.twimg.com',
-  'i.imgur.com',
-  'imgur.com',
-  'i.postimg.cc',
-  'postimg.cc',
-]);
+// safe list (imported from the same array next.config.ts builds its
+// remotePatterns from - see src/lib/optimizable-image-hosts.ts); anything
+// else - including every future artist-pasted pfp - stays a plain <img>
+// with the existing onError fallback, which degrades gracefully for any
+// host.
+const OPTIMIZABLE_HOSTS = new Set<string>(OPTIMIZABLE_IMAGE_HOSTS);
 
-function canOptimize(url: string): boolean {
+/** Exported only for canOptimize.test.ts - not part of the component's public API. */
+export function canOptimize(url: string): boolean {
   if (!url) return false;
-  if (url.startsWith('/')) return true; // relative path: always same-origin
+  // A leading "/" alone is not enough: "//evil.example/x" is also a
+  // protocol-relative ABSOLUTE url (scheme inherited from the page), not a
+  // same-origin path - next/image's own get-img-props.js draws this exact
+  // line ("isStaticImport" aside, its local-path check is always
+  // `startsWith('/') && !startsWith('//')`), so this matches Next's own
+  // definition of "local" rather than a looser one.
+  if (url.startsWith('/') && !url.startsWith('//')) return true;
   try {
     const parsed = new URL(url);
     return parsed.protocol === 'https:' && OPTIMIZABLE_HOSTS.has(parsed.hostname);
@@ -154,6 +157,13 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
               alt={artist.name}
               width={96}
               height={96}
+              // It's the first thing in the page's content (right under the
+              // header) and very likely the LCP element - next/image lazy-
+              // loads by default unless told otherwise, which would make
+              // this load LATER than the plain <img> it replaces did.
+              // Review flagged the omission (PR #367); this makes the eager
+              // load explicit rather than accidental.
+              priority
               onError={() => setPhotoBroken(true)}
               className="w-24 h-24 rounded-full object-cover border-2 border-ink-950 flex-shrink-0"
             />

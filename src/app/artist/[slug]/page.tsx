@@ -64,7 +64,14 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
     <SiteShell>
       <Section first className="pt-10 sm:pt-14">
         <div className="lg:flex lg:items-start lg:gap-8">
-          <div className="max-w-[760px] space-y-6">
+          {/* flex-1 min-w-0: without a grow class a flex item shrink-wraps
+              to its content's preferred width (flex-basis defaults to
+              auto/flex-grow to 0) rather than filling up to max-w-[760px] -
+              review flagged this (PR #367) as the reason the two-column
+              split below could land narrower than intended, with unwanted
+              gap between the card and the rail. min-w-0 lets the card's own
+              text wrap instead of forcing the row wider than the viewport. */}
+          <div className="flex-1 min-w-0 max-w-[760px] space-y-6">
             <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} total={total} />
             <Card>
               <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
@@ -86,14 +93,14 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
               Purely additive - hidden entirely below lg, so mobile is
               unchanged. Not sticky: this page has no long scroll of its own
               content for a sticky rail to track against. */}
-          <aside className="hidden lg:block w-64 flex-shrink-0 mt-0">
+          <aside className="hidden lg:block w-64 flex-shrink-0">
             <Card>
               <Eyebrow className="mb-3">Act order</Eyebrow>
               <ol className="space-y-2 text-sm">
                 {roster.map((a) => (
                   <li key={a.slug}>
                     {a.slug === slug ? (
-                      <span className="font-bold text-ink-950">
+                      <span className="font-bold text-ink-950" aria-current="page">
                         {a.setOrder}. {displayName(a.name)}
                       </span>
                     ) : (
