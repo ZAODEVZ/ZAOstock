@@ -113,8 +113,12 @@ day for one set.
 
 ## Rain plan (card 9991)
 
-**The plan: move indoors to Black Moon.** Zaal's ruling, 2026-09-27 evening
-(grill lane relay).
+**The plan: tent by default, Black Moon if it is severe.** Zaal's ruling,
+2026-09-24 morning (`decisions/grill-2026-09-24-seat-morning.md`, item 6,
+his words: "tent by default, Black Moon if it is severe"). Ordinary rain
+stays under the tent; the move indoors is for weather that forces it - not
+a threshold written down anywhere yet, just a call Zaal and Steve make
+together.
 
 - **Who calls it, by when:** Zaal and Steve, made Friday 2 October (setup
   and decorating day, see above) with an 08:00 Saturday re-look. Ordinary

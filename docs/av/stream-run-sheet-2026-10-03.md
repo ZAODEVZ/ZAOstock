@@ -140,8 +140,9 @@ the grid, not the overrun.
 
 ## If the rain call is made (card 9991)
 
-The plan, if weather forces it: move indoors to Black Moon (Zaal's ruling,
-2026-09-27 evening). **The feed moves with the show** - if the show is at
+The plan: tent by default, Black Moon if it is severe (Zaal's ruling,
+2026-09-24 morning, `decisions/grill-2026-09-24-seat-morning.md` item 6).
+**The feed moves with the show** - if the show is at
 Black Moon, the stream is at Black Moon, not the parklet rig sitting idle.
 Black Moon's own wifi is untested for a live feed; the primary stream plan
 (cellular first, per card 9632's test) is built around the parklet, not
