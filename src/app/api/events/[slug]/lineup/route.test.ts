@@ -208,10 +208,12 @@ describe('GET /api/events/[slug]/lineup', () => {
   });
 
   // No edge caching as of 2026-09-28 (see the NO_CACHE comment in route.ts) -
-  // production was serving `cache-control: public` with every s-maxage/
-  // stale-while-revalidate directive already stripped off the wire, so the
-  // cache this used to assert was never actually caching anything, just
-  // inviting stale browser reads. Every branch now answers no-store.
+  // Vercel's edge WAS honoring the old s-maxage and holding a copy for minutes
+  // at a time, which is what let a stale artist record survive a plain
+  // request; the Cache-Control that actually reached the wire was also a bare
+  // `public` with the s-maxage/stale-while-revalidate directives stripped off
+  // it, so there was no way to trust the number even applied. Every branch now
+  // answers no-store.
   it('never caches a live lineup WITH A ROSTER, at the edge or the browser', async () => {
     getSupabaseAdmin.mockReturnValue(
       supabaseStub({ artists: [{ id: 'a1', name: 'Test Act', set_order: 1, ...COMPLETE }] }),

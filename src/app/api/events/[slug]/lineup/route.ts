@@ -21,19 +21,34 @@ import { getPublicLineup } from '@/lib/lineup';
 // broken surface reads as a working one.
 //
 // NO EDGE CACHING. There used to be one (s-maxage=60/30, stale-while-revalidate
-// for the fallback path) - removed 2026-09-28. Measured directly against
-// production that day: `curl -D- https://zaostock.com/api/events/zaostock/lineup`
-// returned `cache-control: public` with every s-maxage/stale-while-revalidate
-// directive stripped off the wire, and `x-vercel-cache: MISS` with `age: 0` on
-// every single request, including back to back ones. So the edge cache was
-// never actually caching anything - the only live effect of the header was a
-// bare `public` reaching browsers with no max-age, which is exactly the shape
-// that invites heuristic client-side caching (RFC 7234 4.2.2) and is the
-// mechanism a day-of artist-record fix failed to reach a plain request while a
-// cache-busted one saw it immediately (Vault lane, 2026-09-28). Nobody calls
-// this route in volume - Zaal's own ruling that day: "it should be right or
-// removed." A cache that was never caching, promising freshness it did not
-// keep, was neither - `no-store` is what was actually true the whole time.
+// for the fallback path) - removed 2026-09-28.
+//
+// THE EDGE CACHE WAS WORKING, AND THAT WAS THE PROBLEM, NOT THE FIX FOR IT. An
+// earlier version of this comment said the opposite - that x-vercel-cache
+// stayed MISS on every request, so the cache was never actually caching. That
+// reading was taken once, right after a deploy, which resets the edge entry -
+// every request in that window is a legitimate MISS, and it does not
+// generalise. Measured properly the same day (Vault lane, cross-checked
+// independently right after): a plain request came back `x-vercel-cache: HIT`
+// with `age` climbing request over request (14, then later 55, 56, 57 -
+// seconds since the entry was written), and one sample caught `age: 338` -
+// Vercel's edge was holding a copy nearly six minutes old and serving it. A
+// day-of artist-record fix failing to reach a plain request while a
+// cache-busted one saw it immediately (the original incident this fix answers)
+// is exactly what that HIT/age evidence explains: Vercel's edge, not browser
+// heuristic caching, was the layer serving stale.
+//
+// What both readings agree on, and what is still true: the Cache-Control that
+// actually reaches the wire is a bare `public`, with every s-maxage/
+// stale-while-revalidate directive from the code stripped off it before it
+// gets there. So the number in the code was never the number being served -
+// there was no reliable way to tune it from here, only to remove it.
+//
+// Nobody calls this route in volume. Zaal's own ruling: "it should be right or
+// removed." Against a cache that turned out to be working fine and holding a
+// stale artist roster for minutes at a time, `no-store` is the fix - not
+// because nothing was cacheable, but because what was being served could not
+// be trusted to match what the code asked for.
 const NO_CACHE = 'no-store';
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
