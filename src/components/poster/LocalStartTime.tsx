@@ -37,5 +37,9 @@ export function LocalStartTime({ className }: { className?: string }) {
   const text = useSyncExternalStore(subscribe, getLocalStartText, getServerSnapshot);
 
   if (!text) return null;
-  return <span className={className}>{text}</span>;
+  return (
+    <p className={['text-sm text-ink-secondary m-0', className].filter(Boolean).join(' ')}>
+      That&apos;s <span className="font-bold text-ink-950">{text}</span> in your time zone.
+    </p>
+  );
 }
