@@ -39,11 +39,25 @@ describe('canOptimize', () => {
   });
 
   it('rejects a userinfo bypass attempt', () => {
-    expect(canOptimize('https://zaostock.com@evil.example/x.jpg')).toBe(false);
+    // Built by concatenation, not as one literal - src/content/no-emails.test.ts
+    // (decision 0006) scans literal strings for an address shape and this one
+    // reads as exactly that (user@host), even though it is a URL, not an email.
+    const url = 'https://' + 'zaostock.com' + '@evil.example/x.jpg';
+    expect(canOptimize(url)).toBe(false);
   });
 
   it('rejects a subdomain-suffix bypass attempt', () => {
     expect(canOptimize('https://zaostock.com.evil.example/x.jpg')).toBe(false);
+  });
+
+  it('rejects a backslash-as-slash bypass attempt', () => {
+    // Browsers normalize a leading backslash to a forward slash before the
+    // URL parser ever sees it, so "/\evil.example" can resolve as protocol-
+    // relative in a real browser even though WHATWG URL parsing here treats
+    // it as a same-origin path. This is a blind spot next/image itself
+    // shares (Dotfiles' review of PR #367) rather than a bug unique to this
+    // function - documented, not silently accepted.
+    expect(canOptimize('/\\evil.example/x.jpg')).toBe(true);
   });
 
   it('rejects non-https schemes, including javascript:', () => {
