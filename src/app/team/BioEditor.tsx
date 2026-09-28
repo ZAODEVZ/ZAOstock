@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { RichBioEditor } from './RichBioEditor';
@@ -167,9 +168,11 @@ export function BioEditor({ memberName, initialBio, initialLinks, initialPhotoUr
       {!editing && hasBio && (
         <div className="flex items-start gap-3">
           {showPhoto && (
-            <img
+            <Image
               src={photoUrl}
               alt={`${memberName} profile`}
+              width={64}
+              height={64}
               onError={() => setPhotoBroken(true)}
               className="w-16 h-16 rounded-full object-cover border border-white/[0.08] flex-shrink-0"
             />
@@ -224,9 +227,11 @@ export function BioEditor({ memberName, initialBio, initialLinks, initialPhotoUr
           </p>
 
           {showPhoto && (
-            <img
+            <Image
               src={photoUrl}
               alt="Preview"
+              width={80}
+              height={80}
               onError={() => setPhotoBroken(true)}
               className="w-20 h-20 rounded-full object-cover border border-[#f5a623]/30"
             />

@@ -85,7 +85,7 @@ export default async function OpengraphImage() {
             justifyContent: 'center',
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element -- satori needs a plain img */}
+          {/* plain img: satori (OG image renderer) has no DOM, next/image cannot run here */}
           <img src={logoSrc} alt="" width={320} height={320} style={{ objectFit: 'contain' }} />
         </div>
       </div>
