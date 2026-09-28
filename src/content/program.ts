@@ -2,12 +2,13 @@
 // and the ops room are held to them by tests, and each act reads its own time
 // on its own backstage page.
 //
-// THEY ARE NOT RENDERED PUBLICLY. Zaal, 2026-09-12: "no set times listed
-// publicly. Not on the site, not in posts, not in the reveal copy. Name the
-// act, not the slot." That reversed his 2026-09-10 call to point artists at
-// /program, so /program now publishes the ORDER and the day's boundaries, and
-// publicSlots() is what the page is allowed to show. Day boundaries survive:
-// noon and six are not a slot for any act, and people have to know when to come.
+// PUBLISHED ON /program ONLY. Zaal, 2026-09-28 (grill terminal, #318):
+// "Publish times on /program". That reverses his 2026-09-12 "no set times
+// listed publicly" for that one page: actTimes() below derives each act's
+// range from these slots, so the page and the run sheet cannot drift. Every
+// other public surface (artist pages, /live, the reveal copy) still names the
+// act, not the slot, and no-public-set-times.test.ts still holds them to it.
+// publicSlots() stays clock-free; the time travels separately.
 //
 // Source: docs/plans/ros-5min-2026-10-03.md (v7) and Zaal's typed verdicts in
 // ~/zao-vault/daily/2026-08-27.md and 2026-08-28.md, retimed 2026-09-10
@@ -16,7 +17,7 @@
 export type Venue = 'OUT' | 'IN';
 
 export interface Slot {
-  /** 24h. Internal: the page never renders it. */
+  /** 24h. /program renders act ranges from it via actTimes(); nothing renders it raw. */
   time: string;
   label: string;
   detail?: string;
@@ -136,4 +137,27 @@ export function publicSlots(block: Block): Array<{ label: string; detail?: strin
   return block.slots
     .filter((s) => !s.crewFacing)
     .map((s) => ({ label: s.label, detail: s.detail, tone: s.tone ?? 'set' }));
+}
+
+/** "17:10" -> "5:10". */
+function clock12(hhmm: string): string {
+  const [h, m] = hhmm.split(':').map(Number);
+  return `${((h + 11) % 12) + 1}:${String(m).padStart(2, '0')}`;
+}
+
+/**
+ * Each act's public time range on /program, keyed by label: start is the set's
+ * own slot, end is the next slot's start (the changeover or the close). Only
+ * the outdoor bill; Black Moon's evening is theirs, not a slot we publish.
+ */
+export function actTimes(block: Block): Record<string, string> {
+  if (block.venue !== 'OUT') return {};
+  const out: Record<string, string> = {};
+  block.slots.forEach((s, i) => {
+    if ((s.tone ?? 'set') !== 'set') return;
+    const end = block.slots[i + 1]?.time ?? block.end;
+    const pm = Number(end.split(':')[0]) >= 12 ? 'PM' : 'AM';
+    out[s.label] = `${clock12(s.time)} to ${clock12(end)} ${pm}`;
+  });
+  return out;
 }

@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'fs';
 import path from 'path';
-import { BLOCKS, publicSlots } from './program';
+import { BLOCKS, actTimes, publicSlots } from './program';
 
+// UPDATED 2026-09-28: Zaal ruled "Publish times on /program" (grill terminal,
+// #318), so /program is the one exception below. Everything else here holds.
+//
 // Zaal, 2026-09-12: "no set times listed publicly. Not on the site, not in
 // posts, not in the reveal copy. Name the act, not the slot." That reversed his
 // 2026-09-10 call, which had made /program the one public place set times live,
@@ -35,12 +38,26 @@ describe('no set times in public', () => {
     expect(outdoor.some((s) => s.label === 'Changeover')).toBe(false);
   });
 
-  it('renders no time on /program, and does not reach for one', () => {
+  // Zaal, 2026-09-28 (grill terminal, #318): "Publish times on /program".
+  // The one page that now shows set times, and only as actTimes() derives
+  // them from BLOCKS - never a clock typed into the page.
+  it('renders act times on /program only through actTimes(), from program.ts', () => {
     const page = read('src/app/program/page.tsx');
+    expect(page).toContain('actTimes(b)');
     expect(page).not.toMatch(/\{s\.time\}|s\.time/);
     const jsxText = page.split('\n').filter((l) => !l.trim().startsWith('//'));
-    // "Noon to six" and "From six" are day boundaries; a digit clock is not.
     expect(jsxText.filter((l) => CLOCK.test(l) && /className|>/.test(l))).toEqual([]);
+  });
+
+  it('gives each of the eight acts its range, start to the next slot', () => {
+    const t = actTimes(BLOCKS[0]);
+    expect(Object.keys(t)).toEqual([
+      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
+      'DCoop', 'LyonsDen', 'Tom Fellenz',
+    ]);
+    expect(t['The Crown Vics']).toBe('12:05 to 12:38 PM');
+    expect(t['Tom Fellenz']).toBe('5:10 to 5:50 PM');
+    expect(actTimes(BLOCKS[1])).toEqual({});
   });
 
   // Zaal, seat grill 2026-09-19 (vault decisions/grill-2026-09-19-seat-

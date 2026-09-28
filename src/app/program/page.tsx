@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
-import { BLOCKS, publicSlots, type Venue } from '@/content/program';
+import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
 import { SOUNDCHECK } from '@/content/artist-ops';
 
 export const metadata: Metadata = {
@@ -36,7 +36,8 @@ export const metadata: Metadata = {
 // Steve's DJ Aquaventus set; the close is Black Moon's licence hour, UNSET.
 //
 // NAMES AND TIMES: the grid below names every act with its set time, and it is
-// the one public place set times live. NONE of them is described as confirmed - not one has
+// the one public place set times live (Zaal, 2026-09-28: "Publish times on
+// /program"; actTimes() in program.ts derives them, never typed here). NONE of them is described as confirmed - not one has
 // countersigned. The battlers are no longer named anywhere, because the block
 // they were named for is off. Steve's own
 // act name is not on disk. There is no fire act (Zaal, 2026-09-11: "Drop the
@@ -116,6 +117,7 @@ export default function ProgramPage() {
 
       {BLOCKS.map((b) => {
         const v = VENUE[b.venue];
+        const times = actTimes(b);
         return (
           <Section key={b.start} id={`b-${b.start.replace(':', '')}`}>
             <TwoUp>
@@ -130,6 +132,7 @@ export default function ProgramPage() {
                     <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
                     <span>
                       <span className={['block text-sm', TONE[s.tone]].join(' ')}>{displayName(s.label)}</span>
+                      {times[s.label] ? <span className="block font-mono text-[13px] font-bold text-ink-secondary tabular mt-0.5">{times[s.label]}</span> : null}
                       {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
                     </span>
                   </li>
