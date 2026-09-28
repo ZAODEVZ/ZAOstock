@@ -168,7 +168,7 @@ export default async function LivePage() {
           <SectionHeader
             eyebrow="Who's on"
             title="Follow along with each act, in order."
-            lede="No set times here - see the program for the shape of the day. This is who's playing, in the order they play."
+            lede="Set times are on the program. This is who's playing, in the order they play."
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
             {acts.map((act, i) => {

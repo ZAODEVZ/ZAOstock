@@ -63,9 +63,9 @@ of The ZAO, an independent music community.
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back.
 - **Eight acts, one stage, noon to six.** Music starts at noon and ends before
-  the street clears at six, with seven-minute changeovers between acts.
-  Set times are not published.
-  <!-- Zaal, 2026-09-12: name the act, not the slot. Internal style note, not press copy. -->
+  the street clears at six, with short changeovers between acts.
+  Set times are on zaostock.com/program.
+  <!-- Zaal, 2026-09-28: "Publish times on /program" (supersedes the 2026-09-12 no-set-times note). Changeovers are 5 to 12 minutes since #365, so no single length is stated. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
   after-party at Black Moon Public House, with North Creek, hosted by Black Moon,
   from six (poster: 6 to 10 PM), **hosted and underwritten by Black Moon on
