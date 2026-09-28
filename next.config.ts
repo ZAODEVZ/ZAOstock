@@ -1,14 +1,11 @@
 import type { NextConfig } from 'next';
+import { OPTIMIZABLE_IMAGE_HOSTS } from './src/lib/optimizable-image-hosts';
 
 const config: NextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'pbs.twimg.com' },
-      { protocol: 'https', hostname: 'i.imgur.com' },
-      { protocol: 'https', hostname: 'imgur.com' },
-      { protocol: 'https', hostname: 'i.postimg.cc' },
-      { protocol: 'https', hostname: 'postimg.cc' },
-    ],
+    // One shared list with ArtistProfileView.tsx's canOptimize() - see
+    // src/lib/optimizable-image-hosts.ts for why this used to be two lists.
+    remotePatterns: OPTIMIZABLE_IMAGE_HOSTS.map((hostname) => ({ protocol: 'https' as const, hostname })),
   },
   async headers() {
     return [

@@ -63,6 +63,19 @@ describe('no set times in public', () => {
     }
   });
 
+  // Added after PR #367's review (Dotfiles): this file checked /program but
+  // never the public artist pages themselves - /artist/[slug] is public (no
+  // gate, unlike /backstage/[code]), and PR #367 added an "Act order" rail
+  // there. It renders only each act's setOrder (a bare number, "1." through
+  // "8."), never a time, but nothing enforced that before this test.
+  it('renders no time on the public artist page, and does not reach for one', () => {
+    for (const f of ['src/app/artist/[slug]/page.tsx', 'src/app/artist/[slug]/ArtistProfileView.tsx']) {
+      const src = read(f);
+      const jsxText = src.split('\n').filter((l) => !l.trim().startsWith('//') && !l.trim().startsWith('*'));
+      expect(jsxText.filter((l) => CLOCK.test(l)), f).toEqual([]);
+    }
+  });
+
   it('sends an artist to their own page, not to /program', () => {
     for (const f of ['scripts/create-artist-form.gs', 'src/content/artist-ops.ts']) {
       const lines = read(f).split('\n').filter((l) => !l.trim().startsWith('//') && !l.trim().startsWith('*'));
