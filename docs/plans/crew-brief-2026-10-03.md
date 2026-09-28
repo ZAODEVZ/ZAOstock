@@ -111,6 +111,27 @@ day for one set.
 - **Iman uploads phone shots.**
 - **Same day** - nothing sits on a device overnight.
 
+## Rain plan (card 9991)
+
+**The plan: move indoors to Black Moon.** Zaal's ruling, 2026-09-27 evening
+(grill lane relay).
+
+- **Who calls it, by when:** Zaal and Steve, made Friday 2 October (setup
+  and decorating day, see above) with an 08:00 Saturday re-look. Ordinary
+  rain does not trigger this - the festival is rain or shine, the parklet is
+  open to the sky. This is for weather that forces it.
+- **What moves:** UNSET. Whether it's all eight acts in the outdoor running
+  order, a shortened set, or something else has not been decided by anyone -
+  Black Moon's own capacity for a full changeover cycle is unmeasured.
+  Crew: do not announce or plan an indoor show's shape until this is
+  answered.
+- **The stream moves with it.** Black Moon's own wifi is untested for a
+  live feed - flag this before the day, not during it, to whoever is
+  running the stream (see card 9632, the one stream test: Mon 28 Sep 9:30
+  at the parklet, cellular first, plus Fri 2 Oct).
+- Katina and Steve need a line about this from Zaal - drafted in clip
+  zaostock-rain-plan-katina-steve-draft (inbox/clips), his own send.
+
 ## What this brief cannot fill
 
 - Crew names, contacts and roles for load-in, event-run and load-out (card 9992).
