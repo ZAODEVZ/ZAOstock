@@ -42,6 +42,13 @@ export const metadata: Metadata = {
   title: { default: 'ZAOstock 2026', template: '%s | ZAOstock' },
   description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}. Run by The ZAO.`,
   metadataBase: new URL('https://zaostock.com'),
+  // Google Search Console ownership proof. Next.js renders this as
+  // <meta name="google-site-verification" content="..."> in <head>.
+  // Issued 2026-09-28 for the URL-prefix property https://zaostock.com/ on the
+  // info@thezao.com account. It is a public token by design - it exists to be
+  // served in the page source. Removing it un-verifies the property, which
+  // silently stops sitemap submission and indexing requests, so it stays.
+  verification: { google: 'Ur33SQv4u9BTUs4NDk5lcRZKAOuB-lc6lZERJ2fBpkU' },
   openGraph: {
     title: 'ZAOstock 2026',
     description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
