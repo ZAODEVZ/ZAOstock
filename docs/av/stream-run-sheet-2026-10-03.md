@@ -123,7 +123,7 @@ a swap behind a HOLD card.
 | 16:25 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | | Filming consent still outstanding: settle it before the first bar |
 | 17:05 | Changeover 7 (5 min): swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | Zaal thanks the crew (names UNSET, from crew roster), then intros Tom Fellenz, closing the outdoor stage | |
 | 17:10 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | | |
-| 17:50 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | Zaal: eight-act roll call, thanks partners and crew, points to Black Moon/North Creek, closes with thezao.com | |
+| 17:50 | Music ends. Closing remarks - thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | Zaal: eight-act roll call, thanks partners and crew, points to Black Moon/North Creek, closes with thezao.com | |
 | 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | | | |
 
 **Overrun rule (Zaal, 27 Aug):** an act that runs over loses the time from its

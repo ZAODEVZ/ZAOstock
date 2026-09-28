@@ -71,7 +71,7 @@ below without updating the source.
 | 16:25 | 7. LyonsDen (40) |
 | 17:05 | Changeover (5) |
 | 17:10 | 8. Tom Fellenz (40), closes the outdoor block |
-| 17:50 | Music ends. The street clears at six |
+| 17:50 | Music ends. Closing remarks (Zaal), the last ten minutes before the street clears at six |
 | 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
 | 22:00 | Close, approximate. Black Moon keeps its own hours |
 
