@@ -302,12 +302,12 @@ Finance, not here.
 | Tom Fellenz | 1 | Public billing on program.ts: "Solo instrumental acoustic guitar" |
 | DCoop | 1 | No band mentioned anywhere on record; treated as solo pending his own confirmation - not the same certainty as Michael Anderson or Fellenz |
 | LyonsDen | 1 | Bio describes a solo, self-produced independent artist; no bandmates named |
-| Acadia Rising | **UNSET** | Zaal, 09:56 EDT 2026-09-27: "Acadia Rising is 1 i eblevei ... we shoudl ask sen to confirm" - her own submission says she is joined by "Women in Rhythm" (spelling itself unresolved). Ask drafted, his send - card #264 |
+| Acadia Rising | 1 | Zaal, 2026-09-28 afternoon: "its just sen performing". Sen Wilde plays solo; Women in Rhythm are not on stage |
 | Aziz, Ohnahji, Motomoto (virtual crew) | **Excluded** | Zaal, card #264: not on site |
 
-**17 confirmed performers, one act still UNSET.** The Steve/Black Moon list in
-card #263 stays blocked on that one number, per Dotfiles' standing instruction:
-do not draft it until every UNSET fills.
+**18 performers, no act UNSET** (filled 2026-09-28 when Zaal confirmed
+Acadia Rising is Sen alone). The Steve/Black Moon list in card #263 was
+blocked on that one number and can now be drafted.
 
 ---
 
