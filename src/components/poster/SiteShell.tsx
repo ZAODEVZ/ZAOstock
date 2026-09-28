@@ -11,16 +11,8 @@ import { Footer } from './Footer';
 export function SiteShell({ children, lightOnly = false }: { children: ReactNode; lightOnly?: boolean }) {
   return (
     <div className={`site${lightOnly ? ' site-light' : ''} min-h-[100dvh] flex flex-col bg-paper-100 text-ink-950`}>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-paper-100 focus:px-4 focus:py-3 focus:font-sans focus:text-sm focus:font-bold focus:text-ink-950 focus:[box-shadow:var(--shadow-focus)]"
-      >
-        Skip to main content
-      </a>
       <Header />
-      <main id="main-content" className="flex-1" tabIndex={-1}>
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );
