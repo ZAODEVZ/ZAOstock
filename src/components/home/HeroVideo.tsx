@@ -3,12 +3,13 @@
 import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 
-// The hero background video is 1.1 MB (re-encoded 2026-09-28; was 1.8 MB) on a
-// page people open on cell service, standing in the street the video shows.
-// Browsers fetch a <video src> even when CSS hides it, so the old markup made
-// reduced-motion visitors pay for a video they never saw. Gate the mount, not
-// the display: when motion is reduced or the connection is constrained, render
-// the still poster and never fetch the mp4 at all.
+// The hero background video is 1.8 MB on a page people open on cell service,
+// standing in the street the video shows. Browsers fetch a <video src> even
+// when CSS hides it, and they fetch one present in the prerendered HTML before
+// any client code runs - so the server render must not contain the video at
+// all. Gate the mount, not the display: the server and constrained clients
+// render the still poster, and the video mounts only after hydration on a
+// client that passes the checks.
 
 export type ConnectionInfo = {
   reducedMotion: boolean;
@@ -29,9 +30,10 @@ type NavigatorConnection = {
 };
 
 export default function HeroVideo() {
-  // Server snapshot says "load" so SSR markup matches the unconstrained
-  // common case; the client snapshot re-evaluates constraints before the
-  // browser starts fetching the mp4.
+  // The server snapshot says "do not load": prerendered HTML ships the
+  // poster only, so no browser can fetch the mp4 before hydration. After
+  // mount the client snapshot evaluates the constraints and unconstrained
+  // clients swap the poster for the video.
   const load = useSyncExternalStore(
     () => () => {},
     () => {
@@ -42,7 +44,7 @@ export default function HeroVideo() {
         effectiveType: conn?.effectiveType,
       });
     },
-    () => true,
+    () => false,
   );
 
   if (!load) {

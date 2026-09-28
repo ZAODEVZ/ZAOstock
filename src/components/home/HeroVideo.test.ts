@@ -29,3 +29,15 @@ describe('hero video asset', () => {
     expect(size).toBeLessThan(1.9 * 1024 * 1024);
   });
 });
+
+describe('server render', () => {
+  it('prerenders the poster only - no video element or mp4 reference in SSR HTML', async () => {
+    const { renderToString } = await import('react-dom/server');
+    const { createElement } = await import('react');
+    const { default: HeroVideo } = await import('./HeroVideo');
+    const html = renderToString(createElement(HeroVideo));
+    expect(html).not.toContain('<video');
+    expect(html).not.toContain('ellsworth.mp4');
+    expect(html).toContain('historic_main_street_storefronts.webp');
+  });
+});
