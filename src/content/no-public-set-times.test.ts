@@ -86,7 +86,9 @@ describe('no set times in public', () => {
   // there. It renders only each act's setOrder (a bare number, "1." through
   // "8."), never a time, but nothing enforced that before this test.
   it('renders no time on the public artist page, and does not reach for one', () => {
-    for (const f of ['src/app/artist/[slug]/page.tsx', 'src/app/artist/[slug]/ArtistProfileView.tsx']) {
+    // /live joined 2026-09-28 (Dotfiles review of #375): /program now shows times,
+    // so /live is the page most likely to borrow one, and nothing guarded it.
+    for (const f of ['src/app/artist/[slug]/page.tsx', 'src/app/artist/[slug]/ArtistProfileView.tsx', 'src/app/live/page.tsx']) {
       const src = read(f);
       const jsxText = src.split('\n').filter((l) => !l.trim().startsWith('//') && !l.trim().startsWith('*'));
       expect(jsxText.filter((l) => CLOCK.test(l)), f).toEqual([]);
