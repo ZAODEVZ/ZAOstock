@@ -137,8 +137,8 @@ together.
   answered.
 - **The stream moves with it.** Black Moon's own wifi is untested for a
   live feed - flag this before the day, not during it, to whoever is
-  running the stream (see card 9632, the one stream test: Mon 28 Sep 9:30
-  at the parklet, cellular first, plus Fri 2 Oct).
+  running the stream (see card 9632: the Mon 28 Sep parklet test was rained out, so
+  Fri 2 Oct is now the only stream test, cellular first).
 - Katina and Steve need a line about this from Zaal - drafted in clip
   zaostock-rain-plan-katina-steve-draft (inbox/clips), his own send.
 
