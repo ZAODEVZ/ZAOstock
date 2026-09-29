@@ -397,7 +397,7 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     amount: 1,
     spots: null,
     blurb: 'Every dollar goes to the day.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.'],
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
   {
     id: 'supporter',

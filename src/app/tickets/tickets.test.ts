@@ -113,6 +113,11 @@ describe('no tier promises what nothing on file delivers', () => {
     }
   });
 
+  it('every tier gets the same thing, so "Only the amount" stays true', () => {
+    const gets = SUPPORT_TIERS.map((t) => t.gets.join('|'));
+    expect(new Set(gets).size).toBe(1);
+  });
+
   it('advertises no spot counts', () => {
     expect(SUPPORT_TIERS.every((t) => t.spots === null)).toBe(true);
   });
