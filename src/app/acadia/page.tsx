@@ -52,7 +52,7 @@ const EXCURSIONS: { name: string; difficulty: string; time: string; note: string
 
 const GOOD_TO_KNOW: { label: string; detail: string }[] = [
   { label: 'Weather', detail: 'Daytime highs roughly 55-65°F, dropping to the 40s at night. October is Maine\'s wettest month historically - bring a real waterproof layer, not just a light jacket.' },
-  { label: 'Sunrise / sunset', detail: 'Sunrise runs ~7:00-7:15 AM, sunset ~6:15-6:30 PM in early October - useful for planning excursion start times.' },
+  { label: 'Sunrise / sunset', detail: 'Festival weekend (Oct 2-4) in Ellsworth: sunrise ~6:31-6:34 AM, sunset ~6:10-6:14 PM - useful for planning excursion start times.' },
   { label: 'Fall foliage, honestly', detail: 'Peak color for this region lands in the Oct 10-27 window, not Oct 1-3. Expect early color starting on exposed high points and near water - genuinely pre-peak, but still a real backdrop.' },
 ];
 
