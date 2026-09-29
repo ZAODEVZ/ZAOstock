@@ -529,6 +529,29 @@ export function stripeLinkFor(
 }
 
 /**
+ * The SAME Payment Link as a tier, tagged as a gift rather than a ticket.
+ *
+ * Zaal, 29 Sep (grill, decisions/grill-2026-09-29-grill-morning.md item 25):
+ * one combined tickets-and-giving page on the three EXISTING Stripe links, no
+ * new links. Finance needs a ticket and a gift told apart afterwards (a sale
+ * vs a donation), so the gift buttons append client_reference_id=donation,
+ * which Stripe Payment Links carry into the Checkout Session and its export.
+ */
+export const DONATION_REF = 'donation';
+
+export function donationLinkFor(
+  tierId: string,
+  links: Readonly<Record<string, string>> = STRIPE_LINKS,
+): string | null {
+  const url = stripeLinkFor(tierId, links);
+  return url ? `${url}?client_reference_id=${DONATION_REF}` : null;
+}
+
+/** Crypto gifts: Giveth, kept on Zaal's ruling of 29 Sep. Moved here from /donate. */
+export const GIVETH_URL = 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology';
+export const GIVETH_WALLET = '0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB';
+
+/**
  * A checkout URL's short `?id=<uuid>` form (see the function doc below)
  * names no network at all, so it can only be verified by hand, once. Each
  * entry here is an id Zaal has confirmed points at a real Base MAINNET

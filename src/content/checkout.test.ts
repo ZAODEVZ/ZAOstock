@@ -15,8 +15,8 @@ import { SUPPORT_TIERS, PRO_TICKET, STRIPE_LINKS, UNLOCK_CHECKOUT_URL, stripeLin
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 const TICKETS = 'src/app/tickets/page.tsx';
-const DONATE = 'src/app/donate/page.tsx';
-const PAGES = [TICKETS, DONATE];
+// /donate merged into /tickets on 2026-09-29; one page now.
+const PAGES = [TICKETS];
 
 const REAL_STRIPE = 'https://buy.stripe.com/test_aEU5kF3dK2mQ0Ss288';
 // A "real" Unlock checkout URL must state a lock on Base mainnet (8453) -
@@ -200,8 +200,8 @@ describe('the pages cannot render a dead door', () => {
     }
   });
 
-  it('keeps PayPal on /donate, the fuller "other ways to give" page', () => {
-    expect(read(DONATE)).toContain('${PAYPAL_URL}/${tier.amount}');
+  it('tags the gift buttons on the same links, so Finance can tell a gift from a ticket', () => {
+    expect(read(TICKETS)).toContain('donationLinkFor(tier.id)');
   });
 
   it('drops PayPal from /tickets - card only, Zaal live, 2026-09-21: "no paypal"', () => {
@@ -211,9 +211,10 @@ describe('the pages cannot render a dead door', () => {
     // that survives in the page's own headline copy ("Chip in if you can")
     // and section eyebrow, which are not the PayPal button.
     expect(src).not.toContain('Chip in {tier.price}');
-    // /tickets still points PayPal-seekers at /donate in its own FAQ copy,
-    // so the word "PayPal" surviving in prose (not a button) is correct.
-    expect(src).toContain('PayPal for fiat or Giveth for crypto, at /donate');
+    // No PayPal in rendered copy now (Zaal: "change all to stripe"); code
+    // comments may still name it as history.
+    const rendered = src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+    expect(rendered).not.toContain('PayPal');
   });
 
   it('says nothing about paying by card while no card rail exists', () => {

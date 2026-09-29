@@ -28,7 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/event-organizers',
     '/apply',
     '/suggest',
-    '/donate',
     '/tickets',
     '/program',
     '/ellsworth',

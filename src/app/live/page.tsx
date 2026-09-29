@@ -63,7 +63,7 @@ export default async function LivePage() {
             {/* Watching from home has no other way to give. Zaal, 2026-09-27:
                 "we deff need a place for ppl to just go to the live website
                 and one button is the donate button." */}
-            <Button href="/donate" variant="secondary">
+            <Button href="/tickets#give" variant="secondary">
               Donate
             </Button>
           </div>

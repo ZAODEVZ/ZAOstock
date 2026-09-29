@@ -127,6 +127,9 @@ const config: NextConfig = {
       { source: '/artist', destination: '/artists', permanent: false },
       // /volunteer is the intuitive link people guess for volunteering; the canonical route is /apply.
       { source: '/volunteer', destination: '/apply', permanent: false },
+      // /donate merged into /tickets on 2026-09-29 (Zaal: "combine ticket and
+      // donation page"). Old links, the newsletter and the /live button keep working.
+      { source: '/donate', destination: '/tickets#give', permanent: false },
       // Zaal typed /support into Stripe's business_profile.support_url, not
       // /contact - confirmed from Stripe's own API 2026-09-20 22:3x. Stripe's
       // pending verification (business_model_verification.support) names that
