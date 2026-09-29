@@ -15,22 +15,22 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata(): Promise<Metadata> {
   return {
     // absolute: "ZAOstock" is already part of the phrase - a plain string
-    // here would double to "ZAOstock 2026 — Overview | ZAOstock" under the
+    // here would double to "ZAOstock 2026 - Overview | ZAOstock" under the
     // root layout's template (measured live 2026-09-17).
-    title: { absolute: 'ZAOstock 2026 — Overview' },
+    title: { absolute: 'ZAOstock 2026 - Overview' },
     description:
-      `ZAO Festivals presents ZAOstock — a one-day artist-built music festival in Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
+      `ZAO Festivals presents ZAOstock - a one-day artist-built music festival in Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
     alternates: { canonical: '/onepagers/overview' },
     openGraph: {
       url: 'https://zaostock.com/onepagers/overview',
       images: [OG_IMAGE],
-      title: 'ZAOstock 2026 — Overview',
+      title: 'ZAOstock 2026 - Overview',
       description:
-        `ZAO Festivals presents ZAOstock — ${FESTIVAL.shortDate} at the ${FESTIVAL.venue}, ${FESTIVAL.city}.`,
+        `ZAO Festivals presents ZAOstock - ${FESTIVAL.shortDate} at the ${FESTIVAL.venue}, ${FESTIVAL.city}.`,
     },
     twitter: twitterCard(
-      'ZAOstock 2026 — Overview',
-      `ZAO Festivals presents ZAOstock — ${FESTIVAL.shortDate} at the ${FESTIVAL.venue}, ${FESTIVAL.city}.`,
+      'ZAOstock 2026 - Overview',
+      `ZAO Festivals presents ZAOstock - ${FESTIVAL.shortDate} at the ${FESTIVAL.venue}, ${FESTIVAL.city}.`,
     ),
   };
 }

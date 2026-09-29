@@ -7,7 +7,7 @@ import { SOUNDCHECK } from '@/content/artist-ops';
 export const metadata: Metadata = {
   title: 'For Musicians',
   description:
-    `Made music nobody is paying you to make? You are who we built this for. ZAOstock is a one-day outdoor festival in Ellsworth Maine on ${FESTIVAL.shortDate}. Every artist on stage was discovered through The ZAO.`,
+    `Made music nobody is paying you to make? We built this for you. ZAOstock is a free outdoor festival in Ellsworth, Maine, on ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/musicians' },
   openGraph: {
     title: 'For Musicians · ZAOstock 2026',
