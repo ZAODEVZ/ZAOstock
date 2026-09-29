@@ -3,6 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { SiteShell, Eyebrow, Button, SectionHeader } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
+import { PARKING_DETAIL } from '@/content/quick-answers';
 
 export const metadata: Metadata = {
   title: 'Visiting Ellsworth, Maine',
@@ -43,7 +44,7 @@ const GETTING_HERE: { mode: string; detail: string }[] = [
   { mode: 'By car', detail: 'About 40 min (30 mi) from Bangor, ~3 hrs (135 mi) from Portland, and ~5 hrs from Boston. Route 1 / Route 1A run right through downtown.' },
   { mode: 'Bangor International (BGR)', detail: 'Nearest major airport, ~40 min away. A direct shuttle bus runs to Ellsworth twice daily (~35 min). Best bet for most travelers.' },
   { mode: 'Hancock County-Bar Harbor (BHB)', detail: 'Smaller regional airport ~20 min away, with seasonal Cape Air service (including from Boston). Closest to the venue.' },
-  { mode: 'Parking', detail: `Franklin Street itself has no vehicle parking during the parklet season. Use the free Franklin Street Parking Lot or Ellsworth City Hall's own lot instead - both a short walk from the ${FESTIVAL.venue}. Map below.` },
+  { mode: 'Parking', detail: `${PARKING_DETAIL} Map below.` },
 ];
 
 const STAY: { name: string; note: string }[] = [

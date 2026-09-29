@@ -3,7 +3,8 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, displayName } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
+import { QUICK_ANSWERS, faqJsonLd } from '@/content/quick-answers';
 import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
 import { SOUNDCHECK } from '@/content/artist-ops';
 
@@ -177,6 +178,18 @@ export default function ProgramPage() {
             </div>
           </Card>
         </TwoUp>
+      </Section>
+
+      {/* Quick answers: one array, rendered visibly and as FAQPage data, so
+          what search and AI assistants read is exactly what a visitor sees.
+          Source and provenance of every answer: src/content/quick-answers.ts. */}
+      <Section>
+        <SectionHeader eyebrow="Quick answers" title="What people ask." />
+        <BorderedList className="mt-6" rows={QUICK_ANSWERS.map(({ q, a }) => ({ term: q, detail: a }))} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()).replace(/</g, '\\u003c') }}
+        />
       </Section>
     </SiteShell>
   );

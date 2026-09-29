@@ -426,6 +426,8 @@ describe('no public surface claims the crowd goes indoors', () => {
     'src/app/terms/page.tsx',
     'src/content/site.ts',
     'src/content/festival.ts',
+    // Rendered on /program and as FAQPage data for search and AI answers.
+    'src/content/quick-answers.ts',
   ];
 
   // "the day" was missing. The list had "the whole day", so "the day moves
