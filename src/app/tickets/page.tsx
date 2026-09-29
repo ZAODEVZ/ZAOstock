@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, GIVETH_URL, GIVETH_WALLET, donationLinkFor, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 // WHY THIS PAGE EXISTS
@@ -32,9 +32,10 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 //
 // COMBINED 2026-09-29. Zaal: "its already all there for the tickets we just need
 // to combine ticket and donation page". /donate is gone (it redirects to
-// /tickets#give); the #give section below is the giving half, on the SAME three
-// Stripe links tagged client_reference_id=donation (donationLinkFor) so Finance
-// can tell a gift from a ticket, plus Giveth for crypto. PayPal is not offered.
+// /tickets#give). The #give section is crypto only, through Giveth; card
+// support is the $1 / $20 / $50 tiers above (Zaal, 29 Sep: "just keep the
+// giveth as this side as a pay with crypto option the 1 5 20 options are
+// above"). PayPal is not offered (finance grill 28 Sep, item 10).
 
 export const metadata: Metadata = {
   title: `Free RSVP, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
@@ -138,24 +139,11 @@ export default function TicketsPage() {
 
       <Section id="give">
         <SectionHeader
-          eyebrow="Support the festival"
-          title="Or give, no ticket needed."
-          lede="Every gift goes to the day itself: artist pay, sound and stage, and the materials it takes. Gifts are counted as festival support, separate from the tiers above."
+          eyebrow="Pay with crypto"
+          title="Or give in crypto."
+          lede="Send it through Giveth to the ZAO Festivals project. It goes to the day itself, the same as the tiers above."
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-4">
-          {SUPPORT_TIERS.map((tier) =>
-            donationLinkFor(tier.id) ? (
-              <Card key={`give-${tier.id}`}>
-                <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
-                <p className="text-sm text-ink-secondary m-0 mt-2">A one-time gift by card.</p>
-                <div className="mt-4">
-                  <Button href={donationLinkFor(tier.id) as string} external variant="secondary">
-                    Give {tier.price}
-                  </Button>
-                </div>
-              </Card>
-            ) : null,
-          )}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
           <Card>
             <span className="font-display text-[2.25rem] leading-none text-red-500">Giveth</span>
             <p className="text-sm text-ink-secondary m-0 mt-2">Give in crypto through Giveth, to the ZAO Festivals project.</p>
@@ -189,7 +177,7 @@ export default function TicketsPage() {
                   term: 'What is the difference between them',
                   detail: 'Only the 1:1 on the Pro Ticket. Every tier supports the festival and credits you by name.',
                 },
-                { term: 'Other ways to give', detail: 'A gift by card or through Giveth, further down this page.' },
+                { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, further down this page.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
             />

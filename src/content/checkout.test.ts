@@ -200,8 +200,8 @@ describe('the pages cannot render a dead door', () => {
     }
   });
 
-  it('tags the gift buttons on the same links, so Finance can tell a gift from a ticket', () => {
-    expect(read(TICKETS)).toContain('donationLinkFor(tier.id)');
+  it('#give is crypto only: the card gift buttons are gone (Zaal, 29 Sep)', () => {
+    expect(read(TICKETS)).not.toContain('client_reference_id');
   });
 
   it('drops PayPal from /tickets - card only, Zaal live, 2026-09-21: "no paypal"', () => {
