@@ -58,10 +58,10 @@ export const SITE = {
   // bar next door. That is the whole true claim.
   //
   // This string is the SOURCE. /program and /llms.txt read it. Do not add a
-  // tent, and do not add a sentence that moves a crowd indoors.
+  // sentence that moves a crowd indoors.
   // 2026-09-29, Zaal: "parklet is open sky but musicians perform under tent".
-  // The tent is the stage's, not the crowd's; this still does not pitch it as
-  // the bad-weather answer (the retired "under tent cover" line).
+  // So the tent is named as the stage's, not the crowd's, and is never pitched
+  // as the bad-weather answer (the retired "under tent cover" line).
   weather: 'Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it.',
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
