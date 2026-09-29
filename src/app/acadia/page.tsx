@@ -6,7 +6,7 @@ import { FESTIVAL } from '@/content/festival';
 export const metadata: Metadata = {
   title: 'ZAO Guide to Acadia National Park',
   description:
-    'The ZAO Guide to Acadia National Park - getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan for ZAOstock weekend in Ellsworth, Maine.',
+    'The ZAO Guide to Acadia National Park: getting in, Cadillac Mountain reservations, the 5 must-see spots and a multi-day plan for ZAOstock weekend.',
   alternates: { canonical: '/acadia' },
   openGraph: {
     title: 'ZAO Guide to Acadia National Park | ZAOstock',

@@ -29,4 +29,14 @@ describe('sitemap', () => {
     const urls = sitemap().map((r) => r.url);
     expect(urls).toContain('https://zaostock.com/artists');
   });
+
+  it('leaves out /musicians/rider, which is noindex', () => {
+    // A sitemap URL Google is told not to index is a conflicting signal.
+    const urls = sitemap().map((r) => r.url);
+    expect(urls).not.toContain('https://zaostock.com/musicians/rider');
+  });
+
+  it('claims no lastModified - it was always "now", which Google learns to ignore', () => {
+    for (const entry of sitemap()) expect(entry.lastModified).toBeUndefined();
+  });
 });

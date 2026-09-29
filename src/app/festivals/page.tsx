@@ -10,7 +10,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, SectionHeader 
 export const metadata: Metadata = {
   title: 'ZAO Festivals',
   description:
-    "ZAO Festivals is The ZAO's series of community-owned, artist-built music festivals: free to attend, artists paid fairly. Flagship: ZAOstock 2026, Ellsworth, Maine.",
+    "The ZAO's series of community-owned, artist-built music festivals: free to attend, artists paid fairly. Flagship: ZAOstock 2026, Ellsworth, Maine.",
   alternates: { canonical: '/festivals' },
   openGraph: {
     title: 'ZAO Festivals | ZAOstock',
