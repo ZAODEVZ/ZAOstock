@@ -29,7 +29,7 @@ import s from './home.module.css';
 export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
   description:
-    `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}. Independent artists, one stage, music from noon.`,
+    `A free, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}. Independent artists, one stage, from noon.`,
   alternates: { canonical: '/' },
   openGraph: {
     title: 'ZAOstock 2026',
@@ -84,7 +84,11 @@ export default function HomePage() {
             priority
           />
           <h1 className={`${s.display} ${s.big} ${s.anim} ${s.d3}`}>
-            Franklin St
+            {/* Search and screen readers get the festival, not just the venue:
+                the visible H1 names the parklet, which alone ranks for nothing
+                anyone searches (SEO audit 2026-09-29). */}
+            <span className="sr-only">ZAOstock 2026, a free music festival in Ellsworth, Maine, at the </span>
+            Franklin St{' '}
             <br />
             <em>Parklet</em>
           </h1>

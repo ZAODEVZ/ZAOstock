@@ -6,7 +6,7 @@ import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/comp
 export const metadata: Metadata = {
   title: 'ZAOville Pool Party',
   description:
-    'The ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets and a DJ night swim. Part of the ZAO Festivals series.',
+    'The ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026, co-hosted with DCoop and The VEC. Free entry, open mic, live sets and a DJ night swim.',
   alternates: { canonical: '/zaoville' },
   openGraph: {
     title: 'ZAOville Pool Party | ZAO Festivals | ZAOstock',

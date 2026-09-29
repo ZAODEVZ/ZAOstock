@@ -4,6 +4,13 @@ import { slugify } from '@/lib/artists';
 
 const BASE = 'https://zaostock.com';
 
+// /musicians/rider is not listed: the page is noindex (it is the confirmed
+// acts' form), and a sitemap URL Google is told not to index is a conflicting
+// signal Search Console reports as an error.
+//
+// No lastModified: it was new Date() on every URL on every request, and
+// Google stops trusting a lastmod that always says "now". Omitted beats wrong.
+//
 // /circles is not listed: it is a permanent redirect to /meetings, so the
 // target is what belongs in the map. /team is private.
 //
@@ -13,11 +20,9 @@ const BASE = 'https://zaostock.com';
 // found at all.
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const routes = [
     '',
     '/musicians',
-    '/musicians/rider',
     '/artists',
     '/live',
     '/event-organizers',
@@ -52,7 +57,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return routes.map((path) => ({
     url: `${BASE}${path}`,
-    lastModified: now,
     changeFrequency: path === '' ? 'daily' : 'weekly',
     priority: path === '' ? 1.0 : 0.7,
   }));
