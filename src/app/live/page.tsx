@@ -7,7 +7,7 @@ import { slugify } from '@/lib/artists';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip, Button } from '@/components/poster';
 
 export const metadata: Metadata = {
-  title: 'Live',
+  title: `Watch live, ${FESTIVAL.shortDate}, noon to 6 PM Eastern`,
   description: `Watch ZAOstock 2026 from anywhere. The stream, the running order, and every way to follow along on ${FESTIVAL.dateLabel}.`,
   alternates: { canonical: '/live' },
   openGraph: {

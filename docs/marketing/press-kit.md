@@ -97,12 +97,12 @@ audience picks the winner, in person and online. It runs online all year.
 <!-- Confirmed off by Zaal, 2026-09-07. The four-to-six window it used to hold
      is LyonsDen and Tom Fellenz, whose slots are not published. Internal
      dating/sourcing, not press copy. -->
-WaveWarZ remains a confirmed partner and its first live battle really did happen at
-ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
+WaveWarZ is a confirmed partner. Its first live battle took place at ZAO-CHELLA
+in December 2024.
+<!-- Editorial note, not press copy: keep the history, drop the programme claim. -->
 
-As of 24 September 2026, WaveWarZ had run 1,573 battles. (Provenance and re-pull
-instructions are in the sources table at the foot of this file, not here - this
-section is what a journalist reads.)
+As of 24 September 2026, WaveWarZ had run 1,573 battles.
+<!-- Provenance and re-pull instructions are in the sources table at the foot of this file. -->
 <!-- re-check: 2026-10-02, before any print run. Re-pulled 2026-09-24T17:51Z from
      wavewarz.info/api/public/stats: battles.total = 1573, up from 1528 on
      2026-09-12. That is 45 battles in twelve days, which is the whole reason

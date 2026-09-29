@@ -180,7 +180,7 @@ export function displayName(name: string): string {
 // No set times in public (Zaal, 2026-09-12), so this no longer sends anyone to
 // the program for one. The program publishes the order.
 export const LINEUP_NAMES_NOTE =
-  'They play in that order. Bios and photos go up one artist at a time.';
+  'They play in that order. Each act has its own page with a bio and photo.';
 
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [

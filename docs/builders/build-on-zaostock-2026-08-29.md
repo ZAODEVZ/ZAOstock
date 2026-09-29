@@ -3,7 +3,7 @@
 **For the ZABAL Gamez builder battle of 29 to 30 August, and anyone else who wants to build something the festival can use on 3 October.**
 
 > **UPDATED 2026-09-19.** The builder battle itself is over; the brief stays up
-> for anyone still building. Set times are not public. The facts table below
+> for anyone still building. Set times are on zaostock.com/program. The facts table below
 > is current; anything above it that still reads as a live battle window is
 > the August brief.
 

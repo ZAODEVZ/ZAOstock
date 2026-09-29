@@ -7,7 +7,7 @@ import { SiteShell, Section, Eyebrow, Badge, Button, Card } from '@/components/p
 import { LINEUP_ARTISTS } from './lineup-artists';
 
 export const metadata: Metadata = {
-  title: 'Artists',
+  title: `Lineup: ${LINEUP_NAMES.length} acts, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
     `The 2026 ZAOstock lineup. ${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   alternates: { canonical: '/artists' },
@@ -41,7 +41,7 @@ export default function ArtistsPage() {
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <Badge tone="gold">{LINEUP_NAMES.length} acts &middot; Playing in order</Badge>
             <span className="text-sm text-ink-muted">
-              Bios and photos go up one artist at a time as details are confirmed.
+              Each act has its own page with a bio and photo.
             </span>
           </div>
         </div>
