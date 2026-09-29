@@ -41,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/onepagers/overview',
     '/zaoville',
     '/media',
+    '/brand',
     '/privacy',
     '/terms',
     '/contact',

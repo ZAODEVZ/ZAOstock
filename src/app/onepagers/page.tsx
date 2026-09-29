@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: { absolute: 'ZAOstock One-Pagers' },
   description: 'Briefing docs for sponsors, partners, venues, and city contacts.',
   alternates: { canonical: '/onepagers' },
+  // Working briefings for sponsors, partners and city contacts, not a page for
+  // search. Kept reachable, kept out of the index (SEO loop, 2026-09-29).
+  robots: { index: false, follow: true },
   openGraph: {
     title: 'ZAOstock One-Pagers',
     description: 'Briefing docs for sponsors, partners, venues, and city contacts.',
