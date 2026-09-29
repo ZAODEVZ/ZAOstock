@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const p = await getOnePager(slug).catch(() => null);
   if (!p) return { title: 'Not found' };
-  return { title: p.title, description: p.purpose };
+  // Individual briefings stay out of search, same as the /onepagers index.
+  return { title: p.title, description: p.purpose, robots: { index: false, follow: true } };
 }
 
 export default async function OnePagerDetailPage({ params }: PageProps) {
