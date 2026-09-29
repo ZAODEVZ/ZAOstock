@@ -41,6 +41,9 @@ export const PRESS: readonly PressItem[] = [
  */
 export type RadioItem = { title: string; detail: string; src: string };
 
+/** The station's own site, linked from the radio cards (a signed media partner). */
+export const STAR_977_URL = 'https://www.star977.com';
+
 export const RADIO: readonly RadioItem[] = [
   {
     title: 'Zaal on Star 97.7, 10 September 2026',
@@ -64,6 +67,7 @@ export const RADIO: readonly RadioItem[] = [
 export type Edition = { title: string; date: string; url: string };
 
 export const NEWSLETTER: readonly Edition[] = [
+  { title: 'Day 272: set times are up, and 4 days to go', date: '2026-09-29', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-272' },
   { title: 'Day 271: the story of ZAO Festivals, told out loud', date: '2026-09-28', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-271' },
   { title: 'Day 268: the Maine artists on the ZAOstock bill', date: '2026-09-25', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-268-the-maine-artists-on-the-zaostock-bill' },
   { title: 'Day 267: 9 days out, everything you need to know', date: '2026-09-24', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-267-9-days-out-everything-you-need-to-know' },
