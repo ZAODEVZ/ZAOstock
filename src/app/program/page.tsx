@@ -8,7 +8,7 @@ import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
 import { SOUNDCHECK } from '@/content/artist-ops';
 
 export const metadata: Metadata = {
-  title: 'Program',
+  title: `Program and set times, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description: `Day-of schedule for ZAOstock, ${FESTIVAL.dateLabel}. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.`,
   alternates: { canonical: '/program' },
   openGraph: {
@@ -73,7 +73,7 @@ const GOOD_TO_KNOW = [
   SITE.weather,
   'One venue at a time. Nothing plays in two rooms at once.',
   'Black Moon is open through the day, walkable, right next door.',
-  'Each artist gets their own post with their bio and photo, in the order their details come in. Times can shift by a few minutes on the day.',
+  'Each act has its own page with a bio and photo. Times can shift by a few minutes on the day.',
   // Was "Friday 2 October is soundcheck night". Soundcheck moved to Saturday
   // on 2026-09-24 (#305); Friday is setup and decorating.
   `Soundcheck is the morning of ${SOUNDCHECK.day}, artists only.`,
