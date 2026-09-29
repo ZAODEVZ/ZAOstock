@@ -169,7 +169,7 @@ export default function SponsorPage() {
 
       <Section id="for-you">
         <TwoUp>
-          <SectionHeader eyebrow="What we do for you" title="Before, during and after." lede="Reach is across the team's accounts, the Farcaster /zao and /zabal channels, Telegram, the daily newsletter and the livestream." />
+          <SectionHeader eyebrow="What we do for you" title="Before, during and after." lede="Reach is across the team's accounts, the Farcaster /zao and /zabal channels, the daily newsletter and the livestream." />
           <BorderedList rows={FOR_YOU} />
         </TwoUp>
       </Section>
