@@ -42,7 +42,7 @@ export const PRESS: readonly PressItem[] = [
 export type RadioItem = { title: string; detail: string; src: string };
 
 /** The station's own site, linked from the radio cards (a signed media partner). */
-export const STAR_977_URL = 'https://www.star977.com';
+export const STAR_977_URL = 'https://star977fm.com/';
 
 export const RADIO: readonly RadioItem[] = [
   {
