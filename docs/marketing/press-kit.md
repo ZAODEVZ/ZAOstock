@@ -52,7 +52,7 @@ of The ZAO, an independent music community.
 | RSVP | zaostock.com/tickets |
 | Music starts | Noon |
 | Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
-| Weather | Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it. |
+| Weather | Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it. |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Schedule | zaostock.com/program |
@@ -68,7 +68,7 @@ of The ZAO, an independent music community.
   <!-- Zaal, 2026-09-28: "Publish times on /program" (supersedes the 2026-09-12 no-set-times note). Changeovers are 5 to 12 minutes since #365, so no single length is stated. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
   after-party at Black Moon Public House, with North Creek, hosted by Black Moon,
-  from six (poster: 6 to 10 PM), **hosted and underwritten by Black Moon on
+  6 to 10 PM, **hosted and underwritten by Black Moon on
   their own stage and their own licence.** It is their event, not part of the ZAOstock
   programme, and ZAOstock's cover is the outdoor day only.
 

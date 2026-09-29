@@ -114,9 +114,6 @@ describe('SITE facts', () => {
     const coc = PARTNERS.find((p) => p.name === 'COC Concertz');
     expect(coc?.poc).toBe('Thy Revolution');
     expect(coc?.role).toBe('Co-presenter');
-    // The overview one-pager keeps its own list; it must not print UNSET either.
-    const overview = readFileSync(path.join(process.cwd(), 'src/app/onepagers/overview/page.tsx'), 'utf8');
-    expect(overview).not.toMatch(/role:\s*'UNSET'/);
     for (const p of PARTNERS) {
       expect(p.poc.trim()).not.toBe('');
       expect(p.role.trim()).not.toBe('');
@@ -475,7 +472,7 @@ describe('no public surface claims the crowd goes indoors', () => {
       // The wording that replaced the near-miss on 2026-09-24. If this ever
       // starts matching, the rule has been widened past what it is for: saying
       // the bar next door exists is not claiming our crowd relocates into it.
-      'Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it.',
+      'Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it.',
       'Black Moon Public House next door hosts its own evening; that is their room and their event, not a second ZAOstock stage.',
     ]) {
       expect(ok).not.toMatch(CLAIM);
@@ -570,7 +567,7 @@ describe('ENTERACT and Web3Metal are not partners', () => {
   it('never reappear in PARTNERS or on a surface that lists partners', () => {
     const names = PARTNERS.map((p) => p.name.toLowerCase().replace(/\s+/g, ''));
     for (const gone of ['enteract', 'web3metal']) expect(names).not.toContain(gone);
-    for (const f of ['docs/marketing/press-kit.md', 'src/app/llms.txt/route.ts', 'src/app/onepagers/overview/page.tsx']) {
+    for (const f of ['docs/marketing/press-kit.md', 'src/app/llms.txt/route.ts']) {
       const lines = read(f).split('\n').filter((l) => !l.trim().startsWith('//'));
       expect(lines.filter((l) => /enteract|web3 ?metal/i.test(l)), f).toEqual([]);
     }

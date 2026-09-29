@@ -130,6 +130,11 @@ const config: NextConfig = {
       // /donate merged into /tickets on 2026-09-29 (Zaal: "combine ticket and
       // donation page"). Old links, the newsletter and the /live button keep working.
       { source: '/donate', destination: '/tickets#give', permanent: false },
+      // The public one-pagers went stale (4-6 acts, an August 15 dry run, the
+      // old zaoos.com volunteer link) and were removed 2026-09-29 on Zaal's
+      // word: "we can just remove all the onepagers". /sponsor is the brief.
+      { source: '/onepagers', destination: '/sponsor', permanent: false },
+      { source: '/onepagers/:path*', destination: '/sponsor', permanent: false },
       // Zaal typed /support into Stripe's business_profile.support_url, not
       // /contact - confirmed from Stripe's own API 2026-09-20 22:3x. Stripe's
       // pending verification (business_model_verification.support) names that
