@@ -58,7 +58,7 @@ const PILLARS: Pillar[] = [
     number: '01',
     title: 'Music first',
     body:
-      'Independent artists at the center. The lineup is open-call, peer-curated, and built around what serves the room — not what serves a sponsor brief.',
+      'Independent artists at the center. The lineup is open-call, peer-curated, and built around what serves the room - not what serves a sponsor brief.',
   },
   {
     number: '02',
@@ -70,12 +70,12 @@ const PILLARS: Pillar[] = [
     number: '03',
     title: 'Technology third',
     body:
-      'We use Farcaster, distribution platforms, and decentralized tools because they make the work easier for musicians and artists — not because they ARE the work. Tools serve the music. Always that order.',
+      'We use Farcaster, distribution platforms, and decentralized tools because they make the work easier for musicians and artists - not because they ARE the work. Tools serve the music. Always that order.',
   },
 ];
 
 const PARTNERS: Partner[] = [
-  { name: 'City of Ellsworth', role: `Venue partner — ${FESTIVAL.shortVenue}`, confirmed: true },
+  { name: 'City of Ellsworth', role: `Venue partner - ${FESTIVAL.shortVenue}`, confirmed: true },
   { name: 'Black Moon Public House', role: 'The evening, indoors + official after-party', confirmed: true },
   // Heart of Ellsworth removed 2026-08-14 pending written confirmation.
   // Confirmed 2026-09-18 by their own email asking to be listed; re-added.
@@ -121,7 +121,7 @@ const HOW_TO = [
     role: 'Sponsors',
     detail:
       'Five packages, prices on request. Local + national both welcome. Commercial sponsorship only.',
-    cta: { label: 'Partner deck', href: '/sponsor/deck' },
+    cta: { label: 'Partner deck', href: '/sponsor#get' },
   },
   {
     role: 'Volunteers',
@@ -191,7 +191,7 @@ export default async function OverviewOnePager() {
           </h1>
           <p className="mt-4 max-w-2xl text-base text-ink-950 print:text-slate-700">
             A one-day, artist-built music festival in downtown Ellsworth, Maine. Run by{' '}
-            <strong className="text-ink-950 print:text-slate-900">The ZAO</strong> — a global,
+            <strong className="text-ink-950 print:text-slate-900">The ZAO</strong> - a global,
             independent music community. Year 1: relationship over scale.
           </p>
         </div>
@@ -447,7 +447,7 @@ export default async function OverviewOnePager() {
                 info@thezao.com
               </a>
               <div className="mt-1 text-xs text-ink-muted print:text-ink-muted">
-                Zaal — ZAOstock organizer, The ZAO founder
+                Zaal - ZAOstock organizer, The ZAO founder
               </div>
             </div>
             <div>

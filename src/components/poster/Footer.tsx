@@ -15,6 +15,12 @@ const LINKS = [
   { href: '/contact', label: 'Contact' },
   { href: '/ellsworth', label: 'Ellsworth' },
   { href: '/acadia', label: 'Acadia' },
+  // SEO pass 2026-09-29: a crawl of every sitemap page found /design and
+  // /meetings with ZERO inbound links and /festivals with two. A page nothing
+  // links to reads to search as unimportant; the footer fixes that sitewide.
+  { href: '/festivals', label: 'Festivals' },
+  { href: '/design', label: 'Design kit' },
+  { href: '/meetings', label: 'Meetings' },
 ];
 
 export function Footer() {
