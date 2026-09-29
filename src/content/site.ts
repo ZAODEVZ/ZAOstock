@@ -465,8 +465,6 @@ export const PRO_ROUND = {
   countsRule: 'Every supporter counts, at any tier.',
 } as const;
 
-/** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */
-export const PAYPAL_URL = 'https://paypal.com/paypalme/zaalpanthaki';
 /**
  * CARD AND ONCHAIN CHECKOUT, wired 2026-09-17.
  *

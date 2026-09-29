@@ -177,7 +177,7 @@ export default function TicketsPage() {
                   term: 'What is the difference between them',
                   detail: 'Only the 1:1 on the Pro Ticket. Every tier supports the festival and credits you by name.',
                 },
-                { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, further down this page.' },
+                { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, above.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
             />
