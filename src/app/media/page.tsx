@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { LINEUP_NAMES, displayName } from '@/content/site';
-import { PRESS, embedsFor } from '@/content/media';
+import { PRESS, embedsFor, NO_SOCIALS } from '@/content/media';
 import { zaoMediaFor } from '@/content/zao-media';
 import { getRosterArtists, slugify } from '@/lib/artists';
 import { getFallbackLineup } from '@/lib/lineup-fallback';
@@ -128,6 +128,8 @@ export default async function MediaPage() {
                       </li>
                     ))}
                   </ul>
+                ) : NO_SOCIALS.includes(name) ? (
+                  <p className="text-sm text-ink-muted m-0 mt-3">No socials. Catch the set live on Franklin Street.</p>
                 ) : (
                   <p className="text-sm text-ink-muted m-0 mt-3">Links coming soon. Meet them on Franklin Street.</p>
                 )}
