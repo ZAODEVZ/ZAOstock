@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { LINEUP_NAMES, displayName } from '@/content/site';
-import { PRESS, embedsFor, NO_SOCIALS } from '@/content/media';
-import { zaoMediaFor } from '@/content/zao-media';
+import { PRESS, RADIO, NEWSLETTER, STAR_977_URL, embedsFor, NO_SOCIALS } from '@/content/media';
 import { getRosterArtists, slugify } from '@/lib/artists';
 import { getFallbackLineup } from '@/lib/lineup-fallback';
 import { parseSocials } from '@/lib/socials';
@@ -41,9 +40,6 @@ async function socialsByName(): Promise<Record<string, string>> {
 
 export default async function MediaPage() {
   const socials = await socialsByName();
-  const editions = Array.from(
-    new Map(LINEUP_NAMES.flatMap((n) => zaoMediaFor(n)).map((m) => [m.url, m])).values(),
-  );
 
   return (
     <SiteShell>
@@ -54,7 +50,7 @@ export default async function MediaPage() {
             Media and socials.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            What has been written about ZAOstock, and where to follow each act before they play the {FESTIVAL.venue}.
+            Everything written, aired and published about ZAOstock, and where to follow each act before they play the {FESTIVAL.venue}.
           </p>
         </div>
       </Section>
@@ -78,20 +74,39 @@ export default async function MediaPage() {
         </div>
       </Section>
 
-      {editions.length > 0 && (
-        <Section>
-          <Eyebrow className="mb-3">From The ZAO&apos;s newsletter</Eyebrow>
-          <ul className="list-none m-0 p-0 space-y-2 max-w-[760px]">
-            {editions.map((m) => (
-              <li key={m.url}>
-                <a href={m.url} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-ink-950 underline hover:no-underline">
-                  {m.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
+      <Section>
+        <Eyebrow className="mb-3">On the radio</Eyebrow>
+        <p className="text-sm text-ink-secondary m-0 mb-3 max-w-[760px]">
+          With thanks to{' '}
+          <a href={STAR_977_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-ink-950 underline hover:no-underline">
+            Star 97.7
+          </a>
+          , our local radio partner.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[760px]">
+          {RADIO.map((r) => (
+            <Card key={r.src}>
+              <p className="text-sm font-bold text-ink-950 m-0 mb-2">{r.title}</p>
+              <audio src={r.src} controls preload="none" className="w-full" />
+              <p className="text-xs text-ink-muted m-0 mt-2">{r.detail}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <Eyebrow className="mb-3">From The ZAO&apos;s newsletter</Eyebrow>
+        <ul className="list-none m-0 p-0 space-y-2 max-w-[760px]">
+          {NEWSLETTER.map((m) => (
+            <li key={m.url} className="text-sm">
+              <span className="font-mono text-xs text-ink-muted mr-2">{fmtDate(m.date)}</span>
+              <a href={m.url} target="_blank" rel="noopener noreferrer" className="font-bold text-ink-950 underline hover:no-underline">
+                {m.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
       <Section>
         <Eyebrow className="mb-3">From the artists</Eyebrow>

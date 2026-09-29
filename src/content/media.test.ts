@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS } from './media';
+import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS, RADIO, NEWSLETTER } from './media';
+import { existsSync } from 'node:fs';
+import { ZAO_MEDIA } from './zao-media';
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 
@@ -32,6 +34,22 @@ describe('/media content', () => {
   it('records a confirmed "no socials" act by its bill name', () => {
     for (const name of NO_SOCIALS) expect(MEDIA_ACTS).toContain(name);
     expect(read('src/app/media/page.tsx')).toContain('NO_SOCIALS.includes(name)');
+  });
+
+  it('plays radio files that ship in public/', () => {
+    expect(RADIO.length).toBeGreaterThan(0);
+    for (const r of RADIO) expect(existsSync(path.join(process.cwd(), 'public', r.src)), r.src).toBe(true);
+  });
+
+  it('lists newsletter editions newest first, all on The ZAO publication', () => {
+    const dates = NEWSLETTER.map((e) => e.date);
+    expect([...dates].sort().reverse()).toEqual(dates);
+    for (const e of NEWSLETTER) expect(e.url).toMatch(/^https:\/\/paragraph\.com\/@thezao\/year-of-the-zabal-day-\d/);
+  });
+
+  it('includes every edition an artist page links, so /media is the full set', () => {
+    const all = new Set(NEWSLETTER.map((e) => e.url));
+    for (const items of Object.values(ZAO_MEDIA)) for (const m of items) expect(all.has(m.url), m.url).toBe(true);
   });
 
   it('is in the sitemap and the footer', () => {
