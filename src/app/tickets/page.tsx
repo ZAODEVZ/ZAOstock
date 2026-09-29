@@ -78,7 +78,7 @@ export default function TicketsPage() {
             <h3 className="font-display text-h3 text-ink-950 m-0 mt-2">RSVP</h3>
             <p className="text-sm text-ink-secondary m-0 mt-1">Hold a spot. No line, no ticket to show at the door.</p>
             <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
-              <li>Tells us how many to plan for - water, seating, shelter.</li>
+              <li>Tells us how many people to plan for.</li>
               <li>Not required. Turn up either way.</li>
             </ul>
             <div className="mt-4 flex flex-wrap items-start gap-2">
