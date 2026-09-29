@@ -52,7 +52,7 @@ of The ZAO, an independent music community.
 | RSVP | zaostock.com/tickets |
 | Music starts | Noon |
 | Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
-| Weather | Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it. |
+| Weather | Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it. |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Schedule | zaostock.com/program |

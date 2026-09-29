@@ -37,7 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/partners',
     '/build',
     '/meetings',
-    '/onepagers/overview',
     '/zaoville',
     '/media',
     '/brand',
