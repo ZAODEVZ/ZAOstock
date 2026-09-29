@@ -21,19 +21,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const artist = await getArtistBySlug(slug).catch(() => null);
   if (!artist) return { title: 'Artist not found' };
 
+  const shown = displayName(artist.name);
   const description = artist.bio
     ? truncateAtWord(artist.bio, 160)
-    : `${artist.name} at ZAOstock, ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
+    : `${shown} at ZAOstock, ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
 
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
     // a plain string here doubles the suffix (measured live 2026-09-17:
     // "Tom Fellenz | ZAOstock Artist | ZAOstock" on all eight artist pages).
-    title: { absolute: `${artist.name} | ZAOstock Artist` },
+    title: { absolute: `${shown} | ZAOstock Artist` },
     description,
     alternates: { canonical: `/artist/${slug}` },
     openGraph: {
-      title: `${artist.name} | ZAOstock`,
+      title: `${shown} | ZAOstock`,
       description,
       url: `https://zaostock.com/artist/${slug}`,
       // Falls back to the site's own OG image rather than an empty array -
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Same fallback as openGraph.images above, for the same reason: an
     // artist with no photo yet must degrade to the festival card, never to
     // a broken image link.
-    twitter: twitterCard(`${artist.name} | ZAOstock`, description, artist.photo_url ? [artist.photo_url] : [OG_IMAGE.url]),
+    twitter: twitterCard(`${shown} | ZAOstock`, description, artist.photo_url ? [artist.photo_url] : [OG_IMAGE.url]),
   };
 }
 
@@ -100,7 +101,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
             <Card>
               <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
-                {artist.name} is on the ZAOstock roster for {FESTIVAL.dateLabel} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
+                {displayName(artist.name)} is on the ZAOstock roster for {FESTIVAL.dateLabel} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/" size="sm">
