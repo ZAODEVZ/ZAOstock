@@ -47,7 +47,7 @@ export default function TermsPage() {
           <h2 className="font-display font-normal text-h3 text-ink-950">Refunds</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
             Ticket purchases are non-refundable. This is a free, all-ages festival - a paid ticket is a
-            Supporter or Pro Ticket contribution to the event, not an admission fee, and admission itself
+            Chip in, Friend or Backer contribution to the event, not an admission fee, and admission itself
             never requires one. If something goes wrong with your purchase, email{' '}
             <a href={`mailto:${SITE.contact}?subject=ZAOstock%20ticket%20question`} className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               {SITE.contact}

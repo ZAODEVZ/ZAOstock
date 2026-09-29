@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { SITE, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 // WHY THIS PAGE EXISTS
@@ -40,7 +40,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 export const metadata: Metadata = {
   title: `Free RSVP, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or take a Pro Ticket to help fund the day. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or chip in to help keep it free. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
     title: 'Tickets | ZAOstock',
@@ -61,10 +61,10 @@ export default function TicketsPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.admission}</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Four ways in.
+            Free. Help keep it that way.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            RSVP free, or chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}. This is patronage, not admission - access is free either way.
+            ZAOstock is free to attend - no ticket, no gate. It runs at break-even, so what keeps it free is people who chip in, at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
           </p>
         </div>
       </Section>
@@ -132,9 +132,6 @@ export default function TicketsPage() {
             </Card>
           ))}
         </div>
-        <p className="text-[13px] text-ink-muted m-0 mt-4">
-          {PRO_ROUND.goal}. After taking the {PRO_TICKET.name}, email {SITE.contact} so we can schedule your 1:1.
-        </p>
       </Section>
 
       <Section id="give">
@@ -162,21 +159,16 @@ export default function TicketsPage() {
           <div className="flex flex-col gap-6">
             <SectionHeader
               eyebrow="Straight answers"
-              title="What a ticket does and does not get you."
+              title="What your money does and does not do."
               lede="The festival runs at break-even. Nothing here buys access, because access is free."
             />
             <BorderedList
               rows={[
                 { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket is checked at the parklet.` },
                 { term: 'Do I need the RSVP', detail: 'No. It helps us plan numbers, that is all. Turn up either way.' },
-                {
-                  term: 'Does paying get me in earlier',
-                  detail: 'No. No tier changes anything about the day. Only the Pro Ticket adds a 1:1 with the team before the event; every tier credits you as a supporter.',
-                },
-                {
-                  term: 'What is the difference between them',
-                  detail: 'Only the 1:1 on the Pro Ticket. Every tier supports the festival and credits you by name.',
-                },
+                { term: 'Do I need to pay', detail: 'No. Everyone gets in, paid or not, and nothing about the day changes if you pay.' },
+                { term: 'What does it pay for', detail: 'Artist fees, sound and stage, and materials.' },
+                { term: 'What is the difference between them', detail: 'Only the amount.' },
                 { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, above.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
