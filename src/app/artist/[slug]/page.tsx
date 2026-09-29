@@ -7,6 +7,7 @@ import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
 import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
 import { displayName } from '@/content/site';
 import { zaoMediaFor } from '@/content/zao-media';
+import { artistJsonLdString } from '@/content/artist-jsonld';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
@@ -30,7 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
     // a plain string here doubles the suffix (measured live 2026-09-17:
     // "Tom Fellenz | ZAOstock Artist | ZAOstock" on all eight artist pages).
-    title: { absolute: `${shown} | ZAOstock Artist` },
+    // Place and year in the title (SEO pass 2026-09-29): people search an
+    // act's name with the town or the festival, rarely "ZAOstock Artist".
+    title: { absolute: `${shown} at ZAOstock 2026, Ellsworth, Maine` },
     description,
     alternates: { canonical: `/artist/${slug}` },
     openGraph: {
@@ -65,6 +68,10 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
 
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: artistJsonLdString(artist) }}
+      />
       <Section first className="pt-10 sm:pt-14">
         <div className="lg:flex lg:items-start lg:gap-8">
           {/* flex-1 min-w-0: without a grow class a flex item shrink-wraps
