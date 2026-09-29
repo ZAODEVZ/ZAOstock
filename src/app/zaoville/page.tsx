@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
+import { displayName } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -93,7 +94,7 @@ export default function ZAOvillePage() {
             <li key={i} className="grain bg-paper-200 border border-ink-950/60 rounded-md px-4 py-3 flex items-center gap-4">
               <span className="font-mono text-sm font-bold text-ink-950 tabular w-28 shrink-0">{s.time}</span>
               <span className={['font-mono text-[11px] font-bold uppercase tracking-[0.04em] px-2 py-0.5 rounded-pill border-2 border-ink-950 shrink-0', TYPE_TONE[s.type]].join(' ')}>{s.type}</span>
-              <span className="text-sm font-semibold text-ink-950">{s.label}</span>
+              <span className="text-sm font-semibold text-ink-950">{displayName(s.label)}</span>
             </li>
           ))}
         </ol>
