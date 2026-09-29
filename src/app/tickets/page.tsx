@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, GIVETH_URL, GIVETH_WALLET, donationLinkFor, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 // WHY THIS PAGE EXISTS
@@ -28,8 +28,13 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // plain pill button as Free's "RSVP free", per Zaal pointing at the broken
 // screenshot: "this UI isnt great lets just do the [RSVP FREE] style".
 //
-// The paid tiles read SUPPORT_TIERS from src/content/site.ts, the same source
-// /donate reads.
+// The paid tiles read SUPPORT_TIERS from src/content/site.ts.
+//
+// COMBINED 2026-09-29. Zaal: "its already all there for the tickets we just need
+// to combine ticket and donation page". /donate is gone (it redirects to
+// /tickets#give); the #give section below is the giving half, on the SAME three
+// Stripe links tagged client_reference_id=donation (donationLinkFor) so Finance
+// can tell a gift from a ticket, plus Giveth for crypto. PayPal is not offered.
 
 export const metadata: Metadata = {
   title: `Free RSVP, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
@@ -131,6 +136,39 @@ export default function TicketsPage() {
         </p>
       </Section>
 
+      <Section id="give">
+        <SectionHeader
+          eyebrow="Support the festival"
+          title="Or give, no ticket needed."
+          lede="Every gift goes to the day itself: artist pay, sound and stage, and the materials it takes. Gifts are counted as festival support, separate from the tiers above."
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-4">
+          {SUPPORT_TIERS.map((tier) =>
+            donationLinkFor(tier.id) ? (
+              <Card key={`give-${tier.id}`}>
+                <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
+                <p className="text-sm text-ink-secondary m-0 mt-2">A one-time gift by card.</p>
+                <div className="mt-4">
+                  <Button href={donationLinkFor(tier.id) as string} external variant="secondary">
+                    Give {tier.price}
+                  </Button>
+                </div>
+              </Card>
+            ) : null,
+          )}
+          <Card>
+            <span className="font-display text-[2.25rem] leading-none text-red-500">Giveth</span>
+            <p className="text-sm text-ink-secondary m-0 mt-2">Give in crypto through Giveth, to the ZAO Festivals project.</p>
+            <p className="font-mono text-[11px] text-ink-muted break-all m-0 mt-2">{GIVETH_WALLET}</p>
+            <div className="mt-4">
+              <Button href={GIVETH_URL} external variant="secondary">
+                Give on Giveth
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </Section>
+
       <Section>
         <TwoUp>
           <div className="flex flex-col gap-6">
@@ -151,7 +189,7 @@ export default function TicketsPage() {
                   term: 'What is the difference between them',
                   detail: 'Only the 1:1 on the Pro Ticket. Every tier supports the festival and credits you by name.',
                 },
-                { term: 'Other ways to give', detail: 'PayPal for fiat or Giveth for crypto, at /donate.' },
+                { term: 'Other ways to give', detail: 'A gift by card or through Giveth, further down this page.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
             />
@@ -167,7 +205,7 @@ export default function TicketsPage() {
               ]}
             />
             <div>
-              <Button href="/donate" variant="secondary">
+              <Button href="#give" variant="secondary">
                 Other ways to give
               </Button>
             </div>

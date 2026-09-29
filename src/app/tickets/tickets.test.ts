@@ -17,14 +17,13 @@ const code = (p: string) =>
     .filter((l) => !l.trim().startsWith('//') && !l.trim().startsWith('*') && !l.trim().startsWith('/*'))
     .join('\n');
 const TICKETS = 'src/app/tickets/page.tsx';
-const DONATE = 'src/app/donate/page.tsx';
 
 describe('prices have ONE source', () => {
   // The lineup reveal date was typed as a literal in eight files and drifted,
   // and /donate's own lede was carrying a hardcoded "$50" when this was written.
   // Both pages must read SUPPORT_TIERS from site.ts instead.
   it('no tier price appears in rendered copy on either page', () => {
-    for (const p of [TICKETS, DONATE]) {
+    for (const p of [TICKETS]) {
       for (const tier of SUPPORT_TIERS) {
         expect(code(p)).not.toContain(tier.price);
       }
@@ -97,14 +96,12 @@ describe('the Pro Ticket checkout URL stays in sync across both pages', () => {
   // never goes anywhere different depending which page you're on, even
   // though the two pages are now allowed to look different getting there.
   it("both pages read every paid tier's checkout URL from the same stripeLinkFor helper, no special case", () => {
-    for (const p of [TICKETS, DONATE]) {
+    for (const p of [TICKETS]) {
       const src = code(p);
       expect(src).toContain('stripeLinkFor(tier.id)');
       expect(src).not.toMatch(/tier\.id === PRO_TICKET\.id\s*\?\s*\n?\s*<StripeBuyButton/);
     }
     expect(code(TICKETS)).not.toContain("from '@/components/StripeBuyButton'");
-    expect(code(DONATE)).toContain("from '@/components/StripeBuyButton'");
-    expect(code(DONATE)).toContain('hasBuyButton(tier.id)');
   });
 });
 
@@ -148,7 +145,7 @@ describe('the funding goal states its own rule', () => {
   });
 
   it('renders the goal on both pages rather than a bare figure', () => {
-    for (const p of [TICKETS, DONATE]) {
+    for (const p of [TICKETS]) {
       expect(read(p)).toContain('PRO_ROUND');
     }
   });
