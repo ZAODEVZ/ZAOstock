@@ -1,15 +1,16 @@
 import { Metadata } from 'next';
+import { FESTIVAL } from '@/content/festival';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow } from '@/components/poster';
 import { SITE } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Contact & Support',
-  description: 'Reach ZAOstock for a ticket question, an artist or volunteer ask, or anything else.',
+  description: `Reach the ZAOstock team with a ticket question, an artist or volunteer ask, or anything else about the free festival in Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact & Support | ZAOstock',
-    description: 'Reach ZAOstock for a ticket question, an artist or volunteer ask, or anything else.',
+    description: `Reach the ZAOstock team with a ticket question, an artist or volunteer ask, or anything else about the free festival in Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/contact',
     images: [OG_IMAGE],
   },

@@ -62,6 +62,6 @@ describe('generateMetadata for /artist/[slug]', () => {
   it('uses title.absolute so the root layout does not double the "| ZAOstock" suffix', async () => {
     getArtistBySlug.mockResolvedValue(ARTIST);
     const meta = await generateMetadata(params('dcoop'));
-    expect(meta.title).toEqual({ absolute: 'DCoop | ZAOstock Artist' });
+    expect(meta.title).toEqual({ absolute: 'DCoop at ZAOstock 2026, Ellsworth, Maine' });
   });
 });

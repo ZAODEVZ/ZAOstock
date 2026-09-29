@@ -26,7 +26,7 @@ export function artistSlug(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
 }
 
-const ADDRESS = {
+export const ADDRESS = {
   '@type': 'PostalAddress',
   streetAddress: 'Franklin Street',
   addressLocality: 'Ellsworth',

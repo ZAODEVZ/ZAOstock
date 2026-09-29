@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { FESTIVAL } from '@/content/festival';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -21,11 +22,11 @@ export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Press',
-  description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
+  description: `Press kit for ZAOstock 2026, a free music festival in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
   alternates: { canonical: '/press' },
   openGraph: {
     title: 'Press | ZAOstock',
-    description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
+    description: `Press kit for ZAOstock 2026, a free music festival in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
     url: 'https://zaostock.com/press',
     images: [OG_IMAGE],
   },
