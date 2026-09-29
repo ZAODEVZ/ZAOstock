@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { SITE, LINEUP_NAMES, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 // WHY THIS PAGE EXISTS
@@ -40,7 +40,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 export const metadata: Metadata = {
   title: `Free RSVP, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or chip in to help keep it free. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or chip in to support the artists. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
     title: 'Tickets | ZAOstock',
@@ -61,10 +61,10 @@ export default function TicketsPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.admission}</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Free. Help keep it that way.
+            Free. Support the artists.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            ZAOstock is free to attend - no ticket, no gate. It runs at break-even, so what keeps it free is people who chip in, at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
+            ZAOstock is free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists playing, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
           </p>
         </div>
       </Section>
