@@ -65,7 +65,7 @@ const config: NextConfig = {
               // before removing - none found. An allowlist entry with no
               // backing usage is exactly the kind of drift this
               // Report-Only header exists to catch before it goes live.
-              "frame-src 'self' https://docs.google.com https://js.stripe.com",
+              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
