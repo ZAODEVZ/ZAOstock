@@ -34,6 +34,47 @@ export const PRESS: readonly PressItem[] = [
 ];
 
 /**
+ * ON THE RADIO. Both files already ship in public/brand/audio and play on
+ * /brand; /media plays them too. Zaal, 2026-09-29: "include ... a link to
+ * the star 97.7 interview". The 30-second spot ran on Star 97.7 from 21 Sep
+ * to 2 Oct (vault projects/zaostock-star-977-radio-commercial-2026-09-17.md).
+ */
+export type RadioItem = { title: string; detail: string; src: string };
+
+export const RADIO: readonly RadioItem[] = [
+  {
+    title: 'Zaal on Star 97.7, 10 September 2026',
+    detail: 'The full interview about the festival. 7:39.',
+    src: '/brand/audio/zaostock-radio-interview-2026-09-10.mp3',
+  },
+  {
+    title: 'The ZAOstock radio spot',
+    detail: 'The 30-second ad that ran on Star 97.7 in the weeks before the festival.',
+    src: '/brand/audio/zaostock-commercial-30s.mp3',
+  },
+];
+
+/**
+ * EVERY ZAOSTOCK EDITION of The ZAO's daily newsletter, newest first. Each URL
+ * was fetched on 2026-09-29 (HTTP 200, og:title read). The poidh bounty
+ * editions (Days 264-266) are left out on purpose (Zaal: ignore poidh), and
+ * Days 269-270 are not listed because their URLs were not found; add them
+ * when they are, never by guessing a slug.
+ */
+export type Edition = { title: string; date: string; url: string };
+
+export const NEWSLETTER: readonly Edition[] = [
+  { title: 'Day 271: the story of ZAO Festivals, told out loud', date: '2026-09-28', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-271' },
+  { title: 'Day 268: the Maine artists on the ZAOstock bill', date: '2026-09-25', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-268-the-maine-artists-on-the-zaostock-bill' },
+  { title: 'Day 267: 9 days out, everything you need to know', date: '2026-09-24', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-267-9-days-out-everything-you-need-to-know' },
+  { title: 'Day 263: 13 days until ZAOstock', date: '2026-09-21', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-263-13-days-until-zaostock' },
+  { title: 'Day 260: Tom Fellenz is playing ZAOstock', date: '2026-09-18', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-260' },
+  { title: 'Day 259: LyonsDen is playing ZAOstock', date: '2026-09-17', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-259-1' },
+  { title: 'Day 258: DCoop is playing ZAOstock', date: '2026-09-15', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-258' },
+  { title: 'Day 246: thirty days out', date: '2026-09-04', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-246' },
+];
+
+/**
  * Acts that have confirmed they have NO social media. An empty socials field
  * in the database cannot tell "none" from "not asked yet", so every audit
  * would re-flag them; this list is the record that the answer is "none".
