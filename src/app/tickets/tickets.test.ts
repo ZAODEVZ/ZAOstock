@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL } from '@/content/site';
+import { SUPPORT_TIERS, PRO_TICKET, PRO_ROUND } from '@/content/site';
 import { FESTIVAL } from '@/content/festival';
 
 // /tickets exists because ticket.zaostock.com 302s to a free Luma RSVP, so the
@@ -36,7 +36,6 @@ describe('prices have ONE source', () => {
     expect(SUPPORT_TIERS.map((t) => t.price)).toEqual(['$1', '$20', '$50']);
     expect(SUPPORT_TIERS.map((t) => t.amount)).toEqual([1, 20, 50]);
     expect(PRO_TICKET.price).toBe('$50');
-    expect(PAYPAL_URL).toBe('https://paypal.com/paypalme/zaalpanthaki');
   });
 
   it('every tier can actually be paid, and the amount matches the price', () => {

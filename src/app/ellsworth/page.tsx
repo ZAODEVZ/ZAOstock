@@ -76,10 +76,9 @@ const DO: { name: string; note: string }[] = [
 
 const GOOD_TO_KNOW: { label: string; detail: string }[] = [
   { label: 'Weather', detail: 'Early October runs roughly 58-62°F by day, ~44°F at night - crisp and breezy, with the season just turning toward fall color. Pack layers and a jacket; ZAOstock is outdoors.' },
-  { label: 'Daylight', detail: 'About 11 hours of daylight, sunrise ~6:48 AM, sunset ~5:49 PM. The festival runs noon-6 PM, finishing near golden hour.' },
+  { label: 'Daylight', detail: 'Sunrise ~6:33 AM, sunset ~6:12 PM. The festival runs noon-6 PM, so the last sets play into low western sun - sunglasses help.' },
   { label: 'Rain', detail: 'Roughly a 1-in-3 chance of rain on any given fall day - a packable rain layer is smart.' },
   { label: 'Island Explorer shuttle', detail: "Free shuttle bus connecting Ellsworth-area hotels, Bar Harbor, and Acadia - running through October 12, 2026. Good way to skip the park's parking crunch." },
-  { label: 'Restrooms', detail: 'On-site portable restrooms (including ADA-accessible units) near the stage/food area, plus walkable downtown restroom access nearby.' },
 ];
 
 export default function EllsworthPage() {
