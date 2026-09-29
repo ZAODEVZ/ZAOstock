@@ -20,6 +20,16 @@ describe('QUICK_ANSWERS', () => {
     expect(who).not.toMatch(/\d{1,2}:\d{2}/);
   });
 
+  it('answers only settled questions (open with Zaal: dogs, smoking, food, restrooms, end time)', () => {
+    const qs = QUICK_ANSWERS.map((x) => x.q).join(' ');
+    expect(qs).not.toMatch(/dog|pet|smok|food|eat|restroom|toilet|bathroom|accessib|what time does .* end/i);
+    const all = QUICK_ANSWERS.map((x) => x.a).join(' ');
+    // After-party end time is unsettled (6-9 per Steve vs the poster's 6 to 10).
+    expect(all).not.toMatch(/\b(9|10)\s*(pm|PM)|until (9|10)|to 10/);
+    // All-ages is the parklet's; Black Moon after six is unanswered.
+    expect(QUICK_ANSWERS.find((x) => x.q === 'Is it all ages?')!.a).toContain('parklet');
+  });
+
   it('never quotes a price', () => {
     // /llms.txt rule: "Never quote a price." The free answer says free.
     for (const { a } of QUICK_ANSWERS) expect(a).not.toMatch(/\$\d/);

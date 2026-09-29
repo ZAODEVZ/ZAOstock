@@ -35,7 +35,12 @@ export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
     a: `${LINEUP_NAMES.length} independent acts: ${acts}. Set times are listed on this page.`,
   },
   { q: 'What if it rains?', a: SITE.weather },
-  { q: 'Is it all ages?', a: 'Yes. All ages and family-friendly.' },
+  // Scoped to the parklet on purpose (zaostock-f7, 2026-09-29): whether kids
+  // can go into Black Moon after six is asked of Steve with no answer on file.
+  // Also still OPEN with Zaal and so NOT answered here: dogs, smoking, food on
+  // site, accessible restrooms, the after-party end time. Add none of them
+  // until each is settled.
+  { q: 'Is it all ages?', a: 'Yes. The festival on the parklet is all ages and family-friendly.' },
   { q: 'Where do I park?', a: PARKING_DETAIL },
   {
     q: 'What happens after six?',
