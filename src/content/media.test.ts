@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS } from './media';
+import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS } from './media';
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 
@@ -27,6 +27,11 @@ describe('/media content', () => {
     expect(page).toContain('https://www.youtube-nocookie.com/embed/');
     expect(page).not.toMatch(/https:\/\/www\.youtube\.com\/embed/);
     expect(read('next.config.ts')).toContain('https://www.youtube-nocookie.com');
+  });
+
+  it('records a confirmed "no socials" act by its bill name', () => {
+    for (const name of NO_SOCIALS) expect(MEDIA_ACTS).toContain(name);
+    expect(read('src/app/media/page.tsx')).toContain('NO_SOCIALS.includes(name)');
   });
 
   it('is in the sitemap and the footer', () => {

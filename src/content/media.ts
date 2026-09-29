@@ -33,6 +33,14 @@ export const PRESS: readonly PressItem[] = [
   },
 ];
 
+/**
+ * Acts that have confirmed they have NO social media. An empty socials field
+ * in the database cannot tell "none" from "not asked yet", so every audit
+ * would re-flag them; this list is the record that the answer is "none".
+ * Michael Anderson: Zaal, 2026-09-29, "Micheal Anderson doesn't have social media".
+ */
+export const NO_SOCIALS: readonly string[] = ['Michael Anderson'];
+
 export type Embed = { kind: 'youtube'; id: string; title: string };
 
 export const ARTIST_EMBEDS: Readonly<Record<string, readonly Embed[]>> = {};
