@@ -12,9 +12,11 @@ import { LINEUP_NAMES, displayName } from './site';
 // - performer: LINEUP_NAMES, the same identity list the sitemap and artist
 //   pages use, so a lineup change cannot leave Google on the old bill. Each
 //   links its /artist/<slug> page. event-jsonld.test.ts holds the two together.
-// - streetAddress: "3 Franklin St, Ellsworth, ME 04605", the address on
-//   Zaal's own Facebook event for ZAOstock (events/28051455107809318, read
-//   2026-09-28). It pins the map to the right block of Franklin Street.
+// - streetAddress: "Franklin Street", no house number. The Facebook event
+//   says "3 Franklin St", but a parklet has no street number: that address
+//   geocodes to an office building about 140 m from where Luma pins the event
+//   (Dotfiles review of #382, 2026-09-29), and Google may pin whatever we
+//   publish. The site itself only ever says "Franklin Street Parklet".
 
 const SITE_URL = 'https://zaostock.com';
 
@@ -26,7 +28,7 @@ export function artistSlug(name: string): string {
 
 const ADDRESS = {
   '@type': 'PostalAddress',
-  streetAddress: '3 Franklin St',
+  streetAddress: 'Franklin Street',
   addressLocality: 'Ellsworth',
   addressRegion: 'ME',
   postalCode: '04605',

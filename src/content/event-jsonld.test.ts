@@ -14,6 +14,9 @@ describe('MusicEvent structured data', () => {
     expect(eventJsonLd.image.length).toBeGreaterThan(0);
     expect(eventJsonLd.performer.length).toBe(LINEUP_NAMES.length);
     expect(eventJsonLd.location.address.streetAddress).toBeTruthy();
+    // No house number: the parklet has none, and "3 Franklin St" geocodes to
+    // an office building ~140 m away (#382 review).
+    expect(eventJsonLd.location.address.streetAddress).not.toMatch(/^\d/);
   });
 
   it('points the image at a file that ships in public/', () => {
