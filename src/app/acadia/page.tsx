@@ -37,7 +37,7 @@ const MUST_SEE: { name: string; note: string }[] = [
 const GETTING_IN: { label: string; detail: string }[] = [
   { label: 'Distance', detail: "About 25 miles / 30-40 minutes from Ellsworth via Route 3, on the Mount Desert Island / Bar Harbor side." },
   { label: 'Cadillac Mountain reservation', detail: 'Required May 20-Oct 25, 2026 to drive to the summit ($6/vehicle, booked on Recreation.gov). 30% of slots release 90 days ahead, the rest 2 days ahead - the window for an Oct 3 visit opened around July 5. No reservation needed if you hike or bike to the summit instead.' },
-  { label: 'Island Explorer shuttle', detail: 'Free shuttle bus running through October 12, 2026 - connects Ellsworth-area hotels, Bar Harbor, and the main park destinations. A good way to skip the parking crunch.' },
+  { label: 'Island Explorer shuttle', detail: 'Free shuttle bus around Bar Harbor and the main park destinations, running through October 12, 2026. A good way to skip the parking crunch.' },
   { label: 'What\'s open Oct 3', detail: 'Park Loop Road (through Dec 1), Schoodic Loop Road (year-round), and Hulls Cove Visitor Center (through Oct 31) are all open. Seawall/Schoodic Woods campgrounds close Oct 12, Blackwoods closes Oct 19 - only relevant if staying past the festival.' },
 ];
 
