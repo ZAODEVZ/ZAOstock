@@ -4,6 +4,7 @@ import { FESTIVAL } from '@/content/festival';
 import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
+import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip, Button } from '@/components/poster';
 
 export const metadata: Metadata = {
@@ -179,7 +180,7 @@ export default async function LivePage() {
                     <span className="font-mono text-eyebrow text-ink-muted w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                     <div className="min-w-0">
                       <a href={`/artist/${slug}`} className="font-sans font-extrabold text-ink-950 hover:text-red-700 truncate block">
-                        {act.name}
+                        {displayName(act.name)}
                       </a>
                       {/* Zaal, 2026-09-26: point every act at its own ZAOstock
                           page rather than scattering external social links here -
