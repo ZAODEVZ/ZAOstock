@@ -15,10 +15,11 @@ const LIVE = 'src/app/live/page.tsx';
 const LIVE_CONTENT = 'src/content/live.ts';
 
 describe('the fallback channel', () => {
-  it('is the Telegram chat, read from the one socials source', () => {
-    const href = fallbackChannelHref();
-    expect(href).toBe('https://telegram.thezao.com');
-    expect(SOCIALS.some((s) => s.href === href)).toBe(true);
+  // Zaal, 2026-09-29: the Telegram link comes off the website. With no
+  // Telegram row in SOCIALS the fallback is null and /live shows no card.
+  it('is off the site since Telegram left the socials list', () => {
+    expect(fallbackChannelHref()).toBeNull();
+    expect(SOCIALS.some((s) => /telegram/i.test(s.href))).toBe(false);
   });
 
   it('is rendered on the page, next to the player and not buried', () => {
