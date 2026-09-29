@@ -37,7 +37,10 @@ export function artistJsonLd(artist: ArtistForJsonLd) {
     name: shown,
     url: `${SITE_URL}/artist/${artist.slug}`,
     ...(artist.bio.trim() ? { description: artist.bio.trim() } : {}),
-    ...(artist.photo_url ? { image: artist.photo_url } : {}),
+    // Some acts store photo_url as a site path (/artists/lyons-den.webp);
+    // JSON-LD needs an absolute URL. new URL() leaves absolute ones alone.
+    // Caught in Dotfiles' review of #390.
+    ...(artist.photo_url ? { image: new URL(artist.photo_url, SITE_URL).toString() } : {}),
     ...(sameAs.length ? { sameAs } : {}),
     event: {
       '@type': 'MusicEvent',

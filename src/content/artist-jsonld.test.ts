@@ -21,6 +21,11 @@ describe('artistJsonLd', () => {
     expect(ld.url).toBe('https://zaostock.com/artist/lyonsden');
   });
 
+  it('makes a relative photo path absolute and leaves an absolute one alone', () => {
+    expect(artistJsonLd({ ...BASE, photo_url: '/artists/lyons-den.webp' }).image).toBe('https://zaostock.com/artists/lyons-den.webp');
+    expect(artistJsonLd(BASE).image).toBe('https://example.com/p.webp');
+  });
+
   it('lists only real URLs as sameAs, never a bare handle', () => {
     const ld = artistJsonLd({ ...BASE, socials: '@openx https://instagram.com/openx bandcamp.com/openx' });
     expect(ld.sameAs).toEqual(['https://instagram.com/openx', 'https://bandcamp.com/openx']);
