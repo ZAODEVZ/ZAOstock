@@ -108,7 +108,7 @@ What it costs us, and I want to be straight about both:
 
 ## 2. The schedule
 
-### CURRENT, 2026-09-27 - one stage, eight acts, no WaveWarZ block
+### CURRENT, 2026-09-27, retimed 2026-09-29 to match program.ts after #365 - one stage, eight acts, no WaveWarZ block
 
 Source: `src/content/program.ts` (the one public source of set times, tested by
 `src/content/artist-ops.test.ts` and the ops room) and `~/zao-vault/TODAY.md`
@@ -121,20 +121,20 @@ plan; the evening is Black Moon's own after-party.
 | 12:00 | Doors. Music starts at noon | Five-minute welcome on the mic |
 | 12:05 | The Crown Vics | Rock n roll dance band |
 | 12:38 | Changeover | MC: the six o'clock move, Art of Ellsworth, a partner spot |
-| 12:45 | OPEN X | Power pop rock |
-| 13:25 | Changeover | - |
-| 13:30 | Grass Rug | Indie jam rock |
-| 14:03 | Changeover | - |
-| 14:10 | Acadia Rising | World Rhythms and Global Fusion |
-| 14:43 | Changeover | MC and a partner spot |
-| 14:50 | Michael Anderson | Solo piano |
-| 15:23 | Changeover | MC and our partners |
-| 15:30 | DCoop | Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B |
-| 16:10 | Changeover | - |
-| 16:15 | LyonsDen | Native, Electro, Reggae and Hip-hop |
-| 16:55 | Changeover | - |
-| 17:00 | Tom Fellenz | Solo instrumental acoustic guitar. Closes the outdoor festival |
-| 17:40 | Music ends. Street clears at six | Black Moon next door hosts their own evening from six |
+| 12:50 | OPEN X | Power pop rock |
+| 13:23 | Changeover | - |
+| 13:35 | Grass Rug | Indie jam rock |
+| 14:08 | Changeover | - |
+| 14:20 | Acadia Rising | World Rhythms and Global Fusion |
+| 14:53 | Changeover | MC and a partner spot |
+| 15:00 | Michael Anderson | Solo piano |
+| 15:33 | Changeover | MC and our partners |
+| 15:40 | DCoop | Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B |
+| 16:20 | Changeover | - |
+| 16:25 | LyonsDen Rez Muzik | Native, Electro, Reggae and Hip-hop |
+| 17:05 | Changeover | - |
+| 17:10 | Tom Fellenz | Solo instrumental acoustic guitar. Closes the outdoor festival |
+| 17:50 | Music ends. Street clears at six | Black Moon next door hosts their own evening from six |
 | 18:00-21:00 | After-party at Black Moon Public House, with North Creek | Hosted and underwritten by Black Moon, on their own premises and licence (poster: 6 to 10 PM). Not Stilo, not a set of Steve's - his own email of 26 Sept names the act and that he underwrites it, he does not perform it |
 
 None of these acts has countersigned; "confirmed" here means "on the public
@@ -153,7 +153,7 @@ Zaal's order, five of them. Changeovers are **mixed, 5 and 10** (Zaal): the 5s
 are a swap and nothing else, the 10s carry the event talk and a sponsor spot.
 Which gap is which is **proposed** here and marked so.
 
-### Outdoors - Franklin Street Parklet
+#### (SUPERSEDED) Outdoors - Franklin Street Parklet
 
 | Time | What | Notes |
 |------|------|-------|
@@ -195,7 +195,7 @@ JANGO, Jadyn, Hurricane, none asked, two of them already inside WaveWarZ. One
 of them fits. Until he places one, the MC and sponsor spots hold the stretch,
 and the public page prints "sets from 12:05" with no count.
 
-### Indoors - Black Moon Public House
+#### (SUPERSEDED) Indoors - Black Moon Public House
 
 | Time | What | Notes |
 |------|------|-------|
@@ -203,7 +203,7 @@ and the public page prints "sets from 12:05" with no count.
 | 20:00 - 22:00 | Steve's own set | **BOOKED** - Zaal, 22:3x: "just the set I said going from 8-10" |
 | 22:00 - close | Close per Black Moon licence | Time **UNSET** - section 8.10 |
 
-### Every act, by status
+#### (SUPERSEDED) Every act, by status
 
 Three tags and nothing else. **Confirmed** means a yes we can point at.
 **WaveWarZ** means the act plays inside the 16:00 battle block, on our roster,
@@ -473,6 +473,8 @@ crew is on site at 08:00 and everyone by 10:00.
 
 ### 8.4 Light in the 16:00-18:00 block
 
+> SUPERSEDED IN PART, 2026-09-29: written for the August grid (a 16:00-18:00 WaveWarZ block, Stilo's DJ set at Black Moon). There is no battle block, and the evening is Black Moon's own after-party with North Creek. Read for the mechanism, not the names or times.
+
 WaveWarZ is the most photographed and the most streamed two hours of the day,
 and it runs into the last of the daylight. In Ellsworth on 3 October the sun is
 down shortly after 18:00 and civil dusk follows within the half hour - that is
@@ -487,6 +489,8 @@ result and the walk at 17:55 are in dusk.
 | Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked. The fire performance's time and place are Dcoop's to say | Unverified |
 
 ### 8.5 The 18:00 move - the mechanism, minute by minute
+
+> SUPERSEDED IN PART, 2026-09-29: written for the August grid (a 16:00-18:00 WaveWarZ block, Stilo's DJ set at Black Moon). There is no battle block, and the evening is Black Moon's own after-party with North Creek. Read for the mechanism, not the names or times.
 
 The review's words: the entire audience has to physically relocate, and if it is
 quiet they scatter. Fifteen minutes was written down; nothing else was. This is
