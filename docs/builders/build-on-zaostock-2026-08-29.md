@@ -75,7 +75,7 @@ Build: a ZAOstock-skinned battle view in two sizes: a big-screen mode (bracket, 
 
 What exists:
 
-- poidhz, The ZAO's POIDH bounty operation: https://github.com/bettercallzaal/zpoidh (public; rounds, judging pages, leaderboard, a fork-ready `org.config.json`). Iman runs the rounds.
+- poidhz, The ZAO's POIDH bounty operation: https://github.com/bettercallzaal/poidhz (public; rounds, judging pages, leaderboard, a fork-ready `org.config.json`). Iman runs the rounds.
 - The last round ran on WaveWarZ Twitch clips, https://poidh.xyz/base/bounty/1330, and closed on Sunday 30 August, winner by POIDH consensus vote. Nothing is open right now.
 - The ZAO's payout path for contributors is x402 over POIDH (same 7 August decision as track 2).
 - Volunteer roles for 3 October: setup, check-in, stage crew, content, teardown (https://zaostock.com/apply).

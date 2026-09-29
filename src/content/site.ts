@@ -202,6 +202,10 @@ export const DAY = [
  * estate's socials map and the thezao.com footer, not by an independent
  * fetch from here.
  *
+ * REMOVED 2026-09-29: Telegram (Zaal: "Let's remove the telegram link please
+ * from the website"). /live's stream-drop fallback card reads this list and
+ * renders nothing without it, by design (live.ts fallbackChannelHref).
+ *
  * NOT LISTED, on purpose: TikTok (the handle on the socials map is flagged
  * stale/unverified) and Bluesky, Reddit, Threads, Lens (no ZAO account found
  * on any of them). Do not add one back without verifying it live first.
@@ -213,7 +217,6 @@ export const SOCIALS = [
   { platform: 'Facebook', href: 'https://facebook.com/zaofestivals', label: 'ZAO Festivals on Facebook' },
   { platform: 'Facebook Event', href: 'https://facebook.com/events/28051455107809318', label: 'ZAOstock event on Facebook' },
   { platform: 'Discord', href: 'https://discord.com/invite/ACJyYQH3BE', label: 'ZAO on Discord' },
-  { platform: 'Telegram', href: 'https://telegram.thezao.com', label: 'ZAO on Telegram' },
 ] as const;
 
 /**

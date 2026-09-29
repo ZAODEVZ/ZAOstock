@@ -146,8 +146,9 @@ describe('SITE facts', () => {
 // same live check: no invented ZAOstock-branded handle exists, TikTok is
 // flagged stale on the socials map, and no ZAO account was found on
 // Bluesky, Reddit, Threads or Lens.
-describe('SOCIALS - only the seven verified estate channels', () => {
-  it('lists exactly these seven platforms, no more, no fewer', () => {
+describe('SOCIALS - only the six verified estate channels', () => {
+  // Telegram removed 2026-09-29 on Zaal's word; it is no longer public.
+  it('lists exactly these six platforms, no more, no fewer', () => {
     expect(SOCIALS.map((s) => s.platform)).toEqual([
       'X',
       'Instagram',
@@ -155,7 +156,6 @@ describe('SOCIALS - only the seven verified estate channels', () => {
       'Facebook',
       'Facebook Event',
       'Discord',
-      'Telegram',
     ]);
   });
 
@@ -167,7 +167,7 @@ describe('SOCIALS - only the seven verified estate channels', () => {
     expect(byPlatform.Facebook).toBe('https://facebook.com/zaofestivals');
     expect(byPlatform['Facebook Event']).toBe('https://facebook.com/events/28051455107809318');
     expect(byPlatform.Discord).toBe('https://discord.com/invite/ACJyYQH3BE');
-    expect(byPlatform.Telegram).toBe('https://telegram.thezao.com');
+    expect(byPlatform.Telegram).toBeUndefined();
   });
 
   // THE RED CONTROL. A platform with no ZAO account at all must never appear,
