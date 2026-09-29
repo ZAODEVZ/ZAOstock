@@ -7,6 +7,7 @@ import { SITE, SOCIALS, zaoEllsworthFacebookUrl } from '@/content/site';
 const LINKS = [
   { href: '/program', label: 'Program' },
   { href: '/press', label: 'Press' },
+  { href: '/media', label: 'Media' },
   { href: '/partners', label: 'Partners' },
   { href: '/build', label: 'Build' },
   { href: '/privacy', label: 'Privacy' },
