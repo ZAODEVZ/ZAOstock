@@ -383,48 +383,39 @@ export interface SupportTier {
   gets: readonly string[];
 }
 
+// Renamed 2026-09-29 (Zaal picked option B of ZAOOS research doc 2578, "Keep
+// it free"): Fan / Supporter / Pro Ticket became Chip in / Friend / Backer.
+// Money keeps a free day free; it is not a way in, so no tier promises a 1:1,
+// a spot count or a credit on a page that does not exist. ids are unchanged
+// because STRIPE_LINKS is keyed on them. The Stripe caps (50 on the $20 link,
+// 20 on the $50) still live in Stripe; they are just no longer advertised.
 export const SUPPORT_TIERS: readonly SupportTier[] = [
   {
     id: 'fan',
-    name: 'Fan',
+    name: 'Chip in',
     price: '$1',
     amount: 1,
     spots: null,
-    blurb: 'The smallest way in. Every dollar counts toward the round.',
-    gets: [
-      'Supports the festival: artist fees, materials, production costs.',
-      'Credited as a supporter on the festival page.',
-    ],
+    blurb: 'Every dollar goes to the day.',
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
   {
     id: 'supporter',
-    name: 'Supporter',
+    name: 'Friend',
     price: '$20',
     amount: 20,
-    // Capped at 50 on 2026-09-20 by Zaal's decision. The cap is enforced by
-    // Stripe's restrictions[completed_sessions][limit] on
-    // plink_1UHsQYKEKqFBqu9oZADCzFQ9, NOT by this file - this string is
-    // display copy only. Editing this number does not change what Stripe
-    // sells; editing the Stripe restriction does.
-    spots: '50 spots',
-    blurb: 'The straightforward one. It pays for the day and puts your name on it.',
-    gets: [
-      'Supports the festival: artist fees, materials, production costs.',
-      'Credited as a supporter on the festival page.',
-    ],
+    spots: null,
+    blurb: 'Pays for the day.',
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
   {
     id: 'pro',
-    name: 'Pro Ticket',
+    name: 'Backer',
     price: '$50',
     amount: 50,
-    spots: '20 spots',
-    blurb: 'The same, plus time with the people building it.',
-    gets: [
-      'Supports the festival: artist fees, materials, production costs.',
-      'Credited as a supporter on the festival page.',
-      'A 1:1 with someone on the ZAO team before the event.',
-    ],
+    spots: null,
+    blurb: 'The same, and it carries the most weight.',
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
 ] as const;
 
@@ -435,35 +426,6 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
  * the wrong tier the moment the ladder reordered again.
  */
 export const PRO_TICKET = SUPPORT_TIERS.find((t) => t.id === 'pro')!;
-
-/**
- * Round one of crowdfunding. The $1,000 target predates the $20 tier, and
- * 20 x $50 = $1,000 exactly, so the goal was originally DEFINED as "sell the
- * Pro Ticket round" rather than "raise a thousand dollars".
- *
- * WHAT COUNTS, decided 2026-09-01: every support dollar, at any tier. Two
- * reasons. It funds a free festival, so a dollar is a dollar and the page says
- * in words that no tier buys access. And the alternative produces a figure
- * that lies - twenty $20 supporters would raise $400 while a $50-only tracker
- * still read zero.
- *
- * That also means the old "20 people, $1,000" phrasing is now WRONG, because it
- * silently asserts $50 each. `goal` states its own rule instead. A target whose
- * rule is invisible is the shape that produced the stale lineup date and the
- * 10% Unlock error: a number everyone reads and nobody can check.
- *
- * `count` and `countWord` are the Pro Ticket's 20-spot CAP, held since the
- * 2026-05-12 standup. They are not the goal's headcount - there isn't one any
- * more, because the number of supporters depends on the mix.
- */
-export const PRO_ROUND = {
-  count: 20,
-  countWord: 'twenty',
-  roundTotal: '$1,000',
-  goal: 'Round 1 goal: $1,000, counting every supporter at any tier',
-  /** Rendered next to any progress figure, so the rule travels with the number. */
-  countsRule: 'Every supporter counts, at any tier.',
-} as const;
 
 /**
  * CARD AND ONCHAIN CHECKOUT, wired 2026-09-17.

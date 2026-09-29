@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
-import { SITE, LINEUP_NAMES, displayName } from '@/content/site';
+import { SITE, LINEUP_NAMES, SUPPORT_TIERS, displayName } from '@/content/site';
 import { artistSlug } from '@/content/event-jsonld';
 import { FESTIVAL } from '@/content/festival';
+
+const TIER_PRICES = `${SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or ${SUPPORT_TIERS[SUPPORT_TIERS.length - 1].price}`;
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -43,7 +45,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 - Where: ${FESTIVAL.venue}, Franklin Street, downtown Ellsworth, Maine 04605.
 - ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with five- to twelve-minute changeovers, with our MC and our partners between sets. Music starts at noon.
 - 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM). It is not a second ZAOstock stage.
-- Free to attend. Rain or shine - we do not cancel for weather; the parklet is open to the sky. Optional Pro Ticket, $50, on /tickets.
+- Free to attend. Rain or shine - we do not cancel for weather; the parklet is open to the sky. Optional support at ${TIER_PRICES} on /tickets, to help keep it free.
 
 ## Lineup
 
@@ -69,7 +71,7 @@ Every car heading to Acadia National Park passes through. Downtown is newly on t
 
 - https://zaostock.com - overview, the day, lineup status, partners, the series
 - https://zaostock.com/program - the day in blocks and times
-- https://zaostock.com/tickets - free RSVP and the optional Pro Ticket
+- https://zaostock.com/tickets - free RSVP and optional support at ${TIER_PRICES}
 - https://zaostock.com/live - watch the stream, and who is on in order
 - https://zaostock.com/media - press coverage and each act's socials
 - https://zaostock.com/partners - every partner, with logos
