@@ -56,11 +56,11 @@ export default function ApplyPage() {
       <Section>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-16 items-start">
           <div className="flex flex-col gap-6">
-            <SectionHeader eyebrow="What you get" title="On-site gear and a meal." />
+            <SectionHeader eyebrow="How it works" title="Pick a job, say yes." />
             <BorderedList
               rows={[
                 { term: 'Entry', detail: 'Free, like everyone' },
-                { term: 'Gear', detail: 'A ZAOstock crew shirt and a meal on the day' },
+                { term: 'Jobs', detail: 'See what is open on the sign-up sheet at /volunteer' },
                 { term: 'After', detail: 'First look at next year and a standing invite to ZAO events' },
                 { term: 'Commitment', detail: 'None until you say yes to a specific shift' },
               ]}
@@ -68,11 +68,11 @@ export default function ApplyPage() {
             <Card>
               <Eyebrow className="mb-2">Not sure yet?</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
-                Apply anyway. We reach out within a few days, answer questions, and you can opt out any time before {FESTIVAL.shortDate}.
+                Apply anyway, or pick a job on the sign-up sheet. You can opt out any time before {FESTIVAL.shortDate}.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Button href="/program" variant="secondary" size="sm">
-                  See the program
+                <Button href="/volunteer" variant="secondary" size="sm">
+                  See open jobs
                 </Button>
                 <Button href={`mailto:${SITE.contact}?subject=${encodeURIComponent('ZAOstock - volunteer question')}`} external variant="ghost" size="sm">
                   Ask a question
