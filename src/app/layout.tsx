@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Boogaloo, Oswald, Rubik, Space_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { FESTIVAL } from '@/content/festival';
 import { eventJsonLd } from '@/content/event-jsonld';
@@ -8,9 +8,12 @@ import './globals.css';
 // Three families per DESIGN.md: Boogaloo for display, Rubik for body and UI,
 // Space Mono for eyebrows, labels and figures. Exposed as CSS variables that
 // globals.css maps into Tailwind's font-display / font-sans / font-mono.
-const boogaloo = Boogaloo({
-  subsets: ['latin'],
-  weight: ['400'],
+// Self-hosted since 2026-09-30 (src/app/fonts/README.md): next/font/google
+// fetched these on every build and the fetch failed three times that day.
+// Same families, weights and CSS variables as before.
+const boogaloo = localFont({
+  src: './fonts/Boogaloo-400.woff2',
+  weight: '400',
   variable: '--font-boogaloo',
   display: 'swap',
 });
@@ -18,23 +21,25 @@ const boogaloo = Boogaloo({
 // Oswald: the condensed heading face for the homepage in Candy's look
 // (2026-09-10). Her build asked for Arial Narrow, a system font most visitors
 // do not have, so the look changed machine to machine; this pins it.
-const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  display: 'swap',
+const oswald = localFont({
+  src: './fonts/Oswald-variable.woff2',
+  weight: '600 700',
   variable: '--font-oswald',
+  display: 'swap',
 });
 
-const rubik = Rubik({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+const rubik = localFont({
+  src: './fonts/Rubik-variable.woff2',
+  weight: '400 800',
   variable: '--font-rubik',
   display: 'swap',
 });
 
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
+const spaceMono = localFont({
+  src: [
+    { path: './fonts/SpaceMono-400.woff2', weight: '400' },
+    { path: './fonts/SpaceMono-700.woff2', weight: '700' },
+  ],
   variable: '--font-space-mono',
   display: 'swap',
 });
