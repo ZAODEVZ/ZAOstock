@@ -61,20 +61,47 @@ const APP_DIR = path.join(ROOT, 'src/app');
 const FESTIVAL_TS = path.join(ROOT, 'src/content/festival.ts');
 const SITE_TS = path.join(ROOT, 'src/content/site.ts');
 
-function extractField(source, key) {
-  const m = source.match(new RegExp(`\\b${key}:\\s*'([^']+)'`));
-  return m ? m[1] : null;
+// EVERY fact this check exists to protect is a top-level key of the FESTIVAL
+// literal object, and each is a required field of the `Festival` type above
+// it. A fact that extracts to nothing is not a fact to skip quietly: it is
+// this check having lost its own input, and the only correct response is to
+// fail loudly rather than report a PASS that enforces nothing.
+const REQUIRED_FACTS = [
+  { name: 'FESTIVAL.venue', key: 'venue', suggest: 'FESTIVAL.venue' },
+  { name: 'FESTIVAL.shortVenue', key: 'shortVenue', suggest: 'FESTIVAL.shortVenue' },
+  { name: 'FESTIVAL.dateLabel', key: 'dateLabel', suggest: 'FESTIVAL.dateLabel' },
+  { name: 'FESTIVAL.shortDate', key: 'shortDate', suggest: 'FESTIVAL.shortDate' },
+  { name: 'FESTIVAL.window', key: 'window', suggest: 'FESTIVAL.window' },
+];
+
+// A single-quoted value is what this regex was written against, and it stopped
+// matching the moment any of these keys was reformatted to double quotes -
+// which is what `eslint --fix` does to a file it touches. The check then
+// reported "clean" while enforcing nothing, and nothing in the output said so
+// beyond a fact count nobody reads. Match both quote styles, and count the
+// LINEUP_NAMES entries the same way, so coverage cannot depend on a
+// formatting choice.
+// Exported so check-fact-dedup.test.ts can pin its quote-style behaviour
+// directly. Same guarded-import pattern as stripComments below: the export
+// costs the running script nothing and the regression suite gains the one
+// thing that made this check unable to fail.
+export function extractField(source, key) {
+  for (const m of source.matchAll(new RegExp(`\\b${key}:\\s*(?:'([^']*)'|"([^"]*)")`, 'g'))) {
+    // Group 1 is a single-quoted body, group 2 a double-quoted one.
+    if (m[1] !== undefined) return m[1];
+    if (m[2] !== undefined) return m[2];
+  }
+  return null;
 }
 
 function loadFacts() {
   const festivalSrc = readFileSync(FESTIVAL_TS, 'utf8');
-  const facts = [
-    { name: 'FESTIVAL.venue', value: extractField(festivalSrc, 'venue'), suggest: 'FESTIVAL.venue' },
-    { name: 'FESTIVAL.shortVenue', value: extractField(festivalSrc, 'shortVenue'), suggest: 'FESTIVAL.shortVenue' },
-    { name: 'FESTIVAL.dateLabel', value: extractField(festivalSrc, 'dateLabel'), suggest: 'FESTIVAL.dateLabel' },
-    { name: 'FESTIVAL.shortDate', value: extractField(festivalSrc, 'shortDate'), suggest: 'FESTIVAL.shortDate' },
-    { name: 'FESTIVAL.window', value: extractField(festivalSrc, 'window'), suggest: 'FESTIVAL.window' },
-  ].filter((f) => f.value);
+  const missing = [];
+  const facts = REQUIRED_FACTS.map(({ name, key, suggest }) => {
+    const value = extractField(festivalSrc, key);
+    if (value === null) missing.push(name);
+    return { name, value, suggest };
+  }).filter((f) => f.value);
 
   // Act count: LINEUP_NAMES is a readonly string[] literal in site.ts - count
   // its entries by counting quoted strings inside the array literal, not by
@@ -82,13 +109,27 @@ function loadFacts() {
   const siteSrc = readFileSync(SITE_TS, 'utf8');
   const lineupMatch = siteSrc.match(/export const LINEUP_NAMES:[^=]*=\s*\[([\s\S]*?)\];/);
   if (lineupMatch) {
-    const count = (lineupMatch[1].match(/'[^']*'/g) || []).length;
+    const count = (lineupMatch[1].match(RE_QUOTED_ENTRY) || []).length;
     if (count > 0) facts.push({ name: 'act count', value: count, suggest: 'LINEUP_NAMES.length', isActCount: true });
+  } else {
+    missing.push('LINEUP_NAMES (act count)');
   }
-  return facts;
+
+  // Fail closed. A partial fact list makes every later "clean" message a lie
+  // about coverage: the check would be auditing 1 fact and printing the same
+  // PASS as a run that audited 6, with no line in the output to tell them
+  // apart. Refusing to certify is the only honest option.
+  if (missing.length > 0) {
+    return { facts, missing };
+  }
+  return { facts, missing: null };
 }
 
 const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+
+// Counts the entries of a string[] literal regardless of which quote style
+// each one is written in, for the same reason extractField() accepts both.
+const RE_QUOTED_ENTRY = /'[^']*'|"[^"]*"/g;
 
 function actCountPattern(count) {
   const word = NUMBER_WORDS[count];
@@ -171,7 +212,7 @@ function lineNumberOf(text, index) {
 }
 
 function main() {
-  const facts = loadFacts();
+  const { facts, missing } = loadFacts();
   const files = walkTsxFiles(APP_DIR);
   const hits = [];
 
@@ -195,6 +236,25 @@ function main() {
         hits.push({ rel, line: lineNumberOf(stripped, idx), literal: fact.value, fact });
       }
     }
+  }
+
+  // Coverage is a precondition, not a footnote. Report the lost facts first,
+  // whatever the scan found, because a hit list from a partial fact list is
+  // not the whole truth and a reader needs both halves of it.
+  if (missing) {
+    console.error(`check:facts - could not read ${missing.length} of ${REQUIRED_FACTS.length + 1} known facts from festival.ts/site.ts:`);
+    for (const name of missing) console.error(`  ${name}`);
+    console.error('\nThis check has lost its own input, so it cannot certify anything.');
+    console.error('Its extraction is a regex over the source text of festival.ts/site.ts, so any');
+    console.error('change to how those literals are written - a quote style, a reformat, a rename -');
+    console.error('silently reduces what it enforces. Fix the literals, or teach the extraction to');
+    console.error('read the new shape. Do not delete a fact from REQUIRED_FACTS to make this pass.');
+    if (hits.length === 0) {
+      console.error('\n(The scan below found no duplicates, but with facts missing that is not a clean bill of health.)');
+      console.error('\nOVERALL VERDICT: UNKNOWN');
+      process.exit(2);
+    }
+    console.error(`\nIt did still find ${hits.length} duplicate(s), listed below.`);
   }
 
   if (hits.length === 0) {
