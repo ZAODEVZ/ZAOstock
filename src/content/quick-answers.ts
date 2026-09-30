@@ -35,12 +35,12 @@ export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
     a: `${LINEUP_NAMES.length} independent acts: ${acts}. Set times are listed on this page.`,
   },
   { q: 'What if it rains?', a: SITE.weather },
-  // Scoped to the parklet on purpose (zaostock-f7, 2026-09-29): whether kids
-  // can go into Black Moon after six is asked of Steve with no answer on file.
-  // Also still OPEN with Zaal and so NOT answered here: dogs, smoking, food on
-  // site, accessible restrooms, the after-party end time. Add none of them
-  // until each is settled.
-  { q: 'Is it all ages?', a: 'Yes. The festival on the parklet is all ages and family-friendly.' },
+  // All ages after six is now answered by Black Moon's own flyer ("7 PM ALL
+  // AGES", shared by Zaal 2026-09-30). The after-party end time (10 PM) was
+  // ruled 2026-09-27 (program.ts) but is Black Moon's close, so this list
+  // still does not quote it. Still OPEN with Zaal and NOT answered here: dogs,
+  // smoking, food on site, accessible restrooms.
+  { q: 'Is it all ages?', a: 'Yes. The festival on the parklet is all ages and family-friendly, and Black Moon lists its after-party as all ages too.' },
   { q: 'Where do I park?', a: PARKING_DETAIL },
   {
     q: 'What happens after six?',

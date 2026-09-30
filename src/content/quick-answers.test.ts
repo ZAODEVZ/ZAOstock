@@ -24,9 +24,9 @@ describe('QUICK_ANSWERS', () => {
     const qs = QUICK_ANSWERS.map((x) => x.q).join(' ');
     expect(qs).not.toMatch(/dog|pet|smok|food|eat|restroom|toilet|bathroom|accessib|what time does .* end/i);
     const all = QUICK_ANSWERS.map((x) => x.a).join(' ');
-    // After-party end time is unsettled (6-9 per Steve vs the poster's 6 to 10).
+    // The end time is Black Moon's close (10 PM, ruled 2026-09-27); quick answers leave it to /afterparty.
     expect(all).not.toMatch(/\b(9|10)\s*(pm|PM)|until (9|10)|to 10/);
-    // All-ages is the parklet's; Black Moon after six is unanswered.
+    // All-ages: the parklet's, plus Black Moon's own flyer for after six.
     expect(QUICK_ANSWERS.find((x) => x.q === 'Is it all ages?')!.a).toContain('parklet');
   });
 
