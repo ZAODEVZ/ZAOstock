@@ -1,5 +1,5 @@
 import { FESTIVAL } from './festival';
-import { LINEUP_NAMES, displayName } from './site';
+import { LINEUP_NAMES, AFTER_PARTY, displayName } from './site';
 
 // EVENT STRUCTURED DATA (schema.org MusicEvent), rendered once in layout.tsx.
 //
@@ -71,17 +71,24 @@ export const eventJsonLd = {
     url: SITE_URL,
   },
   // The evening next door. One venue at a time: this starts when the parklet ends.
+  // Details from Black Moon's own flyer via AFTER_PARTY (site.ts): doors 6,
+  // music 7 (Zaal, 2026-09-30), close 10 (Zaal, 2026-09-27).
   subEvent: {
     '@type': 'MusicEvent',
-    name: 'ZAOstock 2026 - the evening at Black Moon Public House',
-    startDate: '2026-10-03T18:00:00-04:00',
+    name: 'ZAOstock 2026 after-party at Black Moon Public House',
+    url: `${SITE_URL}/afterparty`,
+    doorTime: '2026-10-03T18:00:00-04:00',
+    startDate: '2026-10-03T19:00:00-04:00',
+    endDate: '2026-10-03T22:00:00-04:00',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
+    performer: AFTER_PARTY.lineup.map((name) => ({ '@type': 'MusicGroup', name })),
     location: {
       '@type': 'Place',
-      name: 'Black Moon Public House',
+      name: AFTER_PARTY.venue,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: '142 Main St',
         addressLocality: 'Ellsworth',
         addressRegion: 'ME',
         addressCountry: 'US',
