@@ -26,13 +26,17 @@ import { SITE } from '@/content/site';
 // it (home.module.css --header-h), so keep the height if this changes. The
 // white moose sits on night, which stays dark in both modes.
 const NAV = [
+  // Festival-week order (Zaal, 2026-09-30: "theres a press page but not a
+  // media page at the top ... make sure our nav bar and all pages are up to
+  // date"): what an attendee needs this week. Sponsor and Press moved to the
+  // footer; Volunteer now opens the sign-up sheet (/apply stays live).
   { href: '/program', label: 'Program' },
-  { href: '/tickets', label: 'Tickets' },
   { href: '/artists', label: 'Artists' },
+  { href: '/tickets', label: 'Tickets' },
+  { href: '/afterparty', label: 'After-party' },
   { href: '/live', label: 'Live' },
-  { href: '/apply', label: 'Volunteer' },
-  { href: '/sponsor', label: 'Sponsor' },
-  { href: '/press', label: 'Press' },
+  { href: '/volunteer', label: 'Volunteer' },
+  { href: '/media', label: 'Media' },
 ];
 
 const RSVP =
