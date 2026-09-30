@@ -6,6 +6,7 @@ import { NextRequest } from 'next/server';
 import sharp from 'sharp';
 import { getArtistBySlug } from '@/lib/artists';
 import { FESTIVAL } from '@/content/festival';
+import { displayName } from '@/content/site';
 
 /**
  * GET /artist/<slug>/flyer[?variant=ig] - a per-artist share flyer.
@@ -142,7 +143,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
                   wordBreak: 'break-word',
                 }}
               >
-                {artist.name}
+                {displayName(artist.name)}
               </div>
               <div style={{ display: 'flex', fontSize: infoSize, marginTop: 16, color: GOLD, lineHeight: 1.35 }}>
                 {FESTIVAL.dateLabel} &middot; {FESTIVAL.venue}, {FESTIVAL.city} &middot; free &middot; noon to six

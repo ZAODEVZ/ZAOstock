@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -114,9 +114,6 @@ describe('SITE facts', () => {
     const coc = PARTNERS.find((p) => p.name === 'COC Concertz');
     expect(coc?.poc).toBe('Thy Revolution');
     expect(coc?.role).toBe('Co-presenter');
-    // The overview one-pager keeps its own list; it must not print UNSET either.
-    const overview = readFileSync(path.join(process.cwd(), 'src/app/onepagers/overview/page.tsx'), 'utf8');
-    expect(overview).not.toMatch(/role:\s*'UNSET'/);
     for (const p of PARTNERS) {
       expect(p.poc.trim()).not.toBe('');
       expect(p.role.trim()).not.toBe('');
@@ -146,8 +143,9 @@ describe('SITE facts', () => {
 // same live check: no invented ZAOstock-branded handle exists, TikTok is
 // flagged stale on the socials map, and no ZAO account was found on
 // Bluesky, Reddit, Threads or Lens.
-describe('SOCIALS - only the seven verified estate channels', () => {
-  it('lists exactly these seven platforms, no more, no fewer', () => {
+describe('SOCIALS - only the six verified estate channels', () => {
+  // Telegram removed 2026-09-29 on Zaal's word; it is no longer public.
+  it('lists exactly these six platforms, no more, no fewer', () => {
     expect(SOCIALS.map((s) => s.platform)).toEqual([
       'X',
       'Instagram',
@@ -155,7 +153,6 @@ describe('SOCIALS - only the seven verified estate channels', () => {
       'Facebook',
       'Facebook Event',
       'Discord',
-      'Telegram',
     ]);
   });
 
@@ -167,7 +164,7 @@ describe('SOCIALS - only the seven verified estate channels', () => {
     expect(byPlatform.Facebook).toBe('https://facebook.com/zaofestivals');
     expect(byPlatform['Facebook Event']).toBe('https://facebook.com/events/28051455107809318');
     expect(byPlatform.Discord).toBe('https://discord.com/invite/ACJyYQH3BE');
-    expect(byPlatform.Telegram).toBe('https://telegram.thezao.com');
+    expect(byPlatform.Telegram).toBeUndefined();
   });
 
   // THE RED CONTROL. A platform with no ZAO account at all must never appear,
@@ -426,6 +423,8 @@ describe('no public surface claims the crowd goes indoors', () => {
     'src/app/terms/page.tsx',
     'src/content/site.ts',
     'src/content/festival.ts',
+    // Rendered on /program and as FAQPage data for search and AI answers.
+    'src/content/quick-answers.ts',
   ];
 
   // "the day" was missing. The list had "the whole day", so "the day moves
@@ -473,7 +472,7 @@ describe('no public surface claims the crowd goes indoors', () => {
       // The wording that replaced the near-miss on 2026-09-24. If this ever
       // starts matching, the rule has been widened past what it is for: saying
       // the bar next door exists is not claiming our crowd relocates into it.
-      'Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it.',
+      'Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it.',
       'Black Moon Public House next door hosts its own evening; that is their room and their event, not a second ZAOstock stage.',
     ]) {
       expect(ok).not.toMatch(CLAIM);
@@ -568,7 +567,7 @@ describe('ENTERACT and Web3Metal are not partners', () => {
   it('never reappear in PARTNERS or on a surface that lists partners', () => {
     const names = PARTNERS.map((p) => p.name.toLowerCase().replace(/\s+/g, ''));
     for (const gone of ['enteract', 'web3metal']) expect(names).not.toContain(gone);
-    for (const f of ['docs/marketing/press-kit.md', 'src/app/llms.txt/route.ts', 'src/app/onepagers/overview/page.tsx']) {
+    for (const f of ['docs/marketing/press-kit.md', 'src/app/llms.txt/route.ts']) {
       const lines = read(f).split('\n').filter((l) => !l.trim().startsWith('//'));
       expect(lines.filter((l) => /enteract|web3 ?metal/i.test(l)), f).toEqual([]);
     }
@@ -685,5 +684,33 @@ describe('the retired "under tent cover" promise', () => {
       for (const m of body.matchAll(new RegExp(CLAIM.source, 'gi'))) bad.push(`${rel}: ${m[0]}`);
     }
     expect(bad).toEqual([]);
+  });
+});
+
+describe('ZAO Ellsworth footer link renders nothing until the Page exists', () => {
+  // Same pattern as checkout.test.ts's Stripe/Unlock rails: a link to a
+  // Page that does not exist yet is worse than no link, so UNSET must
+  // resolve to null, not to a broken href.
+  it('is still UNSET, and the helper hands back null for it', () => {
+    expect(ZAO_ELLSWORTH_FACEBOOK_URL).toBe('UNSET');
+    expect(zaoEllsworthFacebookUrl()).toBeNull();
+  });
+
+  it('refuses a URL that is not on facebook.com', () => {
+    for (const wrong of ['https://instagram.com/zaoellsworth', 'facebook.com/zaoellsworth', 'https://fb.com/zaoellsworth', '']) {
+      expect(zaoEllsworthFacebookUrl(wrong)).toBeNull();
+    }
+  });
+
+  it('hands back the real link once it is a real one', () => {
+    const real = 'https://facebook.com/zaoellsworth';
+    expect(zaoEllsworthFacebookUrl(real)).toBe(real);
+  });
+
+  it('also accepts the www. form - a browser address bar shows it just as often', () => {
+    // Found 2026-09-27 (Dotfiles, reviewing #357): the single-prefix version
+    // would have rendered nothing for a real, correctly-pasted Page URL.
+    const withWww = 'https://www.facebook.com/zaoellsworth';
+    expect(zaoEllsworthFacebookUrl(withWww)).toBe(withWww);
   });
 });

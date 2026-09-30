@@ -101,7 +101,7 @@ first bar and out after 20 seconds, and comes back on at the last song.
 
 ## The day
 
-Eight acts, five- to seven-minute changeovers, music 12:05 to 17:40, street
+Eight acts, five- to twelve-minute changeovers, music 12:05 to 17:50, street
 clears at 18:00. Two changeovers carry the MC and a partner spot; the rest are
 a swap behind a HOLD card.
 
@@ -109,21 +109,21 @@ a swap behind a HOLD card.
 |------|------|-------|-----|-----------------|-------|
 | 12:00 | Welcome on the mic, 5 min | PRE-SHOW to MC | Cut at the first word | Zaal: who he is, what ZAOstock is, the shape of the day, three housekeeping lines, thanks City of Ellsworth/Black Moon/Heart of Ellsworth, intros The Crown Vics | |
 | 12:05 | 1. THE CROWN VICS, 33 | STAGE WIDE, lower-third at first bar | Cut on the downbeat | | Opens the day |
-| 12:38 | Changeover 1 (7 min): the MC, the six o'clock move, Art of Ellsworth, a partner spot | MC, then PARTNER, then HOLD "Next: OPEN X" | HOLD for the last two minutes | Zaal thanks Star 97.7 and Wallace Events, then intros OPEN X | |
-| 12:45 | 2. OPEN X, 40 | STAGE WIDE | Cut on the downbeat | | They also run the PA all day |
-| 13:25 | Changeover 2 (5 min): swap only | HOLD "Next: Grass Rug" | HOLD the whole 5 | Zaal credits WE THE MEDIA (filming) and Bomb Squad (merch/crew), then intros Grass Rug | |
-| 13:30 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | | |
-| 14:03 | Changeover 3 (7 min): swap only | HOLD "Next: Acadia Rising" | HOLD the whole 7 | Zaal thanks COC Concertz/Thy Revolution and Artizen, then intros Acadia Rising | |
-| 14:10 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | | Routed through Sen |
-| 14:43 | Changeover 4 (7 min): the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | Zaal on WaveWarZ and the supporter page, then intros Michael Anderson | |
-| 14:50 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | | Solo piano, brings his own keyboard |
-| 15:23 | Changeover 5 (7 min): the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | THE ROLL CALL - Zaal thanks all ten partners by name, then intros DCoop | |
-| 15:30 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | | He is also the music and AV lead, so AV cover during his own set is an open role |
-| 16:10 | Changeover 6 (5 min): swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | Zaal flags the eating window (Black Moon, next door), then intros LyonsDen Rez Muzik himself | Supersedes the earlier DCoop-gives-the-intro plan; Zaal is sole MC all day |
-| 16:15 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | | Filming consent still outstanding: settle it before the first bar |
-| 16:55 | Changeover 7 (5 min): swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | Zaal thanks the crew (names UNSET, from crew roster), then intros Tom Fellenz, closing the outdoor stage | |
-| 17:00 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | | |
-| 17:40 | Music ends. Thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | Zaal: eight-act roll call, thanks partners and crew, points to Black Moon/North Creek, closes with thezao.com | |
+| 12:38 | Changeover 1 (12 min): the MC, the six o'clock move, Art of Ellsworth, a partner spot | MC, then PARTNER, then HOLD "Next: OPEN X" | HOLD for the last two minutes | Zaal thanks Star 97.7 and Wallace Events, then intros OPEN X | |
+| 12:50 | 2. OPEN X, 33 | STAGE WIDE | Cut on the downbeat | | They also run the PA all day |
+| 13:23 | Changeover 2 (12 min): swap only | HOLD "Next: Grass Rug" | HOLD the whole 12 | Zaal credits WE THE MEDIA (filming) and Bomb Squad (merch/crew), then intros Grass Rug | |
+| 13:35 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | | |
+| 14:08 | Changeover 3 (12 min): swap only | HOLD "Next: Acadia Rising" | HOLD the whole 12 | Zaal thanks COC Concertz/Thy Revolution and Artizen, then intros Acadia Rising | |
+| 14:20 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | | Routed through Sen |
+| 14:53 | Changeover 4 (7 min): the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | Zaal on WaveWarZ and the supporter page, then intros Michael Anderson | |
+| 15:00 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | | Solo piano, brings his own keyboard |
+| 15:33 | Changeover 5 (7 min): the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | THE ROLL CALL - Zaal thanks all ten partners by name, then intros DCoop | |
+| 15:40 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | | He is also the music and AV lead, so AV cover during his own set is an open role |
+| 16:20 | Changeover 6 (5 min): swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | Zaal flags the eating window (Black Moon, next door), then intros LyonsDen Rez Muzik himself | Supersedes the earlier DCoop-gives-the-intro plan; Zaal is sole MC all day |
+| 16:25 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | | Filming consent still outstanding: settle it before the first bar |
+| 17:05 | Changeover 7 (5 min): swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | Zaal thanks the crew (names UNSET, from crew roster), then intros Tom Fellenz, closing the outdoor stage | |
+| 17:10 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | | |
+| 17:50 | Music ends. Closing remarks - thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | Zaal: eight-act roll call, thanks partners and crew, points to Black Moon/North Creek, closes with thezao.com | |
 | 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | | | |
 
 **Overrun rule (Zaal, 27 Aug):** an act that runs over loses the time from its
@@ -137,6 +137,19 @@ the grid, not the overrun.
 3. Local recording keeps rolling whatever the uplink is doing.
 4. When it is back, cut to STAGE WIDE on the next downbeat, not mid-song.
 5. Post once in Telegram that it is back. Nothing else needs saying.
+
+## If the rain call is made (card 9991)
+
+The plan: tent by default, Black Moon if it is severe (Zaal's ruling,
+2026-09-24 morning, `decisions/grill-2026-09-24-seat-morning.md` item 6).
+**The feed moves with the show** - if the show is at
+Black Moon, the stream is at Black Moon, not the parklet rig sitting idle.
+Black Moon's own wifi is untested for a live feed; the primary stream plan
+(cellular first, per card 9632's test) is built around the parklet, not
+indoors. Whoever runs the stream needs to know this before the day, since
+there is no camera/feed setup for Black Moon planned yet - flag it now, not
+when the call is made. Who calls it and by when: see docs/plans/crew-brief-2026-10-03.md's Rain
+plan section - Zaal and Steve, Friday with an 08:00 Saturday re-look.
 
 ## After 18:00
 

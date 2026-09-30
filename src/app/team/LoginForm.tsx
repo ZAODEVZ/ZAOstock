@@ -121,7 +121,7 @@ export function LoginForm() {
         <div className="space-y-2 text-[11px] text-gray-500 text-center">
           <p><strong className="text-gray-400">No code yet?</strong> DM <a href="https://x.com/bettercallzaal" target="_blank" rel="noreferrer" className="text-[#f5a623] hover:underline">@bettercallzaal</a> on X or Telegram.</p>
           <p>
-            <Link href="/onepagers/overview" className="text-[#f5a623] hover:underline">What is ZAOstock?</Link>
+            <Link href="/" className="text-[#f5a623] hover:underline">What is ZAOstock?</Link>
             {' · '}
             <Link href="/" className="text-[#f5a623] hover:underline">Public site</Link>
           </p>

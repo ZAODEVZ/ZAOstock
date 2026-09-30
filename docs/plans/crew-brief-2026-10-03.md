@@ -57,23 +57,23 @@ below without updating the source.
 | 11:30 | Stage manager's walk: every act on site; the overrun rule said out loud |
 | 12:00 | Doors. Music starts at noon. |
 | 12:05 | 1. The Crown Vics (33) |
-| 12:38 | Changeover (7) |
-| 12:45 | 2. OPEN X (40) |
-| 13:25 | Changeover (5) |
-| 13:30 | 3. Grass Rug (33) |
-| 14:03 | Changeover (7) |
-| 14:10 | 4. Acadia Rising (33) |
-| 14:43 | Changeover (7) |
-| 14:50 | 5. Michael Anderson (33) |
-| 15:23 | Changeover (7) |
-| 15:30 | 6. DCoop (40) |
-| 16:10 | Changeover (5) |
-| 16:15 | 7. LyonsDen (40) |
-| 16:55 | Changeover (5) |
-| 17:00 | 8. Tom Fellenz (40), closes the outdoor block |
-| 17:40 | Music ends. The street clears at six |
+| 12:38 | Changeover (12) |
+| 12:50 | 2. OPEN X (33) |
+| 13:23 | Changeover (12) |
+| 13:35 | 3. Grass Rug (33) |
+| 14:08 | Changeover (12) |
+| 14:20 | 4. Acadia Rising (33) |
+| 14:53 | Changeover (7) |
+| 15:00 | 5. Michael Anderson (33) |
+| 15:33 | Changeover (7) |
+| 15:40 | 6. DCoop (40) |
+| 16:20 | Changeover (5) |
+| 16:25 | 7. LyonsDen (40) |
+| 17:05 | Changeover (5) |
+| 17:10 | 8. Tom Fellenz (40), closes the outdoor block |
+| 17:50 | Music ends. Closing remarks (Zaal), the last ten minutes before the street clears at six |
 | 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
-| 21:00 | Close, approximate. Black Moon keeps its own hours |
+| 22:00 | Close, approximate. Black Moon keeps its own hours |
 
 **Overrun rule:** an act that runs over loses the time from its own
 changeover, and the next act still starts on the grid. Nobody holds the whole
@@ -110,6 +110,37 @@ day for one set.
 - **WE THE MEDIA uploads the capture.**
 - **Iman uploads phone shots.**
 - **Same day** - nothing sits on a device overnight.
+
+## Rain plan (card 9991)
+
+**The plan: tent by default, Black Moon if it is severe.** Zaal's ruling,
+2026-09-24 morning (`decisions/grill-2026-09-24-seat-morning.md`, item 6,
+recorded as: tent by default, Black Moon if it is severe). Ordinary rain
+stays under the tent; the move indoors is for weather that forces it - not
+a threshold written down anywhere yet, just a call Zaal and Steve make
+together.
+
+- **Who calls it, by when:** Zaal and Steve, made Friday 2 October (setup
+  and decorating day, see above) with an 08:00 Saturday re-look. Ordinary
+  rain does not trigger this - the festival is rain or shine, the parklet is
+  open to the sky. This is for weather that forces it.
+- **Still open, from the same ruling:** Black Moon has not agreed in writing
+  to take the DAY part, only the evening after-party - the 2026-09-24 ruling
+  itself named this as one of two things it did not yet have (the other is
+  the published-threshold gap noted above). Whoever is talking to Black Moon
+  needs this in writing before the plan can be called settled, let alone
+  published.
+- **What moves:** UNSET. Whether it's all eight acts in the outdoor running
+  order, a shortened set, or something else has not been decided by anyone -
+  Black Moon's own capacity for a full changeover cycle is unmeasured.
+  Crew: do not announce or plan an indoor show's shape until this is
+  answered.
+- **The stream moves with it.** Black Moon's own wifi is untested for a
+  live feed - flag this before the day, not during it, to whoever is
+  running the stream (see card 9632: the Mon 28 Sep parklet test was rained out, so
+  Fri 2 Oct is now the only stream test, cellular first).
+- Katina and Steve need a line about this from Zaal - drafted in clip
+  zaostock-rain-plan-katina-steve-draft (inbox/clips), his own send.
 
 ## What this brief cannot fill
 

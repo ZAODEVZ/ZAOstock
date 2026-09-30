@@ -89,5 +89,7 @@ export const WATCH_PARTIES: readonly WatchParty[] = [];
  * fallback card at all instead of a dead link.
  */
 export function fallbackChannelHref(socials: typeof SOCIALS = SOCIALS): string | null {
-  return socials.find((s) => s.platform === 'Telegram')?.href ?? null;
+  // Widened to string: Telegram left SOCIALS on 2026-09-29, so the literal
+  // union no longer contains it, and this must still compile (and return null).
+  return socials.find((s) => (s.platform as string) === 'Telegram')?.href ?? null;
 }

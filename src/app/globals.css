@@ -58,7 +58,9 @@
 
   --shadow-hard: 3px 3px 0 #241E15;
   --shadow-hard-lg: 5px 5px 0 #241E15;
-  --shadow-focus: 0 0 0 3px rgba(229, 172, 59, 0.45);
+  /* Solid ember, not translucent gold: the gold ring measured 1.2-1.3:1 on the
+     cream grounds, under WCAG 1.4.11's 3:1 (Dotfiles, 2026-09-28). Ember is 5-7:1. */
+  --shadow-focus: 0 0 0 3px #8F3E1E;
 
   --ease-poster: cubic-bezier(0.2, 0.8, 0.2, 1);
 
@@ -312,9 +314,22 @@ h1, h2, h3, h4 {
 
   --shadow-hard: 0 4px 14px rgba(46, 32, 21, 0.16);
   --shadow-hard-lg: 0 10px 30px rgba(46, 32, 21, 0.18);
-  --shadow-focus: 0 0 0 3px rgba(223, 162, 60, 0.5);
+  /* Resolves per theme: #8F3E1E on the light grounds, #F0955A in dark mode,
+     because the dark block redefines --color-red-700 on this same element. */
+  --shadow-focus: 0 0 0 3px var(--color-red-700);
 
   --font-display: var(--font-oswald), "Arial Narrow", Impact, sans-serif;
+}
+
+/* KEYBOARD FOCUS, site-wide (2026-09-28). Unlayered on purpose, so it beats
+   Tailwind's utilities layer: the per-component `focus-visible:[box-shadow:...]`
+   classes lost to `shadow-hard` on the RSVP pill (measured: :focus-visible
+   matched, box-shadow stayed the soft drop shadow, outline none), leaving no
+   visible focus at all. An outline does not compete with box-shadow classes.
+   Colour follows --color-red-700: #8F3E1E light, #F0955A dark, both over 3:1. */
+.site :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-red-700);
+  outline-offset: 2px;
 }
 
 /* Her dark variant, following the viewer's system setting as her homepage

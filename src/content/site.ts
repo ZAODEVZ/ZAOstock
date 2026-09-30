@@ -58,8 +58,11 @@ export const SITE = {
   // bar next door. That is the whole true claim.
   //
   // This string is the SOURCE. /program and /llms.txt read it. Do not add a
-  // tent, and do not add a sentence that moves a crowd indoors.
-  weather: 'Rain or shine - we do not cancel for weather. The parklet is open to the sky, so dress for it.',
+  // sentence that moves a crowd indoors.
+  // 2026-09-29, Zaal: "parklet is open sky but musicians perform under tent".
+  // So the tent is named as the stage's, not the crowd's, and is never pitched
+  // as the bad-weather answer (the retired "under tent cover" line).
+  weather: 'Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it.',
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
   producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
@@ -180,14 +183,14 @@ export function displayName(name: string): string {
 // No set times in public (Zaal, 2026-09-12), so this no longer sends anyone to
 // the program for one. The program publishes the order.
 export const LINEUP_NAMES_NOTE =
-  'They play in that order. Bios and photos go up one artist at a time.';
+  'They play in that order. Each act has its own page with a bio and photo.';
 
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [
   { time: 'Noon - 6 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
   // SETTLED 2026-09-14 (Zaal), CORRECTED 2026-09-26: North Creek, not Steve
   // himself - see src/content/program.ts for the source quote and reasoning.
-  { time: '6 - 9 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, with North Creek, hosted by Black Moon, from six (poster: 6 to 10 PM).' },
+  { time: '6 - 10 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, with North Creek, hosted by Black Moon, 6 to 10 PM.' },
 ] as const;
 
 /**
@@ -202,6 +205,10 @@ export const DAY = [
  * estate's socials map and the thezao.com footer, not by an independent
  * fetch from here.
  *
+ * REMOVED 2026-09-29: Telegram (Zaal: "Let's remove the telegram link please
+ * from the website"). /live's stream-drop fallback card reads this list and
+ * renders nothing without it, by design (live.ts fallbackChannelHref).
+ *
  * NOT LISTED, on purpose: TikTok (the handle on the socials map is flagged
  * stale/unverified) and Bluesky, Reddit, Threads, Lens (no ZAO account found
  * on any of them). Do not add one back without verifying it live first.
@@ -213,7 +220,6 @@ export const SOCIALS = [
   { platform: 'Facebook', href: 'https://facebook.com/zaofestivals', label: 'ZAO Festivals on Facebook' },
   { platform: 'Facebook Event', href: 'https://facebook.com/events/28051455107809318', label: 'ZAOstock event on Facebook' },
   { platform: 'Discord', href: 'https://discord.com/invite/ACJyYQH3BE', label: 'ZAO on Discord' },
-  { platform: 'Telegram', href: 'https://telegram.thezao.com', label: 'ZAO on Telegram' },
 ] as const;
 
 /**
@@ -380,48 +386,39 @@ export interface SupportTier {
   gets: readonly string[];
 }
 
+// Renamed 2026-09-29 (Zaal picked option B of ZAOOS research doc 2578, "Keep
+// it free"): Fan / Supporter / Pro Ticket became Chip in / Friend / Backer.
+// Money keeps a free day free; it is not a way in, so no tier promises a 1:1,
+// a spot count or a credit on a page that does not exist. ids are unchanged
+// because STRIPE_LINKS is keyed on them. The Stripe caps (50 on the $20 link,
+// 20 on the $50) still live in Stripe; they are just no longer advertised.
 export const SUPPORT_TIERS: readonly SupportTier[] = [
   {
     id: 'fan',
-    name: 'Fan',
+    name: 'Chip in',
     price: '$1',
     amount: 1,
     spots: null,
-    blurb: 'The smallest way in. Every dollar counts toward the round.',
-    gets: [
-      'Supports the festival: artist fees, materials, production costs.',
-      'Credited as a supporter on the festival page.',
-    ],
+    blurb: 'Every dollar goes to the day.',
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
   {
     id: 'supporter',
-    name: 'Supporter',
+    name: 'Friend',
     price: '$20',
     amount: 20,
-    // Capped at 50 on 2026-09-20 by Zaal's decision. The cap is enforced by
-    // Stripe's restrictions[completed_sessions][limit] on
-    // plink_1UHsQYKEKqFBqu9oZADCzFQ9, NOT by this file - this string is
-    // display copy only. Editing this number does not change what Stripe
-    // sells; editing the Stripe restriction does.
-    spots: '50 spots',
-    blurb: 'The straightforward one. It pays for the day and puts your name on it.',
-    gets: [
-      'Supports the festival: artist fees, materials, production costs.',
-      'Credited as a supporter on the festival page.',
-    ],
+    spots: null,
+    blurb: 'Pays for the day.',
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
   {
     id: 'pro',
-    name: 'Pro Ticket',
+    name: 'Backer',
     price: '$50',
     amount: 50,
-    spots: '20 spots',
-    blurb: 'The same, plus time with the people building it.',
-    gets: [
-      'Supports the festival: artist fees, materials, production costs.',
-      'Credited as a supporter on the festival page.',
-      'A 1:1 with someone on the ZAO team before the event.',
-    ],
+    spots: null,
+    blurb: 'The same, and it carries the most weight.',
+    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
   },
 ] as const;
 
@@ -433,37 +430,6 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
  */
 export const PRO_TICKET = SUPPORT_TIERS.find((t) => t.id === 'pro')!;
 
-/**
- * Round one of crowdfunding. The $1,000 target predates the $20 tier, and
- * 20 x $50 = $1,000 exactly, so the goal was originally DEFINED as "sell the
- * Pro Ticket round" rather than "raise a thousand dollars".
- *
- * WHAT COUNTS, decided 2026-09-01: every support dollar, at any tier. Two
- * reasons. It funds a free festival, so a dollar is a dollar and the page says
- * in words that no tier buys access. And the alternative produces a figure
- * that lies - twenty $20 supporters would raise $400 while a $50-only tracker
- * still read zero.
- *
- * That also means the old "20 people, $1,000" phrasing is now WRONG, because it
- * silently asserts $50 each. `goal` states its own rule instead. A target whose
- * rule is invisible is the shape that produced the stale lineup date and the
- * 10% Unlock error: a number everyone reads and nobody can check.
- *
- * `count` and `countWord` are the Pro Ticket's 20-spot CAP, held since the
- * 2026-05-12 standup. They are not the goal's headcount - there isn't one any
- * more, because the number of supporters depends on the mix.
- */
-export const PRO_ROUND = {
-  count: 20,
-  countWord: 'twenty',
-  roundTotal: '$1,000',
-  goal: 'Round 1 goal: $1,000, counting every supporter at any tier',
-  /** Rendered next to any progress figure, so the rule travels with the number. */
-  countsRule: 'Every supporter counts, at any tier.',
-} as const;
-
-/** The project's collection account, not an individual. Confirmed by Zaal 2026-04-30. */
-export const PAYPAL_URL = 'https://paypal.com/paypalme/zaalpanthaki';
 /**
  * CARD AND ONCHAIN CHECKOUT, wired 2026-09-17.
  *
@@ -524,6 +490,10 @@ export function stripeLinkFor(
   const url = Object.hasOwn(links, tierId) ? links[tierId] : undefined;
   return typeof url === 'string' && url.startsWith(STRIPE_LINK_PREFIX) ? url : null;
 }
+
+/** Crypto gifts: Giveth, kept on Zaal's ruling of 29 Sep. Moved here from /donate. */
+export const GIVETH_URL = 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology';
+export const GIVETH_WALLET = '0xEb3E8a944A6c1D536c6F38334c23354E1A0C6aAB';
 
 /**
  * A checkout URL's short `?id=<uuid>` form (see the function doc below)
@@ -605,6 +575,33 @@ export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | n
   return entries.every((lock) => lock?.network === BASE_MAINNET_CHAIN_ID) ? url : null;
 }
 
+/**
+ * ZAO ELLSWORTH - a new, ongoing local chapter, ruled 2026-09-27
+ * (zao-vault decisions/grill-2026-09-27-orchestrator-batch-5.md, commit
+ * 69d93004): "New local chapter, own Page." It gets its own Facebook
+ * Page, kept separate from the ZAOstock event Page in SOCIALS above - ZAO
+ * Ellsworth outlives Saturday, so the site should point people at the
+ * thing they can still join afterward, not at an event that will be over.
+ *
+ * The Page does not exist yet. "ZAO Ellsworth" appeared in no vault file
+ * or repo before this ruling - checked with a 683-file red control on
+ * "ellsworth" alone before it was even proposed, so this is a genuinely
+ * new name, not a rename. UNSET renders nothing, same pattern as
+ * STRIPE_LINKS above: a link to a Page that does not exist yet is worse
+ * than no link. Paste the real URL here once Zaal or Iman creates it.
+ */
+export const ZAO_ELLSWORTH_FACEBOOK_URL: string = UNSET;
+
+// A browser address bar as often shows the www. form as the bare one, and a
+// pasted URL should not silently fail for that reason alone (Dotfiles,
+// 2026-09-27, found while reviewing #357: the single-prefix version would
+// have rendered nothing for a real, correctly-pasted Page URL).
+const FACEBOOK_URL_PREFIXES = ['https://facebook.com/', 'https://www.facebook.com/'];
+
+/** The ZAO Ellsworth Facebook Page URL, or null while it is UNSET or not a facebook.com link. */
+export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL): string | null {
+  return FACEBOOK_URL_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
+}
 
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },

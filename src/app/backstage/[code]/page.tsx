@@ -107,8 +107,8 @@ export default async function BackstagePage({ params }: Props) {
             {clock12(act.setStart)} to {clock12(setEnd)}, {act.minutes} minutes
           </p>
           <p className="text-sm text-ink-secondary mt-2 mb-0">
-            On the parklet stage. Soundcheck is {SOUNDCHECK.day}, {SOUNDCHECK.window}. Your time is locked; you do not
-            need to tell us it.
+            On the parklet stage. Your set time is locked; you do not need to tell us it. Soundcheck is{' '}
+            {SOUNDCHECK.day}, {SOUNDCHECK.window} - let us know when you will arrive and we will hold your slot.
           </p>
         </section>
 

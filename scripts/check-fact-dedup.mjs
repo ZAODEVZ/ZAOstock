@@ -54,6 +54,7 @@
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const ROOT = process.cwd();
 const APP_DIR = path.join(ROOT, 'src/app');
@@ -98,15 +99,51 @@ function actCountPattern(count) {
 
 /** Strip comment-only lines so a comment naming a fact for its own sake
  * (like this file's own header) doesn't count as rendered copy. Mirrors
- * tickets.test.ts's code() helper. */
-function stripComments(text) {
-  return text
-    .split('\n')
-    .filter((l) => {
-      const t = l.trim();
-      return !t.startsWith('//') && !t.startsWith('*') && !t.startsWith('/*');
-    })
-    .join('\n');
+ * tickets.test.ts's code() helper.
+ *
+ * A per-line prefix check (does the trimmed line start with `//`, `*` or
+ * `/*`) is not enough for a JSX comment: `{/* ... *\/}` opens with `{/*`,
+ * not `/*`, and this codebase's own convention (see ellsworth/page.tsx,
+ * program/page.tsx) wraps its continuation lines as plain indented prose
+ * with no per-line marker at all - so only the opening line was ever
+ * caught. Found 2026-09-27 when an explanatory multi-line JSX comment
+ * naming the act count tripped this check; several already-merged JSX
+ * comments in this exact style had been silently unstripped before that,
+ * just without a flagged phrase in their continuation lines to expose it.
+ * Track open/close state instead, so everything between `{/*` and `*\/}`
+ * is dropped regardless of how each continuation line is written. */
+export function stripComments(text) {
+  const lines = [];
+  let inJsxComment = false;
+  for (const l of text.split('\n')) {
+    const t = l.trim();
+    if (inJsxComment) {
+      const end = t.indexOf('*/');
+      if (end === -1) continue;
+      inJsxComment = false;
+      // The comment closes mid-line - keep whatever follows `*/`, rather
+      // than dropping the whole line. Found 2026-09-27 (Dotfiles, reviewing
+      // #356): `*/} <Button href="/tickets">` on one line silently lost the
+      // Button entirely, which is exactly the rendered-copy case this check
+      // exists to catch.
+      const rest = t.slice(end + 2).trim();
+      if (rest) lines.push(rest);
+      continue;
+    }
+    if (t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) continue;
+    if (t.startsWith('{/*')) {
+      const end = t.indexOf('*/');
+      if (end === -1) {
+        inJsxComment = true;
+      } else {
+        const rest = t.slice(end + 2).trim();
+        if (rest) lines.push(rest);
+      }
+      continue;
+    }
+    lines.push(l);
+  }
+  return lines.join('\n');
 }
 
 // src/app/error.tsx: the root error boundary, deliberately dependency-free
@@ -175,4 +212,9 @@ function main() {
   process.exit(1);
 }
 
-main();
+// Run only when executed directly, not when imported (a vitest test imports
+// stripComments from this module; without this guard, that import would run
+// main()'s own process.exit() and kill the test runner). Same pattern as
+// #325/#358: import.meta.url percent-encodes and process.argv[1] does not,
+// so a raw string compare breaks on a path containing a space.
+if (process.argv[1] && path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1])) main();

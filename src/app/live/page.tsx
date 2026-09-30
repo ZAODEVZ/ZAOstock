@@ -4,10 +4,11 @@ import { FESTIVAL } from '@/content/festival';
 import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
+import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip, Button } from '@/components/poster';
 
 export const metadata: Metadata = {
-  title: 'Live',
+  title: `Watch live, ${FESTIVAL.shortDate}, noon to 6 PM Eastern`,
   description: `Watch ZAOstock 2026 from anywhere. The stream, the running order, and every way to follow along on ${FESTIVAL.dateLabel}.`,
   alternates: { canonical: '/live' },
   openGraph: {
@@ -30,6 +31,13 @@ export const metadata: Metadata = {
 // drops, what a watch party actually is, and that the evening is in person.
 // A viewer staring at a dead player on 3 October could not learn any of it
 // here. See src/content/live.ts for the decisions and their source.
+
+// The running order is read straight from Supabase at render, not through the
+// lineup API, so without this the page is prerendered and a day-of lineup
+// correction would reach /live only on the next deploy. 60s ISR (Zaal,
+// 2026-09-27, board #137). Artists are confirmed by hand DB write, so there is
+// no confirm hook to call revalidatePath from.
+export const revalidate = 60;
 
 export default async function LivePage() {
   const fallbackHref = fallbackChannelHref();
@@ -55,7 +63,7 @@ export default async function LivePage() {
             {/* Watching from home has no other way to give. Zaal, 2026-09-27:
                 "we deff need a place for ppl to just go to the live website
                 and one button is the donate button." */}
-            <Button href="/donate" variant="secondary">
+            <Button href="/tickets#give" variant="secondary">
               Donate
             </Button>
           </div>
@@ -85,7 +93,7 @@ export default async function LivePage() {
           <p className="text-sm text-ink-secondary m-0 mt-3">
             <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream is offline outside{' '}
             {FESTIVAL.window} on {FESTIVAL.dateLabel} - that is expected before doors and after the outdoor block ends, not a broken
-            player. (One exception: this same channel also carries a pre-party stream today, Saturday 26 September, 4 to 6 PM Eastern.)
+            player.{' '}
             Twitch shows its own offline screen either way, or watch straight from{' '}
             <a href={watchHref()} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
               Twitch
@@ -161,7 +169,7 @@ export default async function LivePage() {
           <SectionHeader
             eyebrow="Who's on"
             title="Follow along with each act, in order."
-            lede="No set times here - see the program for the shape of the day. This is who's playing, in the order they play."
+            lede="Set times are on the program. This is who's playing, in the order they play."
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
             {acts.map((act, i) => {
@@ -172,7 +180,7 @@ export default async function LivePage() {
                     <span className="font-mono text-eyebrow text-ink-muted w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                     <div className="min-w-0">
                       <a href={`/artist/${slug}`} className="font-sans font-extrabold text-ink-950 hover:text-red-700 truncate block">
-                        {act.name}
+                        {displayName(act.name)}
                       </a>
                       {/* Zaal, 2026-09-26: point every act at its own ZAOstock
                           page rather than scattering external social links here -

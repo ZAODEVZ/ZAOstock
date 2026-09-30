@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { SITE, SOCIALS } from '@/content/site';
+import { SITE, SOCIALS, zaoEllsworthFacebookUrl } from '@/content/site';
 
 // Night in both modes, carrying on from the homepage's closing section. The
 // white moose needs a dark ground, and night is one that never flips.
 const LINKS = [
   { href: '/program', label: 'Program' },
   { href: '/press', label: 'Press' },
+  { href: '/media', label: 'Media' },
   { href: '/partners', label: 'Partners' },
   { href: '/build', label: 'Build' },
   { href: '/privacy', label: 'Privacy' },
@@ -14,9 +15,20 @@ const LINKS = [
   { href: '/contact', label: 'Contact' },
   { href: '/ellsworth', label: 'Ellsworth' },
   { href: '/acadia', label: 'Acadia' },
+  // SEO pass 2026-09-29: a crawl of every sitemap page found /design and
+  // /meetings with ZERO inbound links and /festivals with two. A page nothing
+  // links to reads to search as unimportant; the footer fixes that sitewide.
+  { href: '/festivals', label: 'Festivals' },
+  { href: '/design', label: 'Design kit' },
+  { href: '/meetings', label: 'Meetings' },
 ];
 
 export function Footer() {
+  // UNSET until Zaal or Iman creates the Page - see the constant's own
+  // comment in site.ts. Renders nothing until then, same as the checkout
+  // buttons this pattern is copied from.
+  const ellsworthUrl = zaoEllsworthFacebookUrl();
+
   return (
     <footer className="bg-night text-onfill/80 py-10 border-t border-onfill/10">
       <div className="wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -54,6 +66,17 @@ export function Footer() {
                 {s.platform}
               </a>
             ))}
+            {ellsworthUrl ? (
+              <a
+                href={ellsworthUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Join ZAO Ellsworth, the local chapter, on Facebook"
+                className="font-sans text-xs font-bold uppercase tracking-[0.1em] text-onfill/70 hover:text-onfill"
+              >
+                ZAO Ellsworth
+              </a>
+            ) : null}
           </nav>
         </div>
       </div>

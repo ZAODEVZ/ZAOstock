@@ -53,7 +53,7 @@ fact or marked **UNSET**.
 | Where | ${FESTIVAL.venue}, ${FESTIVAL.city} |
 | After | ${FESTIVAL.afterParty.name}, ${FESTIVAL.afterParty.note}, from 6 PM |
 | Admission | ${FESTIVAL.admission} |
-| RSVP | ${FESTIVAL.rsvpUrl} |
+| RSVP | https://zaostock.com/tickets |
 
 ## Lineup
 

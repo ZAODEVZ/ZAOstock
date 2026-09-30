@@ -1,14 +1,11 @@
 import type { NextConfig } from 'next';
+import { OPTIMIZABLE_IMAGE_HOSTS } from './src/lib/optimizable-image-hosts';
 
 const config: NextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'pbs.twimg.com' },
-      { protocol: 'https', hostname: 'i.imgur.com' },
-      { protocol: 'https', hostname: 'imgur.com' },
-      { protocol: 'https', hostname: 'i.postimg.cc' },
-      { protocol: 'https', hostname: 'postimg.cc' },
-    ],
+    // One shared list with ArtistProfileView.tsx's canOptimize() - see
+    // src/lib/optimizable-image-hosts.ts for why this used to be two lists.
+    remotePatterns: OPTIMIZABLE_IMAGE_HOSTS.map((hostname) => ({ protocol: 'https' as const, hostname })),
   },
   async headers() {
     return [
@@ -68,7 +65,7 @@ const config: NextConfig = {
               // before removing - none found. An allowlist entry with no
               // backing usage is exactly the kind of drift this
               // Report-Only header exists to catch before it goes live.
-              "frame-src 'self' https://docs.google.com https://js.stripe.com",
+              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
@@ -130,6 +127,14 @@ const config: NextConfig = {
       { source: '/artist', destination: '/artists', permanent: false },
       // /volunteer is the intuitive link people guess for volunteering; the canonical route is /apply.
       { source: '/volunteer', destination: '/apply', permanent: false },
+      // /donate merged into /tickets on 2026-09-29 (Zaal: "combine ticket and
+      // donation page"). Old links, the newsletter and the /live button keep working.
+      { source: '/donate', destination: '/tickets#give', permanent: false },
+      // The public one-pagers went stale (4-6 acts, an August 15 dry run, the
+      // old zaoos.com volunteer link) and were removed 2026-09-29 on Zaal's
+      // word: "we can just remove all the onepagers". /sponsor is the brief.
+      { source: '/onepagers', destination: '/sponsor', permanent: false },
+      { source: '/onepagers/:path*', destination: '/sponsor', permanent: false },
       // Zaal typed /support into Stripe's business_profile.support_url, not
       // /contact - confirmed from Stripe's own API 2026-09-20 22:3x. Stripe's
       // pending verification (business_model_verification.support) names that

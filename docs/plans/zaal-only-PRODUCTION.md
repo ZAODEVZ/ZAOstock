@@ -34,7 +34,7 @@ structure closed with three dated checks.
 5. The open stretch, about 40 minutes at 15:05-15:45: **JANGO / Jadyn / Hurricane / Werb / leave it to the MC** - one fits - section 2, `ros-5min` Q5.
 6. Fellenz's "30 min indoors late" (24 Aug): the evening now has no gap - **drop it / a place** - `ros-5min` Q26.
 7. (answered 05:3x: PA gate is Friday 11 September; rain call closed - checks 26 Sep, 30 Sep, 2 Oct, 08:00 Sat re-look.) Still yours from the same thread: **tell Steve the 11 September gate - yes / you already have** - open item 1.
-8. The certificate headcount, counted in production plan section 3: **20 people plus two groups (Acadia Rising, The Crown Vics) of UNSET size - approve / a different number**, and two flags: do The Crown Vics (Steve's own band) get Steve's certificates, and are Aziz, Ohnahji and Motomoto on site? Plus **the date** you send it to Steve.
+8. The certificate headcount, counted in production plan section 3: ~~**20 people plus two groups (Acadia Rising, The Crown Vics) of UNSET size**~~ **SUPERSEDED 2026-09-28: 18 performers, none UNSET** (production plan section 3; Acadia Rising is Sen solo, The Crown Vics are 5), and two flags: do The Crown Vics (Steve's own band) get Steve's certificates, and are Aziz, Ohnahji and Motomoto on site? Plus **the date** you send it to Steve.
 9. Crew meal budget, separate from Steve's certificates: **a number, or 0** - 8.7; CITY holds the vendor ask.
 10. The WaveWarZ story at 16:00, Hurricane with Stilo: **length in minutes** - `ros-5min` Q16.
 11. Sponsor spots in the two 10-minute gaps: **how many each, and live by the MC / recorded stings / both** - section 2, 8.6; copy is the sponsor deck's.

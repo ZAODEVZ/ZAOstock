@@ -1,10 +1,44 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import type { PublicArtist } from '@/lib/artists';
 import { parseSocials } from '@/lib/socials';
 import { FESTIVAL } from '@/content/festival';
 import { displayName } from '@/content/site';
+import { OPTIMIZABLE_IMAGE_HOSTS } from '@/lib/optimizable-image-hosts';
+
+// This field is artist-editable (the "Photo URL" input below, placeholder
+// "your X / Farcaster pfp") - an artist can paste ANY host at any time.
+// next/image throws synchronously for a src whose host is not in
+// next.config.ts's remotePatterns - measured on this exact codebase
+// 2026-09-27 (ZAOstock #236, team photos): it broke the page before
+// onError could ever fire, which is a much worse failure than the plain
+// <img> it replaced. So next/image is only used for a src on this known-
+// safe list (imported from the same array next.config.ts builds its
+// remotePatterns from - see src/lib/optimizable-image-hosts.ts); anything
+// else - including every future artist-pasted pfp - stays a plain <img>
+// with the existing onError fallback, which degrades gracefully for any
+// host.
+const OPTIMIZABLE_HOSTS = new Set<string>(OPTIMIZABLE_IMAGE_HOSTS);
+
+/** Exported only for canOptimize.test.ts - not part of the component's public API. */
+export function canOptimize(url: string): boolean {
+  if (!url) return false;
+  // A leading "/" alone is not enough: "//evil.example/x" is also a
+  // protocol-relative ABSOLUTE url (scheme inherited from the page), not a
+  // same-origin path - next/image's own get-img-props.js draws this exact
+  // line ("isStaticImport" aside, its local-path check is always
+  // `startsWith('/') && !startsWith('//')`), so this matches Next's own
+  // definition of "local" rather than a looser one.
+  if (url.startsWith('/') && !url.startsWith('//')) return true;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'https:' && OPTIMIZABLE_HOSTS.has(parsed.hostname);
+  } catch {
+    return false;
+  }
+}
 
 // The status pill is gone (Zaal, 2026-09-14: "everyone is confirmed so lets not
 // have that on any of the pages"). Still true after the 2026-09-15 ruling
@@ -117,13 +151,31 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
 
       <div className="flex items-start gap-4">
         {showPhoto ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={photoUrl}
-            alt={artist.name}
-            onError={() => setPhotoBroken(true)}
-            className="w-24 h-24 rounded-full object-cover border-2 border-ink-950 flex-shrink-0"
-          />
+          canOptimize(photoUrl) ? (
+            <Image
+              src={photoUrl}
+              alt={artist.name}
+              width={96}
+              height={96}
+              // It's the first thing in the page's content (right under the
+              // header) and very likely the LCP element - next/image lazy-
+              // loads by default unless told otherwise, which would make
+              // this load LATER than the plain <img> it replaces did.
+              // Review flagged the omission (PR #367); this makes the eager
+              // load explicit rather than accidental.
+              priority
+              onError={() => setPhotoBroken(true)}
+              className="w-24 h-24 rounded-full object-cover border-2 border-ink-950 flex-shrink-0"
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={photoUrl}
+              alt={artist.name}
+              onError={() => setPhotoBroken(true)}
+              className="w-24 h-24 rounded-full object-cover border-2 border-ink-950 flex-shrink-0"
+            />
+          )
         ) : (
           <div className="w-24 h-24 rounded-full bg-paper-200 border-2 border-ink-950/60 flex-shrink-0 flex items-center justify-center">
             <span className="text-2xl font-bold text-ink-muted">{initials}</span>
@@ -179,6 +231,11 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
           {showLogo && (
             <div>
               <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-2">Brand logo</p>
+              {/* Deliberately NOT swapped to next/image (Polish item 13, doc
+                  2507 scoped that to "the containers are already fixed-size" -
+                  this one is not: max-h-32/max-w-full preserves each logo's
+                  own intrinsic aspect ratio, which next/image's required
+                  width/height would have to guess at and could distort. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={logoUrl}

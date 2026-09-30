@@ -1,4 +1,4 @@
-# Deal memo - Acadia Rising - Sen, with Women with Rhythm - ZAOstock, Saturday 3 October 2026
+# Deal memo - Acadia Rising - Sen Wilde, solo - ZAOstock, Saturday 3 October 2026
 
 **DO NOT SEND.** Filled from `docs/music/artist-deal-memo-template.md` and the
 production plan as of 28 August 2026 (ros-5min v7). Every figure that Zaal
@@ -19,7 +19,7 @@ sets, "DJs run between sets", a day-of soundcheck window) are not carried.
 everything moves next door into Black Moon Public House at 18:00
 **Audience:** Free to attend, all-day, family-friendly (Art of Ellsworth,
 Maine Craft Weekend)
-**Status of this act:** Group size is not on disk - needed for wristbands and the Black Moon certificate count.
+**Status of this act:** Group size is 1, Sen Wilde solo. Zaal, 2026-09-28: "its just sen performing" (zao-vault decisions/grill-2026-09-28-zaostock-afternoon.md, item 0).
 
 ## Your slot
 
@@ -50,7 +50,7 @@ Maine Craft Weekend)
 - Water and power on site (Black Moon); a dressing room and bathroom in Black
   Moon's basement, performers only, wristband access
 - A meal: a **$20 Black Moon gift certificate** per performer (Steve's figure),
-  to use in the hour after you come off - **headcount for your act: UNSET**
+  to use in the hour after you come off - **headcount for your act: 1** (Zaal, 2026-09-28: "its just sen performing", zao-vault decisions/grill-2026-09-28-zaostock-afternoon.md, item 0)
 - Inclusion in the lineup reveal (1 September) and the recap content
 
 ## What you provide
