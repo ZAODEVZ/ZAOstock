@@ -1,52 +1,62 @@
 # Brand migration: what moving to ZAOstock 26 actually costs
 
-**Status: a plan and a cost estimate. Nothing has been migrated.**
-Whether we rebrand before or after the lineup announcement is Zaal's call.
+**Status: mostly done. The cost is now small and the remaining work is
+internal.** Whether the last of it happens before or after the lineup
+announcement is Zaal's call.
 
 Candy's package landed in PR #42 (`docs/brand/README.md`). Her README is explicit
 that the retro-poster identity **replaces** the Midnight Navy / Festival Yellow
 look rather than sitting alongside it, and that a page carrying half of each reads
-as a mistake rather than a transition. That constraint is what makes this
-expensive, so it is worth knowing the number before choosing a date.
+as a mistake rather than a transition.
 
-Everything below was measured against `main` on 2026-08-22, not estimated.
+> **These numbers are now generated, not typed.** Every figure below comes from
+> [`scripts/brand-migration-counts.mjs`](../scripts/brand-migration-counts.mjs):
+>
+> ```bash
+> npm run brand:counts
+> ```
+>
+> The table was first measured by hand on 2026-08-22 and then left alone while
+> the site moved. It was wrong in a way that inverted this document's central
+> claim (see "What changed since 2026-08-22" below). It is now re-runnable so it
+> cannot go stale silently again. If you edit a number here, re-run the script
+> and paste what it prints.
 
 ---
 
 ## The headline
 
-**This is not a colour swap. It is a polarity inversion, and the codebase has no
-token layer to absorb it.**
+**This was not a colour swap. It was a polarity inversion, and the codebase had
+no token layer to absorb it.** Most of that is now behind us.
 
-| | Measured |
-|---|---|
-| `.tsx` files in `src/` | 96 |
-| Files carrying brand colour | **77 of 96** |
-| Hardcoded brand hexes | **1,067** |
-| Light-on-dark utilities that break on a paper ground | **1,297** |
-| **Total edit sites** | **~2,364** |
-| Files consuming the existing CSS variables | **1** |
+| | Measured 2026-08-22 | Measured now |
+|---|---|---|
+| `.tsx` files in `src/` | 96 | 102 |
+| Files carrying brand colour | 77 of 96 | **34 of 102** |
+| Hardcoded brand hexes | 1,067 | **420** |
+| Light-on-dark utilities that break on a paper ground | 1,297 | **597** |
+| **Total edit sites** | ~2,364 | **~1,017** |
+| Files consuming the existing CSS variables | 1 | 0 |
 
-The old identity is dark: navy ground, light text. The new one is light: paper
+The old identity was dark: navy ground, light text. The new one is light: paper
 ground, ink text. Those are not two palettes, they are opposite polarities, and
 the second number above is the one that a naive plan misses.
 
 ### Why a find-and-replace does not work
 
-Substituting the four hexes gets you a paper-coloured page with 1,297 pieces of
+Substituting the four hexes gets you a paper-coloured page with 597 pieces of
 white and light-grey text on it. `text-white`, `text-gray-400`, and
 `border-white/[0.08]` were all correct against navy and are invisible or
 near-invisible against `#F2E6D3`. They carry no brand hex, so every hex-based
 search-and-replace, codemod, or `sed` script sails straight past them.
 
 ```
-272  text-white
-246  text-gray-400
-218  text-gray-500
-172  border-white/[0.08]
-114  text-gray-300
-108  border-white/[0.06]
-...  and 15 more variants
+101  text-white
+139  text-gray-500
+ 62  text-gray-400
+ 15  text-gray-300
+ 18  text-black
+...  and the border-white alpha variants
 ```
 
 A migration that fixes colours and not polarity produces a site that looks broken
@@ -55,49 +65,54 @@ you discover it one component at a time.
 
 ### Why there is no shortcut through tokens
 
-`src/app/globals.css` is nine lines. It defines `--background`, `--foreground` and
-`--accent` correctly, and **exactly one file in the codebase uses them.** Every
-other component hardcodes the hex inline as a Tailwind arbitrary value
-(`bg-[#0a1628]`, `text-[#f5a623]`).
+This is the one part of the original argument that is now out of date in the
+other direction. `src/app/globals.css` was nine lines when this was written; it
+is now a full Tailwind v4 `@theme` block defining the paper / ink / red / gold /
+denim ramps, and the public site consumes them by name (`bg-paper`,
+`text-ink-950`) rather than by hex. `npm run brand:counts` prints the line count.
 
-So the indirection layer that would make a rebrand a one-file change exists on
-paper and has never been adopted. Building it is not optional overhead here - it
-is the only thing that makes this migration finite, and it is the reason the work
-is worth doing even if the rebrand slips.
+The three original variables --background, --foreground, --accent -- now have
+**zero** consumers, where the hand count said one. The indirection layer this
+document called the blocker exists. That is the single biggest change since
+2026-08-22 and it is why the remaining cost below is a fraction of the
+estimate.
 
 ---
 
 ## Where the work is
 
+**This is the finding that matters most, and it is the opposite of what this
+document said when it was written.** The public/internal split did not just
+shift - it inverted.
+
 | Surface | Files | Hexes | Notes |
 |---|---|---|---|
-| **Public site** | 42 | **605** | 24 routes. What the lineup announcement points at |
-| **Team dashboard** (`/team/*`) | 37 | **462** | Internal. Nobody outside the team sees it |
+| **Public site** (`src/app/**`, outside `/team`) | 47 | **0** | On tokens by name. Nothing left to migrate |
+| **Team dashboard** (`src/app/team/*`) | 42 | **420** | Internal. Nobody outside the team sees it |
 | Other brand surfaces | - | - | `src/app/icon.svg`, `src/app/opengraph-image.tsx` |
 
-The public routes:
+The original claim was "605 of the 1,067 hexes are on surfaces anyone outside
+the team will ever look at. The dashboard can stay navy indefinitely without
+anybody noticing, and nothing about the announcement depends on it." Every one of
+those 420 hexes is now under `src/app/team/`. The public site has **zero**.
 
-```
-/  /acadia  /apply  /artist/[slug]  /artists  /circles  /cypher  /donate
-/ellsworth  /event-organizers  /festivals  /musicians  /musicians/rider
-/musicians/submit  /onepagers  /onepagers/[slug]  /onepagers/overview  /pitch
-/privacy  /program  /sponsor  /sponsor/deck  /suggest  /zaoville
-```
+Heaviest single files, all of them internal: `team/ArtistPipeline.tsx` (43),
+`team/SponsorCRM.tsx` (37), `team/QuickAdd.tsx` (25), `team/TeamRoles.tsx` (24),
+`team/BioEditor.tsx` (24).
 
-Heaviest single files: `app/page.tsx` (69), `pitch/page.tsx` (48),
-`musicians/rider/RiderForm.tsx` (44), `team/ArtistPipeline.tsx` (43),
-`team/SponsorCRM.tsx` (37).
-
-**The public/internal split is the most useful fact in this document.** It is a
-real seam: 605 of the 1,067 hexes are on surfaces anyone outside the team will
-ever look at. The dashboard can stay navy indefinitely without anybody noticing,
-and nothing about the announcement depends on it.
+So the seam this document was built around is now the other way round: the
+public site is done, and the only remaining brand debt is on a surface with no
+external audience. That makes the decision much easier than it looked on
+2026-08-22 - it is now a "do it when someone is already in that file" item
+rather than a launch risk.
 
 ---
 
 ## The plan, in the order it should happen
 
-### Phase 0 - build the token layer (2-3 hours, do this regardless)
+**Status of each phase as of 2026-09-30, measured by `npm run brand:counts`.**
+
+### Phase 0 - build the token layer (2-3 hours, do this regardless) - DONE
 
 Expand `globals.css` from Candy's `tokens.reference.css` into a real token set:
 the full red / gold / denim / olive ramps, plus `--paper-100`, `--paper-200`,
@@ -105,34 +120,32 @@ the full red / gold / denim / olive ramps, plus `--paper-100`, `--paper-200`,
 `bg-paper` and `text-ink` instead of a hex.
 
 **This is independently worth doing.** It is the difference between the next
-brand change costing 2,300 edits and costing one file. It ships safely on its own
-because adding tokens changes no rendering until something consumes them.
+brand change costing 1,017 edits and costing one file. It shipped, and the
+proof that it shipped is the number that dropped from 605 public hexes to zero.
 
-### Phase 1 - one page, end to end (half a day)
+### Phase 1 - one page, end to end (half a day) - DONE
 
-Migrate `/program` completely and look at it. It is the smallest self-contained
-public page, it is already being rebuilt in PR #40, and it exercises the full
-problem: ground, text, borders, accent, and cards.
+Migrate `/program` completely and look at it.
 
-The purpose is to find out what Phase 2 actually costs per page, from one real
-data point rather than from this document's arithmetic. Do not skip it and do not
-scale up until it looks right on a phone.
+The purpose was to find out what Phase 2 actually costs per page, from one real
+data point rather than from this document's arithmetic.
 
-### Phase 2 - the public site (the bulk)
+### Phase 2 - the public site (the bulk) - DONE
 
-The remaining 23 public routes, in descending order of who sees them: `/` first,
-then `/pitch` and `/sponsor` (these carry the money conversation), then the
-musician funnel, then the long tail.
+The remaining public routes, in descending order of who sees them.
 
 Per page: swap ground and text polarity, replace the accent, re-check every
 border and hover state, verify contrast on paper. **Budget on the polarity work,
 not the hexes** - the hexes are the fast part.
 
-### Phase 3 - the dashboard, or never
+Result: zero hardcoded hexes remain outside `src/app/team/`.
 
-462 hexes across 37 files for a surface with no external audience. Legitimate
+### Phase 3 - the dashboard, or never - THE ONLY THING LEFT
+
+420 hexes across 42 files for a surface with no external audience. Legitimate
 outcomes include "do it later", "do it never", and "do it when someone is already
-in that file". It should not gate the announcement.
+in that file". It should not gate the announcement, and now it demonstrably
+cannot: the public site it was blocking is finished.
 
 ### Phase 4 - the marks and the metadata
 
@@ -166,27 +179,26 @@ already committed by PR #42. Note there is no favicon or manifest PNG in
 
 ## The honest recommendation
 
-**Phase 0 now, the rest after the lineup announcement.**
+**Phases 0-2 are done. Only Phase 3 is open, and it can wait.**
 
-The token layer is pure upside, carries no visual risk, and makes every later
-phase cheaper. The full migration is roughly a week of focused work for one
-person, and the failure mode of rushing it is the exact half-and-half state
-Candy's README warns about - shipped in front of the audience the announcement
-just brought in.
+The estimate this document gave on 2026-08-22 was roughly a week of focused
+work for one person, gated on the token layer and the public-site sweep. Both
+shipped. What is left is 420 hexes across 42 dashboard files that no visitor
+will ever load. The failure mode Candy's README warns about - shipped in front
+of an audience in a half-and-half state - cannot happen from dashboard work,
+because the dashboard is not what the audience loads.
 
-The announcement is also the single moment this year with the most eyes on the
-site, which cuts both ways: it is the best time to have a new identity, and the
-worst time to be halfway through one. Given 42 days to the event and six open
-run-of-show decisions competing for the same attention, the risk-adjusted answer
-is to land the announcement on the identity we have and rebrand behind it.
+So this is now a "do it when someone is already in that file" item rather than
+a decision anyone has to make on a deadline.
 
-That is a recommendation, not a decision. It is question 7 on Monday's list.
-
-**One thing that is genuinely urgent regardless:** Candy's complete reference
-homepage - plain HTML/CSS/JS, the actual implementation of this identity - lives
-only in `~/Downloads/ZaoStock for Zaal/`. It is not in any repo. Whoever does
-Phase 2 needs to read it first, and right now it is one `rm` from gone. PR #42
-raises this; it is still open.
+**One thing that was urgent on 2026-08-22 and should be checked now:** Candy's
+complete reference homepage - plain HTML/CSS/JS, the actual implementation of
+this identity - was recorded as living only in `~/Downloads/ZaoStock for Zaal/`,
+in no repo, and "one `rm` from gone". The identity has since shipped on the
+public site, so the risk that this document was guarding against has been
+retired by the work itself. If the reference is still only on one machine, it is
+still worth committing; if the public site now carries it, this paragraph can
+go.
 
 ---
 
@@ -198,9 +210,29 @@ credit (`.claude/rules/credit-attribution.md`).
 
 ## Method
 
-Counts produced on 2026-08-22 against `main` by grepping `src/**/*.tsx` for the
-four legacy brand hexes (`0a1628`, `f5a623`, `0d1b2a`, `ffd700`) and for the
-light-on-dark utility patterns (`text-white`, `text-gray-[345]00`,
-`{bg,border,ring,divide,from,to}-white/*`, `bg-black/*`). The utility figure is
-de-duplicated - an earlier pass double-counted `border-white/[0.08]` under two
-patterns and read 1,679; the correct figure is 1,297.
+Two passes, because the first one is what made this document go stale.
+
+**2026-08-22, by hand.** Grepping `src/**/*.tsx` for the four legacy brand hexes
+(`0a1628`, `f5a623`, `0d1b2a`, `ffd700`) and for the light-on-dark utility
+patterns (`text-white`, `text-gray-[345]00`, `{bg,border,ring,divide,from,to}-white/*`,
+`bg-black/*`). The utility figure was de-duplicated - an earlier pass
+double-counted `border-white/[0.08]` under two patterns and read 1,679.
+
+**2026-09-30, by script, re-runnable.**
+[`scripts/brand-migration-counts.mjs`](../scripts/brand-migration-counts.mjs)
+recomputes every row in the table above and prints the document's figure next to
+the current one. It matches on the same Tailwind arbitrary-value shape
+(`[#[hex]`) and the same light-on-dark utility families, and it strips comments
+first so a hex named in prose is not counted as rendered copy.
+
+Two differences worth stating plainly rather than burying:
+
+- **The hex pattern is broader than "the four legacy hexes".** It counts any
+  hardcoded hex in a Tailwind arbitrary value, which is the number the
+  migration actually has to fix. A dark-only file carrying an unrelated
+  non-brand hex is still an edit site.
+- **The hand count and this script are not the same measurement**, so the
+  1,067 -> 420 change mixes two things: real migration, and a wider definition.
+  The public/internal split is the number to trust, because it is the one that
+  flips the document's conclusion: **0 hexes outside `src/app/team/`**, which
+  is true under either definition.
