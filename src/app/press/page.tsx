@@ -113,6 +113,20 @@ export default function PressPage() {
                 src="/brand/posters/2026-lineup-poster-1600x2000.png"
                 alt="ZAOstock 2026 confirmed lineup poster"
                 className="w-full h-full object-cover"
+                // LAZY, AND THIS IS A PERFECT-FIX NOT A TIDY-UP: the poster
+                // PNG is 3.3 MB. React preloads an <img> with no `loading`
+                // as soon as its markup exists, and this page's markup exists
+                // inside the RSC payload that Next prefetches for the /press
+                // link in the site header and footer. So an eager poster here
+                // made EVERY page on the site download 3.3 MB of a file no
+                // visitor had asked for, before the page they asked for had
+                // finished. Measured 2026-09-30 on the deployed site at
+                // 1.6 Mbps: the 3.3 MB poster was the single largest item on
+                // /program, ahead of the page's own HTML and every script.
+                // Fix: nothing but the real navigation to this page needs it,
+                // and by then the visitor is asking for it on purpose.
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <div className="p-5 flex flex-wrap items-center justify-between gap-3">
