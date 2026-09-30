@@ -120,9 +120,9 @@ export const BLOCKS: Block[] = [
     // (Zaal to the broker, 3 September). The evening is Black Moon's, so this
     // block describes their programme, not ours, and should not gain detail we
     // have not been given.
-    lede: 'At six the street clears. The ZAOstock after-party at Black Moon Public House next door, with North Creek, hosted by Black Moon, 6 to 10 PM.',
+    lede: 'At six the street clears. The ZAOstock after-party at Black Moon Public House next door, hosted by Black Moon: doors from 6, music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.',
     slots: [
-      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party at Black Moon Public House, with North Creek, hosted by Black Moon, 6 to 10 PM.', tone: 'set' },
+      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party at Black Moon Public House, 142 Main St, hosted by Black Moon. Doors from 6, music 7 to 10 PM: North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.', tone: 'set' },
       { time: '22:00', label: 'Close', detail: 'Approximate. Black Moon keeps its own hours.', tone: 'gap' },
     ],
   },
