@@ -23,7 +23,9 @@ describe('redirects for paths people guess', () => {
     expect(bySource['/sponsors']?.destination).toBe('/sponsor');
     expect(bySource['/artist/fellenz']?.destination).toBe('/artist/tom-fellenz');
     expect(bySource['/artist']?.destination).toBe('/artists');
-    expect(bySource['/volunteer']?.destination).toBe('/apply');
+    // /volunteer is now a real page (the sign-up sheet); its misspelling redirects to it.
+    expect(bySource['/volunteer']).toBeUndefined();
+    expect(bySource['/volenteer']?.destination).toBe('/volunteer');
     expect(bySource['/support']?.destination).toBe('/contact');
     expect(bySource['/ticket']?.destination).toBe('/tickets');
   });
