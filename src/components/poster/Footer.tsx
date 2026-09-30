@@ -6,6 +6,9 @@ import { SITE, SOCIALS, zaoEllsworthFacebookUrl } from '@/content/site';
 // white moose needs a dark ground, and night is one that never flips.
 const LINKS = [
   { href: '/program', label: 'Program' },
+  { href: '/afterparty', label: 'After-party' },
+  { href: '/volunteer', label: 'Volunteer' },
+  { href: '/sponsor', label: 'Sponsor' },
   { href: '/press', label: 'Press' },
   { href: '/media', label: 'Media' },
   { href: '/partners', label: 'Partners' },
