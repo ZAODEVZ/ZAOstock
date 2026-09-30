@@ -70,6 +70,7 @@ function Sheet({ days }: { days: VolunteerDay[] }) {
 export default function VolunteerPage() {
   return (
     <SiteShell>
+      <style>{'@media print { header, footer, nav { display: none !important; } }'}</style>
       <Section first className="pt-12 sm:pt-16">
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.dateLabel}</Eyebrow>
@@ -90,14 +91,14 @@ export default function VolunteerPage() {
       <Section>
         <Eyebrow className="mb-3">Already covered</Eyebrow>
         <Card>
-          <dl className="m-0 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
-            {COVERED.map((c) => (
-              <div key={c.job} className="contents">
-                <dt className="font-bold text-ink-950">{c.job}</dt>
-                <dd className="m-0 text-ink-secondary">{c.who}</dd>
-              </div>
+          <ul className="list-none m-0 p-0 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {COVERED.map((job) => (
+              <li key={job}>
+                <span className="font-bold text-ink-950">{job}</span>
+                <span className="text-ink-secondary">: covered</span>
+              </li>
             ))}
-          </dl>
+          </ul>
         </Card>
       </Section>
 

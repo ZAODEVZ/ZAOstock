@@ -42,10 +42,10 @@ export const IN_PERSON: VolunteerDay[] = [
   {
     id: 'sat',
     title: 'Saturday, October 3',
-    where: 'Franklin Street Parklet, 8 AM to 7 PM',
+    where: 'Franklin Street Parklet, from 8 AM',
     slots: [
       { id: 'sat-loadin', when: '8 - 10 AM', job: 'Load-in', what: 'Help set the sound gear, cables and tables.', needed: 3, taken: 0 },
-      { id: 'sat-checkin', when: '9:30 AM - 12 PM', job: 'Artist check-in', what: 'Greet the acts at the Black Moon side door and hand out lanyards.', needed: 1, taken: 0 },
+      { id: 'sat-checkin', when: '9:30 AM - 12 PM', job: 'Artist check-in', what: 'Greet the acts as they arrive for soundcheck.', needed: 1, taken: 0 },
       { id: 'sat-clock', when: '12 - 6 PM', job: 'Timekeeper', what: 'Give each act a 5-minute and a 1-minute signal so sets end on time.', needed: 1, taken: 0 },
       { id: 'sat-count', when: '12 - 6 PM', job: 'Headcount', what: 'A clicker at one end of the parklet, counting people coming in.', needed: 2, taken: 0 },
       { id: 'sat-hello', when: '12 - 6 PM', job: 'Welcome and QR sign', what: 'Point people to the sign-up QR and ask two quick questions.', needed: 1, taken: 0 },
@@ -53,15 +53,15 @@ export const IN_PERSON: VolunteerDay[] = [
       { id: 'sat-photos', when: '12 - 6 PM', job: 'Photos', what: 'Phone photos of the day, and one photo from the same spot every hour.', needed: 1, taken: 0 },
       { id: 'sat-log', when: '12 - 6 PM', job: 'Event log', what: 'Jot down anything unusual with a rough time.', needed: 1, taken: 0 },
       { id: 'sat-sign', when: '5:50 - 6:15 PM', job: 'After-party sign', what: 'Hold the sign on the street pointing to Black Moon next door.', needed: 1, taken: 0 },
-      { id: 'sat-strike', when: '5:50 - 7 PM', job: 'Strike', what: 'Sound gear down, cables, tables, trash, lights.', needed: 3, taken: 0 },
+      { id: 'sat-strike', when: 'From 5:50 PM', job: 'Strike', what: 'Sound gear down, cables, tables, trash, lights.', needed: 3, taken: 0 },
     ],
   },
   {
     id: 'sun',
     title: 'Sunday, October 4',
-    where: 'Franklin Street Parklet, morning',
+    where: 'Franklin Street Parklet, time set with the crew',
     slots: [
-      { id: 'sun-loadout', when: 'Morning', job: 'Load-out', what: 'Final pack-up and returns.', needed: 2, taken: 0 },
+      { id: 'sun-loadout', when: 'Sunday', job: 'Load-out', what: 'Final pack-up and returns.', needed: 2, taken: 0 },
     ],
   },
 ];
@@ -83,19 +83,16 @@ export const VIRTUAL: VolunteerDay[] = [
     slots: [
       { id: 'v-chat', when: '12 - 6 PM', job: 'Stream chat', what: 'Welcome people in the livestream chat and answer questions.', needed: 2, taken: 0 },
       { id: 'v-social', when: '12 - 6 PM', job: 'Live posting', what: 'Post short updates and photos from the stream to socials.', needed: 1, taken: 0 },
-      { id: 'v-clips', when: '12 - 8 PM', job: 'Clips', what: 'Cut short clips from the stream for sharing.', needed: 2, taken: 0 },
+      { id: 'v-clips', when: 'During and after', job: 'Clips', what: 'Cut short clips from the stream for sharing.', needed: 2, taken: 0 },
     ],
   },
 ];
 
-/** Already covered, so the sheet shows the whole picture, not only the gaps. */
-export const COVERED: { job: string; who: string }[] = [
-  { job: 'MC', who: 'Zaal' },
-  { job: 'Stage managers', who: 'Zaal, DCoop, Steve Peer' },
-  { job: 'Sound', who: 'Ryan Miller (OPEN X)' },
-  { job: 'Livestream', who: 'Tom Fellenz' },
-  { job: 'Video', who: 'Maceo' },
-  { job: 'Stream moderation', who: 'Iman, Thy Revolution' },
-];
+/**
+ * Already covered, so the sheet shows the whole picture, not only the gaps.
+ * Roles only, never names: nobody on the crew has agreed to be listed here
+ * (Dotfiles review of #412).
+ */
+export const COVERED: readonly string[] = ['MC', 'Stage managers', 'Sound', 'Livestream', 'Video', 'Stream moderation'];
 
 export const openCount = (s: VolunteerSlot) => Math.max(0, s.needed - s.taken);
