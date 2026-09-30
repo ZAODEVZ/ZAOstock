@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/zaoville',
     '/media',
     '/afterparty',
+    '/volunteer',
     '/brand',
     '/privacy',
     '/terms',

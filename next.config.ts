@@ -125,8 +125,9 @@ const config: NextConfig = {
       // not match with no slug. No internal link ever pointed at the bare
       // singular form, so this is purely for someone typing or pasting it.
       { source: '/artist', destination: '/artists', permanent: false },
-      // /volunteer is the intuitive link people guess for volunteering; the canonical route is /apply.
-      { source: '/volunteer', destination: '/apply', permanent: false },
+      // /volunteer is now the sign-up sheet itself (Zaal, 2026-09-30). The
+      // misspelling he typed redirects to it.
+      { source: '/volenteer', destination: '/volunteer', permanent: false },
       // /donate merged into /tickets on 2026-09-29 (Zaal: "combine ticket and
       // donation page"). Old links, the newsletter and the /live button keep working.
       { source: '/donate', destination: '/tickets#give', permanent: false },
