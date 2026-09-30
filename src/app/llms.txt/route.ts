@@ -44,7 +44,7 @@ ZAOstock is the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York 
 
 - Where: ${FESTIVAL.venue}, Franklin Street, downtown Ellsworth, Maine 04605.
 - ${FESTIVAL.window}, ${FESTIVAL.venue}: the ${LINEUP_NAMES.length} acts on the bill, back to back with five- to twelve-minute changeovers, with our MC and our partners between sets. Music starts at noon.
-- 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door, with North Creek, hosted by Black Moon, 6 to 10 PM. It is not a second ZAOstock stage.
+- 6 PM, the street clears. The ZAOstock after-party at Black Moon Public House next door (142 Main St), hosted by Black Moon: doors from 6, music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages. Flyer and details: https://zaostock.com/afterparty. It is not a second ZAOstock stage.
 - Free to attend. ${SITE.weather} Optional support at ${TIER_PRICES} on /tickets, to support the artists.
 
 ## Lineup

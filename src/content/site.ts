@@ -185,12 +185,30 @@ export function displayName(name: string): string {
 export const LINEUP_NAMES_NOTE =
   'They play in that order. Each act has its own page with a bio and photo.';
 
+/**
+ * The after-party, from Black Moon's own flyer (shared by Zaal 2026-09-30).
+ * Zaal, same day, on the flyer's 7 PM vs our old "6 to 10": "Doors 6, music 7".
+ * It is Black Moon's event on their premises and licence; we list it, we do
+ * not run it (see program.ts BLOCKS[1]).
+ */
+export const AFTER_PARTY = {
+  venue: 'Black Moon Public House',
+  address: '142 Main St, Ellsworth',
+  doors: '6 PM',
+  music: '7 PM',
+  end: '10 PM',
+  ages: 'All ages',
+  lineup: ['North Creek', 'Treelock & HiDef', 'Sam Savage', 'Oven Baked Beats DJ Aquavantes'],
+  flyer: '/afterparty/flyer.jpg',
+  summary: 'Black Moon Public House, 142 Main St, next door: doors from 6, after-party music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.',
+} as const;
+
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
 export const DAY = [
   { time: 'Noon - 6 PM', where: 'Franklin Street Parklet', what: 'Independent artists on the parklet stage, with our MC and our partners between sets.' },
   // SETTLED 2026-09-14 (Zaal), CORRECTED 2026-09-26: North Creek, not Steve
   // himself - see src/content/program.ts for the source quote and reasoning.
-  { time: '6 - 10 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, with North Creek, hosted by Black Moon, 6 to 10 PM.' },
+  { time: '6 - 10 PM', where: 'Black Moon Public House, next door', what: 'The ZAOstock after-party at Black Moon Public House, hosted by Black Moon: doors from 6, music 7 to 10 PM.' },
 ] as const;
 
 /**

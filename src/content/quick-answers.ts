@@ -44,7 +44,7 @@ export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
   { q: 'Where do I park?', a: PARKING_DETAIL },
   {
     q: 'What happens after six?',
-    a: 'At six the street clears, and Black Moon Public House next door hosts its own evening: the ZAOstock after-party, with North Creek.',
+    a: 'At six the street clears, and Black Moon Public House next door hosts its own evening: the ZAOstock after-party, doors from 6 and music from 7, with North Creek and friends. Details at zaostock.com/afterparty.',
   },
   { q: 'Can I watch online?', a: 'Yes. The stream and the running order are at zaostock.com/live.' },
 ];

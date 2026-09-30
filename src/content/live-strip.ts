@@ -50,7 +50,7 @@ export type NowNextState =
 
 const BEFORE_MESSAGE_TODAY = 'Doors at noon.';
 const BEFORE_MESSAGE_DATED = 'Doors at noon on Saturday 3 October.';
-const AFTER_MESSAGE = "That's a wrap outside. Next door at Black Moon: North Creek hosts the after-party, from six.";
+const AFTER_MESSAGE = "That's a wrap outside. Next door at Black Moon: doors from six, after-party music from seven.";
 
 export function nowNextState(now: number): NowNextState {
   if (now < DOORS_MS) {
