@@ -57,10 +57,13 @@ const PANELS = [
   { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(5) },
 ] as const;
 
+// Festival week (audit, 2026-09-30): "Artists / Submit work" pointed at
+// /artists, which is the lineup, not a submission page; "Apply to play" read
+// as an open call with the 2026 bill full; Volunteers now have the sheet.
 const PLUG_IN = [
-  { n: '01', who: 'Artists', what: 'Submit work', href: '/artists' },
-  { n: '02', who: 'Musicians', what: 'Apply to play', href: '/musicians' },
-  { n: '03', who: 'Volunteers', what: 'Sign up', href: '/apply' },
+  { n: '01', who: 'Everyone', what: 'RSVP free', href: '/tickets' },
+  { n: '02', who: 'Volunteers', what: 'Pick a job', href: '/volunteer' },
+  { n: '03', who: 'Musicians', what: 'Next year', href: '/musicians' },
   { n: '04', who: 'Sponsors & press', what: 'Get in touch', href: '/sponsor' },
 ] as const;
 
