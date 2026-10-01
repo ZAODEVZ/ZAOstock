@@ -3,7 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH } from '@/content/site';
+import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
 import { SiteShell, Countdown } from '@/components/poster';
 import { HomeHero } from './HomeHero';
 import s from './home.module.css';
@@ -168,7 +168,7 @@ export default function HomePage() {
                   <div className={s.panelTxt}>
                     <div className={s.kicker}>{p.kicker}</div>
                     {p.acts.map((a) => (
-                      <h3 key={a}>{a}</h3>
+                      <h3 key={a}>{displayName(a)}</h3>
                     ))}
                   </div>
                 </div>
@@ -219,9 +219,9 @@ export default function HomePage() {
           <div className={`${s.wrap} ${s.center}`}>
             <div className={s.kicker}>How to plug in</div>
             <h2 className={s.title}>
-              Play, make,
+              Come, <em>help</em>,
               <br />
-              <em>help</em>, or cover it
+              or cover it
             </h2>
             <p className={s.lede} style={{ margin: '0 auto' }}>
               ZAOstock runs on volunteers and local talent. There is a seat at the table whichever way you want in.

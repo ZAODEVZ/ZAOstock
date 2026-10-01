@@ -62,9 +62,10 @@ export default async function LivePage() {
             <AddToCalendar />
             {/* Watching from home has no other way to give. Zaal, 2026-09-27:
                 "we deff need a place for ppl to just go to the live website
-                and one button is the donate button." */}
-            <Button href="/tickets#give" variant="secondary">
-              Donate
+                and one button is the donate button." Label matches /tickets since
+                2026-09-30: "something there for supporting the artists". */}
+            <Button href="/tickets" variant="secondary">
+              Support the artists
             </Button>
           </div>
         </div>
@@ -203,8 +204,7 @@ export default async function LivePage() {
           <Eyebrow>After six</Eyebrow>
           <p className="text-sm text-ink-secondary m-0 mt-2">
             The stream runs with the parklet. When the music outdoors finishes, the day moves next door to Black Moon Public House for the
-            after-party, and that part is in person only. See the <a href="/program" className="text-red-700 font-bold">program</a> for how the
-            day runs.
+            after-party, and that part is in person only: doors at 6, music from 7. See the <a href="/afterparty" className="text-red-700 font-bold">after-party page</a>.
           </p>
         </Card>
       </Section>
