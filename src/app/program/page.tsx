@@ -98,7 +98,7 @@ export default function ProgramPage() {
                   2026-09-27: "this hould be a good UI of all the artists."
                   The badge now links to the real one. */}
               <Link href="/artists">
-                <Badge tone="gold">Meet the artists, one at a time</Badge>
+                <Badge tone="gold">Meet the artists</Badge>
               </Link>
             </div>
           </div>
