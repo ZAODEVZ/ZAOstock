@@ -8,6 +8,7 @@ import { getRosterArtists, slugify } from '@/lib/artists';
 import { getFallbackLineup } from '@/lib/lineup-fallback';
 import { parseSocials } from '@/lib/socials';
 import { SiteShell, Section, Eyebrow, Card } from '@/components/poster';
+import { RadioPlayer } from '@/components/RadioPlayer';
 
 // /media - what has been written about ZAOstock, and where to follow each act.
 // Content lives in src/content/media.ts (press, embeds) and
@@ -83,13 +84,9 @@ export default async function MediaPage() {
           </a>
           , our local radio partner.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[760px]">
+        <div className="flex flex-col gap-3 max-w-[760px]">
           {RADIO.map((r) => (
-            <Card key={r.src}>
-              <p className="text-sm font-bold text-ink-950 m-0 mb-2">{r.title}</p>
-              <audio src={r.src} controls preload="none" className="w-full" />
-              <p className="text-xs text-ink-muted m-0 mt-2">{r.detail}</p>
-            </Card>
+            <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} />
           ))}
         </div>
       </Section>

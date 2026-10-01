@@ -39,7 +39,8 @@ export const PRESS: readonly PressItem[] = [
  * the star 97.7 interview". The 30-second spot ran on Star 97.7 from 21 Sep
  * to 2 Oct (vault projects/zaostock-star-977-radio-commercial-2026-09-17.md).
  */
-export type RadioItem = { title: string; detail: string; src: string };
+/** session = Zaal on air (shown on the homepage too); spot = the 30-second ad. */
+export type RadioItem = { title: string; detail: string; src: string; kind: 'session' | 'spot' };
 
 /** The station's own site, linked from the radio cards (a signed media partner). */
 export const STAR_977_URL = 'https://star977fm.com/';
@@ -52,16 +53,19 @@ export const RADIO: readonly RadioItem[] = [
     title: 'Zaal on Star 97.7, 1 October 2026',
     detail: 'A festival update live on air, two days out. 6:19.',
     src: '/brand/audio/zaostock-radio-update-2026-10-01.mp3',
+    kind: 'session',
   },
   {
     title: 'Zaal on Star 97.7, 10 September 2026',
     detail: 'The full interview about the festival. 7:39.',
     src: '/brand/audio/zaostock-radio-interview-2026-09-10.mp3',
+    kind: 'session',
   },
   {
     title: 'The ZAOstock radio spot',
     detail: 'The 30-second ad that ran on Star 97.7 in the weeks before the festival.',
     src: '/brand/audio/zaostock-commercial-30s.mp3',
+    kind: 'spot',
   },
 ];
 
@@ -103,3 +107,6 @@ export function embedsFor(name: string): readonly Embed[] {
 }
 
 export const MEDIA_ACTS = LINEUP_NAMES;
+
+/** The two on-air sessions, newest first, for the homepage player. */
+export const RADIO_SESSIONS = RADIO.filter((r) => r.kind === 'session');
