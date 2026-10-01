@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { LINEUP_NAMES, displayName } from '@/content/site';
+import { LINEUP_NAMES, displayName, SOCIALS } from '@/content/site';
 import { PRESS, RADIO, NEWSLETTER, STAR_977_URL, embedsFor, NO_SOCIALS } from '@/content/media';
 import { getRosterArtists, slugify } from '@/lib/artists';
 import { getFallbackLineup } from '@/lib/lineup-fallback';
@@ -102,6 +102,19 @@ export default async function MediaPage() {
               <span className="font-mono text-xs text-ink-muted mr-2">{fmtDate(m.date)}</span>
               <a href={m.url} target="_blank" rel="noopener noreferrer" className="font-bold text-ink-950 underline hover:no-underline">
                 {m.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section>
+        <Eyebrow className="mb-3">Follow The ZAO</Eyebrow>
+        <ul className="list-none m-0 p-0 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-[760px]">
+          {SOCIALS.map((s) => (
+            <li key={s.href}>
+              <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-ink-950 underline hover:no-underline">
+                {s.label}
               </a>
             </li>
           ))}
