@@ -50,9 +50,14 @@ export const ZAO_MEDIA: Readonly<Record<string, readonly MediaItem[]>> = {
     },
   ],
   'Tom Fellenz': [
+    // Day 260 ("Tom Fellenz is playing ZAOstock", 2026-09-18) was removed:
+    // paragraph.com/@thezao/year-of-the-zabal-day-260 returns 404 in a real
+    // browser on 2026-09-30, and the Wayback Machine has no copy. Restore the
+    // entry if the edition is republished. Until then Day 263 stands in: it
+    // names him in the running order and says he had his own edition.
     {
-      title: 'Year of the ZABAL, Day 260: Tom Fellenz is playing ZAOstock',
-      url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-260',
+      title: 'Year of the ZABAL, Day 263: 13 days until ZAOstock',
+      url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-263-13-days-until-zaostock',
     },
   ],
 };
