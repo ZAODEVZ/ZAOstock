@@ -86,7 +86,7 @@ export default async function MediaPage() {
         </p>
         <div className="flex flex-col gap-3 max-w-[760px]">
           {RADIO.map((r) => (
-            <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} />
+            <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} seconds={r.seconds} />
           ))}
         </div>
       </Section>

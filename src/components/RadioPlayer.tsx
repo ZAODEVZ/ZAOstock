@@ -15,18 +15,20 @@ import { useEffect, useRef, useState } from 'react';
 
 const PLAY_EVENT = 'zaostock:radio-play';
 
-function fmt(sec: number): string {
+function fmt(sec: number, round = false): string {
   if (!Number.isFinite(sec) || sec < 0) return '0:00';
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
+  const whole = round ? Math.round(sec) : Math.floor(sec);
+  const m = Math.floor(whole / 60);
+  const s = whole % 60;
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-export function RadioPlayer({ src, title, detail }: { src: string; title: string; detail?: string }) {
+export function RadioPlayer({ src, title, detail, seconds }: { src: string; title: string; detail?: string; seconds?: number }) {
   const audio = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(seconds ?? 0);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const other = (e: Event) => {
@@ -41,7 +43,7 @@ export function RadioPlayer({ src, title, detail }: { src: string; title: string
     if (!a) return;
     if (a.paused) {
       window.dispatchEvent(new CustomEvent(PLAY_EVENT, { detail: src }));
-      void a.play();
+      a.play().catch(() => setFailed(true));
     } else {
       a.pause();
     }
@@ -91,15 +93,33 @@ export function RadioPlayer({ src, title, detail }: { src: string; title: string
             style={{ background: `linear-gradient(to right, var(--color-red-500) ${pct}%, rgba(36,30,21,0.15) ${pct}%)` }}
           />
           <span className="shrink-0 font-mono text-[11px] tabular-nums text-ink-muted">
-            {fmt(time)} / {duration ? fmt(duration) : '--:--'}
+            {fmt(time)} / {duration ? fmt(duration, true) : '--:--'}
           </span>
         </div>
+        {failed ? (
+          <p className="m-0 mt-1 text-xs text-ink-muted">
+            Could not play here.{' '}
+            <a href={src} className="font-bold text-ink-950 underline">
+              Open the recording
+            </a>
+            .
+          </p>
+        ) : null}
+        <noscript>
+          <a href={src} className="text-xs font-bold text-ink-950 underline">
+            Play the recording
+          </a>
+        </noscript>
       </div>
       <audio
         ref={audio}
         src={src}
         preload="none"
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          setFailed(false);
+        }}
+        onError={() => setFailed(true)}
         onPause={() => setPlaying(false)}
         onEnded={() => setPlaying(false)}
         onTimeUpdate={(e) => setTime(e.currentTarget.currentTime)}
