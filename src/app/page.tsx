@@ -196,7 +196,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col gap-3 max-w-[760px]">
               {RADIO_SESSIONS.map((r) => (
-                <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} />
+                <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} seconds={r.seconds} />
               ))}
             </div>
             <p className={s.lede} style={{ marginTop: 18 }}>
