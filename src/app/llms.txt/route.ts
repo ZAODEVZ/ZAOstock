@@ -81,8 +81,8 @@ Every car heading to Acadia National Park passes through. Downtown is newly on t
 - https://zaostock.com/build - the builder kit: five things the festival needs built and how to show them live
 - https://zaostock.com/musicians - for musicians; the way in is email, there is no submission form
 - https://zaostock.com/artists - lineup directory and artist profiles
-- https://zaostock.com/apply - volunteer sign-up (/volunteer redirects here)
-- https://zaostock.com/tickets - free RSVP, the paid tiers, and giving by card or Giveth
+- https://zaostock.com/volunteer - volunteer sign-up sheet: open jobs in person and online (the older form is at /apply)
+- https://zaostock.com/afterparty - the after-party at Black Moon, with Black Moon's flyer
 - https://zaostock.com/ellsworth and /acadia - getting here and the park
 - https://zaostock.com/festivals - the ZAO Festivals series
 
