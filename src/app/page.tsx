@@ -6,6 +6,8 @@ import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
 import { SiteShell, Countdown } from '@/components/poster';
 import { HomeHero } from './HomeHero';
+import { RadioPlayer } from '@/components/RadioPlayer';
+import { RADIO_SESSIONS, STAR_977_URL } from '@/content/media';
 import s from './home.module.css';
 
 // THE HOMEPAGE IN CANDY'S LOOK. Zaal, 2026-09-10, of her site build: "this is
@@ -174,6 +176,34 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* On the radio. Zaal, 2026-10-01: the two Star 97.7 sessions, one tap to
+            play. The 30-second ad and the rest of the coverage stay on /media. */}
+        <section className={s.section} id="radio">
+          <div className={s.wrap}>
+            <div className={s.kicker}>On the radio</div>
+            <h2 className={s.title}>
+              Hear it on <em>Star 97.7</em>
+            </h2>
+            <p className={s.lede}>
+              Zaal on air with{' '}
+              <a href={STAR_977_URL} target="_blank" rel="noopener noreferrer" className={s.link}>
+                Star 97.7
+              </a>
+              , our local radio partner, talking about the festival. Press play.
+            </p>
+            <div className="flex flex-col gap-3 max-w-[760px]">
+              {RADIO_SESSIONS.map((r) => (
+                <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} />
+              ))}
+            </div>
+            <p className={s.lede} style={{ marginTop: 18 }}>
+              <Link href="/media" className={s.link}>
+                More press and radio
+              </Link>
+            </p>
           </div>
         </section>
 
