@@ -453,33 +453,37 @@ h1, h2, h3, h4 {
      invisible and search engines read the page as it is;
    - reduced-motion visitors get no animation at all;
    - print is untouched (screen only), so /volunteer prints whole.
-   Each block in a page section fades and rises in as it enters from the
-   bottom, and fades out as it leaves at the top. A block already on screen at
-   load is past its entry range, so it renders at full opacity. The home hero
-   is a <header>, not a <section>, so the sticky flight is never touched; the
-   Ellsworth background layer is aria-hidden and skipped the same way. */
+   Each block in a page section fades and rises in over the first 60px of
+   entering from the bottom, and dims (never below 0.6) over the last 60px of
+   leaving under the 66px sticky header, which view()'s top inset accounts for.
+   The bands are kept small and the fade-out floored so a block more than half
+   on screen, a CTA above all, is never washed out (Dotfiles' 390px review of
+   #429). A block sitting in the bottom 60px at load starts partly faded and
+   reaches full opacity within 60px of scroll. The home hero is a <header>, not
+   a <section>, so the sticky flight is never touched; the Ellsworth background
+   layer is aria-hidden and skipped the same way. */
 @media screen and (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     /* Two animations with fixed scroll distances rather than percentages, so a
-       tall block (a stacked card grid on a phone) is fully visible after 160px
+       tall block (a stacked card grid on a phone) is fully visible after 60px
        instead of staying half-faded until most of it is on screen. The fade-out
        fills forwards only, so before its range it leaves the fade-in in charge. */
     .site main section > div:not([aria-hidden='true']) > * {
       animation:
         zs-scroll-in linear both,
         zs-scroll-out linear forwards;
-      animation-timeline: view(), view();
+      animation-timeline: view(block 66px 0px), view(block 66px 0px);
       animation-range:
-        entry 0% entry 160px,
-        exit calc(100% - 160px) exit 100%;
+        entry 0% entry 60px,
+        exit calc(100% - 60px) exit 100%;
     }
   }
 }
 
 @keyframes zs-scroll-in {
   from {
-    opacity: 0;
-    transform: translateY(1.5rem);
+    opacity: 0.3;
+    transform: translateY(1rem);
   }
   to {
     opacity: 1;
@@ -492,6 +496,6 @@ h1, h2, h3, h4 {
     opacity: 1;
   }
   to {
-    opacity: 0;
+    opacity: 0.6;
   }
 }
