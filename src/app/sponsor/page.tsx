@@ -162,7 +162,7 @@ export default function SponsorPage() {
           <Card>
             <Eyebrow>Sponsor an artist</Eyebrow>
             <p className="font-sans font-extrabold text-h4 text-ink-950 m-0 mt-2">One artist, one business.</p>
-            <p className="text-sm text-ink-secondary m-0 mt-3">Covers one artist&apos;s travel. Content carrying your name. Opt-in from the artist, every time. Never discounted, because it is a cost and not a margin.</p>
+            <p className="text-sm text-ink-secondary m-0 mt-3">Covers one artist&apos;s travel. Content carrying your name. Opt-in from the artist, every time. Never discounted: it covers a real cost.</p>
           </Card>
         </TwoUp>
       </Section>

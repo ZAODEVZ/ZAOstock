@@ -48,7 +48,7 @@ const SERIES: Chapter[] = [
 ];
 
 const PRINCIPLES = [
-  { k: '01', t: 'Artist-built', b: 'The lineup and the day are built by the artists and the community, not a promoter extracting margin. Curated by the people in the room.' },
+  { k: '01', t: 'Artist-built', b: 'The lineup and the day are built by the artists and the community. Curated by the people in the room.' },
   { k: '02', t: 'Community-owned', b: 'The crowd that funds it owns it. A festival as a protocol, not a product: open, shared, repeatable by anyone.' },
   { k: '03', t: 'Free and fair', b: 'Free to attend. Artists paid fairly and transparently. Built in public, every step shared.' },
 ] as const;
