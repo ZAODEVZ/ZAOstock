@@ -103,7 +103,7 @@ WaveWarZ is a confirmed partner. Its first live battle took place at ZAO-CHELLA
 in December 2024.
 <!-- Editorial note, not press copy: keep the history, drop the programme claim. -->
 
-As of 24 September 2026, WaveWarZ had run 1,573 battles.
+As of 1 October 2026, WaveWarZ had run 1,596 battles.
 <!-- Provenance and re-pull instructions are in the sources table at the foot of this file. -->
 <!-- re-check: 2026-10-02, before any print run. Re-pulled 2026-09-24T17:51Z from
      wavewarz.info/api/public/stats: battles.total = 1573, up from 1528 on
@@ -211,7 +211,7 @@ info@thezao.com
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
 | Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
 | LyonsDen public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
-| WaveWarZ 1,573, 24 Sep | `wavewarz.info/api/public/stats`, re-pulled 2026-09-24T17:51Z. **The source, not a document.** This row used to cite `docs/sponsor/deck-2026-10-03.md` slide 6 for "1,528", and that slide said 1,452 - a provenance row pointing at a file carrying a different number. Cite the endpoint. |
+| WaveWarZ 1,596, 1 Oct | `wavewarz.info/api/public/stats`, re-pulled 2026-10-01T14:40Z (was 1,573 on 24 Sep, 1,581 on 26 Sep). **The source, not a document.** This row used to cite `docs/sponsor/deck-2026-10-03.md` slide 6 for "1,528", and that slide said 1,452 - a provenance row pointing at a file carrying a different number. Cite the endpoint. |
 | Partners, incl. WE THE MEDIA and Heart of Ellsworth | `src/content/site.ts` PARTNERS (site-fix brief 2026-09-21: page.tsx line numbers this row used to cite had already moved) |
 | RSVP URL | `src/content/festival.ts` FESTIVAL.rsvpUrl |
 | WE THE MEDIA is capturing on the day | `src/content/site.ts` PARTNERS role, "Media and content capture" |
