@@ -56,7 +56,7 @@ const STAY: { name: string; note: string }[] = [
 ];
 
 const EAT: { name: string; note: string }[] = [
-  { name: 'Black Moon Public House', note: 'The ZAOstock afterparty venue. Start here after the show.' },
+  { name: 'Black Moon Public House', note: 'Hosts the ZAOstock after-party at 142 Main St: doors 6 PM, music 7 to 10. Details at zaostock.com/afterparty.' },
   { name: 'Union River Lobster Pot', note: 'Seasonal seafood on the banks of the Union River downtown - lobster and a famous slice of pie.' },
   { name: 'Cleonice', note: 'Mediterranean bistro in the historic 1938 Luchini building on Main Street.' },
   { name: 'Serendib', note: 'Award-winning Indian and Sri Lankan cuisine.' },
