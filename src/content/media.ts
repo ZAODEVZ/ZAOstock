@@ -72,7 +72,7 @@ export const NEWSLETTER: readonly Edition[] = [
   { title: 'Day 268: the Maine artists on the ZAOstock bill', date: '2026-09-25', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-268-the-maine-artists-on-the-zaostock-bill' },
   { title: 'Day 267: 9 days out, everything you need to know', date: '2026-09-24', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-267-9-days-out-everything-you-need-to-know' },
   { title: 'Day 263: 13 days until ZAOstock', date: '2026-09-21', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-263-13-days-until-zaostock' },
-  { title: 'Day 260: Tom Fellenz is playing ZAOstock', date: '2026-09-18', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-260' },
+  // Day 260 removed 2026-09-30: the edition 404s on Paragraph (see zao-media.ts).
   { title: 'Day 259: LyonsDen is playing ZAOstock', date: '2026-09-17', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-259-1' },
   { title: 'Day 258: DCoop is playing ZAOstock', date: '2026-09-15', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-258' },
   { title: 'Day 246: thirty days out', date: '2026-09-04', url: 'https://paragraph.com/@thezao/year-of-the-zabal-day-246' },
