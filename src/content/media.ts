@@ -46,6 +46,14 @@ export const STAR_977_URL = 'https://star977fm.com/';
 
 export const RADIO: readonly RadioItem[] = [
   {
+    // Zaal, 2026-10-01 (relayed by the orchestration seat): station Star 97.7,
+    // also streamed on Twitch (VOD https://www.twitch.tv/videos/2888849470);
+    // file from his Downloads, "Zaostock Update 10-1.mp3", 6:19.
+    title: 'Zaal on Star 97.7, 1 October 2026',
+    detail: 'A festival update live on air, two days out. 6:19.',
+    src: '/brand/audio/zaostock-radio-update-2026-10-01.mp3',
+  },
+  {
     title: 'Zaal on Star 97.7, 10 September 2026',
     detail: 'The full interview about the festival. 7:39.',
     src: '/brand/audio/zaostock-radio-interview-2026-09-10.mp3',
