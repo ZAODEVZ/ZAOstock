@@ -137,10 +137,14 @@ export default async function LivePage() {
               {WATCH_PARTIES.length > 0 ? (
                 <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
                   {WATCH_PARTIES.map((party) => (
-                    <li key={party.href}>
-                      <a href={party.href} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
-                        {party.host}
-                      </a>
+                    <li key={party.host}>
+                      {party.href ? (
+                        <a href={party.href} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
+                          {party.host}
+                        </a>
+                      ) : (
+                        <span className="font-bold">{party.host}</span>
+                      )}
                       , {party.where}
                     </li>
                   ))}
