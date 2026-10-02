@@ -100,8 +100,14 @@ describe('the confirmed Twitch channel', () => {
 });
 
 describe('watch parties', () => {
-  it('starts empty, because Zaal posts the list on the day', () => {
-    expect(WATCH_PARTIES).toEqual([]);
+  // Was "starts empty". Zaal, 2 Oct: ship only the confirmed hosts.
+  it('lists only named hosts, each with a place, and only real links', () => {
+    for (const p of WATCH_PARTIES) {
+      expect(p.host.trim()).not.toBe('');
+      expect(p.where.trim()).not.toBe('');
+      if (p.href !== undefined) expect(p.href).toMatch(/^https:\/\//);
+    }
+    expect(new Set(WATCH_PARTIES.map((p) => p.host)).size).toBe(WATCH_PARTIES.length);
   });
 
   it('says the list is coming rather than showing an empty box', () => {
