@@ -332,7 +332,6 @@ export const PARTNERS: readonly Partner[] = ALL_PARTNERS.filter((p) => p.confirm
 /** What every partner gets, whatever the tier (site-fix brief, 28 Aug). */
 export const DELIVERABLES = [
   { name: 'The parklet banner', detail: 'Your name on the banner behind the stage on Franklin Street.' },
-  { name: 'The programme', detail: 'Named in the printed programme and on the day-of schedule.' },
   { name: 'Site and stream', detail: 'Logo on zaostock.com and on the livestream.' },
   { name: 'Thank-you from the stage', detail: 'Said out loud by the MC, in the changeovers.' },
 ] as const;
@@ -623,7 +622,7 @@ export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL
 
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
-  { name: 'Sponsor an artist', gets: "Covers one artist's travel. They make content carrying your name. The artist opts in.", price: null },
+  { name: 'Sponsor an artist', gets: "Backs one named artist on the bill. They make content carrying your name. The artist opts in.", price: null },
   { name: 'Community', gets: 'Logo on the site, named in the recap, thanked from stage.', price: null },
 ];
 
@@ -639,8 +638,8 @@ export const ELLSWORTH = {
   // driveThrough ('4M drove through in 2025') RETIRED 2026-09-10: no source
   // was ever found, MaineDOT counts included, and Zaal ruled "Drop both".
   artOfEllsworth: { value: '9th', label: 'Annual Art of Ellsworth' },
-  heartEvents: { value: '28', label: 'Heart of Ellsworth events in 2025' },
-  heartSponsors: { value: '50+', label: 'sponsors of those events' },
+  // The Heart of Ellsworth event and sponsor counts RETIRED 2026-10-02:
+  // no source; Zaal ruled to strip unbacked claims.
   historic: 'Downtown newly on the National Historic Register.',
 } as const;
 

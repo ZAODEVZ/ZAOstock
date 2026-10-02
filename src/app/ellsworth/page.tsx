@@ -68,7 +68,6 @@ const EAT: { name: string; note: string }[] = [
 
 const DO: { name: string; note: string }[] = [
   { name: 'Acadia National Park', note: 'Ellsworth is the gateway - about 25 mi to Bar Harbor and the park. See the full ZAO Guide to Acadia for must-see spots, reservations, and excursion plans.' },
-  { name: 'Union River Sculpture Trail', note: 'New granite sculptures by Maine artists along the Riverwalk - first installations launching Fall 2026.' },
   { name: 'Woodlawn Museum, Gardens & Park', note: 'The historic Black House on 180 acres - gardens, trails, and a croquet court.' },
   { name: 'Birdsacre (Stanwood Wildlife Sanctuary)', note: 'Rescued birds and miles of quiet walking trails, plus the Stanwood homestead museum.' },
   { name: 'Downtown Ellsworth', note: '19th-century Main Street: galleries (Courthouse Gallery, Atlantic Art Glass), shops, and cafes climbing up from the river.' },

@@ -170,12 +170,8 @@ ZAOstock is the first in Maine. The ZAO's founder lives in Ellsworth.
 ## Why Ellsworth
 
 Ellsworth is the gateway to Acadia National Park. Downtown has just received National Historic Register
-designation. The Heart of Ellsworth ran 28 events in 2025 with more than 50
-sponsors. ZAOstock plugs into that calendar rather than competing with it.
-
-ZAOstock is also measuring what a free street festival does for downtown
-businesses - an ordinary Saturday against 3 October - and will publish the
-comparison combined across the businesses that take part.
+designation. ZAOstock is part of the 9th Annual Art of Ellsworth and plugs into
+the town's calendar rather than competing with it.
 
 ## Assets
 
@@ -217,7 +213,6 @@ info@thezao.com
 | WE THE MEDIA is capturing on the day | `src/content/site.ts` PARTNERS role, "Media and content capture" |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |
 | Founder lives in Ellsworth | deck slide 4 |
-| Acadia 4M, Historic Register, Heart of Ellsworth 28 events / 50+ sponsors | `src/app/page.tsx:261-264` |
-| The measurement | production plan section 7 |
+| Historic Register, 9th Annual Art of Ellsworth | `src/app/page.tsx` |
 | Badge files, Candy credit | `docs/brand/README.md` |
 | info@thezao.com | deck slide 12 |

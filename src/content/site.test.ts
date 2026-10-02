@@ -342,6 +342,11 @@ describe('retired claims stay retired', () => {
     [/\$ ?25,?000|\$ ?25K/i, '$25K is internal only; $5,000 is the only public figure'],
     [/four million|\b4 ?million|\b4M\b/i, 'no source for "4 million drove through", MaineDOT included; Zaal: "Drop both" (2026-09-10)'],
     [/(twenty|\d+\+?)\s+countries/i, 'no member-country list exists; Zaal: "Drop both" (2026-09-10)'],
+    [/artist'?s travel|covers .{0,20}travel/i, 'ZAO artists travel is digital and not included; Zaal 2026-10-02 stripped the travel promise'],
+    [/paid fairly/i, 'Zaal 2026-10-02: say "we help them grow", never "we pay our artists"'],
+    [/\b28 (heart|events)|\b50\+ sponsors|sponsors of those events/i, 'no source for the Heart of Ellsworth 28 events / 50+ sponsors; Zaal 2026-10-02 stripped it'],
+    [/printed programme/i, 'no printed programme exists; Zaal 2026-10-02 stripped the promise'],
+    [/ordinary saturday|published local-business measurement|will publish the comparison/i, 'no measurement will be published; Zaal 2026-10-02 stripped the promise'],
   ];
 
   for (const [pattern, why] of BARRED) {
@@ -368,7 +373,7 @@ describe('retired claims stay retired', () => {
       const src = readFileSync(f, 'utf8');
       // "confirmed agreement": not every partner has a signed one. Zaal,
       // 2026-09-11, of the partner line: "Soften it".
-      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i, /confirmed agreement/i]
+      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i, /confirmed agreement/i, /paid fairly|printed programme|ordinary saturday|Sculpture Trail|28 events|artist'?s travel/i]
         .filter((re) => re.test(src))
         .map((re) => `${path.relative(process.cwd(), f)}: ${re.source}`);
     });

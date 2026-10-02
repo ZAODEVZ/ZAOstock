@@ -160,7 +160,7 @@ export default function ProgramPage() {
           <Card>
             <Eyebrow className="mb-2">Spend it in Ellsworth</Eyebrow>
             <p className="text-sm text-ink-secondary m-0">
-              The point of putting this on Franklin Street is to show what a day like this does for the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past. We are measuring what {FESTIVAL.shortDate} does for this block, and the number only exists if you make it.
+              The point of putting this on Franklin Street is to bring people to the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the

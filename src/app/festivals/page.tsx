@@ -10,7 +10,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, SectionHeader 
 export const metadata: Metadata = {
   title: 'ZAO Festivals',
   description:
-    "The ZAO's series of community-owned, artist-built music festivals: free to attend, artists paid fairly. Flagship: ZAOstock 2026, Ellsworth, Maine.",
+    "The ZAO's series of community-owned, artist-built music festivals: free to attend, built to help artists grow. Flagship: ZAOstock 2026, Ellsworth, Maine.",
   alternates: { canonical: '/festivals' },
   openGraph: {
     title: 'ZAO Festivals | ZAOstock',
@@ -50,7 +50,7 @@ const SERIES: Chapter[] = [
 const PRINCIPLES = [
   { k: '01', t: 'Artist-built', b: 'The lineup and the day are built by the artists and the community. Curated by the people in the room.' },
   { k: '02', t: 'Community-owned', b: 'The crowd that funds it owns it. A festival as a protocol, not a product: open, shared, repeatable by anyone.' },
-  { k: '03', t: 'Free and fair', b: 'Free to attend. Artists paid fairly and transparently. Built in public, every step shared.' },
+  { k: '03', t: 'Free and open', b: 'Free to attend. Built to help the artists grow. Built in public, every step shared.' },
 ] as const;
 
 // Instagram posts/reels to link out to. This is where the real ZAO-CHELLA /
@@ -91,7 +91,7 @@ export default async function FestivalsPage() {
           <Eyebrow tone="denim">The series</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">ZAO Festivals</h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            The ZAO&apos;s series of community-owned, artist-built music festivals. Free to attend, artists paid fairly, and the crowd that funds it owns it. New York, Miami and Maryland so far; the flagship lands in Maine this October.
+            The ZAO&apos;s series of community-owned, artist-built music festivals. Free to attend, built to help artists grow, and the crowd that funds it owns it. New York, Miami and Maryland so far; the flagship lands in Maine this October.
           </p>
           <p className="text-base text-ink-950 font-bold mt-3 m-0">ZAO Festivals presents ZAOstock. One umbrella, many events, one DNA.</p>
         </div>
