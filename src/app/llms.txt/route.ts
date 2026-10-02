@@ -61,11 +61,11 @@ City of Ellsworth (parklet venue), Black Moon Public House (the evening and the 
 
 ## Sponsors
 
-Sponsors put money behind a named artist or the day. Every sponsor gets the same four surfaces: the parklet banner, the programme, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Sponsorship is a marketing spend, direct with The ZAO.
+Sponsors put money behind a named artist or the day. Every sponsor gets the same surfaces: the parklet banner, the site and the stream, and a thank-you from the stage. Packages on request at info@thezao.com. Sponsorship is a marketing spend, direct with The ZAO.
 
 ## Why Ellsworth
 
-Every car heading to Acadia National Park passes through. Downtown is newly on the National Historic Register. ZAOstock is measuring what a free street festival does for downtown businesses, an ordinary Saturday against ${FESTIVAL.shortDate}, and will publish the comparison.
+Every car heading to Acadia National Park passes through. Downtown is newly on the National Historic Register. ZAOstock is part of the 9th Annual Art of Ellsworth.
 
 ## Pages
 

@@ -68,7 +68,7 @@ export default function PartnersPage() {
           <SectionHeader
             eyebrow="Sponsors"
             title="Put money behind a named artist, or the day."
-            lede="Partners give what they already have. Sponsors put a name on the parklet banner, the programme, the site and the stream, and get a thank-you from the stage."
+            lede="Partners give what they already have. Sponsors put a name on the parklet banner, the site and the stream, and get a thank-you from the stage."
           />
           <div className="flex flex-wrap gap-3 shrink-0">
             <Button href="/sponsor">Sponsor ZAOstock</Button>

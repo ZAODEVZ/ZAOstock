@@ -46,10 +46,7 @@ Concertz, ENTERACT, Web3Metal.
 Your block, on the busiest weekend of the fall. Maine Craft Weekend brings
 statewide promotion and Art of Ellsworth is in its ninth year; ZAOstock puts
 live music on Franklin Street inside both. It is free to attend, so nobody
-chooses between your door and a ticket. And we are measuring what the day does
-for downtown - an ordinary Saturday against 3 October, published combined
-across the businesses that take part, Black Moon first. If it works, you have
-the number. If it does not, you have that too.
+chooses between your door and a ticket.
 
 ## Expected scale
 
@@ -73,8 +70,7 @@ on-chain; re-pull before printing.
   it is deliberately not a number; the count of reads is Zaal's to state.
 - Pre: named in the announcement, the daily newsletter and the 1 September
   lineup reveal. During: on-stage mentions, logo on the backdrop, presence on
-  the stream. Post: named in the recap, in the published local-business
-  measurement, and in the footage that keeps circulating.
+  the stream. Post: named in the recap and in the footage that keeps circulating.
 - Build-in-public: the whole plan is written down and the team ships daily.
 
 ## What we'd ask
@@ -82,7 +78,7 @@ on-chain; re-pull before printing.
 | Tier | What it gets | Price |
 |---|---|---|
 | Presenting | Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027 | **UNSET** |
-| Sponsor an artist | Covers one artist's travel. They make content carrying your name. The artist opts in | **UNSET** |
+| Sponsor an artist | Backs one named artist on the bill. They make content carrying your name. The artist opts in | **UNSET** |
 | Community | Logo on the site, named in the recap, thanked from stage | **UNSET** |
 
 Early close: **UNSET** percent off any cash tier for a signed yes by **UNSET**.
