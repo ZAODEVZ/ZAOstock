@@ -218,11 +218,11 @@ the exact failure this repo now guards against.
 `src/app/globals.css` was nine lines, defining three variables, and that exactly
 one file used them while 1,067 hardcoded hexes sat across 77 of 96 `.tsx` files.
 None of that is true now. `globals.css` is 501 lines and defines 97 tokens, and
-420 hardcoded hexes remain across 34 of 106 `.tsx` files — a 61% reduction.
+414 hardcoded hexes remain across 34 of 106 `.tsx` files — a 61% reduction.
 
 So the migration described in [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) is
 partly done rather than still a plan. What remains true is that the two halves
-do not fully meet: 420 hardcoded hexes are still Tailwind arbitrary values
+do not fully meet: 414 hardcoded hexes are still Tailwind arbitrary values
 (`bg-[#0a1628]`) in components that do not consume the token layer. Changing a
 brand colour today still means touching those files.
 

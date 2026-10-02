@@ -52,14 +52,50 @@ const cssLines = css.split('\n').length - (css.endsWith('\n') ? 1 : 0);
 const cssTokens = (css.match(/^\s*--[a-zA-Z0-9-]+\s*:/gm) ?? []).length;
 
 const tsxFiles = walk(join(ROOT, 'src'), (f) => f.endsWith('.tsx'));
+
+/**
+ * Two different hex counts exist in this repository's documentation, and they
+ * are not the same measurement.
+ *
+ * `docs/BRAND-MIGRATION.md` documents its own method, and it is not "every
+ * arbitrary hex value". It is the four legacy brand colours:
+ *
+ *     grepping src/ for the four legacy brand hexes
+ *     (0a1628, f5a623, 0d1b2a, ffd700)
+ *
+ * Counting every `[#hex]` instead gives a different number, because components
+ * that are already on the token layer still carry unrelated literals - `#fbbf24`
+ * appears in three files under src/app/team/ and is a fifth colour that
+ * postdates the document.
+ *
+ * Measured 2026-10-02:
+ *     four legacy brand hexes   414, in 34 of 106 .tsx
+ *     every [#hex]              420, in 34 of 106 .tsx
+ *
+ * The gap is those six. Checking "420" against a document that means "414"
+ * passes while both are wrong about the same subject, which is how the first
+ * version of this test came to assert a figure the documentation never made.
+ *
+ * Both are computed, and the document's own metric is the one the assertions
+ * use - so if the brand set ever changes, the count and the document have to
+ * move together and the difference is visible rather than silent.
+ */
+const LEGACY_BRAND_HEXES = ['0a1628', 'f5a623', '0d1b2a', 'ffd700'];
+
 let hexTotal = 0;
 let filesWithHex = 0;
+let anyHexTotal = 0;
 for (const f of tsxFiles) {
-  const n = (readFileSync(f, 'utf8').match(/\[#[0-9a-fA-F]{3,8}\]/g) ?? []).length;
-  if (n > 0) {
+  const source = readFileSync(f, 'utf8');
+  const legacy = LEGACY_BRAND_HEXES.reduce(
+    (sum, h) => sum + (source.match(new RegExp(`\\[#${h}\\]`, 'gi')) ?? []).length,
+    0
+  );
+  if (legacy > 0) {
     filesWithHex += 1;
-    hexTotal += n;
+    hexTotal += legacy;
   }
+  anyHexTotal += (source.match(/\[#[0-9a-fA-F]{3,8}\]/g) ?? []).length;
 }
 
 describe('docs/ARCHITECTURE.md quotes live numbers', () => {
@@ -91,15 +127,28 @@ describe('docs/ARCHITECTURE.md quotes live numbers', () => {
   it('agrees with globals.css about its own length', () => {
     // Matched loosely: the file says "9 lines", "nine lines", or "501 lines".
     const words: Record<string, number> = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
-    const numeric = ARCH.match(/globals\.css`?\s+is\s+([\d,]+)\s+lines?/i);
-    const worded = ARCH.match(/globals\.css`?\s+is\s+(one|two|three|four|five|six|seven|eight|nine|ten)\s+lines?/i);
-    const stated = numeric
-      ? Number(numeric[1].replace(/,/g, ''))
-      : worded
-        ? words[worded[1].toLowerCase()]
-        : null;
-    expect(stated).not.toBeNull();
-    expect(cssLines).toBe(stated);
+    // Both places that state a length, not the first one. The directory map
+    // says "globals.css 501 lines, 97 tokens" and the token-gap section says
+    // "globals.css is 501 lines"; a pattern that only matched the second left
+    // the first unchecked, which is what the RED run showed.
+    const claimed: number[] = [];
+    for (const m of ARCH.matchAll(/globals\.css`?\s+(?:is\s+|is\s+now\s+)?([\d,]+|one|two|three|four|five|six|seven|eight|nine|ten)\s+lines?/gi)) {
+      claimed.push(m[1].toLowerCase() in words ? words[m[1].toLowerCase()] : Number(m[1].replace(/,/g, '')));
+    }
+    expect(claimed.length).toBeGreaterThan(0);
+    for (const n of claimed) expect(n).toBe(cssLines);
+
+    // The stale figure may still appear, but only as history, and the sentence
+    // has to say so. "globals.css is 501 lines ... was nine lines" is fine;
+    // a bare "globals.css is nine lines" is the bug, and it is covered above.
+    const stale = ARCH.match(/globals\.css`?\s+(?:is\s+)(one|two|three|four|five|six|seven|eight|nine|ten)\s+lines?/i);
+    if (stale) {
+      const at = ARCH.indexOf(stale[0]);
+      const context = ARCH.slice(Math.max(0, at - 220), at + 60);
+      expect(context, `"${stale[0]}" stands as current, not as history`).toMatch(
+        /was nine lines|half closed|None of that is true now|said\b[\s\S]{0,120}nine lines/i
+      );
+    }
   });
 
   it('agrees with src about how many hardcoded hexes remain', () => {
@@ -109,9 +158,22 @@ describe('docs/ARCHITECTURE.md quotes live numbers', () => {
     // so the current figure is the one attached to "remain". Reading the first
     // match asserted 1067 against a real 420 and made a correct document look
     // broken.
-    const all = [...ARCH.matchAll(/([\d,]+)\s+hardcoded hexes/g)].map((m) => Number(m[1].replace(/,/g, '')));
-    expect(all.length).toBeGreaterThan(0);
-    expect(all[all.length - 1]).toBe(hexTotal);
+    //
+    // Every occurrence, and the historical one is recognised by the sentence it
+    // sits in rather than by position. Two present-tense sentences both quote
+    // the count ("414 ... remain across 34 of 106" and "414 ... are still
+    // Tailwind arbitrary values"), so reading only the last match left the
+    // first one unchecked - verified by reverting it alone and watching the
+    // suite stay green.
+    const every = [...ARCH.matchAll(/.{0,160}?([\d,]+)\s+hardcoded hexes.{0,160}/gs)];
+    expect(every.length).toBeGreaterThan(0);
+    for (const m of every) {
+      const said = Number(m[1].replace(/,/g, ''));
+      const sentence = m[0];
+      const historical = /\bwas\b|\bwere\b|sat across|None of that is true/i.test(sentence);
+      if (historical) continue; // the 2026-08-22 figure, kept as history
+      expect(said, `present-tense claim of ${said} hexes contradicts src (${hexTotal})`).toBe(hexTotal);
+    }
   });
 
   it('agrees with src about how many .tsx files carry a hardcoded hex', () => {
@@ -172,5 +234,58 @@ describe('docs/ARCHITECTURE.md quotes live numbers', () => {
         name
       );
     }
+  });
+});
+describe('docs/BRAND-MIGRATION.md states which figures are historical', () => {
+  const BRAND = readFileSync(join(ROOT, 'docs/BRAND-MIGRATION.md'), 'utf8');
+
+  it('no longer claims nothing has been migrated', () => {
+    // The document said "**Status: a plan and a cost estimate. Nothing has been
+    // migrated.**" while `globals.css` had 97 tokens, the public site had zero
+    // hardcoded hexes, and 760 token references. Phases 0 and 2 are done.
+    expect(BRAND).not.toMatch(/Nothing has been migrated/i);
+    expect(BRAND).toMatch(/Phase 0 and Phase 2 are done/i);
+  });
+
+  it('marks the 2026-08-22 baseline figures as a baseline', () => {
+    // These numbers are the record of what the plan cost when it was written.
+    // They are worth keeping - what is not acceptable is a reader taking them
+    // for the state of the code, which is what happened for six weeks.
+    for (const n of ['1,067', '77 of 96', '605', '462']) {
+      expect(BRAND, `BRAND-MIGRATION.md quotes ${n} with no marker`).toMatch(
+        new RegExp(`${n.replace(',', ',?')}[^\n]*\(baseline|2026-08-22|were on|are all under)`, 'i')
+      );
+    }
+  });
+
+  it('agrees with src about the legacy hexes still in the dashboard', () => {
+    // The one present-tense figure it carries: 414 across 34 files, all in
+    // src/app/team/. Counted by the document's own method - the four legacy
+    // brand hexes - because counting every [#hex] gives 420 and that is a
+    // different measurement.
+    expect(BRAND).toMatch(/414 (?:hexes )?across 34/);
+    expect(hexTotal).toBe(414);
+    expect(filesWithHex).toBe(34);
+    expect(tsxFiles.length).toBe(106);
+  });
+
+  it('keeps the public site at zero hardcoded hexes', () => {
+    // Phase 2 was the bulk of the work and it is finished: 64 public .tsx
+    // files, not one arbitrary hex among them. If this ever rises, a page has
+    // been styled the old way and the migration has silently reopened.
+    const publicFiles = tsxFiles.filter((f) => !f.replace(/\\/g, '/').includes('/src/app/team/'));
+    let publicHex = 0;
+    for (const f of publicFiles) {
+      publicHex += (readFileSync(f, 'utf8').match(/\[#[0-9a-fA-F]{3,8}\]/g) ?? []).length;
+    }
+    expect(publicFiles.length).toBe(64);
+    expect(publicHex).toBe(0);
+  });
+
+  it('separates the two hex counts it could be confused for', () => {
+    // 414 legacy brand hexes, 420 of every arbitrary hex. The six between them
+    // are #fbbf24 in the team dashboard - a fifth colour the document predates.
+    expect(anyHexTotal).toBeGreaterThan(hexTotal);
+    expect(anyHexTotal - hexTotal).toBe(6);
   });
 });
