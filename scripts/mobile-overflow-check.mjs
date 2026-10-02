@@ -33,12 +33,52 @@ import { chromium, devices } from 'playwright';
 
 const BASE = (process.env.BASE || 'https://zaostock.com').replace(/\/$/, '');
 
+// The public pages, from `npm run build`'s own route table: every non-/api
+// route the build marks static (○), plus the three that answer 308 to a
+// canonical path. All of them return 200 or 308 against production with no
+// credentials, which is the test - a page that needs a database or a session
+// would fail here and should not be in this list.
+//
+// Before this list was widened it covered 5 of the 35, so two thirds of the
+// site had no mobile check at all.
 const PAGES = [
   ['home', '/'],
   ['program', '/program'],
   ['artists', '/artists'],
   ['artist-dcoop', '/artist/dcoop'],
   ['tickets', '/tickets'],
+  ['acadia', '/acadia'],
+  ['afterparty', '/afterparty'],
+  ['apply', '/apply'],
+  ['backstage', '/backstage'],
+  ['brand', '/brand'],
+  ['circles', '/circles'],
+  ['contact', '/contact'],
+  ['design', '/design'],
+  ['ellsworth', '/ellsworth'],
+  ['event-organizers', '/event-organizers'],
+  ['live', '/live'],
+  ['meetings', '/meetings'],
+  ['musicians', '/musicians'],
+  ['rider', '/musicians/rider'],
+  ['partners', '/partners'],
+  ['pitch', '/pitch'],
+  ['press', '/press'],
+  ['privacy', '/privacy'],
+  ['sponsor', '/sponsor'],
+  ['sponsor-deck', '/sponsor/deck'],
+  ['team', '/team'],
+  ['team-help', '/team/help'],
+  ['team-onepager', '/team/onepager'],
+  ['team-plan', '/team/plan'],
+  ['terms', '/terms'],
+  ['thanks', '/thanks'],
+  ['volunteer', '/volunteer'],
+  ['zaoville', '/zaoville'],
+  ['build', '/build'],
+  ['media', '/media'],
+  ['suggest', '/suggest'],
+  ['festivals', '/festivals'],
 ];
 
 const DEVICES = ['iPhone 13', 'Pixel 7'];
