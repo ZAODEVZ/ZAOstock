@@ -48,7 +48,7 @@ export function Header() {
   return (
     <header className="no-print sticky top-0 z-40 h-[66px] bg-paper-100/92 backdrop-blur-[10px] border-b border-gold-500/40">
       <div className="wrap h-full flex items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-2.5 text-ink-950" onClick={() => setOpen(false)}>
+        <Link href="/" className="flex items-center gap-2.5 text-ink-950 rounded-md focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]" onClick={() => setOpen(false)}>
           <span className="h-9 w-9 shrink-0 rounded-full bg-night flex items-center justify-center overflow-hidden">
             <Image src={SITE.logo.src} alt="" width={36} height={36} className="h-8 w-8 object-contain" priority />
           </span>
@@ -60,7 +60,7 @@ export function Header() {
             get the menu button like phones; the full row starts at 1024. */}
         <nav aria-label="Primary" className="hidden lg:flex items-center gap-5">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="font-sans text-xs font-bold uppercase tracking-[0.1em] text-ink-secondary hover:text-red-700">
+            <Link key={n.href} href={n.href} className="font-sans text-xs font-bold uppercase tracking-[0.1em] text-ink-secondary hover:text-red-700 rounded-sm focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]">
               {n.label}
             </Link>
           ))}
@@ -97,7 +97,7 @@ export function Header() {
         >
           <div className="flex flex-col gap-3 p-4 bg-paper-200 border-[1.5px] border-gold-500/60 rounded-[14px] shadow-hard-lg">
             {NAV.map((n) => (
-              <Link key={n.href} href={n.href} className="font-sans text-sm font-bold uppercase tracking-[0.1em] text-ink-950" onClick={() => setOpen(false)}>
+              <Link key={n.href} href={n.href} className="font-sans text-sm font-bold uppercase tracking-[0.1em] text-ink-950 rounded-sm focus-visible:outline-none focus-visible:[box-shadow:var(--shadow-focus)]" onClick={() => setOpen(false)}>
                 {n.label}
               </Link>
             ))}

@@ -108,6 +108,7 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 16px 28px rgba(0, 0, 0, 0.48); }
+.btn:focus-visible { outline: 3px solid var(--ember); outline-offset: 4px; }
 .ghost { background: transparent; border: 1.5px solid var(--ember); color: var(--ember); box-shadow: none; padding: 14px 30px; }
 
 /* ---------- sections ---------- */
@@ -118,6 +119,7 @@
 .title em { font-style: normal; color: var(--fireside); }
 .lede { color: var(--ink-soft); font-size: 17px; line-height: 1.75; max-width: 600px; margin: 0 0 18px; }
 .link { color: var(--fireside); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.link:focus-visible { outline: 3px solid var(--ember); outline-offset: 4px; border-radius: 3px; }
 
 /* the day */
 .dayWrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -158,6 +160,7 @@
 .plugGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 50px; background: var(--ink-soft); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 .plugCard { display: block; background: var(--cream); padding: 38px 20px; text-align: center; text-decoration: none; color: var(--ink); transition: background 0.25s ease, transform 0.25s ease; }
 .plugCard:hover { background: var(--fireside); transform: translateY(-4px); }
+.plugCard:focus-visible { outline: 3px solid var(--ember); outline-offset: -5px; position: relative; z-index: 1; }
 .plugCard:hover * { color: #fff8ec !important; }
 .num { font-family: var(--font-oswald), 'Arial Narrow', Impact, sans-serif; font-weight: 700; font-size: 34px; color: var(--fireside); margin-bottom: 10px; }
 .plugCard h3 { font-size: 16px; margin-bottom: 10px; }
