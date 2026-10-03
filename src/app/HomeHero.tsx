@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, type ReactNode } from 'react';
+import { shouldPreloadHeroFrames } from '@/lib/should-preload-hero-frames';
 import s from './home.module.css';
 
 // THE BALLOON FLIGHT DOWN FRANKLIN STREET. Candy's hero (her site build,
@@ -43,7 +44,12 @@ export function HomeHero({ children }: { children: ReactNode }) {
         im.src = src;
       });
     preload(0, EAGER);
-    const rest = () => preload(EAGER, FRAMES.length);
+    // 68 frames, ~4.5 MB: skipped entirely when the connection asks us to
+    // conserve (Data Saver / 2g) - the scrub fetches on demand instead.
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const rest = () => {
+      if (shouldPreloadHeroFrames(conn)) preload(EAGER, FRAMES.length);
+    };
     if (document.readyState === 'complete') rest();
     else window.addEventListener('load', rest, { once: true });
     let current = 0;
