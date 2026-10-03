@@ -15,7 +15,7 @@ One Next.js app serving two audiences out of one codebase and one database.
 
 ```
                     ┌─────────────────────────────┐
-   public visitor ─▶│  24 public routes           │
+      web visitor ─▶│  35 non-team pages          │
                     │  /  /program  /pitch  ...   │──┐
                     └─────────────────────────────┘  │
                                                      │   ┌──────────────┐
@@ -59,11 +59,13 @@ npm run build      # next build --turbopack
 npm run typecheck  # tsc --noEmit
 npm run lint       # eslint .
 npm run test       # vitest run
-npm run codes      # scripts/team-codes.mjs - generate team login codes
+npm run test:e2e   # playwright test
 ```
 
-CI (`.github/workflows/ci.yml`) runs `typecheck`, `lint`, `test`, `build` on every
-push and PR to `main`.
+CI (`.github/workflows/ci.yml`) runs on every push and PR to `main`, as four jobs.
+`check` runs `typecheck`, `test` and `build` in sequence, so a typecheck failure
+stops the other two. `lint`, `check:facts` and `check:review` each run as their
+own job, so a failure in one of them cannot hide the others.
 
 ---
 
@@ -72,13 +74,13 @@ push and PR to `main`.
 ```
 src/
   app/
-    (24 public routes)      the festival site
+    (35 non-team pages)     the festival site, plus the private /backstage/<code> sheets
     team/                   the dashboard, behind a session
-    api/                    41 route handlers
+    api/                    43 route handlers
       events/[slug]/lineup  public lineup, consumed by the mobile app
       team/*                dashboard CRUD, session-guarded
       cron/                 scheduled jobs, guarded by CRON_SECRET
-    globals.css             9 lines. See "the token gap" below
+    globals.css             the brand tokens, in a Tailwind v4 @theme block
   lib/
     env.ts                  server-only env access, throws on missing secrets
     db/supabase.ts          the admin client
@@ -105,12 +107,13 @@ decision rather than just listing variables.
 | `SUPABASE_SERVICE_ROLE_KEY` | **server only**, throws if missing |
 | `SESSION_SECRET` | **server only**, throws if missing |
 | `CRON_SECRET` | **server only**, throws if missing |
+| `ARTIST_CONFIRM_SECRET` | **server only**, throws if missing |
 
 Two properties matter:
 
 - The module imports `server-only`, so importing it from a client component is a
   **build error**, not a runtime leak.
-- The three secrets are lazy getters that throw **when read**, not when the module
+- The four secrets are lazy getters that throw **when read**, not when the module
   is imported. The comment explains why: Next's build-time page-data collection
   imports every route module without using every variable, so throwing at
   construction broke `next build` outright. A missing secret must not silently
@@ -119,6 +122,12 @@ Two properties matter:
 ---
 
 ## Auth
+
+**Retired.** The team dashboard was retired on 2026-08-29 (see
+[decision 0001](./decisions/0001-team-dashboard-retired.md)).
+`TEAM_DASHBOARD_RETIRED` in `src/lib/team-status.ts` makes every `/api/team/*`
+route answer 401 and the login, token and wallet routes answer 410. The code
+below is still in the tree until stage two deletes it.
 
 Two paths, one rule.
 
@@ -195,10 +204,10 @@ the exact failure this repo now guards against.
 
 ## API conventions
 
-41 route handlers under `src/app/api`.
+43 route handlers under `src/app/api`.
 
-- **Zod on input.** `lib/api/parse-json.ts` is the shared parser.
-- **Rate limiting** via `lib/api/rate-limit.ts` on public form endpoints. Read its
+- **Zod on input.** `src/lib/api/parse-json.ts` is the shared parser.
+- **Rate limiting** via `src/lib/api/rate-limit.ts` on public form endpoints. Read its
   docstring before relying on it: it is an **in-memory map, per warm serverless
   instance**, explicitly "not a substitute for a real store if this needs to hold
   up against a determined attacker." It raises the bar against naive spam. It is
@@ -206,7 +215,7 @@ the exact failure this repo now guards against.
 - **Session guard first**, before any data access, on everything under
   `/api/team/*`.
 - **Cron routes** under `/api/cron/*` are guarded by `CRON_SECRET`.
-- **Public routes expose a narrow projection.** `lib/artists.ts` and the lineup
+- **Public routes expose a narrow projection.** `src/lib/artists.ts` and the lineup
   route both hand-list public-safe columns rather than selecting `*`, so fees,
   riders, notes and contact details cannot leak by accident. Keep that shape when
   adding fields.
@@ -215,12 +224,12 @@ the exact failure this repo now guards against.
 
 ## Two things that will surprise you
 
-**The token gap.** `src/app/globals.css` is nine lines. It defines
-`--background`, `--foreground` and `--accent` correctly - and **exactly one file
-in the codebase uses them.** Every other component hardcodes brand hex inline as
-Tailwind arbitrary values (`bg-[#0a1628]`). That is 1,067 hardcoded hexes across
-77 of 96 `.tsx` files. It is the single biggest source of friction in the app and
-it is measured in [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md).
+**The token gap, partly closed.** The brand tokens now live in a Tailwind v4
+`@theme` block in `src/app/globals.css` (`paper`, `ink`, `red`, `gold`, `denim`,
+`olive`), and 68 of 110 `.tsx` files use them. The rest still hardcode hex as Tailwind
+arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 110 `.tsx` files, as
+of 2026-09-27. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
+measurement.
 
 **No schema in the repo.** See above. Combined with service-role-only RLS, the
 database is a hard dependency with no local story: there is no seed, no fixture

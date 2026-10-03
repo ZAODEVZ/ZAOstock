@@ -32,14 +32,16 @@ of these throw a clear error at first use if missing, not a silent failure).
 
 ## Before you push
 
-CI runs `typecheck`, `lint`, `test`, and `build` on every push/PR to `main` (`.github/workflows/ci.yml`) - but
-run them locally first so you're not waiting on CI to find something obvious:
+CI runs `typecheck`, `lint`, `test`, `build`, `check:facts` and `check:review` on every push/PR to `main`
+(`.github/workflows/ci.yml`) - but run them locally first so you're not waiting on CI to find something obvious:
 
 ```bash
 npm run typecheck
 npm run lint
 npm run test
 npm run build
+npm run check:facts
+npm run check:review
 ```
 
 There **is** a test suite now - Vitest, and CI runs it. Add tests with your change rather than
