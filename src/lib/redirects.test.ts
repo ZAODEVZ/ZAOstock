@@ -34,4 +34,11 @@ describe('redirects for paths people guess', () => {
     const redirects = await config.redirects!();
     for (const r of redirects) expect(r.permanent).toBe(false);
   });
+
+  it('sends facebook.zaostock.com to the ZAO Festivals Facebook Page', async () => {
+    const redirects = await config.redirects!();
+    const fb = redirects.find((r) => r.has?.some((h) => h.type === 'host' && h.value === 'facebook.zaostock.com'));
+    expect(fb?.destination).toBe('https://www.facebook.com/zaofestivals');
+    expect(fb?.source).toBe('/:path*');
+  });
 });

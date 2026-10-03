@@ -96,6 +96,18 @@ const config: NextConfig = {
   // outlive a future decision to give `/lineup` a real page of its own.
   async redirects() {
     return [
+      // facebook.zaostock.com -> the ZAO Festivals Facebook Page (SOCIALS in
+      // src/content/site.ts). Zaal, 2026-10-03: "we should laso add more
+      // subdomains so we should add one for facebook.zaostock.com for the
+      // facebook page". Works only once the subdomain is added to the Vercel
+      // project and DNS points at it; until then this rule is never reached.
+      // Not permanent, for the same caching reason as the rules below.
+      {
+        source: '/:path*',
+        destination: 'https://www.facebook.com/zaofestivals',
+        has: [{ type: 'host', value: 'facebook.zaostock.com' }],
+        permanent: false,
+      },
       { source: '/lineup', destination: '/program', permanent: false },
       { source: '/schedule', destination: '/program', permanent: false },
       { source: '/sponsors', destination: '/sponsor', permanent: false },
