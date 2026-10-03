@@ -68,6 +68,68 @@ jobs:
       - run: npm ci
       - run: npm run check:facts
 
+  # Its own job: horizontal-overflow audit at real mobile viewports.
+  #
+  # WHY IT IS ITS OWN JOB, AND WHY IT BUILDS THE PULL REQUEST'S OWN CODE:
+  # scripts/mobile-overflow-check.mjs already exists and works (real device
+  # emulation, not a bare window size - see the header of that file for why
+  # that distinction matters). It was simply never wired into CI, so nothing
+  # ran it on any pull request. A check that nothing invokes guards nothing.
+  #
+  # It runs against `next start` on this build, NOT against zaostock.com.
+  # Checking production would only ever report on production: a pull request
+  # that introduces a 1400px element would stay green until after it merged,
+  # which is the same lag this file's uptime workflow exists to avoid.
+  #
+  # `--max-warnings=0` is already the lint gate, so a new job here does not
+  # have to repeat the "warnings must not pass silently" rule.
+  mobile:
+    name: mobile overflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      # Server and check share one step on purpose. A process backgrounded in
+      # one `run:` step is not guaranteed to survive into the next one, and a
+      # checker that silently never reaches the server would report PASS on
+      # nothing - the exact failure mode this job exists to prevent. So: start,
+      # prove the port answers, run the check, kill the server. If the server
+      # does not come up, the step fails instead of passing silently.
+      - name: Check for horizontal overflow on mobile
+        run: |
+          # Output goes to a file, not to the job log. A backgrounded process
+          # keeps its stdout open, and a step that is still holding a pipe
+          # never drains - the step hangs until the job is killed, which is how
+          # a passing check turns into a red build. The log is still read if
+          # the server fails to come up.
+          npx next start --port 3111 > /tmp/next-start.log 2>&1 &
+          server_pid=$!
+          for i in $(seq 1 30); do
+            if curl -sf -o /dev/null http://127.0.0.1:3111/; then
+              echo "server up after ${i}s"
+              break
+            fi
+            if [ "$i" = "30" ]; then
+              echo "server did not come up on :3111" >&2
+              cat /tmp/next-start.log >&2
+              kill "$server_pid" 2>/dev/null || true
+              exit 1
+            fi
+            sleep 1
+          done
+          status=0
+          npm run check:mobile-overflow || status=$?
+          kill "$server_pid" 2>/dev/null || true
+          exit "$status"
+        env:
+          BASE: http://127.0.0.1:3111
+
   # Its own job: audits security and database invariants (Rule 9 red control,
   # Rule 7c pinned head SHA, credentials leaks, SQL injection, RLS boundaries).
   # Fails loudly on its own without hiding other CI assertions.

@@ -35,7 +35,27 @@ const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AK
 // check runs, so the blob itself is never what a match is found inside.
 const RE_DATA_URI_BASE64 = /data:[^;,'"]+;base64,[A-Za-z0-9+/=]+/g;
 const PAT_PUBLIC_SECRET = /(?<![A-Za-z0-9_])NEXT_PUBLIC_(?:[A-Za-z0-9_]*(?:SECRET|PRIVATE_KEY|TOKEN)|GEMINI_API_KEY|PINATA_JWT)\s*=\s*["'][^"']+/;
-const RE_RAW_SQL = /\.(?:query|execute|\$queryRaw|\$executeRawUnsafe)\s*\(\s*`[^`]*\$\{/;
+// The opening parenthesis is optional on purpose. A tagged template needs no
+// parentheses - db.$queryRawUnsafe`...` - and that is the form Prisma is
+// documented in and most often written in, so requiring "(" meant the rule
+// never fired on the call it names.
+//
+// The alternation lists $queryRawUnsafe (the real Prisma method) rather than
+// the bare prefix $queryRaw. With the bare prefix, a line containing
+// $queryRawUnsafe matched "$queryRaw" and then failed on the leftover
+// "Unsafe" before it could reach the backtick, so the one Prisma method the
+// rule is most likely meant to catch was the one it could never catch. Order
+// does not fix that - alternation is leftmost-first, and $queryRaw wins.
+//
+// The character class before the backtick accepts "(" or nothing, covering
+// both call shapes. `${` is still required, so a static or $1-parameterised
+// query is untouched:
+//
+//   db.query(`select ... ${id}`)      flagged
+//   db.query`select ... ${id}`        flagged
+//   db.$queryRawUnsafe`... ${id}`     flagged
+//   db.$executeRawUnsafe`... ${id}`   flagged
+const RE_RAW_SQL = /\.(?:query|execute|\$queryRawUnsafe|\$executeRawUnsafe)\s*\(?\s*`[^`]*\$\{/;
 const RE_SERVICE_ROLE_CLIENT = /(?:SUPABASE_SERVICE_ROLE_KEY|createAdminClient)/;
 const RE_SENSITIVE_LOG = /console\.(?:log|debug|info|warn|error)\s*\([^)]*\b(?:password|secret|privateKey|secretKey|claimToken|adminKey)\b[^)]*\)/;
 
