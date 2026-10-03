@@ -72,19 +72,19 @@ const PLUG_IN = [
 export default function HomePage() {
   return (
     <SiteShell>
-      {/* FESTIVAL DAY BANNER. Zaal, 2026-10-03, at the venue: "lets updat ehome
-          page say zaostock is today view here". Comes down after the day. */}
+      {/* AFTER THE DAY. Replaces the 3 October "ZAOstock is today" banner
+          (Zaal, 2026-10-03, relayed by the seat: prepare the post-festival flip). */}
       <div className="bg-denim-600 text-onfill">
         <div className="wrap flex flex-wrap items-center justify-between gap-3 py-3">
           <p className="m-0 font-sans font-extrabold text-base sm:text-lg">
-            ZAOstock is today. Noon to 6 PM on Franklin Street, free, or watch from anywhere.
+            Thank you, Ellsworth. ZAOstock 2026 is a wrap.
           </p>
           <div className="flex flex-wrap gap-2">
             <Link href="/live" className="inline-flex items-center rounded-pill bg-onfill px-[18px] py-[9px] text-sm font-bold uppercase tracking-[0.08em] text-ink-950 hover:bg-paper-200">
-              Watch live
+              Watch the replay
             </Link>
-            <Link href="/program" className="inline-flex items-center rounded-pill border-[1.5px] border-onfill px-[18px] py-[9px] text-sm font-bold uppercase tracking-[0.08em] text-onfill hover:bg-onfill/10">
-              Set times
+            <Link href="/tickets" className="inline-flex items-center rounded-pill border-[1.5px] border-onfill px-[18px] py-[9px] text-sm font-bold uppercase tracking-[0.08em] text-onfill hover:bg-onfill/10">
+              Support the artists
             </Link>
           </div>
         </div>

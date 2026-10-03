@@ -42,6 +42,13 @@ import { SOCIALS } from './site';
 export const TWITCH_CHANNEL = 'zaofestivals';
 
 /** The externally-linkable watch page - Twitch's own UI, chat included. */
+/** Past broadcasts on the channel: where the day's recording sits once the
+ *  stream ends. Twitch keeps them for a limited time, so this is a link to
+ *  the list, never a promise of one fixed video. */
+export function replaysHref(channel: string = TWITCH_CHANNEL): string {
+  return `https://www.twitch.tv/${channel}/videos`;
+}
+
 export function watchHref(channel: string = TWITCH_CHANNEL): string {
   return `https://twitch.tv/${channel}`;
 }
