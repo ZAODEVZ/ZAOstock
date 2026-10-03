@@ -35,7 +35,8 @@ const SHORT_ID_UNLOCK = 'https://app.unlock-protocol.com/checkout?id=3a1f';
 // added after this was written (src/content/site.ts's SUPPORT_TIERS), so a
 // new tier is exercised by this test the day it exists rather than silently
 // skipped. Issue #258.
-const LIVE_TIERS = new Set(['fan', 'supporter', 'pro']);
+// pro removed 2 Oct: its Stripe link was deactivated (product archived by mistake). Re-add with the link.
+const LIVE_TIERS = new Set(['fan', 'supporter']);
 
 describe('an unset rail renders nothing', () => {
   // supporter (plink_1UHsQYKEKqFBqu9oZADCzFQ9) and pro (plink_1UHtB3KEKqFBqu9owZalGOH0)

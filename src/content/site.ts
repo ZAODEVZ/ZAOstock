@@ -481,7 +481,9 @@ const UNSET = 'UNSET';
 export const STRIPE_LINKS: Readonly<Record<string, string>> = {
   fan: 'https://buy.stripe.com/6oU5kE7TJ6wC9aO15wawo02',
   supporter: 'https://buy.stripe.com/6oU28sc9ZdZ4ev87tUawo00',
-  pro: 'https://buy.stripe.com/6oU8wQ6PF9IO5YCeWmawo01',
+  // Deactivated in Stripe 1 Oct (its product was archived by mistake). Put
+  // 'https://buy.stripe.com/6oU8wQ6PF9IO5YCeWmawo01' back once it is live.
+  pro: UNSET,
 };
 
 /** The Pro Ticket's onchain checkout on Base. UNSET means the lock does not exist yet. */

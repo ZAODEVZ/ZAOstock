@@ -51,7 +51,7 @@ describe('the festival stays free', () => {
   it('states admission is free before it names any price', () => {
     const src = read(TICKETS);
     const free = src.indexOf('FESTIVAL.admission');
-    const paid = src.indexOf('SUPPORT_TIERS.map');
+    const paid = src.indexOf('OPEN_TIERS.map');
     expect(free).toBeGreaterThan(-1);
     expect(paid).toBeGreaterThan(-1);
     expect(free).toBeLessThan(paid);

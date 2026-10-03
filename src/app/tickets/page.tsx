@@ -54,6 +54,11 @@ export const metadata: Metadata = {
   ),
 };
 
+// A tier whose Stripe link is UNSET is not shown at all, rather than as a card
+// with no button. 2 Oct: the $50 link was deactivated in Stripe (its product
+// was archived by mistake), so it is UNSET until the link is live again.
+const OPEN_TIERS = SUPPORT_TIERS.filter((t) => stripeLinkFor(t.id));
+
 export default function TicketsPage() {
   return (
     <SiteShell>
@@ -64,7 +69,7 @@ export default function TicketsPage() {
             Free. Support the artists.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            ZAOstock is free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists playing, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
+            ZAOstock is free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists playing, chip in at {OPEN_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {OPEN_TIERS[OPEN_TIERS.length - 1].price}.
           </p>
         </div>
       </Section>
@@ -87,7 +92,7 @@ export default function TicketsPage() {
               </Button>
             </div>
           </Card>
-          {SUPPORT_TIERS.map((tier) => (
+          {OPEN_TIERS.map((tier) => (
             <Card key={tier.id}>
               <div className="flex items-baseline justify-between gap-3">
                 <span className="font-display text-[2.25rem] leading-none text-red-500">{tier.price}</span>
