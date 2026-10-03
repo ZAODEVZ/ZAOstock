@@ -96,6 +96,11 @@ const config: NextConfig = {
   // outlive a future decision to give `/lineup` a real page of its own.
   async redirects() {
     return [
+      // Short links to the Giveth project (GIVETH_URL in src/content/site.ts),
+      // no DNS needed. Zaal, 2026-10-03, asked for a Giveth subdomain; these
+      // paths work today while a subdomain would need his DNS step.
+      { source: '/giveth', destination: 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology', permanent: false },
+      { source: '/crypto', destination: 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology', permanent: false },
       // facebook.zaostock.com -> the ZAO Festivals Facebook Page (SOCIALS in
       // src/content/site.ts). Zaal, 2026-10-03: "we should laso add more
       // subdomains so we should add one for facebook.zaostock.com for the

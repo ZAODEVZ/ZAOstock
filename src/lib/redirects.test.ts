@@ -41,4 +41,12 @@ describe('redirects for paths people guess', () => {
     expect(fb?.destination).toBe('https://www.facebook.com/zaofestivals');
     expect(fb?.source).toBe('/:path*');
   });
+
+  it('sends /giveth and /crypto to the Giveth project, the same URL as GIVETH_URL', async () => {
+    const { GIVETH_URL } = await import('../content/site');
+    const redirects = await config.redirects!();
+    const bySource = Object.fromEntries(redirects.map((r) => [r.source, r]));
+    expect(bySource['/giveth']?.destination).toBe(GIVETH_URL);
+    expect(bySource['/crypto']?.destination).toBe(GIVETH_URL);
+  });
 });
