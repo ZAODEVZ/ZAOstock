@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, replaysHref, embedSrc, chatEmbedSrc } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
 import { displayName } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, LocalStartTime, NowNextStrip, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
 import { ShareButton } from '@/components/ShareButton';
 
 export const metadata: Metadata = {
@@ -50,19 +50,17 @@ export default async function LivePage() {
 
   return (
     <SiteShell>
-      {/* FESTIVAL DAY LAYOUT. Zaal, 2026-10-03, at the venue: "lets add more cta
+      {/* AFTER THE DAY (was the festival-day layout). Zaal, 2026-10-03, at the venue: "lets add more cta
           buttons on the live page and less whitepspace". The player now sits in
           the first section, straight under a short heading, so on a 390px phone
           it is on the first screen; the action buttons sit right under it. The
           calendar buttons and the countdown are gone from the top: it is today. */}
       <Section first className="pt-6 sm:pt-10">
-        <Eyebrow tone="denim">Watch from anywhere</Eyebrow>
-        <h1 className="font-display font-normal text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-2 mb-2">ZAOstock, live.</h1>
-        <p className="text-base sm:text-lg text-ink-secondary measure m-0">
-          {FESTIVAL.dateLabel}, {FESTIVAL.window}, from {FESTIVAL.venue} in {FESTIVAL.city}.
+        <Eyebrow tone="denim">Thank you for watching</Eyebrow>
+        <h1 className="font-display font-normal text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-2 mb-2">The stream has ended.</h1>
+        <p className="text-base sm:text-lg text-ink-secondary measure m-0 mb-3">
+          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The recording is on Twitch while Twitch keeps it; watch it there.
         </p>
-        <LocalStartTime className="mt-1" />
-        <NowNextStrip className="mt-3 mb-3 max-w-[420px]" />
         <Card>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4">
             <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
@@ -92,17 +90,14 @@ export default async function LivePage() {
           <Button href="/tickets" variant="primary" size="sm">
             Support the artists
           </Button>
-          <Button href={watchHref()} external variant="secondary" size="sm">
-            Watch on Twitch
-          </Button>
-          <Button href="/program" variant="secondary" size="sm">
-            Set times
-          </Button>
-          <Button href="#watch-parties" variant="secondary" size="sm">
-            Watch parties
+          <Button href={replaysHref()} external variant="secondary" size="sm">
+            Watch the replay
           </Button>
           <Button href="/afterparty" variant="secondary" size="sm">
             After-party
+          </Button>
+          <Button href="/media" variant="secondary" size="sm">
+            Press and radio
           </Button>
           <ShareButton
             url="https://zaostock.com/live"
@@ -111,8 +106,8 @@ export default async function LivePage() {
           />
         </div>
         <p className="text-sm text-ink-secondary m-0 mt-3">
-          <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream runs {FESTIVAL.window} on {FESTIVAL.dateLabel}; the stream is offline outside that.
-          Twitch shows its own offline screen then, which is expected, not a broken player.
+          <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream ran {FESTIVAL.window} on {FESTIVAL.dateLabel}; the stream is offline now,
+          so Twitch shows its own offline screen here. That is expected, not a broken player.
         </p>
         {fallbackHref ? (
           <p className="text-sm text-ink-secondary m-0 mt-2">
@@ -129,13 +124,13 @@ export default async function LivePage() {
         <TwoUp>
           <SectionHeader
             eyebrow="How to follow along"
-            title="Four ways in, if you can't make the parklet."
+            title="Four ways in, for anyone who could not make the parklet."
             lede="No account needed to watch."
           />
           <div className="flex flex-col gap-4">
             <Card>
               <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0">On this page</h3>
-              <p className="text-sm text-ink-secondary m-0 mt-2">The stream plays here for the full window, {FESTIVAL.window}. No sign-up.</p>
+              <p className="text-sm text-ink-secondary m-0 mt-2">The stream played here for the full window, {FESTIVAL.window}. No sign-up.</p>
             </Card>
             <Card>
               <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0">At a watch party</h3>
@@ -144,7 +139,7 @@ export default async function LivePage() {
                 over it, in their own room, for their own people.{' '}
                 {WATCH_PARTIES.length === 0
                   ? 'The full list of places to watch goes out on the day itself.'
-                  : 'Running so far:'}
+                  : 'Who hosted:'}
               </p>
               {WATCH_PARTIES.length > 0 ? (
                 <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
@@ -184,9 +179,9 @@ export default async function LivePage() {
       {acts.length > 0 ? (
         <Section>
           <SectionHeader
-            eyebrow="Who's on"
-            title="Follow along with each act, in order."
-            lede="Set times are on the program. This is who's playing, in the order they play."
+            eyebrow="Who played"
+            title="Every act, in the order they played."
+            lede="Each act has its own page with a bio and links."
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
             {acts.map((act, i) => {
