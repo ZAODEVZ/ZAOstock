@@ -120,7 +120,8 @@ than from anyone's recollection.
 <!-- measured 2026-09-14T12:19Z - zao-measure --verify "zaostock acts confirmed count" (DRIFTED from 0 on 2026-09-08T21:00Z to 2 on 2026-09-14T12:19Z) -->
 <!-- re-checked 2026-09-22T12:47Z - GET https://zaostock.com/api/events/zaostock/lineup returned 5 artists, each with photo_url and bio (DRIFTED from 2 on 2026-09-14T12:19Z to 5 on 2026-09-22T12:47Z) -->
 <!-- re-checked 2026-09-24T17:51Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (DRIFTED from 5 on 2026-09-22T12:47Z to 8 on 2026-09-24T17:51Z) -->
-<!-- re-check: 2026-10-02 -->
+<!-- re-checked 2026-10-03T12:23Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (unchanged since 2026-09-24) -->
+<!-- re-check: 2026-10-10 -->
 
 ### 3. The website needs NO deploy - corrected 2026-09-08
 
