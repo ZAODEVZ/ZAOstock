@@ -1,0 +1,65 @@
+name: Review capture
+
+# HALF ONE OF THE AUTOMATED REVIEWER, AND THE HALF WITH NO SECRETS.
+#
+# This job builds the PR's own code and screenshots it, so it runs on
+# `pull_request` with read-only permissions and no secrets: a Round 5 entry
+# from a fork can run here and can reach nothing. Its only output is an
+# artifact (the diff, the PR's title and body, the screenshots). Half two,
+# review-ai.yml, reads that artifact with the key and posts a comment. This is
+# GitHub's documented pattern for reviewing fork PRs safely: never
+# `pull_request_target` with a checkout of the fork.
+#
+# First-time contributors' runs still wait for a maintainer to approve them,
+# like every other workflow here.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: review-capture-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    name: build and screenshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Diff and PR text
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir -p review-artifact
+          git diff "$BASE_SHA"..."$HEAD_SHA" > review-artifact/diff.patch
+          git diff --name-only "$BASE_SHA"..."$HEAD_SHA" > review-artifact/files.txt
+          node -e 'require("fs").writeFileSync("review-artifact/pr.json", JSON.stringify({number: Number(process.env.PR_NUMBER), title: process.env.PR_TITLE, body: process.env.PR_BODY, head: process.env.HEAD_SHA}))'
+      - run: npm run build
+      - name: Screenshot the PR build and production
+        run: |
+          npx next start -p 3000 > /tmp/next.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3000/ && break; sleep 2; done
+          BASE=http://localhost:3000 PROD=https://zaostock.com OUT=review-artifact \
+            node scripts/review/capture.mjs review-artifact/files.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-artifact
+          path: review-artifact
+          retention-days: 7
