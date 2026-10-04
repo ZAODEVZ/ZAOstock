@@ -32,7 +32,7 @@ export const revalidate = 3600;
 // The lineup is LISTED by name (display name, linking each act's own page)
 // since the 2026-09-29 SEO/GEO pass: "the acts are named on the site" left an
 // assistant asked "who is playing ZAOstock?" with nothing to answer from. Names
-// only, in LINEUP_NAMES order, no times: the order here is not a running order
+// only, in PLAYED_NAMES order, no times: the order here is not a running order
 // and this file does not claim it is.
 const LINEUP_LINES = PLAYED_NAMES.map(
   (name) => `- ${displayName(name)} - https://zaostock.com/artist/${artistSlug(name)}`,
@@ -53,7 +53,7 @@ ZAOstock was the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York
 
 ## Lineup
 
-The ${PLAYED_NAMES.length} acts that played, in running order, each with its own page (bio, photo, links):
+The ${PLAYED_NAMES.length} acts that played, each with its own page (bio, photo, links):
 
 ${LINEUP_LINES}
 

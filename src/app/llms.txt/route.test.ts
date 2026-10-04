@@ -32,7 +32,9 @@ describe('GET /llms.txt', () => {
   it('names how many acts played, sourced from PLAYED_NAMES, never the size of the bill', async () => {
     const text = await content();
     expect(text).toContain(`${PLAYED_NAMES.length} acts played back to back`);
-    expect(text).toContain(`The ${PLAYED_NAMES.length} acts that played, in running order`);
+    expect(text).toContain(`The ${PLAYED_NAMES.length} acts that played, each with its own page`);
+    // The list is names only; the file does not claim an order (see the comment on LINEUP_LINES).
+    expect(text).not.toContain('in running order');
     expect(PLAYED_NAMES.length).toBe(LINEUP_NAMES.length - DID_NOT_PLAY.length);
   });
 
