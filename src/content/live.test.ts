@@ -135,7 +135,7 @@ describe('before the stream starts and after it ends', () => {
 
   it('tells a remote viewer the stream ends with the parklet', () => {
     const src = read(LIVE);
-    expect(src).toContain('The stream runs with the parklet.');
+    expect(src).toContain('The stream ran with the parklet.');
     expect(src).toContain('in person only');
     expect(src).toContain('Black Moon Public House');
   });

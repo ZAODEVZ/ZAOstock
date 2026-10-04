@@ -201,8 +201,9 @@ export const DID_NOT_PLAY: readonly string[] = ['Acadia Rising'];
 
 /**
  * WHO PLAYED, in running order: the bill minus DID_NOT_PLAY. Basis: Zaal's
- * word above, and the 3 October stream recordings, which show seven sets
- * (catalogue of the Twitch archives, 2026-10-04). Use this, never
+ * word above, and his answer the same day when asked whether The Crown Vics,
+ * OPEN X, Grass Rug, Michael Anderson, DCoop, LyonsDen and Tom Fellenz all
+ * played: "yes all played" (same decisions file, item 5). Use this, never
  * LINEUP_NAMES, wherever a page says an act played.
  */
 export const PLAYED_NAMES: readonly string[] = LINEUP_NAMES.filter((name) => !DID_NOT_PLAY.includes(name));
