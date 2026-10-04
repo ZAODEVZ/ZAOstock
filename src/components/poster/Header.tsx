@@ -11,7 +11,7 @@ import { SITE } from '@/content/site';
 // PAST TENSE, 2026-10-04: ZAOstock 2026 happened on 3 October, so the RSVP button
 // is gone (RSVP is over). The button now reads "Replay" and goes to /live, the
 // recording of the day. The nav LINK to /tickets stays: that page is now where
-// you support the artists who played.
+// you support the artists.
 //
 // In the front page's look since 2026-09-10: a cream bar with a hairline, her
 // fireside button. The bar is 66px tall; the homepage hero pins itself under

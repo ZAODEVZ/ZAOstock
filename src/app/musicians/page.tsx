@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/musicians' },
   openGraph: {
     title: 'For Musicians · ZAOstock 2026',
-    description: `Made music nobody is paying you to make? Tell us about it. ZAOstock played ${FESTIVAL.shortDate}, ${FESTIVAL.city}.`,
+    description: `Made music nobody is paying you to make? Tell us about it. ZAOstock was held ${FESTIVAL.shortDate}, ${FESTIVAL.city}.`,
     url: 'https://zaostock.com/musicians',
     images: [OG_IMAGE],
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'For Musicians · ZAOstock 2026',
-    description: `Made music nobody is paying you to make? Tell us about it. ZAOstock played ${FESTIVAL.shortDate}.`,
+    description: `Made music nobody is paying you to make? Tell us about it. ZAOstock was held ${FESTIVAL.shortDate}.`,
   },
 };
 
@@ -52,7 +52,7 @@ export default function MusiciansPage() {
         { term: 'Where', detail: `${FESTIVAL.venue}, ${FESTIVAL.city}; Black Moon Public House next door from six` },
         { term: 'Soundcheck', detail: `${SOUNDCHECK.day}, 9:30 AM to noon, artists only` },
         { term: 'Set length', detail: '33 or 40 minutes in 2026, set by the running order' },
-        { term: '2026 bill', detail: `${LINEUP_NAMES.length} acts played. Tell us about your music for the next ZAO Festivals event` },
+        { term: '2026 bill', detail: `${LINEUP_NAMES.length} acts were on the bill. Tell us about your music for the next ZAO Festivals event` },
         { term: NEXT_EDITION.name, detail: `${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}.` },
         { term: 'Pay', detail: 'Not pay-to-play. Independent and ZAO-vetted only' },
       ]}

@@ -75,10 +75,10 @@ export default function ProgramPage() {
       <Section first className="pt-12 sm:pt-16">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-start">
           <div className="max-w-[760px]">
-            <Eyebrow tone="denim">Program · {FESTIVAL.dateLabel}</Eyebrow>
+            <Eyebrow tone="denim">The 2026 program, as published · {FESTIVAL.dateLabel}</Eyebrow>
             <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Outside, then in.</h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              {LINEUP_NAMES.length} acts played from noon on the {FESTIVAL.venue}. At six the street cleared, and Black Moon next door hosted their own evening inside.
+              {LINEUP_NAMES.length} acts were on the bill from noon on the {FESTIVAL.venue}, with the evening billed at Black Moon next door. Set times are the published schedule.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               {/* The plain comma-separated name list this used to carry was

@@ -406,7 +406,7 @@ export interface SupportTier {
 // PAST TENSE, 2026-10-04: the day happened, so the tier copy below no longer
 // promises a thank-you from the stage or says the money pays for a day to come.
 // The tiers still work and /tickets now frames them as support for the artists
-// who played.
+// on the bill.
 //
 // Renamed 2026-09-29 (Zaal picked option B of ZAOOS research doc 2578, "Keep
 // it free"): Fan / Supporter / Pro Ticket became Chip in / Friend / Backer.

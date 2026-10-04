@@ -760,3 +760,55 @@ describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
     expect('<Button>RSVP free</Button>').toMatch(UPCOMING[0][0]);
   });
 });
+
+/**
+ * NOBODY HAS CONFIRMED WHAT HAPPENED ON THE DAY (2026-10-04). The site may say
+ * ZAOstock 2026 was held, was free, was streamed, and what was BILLED. It may
+ * not say a named act, "the eight acts" or the after-party acts actually
+ * played, that the set order or times are what happened, or that the
+ * after-party ran as listed, until the owner confirms. Stream evidence
+ * suggests fewer than eight sets and some running off schedule, with no
+ * after-party footage. These phrases are barred from every public file.
+ *
+ * src/app/live and its content (live.ts, replay.ts, ReplayPlayer.tsx) are
+ * excluded: a separate change owns the replay surface and its wording.
+ */
+describe('unconfirmed performance claims stay off the public site', () => {
+  const BARRED_PERFORMANCE: ReadonlyArray<readonly [RegExp, string]> = [
+    [/\bacts (that |who )?played\b/i, 'the bill is published; that every act played is unconfirmed'],
+    [/\bartists (that |who )?played\b/i, 'say "the artists" or "the artists on the bill"'],
+    [/\bwho played\b/i, 'say "who was on the bill"'],
+    [/\bplayed ZAOstock\b/i, 'say "was on the bill for ZAOstock"'],
+    [/Played in order/, 'say "Running order"'],
+    [/>\s*Played\s*<\/dt>/, 'the after-party label is "On the bill"'],
+  ];
+
+  const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
+  const OWNED_ELSEWHERE = /(^|[\\/])(live[\\/]page\.tsx|live\.ts|replay\.ts|ReplayPlayer\.tsx|lineup-fallback\.ts)$/;
+  const files: string[] = [];
+  for (const r of roots) {
+    const abs = path.join(process.cwd(), r);
+    for (const f of readdirSync(abs, { recursive: true }) as string[]) {
+      const full = path.join(abs, f);
+      if (/\.(tsx?|md|html|txt)$/.test(f) && !/\.test\.tsx?$/.test(f) && !OWNED_ELSEWHERE.test(f) && statSync(full).isFile()) files.push(full);
+    }
+  }
+
+  it('is actually inspecting the public files', () => {
+    expect(files.length).toBeGreaterThan(50);
+    expect(files.some((f) => f.endsWith(path.join('tickets', 'page.tsx')))).toBe(true);
+    expect(files.some((f) => f.endsWith(path.join('live', 'page.tsx')))).toBe(false);
+  });
+
+  for (const [pattern, why] of BARRED_PERFORMANCE) {
+    it(`no public file carries ${pattern.source} - ${why}`, () => {
+      const hits = files.filter((f) => pattern.test(readFileSync(f, 'utf8'))).map((f) => path.relative(process.cwd(), f));
+      expect(hits).toEqual([]);
+    });
+  }
+
+  it('the control can fail: the patterns do match the retired wording', () => {
+    expect('the 8 acts played back to back').toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('<dt>Played</dt>').toMatch(BARRED_PERFORMANCE[5][0]);
+  });
+});

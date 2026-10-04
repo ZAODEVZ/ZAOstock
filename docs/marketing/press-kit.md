@@ -39,9 +39,9 @@ Free to attend.** It happened.
 ## In one paragraph
 
 ZAOstock was a free, one-day, artist-built music festival on Franklin Street in
-downtown Ellsworth, Maine. From noon, eight independent artists played the outdoor
-parklet stage back to back until six, when the street cleared. Next door, Black
-Moon Public House hosted its own evening. It was part of the 9th Annual Art of Ellsworth
+downtown Ellsworth, Maine. The published bill was eight independent artists on the outdoor
+parklet stage from noon to six, with an evening billed next door at Black
+Moon Public House. It was part of the 9th Annual Art of Ellsworth
 during Maine Craft Weekend, and it was produced by ZAO Festivals, the events arm
 of The ZAO, an independent music community.
 
@@ -50,11 +50,11 @@ of The ZAO, an independent music community.
 | | |
 |---|---|
 | Date | Saturday 3 October 2026 |
-| Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosted its own evening from six |
+| Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door, with its own evening billed from six |
 | Cost | Free to attend |
-| Support | zaostock.com/tickets - support the artists who played |
+| Support | zaostock.com/tickets - support the artists |
 | Music starts | Noon |
-| Format | Eight independent artists outdoors, noon to six. Black Moon's own evening followed next door |
+| Format | Eight independent artists on the bill outdoors, noon to six. Black Moon's own evening billed next door |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Running order | zaostock.com/program |
@@ -67,15 +67,14 @@ of The ZAO, an independent music community.
 
 ## The day
 
-- **Outdoors, Franklin Street Parklet, noon until six.** Independent artists played back
+- **Outdoors, Franklin Street Parklet, noon until six.** Independent artists on the bill, back
   to back.
-- **Eight acts, one stage, noon to six.** Music started at noon and ended before
-  the street cleared at six, with short changeovers between acts.
-  The running order is on zaostock.com/program.
+- **Eight acts, one stage, noon to six.** The published bill had music from noon to six, with short changeovers between acts.
+  The published running order is on zaostock.com/program.
   <!-- Zaal, 2026-09-28: "Publish times on /program" (supersedes the 2026-09-12 no-set-times note). Changeovers are 5 to 12 minutes since #365, so no single length is stated. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
-  after-party at Black Moon Public House, 142 Main St, hosted by Black Moon: doors
-  were at 6 PM, music 7 to 10 PM, with North Creek, Treelock & HiDef, Sam Savage and Oven
+  after-party was billed at Black Moon Public House, 142 Main St, on Black Moon's own premises: doors
+  at 6 PM, music 7 to 10 PM, billed with North Creek, Treelock & HiDef, Sam Savage and Oven
   Baked Beats DJ Aquavantes (Black Moon's flyer, zaostock.com/afterparty),
   **hosted and underwritten by Black Moon on
   their own stage and their own licence.** It was their event, not part of the ZAOstock
@@ -85,7 +84,7 @@ One venue at a time. The day did not split across two rooms.
 
 ## The lineup
 
-**All eight acts played.** In running order: The Crown Vics,
+**Eight acts were on the bill.** In running order: The Crown Vics,
 OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz.
 
 <!-- NONE of them has countersigned. They are booked and locked in the run of
@@ -150,7 +149,7 @@ Paste as written.
 
 Short: ZAOstock was a free, one-day, artist-built music festival held on Saturday 3 October 2026 at the Franklin Street Parklet in Ellsworth, Maine, with the evening next door at Black Moon Public House. It was part of the 9th Annual Art of Ellsworth during Maine Craft Weekend and was produced by ZAO Festivals, the events arm of The ZAO.
 
-Long: ZAOstock was a free, one-day, artist-built music festival held on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music ran from noon at the Franklin Street Parklet with eight acts back to back until six; next door, Black Moon Public House hosted its own evening. One stage at a time rather than competing stages, so nobody had to choose what to miss. ZAOstock took place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and was produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission was free.
+Long: ZAOstock was a free, one-day, artist-built music festival held on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music was billed from noon at the Franklin Street Parklet with eight acts back to back until six; next door, an evening was billed at Black Moon Public House. One stage at a time rather than competing stages, so nobody had to choose what to miss. ZAOstock took place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and was produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission was free.
 
 ## Four angles
 

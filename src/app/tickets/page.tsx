@@ -7,7 +7,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // PAST TENSE, 2026-10-04. ZAOstock 2026 happened on Saturday 3 October and Zaal
 // ruled everything pushed to the past: "can u loop on pushing eveything zaostock
 // to the past". RSVP is over, so the free RSVP card and the "do I need the RSVP"
-// row are gone. The page is now where you back the artists who played: the three
+// row are gone. The page is now where you back the artists: the three
 // support tiers and the Giveth section stay (they still work). The history below
 // is kept for the record of how the page got here.
 //
@@ -45,19 +45,19 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // above"). PayPal is not offered (finance grill 28 Sep, item 10).
 
 export const metadata: Metadata = {
-  title: `Support the artists who played, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
+  title: `Support the artists, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `ZAOstock 2026 was free to attend. You can still chip in to support the artists who played. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    `ZAOstock 2026 was free to attend. You can still chip in to support the artists. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
     title: 'Support the artists | ZAOstock',
-    description: 'ZAOstock 2026 was free to attend. Chip in to support the artists who played.',
+    description: 'ZAOstock 2026 was free to attend. Chip in to support the artists.',
     url: 'https://zaostock.com/tickets',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'Support the artists | ZAOstock',
-    'ZAOstock 2026 was free to attend. Chip in to support the artists who played.',
+    'ZAOstock 2026 was free to attend. Chip in to support the artists.',
   ),
 };
 
@@ -68,10 +68,10 @@ export default function TicketsPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.shortDate}</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Support the artists who played.
+            Support the artists.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            ZAOstock was free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists who played, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
+            ZAOstock was free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists on the bill, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
           </p>
         </div>
       </Section>

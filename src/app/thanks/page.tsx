@@ -14,23 +14,23 @@ import { SITE } from '@/content/site';
 // purchase behind it at all.
 //
 // PAST TENSE, 2026-10-04: ZAOstock happened, so this reads as a thank-you for
-// supporting the artists who played. The calendar button is gone.
+// supporting the ZAOstock artists. The calendar button is gone.
 //
 // Not in the sitemap or footer nav - a destination, not a page anyone
 // should navigate to.
 
 export const metadata: Metadata = {
   title: 'Thanks',
-  description: "Thank you for supporting the artists who played ZAOstock.",
+  description: "Thank you for supporting the ZAOstock artists.",
   robots: { index: false },
   alternates: { canonical: '/thanks' },
   openGraph: {
     title: "Thanks | ZAOstock",
-    description: "Thank you for supporting the artists who played ZAOstock.",
+    description: "Thank you for supporting the ZAOstock artists.",
     url: 'https://zaostock.com/thanks',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Thanks | ZAOstock', 'Thank you for supporting the artists who played ZAOstock.'),
+  twitter: twitterCard('Thanks | ZAOstock', 'Thank you for supporting the ZAOstock artists.'),
 };
 
 export default function ThanksPage() {
@@ -42,7 +42,7 @@ export default function ThanksPage() {
           <Eyebrow tone="denim">Received</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">Thank you.</h1>
           <p className="text-lg text-ink-secondary measure">
-            Your support for the artists who played ZAOstock is received, and your receipt is on its way by email from Stripe. If anything looks off, email{' '}
+            Your support for the ZAOstock artists is received, and your receipt is on its way by email from Stripe. If anything looks off, email{' '}
             <a href={`mailto:${SITE.contact}?subject=ZAOstock%20ticket%20question`} className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               {SITE.contact}
             </a>
