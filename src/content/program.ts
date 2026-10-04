@@ -122,9 +122,9 @@ export const BLOCKS: Block[] = [
     // have not been given.
     // Short on purpose: the After-party row right below carries the details,
     // and repeating them here printed the same sentence twice (audit 2026-09-30).
-    lede: 'The ZAOstock after-party was billed at Black Moon Public House next door from six. Black Moon\'s flyer and details: zaostock.com/afterparty.',
+    lede: 'The ZAOstock after-party ran at Black Moon Public House next door from six. Black Moon\'s flyer and details: zaostock.com/afterparty.',
     slots: [
-      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party was billed at Black Moon Public House, 142 Main St, on Black Moon\'s own premises. Doors from 6, music 7 to 10 PM, billed: North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.', tone: 'set' },
+      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party ran at Black Moon Public House, 142 Main St, on Black Moon\'s own premises, with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. Billed doors from 6, music 7 to 10 PM. All ages.', tone: 'set' },
       { time: '22:00', label: 'Close', detail: 'Around 10 PM. Black Moon keeps its own hours.', tone: 'gap' },
     ],
   },

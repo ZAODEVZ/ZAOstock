@@ -10,12 +10,14 @@ import { SiteShell, Section, Eyebrow, Card, Button } from '@/components/poster';
 // page (Zaal, 2026-09-30). The evening is Black Moon's event; this page lists
 // it and does not describe it as a second ZAOstock stage.
 //
-// PAST TENSE, 2026-10-04: the day has passed. The page states what was billed,
-// with Black Moon's flyer, and does not claim the evening ran as listed (the
-// owner has not confirmed it).
+// PAST TENSE, 2026-10-04: the day has passed. Zaal, same day, asked whether the
+// after-party ran with the four acts on the flyer: "A and it was awesome"
+// (A = yes, all four; vault decisions/grill-2026-10-04-orchestration-0150.md
+// item 4). So the acts are listed as having played. The door and music times
+// are still the billed ones; nobody has said what time things actually ran.
 
 const TITLE = 'After-party at Black Moon';
-const DESCRIPTION = `The ZAOstock after-party was billed at ${AFTER_PARTY.venue}, ${AFTER_PARTY.address}, ${FESTIVAL.shortDate}: doors ${AFTER_PARTY.doors}, music ${AFTER_PARTY.music} to ${AFTER_PARTY.end}.`;
+const DESCRIPTION = `The ZAOstock after-party ran at ${AFTER_PARTY.venue}, ${AFTER_PARTY.address}, on ${FESTIVAL.shortDate}, with ${AFTER_PARTY.lineup.join(', ')}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,7 +38,7 @@ export default function AfterPartyPage() {
               The after-party.
             </h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              The ZAOstock after-party was billed at {AFTER_PARTY.venue} next door: doors {AFTER_PARTY.doors}, music {AFTER_PARTY.music} to {AFTER_PARTY.end}.
+              The ZAOstock after-party ran at {AFTER_PARTY.venue} next door. It was billed with doors at {AFTER_PARTY.doors} and music {AFTER_PARTY.music} to {AFTER_PARTY.end}.
             </p>
             <Card className="mt-6">
               <dl className="m-0 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
@@ -48,12 +50,12 @@ export default function AfterPartyPage() {
                 <dd className="m-0 text-ink-secondary">{AFTER_PARTY.music} to {AFTER_PARTY.end}</dd>
                 <dt className="font-bold text-ink-950">Ages</dt>
                 <dd className="m-0 text-ink-secondary">{AFTER_PARTY.ages}</dd>
-                <dt className="font-bold text-ink-950">On the bill</dt>
+                <dt className="font-bold text-ink-950">Played</dt>
                 <dd className="m-0 text-ink-secondary">{AFTER_PARTY.lineup.join(', ')}</dd>
               </dl>
             </Card>
             <p className="text-sm text-ink-muted m-0 mt-4">
-              Billed at {AFTER_PARTY.venue}, on their own premises. Earlier in the day was{' '}
+              Hosted by {AFTER_PARTY.venue} on their own premises. Earlier in the day was{' '}
               <Link href="/program" className="underline hover:no-underline">the ZAOstock program</Link>, noon to six on the parklet.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">

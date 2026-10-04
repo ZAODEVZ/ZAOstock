@@ -5,7 +5,7 @@ import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
 import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
-import { displayName } from '@/content/site';
+import { displayName, DID_NOT_PLAY } from '@/content/site';
 import { zaoMediaFor } from '@/content/zao-media';
 import { artistJsonLdString } from '@/content/artist-jsonld';
 import Link from 'next/link';
@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const shown = displayName(artist.name);
   const description = artist.bio
     ? truncateAtWord(artist.bio, 160)
-    : `${shown} was on the bill for ZAOstock, ${FESTIVAL.shortDate}, in ${FESTIVAL.city}.`;
+    : DID_NOT_PLAY.includes(artist.name)
+      ? `${shown} was on the bill for ZAOstock, ${FESTIVAL.shortDate}, in ${FESTIVAL.city}.`
+      : `${shown} played ZAOstock on ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
 
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
@@ -108,7 +110,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
             <Card>
               <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
-                {displayName(artist.name)} was on the bill for ZAOstock, {FESTIVAL.dateLabel}, at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
+                {displayName(artist.name)} {DID_NOT_PLAY.includes(artist.name) ? 'was on the bill for ZAOstock,' : 'played ZAOstock on'} {FESTIVAL.dateLabel}{DID_NOT_PLAY.includes(artist.name) ? ',' : ''} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/" size="sm">

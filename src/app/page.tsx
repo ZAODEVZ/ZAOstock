@@ -3,7 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL, NEXT_EDITION, nextEditionLine } from '@/content/festival';
-import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
+import { SITE, PLAYED_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
 import { SiteShell } from '@/components/poster';
 import { HomeHero } from './HomeHero';
 import { RadioPlayer } from '@/components/RadioPlayer';
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
 // closing block. Grouping label only: the running order stays 1-8, /program
 // is untouched, still no times anywhere.
 const PANELS = [
-  { kicker: 'Opening', img: '/brand/elements/acoustic_guitar_yellow.webp', acts: LINEUP_NAMES.slice(0, 3) },
-  { kicker: 'The afternoon', img: '/brand/home/electric_guitar_blue_semihollow.webp', acts: LINEUP_NAMES.slice(3, 5) },
-  { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(5) },
+  { kicker: 'Opening', img: '/brand/elements/acoustic_guitar_yellow.webp', acts: PLAYED_NAMES.slice(0, 3) },
+  { kicker: 'The afternoon', img: '/brand/home/electric_guitar_blue_semihollow.webp', acts: PLAYED_NAMES.slice(3, -3) },
+  { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: PLAYED_NAMES.slice(-3) },
 ] as const;
 
 // Past tense (2026-10-04): the 2026 sheet and RSVP are closed, so each card
@@ -145,7 +145,7 @@ export default function HomePage() {
                   <em>One stage.</em>
                 </h2>
                 <p className={s.lede}>
-                  Franklin Street closed to traffic and opened up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. The evening was billed at Black Moon next door.
+                  Franklin Street closed to traffic and opened up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. The after-party ran at Black Moon next door.
                 </p>
                 <p className={s.lede}>
                   It was part of the {SITE.series} during {SITE.weekend}.
@@ -171,7 +171,7 @@ export default function HomePage() {
               The <em>lineup</em>
             </h2>
             <p className={s.lede}>
-              {LINEUP_NAMES.length} independent acts were on the bill for one stage. {LINEUP_NAMES_NOTE}{' '}
+              {PLAYED_NAMES.length} independent acts played back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
               <Link href="/program" className={s.link}>
                 The running order
               </Link>

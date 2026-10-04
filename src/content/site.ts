@@ -183,7 +183,29 @@ export function displayName(name: string): string {
 // No set times in public (Zaal, 2026-09-12), so this no longer sends anyone to
 // the program for one. The program publishes the order.
 export const LINEUP_NAMES_NOTE =
-  'They play in that order. Each act has its own page with a bio and photo.';
+  'Each act has its own page with a bio and photo.';
+
+/**
+ * ON THE BILL, DID NOT PLAY. Zaal, 2026-10-04 09:3x, typed in the seat pane when
+ * asked about Acadia Rising's set: "Acadia rising did not play" (vault
+ * decisions/grill-2026-10-04-orchestration-0150.md, item 3). An act goes in this
+ * list only on his word.
+ *
+ * What it does: the act stays on the published bill (/artists, its own page,
+ * which says "was on the bill"), and is left out of everything that says who
+ * PLAYED: PLAYED_NAMES below, the home lineup, the /program record and the
+ * structured data's `performer` list. No page says in words that the act did
+ * not play; how, or whether, to say that is his call.
+ */
+export const DID_NOT_PLAY: readonly string[] = ['Acadia Rising'];
+
+/**
+ * WHO PLAYED, in running order: the bill minus DID_NOT_PLAY. Basis: Zaal's
+ * word above, and the 3 October stream recordings, which show seven sets
+ * (catalogue of the Twitch archives, 2026-10-04). Use this, never
+ * LINEUP_NAMES, wherever a page says an act played.
+ */
+export const PLAYED_NAMES: readonly string[] = LINEUP_NAMES.filter((name) => !DID_NOT_PLAY.includes(name));
 
 /**
  * The after-party, from Black Moon's own flyer (shared by Zaal 2026-09-30).
