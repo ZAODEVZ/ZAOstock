@@ -95,11 +95,14 @@ describe('what /press renders out of the kit', () => {
     // to 5:46. The kit still said 5:55 and five-minute on 2026-09-12, on the
     // public page, two days after /program was corrected.
     const text = publishable(kit);
-    expect(text).not.toMatch(/5:55|17:55|five-minute changeover|30 to 40 minute/i);
-    // No set time for any act, opener included (Zaal, 2026-09-12: "no set times
-    // listed publicly"). The day's boundaries are not a slot, so they stay.
+    // Retimed again in #365: changeovers now run 5 to 12 minutes, so the kit
+    // states no single length - "seven-minute" would be the new stale version.
+    expect(text).not.toMatch(/5:55|17:55|five-minute changeover|seven-minute changeover|30 to 40 minute/i);
+    // The kit carries no clock itself: since Zaal's 2026-09-28 "Publish times
+    // on /program", it points at /program, the one place the times are
+    // derived from program.ts. A time typed here would be a second copy to drift.
     expect(text).not.toMatch(/\b\d{1,2}:[0-5]\d\b/);
     expect(text).toContain('noon to six');
-    expect(text).toContain('seven-minute changeovers');
+    expect(text).toContain('zaostock.com/program');
   });
 });

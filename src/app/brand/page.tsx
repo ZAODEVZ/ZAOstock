@@ -387,6 +387,14 @@ export default function BrandPage() {
               src="/brand/posters/2026-lineup-poster-1600x2000.png"
               alt={`ZAOstock 2026 confirmed lineup poster - One Street. One Stage. ${FESTIVAL.dateLabel}, ${FESTIVAL.venue}, ${FESTIVAL.city}.`}
               className="w-full rounded-[14px] border-[1.5px] border-gold-500/60 shadow-hard"
+              // Lazy for the same reason as the copy on /press: this file is
+              // 3.3 MB, and /brand is a prefetch target from the footer on
+              // every page, so an eager poster here spent 3.3 MB on a visitor
+              // who never opened the brand library. Every other AssetCard on
+              // this page already lazy-loads; this one had not. See
+              // src/content/press-poster-lazy.test.ts for the measurement.
+              loading="lazy"
+              decoding="async"
             />
           </a>
           <div className="flex flex-col gap-3">

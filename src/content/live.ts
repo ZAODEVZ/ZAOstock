@@ -72,15 +72,32 @@ export type WatchParty = {
   host: string;
   /** Where it is, in plain words. No platform is implied by this being filled. */
   where: string;
-  href: string;
+  /** Where to find it. Optional: some hosts only have a link on the day, and
+   *  the host's name then renders as plain text rather than a dead link. */
+  href?: string;
 };
 
 /**
- * EMPTY ON PURPOSE. Zaal posts the list on the day, so until he does there is
- * no list, and the page says that rather than showing an empty box. Anything
- * added here renders immediately, so nothing goes in that is not confirmed.
+ * CONFIRMED HOSTS ONLY, and only ones who said yes to being named. Anything
+ * added here renders immediately. Zaal, seat grill 2 Oct 15:5x: "Only the ones
+ * confirmed so far, ship now" (decisions/grill-2026-10-02-orchestration-1550.md).
+ * Entries from IMan's list on iman-desk #16 (comment 2 Oct 21:55 CAT), each
+ * host's "yes" to being named recorded there. Not confirmed, so left out:
+ * @Oshuxhu, AJ Sanchez, and Trey1 G (streaming from the ground, not a watch
+ * party). Late hosts go in Saturday morning if Zaal pastes any.
  */
-export const WATCH_PARTIES: readonly WatchParty[] = [];
+export const WATCH_PARTIES: readonly WatchParty[] = [
+  {
+    host: 'Thy Revolution (COC Concertz)',
+    where: 'an X Space, online, all six hours (noon to 6 PM Eastern)',
+    // The Space link only exists on the day; it appears on his profile.
+    href: 'https://x.com/thyrevolution',
+  },
+  {
+    host: 'IMan Afrikah with WaveWarZ Africa',
+    where: 'in person in Livingstone, Zambia, noon to 6 PM Eastern (6 PM to midnight local)',
+  },
+];
 
 /**
  * The channel a viewer goes to when the player dies. Read from SOCIALS so there
@@ -89,5 +106,7 @@ export const WATCH_PARTIES: readonly WatchParty[] = [];
  * fallback card at all instead of a dead link.
  */
 export function fallbackChannelHref(socials: typeof SOCIALS = SOCIALS): string | null {
-  return socials.find((s) => s.platform === 'Telegram')?.href ?? null;
+  // Widened to string: Telegram left SOCIALS on 2026-09-29, so the literal
+  // union no longer contains it, and this must still compile (and return null).
+  return socials.find((s) => (s.platform as string) === 'Telegram')?.href ?? null;
 }

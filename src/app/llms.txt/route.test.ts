@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { FESTIVAL } from '@/content/festival';
-import { LINEUP_NAMES } from '@/content/site';
+import { LINEUP_NAMES, displayName } from '@/content/site';
+import { artistSlug } from '@/content/event-jsonld';
 import { GET } from './route';
 
 // THE RED CONTROL FOR THE 2026-09-16 AUDIT FINDING. llms.txt said "Noon to
@@ -32,6 +33,18 @@ describe('GET /llms.txt', () => {
     const text = await content();
     expect(text).toContain(`${LINEUP_NAMES.length} acts on the bill`);
     expect(text).toContain(`The ${LINEUP_NAMES.length} acts are named on the site`);
+  });
+
+  it('lists every act by display name with its own page, and no clock times', async () => {
+    // 2026-09-29 GEO pass: "named on the site" gave an assistant nothing to
+    // answer "who is playing?" from. Every act is listed, by the name Zaal
+    // ruled public (displayName), linking its /artist/<slug> page.
+    const text = await content();
+    for (const name of LINEUP_NAMES) {
+      expect(text).toContain(`- ${displayName(name)} - https://zaostock.com/artist/${artistSlug(name)}`);
+    }
+    const lineup = text.split('## Lineup')[1].split('## Partners')[0];
+    expect(lineup).not.toMatch(/\d{1,2}:\d{2}/);
   });
 
   it('serves as plain text', async () => {

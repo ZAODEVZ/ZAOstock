@@ -3,9 +3,11 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH } from '@/content/site';
+import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
 import { SiteShell, Countdown } from '@/components/poster';
 import { HomeHero } from './HomeHero';
+import { RadioPlayer } from '@/components/RadioPlayer';
+import { RADIO_SESSIONS, STAR_977_URL } from '@/content/media';
 import s from './home.module.css';
 
 // THE HOMEPAGE IN CANDY'S LOOK. Zaal, 2026-09-10, of her site build: "this is
@@ -29,7 +31,7 @@ import s from './home.module.css';
 export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
   description:
-    `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}. Independent artists, one stage, music from noon.`,
+    `A free, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}. Independent artists, one stage, from noon.`,
   alternates: { canonical: '/' },
   openGraph: {
     title: 'ZAOstock 2026',
@@ -57,16 +59,36 @@ const PANELS = [
   { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(5) },
 ] as const;
 
+// Festival week (audit, 2026-09-30): "Artists / Submit work" pointed at
+// /artists, which is the lineup, not a submission page; "Apply to play" read
+// as an open call with the 2026 bill full; Volunteers now have the sheet.
 const PLUG_IN = [
-  { n: '01', who: 'Artists', what: 'Submit work', href: '/artists' },
-  { n: '02', who: 'Musicians', what: 'Apply to play', href: '/musicians' },
-  { n: '03', who: 'Volunteers', what: 'Sign up', href: '/apply' },
+  { n: '01', who: 'Everyone', what: 'RSVP free', href: '/tickets' },
+  { n: '02', who: 'Volunteers', what: 'Pick a job', href: '/volunteer' },
+  { n: '03', who: 'Musicians', what: 'Next year', href: '/musicians' },
   { n: '04', who: 'Sponsors & press', what: 'Get in touch', href: '/sponsor' },
 ] as const;
 
 export default function HomePage() {
   return (
     <SiteShell>
+      {/* FESTIVAL DAY BANNER. Zaal, 2026-10-03, at the venue: "lets updat ehome
+          page say zaostock is today view here". Comes down after the day. */}
+      <div className="bg-denim-600 text-onfill">
+        <div className="wrap flex flex-wrap items-center justify-between gap-3 py-3">
+          <p className="m-0 font-sans font-extrabold text-base sm:text-lg">
+            ZAOstock is today. Noon to 6 PM on Franklin Street, free, or watch from anywhere.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/live" className="inline-flex items-center rounded-pill bg-onfill px-[18px] py-[9px] text-sm font-bold uppercase tracking-[0.08em] text-ink-950 hover:bg-paper-200">
+              Watch live
+            </Link>
+            <Link href="/program" className="inline-flex items-center rounded-pill border-[1.5px] border-onfill px-[18px] py-[9px] text-sm font-bold uppercase tracking-[0.08em] text-onfill hover:bg-onfill/10">
+              Set times
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className={s.home}>
         {/* 1. The flight down Franklin Street */}
         <HomeHero>
@@ -84,7 +106,11 @@ export default function HomePage() {
             priority
           />
           <h1 className={`${s.display} ${s.big} ${s.anim} ${s.d3}`}>
-            Franklin St
+            {/* Search and screen readers get the festival, not just the venue:
+                the visible H1 names the parklet, which alone ranks for nothing
+                anyone searches (SEO audit 2026-09-29). */}
+            <span className="sr-only">ZAOstock 2026, a free music festival in Ellsworth, Maine, at the </span>
+            Franklin St{' '}
             <br />
             <em>Parklet</em>
           </h1>
@@ -161,12 +187,40 @@ export default function HomePage() {
                   <div className={s.panelTxt}>
                     <div className={s.kicker}>{p.kicker}</div>
                     {p.acts.map((a) => (
-                      <h3 key={a}>{a}</h3>
+                      <h3 key={a}>{displayName(a)}</h3>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* On the radio. Zaal, 2026-10-01: the two Star 97.7 sessions, one tap to
+            play. The 30-second ad and the rest of the coverage stay on /media. */}
+        <section className={s.section} id="radio">
+          <div className={s.wrap}>
+            <div className={s.kicker}>On the radio</div>
+            <h2 className={s.title}>
+              Hear it on <em>Star 97.7</em>
+            </h2>
+            <p className={s.lede}>
+              Zaal on air with{' '}
+              <a href={STAR_977_URL} target="_blank" rel="noopener noreferrer" className={s.link}>
+                Star 97.7
+              </a>
+              , our local radio partner, talking about the festival. Press play.
+            </p>
+            <div className="flex flex-col gap-3 max-w-[760px]">
+              {RADIO_SESSIONS.map((r) => (
+                <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} seconds={r.seconds} />
+              ))}
+            </div>
+            <p className={s.lede} style={{ marginTop: 18 }}>
+              <Link href="/media" className={s.link}>
+                More press and radio
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -195,7 +249,7 @@ export default function HomePage() {
                   Why <em style={{ color: 'var(--sun)' }}>Ellsworth</em>
                 </h2>
                 <p>
-                  The gateway to Acadia National Park. {ELLSWORTH.historic} The Heart of Ellsworth ran {ELLSWORTH.heartEvents.value} events with {ELLSWORTH.heartSponsors.value} sponsors in 2025, and ZAOstock builds on that momentum, adding a new music experience to Ellsworth&apos;s growing calendar of downtown events.
+                  The gateway to Acadia National Park. {ELLSWORTH.historic} ZAOstock adds a new music experience to Ellsworth&apos;s calendar of downtown events, part of the 9th Annual Art of Ellsworth.
                 </p>
                 <p style={{ marginTop: 16 }}>
                   <Link href="/ellsworth" className={s.link} style={{ color: 'inherit' }}>
@@ -212,9 +266,9 @@ export default function HomePage() {
           <div className={`${s.wrap} ${s.center}`}>
             <div className={s.kicker}>How to plug in</div>
             <h2 className={s.title}>
-              Play, make,
+              Come, <em>help</em>,
               <br />
-              <em>help</em>, or cover it
+              or cover it
             </h2>
             <p className={s.lede} style={{ margin: '0 auto' }}>
               ZAOstock runs on volunteers and local talent. There is a seat at the table whichever way you want in.

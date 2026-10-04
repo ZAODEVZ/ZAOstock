@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, PAYPAL_URL } from '@/content/site';
+import { SUPPORT_TIERS, PRO_TICKET } from '@/content/site';
 import { FESTIVAL } from '@/content/festival';
 
 // /tickets exists because ticket.zaostock.com 302s to a free Luma RSVP, so the
@@ -17,19 +17,16 @@ const code = (p: string) =>
     .filter((l) => !l.trim().startsWith('//') && !l.trim().startsWith('*') && !l.trim().startsWith('/*'))
     .join('\n');
 const TICKETS = 'src/app/tickets/page.tsx';
-const DONATE = 'src/app/donate/page.tsx';
 
 describe('prices have ONE source', () => {
   // The lineup reveal date was typed as a literal in eight files and drifted,
   // and /donate's own lede was carrying a hardcoded "$50" when this was written.
   // Both pages must read SUPPORT_TIERS from site.ts instead.
   it('no tier price appears in rendered copy on either page', () => {
-    for (const p of [TICKETS, DONATE]) {
+    for (const p of [TICKETS]) {
       for (const tier of SUPPORT_TIERS) {
         expect(code(p)).not.toContain(tier.price);
       }
-      expect(code(p)).not.toContain(PRO_ROUND.roundTotal);
-      expect(code(p)).not.toContain(PRO_ROUND.countWord);
     }
   });
 
@@ -37,7 +34,6 @@ describe('prices have ONE source', () => {
     expect(SUPPORT_TIERS.map((t) => t.price)).toEqual(['$1', '$20', '$50']);
     expect(SUPPORT_TIERS.map((t) => t.amount)).toEqual([1, 20, 50]);
     expect(PRO_TICKET.price).toBe('$50');
-    expect(PAYPAL_URL).toBe('https://paypal.com/paypalme/zaalpanthaki');
   });
 
   it('every tier can actually be paid, and the amount matches the price', () => {
@@ -63,7 +59,7 @@ describe('the festival stays free', () => {
 
   it('still says in words that paying is not admission', () => {
     const src = read(TICKETS);
-    expect(src).toContain('patronage, not admission');
+    expect(src).toContain('no ticket, no gate');
     expect(src).toContain('access is free');
   });
 
@@ -97,59 +93,37 @@ describe('the Pro Ticket checkout URL stays in sync across both pages', () => {
   // never goes anywhere different depending which page you're on, even
   // though the two pages are now allowed to look different getting there.
   it("both pages read every paid tier's checkout URL from the same stripeLinkFor helper, no special case", () => {
-    for (const p of [TICKETS, DONATE]) {
+    for (const p of [TICKETS]) {
       const src = code(p);
       expect(src).toContain('stripeLinkFor(tier.id)');
       expect(src).not.toMatch(/tier\.id === PRO_TICKET\.id\s*\?\s*\n?\s*<StripeBuyButton/);
     }
     expect(code(TICKETS)).not.toContain("from '@/components/StripeBuyButton'");
-    expect(code(DONATE)).toContain("from '@/components/StripeBuyButton'");
-    expect(code(DONATE)).toContain('hasBuyButton(tier.id)');
   });
 });
 
-describe('the cap is on the scarce thing only', () => {
-  // A 1:1 costs real time, so it is rationed. Nothing about the lower tier is
-  // scarce, so capping it would be arbitrary.
-  it('caps the tier with the 1:1 and leaves the other uncapped', () => {
-    const withOneOnOne = SUPPORT_TIERS.filter((t) => t.gets.some((g) => g.includes('1:1')));
-    expect(withOneOnOne).toHaveLength(1);
-    expect(withOneOnOne[0].spots).not.toBeNull();
-    const uncapped = SUPPORT_TIERS.filter((t) => t.spots === null);
-    expect(uncapped.every((t) => !t.gets.some((g) => g.includes('1:1')))).toBe(true);
-  });
-
-  it('credits every paying tier by name', () => {
+describe('no tier promises what nothing on file delivers', () => {
+  // Zaal, 2026-09-29, picked option B of ZAOOS doc 2578: money keeps a free
+  // day free. The 1:1, "credited on the festival page" (no such list exists)
+  // and the spot counts came off, and the round goal with them.
+  it('promises no 1:1 and no credit on a page', () => {
     for (const tier of SUPPORT_TIERS) {
-      expect(tier.gets.some((g) => g.toLowerCase().includes('credited'))).toBe(true);
+      expect(tier.gets.some((g) => g.includes('1:1'))).toBe(false);
+      expect(tier.gets.some((g) => g.toLowerCase().includes('credited'))).toBe(false);
     }
   });
 
-  it('keeps the round-1 cap at the 20 held since the 2026-05-12 standup', () => {
-    expect(PRO_ROUND.count).toBe(20);
-    expect(PRO_TICKET.spots).toBe('20 spots');
-  });
-});
-
-describe('the funding goal states its own rule', () => {
-  // 20 x $50 = $1,000, so "20 people, $1,000" silently asserted $50 each. Once
-  // the $20 tier counts toward the same target that phrasing is simply wrong,
-  // and a target whose rule is invisible is the shape that produced the stale
-  // lineup date: a number everyone reads and nobody can check.
-  it('names the total without implying a headcount or a per-person price', () => {
-    expect(PRO_ROUND.goal).toContain(PRO_ROUND.roundTotal);
-    expect(PRO_ROUND.goal).not.toContain('20 people');
-    expect(PRO_ROUND.goal).not.toContain(PRO_TICKET.price);
+  it('every tier gets the same thing, so "Only the amount" stays true', () => {
+    const gets = SUPPORT_TIERS.map((t) => t.gets.join('|'));
+    expect(new Set(gets).size).toBe(1);
   });
 
-  it('says which tiers count, so the rule travels with the number', () => {
-    expect(PRO_ROUND.goal.toLowerCase()).toContain('any tier');
-    expect(PRO_ROUND.countsRule).toBeTruthy();
+  it('advertises no spot counts', () => {
+    expect(SUPPORT_TIERS.every((t) => t.spots === null)).toBe(true);
   });
 
-  it('renders the goal on both pages rather than a bare figure', () => {
-    for (const p of [TICKETS, DONATE]) {
-      expect(read(p)).toContain('PRO_ROUND');
-    }
+  it('keeps the $50 tier on the pro id the Stripe link is keyed on', () => {
+    expect(PRO_TICKET.id).toBe('pro');
+    expect(PRO_TICKET.name).toBe('Backer');
   });
 });

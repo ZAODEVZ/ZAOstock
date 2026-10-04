@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE } from '@/content/site';
 import { FESTIVAL } from '@/content/festival';
-import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList, Card } from '@/components/poster';
+import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList } from '@/components/poster';
 
 // Replaces /circles. This page published two fixed daily meetings, 11:30 and
 // 17:00 ET, from 29 August until 2026-09-09, when Zaal said plainly that they

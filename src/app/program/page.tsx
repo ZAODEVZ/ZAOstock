@@ -3,12 +3,13 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, displayName } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader } from '@/components/poster';
-import { BLOCKS, publicSlots, type Venue } from '@/content/program';
+import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
+import { QUICK_ANSWERS, faqJsonLd } from '@/content/quick-answers';
+import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
 import { SOUNDCHECK } from '@/content/artist-ops';
 
 export const metadata: Metadata = {
-  title: 'Program',
+  title: `Program and set times, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description: `Day-of schedule for ZAOstock, ${FESTIVAL.dateLabel}. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.`,
   alternates: { canonical: '/program' },
   openGraph: {
@@ -36,7 +37,8 @@ export const metadata: Metadata = {
 // Steve's DJ Aquaventus set; the close is Black Moon's licence hour, UNSET.
 //
 // NAMES AND TIMES: the grid below names every act with its set time, and it is
-// the one public place set times live. NONE of them is described as confirmed - not one has
+// the one public place set times live (Zaal, 2026-09-28: "Publish times on
+// /program"; actTimes() in program.ts derives them, never typed here). NONE of them is described as confirmed - not one has
 // countersigned. The battlers are no longer named anywhere, because the block
 // they were named for is off. Steve's own
 // act name is not on disk. There is no fire act (Zaal, 2026-09-11: "Drop the
@@ -72,7 +74,7 @@ const GOOD_TO_KNOW = [
   SITE.weather,
   'One venue at a time. Nothing plays in two rooms at once.',
   'Black Moon is open through the day, walkable, right next door.',
-  'Each artist gets their own post with their bio and photo, in the order their details come in. Times can shift by a few minutes on the day.',
+  'Each act has its own page with a bio and photo. Times can shift by a few minutes on the day.',
   // Was "Friday 2 October is soundcheck night". Soundcheck moved to Saturday
   // on 2026-09-24 (#305); Friday is setup and decorating.
   `Soundcheck is the morning of ${SOUNDCHECK.day}, artists only.`,
@@ -96,7 +98,7 @@ export default function ProgramPage() {
                   2026-09-27: "this hould be a good UI of all the artists."
                   The badge now links to the real one. */}
               <Link href="/artists">
-                <Badge tone="gold">Meet the artists, one at a time</Badge>
+                <Badge tone="gold">Meet the artists</Badge>
               </Link>
             </div>
           </div>
@@ -116,6 +118,7 @@ export default function ProgramPage() {
 
       {BLOCKS.map((b) => {
         const v = VENUE[b.venue];
+        const times = actTimes(b);
         return (
           <Section key={b.start} id={`b-${b.start.replace(':', '')}`}>
             <TwoUp>
@@ -130,6 +133,7 @@ export default function ProgramPage() {
                     <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
                     <span>
                       <span className={['block text-sm', TONE[s.tone]].join(' ')}>{displayName(s.label)}</span>
+                      {times[s.label] ? <span className="block font-mono text-[13px] font-bold text-ink-secondary tabular mt-0.5">{times[s.label]}</span> : null}
                       {s.detail ? <span className="block text-[13px] text-ink-muted mt-0.5">{s.detail}</span> : null}
                     </span>
                   </li>
@@ -156,7 +160,7 @@ export default function ProgramPage() {
           <Card>
             <Eyebrow className="mb-2">Spend it in Ellsworth</Eyebrow>
             <p className="text-sm text-ink-secondary m-0">
-              The point of putting this on Franklin Street is to show what a day like this does for the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past. We are measuring what {FESTIVAL.shortDate} does for this block, and the number only exists if you make it.
+              The point of putting this on Franklin Street is to bring people to the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the
@@ -174,6 +178,18 @@ export default function ProgramPage() {
             </div>
           </Card>
         </TwoUp>
+      </Section>
+
+      {/* Quick answers: one array, rendered visibly and as FAQPage data, so
+          what search and AI assistants read is exactly what a visitor sees.
+          Source and provenance of every answer: src/content/quick-answers.ts. */}
+      <Section>
+        <SectionHeader eyebrow="Quick answers" title="What people ask." />
+        <BorderedList className="mt-6" rows={QUICK_ANSWERS.map(({ q, a }) => ({ term: q, detail: a }))} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()).replace(/</g, '\\u003c') }}
+        />
       </Section>
     </SiteShell>
   );

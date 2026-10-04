@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, SUPPORT_TIERS, PRO_TICKET, PRO_ROUND, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { SITE, LINEUP_NAMES, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
 // WHY THIS PAGE EXISTS
@@ -28,13 +28,19 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // plain pill button as Free's "RSVP free", per Zaal pointing at the broken
 // screenshot: "this UI isnt great lets just do the [RSVP FREE] style".
 //
-// The paid tiles read SUPPORT_TIERS from src/content/site.ts, the same source
-// /donate reads.
+// The paid tiles read SUPPORT_TIERS from src/content/site.ts.
+//
+// COMBINED 2026-09-29. Zaal: "its already all there for the tickets we just need
+// to combine ticket and donation page". /donate is gone (it redirects to
+// /tickets#give). The #give section is crypto only, through Giveth; card
+// support is the $1 / $20 / $50 tiers above (Zaal, 29 Sep: "just keep the
+// giveth as this side as a pay with crypto option the 1 5 20 options are
+// above"). PayPal is not offered (finance grill 28 Sep, item 10).
 
 export const metadata: Metadata = {
-  title: 'Tickets',
+  title: `Free RSVP, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or take a Pro Ticket to help fund the day. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or chip in to support the artists. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
     title: 'Tickets | ZAOstock',
@@ -55,10 +61,10 @@ export default function TicketsPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.admission}</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Four ways in.
+            Free. Support the artists.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            RSVP free, or chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}. This is patronage, not admission - access is free either way.
+            ZAOstock is free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists playing, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
           </p>
         </div>
       </Section>
@@ -72,7 +78,7 @@ export default function TicketsPage() {
             <h3 className="font-display text-h3 text-ink-950 m-0 mt-2">RSVP</h3>
             <p className="text-sm text-ink-secondary m-0 mt-1">Hold a spot. No line, no ticket to show at the door.</p>
             <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
-              <li>Tells us how many to plan for - water, seating, shelter.</li>
+              <li>Tells us how many people to plan for.</li>
               <li>Not required. Turn up either way.</li>
             </ul>
             <div className="mt-4 flex flex-wrap items-start gap-2">
@@ -126,9 +132,26 @@ export default function TicketsPage() {
             </Card>
           ))}
         </div>
-        <p className="text-[13px] text-ink-muted m-0 mt-4">
-          {PRO_ROUND.goal}. After taking the {PRO_TICKET.name}, email {SITE.contact} so we can schedule your 1:1.
-        </p>
+      </Section>
+
+      <Section id="give">
+        <SectionHeader
+          eyebrow="Pay with crypto"
+          title="Or give in crypto."
+          lede="Send it through Giveth to the ZAO Festivals project. It goes to the day itself, the same as the tiers above."
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+          <Card>
+            <span className="font-display text-[2.25rem] leading-none text-red-500">Giveth</span>
+            <p className="text-sm text-ink-secondary m-0 mt-2">Give in crypto through Giveth, to the ZAO Festivals project.</p>
+            <p className="font-mono text-[11px] text-ink-muted break-all m-0 mt-2">{GIVETH_WALLET}</p>
+            <div className="mt-4">
+              <Button href={GIVETH_URL} external variant="secondary">
+                Give on Giveth
+              </Button>
+            </div>
+          </Card>
+        </div>
       </Section>
 
       <Section>
@@ -136,22 +159,17 @@ export default function TicketsPage() {
           <div className="flex flex-col gap-6">
             <SectionHeader
               eyebrow="Straight answers"
-              title="What a ticket does and does not get you."
+              title="What your money does and does not do."
               lede="The festival runs at break-even. Nothing here buys access, because access is free."
             />
             <BorderedList
               rows={[
                 { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket is checked at the parklet.` },
                 { term: 'Do I need the RSVP', detail: 'No. It helps us plan numbers, that is all. Turn up either way.' },
-                {
-                  term: 'Does paying get me in earlier',
-                  detail: 'No. No tier changes anything about the day. Only the Pro Ticket adds a 1:1 with the team before the event; every tier credits you as a supporter.',
-                },
-                {
-                  term: 'What is the difference between them',
-                  detail: 'Only the 1:1 on the Pro Ticket. Every tier supports the festival and credits you by name.',
-                },
-                { term: 'Other ways to give', detail: 'PayPal for fiat or Giveth for crypto, at /donate.' },
+                { term: 'Do I need to pay', detail: 'No. Everyone gets in, paid or not, and nothing about the day changes if you pay.' },
+                { term: 'What does it pay for', detail: 'Artist fees, sound and stage, and materials.' },
+                { term: 'What is the difference between them', detail: 'Only the amount.' },
+                { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, above.' },
                 { term: 'Questions', detail: SITE.contact },
               ]}
             />
@@ -167,7 +185,7 @@ export default function TicketsPage() {
               ]}
             />
             <div>
-              <Button href="/donate" variant="secondary">
+              <Button href="#give" variant="secondary">
                 Other ways to give
               </Button>
             </div>

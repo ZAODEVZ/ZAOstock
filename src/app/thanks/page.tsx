@@ -1,10 +1,8 @@
-import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, Button, AddToCalendar } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
-import { ThanksTierBlock } from './ThanksTierBlock';
 
 // The page Stripe's Payment Link redirect lands on after checkout - both
 // tiers' after_completion is set to zaostock.com/thanks. Deliberately a
@@ -56,10 +54,6 @@ export default function ThanksPage() {
           </p>
           <AddToCalendar className="mt-1" />
         </section>
-
-        <Suspense fallback={null}>
-          <ThanksTierBlock />
-        </Suspense>
 
         <section className="space-y-2">
           <h2 className="font-display text-h3 text-ink-950">Before you go</h2>

@@ -23,7 +23,9 @@ describe('redirects for paths people guess', () => {
     expect(bySource['/sponsors']?.destination).toBe('/sponsor');
     expect(bySource['/artist/fellenz']?.destination).toBe('/artist/tom-fellenz');
     expect(bySource['/artist']?.destination).toBe('/artists');
-    expect(bySource['/volunteer']?.destination).toBe('/apply');
+    // /volunteer is now a real page (the sign-up sheet); its misspelling redirects to it.
+    expect(bySource['/volunteer']).toBeUndefined();
+    expect(bySource['/volenteer']?.destination).toBe('/volunteer');
     expect(bySource['/support']?.destination).toBe('/contact');
     expect(bySource['/ticket']?.destination).toBe('/tickets');
   });
@@ -31,5 +33,20 @@ describe('redirects for paths people guess', () => {
   it('keeps them temporary, so a real /lineup page can be added later', async () => {
     const redirects = await config.redirects!();
     for (const r of redirects) expect(r.permanent).toBe(false);
+  });
+
+  it('sends facebook.zaostock.com to the ZAO Festivals Facebook Page', async () => {
+    const redirects = await config.redirects!();
+    const fb = redirects.find((r) => r.has?.some((h) => h.type === 'host' && h.value === 'facebook.zaostock.com'));
+    expect(fb?.destination).toBe('https://www.facebook.com/zaofestivals');
+    expect(fb?.source).toBe('/:path*');
+  });
+
+  it('sends /giveth and /crypto to the Giveth project, the same URL as GIVETH_URL', async () => {
+    const { GIVETH_URL } = await import('../content/site');
+    const redirects = await config.redirects!();
+    const bySource = Object.fromEntries(redirects.map((r) => [r.source, r]));
+    expect(bySource['/giveth']?.destination).toBe(GIVETH_URL);
+    expect(bySource['/crypto']?.destination).toBe(GIVETH_URL);
   });
 });

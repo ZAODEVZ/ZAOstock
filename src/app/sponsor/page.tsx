@@ -41,15 +41,15 @@ const WHY = [
     body: 'Nobody chooses between your door and a ticket.',
   },
   {
-    title: `We measure an ordinary Saturday against ${FESTIVAL.shortDate}, and publish it.`,
-    body: 'If it works for downtown businesses, you have the number. If it does not, you have that too.',
+    title: 'Live music on Franklin Street, in the middle of downtown.',
+    body: 'Your name sits where the crowd already is: the banner behind the stage, the stream, and the thank-you from the stage.',
   },
 ] as const;
 
 const FOR_YOU = [
   { term: 'Before', detail: 'Named in the newsletter and in the artist posts.' },
   { term: 'During', detail: 'On-stage mentions, your logo on the backdrop, presence on the stream.' },
-  { term: 'After', detail: 'Named in the recap, in the published local-business measurement, and in the footage that keeps circulating.' },
+  { term: 'After', detail: 'Named in the recap and in the footage that keeps circulating.' },
 ] as const;
 
 export default function SponsorPage() {
@@ -91,8 +91,6 @@ export default function SponsorPage() {
           </div>
           <div className="grid grid-cols-2 gap-6">
             <Stat value={ELLSWORTH.artOfEllsworth.value} label={ELLSWORTH.artOfEllsworth.label} />
-            <Stat value={ELLSWORTH.heartEvents.value} label={ELLSWORTH.heartEvents.label} />
-            <Stat value={ELLSWORTH.heartSponsors.value} label={ELLSWORTH.heartSponsors.label} />
           </div>
         </TwoUp>
       </Section>
@@ -156,20 +154,20 @@ export default function SponsorPage() {
         <TwoUp>
           <SectionHeader
             eyebrow="Sponsor an artist"
-            title="Cover one artist's costs. They make content with your name on it. They opt in."
-            lede="One business pays for one named person to get to Ellsworth. The artist agrees to it; we never sell a likeness on their behalf."
+            title="Back one named artist. They make content with your name on it. They opt in."
+            lede="One business backs one named artist on the bill. The artist agrees to it; we never sell a likeness on their behalf."
           />
           <Card>
             <Eyebrow>Sponsor an artist</Eyebrow>
             <p className="font-sans font-extrabold text-h4 text-ink-950 m-0 mt-2">One artist, one business.</p>
-            <p className="text-sm text-ink-secondary m-0 mt-3">Covers one artist&apos;s travel. Content carrying your name. Opt-in from the artist, every time. Never discounted, because it is a cost and not a margin.</p>
+            <p className="text-sm text-ink-secondary m-0 mt-3">Backs one named artist on the bill. Content carrying your name. Opt-in from the artist, every time.</p>
           </Card>
         </TwoUp>
       </Section>
 
       <Section id="for-you">
         <TwoUp>
-          <SectionHeader eyebrow="What we do for you" title="Before, during and after." lede="Reach is across the team's accounts, the Farcaster /zao and /zabal channels, Telegram, the daily newsletter and the livestream." />
+          <SectionHeader eyebrow="What we do for you" title="Before, during and after." lede="Reach is across the team's accounts, the Farcaster /zao and /zabal channels, the daily newsletter and the livestream." />
           <BorderedList rows={FOR_YOU} />
         </TwoUp>
       </Section>

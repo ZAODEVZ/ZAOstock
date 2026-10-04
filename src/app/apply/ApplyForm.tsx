@@ -77,7 +77,7 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
         <p className="text-xs uppercase tracking-wider text-olive-500 font-bold">You are in</p>
         <h2 className="text-xl font-bold text-ink-950">Thanks, {name || 'friend'}.</h2>
         <p className="text-sm text-ink-950">
-          Your signup landed in the ZAOstock team dashboard. A team lead will reach out within a few days with shift details and a crew kickoff message.
+          Your signup reached the ZAOstock team. We will email you about a shift. Open jobs are listed at zaostock.com/volunteer.
         </p>
         <p className="text-xs text-ink-muted">
           Questions before then? Email info@thezao.com.
@@ -212,7 +212,7 @@ export function ApplyForm({ roles, shifts }: { roles: RoleOption[]; shifts: Shif
       )}
 
       <p className="text-[11px] text-ink-muted text-center">
-        We reach out within a few days. No commitment until you say yes to a specific shift.
+        No commitment until you say yes to a specific shift.
       </p>
     </form>
   );

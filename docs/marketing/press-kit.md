@@ -49,10 +49,10 @@ of The ZAO, an independent music community.
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosts its own evening from six |
 | Cost | Free to attend |
-| RSVP | ticket.zaostock.com |
+| RSVP | zaostock.com/tickets |
 | Music starts | Noon |
 | Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
-| Weather | Rain or shine, under tent cover from Wallace Events |
+| Weather | Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it. |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Schedule | zaostock.com/program |
@@ -63,12 +63,14 @@ of The ZAO, an independent music community.
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
   to back.
 - **Eight acts, one stage, noon to six.** Music starts at noon and ends before
-  the street clears at six, with seven-minute changeovers between acts.
-  Set times are not published.
-  <!-- Zaal, 2026-09-12: name the act, not the slot. Internal style note, not press copy. -->
+  the street clears at six, with short changeovers between acts.
+  Set times are on zaostock.com/program.
+  <!-- Zaal, 2026-09-28: "Publish times on /program" (supersedes the 2026-09-12 no-set-times note). Changeovers are 5 to 12 minutes since #365, so no single length is stated. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
-  after-party at Black Moon Public House, with North Creek, hosted by Black Moon,
-  from six (poster: 6 to 10 PM), **hosted and underwritten by Black Moon on
+  after-party at Black Moon Public House, 142 Main St, hosted by Black Moon: doors
+  6 PM, music 7 to 10 PM, with North Creek, Treelock & HiDef, Sam Savage and Oven
+  Baked Beats DJ Aquavantes (Black Moon's flyer, zaostock.com/afterparty),
+  **hosted and underwritten by Black Moon on
   their own stage and their own licence.** It is their event, not part of the ZAOstock
   programme, and ZAOstock's cover is the outdoor day only.
 
@@ -97,12 +99,12 @@ audience picks the winner, in person and online. It runs online all year.
 <!-- Confirmed off by Zaal, 2026-09-07. The four-to-six window it used to hold
      is LyonsDen and Tom Fellenz, whose slots are not published. Internal
      dating/sourcing, not press copy. -->
-WaveWarZ remains a confirmed partner and its first live battle really did happen at
-ZAO-CHELLA in December 2024 - keep the history, drop the programme claim.
+WaveWarZ is a confirmed partner. Its first live battle took place at ZAO-CHELLA
+in December 2024.
+<!-- Editorial note, not press copy: keep the history, drop the programme claim. -->
 
-As of 24 September 2026, WaveWarZ had run 1,573 battles. (Provenance and re-pull
-instructions are in the sources table at the foot of this file, not here - this
-section is what a journalist reads.)
+As of 1 October 2026, WaveWarZ had run 1,596 battles.
+<!-- Provenance and re-pull instructions are in the sources table at the foot of this file. -->
 <!-- re-check: 2026-10-02, before any print run. Re-pulled 2026-09-24T17:51Z from
      wavewarz.info/api/public/stats: battles.total = 1573, up from 1528 on
      2026-09-12. That is 45 battles in twelve days, which is the whole reason
@@ -168,12 +170,8 @@ ZAOstock is the first in Maine. The ZAO's founder lives in Ellsworth.
 ## Why Ellsworth
 
 Ellsworth is the gateway to Acadia National Park. Downtown has just received National Historic Register
-designation. The Heart of Ellsworth ran 28 events in 2025 with more than 50
-sponsors. ZAOstock plugs into that calendar rather than competing with it.
-
-ZAOstock is also measuring what a free street festival does for downtown
-businesses - an ordinary Saturday against 3 October - and will publish the
-comparison combined across the businesses that take part.
+designation. ZAOstock is part of the 9th Annual Art of Ellsworth and plugs into
+the town's calendar rather than competing with it.
 
 ## Assets
 
@@ -209,13 +207,12 @@ info@thezao.com
 | ZAO Festivals, events arm of The ZAO | gdoc Start Here (`docs/plans/gdoc-1B78AVonJS3-snapshot-2026-08-27.md`) |
 | Music first / community / technology | `src/app/onepagers/overview/page.tsx` PILLARS |
 | LyonsDen public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
-| WaveWarZ 1,573, 24 Sep | `wavewarz.info/api/public/stats`, re-pulled 2026-09-24T17:51Z. **The source, not a document.** This row used to cite `docs/sponsor/deck-2026-10-03.md` slide 6 for "1,528", and that slide said 1,452 - a provenance row pointing at a file carrying a different number. Cite the endpoint. |
+| WaveWarZ 1,596, 1 Oct | `wavewarz.info/api/public/stats`, re-pulled 2026-10-01T14:40Z (was 1,573 on 24 Sep, 1,581 on 26 Sep). **The source, not a document.** This row used to cite `docs/sponsor/deck-2026-10-03.md` slide 6 for "1,528", and that slide said 1,452 - a provenance row pointing at a file carrying a different number. Cite the endpoint. |
 | Partners, incl. WE THE MEDIA and Heart of Ellsworth | `src/content/site.ts` PARTNERS (site-fix brief 2026-09-21: page.tsx line numbers this row used to cite had already moved) |
 | RSVP URL | `src/content/festival.ts` FESTIVAL.rsvpUrl |
 | WE THE MEDIA is capturing on the day | `src/content/site.ts` PARTNERS role, "Media and content capture" |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |
 | Founder lives in Ellsworth | deck slide 4 |
-| Acadia 4M, Historic Register, Heart of Ellsworth 28 events / 50+ sponsors | `src/app/page.tsx:261-264` |
-| The measurement | production plan section 7 |
+| Historic Register, 9th Annual Art of Ellsworth | `src/app/page.tsx` |
 | Badge files, Candy credit | `docs/brand/README.md` |
 | info@thezao.com | deck slide 12 |

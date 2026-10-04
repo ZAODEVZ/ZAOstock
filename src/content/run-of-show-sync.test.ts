@@ -48,6 +48,26 @@ function opsRoomTimes(): Map<string, string> {
   return out;
 }
 
+/**
+ * The ops room's SECOND copy of the run of show: `var ROSTER`, the crew
+ * advance/checklist array. Its fields are ordered id, n, t, e - the opposite
+ * of SCHEDULE's t, e, n - so opsRoomTimes()'s regex silently matches zero
+ * ROSTER rows rather than the wrong ones. Found 2026-09-27 (PR #365 review):
+ * SCHEDULE was rebalanced and ROSTER was not, and the suite stayed green
+ * because nothing read ROSTER at all.
+ *
+ * `n:"OPEN X", t:770, e:803` -> Map(name -> "12:50")
+ */
+function rosterTimes(): Map<string, string> {
+  const src = readFileSync(OPS, 'utf8');
+  const out = new Map<string, string>();
+  for (const m of src.matchAll(/n:"([^"]+)",\s*t:(\d+),\s*e:(\d+)/g)) {
+    const mins = Number(m[2]);
+    out.set(m[1], `${Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`);
+  }
+  return out;
+}
+
 describe('run of show, across every copy of it', () => {
   it('names every act on the public program', () => {
     const prog = programTimes();
@@ -75,6 +95,30 @@ describe('run of show, across every copy of it', () => {
         ? `\nThe public schedule and the crew's schedule DISAGREE:\n${drift.join('\n')}\n\n` +
             `On the day this is the audience arriving for one time while the stage\n` +
             `manager runs another. Fix both, or neither.\n`
+        : '',
+    ).toEqual([]);
+  });
+
+  it('names every act in the ops room ROSTER (the advance/checklist copy)', () => {
+    const roster = rosterTimes();
+    const missing = LINEUP_NAMES.filter((n) => !roster.has(n));
+    expect(missing, `not in ROSTER: ${missing.join(', ')}`).toEqual([]);
+  });
+
+  it('gives every act in ROSTER the SAME time as the public program', () => {
+    const prog = programTimes();
+    const roster = rosterTimes();
+
+    const drift = LINEUP_NAMES.filter((n) => prog.get(n) !== roster.get(n)).map(
+      (n) => `  ${n}: /program says ${prog.get(n)}, ROSTER says ${roster.get(n)}`,
+    );
+
+    expect(
+      drift,
+      drift.length
+        ? `\nThe public schedule and ROSTER (crew advance/checklist) DISAGREE:\n${drift.join('\n')}\n\n` +
+            `ROSTER drives the crew's advance-chase and checklist tooling, not just the\n` +
+            `stage clock, so a stale row here points crew work at the wrong window.\n`
         : '',
     ).toEqual([]);
   });

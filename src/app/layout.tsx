@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
-import { Boogaloo, Oswald, Rubik, Space_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { FESTIVAL } from '@/content/festival';
+import { eventJsonLd } from '@/content/event-jsonld';
 import './globals.css';
 
 // Three families per DESIGN.md: Boogaloo for display, Rubik for body and UI,
 // Space Mono for eyebrows, labels and figures. Exposed as CSS variables that
 // globals.css maps into Tailwind's font-display / font-sans / font-mono.
-const boogaloo = Boogaloo({
-  subsets: ['latin'],
-  weight: ['400'],
+// Self-hosted since 2026-09-30 (src/app/fonts/README.md): next/font/google
+// fetched these on every build and the fetch failed three times that day.
+// Same families, weights and CSS variables as before.
+const boogaloo = localFont({
+  src: './fonts/Boogaloo-400.woff2',
+  weight: '400',
   variable: '--font-boogaloo',
   display: 'swap',
 });
@@ -17,23 +21,25 @@ const boogaloo = Boogaloo({
 // Oswald: the condensed heading face for the homepage in Candy's look
 // (2026-09-10). Her build asked for Arial Narrow, a system font most visitors
 // do not have, so the look changed machine to machine; this pins it.
-const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  display: 'swap',
+const oswald = localFont({
+  src: './fonts/Oswald-variable.woff2',
+  weight: '600 700',
   variable: '--font-oswald',
+  display: 'swap',
 });
 
-const rubik = Rubik({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+const rubik = localFont({
+  src: './fonts/Rubik-variable.woff2',
+  weight: '400 800',
   variable: '--font-rubik',
   display: 'swap',
 });
 
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
+const spaceMono = localFont({
+  src: [
+    { path: './fonts/SpaceMono-400.woff2', weight: '400' },
+    { path: './fonts/SpaceMono-700.woff2', weight: '700' },
+  ],
   variable: '--font-space-mono',
   display: 'swap',
 });
@@ -42,6 +48,13 @@ export const metadata: Metadata = {
   title: { default: 'ZAOstock 2026', template: '%s | ZAOstock' },
   description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}. Run by The ZAO.`,
   metadataBase: new URL('https://zaostock.com'),
+  // Google Search Console ownership proof. Next.js renders this as
+  // <meta name="google-site-verification" content="..."> in <head>.
+  // Issued 2026-09-28 for the URL-prefix property https://zaostock.com/ on the
+  // info@thezao.com account. It is a public token by design - it exists to be
+  // served in the page source. Removing it un-verifies the property, which
+  // silently stops sitemap submission and indexing requests, so it stays.
+  verification: { google: 'Ur33SQv4u9BTUs4NDk5lcRZKAOuB-lc6lZERJ2fBpkU' },
   openGraph: {
     title: 'ZAOstock 2026',
     description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
@@ -56,60 +69,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Event structured data - lets Google show ZAOstock's date/location/price
-// directly in search results (rich snippets), instead of the site being
-// invisible to that system entirely. Facts here must stay in sync with the
-// real event details - only edit alongside the actual date/venue/time.
-const eventJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'MusicEvent',
-  name: 'ZAOstock 2026',
-  description: 'A free, one-day, artist-built music festival in downtown Ellsworth, Maine. Run by The ZAO.',
-  startDate: FESTIVAL.date,
-  endDate: '2026-10-03T18:00:00-04:00',
-  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  eventStatus: 'https://schema.org/EventScheduled',
-  location: {
-    '@type': 'Place',
-    name: FESTIVAL.venue,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Ellsworth',
-      addressRegion: 'ME',
-      addressCountry: 'US',
-    },
-  },
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-    availability: 'https://schema.org/InStock',
-    url: 'https://zaostock.com',
-  },
-  organizer: {
-    '@type': 'Organization',
-    name: 'The ZAO',
-    url: 'https://zaostock.com',
-  },
-  // The evening next door. One venue at a time: this starts when the parklet ends.
-  subEvent: {
-    '@type': 'MusicEvent',
-    name: 'ZAOstock 2026 - the evening at Black Moon Public House',
-    startDate: '2026-10-03T18:00:00-04:00',
-    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    eventStatus: 'https://schema.org/EventScheduled',
-    location: {
-      '@type': 'Place',
-      name: 'Black Moon Public House',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Ellsworth',
-        addressRegion: 'ME',
-        addressCountry: 'US',
-      },
-    },
-  },
-};
+// Event structured data lives in src/content/event-jsonld.ts (image, performer
+// and street address added 2026-09-28 for Search Console's Events report).
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
