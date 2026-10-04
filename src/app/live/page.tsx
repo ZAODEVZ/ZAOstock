@@ -139,7 +139,7 @@ export default async function LivePage() {
                 over it, in their own room, for their own people.{' '}
                 {WATCH_PARTIES.length === 0
                   ? 'The full list of places to watch goes out on the day itself.'
-                  : 'Who hosted:'}
+                  : 'On the list:'}
               </p>
               {WATCH_PARTIES.length > 0 ? (
                 <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
@@ -179,8 +179,8 @@ export default async function LivePage() {
       {acts.length > 0 ? (
         <Section>
           <SectionHeader
-            eyebrow="Who played"
-            title="Every act, in the order they played."
+            eyebrow="The lineup"
+            title="Every act on the bill, in running order."
             lede="Each act has its own page with a bio and links."
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
