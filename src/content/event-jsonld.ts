@@ -1,5 +1,5 @@
 import { FESTIVAL } from './festival';
-import { LINEUP_NAMES, AFTER_PARTY, displayName } from './site';
+import { LINEUP_NAMES, DID_NOT_PLAY, AFTER_PARTY, displayName } from './site';
 
 // EVENT STRUCTURED DATA (schema.org MusicEvent), rendered once in layout.tsx.
 //
@@ -56,7 +56,9 @@ export const eventJsonLd = {
     name: FESTIVAL.venue,
     address: ADDRESS,
   },
-  performer: LINEUP_NAMES.map((name) => ({
+  // The bill minus anyone Zaal has said did not play (DID_NOT_PLAY in site.ts):
+  // `performer` says they performed.
+  performer: LINEUP_NAMES.filter((name) => !DID_NOT_PLAY.includes(name)).map((name) => ({
     '@type': 'PerformingGroup',
     name: displayName(name),
     url: `${SITE_URL}/artist/${artistSlug(name)}`,

@@ -2,10 +2,17 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { LINEUP_NAMES, displayName } from '@/content/site';
+import { PLAYED_NAMES, DID_NOT_PLAY, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, SectionHeader, BorderedList } from '@/components/poster';
 import { QUICK_ANSWERS, faqJsonLd } from '@/content/quick-answers';
 import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
+
+// The record of the day shows who played. An act Zaal has said did not play
+// (DID_NOT_PLAY in site.ts) stays in program.ts, which is also the published
+// schedule the crew documents are checked against, and is left out here.
+function playedSlots(block: Parameters<typeof publicSlots>[0]) {
+  return publicSlots(block).filter((s) => !DID_NOT_PLAY.includes(s.label));
+}
 
 export const metadata: Metadata = {
   title: `Program and set times, ${FESTIVAL.shortDate}, Ellsworth, Maine (the record of the day)`,
@@ -58,7 +65,7 @@ function order(block: Parameters<typeof publicSlots>[0], index: number): string 
   // The outdoor bill is a running order. The evening is Black Moon's two rows
   // and numbering those would read as a bill we programmed.
   if (block.venue !== 'OUT') return '';
-  const acts = publicSlots(block).slice(0, index + 1).filter((s) => s.tone === 'set');
+  const acts = playedSlots(block).slice(0, index + 1).filter((s) => s.tone === 'set');
   return String(acts.length);
 }
 
@@ -75,10 +82,10 @@ export default function ProgramPage() {
       <Section first className="pt-12 sm:pt-16">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-start">
           <div className="max-w-[760px]">
-            <Eyebrow tone="denim">The 2026 program, as published · {FESTIVAL.dateLabel}</Eyebrow>
+            <Eyebrow tone="denim">The 2026 program · {FESTIVAL.dateLabel}</Eyebrow>
             <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Outside, then in.</h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              {LINEUP_NAMES.length} acts were on the bill from noon on the {FESTIVAL.venue}, with the evening billed at Black Moon next door. Set times are the published schedule.
+              {PLAYED_NAMES.length} acts played from noon on the {FESTIVAL.venue}, and the after-party ran at Black Moon next door. Set times shown are the published schedule.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               {/* The plain comma-separated name list this used to carry was
@@ -117,7 +124,7 @@ export default function ProgramPage() {
                 lede={b.lede}
               />
               <ol className="list-none m-0 p-0 border border-ink-950/60 rounded-md overflow-hidden">
-                {publicSlots(b).map((s, i) => (
+                {playedSlots(b).map((s, i) => (
                   <li key={i} className="grid grid-cols-[32px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
                     <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
                     <span>

@@ -42,7 +42,7 @@ export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
   { q: 'Was it all ages?', a: 'Yes. The festival on the parklet was all ages and family-friendly, and Black Moon listed its after-party as all ages too.' },
   {
     q: 'What happened after six?',
-    a: 'The ZAOstock after-party was billed at Black Moon Public House next door: doors from 6 and music from 7, with North Creek and friends. Details at zaostock.com/afterparty.',
+    a: 'The ZAOstock after-party ran at Black Moon Public House next door, with North Creek and friends. Details at zaostock.com/afterparty.',
   },
   { q: 'Can I watch the replay?', a: 'Yes. The recording and the running order are at zaostock.com/live.' },
 ];

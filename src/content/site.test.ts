@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -773,16 +773,16 @@ describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
  * src/app/live and its content (live.ts, replay.ts, ReplayPlayer.tsx) are
  * excluded: a separate change owns the replay surface and its wording.
  */
-describe('unconfirmed performance claims stay off the public site', () => {
+describe('claims about who played stay within what Zaal has confirmed', () => {
+  // Zaal, 2026-10-04: "Acadia rising did not play", and the after-party ran with
+  // all four billed acts ("A and it was awesome"). So "played" is now allowed,
+  // but only for PLAYED_NAMES and the after-party: never for all eight, and
+  // never for an act in DID_NOT_PLAY.
   const BARRED_PERFORMANCE: ReadonlyArray<readonly [RegExp, string]> = [
-    [/\bacts (that |who )?played\b/i, 'the bill is published; that every act played is unconfirmed'],
-    [/\bartists (that |who )?played\b/i, 'say "the artists" or "the artists on the bill"'],
-    [/\bwho played\b/i, 'say "who was on the bill"'],
-    [/\bplayed ZAOstock\b/i, 'say "was on the bill for ZAOstock"'],
+    [/\b(eight|8|all eight|all 8)( independent)? (acts|artists) (that |who )?played\b/i, 'seven played; one act on the bill did not (DID_NOT_PLAY in site.ts)'],
+    [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES, not the bill'],
+    [/Acadia Rising[^.\n]{0,80}\bplayed\b/i, 'Zaal: "Acadia rising did not play"'],
     [/Played in order/, 'say "Running order"'],
-    [/>\s*Played\s*<\/dt>/, 'the after-party label is "On the bill"'],
-    [/hosted the .{0,40}after-party/i, 'that the after-party ran is unconfirmed; name the venue, or say it was billed'],
-    [/next door hosted (its|their) own evening/i, 'that the evening ran is unconfirmed; say it was billed'],
   ];
 
   const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
@@ -809,10 +809,18 @@ describe('unconfirmed performance claims stay off the public site', () => {
     });
   }
 
-  it('the control can fail: the patterns do match the retired wording', () => {
+  it('the control can fail: the patterns do match the wording they bar', () => {
     expect('the 8 acts played back to back').toMatch(BARRED_PERFORMANCE[0][0]);
-    expect('<dt>Played</dt>').toMatch(BARRED_PERFORMANCE[5][0]);
-    expect('Hosted the ZAOstock after-party at 142 Main St').toMatch(BARRED_PERFORMANCE[6][0]);
-    expect('Black Moon Public House next door hosted its own evening').toMatch(BARRED_PERFORMANCE[7][0]);
+    expect('Eight independent artists played one stage').toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('{LINEUP_NAMES.length} acts played from noon').toMatch(BARRED_PERFORMANCE[1][0]);
+    expect('Acadia Rising played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[2][0]);
+    expect('7 independent acts played back to back').not.toMatch(BARRED_PERFORMANCE[0][0]);
+  });
+
+  it('counts seven as having played and keeps the eighth on the bill only', () => {
+    expect(DID_NOT_PLAY).toEqual(['Acadia Rising']);
+    expect(PLAYED_NAMES.length).toBe(LINEUP_NAMES.length - 1);
+    expect(PLAYED_NAMES).not.toContain('Acadia Rising');
+    expect(LINEUP_NAMES).toContain('Acadia Rising');
   });
 });
