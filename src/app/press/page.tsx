@@ -22,11 +22,11 @@ export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Press',
-  description: `Press kit for ZAOstock 2026, a free music festival in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
+  description: `Press kit for ZAOstock 2026, a free music festival held in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
   alternates: { canonical: '/press' },
   openGraph: {
     title: 'Press | ZAOstock',
-    description: `Press kit for ZAOstock 2026, a free music festival in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
+    description: `Press kit for ZAOstock 2026, a free music festival held in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
     url: 'https://zaostock.com/press',
     images: [OG_IMAGE],
   },
@@ -99,8 +99,8 @@ export default function PressPage() {
       <Section id="kit">
         <SectionHeader
           eyebrow="Press kit"
-          title="Files you can use today."
-          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Artist bios and photos are going up per act as each is confirmed - see /artists for what's live now, or ask for the rest.`}
+          title="Files you can use."
+          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Artist bios and photos are on each act's page - see /artists, or ask for the rest.`}
           className="mb-6"
         />
         {/* The confirmed 2026 lineup poster - the finished piece, not a design
@@ -191,7 +191,7 @@ export default function PressPage() {
             All partners
           </Button>
           <Button href="/program" variant="secondary" size="sm">
-            The program
+            The running order
           </Button>
         </div>
       </Section>

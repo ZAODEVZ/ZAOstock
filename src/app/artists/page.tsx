@@ -9,11 +9,11 @@ import { LINEUP_ARTISTS } from './lineup-artists';
 export const metadata: Metadata = {
   title: `Lineup: ${LINEUP_NAMES.length} acts, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `The 2026 ZAOstock lineup. ${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    `The 2026 ZAOstock lineup. ${LINEUP_NAMES.length} independent acts played the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   alternates: { canonical: '/artists' },
   openGraph: {
     title: 'Artists · ZAOstock 2026',
-    description: `${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    description: `${LINEUP_NAMES.length} independent acts played the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
     url: 'https://zaostock.com/artists',
     images: [OG_IMAGE],
     type: 'website',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Artists · ZAOstock 2026',
-    description: `${LINEUP_NAMES.length} independent acts on the ${FESTIVAL.venue} stage, ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    description: `${LINEUP_NAMES.length} independent acts played the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   },
 };
 
@@ -35,11 +35,11 @@ export default function ArtistsPage() {
             The 2026 Lineup.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            {LINEUP_NAMES.length} independent acts back to back on the {FESTIVAL.venue} in {FESTIVAL.city}.
-            Outdoors from noon to six. Free admission, rain or shine.
+            {LINEUP_NAMES.length} independent acts played back to back on the {FESTIVAL.venue} in {FESTIVAL.city}.
+            Outdoors from noon to six, with free admission.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Badge tone="gold">{LINEUP_NAMES.length} acts &middot; Playing in order</Badge>
+            <Badge tone="gold">{LINEUP_NAMES.length} acts &middot; Played in order</Badge>
             <span className="text-sm text-ink-muted">
               Each act has its own page with a bio and photo.
             </span>
@@ -90,14 +90,14 @@ export default function ArtistsPage() {
               Beyond the stage.
             </h3>
             <p className="text-sm text-ink-secondary m-0 mb-4">
-              Posters, signage, photography, and on-site visuals are built collaboratively with the ZAO community and local makers. Part of the 9th Annual Art of Ellsworth and Maine Craft Weekend.
+              Posters, signage, photography, and on-site visuals were built collaboratively with the ZAO community and local makers. Part of the 9th Annual Art of Ellsworth and Maine Craft Weekend.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button href="/program" variant="secondary" size="sm">
-                Festival program
+                The running order
               </Button>
-              <Button href="/apply" variant="secondary" size="sm">
-                Volunteer with crew
+              <Button href="/live" variant="secondary" size="sm">
+                Watch the replay
               </Button>
               <Button href={`mailto:${SITE.contact}?subject=ZAOstock%20Creative%20Inquiry`} variant="ghost" size="sm">
                 Email creative team

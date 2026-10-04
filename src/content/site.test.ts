@@ -719,3 +719,44 @@ describe('ZAO Ellsworth footer link renders nothing until the Page exists', () =
     expect(zaoEllsworthFacebookUrl(withWww)).toBe(withWww);
   });
 });
+
+/**
+ * ZAOSTOCK 2026 IS OVER (Zaal, 2026-10-04: "pushing eveything zaostock to the
+ * past"). The festival happened on 3 October, so no public page may invite
+ * anyone to it. These phrases each read as an upcoming day; the guard walks
+ * the public page files so one that comes back in a file nobody listed trips
+ * here. /team, /api, /live and the countdown/calendar components are not
+ * public pages and are left out (the components are kept but unrendered).
+ */
+describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
+  const UPCOMING: ReadonlyArray<readonly [RegExp, string]> = [
+    [/>\s*RSVP free\s*</, 'RSVP is over'],
+    [/See you on\s*<br \/>\s*<em>Franklin Street/, 'the closing section is a thank-you now'],
+    [/Coming to ZAOstock\?/, 'the day has passed'],
+    [/title="Before you come/, 'there is nothing to prepare for'],
+    [/<Countdown\b/, 'no countdown to a day that has passed'],
+    [/<AddToCalendar\b/, 'no calendar invite to a day that has passed'],
+    [/is on the ZAOstock roster/, 'artists played, they are not on a roster for a coming day'],
+  ];
+
+  const pageFiles = (readdirSync(path.join(process.cwd(), 'src/app'), { recursive: true }) as string[])
+    .filter((f) => /\.tsx$/.test(f) && !/\.test\.tsx$/.test(f))
+    .filter((f) => !/^(team|api|live)[\\/]/.test(f))
+    .map((f) => path.join(process.cwd(), 'src/app', f));
+
+  it('is actually inspecting the public pages', () => {
+    expect(pageFiles.length).toBeGreaterThan(20);
+    expect(pageFiles.some((f) => f.endsWith(path.join('tickets', 'page.tsx')))).toBe(true);
+  });
+
+  for (const [pattern, why] of UPCOMING) {
+    it(`no page carries ${pattern.source} - ${why}`, () => {
+      const hits = pageFiles.filter((f) => pattern.test(readFileSync(f, 'utf8'))).map((f) => path.relative(process.cwd(), f));
+      expect(hits).toEqual([]);
+    });
+  }
+
+  it('the control can fail: the pattern list does match a known upcoming line', () => {
+    expect('<Button>RSVP free</Button>').toMatch(UPCOMING[0][0]);
+  });
+});

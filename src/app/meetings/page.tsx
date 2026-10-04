@@ -4,6 +4,9 @@ import { SITE } from '@/content/site';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList } from '@/components/poster';
 
+// PAST TENSE, 2026-10-04: ZAOstock happened, so the page says how it got built.
+// The no-fixed-slot rule below still holds.
+//
 // Replaces /circles. This page published two fixed daily meetings, 11:30 and
 // 17:00 ET, from 29 August until 2026-09-09, when Zaal said plainly that they
 // do not happen. A page telling the public to turn up somewhere nobody is, is
@@ -13,15 +16,15 @@ import { SiteShell, Section, Eyebrow, Button, SectionHeader, BorderedList } from
 // site.test.ts fails the build if a published page carries one.
 export const metadata: Metadata = {
   title: 'Meetings',
-  description: 'How to get involved in building ZAOstock. Ask for the working document, bring the one thing you are working on.',
+  description: 'How ZAOstock 2026 got built, and how to reach the team about a future edition.',
   alternates: { canonical: '/meetings' },
   openGraph: {
     title: 'Meetings | ZAOstock',
-    description: `How to get involved in building ZAOstock before ${FESTIVAL.shortDate}.`,
+    description: `How ZAOstock got built, ahead of ${FESTIVAL.shortDate}, and how to reach the team.`,
     url: 'https://zaostock.com/meetings',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Meetings | ZAOstock', `How to get involved in building ZAOstock before ${FESTIVAL.shortDate}.`),
+  twitter: twitterCard('Meetings | ZAOstock', `How ZAOstock got built, ahead of ${FESTIVAL.shortDate}, and how to reach the team.`),
 };
 
 export default function MeetingsPage() {
@@ -31,12 +34,12 @@ export default function MeetingsPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">How ZAOstock gets built</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-Come and build it with us.
+How it got built.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            There is no sign-up sheet and no committee. If you are building any part of this festival, get in
-            touch and we will find a time that suits you. Everything decided goes into the working document,
-            so nothing depends on being in the room at a particular hour.
+            There was no sign-up sheet and no committee. Everything decided went into the working document,
+            so nothing depended on being in the room at a particular hour. To talk about a future edition,
+            get in touch.
           </p>
         </div>
       </Section>

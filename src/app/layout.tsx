@@ -46,7 +46,7 @@ const spaceMono = localFont({
 
 export const metadata: Metadata = {
   title: { default: 'ZAOstock 2026', template: '%s | ZAOstock' },
-  description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}. Run by The ZAO.`,
+  description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}. Run by The ZAO.`,
   metadataBase: new URL('https://zaostock.com'),
   // Google Search Console ownership proof. Next.js renders this as
   // <meta name="google-site-verification" content="..."> in <head>.
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   verification: { google: 'Ur33SQv4u9BTUs4NDk5lcRZKAOuB-lc6lZERJ2fBpkU' },
   openGraph: {
     title: 'ZAOstock 2026',
-    description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
+    description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com',
     siteName: 'ZAOstock',
     type: 'website',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ZAOstock 2026',
-    description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
+    description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   },
 };
 

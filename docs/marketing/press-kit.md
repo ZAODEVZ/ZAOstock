@@ -6,6 +6,9 @@ publishable as written. Everything above it is instructions.
 
 Written 2026-08-27 (Thursday). Lane: MARKETING.
 
+Past tense 2026-10-04: ZAOstock happened on 3 October, so the boilerplate and
+fast facts below read as a record. The RSVP row is gone (RSVP is over).
+
 ## Notes for SITE (not rendered)
 
 - Route: `zaostock.com/press`. The Google Doc already tells The Ellsworth
@@ -31,15 +34,15 @@ Written 2026-08-27 (Thursday). Lane: MARKETING.
 # ZAOstock - press
 
 **Saturday 3 October 2026. Franklin Street Parklet, downtown Ellsworth, Maine.
-Free to attend.**
+Free to attend.** It happened.
 
 ## In one paragraph
 
-ZAOstock is a free, one-day, artist-built music festival on Franklin Street in
-downtown Ellsworth, Maine. From noon, eight independent artists play the outdoor
-parklet stage back to back until six, when the street clears. Next door, Black
-Moon Public House hosts its own evening. It is part of the 9th Annual Art of Ellsworth
-during Maine Craft Weekend, and it is produced by ZAO Festivals, the events arm
+ZAOstock was a free, one-day, artist-built music festival on Franklin Street in
+downtown Ellsworth, Maine. From noon, eight independent artists played the outdoor
+parklet stage back to back until six, when the street cleared. Next door, Black
+Moon Public House hosted its own evening. It was part of the 9th Annual Art of Ellsworth
+during Maine Craft Weekend, and it was produced by ZAO Festivals, the events arm
 of The ZAO, an independent music community.
 
 ## Fast facts
@@ -47,38 +50,38 @@ of The ZAO, an independent music community.
 | | |
 |---|---|
 | Date | Saturday 3 October 2026 |
-| Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosts its own evening from six |
+| Where | Franklin Street Parklet, Ellsworth, Maine. Black Moon Public House is next door and hosted its own evening from six |
 | Cost | Free to attend |
-| RSVP | zaostock.com/tickets |
+| Support | zaostock.com/tickets - support the artists who played |
 | Music starts | Noon |
-| Format | Eight independent artists outdoors, noon to six. Black Moon's own evening follows next door |
-| Weather | Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it. |
+| Format | Eight independent artists outdoors, noon to six. Black Moon's own evening followed next door |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
-| Schedule | zaostock.com/program |
+| Running order | zaostock.com/program |
+| Replay | zaostock.com/live |
 | Contact | info@thezao.com |
 
 ## The day
 
-- **Outdoors, Franklin Street Parklet, noon until six.** Independent artists back
+- **Outdoors, Franklin Street Parklet, noon until six.** Independent artists played back
   to back.
-- **Eight acts, one stage, noon to six.** Music starts at noon and ends before
-  the street clears at six, with short changeovers between acts.
-  Set times are on zaostock.com/program.
+- **Eight acts, one stage, noon to six.** Music started at noon and ended before
+  the street cleared at six, with short changeovers between acts.
+  The running order is on zaostock.com/program.
   <!-- Zaal, 2026-09-28: "Publish times on /program" (supersedes the 2026-09-12 no-set-times note). Changeovers are 5 to 12 minutes since #365, so no single length is stated. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
   after-party at Black Moon Public House, 142 Main St, hosted by Black Moon: doors
-  6 PM, music 7 to 10 PM, with North Creek, Treelock & HiDef, Sam Savage and Oven
+  were at 6 PM, music 7 to 10 PM, with North Creek, Treelock & HiDef, Sam Savage and Oven
   Baked Beats DJ Aquavantes (Black Moon's flyer, zaostock.com/afterparty),
   **hosted and underwritten by Black Moon on
-  their own stage and their own licence.** It is their event, not part of the ZAOstock
-  programme, and ZAOstock's cover is the outdoor day only.
+  their own stage and their own licence.** It was their event, not part of the ZAOstock
+  programme, and ZAOstock's cover was the outdoor day only.
 
-One venue at a time. The day does not split across two rooms.
+One venue at a time. The day did not split across two rooms.
 
 ## The lineup
 
-**All eight acts are named on zaostock.com now.** In running order: The Crown Vics,
+**All eight acts played.** In running order: The Crown Vics,
 OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz.
 
 <!-- NONE of them has countersigned. They are booked and locked in the run of
@@ -95,7 +98,7 @@ act marked proposed.)*
 WaveWarZ is a live music-battle format. Two artists play head to head and the
 audience picks the winner, in person and online. It runs online all year.
 
-**It is NOT on the 3 October programme.**
+**It was NOT on the 3 October programme.**
 <!-- Confirmed off by Zaal, 2026-09-07. The four-to-six window it used to hold
      is LyonsDen and Tom Fellenz, whose slots are not published. Internal
      dating/sourcing, not press copy. -->
@@ -118,8 +121,8 @@ As of 1 October 2026, WaveWarZ had run 1,596 battles.
 
 ## Partners
 
-Partners give time, venue and infrastructure, and Artizen supports the funding.
-Every partner has a named point of contact on the ZAO team.
+Partners gave time, venue and infrastructure, and Artizen supported the funding.
+Every partner had a named point of contact on the ZAO team.
 
 - City of Ellsworth - parklet venue
 - Black Moon Public House - the evening, and the official after party
@@ -141,16 +144,16 @@ partnership" is from `src/app/llms.txt/route.ts`; the role line is otherwise UNS
 
 Paste as written.
 
-Short: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 at the Franklin Street Parklet in Ellsworth, Maine, with the evening next door at Black Moon Public House. It is part of the 9th Annual Art of Ellsworth during Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO.
+Short: ZAOstock was a free, one-day, artist-built music festival held on Saturday 3 October 2026 at the Franklin Street Parklet in Ellsworth, Maine, with the evening next door at Black Moon Public House. It was part of the 9th Annual Art of Ellsworth during Maine Craft Weekend and was produced by ZAO Festivals, the events arm of The ZAO.
 
-Long: ZAOstock is a free, one-day, artist-built music festival on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music runs from noon at the Franklin Street Parklet with eight acts back to back until six; next door, Black Moon Public House hosts its own evening. One stage at a time rather than competing stages, so nobody has to choose what to miss. ZAOstock takes place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and is produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission is free.
+Long: ZAOstock was a free, one-day, artist-built music festival held on Saturday 3 October 2026 in downtown Ellsworth, Maine. Music ran from noon at the Franklin Street Parklet with eight acts back to back until six; next door, Black Moon Public House hosted its own evening. One stage at a time rather than competing stages, so nobody had to choose what to miss. ZAOstock took place inside the 9th Annual Art of Ellsworth and Maine Craft Weekend and was produced by ZAO Festivals, the events arm of The ZAO, an independent community of musicians and digital creators. Admission was free.
 
 ## Four angles
 
-- **Free, on purpose.** Free admission is a choice, not a first-year compromise. Somebody can decide at eleven in the morning and simply turn up.
-- **One stage at a time.** Most festivals run parallel stages and make the audience choose. ZAOstock runs one outdoor stage, one act after another, so nobody has to choose what to miss.
-- **Downtown, not a field.** The whole day happens on a public parklet in downtown Ellsworth, within walking distance of everything, rather than on a site built for the weekend and taken down after.
-- **Part of a bigger weekend.** ZAOstock sits inside the 9th Annual Art of Ellsworth and Maine Craft Weekend, a festival day within a weekend that already brings people to the region.
+- **Free, on purpose.** Free admission was a choice, not a first-year compromise. Somebody could decide at eleven in the morning and simply turn up.
+- **One stage at a time.** Most festivals run parallel stages and make the audience choose. ZAOstock ran one outdoor stage, one act after another, so nobody had to choose what to miss.
+- **Downtown, not a field.** The whole day happened on a public parklet in downtown Ellsworth, within walking distance of everything, rather than on a site built for the weekend and taken down after.
+- **Part of a bigger weekend.** ZAOstock sat inside the 9th Annual Art of Ellsworth and Maine Craft Weekend, a festival day within a weekend that already brings people to the region.
 
 ## The ZAO
 
@@ -165,12 +168,12 @@ Previous festivals:
   first live WaveWarZ battle.
 - **ZAOville** - Laurel, Maryland, July 2026, co-hosted with DCoop.
 
-ZAOstock is the first in Maine. The ZAO's founder lives in Ellsworth.
+ZAOstock was the first in Maine. The ZAO's founder lives in Ellsworth.
 
 ## Why Ellsworth
 
 Ellsworth is the gateway to Acadia National Park. Downtown has just received National Historic Register
-designation. ZAOstock is part of the 9th Annual Art of Ellsworth and plugs into
+designation. ZAOstock was part of the 9th Annual Art of Ellsworth and plugged into
 the town's calendar rather than competing with it.
 
 ## Assets
@@ -180,14 +183,14 @@ zaostock.com/brand.
 
 - The moose, primary mark (white on transparent): `/brand/logos/zaostock26_moose.png`
 
-Artist photos and stage photos: not yet available before the day. WE THE MEDIA
-is capturing on 3 October; ask for post-event assets.
+Artist photos and stage photos: WE THE MEDIA captured on 3 October; ask for
+post-event assets.
 
 ## For press
 
 Interviews with the organiser are available in person in Ellsworth or by
-video. Artist interviews are arranged with each artist's agreement. Photo
-passes for 3 October: ask by email.
+video. Artist interviews are arranged with each artist's agreement. Photos
+and footage from 3 October: ask by email.
 
 info@thezao.com
 
@@ -209,7 +212,6 @@ info@thezao.com
 | LyonsDen public | `src/app/page.tsx:397`. Werb is also on that line but is not fully confirmed (Zaal, typed 27 Aug 20:4x); not repeated here |
 | WaveWarZ 1,596, 1 Oct | `wavewarz.info/api/public/stats`, re-pulled 2026-10-01T14:40Z (was 1,573 on 24 Sep, 1,581 on 26 Sep). **The source, not a document.** This row used to cite `docs/sponsor/deck-2026-10-03.md` slide 6 for "1,528", and that slide said 1,452 - a provenance row pointing at a file carrying a different number. Cite the endpoint. |
 | Partners, incl. WE THE MEDIA and Heart of Ellsworth | `src/content/site.ts` PARTNERS (site-fix brief 2026-09-21: page.tsx line numbers this row used to cite had already moved) |
-| RSVP URL | `src/content/festival.ts` FESTIVAL.rsvpUrl |
 | WE THE MEDIA is capturing on the day | `src/content/site.ts` PARTNERS role, "Media and content capture" |
 | PALOOZA, CHELLA, ZAOville | deck slide 3; `src/app/llms.txt/route.ts` |
 | Founder lives in Ellsworth | deck slide 4 |

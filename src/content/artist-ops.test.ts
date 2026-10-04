@@ -470,7 +470,7 @@ describe('the music-end time agrees with the programme', () => {
   const musicEndsAt = () => {
     const slots = BLOCKS.flatMap((b) => b.slots ?? []);
     expect(slots.length, 'no slots found in BLOCKS - the walk is blind').toBeGreaterThan(5);
-    const row = slots.find((sl) => /music ends/i.test(sl.label));
+    const row = slots.find((sl) => /music ends?|music ended/i.test(sl.label));
     expect(row, 'no slot in program.ts says music ends').toBeTruthy();
     return row!.time;
   };
@@ -482,7 +482,7 @@ describe('the music-end time agrees with the programme', () => {
   };
 
   it('ARTIST_DATES states the same finish as program.ts', () => {
-    const row = ARTIST_DATES.find((d) => /music ends/i.test(d.what));
+    const row = ARTIST_DATES.find((d) => /music ends?|music ended/i.test(d.what));
     expect(row, 'no ARTIST_DATES row mentions music ending').toBeTruthy();
     expect(row!.when).toContain(to12h(musicEndsAt()));
   });

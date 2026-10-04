@@ -29,11 +29,14 @@ export interface EntryPageProps {
   ctas: EntryPageCTA[];
   /** Optional final note (e.g. eligibility, deadline) */
   footnote?: string;
+  /** Optional headings for the two lists, for pages that describe what happened rather than an open offer. */
+  youGetHeading?: { eyebrow: string; title: string };
+  weAskHeading?: { eyebrow: string; title: string };
 }
 
 const DOORS = [
-  { slug: 'musicians', label: 'Musicians', href: '/musicians', line: 'Submit for the lineup.' },
-  { slug: 'artists', label: 'Visual artists', href: '/artists', line: 'Posters, motion, signage.' },
+  { slug: 'musicians', label: 'Musicians', href: '/musicians', line: 'Stay in touch.' },
+  { slug: 'artists', label: 'Visual artists', href: '/artists', line: 'Meet the 2026 artists.' },
   { slug: 'event-organizers', label: 'Organizers', href: '/event-organizers', line: 'Host the next one in 2027.' },
 ] as const;
 
@@ -51,7 +54,7 @@ function List({ items }: { items: string[] }) {
 }
 
 export function EntryPage(props: EntryPageProps) {
-  const { personaSlug, personaLabel, hero, subhead, youGet, weAsk, facts, ctas, footnote } = props;
+  const { personaSlug, personaLabel, hero, subhead, youGet, weAsk, facts, ctas, footnote, youGetHeading, weAskHeading } = props;
   const others = DOORS.filter((d) => d.slug !== personaSlug);
 
   return (
@@ -74,18 +77,18 @@ export function EntryPage(props: EntryPageProps) {
       <Section>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHeader eyebrow="What you get" title="If you plug in" className="mb-5" />
+            <SectionHeader eyebrow={youGetHeading?.eyebrow ?? 'What you get'} title={youGetHeading?.title ?? 'If you plug in'} className="mb-5" />
             <List items={youGet} />
           </div>
           <div>
-            <SectionHeader eyebrow="What we ask" title="In return" className="mb-5" />
+            <SectionHeader eyebrow={weAskHeading?.eyebrow ?? 'What we ask'} title={weAskHeading?.title ?? 'In return'} className="mb-5" />
             <List items={weAsk} />
           </div>
         </div>
       </Section>
 
       <Section>
-        <SectionHeader eyebrow="How to plug in" title="Pick a door." className="mb-6" />
+        <SectionHeader eyebrow="Stay in touch" title="Pick a door." className="mb-6" />
         <div className="flex flex-wrap gap-3 mb-8">
           {ctas.map((cta, i) => (
             <Button key={i} href={cta.href} external={cta.href.startsWith('mailto:')} variant={cta.primary ? 'primary' : 'secondary'} size="lg">
@@ -108,7 +111,7 @@ export function EntryPage(props: EntryPageProps) {
           <a href={`mailto:${SITE.contact}`} className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
             {SITE.contact}
           </a>
-          . ZAOstock is one chapter in the ZAO Festivals series: {SERIES.map((s) => s.name).join(', ')}.
+          . ZAOstock was one chapter in the ZAO Festivals series: {SERIES.map((s) => s.name).join(', ')}.
         </p>
       </Section>
     </SiteShell>

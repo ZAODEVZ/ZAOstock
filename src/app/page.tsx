@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
-import { SiteShell, Countdown } from '@/components/poster';
+import { SiteShell } from '@/components/poster';
 import { HomeHero } from './HomeHero';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import { RADIO_SESSIONS, STAR_977_URL } from '@/content/media';
@@ -26,22 +26,28 @@ import s from './home.module.css';
 // - Placeholder partners ("Local businesses"): the real eight are listed.
 // - The admission ticket graphic: entry is free; RSVP goes to Luma.
 //
+// PAST TENSE, 2026-10-04. ZAOstock 2026 happened on 3 October (Zaal: "pushing
+// eveything zaostock to the past"). The page is now the record of the day: no
+// RSVP, no countdown, no rain-or-shine badge. The calls to action are "Watch the
+// replay" (/live) and "Support the artists" (/tickets). The FESTIVAL DAY BANNER
+// at the top is owned by another change and is left as it was.
+//
 // Reads nothing from the database, so it prerenders and needs no env to render.
 
 export const metadata: Metadata = {
-  title: { absolute: 'ZAOstock 2026 | Free music festival, Ellsworth, Maine' },
+  title: { absolute: 'ZAOstock 2026 | A free music festival, Ellsworth, Maine' },
   description:
-    `A free, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}. Independent artists, one stage, from noon.`,
+    `A free, artist-built music festival on Franklin Street, downtown Ellsworth, Maine, held ${FESTIVAL.dateLabel}. Eight independent artists, one stage. Watch the replay.`,
   alternates: { canonical: '/' },
   openGraph: {
     title: 'ZAOstock 2026',
-    description: `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}.`,
+    description: `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine, held ${FESTIVAL.dateLabel}.`,
     url: 'https://zaostock.com',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'ZAOstock 2026',
-    `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine. ${FESTIVAL.dateLabel}.`,
+    `A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine, held ${FESTIVAL.dateLabel}.`,
   ),
 };
 
@@ -59,13 +65,13 @@ const PANELS = [
   { kicker: 'Closing', img: '/brand/home/vintage_microphone_with_cable.webp', acts: LINEUP_NAMES.slice(5) },
 ] as const;
 
-// Festival week (audit, 2026-09-30): "Artists / Submit work" pointed at
-// /artists, which is the lineup, not a submission page; "Apply to play" read
-// as an open call with the 2026 bill full; Volunteers now have the sheet.
+// Past tense (2026-10-04): the 2026 sheet and RSVP are closed, so each card
+// now points at what is still open - the replay, the support tiers, a thank-you
+// to the crew, and the contact lines.
 const PLUG_IN = [
-  { n: '01', who: 'Everyone', what: 'RSVP free', href: '/tickets' },
-  { n: '02', who: 'Volunteers', what: 'Pick a job', href: '/volunteer' },
-  { n: '03', who: 'Musicians', what: 'Next year', href: '/musicians' },
+  { n: '01', who: 'Everyone', what: 'Watch the replay', href: '/live' },
+  { n: '02', who: 'Supporters', what: 'Back the artists', href: '/tickets' },
+  { n: '03', who: 'Musicians', what: 'Stay in touch', href: '/musicians' },
   { n: '04', who: 'Sponsors & press', what: 'Get in touch', href: '/sponsor' },
 ] as const;
 
@@ -93,9 +99,9 @@ export default function HomePage() {
         {/* 1. The flight down Franklin Street */}
         <HomeHero>
           <div className={`${s.tagrow} ${s.anim} ${s.d1}`}>
-            <span>Free</span>
+            <span>Held {FESTIVAL.shortDate}</span>
+            <span>Free entry</span>
             <span>All ages</span>
-            <span>Rain or shine</span>
           </div>
           <Image
             className={`${s.logo} ${s.anim} ${s.d2}`}
@@ -115,19 +121,16 @@ export default function HomePage() {
             <em>Parklet</em>
           </h1>
           <div className={`${s.details} ${s.anim} ${s.d4}`}>
-            Ellsworth, Maine &nbsp;&bull;&nbsp; <b>{FESTIVAL.dateLabel}</b> &nbsp;&bull;&nbsp; Free, all ages
+            Ellsworth, Maine &nbsp;&bull;&nbsp; <b>{FESTIVAL.dateLabel}</b> &nbsp;&bull;&nbsp; Free and all ages
           </div>
-          <div className={`${s.cta} ${s.anim} ${s.d4}`}>
-            {/* /tickets, not FESTIVAL.rsvpUrl direct - the same fix Header.tsx
-                already carries (its own comment explains why): a straight
-                Luma link skips the Pro Ticket funnel entirely. This was the
-                site's single biggest CTA still doing that. Flagged by Poidhz,
-                2026-09-27, measured via a live redirect diff. */}
-            <Link href="/tickets" className={s.btn}>
-              RSVP free
+          <div className={`${s.cta} ${s.anim} ${s.d4}`} style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            <Link href="/live" className={s.btn}>
+              Watch the replay
+            </Link>
+            <Link href="/tickets" className={`${s.btn} ${s.ghost}`}>
+              Support the artists
             </Link>
           </div>
-          <Countdown onDark className={s.count} />
         </HomeHero>
 
         {/* 2. The day */}
@@ -142,23 +145,18 @@ export default function HomePage() {
                   <em>One stage.</em>
                 </h2>
                 <p className={s.lede}>
-                  Franklin Street closes to traffic and opens up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. At six the street clears, and Black Moon next door hosts their own evening.
+                  Franklin Street closed to traffic and opened up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. At six the street cleared, and Black Moon next door hosted their own evening.
                 </p>
                 <p className={s.lede}>
-                  Part of the {SITE.series} during {SITE.weekend}.
+                  It was part of the {SITE.series} during {SITE.weekend}.
                 </p>
                 <Link href="/program" className={`${s.btn} ${s.ghost}`}>
-                  See the program
+                  The running order
                 </Link>
               </div>
               <div className={s.dayVisual}>
                 <div className={s.frame}>
                   <Image src="/brand/elements/sign_franklin_st_parklet.webp" alt={`A ${FESTIVAL.venue} street sign`} width={620} height={350} unoptimized />
-                </div>
-                <div className={s.sunBadge}>
-                  Rain or
-                  <br />
-                  shine
                 </div>
               </div>
             </div>
@@ -173,7 +171,7 @@ export default function HomePage() {
               The <em>lineup</em>
             </h2>
             <p className={s.lede}>
-              {LINEUP_NAMES.length} independent acts, back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
+              {LINEUP_NAMES.length} independent acts played back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
               <Link href="/program" className={s.link}>
                 The running order
               </Link>
@@ -209,7 +207,7 @@ export default function HomePage() {
               <a href={STAR_977_URL} target="_blank" rel="noopener noreferrer" className={s.link}>
                 Star 97.7
               </a>
-              , our local radio partner, talking about the festival. Press play.
+              , our local radio partner, talking about the festival ahead of the day. Press play.
             </p>
             <div className="flex flex-col gap-3 max-w-[760px]">
               {RADIO_SESSIONS.map((r) => (
@@ -249,11 +247,11 @@ export default function HomePage() {
                   Why <em style={{ color: 'var(--sun)' }}>Ellsworth</em>
                 </h2>
                 <p>
-                  The gateway to Acadia National Park. {ELLSWORTH.historic} ZAOstock adds a new music experience to Ellsworth&apos;s calendar of downtown events, part of the 9th Annual Art of Ellsworth.
+                  The gateway to Acadia National Park. {ELLSWORTH.historic} ZAOstock added a new music experience to Ellsworth&apos;s calendar of downtown events, part of the 9th Annual Art of Ellsworth.
                 </p>
                 <p style={{ marginTop: 16 }}>
                   <Link href="/ellsworth" className={s.link} style={{ color: 'inherit' }}>
-                    Getting here
+                    About Ellsworth
                   </Link>
                 </p>
               </div>
@@ -264,14 +262,14 @@ export default function HomePage() {
         {/* 5. Plug in */}
         <section className={`${s.section} ${s.tint}`} id="plugin">
           <div className={`${s.wrap} ${s.center}`}>
-            <div className={s.kicker}>How to plug in</div>
+            <div className={s.kicker}>Stay in touch</div>
             <h2 className={s.title}>
-              Come, <em>help</em>,
+              Watch, <em>support</em>,
               <br />
-              or cover it
+              or get in touch
             </h2>
             <p className={s.lede} style={{ margin: '0 auto' }}>
-              ZAOstock runs on volunteers and local talent. There is a seat at the table whichever way you want in.
+              ZAOstock ran on volunteers and local talent. Thank you to everyone who gave a day to it.
             </p>
             <div className={s.plugGrid}>
               {PLUG_IN.map((p) => (
@@ -293,7 +291,7 @@ export default function HomePage() {
               Our <em>partners</em>
             </h2>
             <p className={s.lede} style={{ margin: '0 auto' }}>
-              Every partner has a named point of contact on the ZAO team.
+              Every partner had a named point of contact on the ZAO team.
             </p>
             <ul className={s.partnerGrid}>
               {PARTNERS.map((p) => (
@@ -308,24 +306,32 @@ export default function HomePage() {
             </ul>
             <div style={{ marginTop: 30 }}>
               <Link href="/sponsor" className={`${s.btn} ${s.ghost}`}>
-                Become a partner
+                Talk about a future edition
               </Link>
             </div>
           </div>
         </section>
 
-        {/* 7. See you on Franklin Street */}
-        <section className={s.close} id="rsvp">
+        {/* 7. Thank you, Ellsworth */}
+        <section className={s.close} id="thanks">
           <div className={`${s.wrap} ${s.closeInner}`}>
-            <div className={s.kicker}>Free &middot; All ages &middot; Rain or shine</div>
+            <div className={s.kicker}>Saturday, 3 October 2026</div>
             <h2 className={s.title}>
-              See you on
+              Thank you,
               <br />
-              <em>Franklin Street</em>
+              <em>Ellsworth</em>
             </h2>
-            <Link href="/tickets" className={s.btn}>
-              RSVP free
-            </Link>
+            <p className={s.lede} style={{ margin: '0 auto 22px', color: 'inherit' }}>
+              ZAOstock 2026 happened on Franklin Street. Eight artists played. Thank you to the artists, the crew, our partners and everyone who came.
+            </p>
+            <div className={s.cta} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
+              <Link href="/live" className={s.btn}>
+                Watch the replay
+              </Link>
+              <Link href="/tickets" className={`${s.btn} ${s.ghost}`}>
+                Support the artists
+              </Link>
+            </div>
             <Image className={s.brush} src="/brand/home/zaostock_brush_lettering_black.webp" alt="ZAOstock" width={700} height={235} unoptimized />
             <Link href="/festivals" className={s.link} style={{ color: 'inherit', fontSize: 14 }}>
               What came before: the ZAO Festivals series

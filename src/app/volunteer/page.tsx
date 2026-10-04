@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
-import { IN_PERSON, VIRTUAL, COVERED, openCount, type VolunteerDay } from '@/content/volunteer-slots';
 import { SiteShell, Section, Eyebrow, Card } from '@/components/poster';
-import { PrintButton } from './PrintButton';
 
-// /volunteer - the sign-up sheet, rendered from src/content/volunteer-slots.ts.
-// Screen and paper come from the same file. Nobody signs up here: people
-// message Zaal, and Zaal updates the file.
+// /volunteer - CLOSED, 2026-10-04. ZAOstock 2026 happened on 3 October, so the
+// sign-up sheet is closed and nobody is asked to pick a job. The page is a
+// thank-you to the crew plus the contact line. The sheet's data still lives in
+// src/content/volunteer-slots.ts (kept as the record, not rendered here), and
+// PrintButton.tsx stays in the folder for the same reason.
 
-const TITLE = 'Volunteer sign-up sheet';
-const DESCRIPTION = `Help at ZAOstock, ${FESTIVAL.shortDate}, in person on Franklin Street or online. See which jobs are open.`;
+const TITLE = 'Volunteer sheet, closed';
+const DESCRIPTION = `The ZAOstock volunteer sheet is closed: the festival happened on ${FESTIVAL.dateLabel}. Thank you to the crew.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -21,95 +21,29 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title: `${TITLE} · ZAOstock 2026`, description: DESCRIPTION },
 };
 
-function Sheet({ days }: { days: VolunteerDay[] }) {
-  return (
-    <div className="flex flex-col gap-6">
-      {days.map((d) => (
-        <Card key={d.id} className="break-inside-avoid">
-          <h3 className="font-display text-h3 text-ink-950 m-0">{d.title}</h3>
-          <p className="text-sm text-ink-muted m-0 mt-1">{d.where}</p>
-          <table className="w-full mt-4 text-sm border-collapse">
-            <thead>
-              <tr className="text-left text-ink-muted">
-                <th className="py-1 pr-3 font-bold">When</th>
-                <th className="py-1 pr-3 font-bold">Job</th>
-                <th className="py-1 pr-3 font-bold">Spots</th>
-                <th className="py-1 font-bold hidden print:table-cell">Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {d.slots.map((s) => {
-                const open = openCount(s);
-                return (
-                  <tr key={s.id} className="border-t border-ink-950/15 align-top">
-                    <td className="py-2 pr-3 whitespace-nowrap text-ink-secondary">{s.when}</td>
-                    <td className="py-2 pr-3">
-                      <span className="font-bold text-ink-950">{s.job}</span>
-                      <span className="block text-ink-secondary">{s.what}</span>
-                    </td>
-                    <td className="py-2 pr-3 whitespace-nowrap">
-                      {open === 0 ? (
-                        <span className="text-ink-muted">Full</span>
-                      ) : (
-                        <span className="font-bold text-ink-950">{open} open</span>
-                      )}
-                      <span className="block text-ink-muted">of {s.needed}</span>
-                    </td>
-                    <td className="py-2 hidden print:table-cell w-[35%] border-b border-ink-950/40" />
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
 export default function VolunteerPage() {
   return (
     <SiteShell>
-      <style>{'@media print { header, footer, nav { display: none !important; } }'}</style>
       <Section first className="pt-12 sm:pt-16">
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">{FESTIVAL.dateLabel}</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Volunteer sign-up sheet.
+            The volunteer sheet is closed.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            In person on Franklin Street, or online from anywhere. Pick a job below, then email{' '}
-            <a href={`mailto:${SITE.contact}`} className="underline hover:no-underline">{SITE.contact}</a>{' '}
-            with the job and your name, and we will mark the spot taken here.
+            ZAOstock 2026 happened on {FESTIVAL.dateLabel}, and the sheet closed with it. Thank you to everyone on the crew who gave a day to Franklin Street.
           </p>
-          <div className="mt-6">
-            <PrintButton />
-          </div>
         </div>
       </Section>
 
       <Section>
-        <Eyebrow className="mb-3">Already covered</Eyebrow>
         <Card>
-          <ul className="list-none m-0 p-0 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            {COVERED.map((job) => (
-              <li key={job}>
-                <span className="font-bold text-ink-950">{job}</span>
-                <span className="text-ink-secondary">: covered</span>
-              </li>
-            ))}
-          </ul>
+          <Eyebrow className="mb-2">Questions</Eyebrow>
+          <p className="text-sm text-ink-secondary m-0">
+            Write to{' '}
+            <a href={`mailto:${SITE.contact}`} className="underline hover:no-underline">{SITE.contact}</a>.
+          </p>
         </Card>
-      </Section>
-
-      <Section>
-        <Eyebrow className="mb-3">In person</Eyebrow>
-        <Sheet days={IN_PERSON} />
-      </Section>
-
-      <Section>
-        <Eyebrow className="mb-3">Online</Eyebrow>
-        <Sheet days={VIRTUAL} />
       </Section>
     </SiteShell>
   );

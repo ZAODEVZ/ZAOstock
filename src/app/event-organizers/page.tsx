@@ -6,7 +6,7 @@ import { FESTIVAL } from '@/content/festival';
 export const metadata: Metadata = {
   title: 'For Event Organizers',
   description:
-    'Built a community? Run your own ZAO. ZAOstock is the fourth ZAO Festivals event, after ZAO-PALOOZA, ZAO-CHELLA and ZAOville. The next could be in your city.',
+    'Built a community? Run your own ZAO. ZAOstock was the fourth ZAO Festivals event, after ZAO-PALOOZA, ZAO-CHELLA and ZAOville. The next could be in your city.',
   alternates: { canonical: '/event-organizers' },
   openGraph: {
     title: 'For Organizers · ZAOstock 2026',
@@ -28,7 +28,7 @@ export default function EventOrganizersPage() {
       personaSlug="event-organizers"
       personaLabel="Event Organizers"
       hero="Built a community? Run your own ZAO."
-      subhead="ZAOstock is the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next chapter could be yours - in your city, with your community, under the ZAO Festivals umbrella."
+      subhead="ZAOstock was the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next chapter could be yours - in your city, with your community, under the ZAO Festivals umbrella."
       youGet={[
         'The full ZAOstock playbook - run-of-show, sponsor framework, finders fee structure, livestream rig, partner template.',
         'Access to the 100+ member ZAO music community for booking artists.',

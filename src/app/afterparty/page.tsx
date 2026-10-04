@@ -9,9 +9,12 @@ import { SiteShell, Section, Eyebrow, Card, Button } from '@/components/poster';
 // /afterparty - Black Moon's own flyer and the details from it, on its own
 // page (Zaal, 2026-09-30). The evening is Black Moon's event; this page lists
 // it and does not describe it as a second ZAOstock stage.
+//
+// PAST TENSE, 2026-10-04: the evening happened on 3 October. The page stays as
+// the record of it, with Black Moon's flyer.
 
 const TITLE = 'After-party at Black Moon';
-const DESCRIPTION = `After ZAOstock, ${FESTIVAL.shortDate}: doors from ${AFTER_PARTY.doors}, music ${AFTER_PARTY.music} to ${AFTER_PARTY.end} at ${AFTER_PARTY.venue}, ${AFTER_PARTY.address}.`;
+const DESCRIPTION = `After ZAOstock, ${FESTIVAL.shortDate}: doors were at ${AFTER_PARTY.doors}, music ${AFTER_PARTY.music} to ${AFTER_PARTY.end} at ${AFTER_PARTY.venue}, ${AFTER_PARTY.address}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -32,7 +35,7 @@ export default function AfterPartyPage() {
               The after-party.
             </h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              When the music on Franklin Street wraps at six, {AFTER_PARTY.venue} next door hosts the evening. Doors from {AFTER_PARTY.doors}, music {AFTER_PARTY.music} to {AFTER_PARTY.end}.
+              When the music on Franklin Street wrapped at six, {AFTER_PARTY.venue} next door hosted the evening. Doors were at {AFTER_PARTY.doors}, music {AFTER_PARTY.music} to {AFTER_PARTY.end}.
             </p>
             <Card className="mt-6">
               <dl className="m-0 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
@@ -44,12 +47,12 @@ export default function AfterPartyPage() {
                 <dd className="m-0 text-ink-secondary">{AFTER_PARTY.music} to {AFTER_PARTY.end}</dd>
                 <dt className="font-bold text-ink-950">Ages</dt>
                 <dd className="m-0 text-ink-secondary">{AFTER_PARTY.ages}</dd>
-                <dt className="font-bold text-ink-950">Playing</dt>
-                <dd className="m-0 text-ink-secondary">{AFTER_PARTY.lineup.join(', ')}, and more</dd>
+                <dt className="font-bold text-ink-950">Played</dt>
+                <dd className="m-0 text-ink-secondary">{AFTER_PARTY.lineup.join(', ')}</dd>
               </dl>
             </Card>
             <p className="text-sm text-ink-muted m-0 mt-4">
-              Hosted by {AFTER_PARTY.venue} on their own premises. Earlier in the day:{' '}
+              Hosted by {AFTER_PARTY.venue} on their own premises. Earlier in the day was{' '}
               <Link href="/program" className="underline hover:no-underline">the ZAOstock program</Link>, noon to six on the parklet.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">

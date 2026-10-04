@@ -8,20 +8,24 @@ import { PARKING_DETAIL } from '@/content/quick-answers';
 export const metadata: Metadata = {
   title: 'Visiting Ellsworth, Maine',
   description:
-    'Everything you need for ZAOstock weekend in Ellsworth, Maine - getting here, where to stay, where to eat, and what to do in the gateway to Acadia National Park.',
+    'A visitor guide to Ellsworth, Maine, home of ZAOstock - getting here, where to stay, where to eat, and what to do in the gateway to Acadia National Park.',
   alternates: { canonical: '/ellsworth' },
   openGraph: {
     title: 'Visiting Ellsworth, Maine | ZAOstock',
     description:
-      `Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. ${FESTIVAL.shortDate}.`,
+      `Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. Home of ZAOstock, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/ellsworth',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'Visiting Ellsworth, Maine | ZAOstock',
-    `Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. ${FESTIVAL.shortDate}.`,
+    `Getting here, where to stay, where to eat, and what to do in Ellsworth - the gateway to Acadia National Park. Home of ZAOstock, ${FESTIVAL.shortDate}.`,
   ),
 };
+
+// PAST TENSE, 2026-10-04: ZAOstock happened on 3 October. This page stays as a
+// visitor guide to the town; the festival-weekend advice ("Book early", "Good to
+// know / Before you come") and the RSVP call are gone.
 
 // ---------------------------------------------------------------------------
 // CONTENT - seeded from web research (2026-06), parking/restroom plan from
@@ -52,11 +56,10 @@ const STAY: { name: string; note: string }[] = [
   { name: 'Comfort Inn Ellsworth - Bar Harbor', note: 'Indoor saltwater pool and hot tub, free WiFi, daily continental breakfast.' },
   { name: 'Colonial Inn Ellsworth', note: '85-room property, renovated in 2016. Central to downtown.' },
   { name: 'Hawthorn Extended Stay by Wyndham', note: 'Suites with full kitchens - good for a multi-night stay. Breakfast + onsite laundry.' },
-  { name: 'Book early', note: 'Ellsworth is the Acadia gateway and early October is foliage season - rooms go fast. Reserve ahead.' },
 ];
 
 const EAT: { name: string; note: string }[] = [
-  { name: 'Black Moon Public House', note: 'Hosts the ZAOstock after-party at 142 Main St: doors 6 PM, music 7 to 10. Details at zaostock.com/afterparty.' },
+  { name: 'Black Moon Public House', note: 'Hosted the ZAOstock after-party at 142 Main St on 3 October. Details at zaostock.com/afterparty.' },
   { name: 'Union River Lobster Pot', note: 'Seasonal seafood on the banks of the Union River downtown - lobster and a famous slice of pie.' },
   { name: 'Cleonice', note: 'Mediterranean bistro in the historic 1938 Luchini building on Main Street.' },
   { name: 'Serendib', note: 'Award-winning Indian and Sri Lankan cuisine.' },
@@ -73,25 +76,18 @@ const DO: { name: string; note: string }[] = [
   { name: 'Downtown Ellsworth', note: '19th-century Main Street: galleries (Courthouse Gallery, Atlantic Art Glass), shops, and cafes climbing up from the river.' },
 ];
 
-const GOOD_TO_KNOW: { label: string; detail: string }[] = [
-  { label: 'Weather', detail: 'Early October runs roughly 58-62°F by day, ~44°F at night - crisp and breezy, with the season just turning toward fall color. Pack layers and a jacket; ZAOstock is outdoors.' },
-  { label: 'Daylight', detail: 'Sunrise ~6:33 AM, sunset ~6:12 PM. The festival runs noon-6 PM, so the last sets play into low western sun - sunglasses help.' },
-  { label: 'Rain', detail: 'Roughly a 1-in-3 chance of rain on any given fall day - a packable rain layer is smart.' },
-  { label: 'Island Explorer shuttle', detail: "Free shuttle bus around Bar Harbor and Acadia, running through October 12, 2026. Good way to skip the park's parking crunch." },
-];
-
 export default function EllsworthPage() {
   return (
     <SiteShell>
       <div className="wrap max-w-[860px] py-10 sm:py-14 space-y-12">
         {/* Hero */}
         <section className="space-y-3">
-          <Eyebrow tone="denim">Plan your weekend</Eyebrow>
+          <Eyebrow tone="denim">Visit Ellsworth</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">
             Ellsworth, Maine
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Crossroads of Downeast Maine and the gateway to Acadia National Park. Home to ZAOstock on
+            Crossroads of Downeast Maine and the gateway to Acadia National Park. Home to ZAOstock, held on
             {' '}{FESTIVAL.dateLabel} at the {FESTIVAL.venue}, as part of the 9th Annual Art of Ellsworth
             during Maine Craft Weekend.
           </p>
@@ -199,34 +195,18 @@ export default function EllsworthPage() {
           </Link>
         </section>
 
-        {/* Good to know */}
-        <section>
-          <SectionHeader className="mb-5" eyebrow="Good to know" title="Before you come." />
-          <div className="space-y-3">
-            {GOOD_TO_KNOW.map((g) => (
-              <div key={g.label} className="grain bg-paper-200 border border-ink-950/60 rounded-md p-4">
-                <div className="font-sans font-extrabold text-ink-950">{g.label}</div>
-                <p className="text-sm text-ink-secondary mt-1 m-0">{g.detail}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* CTA */}
         <section className="grain bg-paper-200 border-2 border-ink-950 rounded-md p-6 shadow-hard">
-          <h2 className="font-display font-normal text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2 m-0">Coming to ZAOstock?</h2>
+          <h2 className="font-display font-normal text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2 m-0">Missed ZAOstock?</h2>
           <p className="text-base text-ink-secondary mt-2 m-0">
-            {FESTIVAL.dateLabel}. {FESTIVAL.venue}, {FESTIVAL.city}. {FESTIVAL.admission}, music from noon.
+            It happened on {FESTIVAL.dateLabel} at the {FESTIVAL.venue}, {FESTIVAL.city}. It was free, with music from noon.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the
-                homepage hero and Header.tsx: a straight Luma link skips
-                the Pro Ticket funnel. Poidhz, 2026-09-27, measured live. */}
-            <Button href="/tickets">
-              RSVP free
+            <Button href="/live">
+              Watch the replay
             </Button>
             <Button href="/program" variant="secondary">
-              The program
+              The running order
             </Button>
             <Button href="/acadia" variant="ghost">
               The Acadia guide

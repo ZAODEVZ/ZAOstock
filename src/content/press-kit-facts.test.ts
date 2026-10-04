@@ -27,15 +27,13 @@ const KIT = path.join(process.cwd(), 'docs/marketing/press-kit.md');
 const text = () => readFileSync(KIT, 'utf8');
 
 describe('press kit facts', () => {
-  it('quotes the live weather line verbatim, not a paraphrase of it', () => {
+  it('no longer carries the day-of weather promise (ZAOstock is over)', () => {
+    // Past tense 2026-10-04: the Weather row was advice for attending, so it is
+    // gone. This used to demand SITE.weather verbatim; now it guards that the
+    // "rain or shine" promise does not come back into a kit about a past day.
     const md = text();
-    expect(
-      md.includes(SITE.weather),
-      `\nThe press kit's Weather row does not contain SITE.weather verbatim.\n` +
-        `Quote it exactly - a paraphrase can carry the same false claim a\n` +
-        `differently-worded line already got killed for. SITE.weather is:\n` +
-        `  "${SITE.weather}"\n`,
-    ).toBe(true);
+    expect(md.includes(SITE.weather), 'the press kit quotes SITE.weather again').toBe(false);
+    expect(md).not.toMatch(/\|\s*Weather\s*\|/);
   });
 
   it('never promises the tent is the bad-weather answer', () => {
