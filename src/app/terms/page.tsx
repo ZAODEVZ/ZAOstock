@@ -38,8 +38,8 @@ export default function TermsPage() {
           <h2 className="font-display font-normal text-h3 text-ink-950">Weather</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
             {FESTIVAL.dateLabel} was rain or shine - we did not cancel for weather, and the parklet was
-            open to the sky. {FESTIVAL.afterParty.name} Public House next door hosted its
-            own evening; that was their room and their event, not a second ZAOstock stage.
+            open to the sky. The evening billed at {FESTIVAL.afterParty.name} Public House next door
+            was their room and their event, not a second ZAOstock stage.
           </p>
         </section>
 
