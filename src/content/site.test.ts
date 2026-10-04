@@ -781,6 +781,8 @@ describe('unconfirmed performance claims stay off the public site', () => {
     [/\bplayed ZAOstock\b/i, 'say "was on the bill for ZAOstock"'],
     [/Played in order/, 'say "Running order"'],
     [/>\s*Played\s*<\/dt>/, 'the after-party label is "On the bill"'],
+    [/hosted the .{0,40}after-party/i, 'that the after-party ran is unconfirmed; name the venue, or say it was billed'],
+    [/next door hosted (its|their) own evening/i, 'that the evening ran is unconfirmed; say it was billed'],
   ];
 
   const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
@@ -810,5 +812,7 @@ describe('unconfirmed performance claims stay off the public site', () => {
   it('the control can fail: the patterns do match the retired wording', () => {
     expect('the 8 acts played back to back').toMatch(BARRED_PERFORMANCE[0][0]);
     expect('<dt>Played</dt>').toMatch(BARRED_PERFORMANCE[5][0]);
+    expect('Hosted the ZAOstock after-party at 142 Main St').toMatch(BARRED_PERFORMANCE[6][0]);
+    expect('Black Moon Public House next door hosted its own evening').toMatch(BARRED_PERFORMANCE[7][0]);
   });
 });
