@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, NEXT_EDITION } from '@/content/festival';
 import { LINEUP_NAMES } from '@/content/site';
 import { SOUNDCHECK } from '@/content/artist-ops';
 
@@ -53,6 +53,7 @@ export default function MusiciansPage() {
         { term: 'Soundcheck', detail: `${SOUNDCHECK.day}, 9:30 AM to noon, artists only` },
         { term: 'Set length', detail: '33 or 40 minutes in 2026, set by the running order' },
         { term: '2026 bill', detail: `${LINEUP_NAMES.length} acts played. Tell us about your music for the next ZAO Festivals event` },
+        { term: NEXT_EDITION.name, detail: `${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}.` },
         { term: 'Pay', detail: 'Not pay-to-play. Independent and ZAO-vetted only' },
       ]}
       footnote="Independent and ZAO-vetted only. This is not a pay-to-play festival."

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, Eyebrow, Card } from '@/components/poster';
 
@@ -39,6 +39,7 @@ export default function VolunteerPage() {
       <Section>
         <Card>
           <Eyebrow className="mb-2">Questions</Eyebrow>
+          <p className="text-sm text-ink-secondary m-0 mb-2">{nextEditionLine()}</p>
           <p className="text-sm text-ink-secondary m-0">
             Write to{' '}
             <a href={`mailto:${SITE.contact}`} className="underline hover:no-underline">{SITE.contact}</a>.

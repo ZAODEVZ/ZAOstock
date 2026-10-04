@@ -57,3 +57,34 @@ export const FESTIVAL: Festival = {
     hostsSimultaneousStage: false,
   },
 };
+
+// THE NEXT EDITION. ZAOstock 2026 is over (it happened on 3 October 2026), and
+// FESTIVAL above stays as that record. Zaal, 2026-10-04: "pick september 2027
+// for zaostock 2027", then "Do 18th and we can figure out the rest later if we
+// need to move it".
+//
+// So there are exactly two facts: the date and that the place is not set. No
+// venue, no lineup, no ticket or admission claim, and nothing is "confirmed".
+// THE DATE MAY MOVE. Every page reads this constant (or nextEditionLine()); never
+// type the 2027 date into a page. scripts/check-fact-dedup.mjs fails if
+// `dateLabel` below is hardcoded anywhere under src/app, and
+// src/content/festival.test.ts holds the weekday and the order against FESTIVAL.
+export type NextEdition = {
+  name: string;
+  /** ISO calendar date, no time: the day is set, the hours are not. */
+  date: string;
+  dateLabel: string;
+  place: string;
+};
+
+export const NEXT_EDITION: NextEdition = {
+  name: 'ZAOstock 2027',
+  date: '2027-09-18',
+  dateLabel: 'Saturday, September 18, 2027',
+  place: 'Place to be announced',
+};
+
+/** "ZAOstock 2027: Saturday, September 18, 2027. Place to be announced." - the one sentence pages use. */
+export function nextEditionLine(): string {
+  return `${NEXT_EDITION.name}: ${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}.`;
+}

@@ -1,7 +1,7 @@
 import 'server-only';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { PARTNERS, SITE } from '@/content/site';
 
 // The /press page renders docs/marketing/press-kit.md. MARKETING owns that
@@ -92,7 +92,8 @@ export type PressKit = {
 /** Read the press kit once at build time. The page is static, so this never runs per request. */
 export function loadPressKit(filePath: string = PRESS_KIT_PATH): PressKit {
   if (existsSync(filePath)) {
-    const markdown = readFileSync(filePath, 'utf8').trim();
+    // {{NEXT_EDITION}} is filled from festival.ts so the date lives in one file.
+    const markdown = readFileSync(filePath, 'utf8').trim().replaceAll('{{NEXT_EDITION}}', nextEditionLine());
     if (markdown.length > 0) return { markdown, source: 'file' };
   }
   return { markdown: PLACEHOLDER_MARKDOWN, source: 'placeholder' };

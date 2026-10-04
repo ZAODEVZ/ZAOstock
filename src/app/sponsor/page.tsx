@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE, PARTNERS, ZAO, WAVEWARZ_STATS, SERIES } from '@/content/site';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Stat, SectionHeader, BorderedList } from '@/components/poster';
 
 // PAST TENSE, 2026-10-04. ZAOstock 2026 happened on 3 October (Zaal: "pushing
@@ -89,7 +89,8 @@ export default function SponsorPage() {
       <Section id="next">
         <div className="max-w-[760px]">
           <SectionHeader eyebrow="A future edition" title="Want to talk about the next one?" />
-          <p className="text-lg text-ink-secondary measure mt-4 m-0">
+          <p className="text-lg text-ink-secondary measure mt-4 m-0">{nextEditionLine()}</p>
+          <p className="text-lg text-ink-secondary measure mt-2 m-0">
             Write to{' '}
             <a href={`mailto:${SITE.contact}`} className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
               {SITE.contact}

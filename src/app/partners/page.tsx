@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SITE, PARTNERS } from '@/content/site';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, SectionHeader, PartnerTile } from '@/components/poster';
 
 // The partner page. Same PARTNERS list as the homepage strip and the press
@@ -72,7 +72,7 @@ export default function PartnersPage() {
           <SectionHeader
             eyebrow="Sponsors"
             title="Thank you to everyone who backed the day."
-            lede="To talk about a future edition of ZAOstock, write to us."
+            lede={`${nextEditionLine()} To talk about it, write to us.`}
           />
           <div className="flex flex-wrap gap-3 shrink-0">
             <Button href="/sponsor">Who backed 2026</Button>

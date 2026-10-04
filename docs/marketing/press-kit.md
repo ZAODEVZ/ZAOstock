@@ -61,6 +61,10 @@ of The ZAO, an independent music community.
 | Replay | zaostock.com/live |
 | Contact | info@thezao.com |
 
+## The next one
+
+{{NEXT_EDITION}}
+
 ## The day
 
 - **Outdoors, Franklin Street Parklet, noon until six.** Independent artists played back
