@@ -1,6 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { routesFor, DEFAULT_ROUTES, MAX_ROUTES } from './routes.mjs';
-import { codeMessage, visualContent, sanitize, safeShotName, plain, CODE_SYSTEM, VISUAL_SYSTEM } from './ai-review.mjs';
+import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { codeMessage, visualContent, sanitize, safeShotName, readShot, boundedMeta, plain, CODE_SYSTEM, VISUAL_SYSTEM } from './ai-review.mjs';
 
 describe('routesFor', () => {
   it('maps a page file to its route', () => {
@@ -90,6 +93,57 @@ describe('shots.json is untrusted', () => {
   });
   it('no longer tells the reviewer the festival is days away', () => {
     expect(CODE_SYSTEM).not.toMatch(/days from its event/);
+  });
+});
+
+describe('a screenshot is read only if it is a real file in the shots directory', () => {
+  const root = mkdtempSync(join(tmpdir(), 'review-shots-'));
+  const shots = join(root, 'shots');
+  mkdirSync(shots);
+  writeFileSync(join(shots, 'pr-phone-home.png'), 'PNGDATA');
+  writeFileSync(join(root, 'secret.txt'), 'SECRET');
+  symlinkSync(join(root, 'secret.txt'), join(shots, 'prod-phone-home.png'));
+
+  it('reads a regular file with a valid name', () => {
+    expect(readShot(shots, 'pr-phone-home.png')).toBe(Buffer.from('PNGDATA').toString('base64'));
+  });
+  it('refuses a symlink even when its name is valid', () => {
+    expect(readShot(shots, 'prod-phone-home.png')).toBeNull();
+  });
+  it('refuses a missing file and an unsafe name', () => {
+    expect(readShot(shots, 'pr-desktop-home.png')).toBeNull();
+    expect(readShot(shots, '../secret.txt')).toBeNull();
+  });
+  it('says REFUSED instead of sending an image the reader would not return', () => {
+    const c = visualContent({ routes: ['/'], shots: [{ side: 'prod', device: 'phone', route: '/', file: 'prod-phone-home.png', status: 200 }] }, (f: string) => readShot(shots, f));
+    expect(c.filter((x: { type: string }) => x.type === 'image')).toHaveLength(0);
+    expect(c.some((x: { type: string; text?: string }) => x.type === 'text' && /REFUSED \(not a regular file/.test(x.text ?? ''))).toBe(true);
+  });
+});
+
+describe('shots.json is bounded before it is used', () => {
+  it('caps routes and shots and survives a malformed file', () => {
+    const many = { routes: Array.from({ length: 500 }, (_, i) => `/r${i}`), shots: Array.from({ length: 500 }, () => ({})) };
+    const b = boundedMeta(many);
+    expect(b.routes.length).toBe(6);
+    expect(b.shots.length).toBe(64);
+    expect(boundedMeta(null)).toEqual({ routes: [], shots: [] });
+    expect(boundedMeta({ routes: 'x', shots: [null, 3, { side: 'pr' }] })).toEqual({ routes: [], shots: [{ side: 'pr' }] });
+  });
+});
+
+describe('the keyed job does not trust the artifact for the diff or the PR text', () => {
+  const yml = readFileSync(join(process.cwd(), '.github/workflows/review-ai.yml'), 'utf8');
+  const script = readFileSync(join(process.cwd(), 'scripts/review/ai-review.mjs'), 'utf8');
+  it('fetches the diff and the PR text from GitHub in the keyed workflow', () => {
+    expect(yml).toMatch(/gh pr diff "\$PR"[^\n]*> review-trusted\/diff\.patch/);
+    expect(yml).toMatch(/gh pr view "\$PR"[^\n]*--json number,title,body > review-trusted\/pr\.json/);
+    expect(yml).toContain('TRUSTED: review-trusted');
+  });
+  it('reads pr.json and diff.patch from TRUSTED, never from the artifact', () => {
+    expect(script).toContain("join(TRUSTED, 'pr.json')");
+    expect(script).toContain("join(TRUSTED, 'diff.patch')");
+    expect(script).not.toMatch(/join\(ART, 'pr\.json'\)|join\(ART, 'diff\.patch'\)/);
   });
 });
 

@@ -9,6 +9,11 @@ name: Review comment
 #
 # The PR number is looked up from the head SHA through the API rather than
 # read from the artifact, because the artifact was written by the PR's code.
+# For the same reason the DIFF and the PR TITLE AND BODY are fetched from
+# GitHub here: half one writes diff.patch and pr.json and THEN runs the PR's
+# build and capture script in the same workspace, so a PR could overwrite both
+# and be reviewed on a diff its author chose (Dotfiles' review, 2026-10-04).
+# Only the screenshots come from the artifact, and their names are checked.
 #
 # Without the ANTHROPIC_API_KEY secret it posts nothing and says so in the log.
 
@@ -54,16 +59,28 @@ jobs:
                 --jq ".[] | select(.headRefOid == \"$HEAD_SHA\") | .number" | head -1)
           if [ -z "$n" ]; then echo "no open PR has head $HEAD_SHA; nothing to review"; fi
           echo "number=$n" >> "$GITHUB_OUTPUT"
+      - name: Fetch the diff and the PR text from GitHub, not from the artifact
+        if: steps.pr.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.pr.outputs.number }}
+        run: |
+          mkdir -p review-trusted
+          gh pr diff "$PR" -R "$GITHUB_REPOSITORY" > review-trusted/diff.patch
+          gh pr view "$PR" -R "$GITHUB_REPOSITORY" --json number,title,body > review-trusted/pr.json
       - name: Two reviewers
         if: steps.pr.outputs.number != ''
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           REVIEW_MODEL: ${{ vars.REVIEW_MODEL }}
           ARTIFACT: review-artifact
+          TRUSTED: review-trusted
           OUT: review.md
         run: node scripts/review/ai-review.mjs
       - name: Post the review as a comment
         if: steps.pr.outputs.number != '' && env.HAS_KEY == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh pr comment "${{ steps.pr.outputs.number }}" -R "$GITHUB_REPOSITORY" --body-file review.md
+          PR: ${{ steps.pr.outputs.number }}
+        # One comment per PR, edited in place, so each push does not add another.
+        run: gh pr comment "$PR" -R "$GITHUB_REPOSITORY" --body-file review.md --edit-last --create-if-none

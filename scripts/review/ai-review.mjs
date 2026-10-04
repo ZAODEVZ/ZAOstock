@@ -22,11 +22,17 @@
  * With no ANTHROPIC_API_KEY it writes a short "reviewer inert" note and exits
  * 0, so the workflow can be merged before the key exists.
  */
-import { existsSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { existsSync, lstatSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// ART is what the capture job produced; it ran the PR's own code, so nothing in
+// it is trusted beyond checked screenshots. TRUSTED is written by review-ai.yml
+// itself from the GitHub API: the diff and the PR title and body.
 const ART = process.env.ARTIFACT || 'review-artifact';
+const TRUSTED = process.env.TRUSTED || 'review-trusted';
+const MAX_ROUTES_SENT = 6;
+const MAX_SHOTS = 64;
 const OUT = process.env.OUT || 'review.md';
 const MODEL = process.env.REVIEW_MODEL || 'claude-opus-5-5';
 const KEY = process.env.ANTHROPIC_API_KEY || '';
@@ -80,7 +86,34 @@ export function plain(v, max = 80) {
   return String(v ?? '').replace(/[^A-Za-z0-9 _.,:/()-]/g, '').slice(0, max);
 }
 
-export function visualContent(meta, readImage) {
+/**
+ * Read one screenshot, or null. The name must pass safeShotName, and the file
+ * itself must be a regular file that really lives in the shots directory: a
+ * symlink with a valid-looking name would otherwise point anywhere.
+ */
+export function readShot(dir, f) {
+  const name = safeShotName(f);
+  if (!name) return null;
+  const full = join(dir, name);
+  try {
+    const st = lstatSync(full);
+    if (!st.isFile() || st.isSymbolicLink()) return null;
+    if (!realpathSync(full).startsWith(realpathSync(dir) + sep)) return null;
+    return readFileSync(full).toString('base64');
+  } catch {
+    return null;
+  }
+}
+
+/** shots.json as far as it can be trusted: arrays of bounded length, nothing else assumed. */
+export function boundedMeta(meta) {
+  const routes = Array.isArray(meta?.routes) ? meta.routes.slice(0, MAX_ROUTES_SENT) : [];
+  const shots = Array.isArray(meta?.shots) ? meta.shots.slice(0, MAX_SHOTS).filter((s) => s && typeof s === 'object') : [];
+  return { routes, shots };
+}
+
+export function visualContent(rawMeta, readImage) {
+  const meta = boundedMeta(rawMeta);
   const content = [{ type: 'text', text: `Routes: ${meta.routes.map((r) => plain(r)).join(', ')}. Pairs follow, production first then this PR, per device and route.` }];
   let n = 0;
   for (const route of meta.routes) {
@@ -94,7 +127,9 @@ export function visualContent(meta, readImage) {
         if (n >= MAX_IMAGES) { content.push({ type: 'text', text: `${label}: not sent, image cap ${MAX_IMAGES} reached` }); continue; }
         const extra = s.overflowX ? ' (measured: horizontal overflow)' : '';
         content.push({ type: 'text', text: `${label}, HTTP ${plain(s.status, 3)}${extra}:` });
-        content.push({ type: 'image', source: { type: 'base64', media_type: 'image/png', data: readImage(file) } });
+        const data = readImage(file);
+        if (!data) { content.push({ type: 'text', text: `${label}: screenshot REFUSED (not a regular file in the shots directory)` }); continue; }
+        content.push({ type: 'image', source: { type: 'base64', media_type: 'image/png', data } });
         n++;
       }
     }
@@ -120,16 +155,18 @@ export function sanitize(s) {
 }
 
 async function main() {
-  const pr = JSON.parse(readFileSync(join(ART, 'pr.json'), 'utf8'));
-  const diff = readFileSync(join(ART, 'diff.patch'), 'utf8');
-  const meta = existsSync(join(ART, 'shots.json')) ? JSON.parse(readFileSync(join(ART, 'shots.json'), 'utf8')) : { routes: [], shots: [] };
+  const pr = JSON.parse(readFileSync(join(TRUSTED, 'pr.json'), 'utf8'));
+  const diff = readFileSync(join(TRUSTED, 'diff.patch'), 'utf8');
+  let rawMeta = { routes: [], shots: [] };
+  try { if (existsSync(join(ART, 'shots.json'))) rawMeta = JSON.parse(readFileSync(join(ART, 'shots.json'), 'utf8')); } catch { /* malformed shots.json: no screenshots */ }
+  const meta = boundedMeta(rawMeta);
   const head = `## Automated review\n\nTwo reviewers (${MODEL}): code against the PR's own claims, and screenshots against production. This is a comment, never an approval. A person still decides.\n\n`;
   if (!KEY) {
     writeFileSync(OUT, head + `Reviewer inert: no ANTHROPIC_API_KEY secret on this repository yet. Captured ${meta.shots.filter((s) => !s.error).length} screenshot(s) across ${meta.routes.length} route(s); they are in this run's artifact.\n`);
     console.log('no key: wrote inert note');
     return;
   }
-  const readImage = (f) => readFileSync(join(ART, 'shots', f)).toString('base64');
+  const readImage = (f) => readShot(join(ART, 'shots'), f);
   const [code, visual] = await Promise.all([
     ask(CODE_SYSTEM, codeMessage(pr, diff)),
     meta.shots.length ? ask(VISUAL_SYSTEM, visualContent(meta, readImage)) : Promise.resolve('No screenshots were captured for this PR.'),
