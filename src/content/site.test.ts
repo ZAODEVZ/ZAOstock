@@ -783,6 +783,7 @@ describe('claims about who played stay within what Zaal has confirmed', () => {
     [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES, not the bill'],
     [/Acadia Rising[^.\n]{0,80}\bplayed\b/i, 'Zaal: "Acadia rising did not play"'],
     [/Played in order/, 'say "Running order"'],
+    [/\bplayed ZAOstock\b/i, 'no sentence names one act as having played until Zaal confirms which seven; say "was on the bill for ZAOstock"'],
   ];
 
   const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
@@ -815,6 +816,7 @@ describe('claims about who played stay within what Zaal has confirmed', () => {
     expect('{LINEUP_NAMES.length} acts played from noon').toMatch(BARRED_PERFORMANCE[1][0]);
     expect('Acadia Rising played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[2][0]);
     expect('7 independent acts played back to back').not.toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('DCoop played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[4][0]);
   });
 
   it('counts seven as having played and keeps the eighth on the bill only', () => {
