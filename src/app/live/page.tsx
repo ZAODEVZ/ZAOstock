@@ -1,12 +1,13 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { WATCH_PARTIES, fallbackChannelHref, replaysHref, embedSrc, chatEmbedSrc } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, replaysHref } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
 import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
 import { ShareButton } from '@/components/ShareButton';
+import { ReplayPlayer } from '@/components/ReplayPlayer';
 
 export const metadata: Metadata = {
   title: `Watch live, ${FESTIVAL.shortDate}, noon to 6 PM Eastern`,
@@ -59,29 +60,11 @@ export default async function LivePage() {
         <Eyebrow tone="denim">Thank you for watching</Eyebrow>
         <h1 className="font-display font-normal text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-2 mb-2">The stream has ended.</h1>
         <p className="text-base sm:text-lg text-ink-secondary measure m-0 mb-3">
-          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The recording is on Twitch while Twitch keeps it; watch it there.
+          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The whole day is recorded below, in six parts.
         </p>
-        <Card>
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4">
-            <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
-              <iframe
-                src={embedSrc()}
-                className="w-full h-full"
-                allowFullScreen
-                title="ZAOstock live on Twitch"
-              />
-            </div>
-            {/* Chat is desktop-only: on a phone it pushed the buttons off the first
-                screen, and "Watch on Twitch" below opens the full chat there. */}
-            <div className="hidden lg:block lg:h-auto rounded-[10px] overflow-hidden">
-              <iframe
-                src={chatEmbedSrc()}
-                className="w-full h-full"
-                title="ZAOstock Twitch chat"
-              />
-            </div>
-          </div>
-        </Card>
+        <div id="replay">
+          <ReplayPlayer />
+        </div>
         {/* Watching from home has no other way to give. Zaal, 2026-09-27:
             "we deff need a place for ppl to just go to the live website
             and one button is the donate button." Label matches /tickets since
@@ -91,7 +74,7 @@ export default async function LivePage() {
             Support the artists
           </Button>
           <Button href={replaysHref()} external variant="secondary" size="sm">
-            Watch the replay
+            All parts on Twitch
           </Button>
           <Button href="/afterparty" variant="secondary" size="sm">
             After-party
@@ -106,8 +89,8 @@ export default async function LivePage() {
           />
         </div>
         <p className="text-sm text-ink-secondary m-0 mt-3">
-          <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream ran {FESTIVAL.window} on {FESTIVAL.dateLabel}; the stream is offline now,
-          so Twitch shows its own offline screen here. That is expected, not a broken player.
+          <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The live stream is offline now that the day is over; the recording above
+          plays from Twitch, which keeps past broadcasts for a limited time.
         </p>
         {fallbackHref ? (
           <p className="text-sm text-ink-secondary m-0 mt-2">

@@ -56,9 +56,11 @@ describe('the fallback channel', () => {
  * quietly regress to no player at all.
  */
 describe('the confirmed Twitch channel', () => {
-  it('is zaofestivals, and the page embeds it', () => {
+  // After 3 October the page plays the recording (ReplayPlayer), not the live
+  // channel; embedSrc() stays exported and tested for the next live day.
+  it('is zaofestivals, and the page plays the recording from that channel', () => {
     expect(TWITCH_CHANNEL).toBe('zaofestivals');
-    expect(read(LIVE)).toContain('embedSrc()');
+    expect(read(LIVE)).toContain('<ReplayPlayer />');
   });
 
   it('the embed URL carries the channel and a parent matching production', () => {
@@ -87,15 +89,14 @@ describe('the confirmed Twitch channel', () => {
     }
   });
 
-  it('the iframe has a real title, for the one page thousands may hit at once', () => {
-    expect(read(LIVE)).toContain('title="ZAOstock live on Twitch"');
+  it('the replay iframe has a real title, taken from the part being played', () => {
+    expect(read('src/components/ReplayPlayer.tsx')).toContain('title={current.title}');
   });
 
   it('the chat embed carries the channel and a parent matching production', () => {
     const src = chatEmbedSrc();
     expect(src).toContain('/zaofestivals/chat');
     expect(src).toContain('parent=zaostock.com');
-    expect(read(LIVE)).toContain('chatEmbedSrc()');
   });
 });
 
