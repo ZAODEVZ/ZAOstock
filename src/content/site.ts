@@ -199,6 +199,30 @@ export const LINEUP_NAMES_NOTE =
  */
 export const DID_NOT_PLAY: readonly string[] = ['Acadia Rising'];
 
+/** Same rule as slugify() in src/lib/artists.ts, kept local so this file needs no database import. */
+const nameKey = (name: string) => name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+
+/**
+ * Is this act in DID_NOT_PLAY? Compared by slug, not by exact string, because
+ * the artist page passes the DATABASE row's name, and nothing holds that column
+ * to the spelling here: a re-cased name or a trailing space would otherwise
+ * print "played ZAOstock" for an act that did not (Dotfiles' review of #445).
+ */
+export function didNotPlay(name: string): boolean {
+  const key = nameKey(name);
+  return DID_NOT_PLAY.some((n) => nameKey(n) === key);
+}
+
+/**
+ * The one sentence an artist page says about the day, for the act whose
+ * database name is `name`. Built here, in one place, so it can be tested: the
+ * registry scans source text and cannot see a sentence assembled at run time.
+ */
+export function artistRecordLine(name: string, date: string, where: string): string {
+  const shown = displayName(name);
+  return didNotPlay(name) ? `${shown} was on the bill for ZAOstock, ${date}, ${where}.` : `${shown} played ZAOstock on ${date} ${where}.`;
+}
+
 /**
  * WHO PLAYED, in running order: the bill minus DID_NOT_PLAY. Basis: Zaal's
  * word above, and his answer the same day when asked whether The Crown Vics,

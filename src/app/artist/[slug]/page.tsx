@@ -5,7 +5,7 @@ import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
 import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
-import { displayName, DID_NOT_PLAY } from '@/content/site';
+import { displayName, artistRecordLine } from '@/content/site';
 import { zaoMediaFor } from '@/content/zao-media';
 import { artistJsonLdString } from '@/content/artist-jsonld';
 import Link from 'next/link';
@@ -25,9 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const shown = displayName(artist.name);
   const description = artist.bio
     ? truncateAtWord(artist.bio, 160)
-    : DID_NOT_PLAY.includes(artist.name)
-      ? `${shown} was on the bill for ZAOstock, ${FESTIVAL.shortDate}, in ${FESTIVAL.city}.`
-      : `${shown} played ZAOstock on ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
+    : artistRecordLine(artist.name, FESTIVAL.shortDate, `in ${FESTIVAL.city}`);
 
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
@@ -113,8 +111,10 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
                 {/* Zaal, 2026-10-04, asked whether The Crown Vics, OPEN X, Grass
                     Rug, Michael Anderson, DCoop, LyonsDen and Tom Fellenz all played:
                     "yes all played" (vault decisions/grill-2026-10-04-orchestration-0150.md,
-                    item 5). An act in DID_NOT_PLAY keeps "was on the bill". */}
-                {displayName(artist.name)} {DID_NOT_PLAY.includes(artist.name) ? 'was on the bill for ZAOstock,' : 'played ZAOstock on'} {FESTIVAL.dateLabel}{DID_NOT_PLAY.includes(artist.name) ? ',' : ''} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
+                    item 5). An act in DID_NOT_PLAY keeps "was on the bill"; the choice is
+                    made by slug in artistRecordLine (site.ts), not by exact name. */}
+                {artistRecordLine(artist.name, FESTIVAL.dateLabel, `at the ${FESTIVAL.venue} in ${FESTIVAL.city}`)}{' '}
+                A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/" size="sm">
