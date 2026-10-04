@@ -30,11 +30,11 @@ export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
   },
   {
     q: 'When and where was it?',
-    a: `${FESTIVAL.dateLabel}, ${FESTIVAL.window}, on the ${FESTIVAL.venue} in downtown Ellsworth, Maine. Music started at noon.`,
+    a: `${FESTIVAL.dateLabel}, ${FESTIVAL.window}, on the ${FESTIVAL.venue} in downtown Ellsworth, Maine. Music was billed from noon.`,
   },
   {
-    q: 'Who played?',
-    a: `${LINEUP_NAMES.length} independent acts: ${acts}. The running order and set times are listed on this page.`,
+    q: 'Who was on the bill?',
+    a: `${LINEUP_NAMES.length} independent acts: ${acts}. The published running order and set times are listed on this page.`,
   },
   // All ages after six was answered by Black Moon's own flyer ("7 PM ALL
   // AGES", shared by Zaal 2026-09-30). The after-party end time (10 PM) was
@@ -42,7 +42,7 @@ export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
   { q: 'Was it all ages?', a: 'Yes. The festival on the parklet was all ages and family-friendly, and Black Moon listed its after-party as all ages too.' },
   {
     q: 'What happened after six?',
-    a: 'At six the street cleared, and Black Moon Public House next door hosted its own evening: the ZAOstock after-party, doors from 6 and music from 7, with North Creek and friends. Details at zaostock.com/afterparty.',
+    a: 'The ZAOstock after-party was billed at Black Moon Public House next door: doors from 6 and music from 7, with North Creek and friends. Details at zaostock.com/afterparty.',
   },
   { q: 'Can I watch the replay?', a: 'Yes. The recording and the running order are at zaostock.com/live.' },
 ];

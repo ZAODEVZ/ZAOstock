@@ -145,7 +145,7 @@ export default function HomePage() {
                   <em>One stage.</em>
                 </h2>
                 <p className={s.lede}>
-                  Franklin Street closed to traffic and opened up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. At six the street cleared, and Black Moon next door hosted their own evening.
+                  Franklin Street closed to traffic and opened up for the day: independent artists on the parklet stage from noon to six, with our MC and our partners between sets. The evening was billed at Black Moon next door.
                 </p>
                 <p className={s.lede}>
                   It was part of the {SITE.series} during {SITE.weekend}.
@@ -171,7 +171,7 @@ export default function HomePage() {
               The <em>lineup</em>
             </h2>
             <p className={s.lede}>
-              {LINEUP_NAMES.length} independent acts played back to back on one stage. {LINEUP_NAMES_NOTE}{' '}
+              {LINEUP_NAMES.length} independent acts were on the bill for one stage. {LINEUP_NAMES_NOTE}{' '}
               <Link href="/program" className={s.link}>
                 The running order
               </Link>
@@ -322,7 +322,7 @@ export default function HomePage() {
               <em>Ellsworth</em>
             </h2>
             <p className={s.lede} style={{ margin: '0 auto 22px', color: 'inherit' }}>
-              ZAOstock 2026 happened on Franklin Street. Eight artists played. Thank you to the artists, the crew, our partners and everyone who came.
+              ZAOstock 2026 happened on Franklin Street. Thank you to the artists, the crew, our partners and everyone who came.
             </p>
             <div className={s.cta} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
               <Link href="/live" className={s.btn}>

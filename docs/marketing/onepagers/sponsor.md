@@ -30,8 +30,8 @@ on `/sponsor` and `/partners`.
 
 A free, one-day, artist-built music festival on the Franklin Street Parklet in
 downtown Ellsworth, inside the 9th Annual Art of Ellsworth during Maine Craft
-Weekend. Eight independent artists played one outdoor stage from noon to six, and at
-six the street cleared and Black Moon Public House next door hosted its own evening.
+Weekend. Eight independent artists were on the bill for one outdoor stage, noon to six, with
+an evening billed at Black Moon Public House next door.
 It was produced by ZAO Festivals, the events arm of The ZAO.
 
 ## Who backed it

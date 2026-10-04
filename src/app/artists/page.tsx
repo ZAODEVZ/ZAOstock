@@ -9,11 +9,11 @@ import { LINEUP_ARTISTS } from './lineup-artists';
 export const metadata: Metadata = {
   title: `Lineup: ${LINEUP_NAMES.length} acts, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `The 2026 ZAOstock lineup. ${LINEUP_NAMES.length} independent acts played the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    `The 2026 ZAOstock lineup. ${LINEUP_NAMES.length} independent acts were on the bill for the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   alternates: { canonical: '/artists' },
   openGraph: {
     title: 'Artists · ZAOstock 2026',
-    description: `${LINEUP_NAMES.length} independent acts played the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    description: `${LINEUP_NAMES.length} independent acts were on the bill for the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
     url: 'https://zaostock.com/artists',
     images: [OG_IMAGE],
     type: 'website',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Artists · ZAOstock 2026',
-    description: `${LINEUP_NAMES.length} independent acts played the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    description: `${LINEUP_NAMES.length} independent acts were on the bill for the ${FESTIVAL.venue} stage on ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   },
 };
 
@@ -35,11 +35,11 @@ export default function ArtistsPage() {
             The 2026 Lineup.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            {LINEUP_NAMES.length} independent acts played back to back on the {FESTIVAL.venue} in {FESTIVAL.city}.
+            {LINEUP_NAMES.length} independent acts were on the bill for the {FESTIVAL.venue} in {FESTIVAL.city}.
             Outdoors from noon to six, with free admission.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Badge tone="gold">{LINEUP_NAMES.length} acts &middot; Played in order</Badge>
+            <Badge tone="gold">{LINEUP_NAMES.length} acts &middot; Running order</Badge>
             <span className="text-sm text-ink-muted">
               Each act has its own page with a bio and photo.
             </span>

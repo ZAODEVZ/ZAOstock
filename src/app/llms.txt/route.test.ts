@@ -31,8 +31,8 @@ describe('GET /llms.txt', () => {
 
   it('names the real act count, sourced from LINEUP_NAMES', async () => {
     const text = await content();
-    expect(text).toContain(`${LINEUP_NAMES.length} acts played back to back`);
-    expect(text).toContain(`The ${LINEUP_NAMES.length} acts that played are named on the site`);
+    expect(text).toContain(`the published bill was ${LINEUP_NAMES.length} acts back to back`);
+    expect(text).toContain(`The ${LINEUP_NAMES.length} acts on the bill are named on the site`);
   });
 
   it('lists every act by display name with its own page, and no clock times', async () => {

@@ -18,7 +18,7 @@ describe('QUICK_ANSWERS', () => {
   });
 
   it('names every act by display name, and no clock time', () => {
-    const who = QUICK_ANSWERS.find((x) => x.q === 'Who played?')!.a;
+    const who = QUICK_ANSWERS.find((x) => x.q === 'Who was on the bill?')!.a;
     for (const name of LINEUP_NAMES) expect(who).toContain(displayName(name));
     expect(who).not.toMatch(/\d{1,2}:\d{2}/);
   });
