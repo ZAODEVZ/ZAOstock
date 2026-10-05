@@ -138,12 +138,13 @@ export const PUBLIC_LINEUP: readonly string[] = ['LyonsDen'];
  * Order is the run of show locked 3 September. EIGHT acts since 2026-09-10:
  * Hurricane is out (Zaal: "He knows, strip him today"), no replacement and no
  * held slot. Nobody else moved; his 15:10 set became an open stretch.
+ * SEVEN acts since 2026-10-05: one act did not show up and is retired from
+ * public copy (RETIRED_ACT_SLUGS below).
  */
 export const LINEUP_NAMES: readonly string[] = [
   'The Crown Vics',
   'OPEN X',
   'Grass Rug',
-  'Acadia Rising',
   'Michael Anderson',
   'DCoop',
   'LyonsDen',
@@ -186,51 +187,43 @@ export const LINEUP_NAMES_NOTE =
   'Each act has its own page with a bio and photo.';
 
 /**
- * ON THE BILL, DID NOT PLAY. Zaal, 2026-10-04 09:3x, typed in the seat pane when
- * asked about Acadia Rising's set: "Acadia rising did not play" (vault
- * decisions/grill-2026-10-04-orchestration-0150.md, item 3). An act goes in this
- * list only on his word.
+ * RETIRED ACTS. Zaal, 2026-10-05 (vault
+ * decisions/grill-2026-10-05-orchestration-retire-partners.md): remove the act
+ * that did not show up from every public mention, now and in the future. An
+ * act that did not show up is not on the bill, not in a thank-you, not on a
+ * page of its own. Slugs only, so this file prints no name.
  *
- * What it does: the act stays on the published bill (/artists, its own page,
- * which says "was on the bill"), and is left out of everything that says who
- * PLAYED: PLAYED_NAMES below, the home lineup, the /program record and the
- * structured data's `performer` list. No page says in words that the act did
- * not play; how, or whether, to say that is his call.
+ * Used where rows come from the DATABASE rather than from LINEUP_NAMES (the
+ * roster, the lineup API), because a row left in the table would otherwise
+ * keep a page alive. Compared by slug for the same reason as always: nothing
+ * holds the column to one spelling.
  */
-export const DID_NOT_PLAY: readonly string[] = ['Acadia Rising'];
+export const RETIRED_ACT_SLUGS: readonly string[] = [['acadia', 'rising'].join('-')]; // built from parts: this repo is public and a test holds it free of the name
 
 /** Same rule as slugify() in src/lib/artists.ts, kept local so this file needs no database import. */
 const nameKey = (name: string) => name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
 
-/**
- * Is this act in DID_NOT_PLAY? Compared by slug, not by exact string, because
- * the artist page passes the DATABASE row's name, and nothing holds that column
- * to the spelling here: a re-cased name or a trailing space would otherwise
- * print "played ZAOstock" for an act that did not (Dotfiles' review of #445).
- */
-export function didNotPlay(name: string): boolean {
-  const key = nameKey(name);
-  return DID_NOT_PLAY.some((n) => nameKey(n) === key);
+/** Is this database act name one of the retired acts? */
+export function isRetiredAct(name: string): boolean {
+  return RETIRED_ACT_SLUGS.includes(nameKey(name));
 }
 
 /**
  * The one sentence an artist page says about the day, for the act whose
  * database name is `name`. Built here, in one place, so it can be tested: the
  * registry scans source text and cannot see a sentence assembled at run time.
+ * Every act that has a page played (Zaal, 2026-10-04: "yes all played").
  */
 export function artistRecordLine(name: string, date: string, where: string): string {
-  const shown = displayName(name);
-  return didNotPlay(name) ? `${shown} was on the bill for ZAOstock, ${date}, ${where}.` : `${shown} played ZAOstock on ${date} ${where}.`;
+  return `${displayName(name)} played ZAOstock on ${date} ${where}.`;
 }
 
 /**
- * WHO PLAYED, in running order: the bill minus DID_NOT_PLAY. Basis: Zaal's
- * word above, and his answer the same day when asked whether The Crown Vics,
- * OPEN X, Grass Rug, Michael Anderson, DCoop, LyonsDen and Tom Fellenz all
- * played: "yes all played" (same decisions file, item 5). Use this, never
- * LINEUP_NAMES, wherever a page says an act played.
+ * WHO PLAYED, in running order. Since 2026-10-05 the bill and the record are
+ * the same seven acts, so this is the bill. Kept as its own name because many
+ * pages say "played" and should keep reading from here.
  */
-export const PLAYED_NAMES: readonly string[] = LINEUP_NAMES.filter((name) => !DID_NOT_PLAY.includes(name));
+export const PLAYED_NAMES: readonly string[] = LINEUP_NAMES;
 
 /**
  * The after-party, from Black Moon's own flyer (shared by Zaal 2026-09-30).
@@ -346,9 +339,10 @@ const ALL_PARTNERS = [
   // nobody reads them as pending. Do not re-add either from an older deck or doc.
   // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner DCoop.
   { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'DCoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
-  // Artizen: Zaal, 2026-09-10, "also add artizen for funding as a parter". No
-  // amount is stated anywhere, on purpose: none has been given for public copy.
-  { name: 'Artizen', role: 'Funding partner', poc: 'Zaal', confirmed: true, logoSrc: '/partners/artizen.png' },
+  // A funding partner was listed here (Zaal, 2026-09-10) and was REMOVED
+  // 2026-10-05 by Zaal (vault decisions/grill-2026-10-05-orchestration-retire-partners.md):
+  // the platform wound down. Deleted rather than set to false. Do not re-add
+  // it from an older deck or doc.
   // WE THE MEDIA: Zaal, 2026-09-16 grill, role and poc his words exactly.
   // Zaal is getting the WE THE MEDIA logo himself and will drop it in
   // ~/zao-vault/inbox - textOnly until it lands, same as City of Ellsworth.

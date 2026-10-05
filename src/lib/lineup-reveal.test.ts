@@ -84,8 +84,8 @@ describe('the site and the app must not disagree silently about the lineup', () 
 describe('the committed fallback is a real bill', () => {
   const bill = getFallbackLineup('zaostock');
 
-  it('carries the eight confirmed acts', () => {
-    expect(bill).toHaveLength(8);
+  it('carries the seven acts who played', () => {
+    expect(bill).toHaveLength(7);
   });
 
   it('every act has a unique id, a name, a bio and a photo', () => {

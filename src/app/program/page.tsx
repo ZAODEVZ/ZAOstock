@@ -2,16 +2,15 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { PLAYED_NAMES, DID_NOT_PLAY, displayName } from '@/content/site';
+import { PLAYED_NAMES, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, SectionHeader, BorderedList } from '@/components/poster';
 import { QUICK_ANSWERS, faqJsonLd } from '@/content/quick-answers';
 import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
 
-// The record of the day shows who played. An act Zaal has said did not play
-// (DID_NOT_PLAY in site.ts) stays in program.ts, which is also the published
-// schedule the crew documents are checked against, and is left out here.
+// The record of the day shows who played: the public slots of program.ts, which
+// is also the published schedule the crew documents are checked against.
 function playedSlots(block: Parameters<typeof publicSlots>[0]) {
-  return publicSlots(block).filter((s) => !DID_NOT_PLAY.includes(s.label));
+  return publicSlots(block);
 }
 
 export const metadata: Metadata = {

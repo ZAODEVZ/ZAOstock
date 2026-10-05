@@ -37,7 +37,7 @@ It was produced by ZAO Festivals, the events arm of The ZAO.
 ## Who backed it
 
 The partners listed at zaostock.com/partners: City of Ellsworth, Black Moon Public
-House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen, WE THE
+House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, WE THE
 MEDIA, Heart of Ellsworth and Baraza.
 
 ## A future edition

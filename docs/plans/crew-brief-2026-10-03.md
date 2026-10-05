@@ -62,15 +62,13 @@ below without updating the source.
 | 13:23 | Changeover (12) |
 | 13:35 | 3. Grass Rug (33) |
 | 14:08 | Changeover (12) |
-| 14:20 | 4. Acadia Rising (33) |
-| 14:53 | Changeover (7) |
-| 15:00 | 5. Michael Anderson (33) |
+| 15:00 | 4. Michael Anderson (33) |
 | 15:33 | Changeover (7) |
-| 15:40 | 6. DCoop (40) |
+| 15:40 | 5. DCoop (40) |
 | 16:20 | Changeover (5) |
-| 16:25 | 7. LyonsDen (40) |
+| 16:25 | 6. LyonsDen (40) |
 | 17:05 | Changeover (5) |
-| 17:10 | 8. Tom Fellenz (40), closes the outdoor block |
+| 17:10 | 7. Tom Fellenz (40), closes the outdoor block |
 | 17:50 | Music ends. Closing remarks (Zaal), the last ten minutes before the street clears at six |
 | 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
 | 22:00 | Close, approximate. Black Moon keeps its own hours |

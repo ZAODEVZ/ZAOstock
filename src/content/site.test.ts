@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, didNotPlay, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, RETIRED_ACT_SLUGS, isRetiredAct, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -66,14 +66,15 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists eleven confirmed partners', () => {
+  it('lists ten confirmed partners', () => {
     // Ninth since 2026-09-16: WE THE MEDIA, media and content capture (Zaal).
     // Tenth since 2026-09-18: Heart of Ellsworth, confirmed in writing by
     // their own email asking to be listed; Zaal said yes to all of it.
     // Eleventh since 2026-09-16 (Motomoto x Zaal call, tracker card 9793):
     // Baraza, Motomoto's AI-voice media distribution project.
-    expect(PARTNERS).toHaveLength(11);
-    expect(PARTNERS.map((p) => p.name)).toContain('Artizen');
+    // Back to ten on 2026-10-05: the funding partner was removed (Zaal: the platform wound down).
+    expect(PARTNERS).toHaveLength(10);
+    expect(PARTNERS.map((p) => p.name.toLowerCase()).join('|')).not.toContain(['art', 'izen'].join(''));
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).toContain('WE THE MEDIA');
@@ -202,14 +203,13 @@ describe('the names-only lineup', () => {
     'The Crown Vics',
     'OPEN X',
     'Grass Rug',
-    'Acadia Rising',
     'Michael Anderson',
     'DCoop',
     'LyonsDen',
     'Tom Fellenz',
   ];
 
-  it('is the eight acts of the locked run of show, in order (Hurricane out 2026-09-10)', () => {
+  it('is the seven acts who played, in run-of-show order (Hurricane out 2026-09-10, one act retired 2026-10-05)', () => {
     expect(LINEUP_NAMES).toEqual(RUN_OF_SHOW);
   });
 
@@ -553,13 +553,6 @@ describe('Hurricane is off the bill', () => {
     expect(read('scripts/create-artist-form.gs')).not.toMatch(/'Hurricane - /);
   });
 
-  // Zaal's standing rule, 2026-09-10: always "Acadia Rising", never the long form.
-  it('bills Acadia Rising by that name only', () => {
-    for (const p of ['docs/marketing/press-kit.md', 'ops-room/ops-room.src.html', 'scripts/create-artist-form.gs', 'src/app/program/page.tsx']) {
-      expect(read(p), p).not.toMatch(/Acadia Rising \(|Women with Rhythm/);
-    }
-  });
-
   it('is counted as eight wherever the kit states a count', () => {
     expect(read('docs/marketing/press-kit.md')).not.toMatch(/\bnine\b/i);
   });
@@ -774,15 +767,12 @@ describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
  * excluded: a separate change owns the replay surface and its wording.
  */
 describe('claims about who played stay within what Zaal has confirmed', () => {
-  // Zaal, 2026-10-04: "Acadia rising did not play"; the other seven, "yes all
-  // played"; and the after-party ran with
-  // all four billed acts ("A and it was awesome"). So "played" is now allowed,
-  // but only for PLAYED_NAMES and the after-party: never for all eight, and
-  // never for an act in DID_NOT_PLAY.
+  // Zaal, 2026-10-04: seven acts, "yes all played"; and the after-party ran with
+  // all four billed acts ("A and it was awesome"). So "played" is allowed for
+  // PLAYED_NAMES and the after-party: never for "eight", which is not the count.
   const BARRED_PERFORMANCE: ReadonlyArray<readonly [RegExp, string]> = [
-    [/\b(eight|8|all eight|all 8)( independent)? (acts|artists) (that |who )?played\b/i, 'seven played; one act on the bill did not (DID_NOT_PLAY in site.ts)'],
-    [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES, not the bill'],
-    [/Acadia Rising[^.\n]{0,80}\bplayed\b/i, 'Zaal: "Acadia rising did not play"'],
+    [/\b(eight|8|all eight|all 8)( independent)? (acts|artists) (that |who )?played\b/i, 'seven acts played'],
+    [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES'],
     [/Played in order/, 'say "Running order"'],
   ];
 
@@ -814,44 +804,90 @@ describe('claims about who played stay within what Zaal has confirmed', () => {
     expect('the 8 acts played back to back').toMatch(BARRED_PERFORMANCE[0][0]);
     expect('Eight independent artists played one stage').toMatch(BARRED_PERFORMANCE[0][0]);
     expect('{LINEUP_NAMES.length} acts played from noon').toMatch(BARRED_PERFORMANCE[1][0]);
-    expect('Acadia Rising played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[2][0]);
     expect('7 independent acts played back to back').not.toMatch(BARRED_PERFORMANCE[0][0]);
   });
 
   // The artist page passes the DATABASE row's name, and nothing holds that
   // column to the spelling in site.ts. The sentence is assembled at run time,
   // where the source scan above cannot see it, so it is tested here.
-  it('an act that did not play never gets "played ZAOstock", however the database spells it', () => {
-    for (const name of ['Acadia Rising', 'acadia rising', 'ACADIA RISING', ' Acadia Rising ', 'Acadia  Rising', 'Acadia Rising!']) {
-      expect(didNotPlay(name), JSON.stringify(name)).toBe(true);
-      const line = artistRecordLine(name, 'Oct 3, 2026', 'in Ellsworth, Maine');
-      expect(line, JSON.stringify(name)).toContain('was on the bill for ZAOstock');
-      expect(line, JSON.stringify(name)).not.toMatch(/played/i);
-    }
-  });
-
-  it('every act that played gets "played ZAOstock", and no other act is caught by the slug match', () => {
+  it('every act that played gets "played ZAOstock"', () => {
     for (const name of PLAYED_NAMES) {
-      expect(didNotPlay(name), name).toBe(false);
+      expect(isRetiredAct(name), name).toBe(false);
       const line = artistRecordLine(name, 'Oct 3, 2026', 'in Ellsworth, Maine');
       expect(line, name).toContain('played ZAOstock on Oct 3, 2026 in Ellsworth, Maine.');
-      expect(line, name).not.toContain('on the bill');
     }
-    expect(didNotPlay('Acadia')).toBe(false);
-    expect(didNotPlay('')).toBe(false);
+    expect(isRetiredAct('')).toBe(false);
   });
 
   it('the artist page builds that sentence through artistRecordLine, not by comparing names itself', () => {
     const page = readFileSync(path.join(process.cwd(), 'src/app/artist/[slug]/page.tsx'), 'utf8');
     expect(page.match(/artistRecordLine\(artist\.name/g)?.length).toBe(2);
-    expect(page).not.toMatch(/DID_NOT_PLAY\.includes/);
     expect(page).not.toMatch(/played ZAOstock on/);
   });
 
-  it('counts seven as having played and keeps the eighth on the bill only', () => {
-    expect(DID_NOT_PLAY).toEqual(['Acadia Rising']);
-    expect(PLAYED_NAMES.length).toBe(LINEUP_NAMES.length - 1);
-    expect(PLAYED_NAMES).not.toContain('Acadia Rising');
-    expect(LINEUP_NAMES).toContain('Acadia Rising');
+  it('the bill and the record are the same acts', () => {
+    expect(PLAYED_NAMES).toEqual(LINEUP_NAMES);
+    expect(LINEUP_NAMES).toHaveLength(7);
+  });
+});
+
+// Zaal, 2026-10-05: two names are retired from every public mention, now and in
+// the future (vault decisions/grill-2026-10-05-orchestration-retire-partners.md).
+// The repo is public, so this test builds the names from fragments: a test that
+// spelled them out would be the one file that still carried them.
+describe('retired names appear nowhere in the public site', () => {
+  const ACT = ['acad', 'ia ris', 'ing'].join('');
+  const ACT_SLUG = ['acad', 'ia-ris', 'ing'].join('');
+  const PLATFORM = ['art', 'izen'].join('');
+  const retired = new RegExp(`${ACT}|${ACT_SLUG.replace('-', '[- _]?')}|${PLATFORM}`, 'i');
+  const roots = ['src', 'public', 'ops-room', 'scripts'];
+  const files: string[] = [];
+  const walk = (dir: string) => {
+    for (const ent of readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) walk(full);
+      else if (/\.(tsx?|mjs|js|json|md|html|txt|gs|sh|xml|svg)$/.test(ent.name)) files.push(full);
+    }
+  };
+  for (const r of roots) walk(path.join(process.cwd(), r));
+
+  it('is inspecting the public tree', () => {
+    expect(files.length).toBeGreaterThan(50);
+    expect(files.some((f) => f.endsWith(path.join('content', 'site.ts')))).toBe(true);
+  });
+
+  it('the pattern can fail: it matches the names', () => {
+    expect(`${ACT} played`).toMatch(retired);
+    expect(`/artists/${ACT_SLUG}.webp`).toMatch(retired);
+    expect(`${PLATFORM}.fund`).toMatch(retired);
+    expect('Acadia National Park').not.toMatch(retired);
+  });
+
+  it('no source, public file or script carries either name', () => {
+    const hits = files
+      .filter((f) => retired.test(readFileSync(f, 'utf8')) || retired.test(path.basename(f)))
+      .map((f) => path.relative(process.cwd(), f));
+    expect(hits).toEqual([]);
+  });
+
+  it('no image file is named for either', () => {
+    const imgs: string[] = [];
+    const w = (dir: string) => {
+      for (const ent of readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, ent.name);
+        if (ent.isDirectory()) w(full);
+        else imgs.push(ent.name);
+      }
+    };
+    w(path.join(process.cwd(), 'public'));
+    expect(imgs.filter((n) => retired.test(n))).toEqual([]);
+  });
+
+  it('a database row for a retired act is recognised however it is spelled', () => {
+    expect(RETIRED_ACT_SLUGS).toEqual([ACT_SLUG]);
+    for (const name of [ACT, ACT.toUpperCase(), ` ${ACT} `, ACT.replace(' ', '  '), `${ACT}!`]) {
+      expect(isRetiredAct(name), JSON.stringify(name)).toBe(true);
+    }
+    expect(isRetiredAct('Acadia')).toBe(false);
   });
 });

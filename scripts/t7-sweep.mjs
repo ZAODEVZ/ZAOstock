@@ -34,7 +34,7 @@
 const BASE = (process.env.BASE || 'https://zaostock.com').replace(/\/$/, '');
 
 const ARTIST_SLUGS = [
-  'the-crown-vics', 'open-x', 'grass-rug', 'acadia-rising',
+  'the-crown-vics', 'open-x', 'grass-rug',
   'michael-anderson', 'dcoop', 'lyonsden', 'tom-fellenz',
 ];
 

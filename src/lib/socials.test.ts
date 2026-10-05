@@ -10,11 +10,11 @@ describe('parseSocials', () => {
     ]);
   });
 
-  it('links two bare domains, Acadia Rising style', () => {
-    const tokens = parseSocials('facebook.com/AcadiaRising instagram.com/acadia.rising');
+  it('links two bare domains', () => {
+    const tokens = parseSocials('facebook.com/ExampleBand instagram.com/example.band');
     expect(tokens).toEqual([
-      { text: 'facebook.com/AcadiaRising', href: 'https://facebook.com/AcadiaRising' },
-      { text: 'instagram.com/acadia.rising', href: 'https://instagram.com/acadia.rising' },
+      { text: 'facebook.com/ExampleBand', href: 'https://facebook.com/ExampleBand' },
+      { text: 'instagram.com/example.band', href: 'https://instagram.com/example.band' },
     ]);
   });
 

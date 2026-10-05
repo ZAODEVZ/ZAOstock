@@ -49,12 +49,12 @@ describe('findActByCode - the gate on the background page', () => {
   });
 });
 
-describe('OPS_ACTS - one page per act, eight acts', () => {
+describe('OPS_ACTS - one page per act, seven acts', () => {
   it('is the bill in running order, without Hurricane', () => {
     // Hurricane is out (Zaal, 2026-09-10). Until LINEUP_NAMES drops him this
     // filter removes him; after, it is a no-op and the equality still holds.
     expect(OPS_ACTS.map((a) => a.name)).toEqual(LINEUP_NAMES.filter((n) => n !== 'Hurricane'));
-    expect(OPS_ACTS).toHaveLength(8);
+    expect(OPS_ACTS).toHaveLength(7);
     expect(OPS_ACTS.some((a) => /hurricane/i.test(a.name + a.key))).toBe(false);
   });
 
@@ -84,6 +84,13 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
       const prev = OPS_ACTS[i - 1];
       const base = prev.minutes === 40 ? 5 : 7;
       const widened = prev.minutes === 40 ? 10 : 12;
+      // The slot the retired act vacated (2026-10-05) is left as a 52-minute
+      // hole after Grass Rug: no set moved, because the grid is the record of
+      // what ran. Every other pair keeps the changeover rule.
+      if (prev.name === 'Grass Rug') {
+        expect(OPS_ACTS[i].setStart).toBe(addMinutes(addMinutes(prev.setStart, prev.minutes), 52));
+        continue;
+      }
       const changeover = i <= 3 ? widened : base;
       expect(OPS_ACTS[i].setStart, `${prev.name} -> ${OPS_ACTS[i].name}`).toBe(
         addMinutes(addMinutes(prev.setStart, prev.minutes), changeover),
@@ -94,7 +101,7 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
     }
     const last = OPS_ACTS[OPS_ACTS.length - 1];
     expect(addMinutes(last.setStart, last.minutes)).toBe('17:50');
-    expect(OPS_ACTS.map((a) => a.minutes)).toEqual([33, 33, 33, 33, 33, 40, 40, 40]);
+    expect(OPS_ACTS.map((a) => a.minutes)).toEqual([33, 33, 33, 33, 40, 40, 40]);
   });
 
   it('gives every act the SAME time as /program', () => {
@@ -109,15 +116,15 @@ describe('OPS_ACTS - one page per act, eight acts', () => {
 
   it('prefills with the bare act name the live dropdown offers', () => {
     // Read from the live form 2026-09-10 after the hand edit: bare names only,
-    // no set times, no member names (Zaal: always "Acadia Rising").
+    // no set times, no member names (Zaal's standing rule: bare names only).
     const LIVE_OPTIONS = [
-      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising',
+      'The Crown Vics', 'OPEN X', 'Grass Rug',
       'Michael Anderson', 'DCoop', 'LyonsDen', 'Tom Fellenz',
     ];
     for (const a of OPS_ACTS) {
       const v = new URL(artistFormUrl({ act: a })).searchParams.get(ARTIST_FORM.actEntry);
       expect(LIVE_OPTIONS, a.name).toContain(v);
-      expect(v).not.toMatch(/\d:\d{2}|Sen Wilde|Women with Rhythm/);
+      expect(v).not.toMatch(/\d:\d{2}/);
     }
   });
 });
@@ -189,7 +196,7 @@ describe('actFromFormAnswer - every shape the act question has had', () => {
   it('matches every act from its original option text and its bare name', () => {
     const OLD = [
       'The Crown Vics - 12:05 PM, 30 min', 'OPEN X - 12:40 PM, 40 min', 'Grass Rug - 1:25 PM, 30 min',
-      'Acadia Rising (Sen Wilde, with Women with Rhythm) - 2:00 PM, 30 min', 'Michael Anderson - 2:35 PM, 30 min',
+      'Michael Anderson - 2:35 PM, 30 min',
       'Dcoop - 3:45 PM, 40 min', 'LyonsDen - 4:30 PM, 40 min', 'Fellenz - 5:15 PM, 40 min',
     ];
     expect(OLD.map((a) => actFromFormAnswer(a)?.name)).toEqual(OPS_ACTS.map((a) => a.name));
@@ -197,7 +204,7 @@ describe('actFromFormAnswer - every shape the act question has had', () => {
   });
 
   // The red side: an answer that is not an act must not be forced onto one.
-  it('returns null for anything that is not one of the eight', () => {
+  it('returns null for anything that is not one of the seven', () => {
     for (const bad of ['Hurricane - 3:10 PM, 30 min', 'Hurricane', 'Coop', '', '   ', 'TEST DO NOT USE']) {
       expect(actFromFormAnswer(bad), bad).toBeNull();
     }

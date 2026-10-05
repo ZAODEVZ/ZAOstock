@@ -111,8 +111,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
                 {/* Zaal, 2026-10-04, asked whether The Crown Vics, OPEN X, Grass
                     Rug, Michael Anderson, DCoop, LyonsDen and Tom Fellenz all played:
                     "yes all played" (vault decisions/grill-2026-10-04-orchestration-0150.md,
-                    item 5). An act in DID_NOT_PLAY keeps "was on the bill"; the choice is
-                    made by slug in artistRecordLine (site.ts), not by exact name. */}
+                    item 5). The sentence is built in artistRecordLine (site.ts). */}
                 {artistRecordLine(artist.name, FESTIVAL.dateLabel, `at the ${FESTIVAL.venue} in ${FESTIVAL.city}`)}{' '}
                 A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
               </p>
