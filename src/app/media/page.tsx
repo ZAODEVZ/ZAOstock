@@ -9,6 +9,7 @@ import { getFallbackLineup } from '@/lib/lineup-fallback';
 import { parseSocials } from '@/lib/socials';
 import { SiteShell, Section, Eyebrow, Card } from '@/components/poster';
 import { RadioPlayer } from '@/components/RadioPlayer';
+import { ReplayPlayer } from '@/components/ReplayPlayer';
 
 // /media - what has been written about ZAOstock, and where to follow each act.
 // Content lives in src/content/media.ts (press, embeds) and
@@ -88,6 +89,14 @@ export default async function MediaPage() {
           {RADIO.map((r) => (
             <RadioPlayer key={r.src} src={r.src} title={r.title} detail={r.detail} seconds={r.seconds} />
           ))}
+        </div>
+      </Section>
+
+      <Section id="replay">
+        <Eyebrow className="mb-3">The festival, recorded</Eyebrow>
+        <p className="text-sm text-ink-secondary m-0 mb-3 max-w-[760px]">The full 3 October stream from the parklet stage, in six parts.</p>
+        <div className="max-w-[760px]">
+          <ReplayPlayer />
         </div>
       </Section>
 
