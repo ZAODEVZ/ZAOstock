@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { PLAYED_NAMES, SUPPORT_TIERS, displayName } from '@/content/site';
 import { artistSlug } from '@/content/event-jsonld';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 
 const TIER_PRICES = `${SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or ${SUPPORT_TIERS[SUPPORT_TIERS.length - 1].price}`;
 
@@ -50,6 +50,10 @@ ZAOstock was the first ZAO Festivals event in Maine, after ZAO-PALOOZA (New York
 - ${FESTIVAL.window}, ${FESTIVAL.venue}: ${PLAYED_NAMES.length} acts played back to back, with our MC and our partners between sets. Music was billed from noon.
 - 6 PM: the ZAOstock after-party ran at Black Moon Public House next door (142 Main St), on Black Moon's own premises, with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. It was billed doors from 6, music 7 to 10 PM. All ages. Flyer and details: https://zaostock.com/afterparty. It was not a second ZAOstock stage.
 - Free to attend. Support for the artists is still open at ${TIER_PRICES} on /tickets.
+
+## Next edition
+
+${nextEditionLine()} Nothing else about it is set.
 
 ## Lineup
 

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, NEXT_EDITION, nextEditionLine } from '@/content/festival';
 import { SITE, PLAYED_NAMES, LINEUP_NAMES_NOTE, PARTNERS, ELLSWORTH, displayName } from '@/content/site';
 import { SiteShell } from '@/components/poster';
 import { HomeHero } from './HomeHero';
@@ -71,7 +71,7 @@ const PANELS = [
 const PLUG_IN = [
   { n: '01', who: 'Everyone', what: 'Watch the replay', href: '/live' },
   { n: '02', who: 'Supporters', what: 'Back the artists', href: '/tickets' },
-  { n: '03', who: 'Musicians', what: 'Stay in touch', href: '/musicians' },
+  { n: '03', who: 'Musicians', what: NEXT_EDITION.name, href: '/musicians' },
   { n: '04', who: 'Sponsors & press', what: 'Get in touch', href: '/sponsor' },
 ] as const;
 
@@ -332,6 +332,11 @@ export default function HomePage() {
                 Support the artists
               </Link>
             </div>
+            {/* The next edition: the date and nothing else is set. Read from
+                NEXT_EDITION so a move changes one file. */}
+            <p className={s.lede} style={{ margin: '0 auto', color: 'inherit', fontWeight: 700 }}>
+              {nextEditionLine()}
+            </p>
             <Image className={s.brush} src="/brand/home/zaostock_brush_lettering_black.webp" alt="ZAOstock" width={700} height={235} unoptimized />
             <Link href="/festivals" className={s.link} style={{ color: 'inherit', fontSize: 14 }}>
               What came before: the ZAO Festivals series

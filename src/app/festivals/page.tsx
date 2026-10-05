@@ -3,7 +3,7 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import { InstagramLinks } from './InstagramLinks';
 import { getPublicMembers, type PublicMember } from '@/lib/members';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, SectionHeader } from '@/components/poster';
 
@@ -94,6 +94,7 @@ export default async function FestivalsPage() {
             The ZAO&apos;s series of community-owned, artist-built music festivals. Free to attend, built to help artists grow, and the crowd that funds it owns it. New York, Miami, Maryland and Maine so far; the flagship was ZAOstock in Maine, October 2026.
           </p>
           <p className="text-base text-ink-950 font-bold mt-3 m-0">ZAO Festivals presents ZAOstock. One umbrella, many events, one DNA.</p>
+          <p className="text-base text-ink-secondary mt-2 m-0">{nextEditionLine()}</p>
         </div>
       </Section>
 

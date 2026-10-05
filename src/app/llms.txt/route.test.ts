@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, displayName } from '@/content/site';
 import { artistSlug } from '@/content/event-jsonld';
 import { GET } from './route';
@@ -27,6 +27,12 @@ describe('GET /llms.txt', () => {
   it('never claims a uniform set length - sets are 33 or 40 minutes, not "about 30"', async () => {
     const text = await content();
     expect(text).not.toMatch(/about 30 minutes each/i);
+  });
+
+  it('states the next edition from NEXT_EDITION, and nothing else about it', async () => {
+    const text = await content();
+    expect(text).toContain(nextEditionLine());
+    expect(text).toContain('Nothing else about it is set.');
   });
 
   it('names how many acts played, sourced from PLAYED_NAMES, never the size of the bill', async () => {
