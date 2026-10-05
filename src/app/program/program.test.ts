@@ -57,10 +57,11 @@ describe('the published run of show', () => {
   // Zaal published the real names with their real times on 2026-09-07, so the
   // shape to pin is now the run of show locked 3 September: NINE acts, in order.
   // EIGHT since 2026-09-10: Hurricane is out, no replacement, nobody moved.
+  // SEVEN since 2026-10-05: one act is retired from public copy (Zaal).
   // Reverting to a shorter or reordered bill is the same regression in a new form.
-  it('carries all EIGHT acts of the locked run of show, in order', () => {
+  it('carries all SEVEN acts who played, in run-of-show order', () => {
     const ACTS = [
-      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
+      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Michael Anderson',
       'DCoop', 'LyonsDen', 'Tom Fellenz',
     ];
     const positions = ACTS.map((a) => ({ act: a, at: src.indexOf(`label: '${a}'`) }));

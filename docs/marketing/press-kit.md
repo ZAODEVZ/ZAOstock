@@ -84,8 +84,8 @@ One venue at a time. The day did not split across two rooms.
 
 ## The lineup
 
-**Eight acts were on the bill.** In running order: The Crown Vics,
-OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz.
+**Seven acts played.** In running order: The Crown Vics,
+OPEN X, Grass Rug, Michael Anderson, DCoop, LyonsDen, Tom Fellenz.
 
 <!-- NONE of them has countersigned. They are booked and locked in the run of
      show, which is a different claim from confirmed. Do not describe any act
@@ -124,7 +124,7 @@ As of 1 October 2026, WaveWarZ had run 1,596 battles.
 
 ## Partners
 
-Partners gave time, venue and infrastructure, and Artizen supported the funding.
+Partners gave time, venue and infrastructure.
 Every partner had a named point of contact on the ZAO team.
 
 - City of Ellsworth - parklet venue
@@ -134,7 +134,6 @@ Every partner had a named point of contact on the ZAO team.
 - WaveWarZ - live music-battle format, online all year, not on the 3 October programme
 - COC Concertz - co-presenter
 - Bomb Squad - crew, content and merch
-- Artizen - funding partner
 - WE THE MEDIA - media and content capture
 - Heart of Ellsworth - community partner, Art of Ellsworth: Maine Craft Weekend
 - Baraza - AI-voice media distribution

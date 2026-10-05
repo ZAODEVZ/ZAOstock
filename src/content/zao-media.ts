@@ -17,8 +17,8 @@ import { LINEUP_NAMES } from './site';
 // - Day 259 og:description "LyonsDen is playing ZAOstock"
 // - Day 260 og:description "Tom Fellenz is playing ZAOstock"
 // - Day 268 "the Maine artists on the ZAOstock bill" names all five Maine acts
-// The single-act drafts for Michael Anderson, The Crown Vics, OPEN X and
-// Acadia Rising in zaoonparagraph were not published under those days, so
+// The single-act drafts for Michael Anderson, The Crown Vics and OPEN X
+// in zaoonparagraph were not published under those days, so
 // they are not here. Add a row when an edition goes live, not before.
 
 export type MediaItem = {
@@ -35,7 +35,6 @@ export const ZAO_MEDIA: Readonly<Record<string, readonly MediaItem[]>> = {
   'The Crown Vics': [DAY_268],
   'OPEN X': [DAY_268],
   'Grass Rug': [DAY_268],
-  'Acadia Rising': [DAY_268],
   'Michael Anderson': [DAY_268],
   DCoop: [
     {

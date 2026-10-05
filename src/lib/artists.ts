@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { randomBytes } from 'crypto';
+import { isRetiredAct } from '@/content/site';
 
 export interface PublicArtist {
   id: string;
@@ -111,7 +112,7 @@ export const getRosterArtists = cache(async function getRosterArtists(): Promise
   // otherwise last night was the bug. Recomputed here from the FILTERED
   // array's own index, which is correct by construction regardless of how
   // many rows are excluded or why.
-  return data.filter(isOnBill).map((a, i) => ({
+  return data.filter((a) => isOnBill(a) && !isRetiredAct(a.name)).map((a, i) => ({
     id: a.id,
     name: a.name,
     slug: slugify(a.name),

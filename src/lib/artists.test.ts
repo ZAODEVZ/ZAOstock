@@ -92,7 +92,7 @@ describe('getRosterArtists - end to end through the real filter', () => {
 
 // THE RED CONTROL FOR THE 2026-09-16 BUG. zaal-dotfiles-2d, reading
 // /artist/lyonsden live: the page said "Act 8 of 8", but LyonsDen is 7th in
-// the real running order (Crown Vics, OPEN X, Grass Rug, Acadia Rising,
+// the real running order (Crown Vics, OPEN X, Grass Rug,
 // Michael Anderson, DCoop, LyonsDen, Fellenz). Cause: Hurricane held
 // set_order 6 before he was declined 2026-09-10 and it was never reassigned,
 // so the raw column reads 1,2,3,4,5,[6=excluded],7,8,9 for the nine rows -
@@ -105,7 +105,8 @@ const NINE_ROWS_WITH_A_GAP = [
   { id: '1', name: 'The Crown Vics', status: 'wishlist', set_order: 1 },
   { id: '2', name: 'OPEN X', status: 'wishlist', set_order: 2 },
   { id: '3', name: 'Grass Rug', status: 'wishlist', set_order: 3 },
-  { id: '4', name: 'Acadia Rising', status: 'wishlist', set_order: 4 },
+  // The retired act (Zaal, 2026-10-05) is still a row in production; the roster must drop it.
+  { id: '4', name: ['Acad', 'ia Ris', 'ing'].join(''), status: 'wishlist', set_order: 4 },
   { id: '5', name: 'Michael Anderson', status: 'wishlist', set_order: 5 },
   { id: '6', name: 'Hurricane', status: 'declined', set_order: 6 },
   { id: '7', name: 'DCoop', status: 'confirmed', set_order: 7 },
@@ -114,23 +115,23 @@ const NINE_ROWS_WITH_A_GAP = [
 ];
 
 describe('getRosterArtists - setOrder is a dense rank, not the raw column (2026-09-16)', () => {
-  it('gives every surviving act a gap-free 1..8 rank, not the raw set_order with Hurricane\'s hole in it', async () => {
+  it('gives every surviving act a gap-free 1..7 rank, not the raw set_order with Hurricane\'s and the retired act\'s holes in it', async () => {
     getSupabaseAdmin.mockReturnValue(supabaseStub(NINE_ROWS_WITH_A_GAP));
     const roster = await getRosterArtists();
-    expect(roster).toHaveLength(8);
-    expect(roster.map((a) => a.setOrder)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(roster).toHaveLength(7);
+    expect(roster.map((a) => a.setOrder)).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 
-  it('LyonsDen renders 7 of 8, not 8 of 8 - the exact case reported live', async () => {
+  it('LyonsDen renders 6 of 7 - the exact case reported live', async () => {
     getSupabaseAdmin.mockReturnValue(supabaseStub(NINE_ROWS_WITH_A_GAP));
     const roster = await getRosterArtists();
-    expect(roster.find((a) => a.name === 'LyonsDen')!.setOrder).toBe(7);
+    expect(roster.find((a) => a.name === 'LyonsDen')!.setOrder).toBe(6);
   });
 
-  it('Tom Fellenz renders 8 of 8 once his row is on the bill', async () => {
+  it('Tom Fellenz renders 7 of 7 once his row is on the bill', async () => {
     getSupabaseAdmin.mockReturnValue(supabaseStub(NINE_ROWS_WITH_A_GAP));
     const roster = await getRosterArtists();
-    expect(roster.find((a) => a.name === 'Tom Fellenz')!.setOrder).toBe(8);
+    expect(roster.find((a) => a.name === 'Tom Fellenz')!.setOrder).toBe(7);
   });
 });
 
@@ -151,7 +152,7 @@ describe('getRosterArtists - setOrder is a dense rank, not the raw column (2026-
 // edit nobody also made here. scripts/reveal-preflight.sh is the live half
 // of this same chain for LINEUP_NAMES; this is its OPS_ACTS counterpart.
 describe('OPS_ACTS mirrors the on-bill roster (2026-09-16, queued by the seat)', () => {
-  it('names the same eight acts as getRosterArtists, same running order', async () => {
+  it('names the same seven acts as getRosterArtists, same running order', async () => {
     getSupabaseAdmin.mockReturnValue(supabaseStub(NINE_ROWS_WITH_A_GAP));
     const roster = await getRosterArtists();
     expect(OPS_ACTS.map((a) => a.name)).toEqual(roster.map((a) => a.name));

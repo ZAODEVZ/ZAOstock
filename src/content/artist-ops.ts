@@ -73,8 +73,6 @@ export const OPS_ACTS: readonly OpsAct[] = [
     codeSha256: '9d4dc8269872799d466ce773635b98c63ebf21ae76755ea3e03a6f2495e4373e' },
   { key: 'grass-rug', name: 'Grass Rug', setStart: '13:35', minutes: 33,
     codeSha256: '23bb7d8cec6d8080324bb8172f8cd2c4dda1d96d0c194193b62253459ecaade8' },
-  { key: 'acadia-rising', name: 'Acadia Rising', setStart: '14:20', minutes: 33,
-    codeSha256: 'e9ff956154b23901cee71a313712cff962bd772da981f7b63fa2273a6184086b' },
   { key: 'michael-anderson', name: 'Michael Anderson', setStart: '15:00', minutes: 33,
     codeSha256: 'b89fdb296171f0a04ebd1dcefa85b13b46dc74e32fe00f3e89397ac06d86b652' },
   { key: 'dcoop', name: 'DCoop', setStart: '15:40', minutes: 40,
@@ -216,9 +214,8 @@ export const BRING: ReadonlyArray<string> = [
  *   "Dcoop"                     bare name, after the first hand edit
  *   "DCoop"                     Zaal's ruled spelling, after the rename
  *
- * plus the retired long form "Acadia Rising (Sen Wilde, with Women with
- * Rhythm) - 2:00 PM, 30 min". Anything that reads responses must accept every
- * shape, or it matches seven acts and loses the one who already replied.
+ * Anything that reads responses must accept every shape, or it matches a
+ * subset of the acts and loses the one who already replied.
  *
  * Match: drop everything from " - " on, drop any parenthetical, then compare
  * letters and digits only, case-insensitively. No fuzzy matching: an answer

@@ -56,9 +56,9 @@ export const BLOCKS: Block[] = [
       // still keeps every start on the 5-minute grid - 7 becomes 12 after a
       // 33-minute set, 5 becomes 10 after a 40-minute one. OPEN X drops from
       // 40 to 33 minutes, so its own following changeover also needs the
-      // 33-minute tier (12, not 10). The other four acts are unchanged: four
-      // 33-minute acts (Crown Vics, Grass Rug, Acadia Rising, Michael
-      // Anderson), three 40-minute acts (DCoop, LyonsDen, Tom Fellenz).
+      // 33-minute tier (12, not 10). The other acts are unchanged: three
+      // 33-minute acts (Crown Vics, Grass Rug, Michael Anderson), three
+      // 40-minute acts (DCoop, LyonsDen, Tom Fellenz).
       // Music 12:05 to 17:50, street clears at 18:00: ten minutes of margin.
       //
       // CLOSING REMARKS ADDED 2026-09-27: Tom Fellenz, by text - "should for
@@ -82,8 +82,6 @@ export const BLOCKS: Block[] = [
       { time: '13:23', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '13:35', label: 'Grass Rug', detail: 'Indie jam rock.', tone: 'set' },
       { time: '14:08', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '14:20', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion.', tone: 'set' },
-      { time: '14:53', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' , crewFacing: true },
       { time: '15:00', label: 'Michael Anderson', detail: 'Solo piano.', tone: 'set' },
       { time: '15:33', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' , crewFacing: true },
       { time: '15:40', label: 'DCoop', detail: 'Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B.', tone: 'set' },

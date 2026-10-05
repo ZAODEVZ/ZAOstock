@@ -32,7 +32,7 @@ describe('no set times in public', () => {
   it('still keeps every act, in order, with the changeovers folded away', () => {
     const outdoor = publicSlots(BLOCKS[0]);
     expect(outdoor.filter((s) => s.tone === 'set').map((s) => s.label)).toEqual([
-      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
+      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Michael Anderson',
       'DCoop', 'LyonsDen', 'Tom Fellenz',
     ]);
     expect(outdoor.some((s) => s.label === 'Changeover')).toBe(false);
@@ -49,10 +49,10 @@ describe('no set times in public', () => {
     expect(jsxText.filter((l) => CLOCK.test(l) && /className|>/.test(l))).toEqual([]);
   });
 
-  it('gives each of the eight acts its range, start to the next slot', () => {
+  it('gives each of the seven acts its range, start to the next slot', () => {
     const t = actTimes(BLOCKS[0]);
     expect(Object.keys(t)).toEqual([
-      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Acadia Rising', 'Michael Anderson',
+      'The Crown Vics', 'OPEN X', 'Grass Rug', 'Michael Anderson',
       'DCoop', 'LyonsDen', 'Tom Fellenz',
     ]);
     expect(t['The Crown Vics']).toBe('12:05 to 12:38 PM');

@@ -15,8 +15,7 @@ import { Badge } from './primitives';
 // 2026-09-16 logo audit: three entries here (black-moon.jpg, star-977.jpg,
 // coc-concertz.jpg) named files that do not exist in public/partners/ - every
 // real logoSrc in PARTNERS is a .png, so those three were dead and
-// unreachable. artizen.png was missing entirely, so its <img> rendered with
-// no explicit width/height (a layout-shift risk none of the other six had).
+// unreachable.
 export const LOGO_SIZE: Record<string, { width: number; height: number }> = {
   '/partners/black-moon.png': { width: 373, height: 400 },
   '/partners/star-977.png': { width: 756, height: 400 },
@@ -24,7 +23,6 @@ export const LOGO_SIZE: Record<string, { width: number; height: number }> = {
   '/partners/wavewarz.png': { width: 800, height: 800 },
   '/partners/coc-concertz.png': { width: 400, height: 400 },
   '/partners/bomb-squad.png': { width: 281, height: 400 },
-  '/partners/artizen.png': { width: 1206, height: 257 },
   // 2026-09-19: three more, and the test below is why these lines exist. #235
   // shipped the files without them and the check went red on main.
   '/partners/heart-of-ellsworth.png': { width: 1012, height: 400 },
