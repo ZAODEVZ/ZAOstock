@@ -183,11 +183,11 @@ export default async function FestivalsPage() {
       ) : null}
 
       <Section>
-        <SectionHeader eyebrow="Be part of it" title="Bring one to your city, sponsor one, play one." lede="ZAO Festivals is a model anyone can run. The goal is more community-owned culture in more places." className="mb-6" />
+        <SectionHeader eyebrow="Be part of it" title="Invite us, sponsor one, play one." lede="In 2027 ZAO Festivals runs two events of its own, ZAOville and ZAOstock. Anywhere else, invite us and we bring the artists as a residency." className="mb-6" />
         <div className="flex flex-wrap gap-3">
           <Button href="/">ZAOstock 2026</Button>
           <Button href="/event-organizers" variant="secondary">
-            Organize
+            Invite us
           </Button>
           <Button href="/sponsor" variant="secondary">
             Sponsor
