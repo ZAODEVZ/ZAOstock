@@ -3,30 +3,25 @@ import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
 import { FESTIVAL, NEXT_EDITION } from '@/content/festival';
 
-// THE 2027 MODEL - Zaal, 2026-10-05 ~19:00 EDT, typed in the zaostock-content
-// pane: "lets prep for 2027 and zaofestivals as an artist residencies for any
-// events we can get invited to other than that just the two events again nxt
-// year ZAOVILLE and ZAOstock". So ZAO Festivals runs two events of its own in
-// 2027 and goes everywhere else as an invited residency. The old pitch on this
-// page ("Run your own ZAO", "ZAO-{YourCity}", "First city to commit gets the
-// slot", per-city revenue split) is retired. Do not bring it back from an
-// older deck.
+// THE 2027 MODEL - Zaal, 2026-10-05 ~19:00 EDT: "just the two events again
+// nxt year ZAOVILLE and ZAOstock". The old pitch on this page ("Run your own
+// ZAO", "ZAO-{YourCity}", "First city to commit gets the slot", per-city
+// revenue split) is retired. Do not bring it back from an older deck.
 //
-// Only what Zaal said is public: we come as an artist residency when invited,
-// and we bring ZAO artists. The fuller offer (MC, livestream, recap content,
-// artist pay and travel terms) is a DRAFT in the 2027 plan, pending his yes.
-// Dotfiles, reviewing #450 at b7c66044: a host reads these lists as an offer,
-// so nothing goes here that he has not stated. Nothing here names a fee, a
-// date or a place for ZAOville 2027: none is set.
+// Artist residencies at invited events are a SIDE PLAN, internal only. Zaal,
+// 2026-10-05 ~19:3x: "No don't say this right now just plan for it as a side
+// thing". So no page says "residency" or offers one until he says so. The plan
+// lives outside the repo (zaostock-content 06-zao-festivals-2027-plan.md).
+// Nothing here names a fee, a date or a place for ZAOville 2027: none is set.
 
 export const metadata: Metadata = {
   title: 'For Event Organizers',
   description:
-    'Invite ZAO Festivals to your event. We bring a residency of independent artists from The ZAO to your bill. In 2027 ZAO Festivals runs two events of its own: ZAOville and ZAOstock.',
+    'In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock. Running something and want to talk? Get in touch.',
   alternates: { canonical: '/event-organizers' },
   openGraph: {
     title: 'For Organizers · ZAO Festivals',
-    description: 'Running an event? Invite ZAO Festivals, and we bring the artists.',
+    description: 'In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock.',
     url: 'https://zaostock.com/event-organizers',
     images: [OG_IMAGE],
     type: 'website',
@@ -34,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'For Organizers · ZAO Festivals',
-    description: 'Running an event? Invite ZAO Festivals, and we bring the artists.',
+    description: 'In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock.',
   },
 };
 
@@ -43,18 +38,19 @@ export default function EventOrganizersPage() {
     <EntryPage
       personaSlug="event-organizers"
       personaLabel="Event Organizers"
-      hero="Running an event? Invite ZAO Festivals."
-      subhead="In 2027 ZAO Festivals runs two events of its own, ZAOville and ZAOstock. Everywhere else we come as an artist residency: you invite us, and we bring a block of ZAO artists to your bill."
-      youGetHeading={{ eyebrow: 'What a residency brings', title: 'To your event' }}
+      hero="ZAO Festivals in 2027: two events."
+      subhead="In 2027 ZAO Festivals runs ZAOville and ZAOstock. We are not opening new city chapters. If you run events and want to talk, write to us."
+      youGetHeading={{ eyebrow: 'In 2027', title: 'The two events' }}
       youGet={[
-        'Independent artists from The ZAO, a community of 100+ musicians and digital creators, on your bill.',
+        'ZAOville 2027: date and place to be announced.',
+        `${NEXT_EDITION.name}: ${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}.`,
       ]}
-      weAskHeading={{ eyebrow: 'What we ask', title: 'From the host' }}
+      weAskHeading={{ eyebrow: 'Get in touch', title: 'If you run events' }}
       weAsk={[
-        'An invitation, and a first conversation about your event.',
+        'Write to info@thezao.com and tell us about your event.',
       ]}
       ctas={[
-        { label: 'Invite us: email for a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAO%20Festivals%20Residency%20Invite', primary: true },
+        { label: 'Email us', href: 'mailto:info@thezao.com?subject=ZAO%20Festivals%202027', primary: true },
         { label: 'See the festivals', href: '/festivals' },
       ]}
       facts={[
@@ -65,7 +61,7 @@ export default function EventOrganizersPage() {
         { term: 'ZAOville 2027', detail: 'Date and place to be announced' },
         { term: NEXT_EDITION.name, detail: `${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}` },
       ]}
-      footnote="Residencies are booked one event at a time. You run your event; we bring the artists."
+      footnote="ZAO Festivals is the events arm of The ZAO."
     />
   );
 }
