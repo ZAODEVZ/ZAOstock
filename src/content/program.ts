@@ -41,7 +41,7 @@ export const BLOCKS: Block[] = [
     end: '18:00',
     venue: 'OUT',
     title: 'Live sets',
-    lede: 'Eight independent acts were on the bill for the parklet stage. The program had the MC between sets with the story of the event and a word from the partners.',
+    lede: 'Seven independent acts played the parklet stage. The program had the MC between sets with the story of the event and a word from the partners.',
     slots: [
       // THE RUN OF SHOW, RETIMED 2026-09-10 (Zaal: "lets give 7 mins between
       // performers and give the 30 mins people some more time", then "option b"),

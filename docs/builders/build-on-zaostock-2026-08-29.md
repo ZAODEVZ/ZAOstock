@@ -12,7 +12,7 @@
 > is current; anything above it that still reads as a live battle window is
 > the August brief.
 
-ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Eight acts on the parklet stage, music from noon until the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
+ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Seven acts played the parklet stage, music from noon until the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
 
 ## The loop: build, then call Zaal
 
@@ -96,9 +96,9 @@ Build: a ZAOstock collaboration board on POIDH: each open task (a photo set of e
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
 | Cost | Free. Optional support at $1, $20 or $50 on /tickets |
-| Music | Eight acts, noon to six, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
+| Music | Seven acts played, noon to six, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
 | Expected | 200 to 250 in person, about 1,000 online |
-| Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
+| Lineup | All seven are public: The Crown Vics, OPEN X, Grass Rug, Michael Anderson, DCoop, LyonsDen, Tom Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
 | Set times | **Not public, and not in any API.** The order is public, the clock is not. Each act reads its own time on its own backstage page. If you are building anything that shows a schedule, build it around the order |
 | Partners | City of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen, WE THE MEDIA, Heart of Ellsworth |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
@@ -118,7 +118,7 @@ Where to read more: https://zaostock.com/llms.txt (the whole site in one text fi
 
 ## Rules for anything you ship publicly
 
-1. Names: the eight acts in the facts table are public and no one else is. The repo carries planning documents with other names, including people no longer involved; those are not public copy. Do not print them.
+1. Names: the seven acts in the facts table are public and no one else is. The repo carries planning documents with other names, including people no longer involved; those are not public copy. Do not print them.
 2. No prices, tiers or sponsor numbers anywhere; packages are on request. No "tax-deductible", no fiscal sponsor claim: ZAOstock has neither.
 3. Partners are the ones listed above and no one else, however friendly the conversation.
 4. Attendee-facing words lead with the music. Your tool can run on Base; the festival page does not say so.
