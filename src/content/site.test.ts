@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -717,5 +717,112 @@ describe('ZAO Ellsworth footer link renders nothing until the Page exists', () =
     // would have rendered nothing for a real, correctly-pasted Page URL.
     const withWww = 'https://www.facebook.com/zaoellsworth';
     expect(zaoEllsworthFacebookUrl(withWww)).toBe(withWww);
+  });
+});
+
+/**
+ * ZAOSTOCK 2026 IS OVER (Zaal, 2026-10-04: "pushing eveything zaostock to the
+ * past"). The festival happened on 3 October, so no public page may invite
+ * anyone to it. These phrases each read as an upcoming day; the guard walks
+ * the public page files so one that comes back in a file nobody listed trips
+ * here. /team, /api, /live and the countdown/calendar components are not
+ * public pages and are left out (the components are kept but unrendered).
+ */
+describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
+  const UPCOMING: ReadonlyArray<readonly [RegExp, string]> = [
+    [/>\s*RSVP free\s*</, 'RSVP is over'],
+    [/See you on\s*<br \/>\s*<em>Franklin Street/, 'the closing section is a thank-you now'],
+    [/Coming to ZAOstock\?/, 'the day has passed'],
+    [/title="Before you come/, 'there is nothing to prepare for'],
+    [/<Countdown\b/, 'no countdown to a day that has passed'],
+    [/<AddToCalendar\b/, 'no calendar invite to a day that has passed'],
+    [/is on the ZAOstock roster/, 'artists played, they are not on a roster for a coming day'],
+  ];
+
+  const pageFiles = (readdirSync(path.join(process.cwd(), 'src/app'), { recursive: true }) as string[])
+    .filter((f) => /\.tsx$/.test(f) && !/\.test\.tsx$/.test(f))
+    .filter((f) => !/^(team|api|live)[\\/]/.test(f))
+    .map((f) => path.join(process.cwd(), 'src/app', f));
+
+  it('is actually inspecting the public pages', () => {
+    expect(pageFiles.length).toBeGreaterThan(20);
+    expect(pageFiles.some((f) => f.endsWith(path.join('tickets', 'page.tsx')))).toBe(true);
+  });
+
+  for (const [pattern, why] of UPCOMING) {
+    it(`no page carries ${pattern.source} - ${why}`, () => {
+      const hits = pageFiles.filter((f) => pattern.test(readFileSync(f, 'utf8'))).map((f) => path.relative(process.cwd(), f));
+      expect(hits).toEqual([]);
+    });
+  }
+
+  it('the control can fail: the pattern list does match a known upcoming line', () => {
+    expect('<Button>RSVP free</Button>').toMatch(UPCOMING[0][0]);
+  });
+});
+
+/**
+ * NOBODY HAS CONFIRMED WHAT HAPPENED ON THE DAY (2026-10-04). The site may say
+ * ZAOstock 2026 was held, was free, was streamed, and what was BILLED. It may
+ * not say a named act, "the eight acts" or the after-party acts actually
+ * played, that the set order or times are what happened, or that the
+ * after-party ran as listed, until the owner confirms. Stream evidence
+ * suggests fewer than eight sets and some running off schedule, with no
+ * after-party footage. These phrases are barred from every public file.
+ *
+ * src/app/live and its content (live.ts, replay.ts, ReplayPlayer.tsx) are
+ * excluded: a separate change owns the replay surface and its wording.
+ */
+describe('claims about who played stay within what Zaal has confirmed', () => {
+  // Zaal, 2026-10-04: "Acadia rising did not play", and the after-party ran with
+  // all four billed acts ("A and it was awesome"). So "played" is now allowed,
+  // but only for PLAYED_NAMES and the after-party: never for all eight, and
+  // never for an act in DID_NOT_PLAY.
+  const BARRED_PERFORMANCE: ReadonlyArray<readonly [RegExp, string]> = [
+    [/\b(eight|8|all eight|all 8)( independent)? (acts|artists) (that |who )?played\b/i, 'seven played; one act on the bill did not (DID_NOT_PLAY in site.ts)'],
+    [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES, not the bill'],
+    [/Acadia Rising[^.\n]{0,80}\bplayed\b/i, 'Zaal: "Acadia rising did not play"'],
+    [/Played in order/, 'say "Running order"'],
+    [/\bplayed ZAOstock\b/i, 'no sentence names one act as having played until Zaal confirms which seven; say "was on the bill for ZAOstock"'],
+  ];
+
+  const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
+  const OWNED_ELSEWHERE = /(^|[\\/])(live[\\/]page\.tsx|live\.ts|replay\.ts|ReplayPlayer\.tsx|lineup-fallback\.ts)$/;
+  const files: string[] = [];
+  for (const r of roots) {
+    const abs = path.join(process.cwd(), r);
+    for (const f of readdirSync(abs, { recursive: true }) as string[]) {
+      const full = path.join(abs, f);
+      if (/\.(tsx?|md|html|txt)$/.test(f) && !/\.test\.tsx?$/.test(f) && !OWNED_ELSEWHERE.test(f) && statSync(full).isFile()) files.push(full);
+    }
+  }
+
+  it('is actually inspecting the public files', () => {
+    expect(files.length).toBeGreaterThan(50);
+    expect(files.some((f) => f.endsWith(path.join('tickets', 'page.tsx')))).toBe(true);
+    expect(files.some((f) => f.endsWith(path.join('live', 'page.tsx')))).toBe(false);
+  });
+
+  for (const [pattern, why] of BARRED_PERFORMANCE) {
+    it(`no public file carries ${pattern.source} - ${why}`, () => {
+      const hits = files.filter((f) => pattern.test(readFileSync(f, 'utf8'))).map((f) => path.relative(process.cwd(), f));
+      expect(hits).toEqual([]);
+    });
+  }
+
+  it('the control can fail: the patterns do match the wording they bar', () => {
+    expect('the 8 acts played back to back').toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('Eight independent artists played one stage').toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('{LINEUP_NAMES.length} acts played from noon').toMatch(BARRED_PERFORMANCE[1][0]);
+    expect('Acadia Rising played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[2][0]);
+    expect('7 independent acts played back to back').not.toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('DCoop played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[4][0]);
+  });
+
+  it('counts seven as having played and keeps the eighth on the bill only', () => {
+    expect(DID_NOT_PLAY).toEqual(['Acadia Rising']);
+    expect(PLAYED_NAMES.length).toBe(LINEUP_NAMES.length - 1);
+    expect(PLAYED_NAMES).not.toContain('Acadia Rising');
+    expect(LINEUP_NAMES).toContain('Acadia Rising');
   });
 });

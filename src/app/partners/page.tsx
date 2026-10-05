@@ -11,19 +11,23 @@ import { SiteShell, Section, Eyebrow, Button, SectionHeader, PartnerTile } from 
 // blank. ENTERACT and Web3Metal are not partners (Zaal, 2026-09-10). Heart of Ellsworth was
 // off until confirmed in writing; confirmed 2026-09-18 by their own email, now listed (src/content/site.ts).
 
+// PAST TENSE, 2026-10-04: ZAOstock 2026 happened, so the partners are listed as
+// the people who gave time, venue and infrastructure to it, and the sponsor
+// pitch is replaced by a thank-you and one contact line.
+
 export const metadata: Metadata = {
   title: 'Partners',
   description: 'The partners behind ZAOstock 2026: the venue, the evening, local radio, the tent, the battle format, and the crews.',
   alternates: { canonical: '/partners' },
   openGraph: {
     title: 'Partners | ZAOstock',
-    description: `Partners give time, venue and infrastructure. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
+    description: `Partners gave time, venue and infrastructure. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
     url: 'https://zaostock.com/partners',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'Partners | ZAOstock',
-    `Partners give time, venue and infrastructure. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
+    `Partners gave time, venue and infrastructure. ${FESTIVAL.dateLabel}, ${FESTIVAL.city}.`,
   ),
 };
 
@@ -37,10 +41,10 @@ export default function PartnersPage() {
         <div className="max-w-[760px]">
           <Eyebrow tone="denim">Partners · ZAOstock 2026</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Partners give time, venue and infrastructure.
+            Partners gave time, venue and infrastructure.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Every partner has a named point of contact on the ZAO team. Nobody here paid to be listed.
+            Every partner had a named point of contact on the ZAO team. Nobody here paid to be listed.
           </p>
         </div>
       </Section>
@@ -67,11 +71,11 @@ export default function PartnersPage() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <SectionHeader
             eyebrow="Sponsors"
-            title="Put money behind a named artist, or the day."
-            lede="Partners give what they already have. Sponsors put a name on the parklet banner, the site and the stream, and get a thank-you from the stage."
+            title="Thank you to everyone who backed the day."
+            lede="To talk about a future edition of ZAOstock, write to us."
           />
           <div className="flex flex-wrap gap-3 shrink-0">
-            <Button href="/sponsor">Sponsor ZAOstock</Button>
+            <Button href="/sponsor">Who backed 2026</Button>
             <Button href={`mailto:${SITE.contact}`} external variant="secondary">
               {SITE.contact}
             </Button>

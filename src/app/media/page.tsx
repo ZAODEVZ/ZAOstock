@@ -11,6 +11,9 @@ import { SiteShell, Section, Eyebrow, Card } from '@/components/poster';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import { ReplayPlayer } from '@/components/ReplayPlayer';
 
+// PAST TENSE, 2026-10-04: the festival happened; the acts are listed as the ones
+// on the bill.
+//
 // /media - what has been written about ZAOstock, and where to follow each act.
 // Content lives in src/content/media.ts (press, embeds) and
 // src/content/zao-media.ts (The ZAO's own newsletter editions). Each act's
@@ -20,7 +23,7 @@ import { ReplayPlayer } from '@/components/ReplayPlayer';
 export const dynamic = 'force-dynamic';
 
 const TITLE = 'Media and socials';
-const DESCRIPTION = `Press coverage of ZAOstock and where to follow all ${LINEUP_NAMES.length} acts before ${FESTIVAL.dateLabel} in ${FESTIVAL.city}.`;
+const DESCRIPTION = `Press coverage of ZAOstock and where to follow all ${LINEUP_NAMES.length} acts on the ${FESTIVAL.dateLabel} bill in ${FESTIVAL.city}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -52,7 +55,7 @@ export default async function MediaPage() {
             Media and socials.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Everything written, aired and published about ZAOstock, and where to follow each act before they play the {FESTIVAL.venue}.
+            Everything written, aired and published about ZAOstock, and where to follow each act on the {FESTIVAL.venue} bill.
           </p>
         </div>
       </Section>
@@ -163,9 +166,9 @@ export default async function MediaPage() {
                     ))}
                   </ul>
                 ) : NO_SOCIALS.includes(name) ? (
-                  <p className="text-sm text-ink-muted m-0 mt-3">No socials. Catch the set live on Franklin Street.</p>
+                  <p className="text-sm text-ink-muted m-0 mt-3">No socials.</p>
                 ) : (
-                  <p className="text-sm text-ink-muted m-0 mt-3">Links coming soon. Meet them on Franklin Street.</p>
+                  <p className="text-sm text-ink-muted m-0 mt-3">No links on file yet.</p>
                 )}
               </Card>
             );

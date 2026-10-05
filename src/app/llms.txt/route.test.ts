@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { FESTIVAL } from '@/content/festival';
-import { LINEUP_NAMES, displayName } from '@/content/site';
+import { LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, displayName } from '@/content/site';
 import { artistSlug } from '@/content/event-jsonld';
 import { GET } from './route';
 
@@ -29,10 +29,13 @@ describe('GET /llms.txt', () => {
     expect(text).not.toMatch(/about 30 minutes each/i);
   });
 
-  it('names the real act count, sourced from LINEUP_NAMES', async () => {
+  it('names how many acts played, sourced from PLAYED_NAMES, never the size of the bill', async () => {
     const text = await content();
-    expect(text).toContain(`${LINEUP_NAMES.length} acts on the bill`);
-    expect(text).toContain(`The ${LINEUP_NAMES.length} acts are named on the site`);
+    expect(text).toContain(`${PLAYED_NAMES.length} acts played back to back`);
+    expect(text).toContain(`The ${PLAYED_NAMES.length} acts that played, each with its own page`);
+    // The list is names only; the file does not claim an order (see the comment on LINEUP_LINES).
+    expect(text).not.toContain('in running order');
+    expect(PLAYED_NAMES.length).toBe(LINEUP_NAMES.length - DID_NOT_PLAY.length);
   });
 
   it('lists every act by display name with its own page, and no clock times', async () => {
@@ -40,9 +43,11 @@ describe('GET /llms.txt', () => {
     // answer "who is playing?" from. Every act is listed, by the name Zaal
     // ruled public (displayName), linking its /artist/<slug> page.
     const text = await content();
-    for (const name of LINEUP_NAMES) {
+    for (const name of PLAYED_NAMES) {
       expect(text).toContain(`- ${displayName(name)} - https://zaostock.com/artist/${artistSlug(name)}`);
     }
+    // Zaal, 2026-10-04: "Acadia rising did not play". Not listed as having played.
+    for (const name of DID_NOT_PLAY) expect(text).not.toContain(displayName(name));
     const lineup = text.split('## Lineup')[1].split('## Partners')[0];
     expect(lineup).not.toMatch(/\d{1,2}:\d{2}/);
   });

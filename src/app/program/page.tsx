@@ -2,28 +2,39 @@ import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Link from 'next/link';
 import { FESTIVAL } from '@/content/festival';
-import { SITE, displayName } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
+import { PLAYED_NAMES, DID_NOT_PLAY, displayName } from '@/content/site';
+import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, SectionHeader, BorderedList } from '@/components/poster';
 import { QUICK_ANSWERS, faqJsonLd } from '@/content/quick-answers';
 import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
-import { SOUNDCHECK } from '@/content/artist-ops';
+
+// The record of the day shows who played. An act Zaal has said did not play
+// (DID_NOT_PLAY in site.ts) stays in program.ts, which is also the published
+// schedule the crew documents are checked against, and is left out here.
+function playedSlots(block: Parameters<typeof publicSlots>[0]) {
+  return publicSlots(block).filter((s) => !DID_NOT_PLAY.includes(s.label));
+}
 
 export const metadata: Metadata = {
-  title: `Program and set times, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
-  description: `Day-of schedule for ZAOstock, ${FESTIVAL.dateLabel}. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.`,
+  title: `Program and set times, ${FESTIVAL.shortDate}, Ellsworth, Maine (the record of the day)`,
+  description: `The running order for ZAOstock, ${FESTIVAL.dateLabel}. Outdoors on Franklin Street from noon, then indoors at Black Moon from six.`,
   alternates: { canonical: '/program' },
   openGraph: {
     title: 'Program | ZAOstock',
-    description: `Outdoors from noon, indoors from six. ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    description: `Outdoors from noon, indoors from six. The record of ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
     url: 'https://zaostock.com/program',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'Program | ZAOstock',
-    `Outdoors from noon, indoors from six. ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
+    `Outdoors from noon, indoors from six. The record of ${FESTIVAL.dateLabel} in Ellsworth, Maine.`,
   ),
 };
 
+// PAST TENSE, 2026-10-04: this page is the record of the day. The running order
+// and times stay exactly as they were; the "Good to know / Before you come"
+// advice and the "Spend it in Ellsworth" call are gone because the day has
+// passed. The comments below describe how the schedule was built.
+//
 // Source of truth: docs/plans/ros-5min-2026-10-03.md (v7, 28 Aug 05:0x) and
 // Zaal's typed verdicts in ~/zao-vault/daily/2026-08-27.md and 2026-08-28.md.
 //
@@ -54,7 +65,7 @@ function order(block: Parameters<typeof publicSlots>[0], index: number): string 
   // The outdoor bill is a running order. The evening is Black Moon's two rows
   // and numbering those would read as a bill we programmed.
   if (block.venue !== 'OUT') return '';
-  const acts = publicSlots(block).slice(0, index + 1).filter((s) => s.tone === 'set');
+  const acts = playedSlots(block).slice(0, index + 1).filter((s) => s.tone === 'set');
   return String(acts.length);
 }
 
@@ -65,31 +76,16 @@ const TONE: Record<'set' | 'gap' | 'open' | 'battle', string> = {
   open: 'text-ink-950 font-extrabold',
 };
 
-const GOOD_TO_KNOW = [
-  `${FESTIVAL.admission}. No ticket, no wristband for the street.`,
-  // "Tent cover from Wallace Events." used to be appended here. Removed
-  // 2026-09-24 - not because the tent is fake (it is up, and has been since
-  // 28 August) but because pairing it with "rain or shine" promised that the
-  // tent is the bad-weather answer. It is not; the room next door is.
-  SITE.weather,
-  'One venue at a time. Nothing plays in two rooms at once.',
-  'Black Moon is open through the day, walkable, right next door.',
-  'Each act has its own page with a bio and photo. Times can shift by a few minutes on the day.',
-  // Was "Friday 2 October is soundcheck night". Soundcheck moved to Saturday
-  // on 2026-09-24 (#305); Friday is setup and decorating.
-  `Soundcheck is the morning of ${SOUNDCHECK.day}, artists only.`,
-];
-
 export default function ProgramPage() {
   return (
     <SiteShell>
       <Section first className="pt-12 sm:pt-16">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-start">
           <div className="max-w-[760px]">
-            <Eyebrow tone="denim">Program · {FESTIVAL.dateLabel}</Eyebrow>
+            <Eyebrow tone="denim">The 2026 program · {FESTIVAL.dateLabel}</Eyebrow>
             <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Outside, then in.</h1>
             <p className="text-lg text-ink-secondary measure m-0">
-              Music from noon on the {FESTIVAL.venue}. At six the street clears, and their own evening starts inside Black Moon next door.
+              {PLAYED_NAMES.length} acts played from noon on the {FESTIVAL.venue}, and the after-party ran at Black Moon next door. Set times shown are the published schedule.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               {/* The plain comma-separated name list this used to carry was
@@ -128,7 +124,7 @@ export default function ProgramPage() {
                 lede={b.lede}
               />
               <ol className="list-none m-0 p-0 border border-ink-950/60 rounded-md overflow-hidden">
-                {publicSlots(b).map((s, i) => (
+                {playedSlots(b).map((s, i) => (
                   <li key={i} className="grid grid-cols-[32px_1fr] gap-4 px-5 py-3 border-t border-ink-950/60 first:border-t-0 bg-paper-200/60">
                     <span className="font-mono text-sm font-bold text-ink-muted tabular pt-0.5">{s.tone === 'set' ? order(b, i) : ''}</span>
                     <span>
@@ -145,46 +141,24 @@ export default function ProgramPage() {
       })}
 
       <Section>
-        <TwoUp>
-          <div className="flex flex-col gap-6">
-            <SectionHeader eyebrow="Good to know" title="Before you come." />
-            <ul className="list-none m-0 p-0 flex flex-col gap-2 measure">
-              {GOOD_TO_KNOW.map((g) => (
-                <li key={g} className="flex gap-3 text-base text-ink-950">
-                  <span className="font-mono text-eyebrow font-bold text-denim-400 pt-1.5 shrink-0">-</span>
-                  <span>{g}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <Card>
-            <Eyebrow className="mb-2">Spend it in Ellsworth</Eyebrow>
-            <p className="text-sm text-ink-secondary m-0">
-              The point of putting this on Franklin Street is to bring people to the businesses already here. Eat at the places around you, drink at Black Moon, buy something from the shop you walk past.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the
-                  homepage hero and Header.tsx: a straight Luma link skips
-                  the Pro Ticket funnel. Poidhz, 2026-09-27, measured live. */}
-              <Button href="/tickets" size="sm">
-                RSVP free
-              </Button>
-              <Button href="/ellsworth" variant="secondary" size="sm">
-                Getting here
-              </Button>
-              <Link href="/press" className="self-center text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
-                Press
-              </Link>
-            </div>
-          </Card>
-        </TwoUp>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button href="/live" size="sm">
+            Watch the replay
+          </Button>
+          <Button href="/tickets" variant="secondary" size="sm">
+            Support the artists
+          </Button>
+          <Link href="/press" className="self-center text-sm text-denim-400 font-semibold underline underline-offset-4 hover:text-denim-500">
+            Press
+          </Link>
+        </div>
       </Section>
 
       {/* Quick answers: one array, rendered visibly and as FAQPage data, so
           what search and AI assistants read is exactly what a visitor sees.
           Source and provenance of every answer: src/content/quick-answers.ts. */}
       <Section>
-        <SectionHeader eyebrow="Quick answers" title="What people ask." />
+        <SectionHeader eyebrow="Quick answers" title="What people asked." />
         <BorderedList className="mt-6" rows={QUICK_ANSWERS.map(({ q, a }) => ({ term: q, detail: a }))} />
         <script
           type="application/ld+json"

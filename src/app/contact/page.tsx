@@ -6,15 +6,15 @@ import { SITE } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Contact & Support',
-  description: `Reach the ZAOstock team with a ticket question, an artist or volunteer ask, or anything else about the free festival in Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+  description: `Reach the ZAOstock team with a question about a purchase, or anything else about the free festival that ran in Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact & Support | ZAOstock',
-    description: `Reach the ZAOstock team with a ticket question, an artist or volunteer ask, or anything else about the free festival in Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    description: `Reach the ZAOstock team with a question about a purchase, or anything else about the free festival that ran in Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/contact',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Contact & Support | ZAOstock', 'Reach ZAOstock for a ticket question, an artist or volunteer ask, or anything else.'),
+  twitter: twitterCard('Contact & Support | ZAOstock', 'Reach ZAOstock with a question about a purchase, or anything else.'),
 };
 
 export default function ContactPage() {
@@ -26,29 +26,29 @@ export default function ContactPage() {
           <Eyebrow tone="denim">Contact</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">Contact &amp; support</h1>
           <p className="text-lg text-ink-secondary measure">
-            One email reaches the small volunteer team running ZAOstock. Real people read it and reply.
+            One email reaches the small volunteer team that ran ZAOstock. Real people read it and reply.
           </p>
         </div>
 
         <section className="space-y-2">
-          <h2 className="font-display font-normal text-h3 text-ink-950">Bought a ticket?</h2>
+          <h2 className="font-display font-normal text-h3 text-ink-950">Supported the artists?</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
             For a question about your purchase, email{' '}
             <a href={`mailto:${SITE.contact}?subject=ZAOstock%20ticket%20question`} className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               {SITE.contact}
             </a>
-            . Weather, refunds, filming, and entry conditions are all covered on our{' '}
+            . The terms the day ran under are on our{' '}
             <a href="/terms" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               terms page
             </a>{' '}
-            - worth a look before you write in, since it answers most of what people ask.
+            - worth a look before you write in.
           </p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-display font-normal text-h3 text-ink-950">Everything else</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
-            Playing, volunteering, sponsoring, press, or anything not covered above - same address,{' '}
+            Playing, sponsoring, press, or anything not covered above - same address,{' '}
             <a href={`mailto:${SITE.contact}?subject=ZAOstock%20question`} className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               {SITE.contact}
             </a>
@@ -57,9 +57,9 @@ export default function ContactPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="font-display font-normal text-h3 text-ink-950">Day of</h2>
+          <h2 className="font-display font-normal text-h3 text-ink-950">The replay</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
-            For the stream, the running order, and how to follow along on the day itself, see{' '}
+            To watch the day again, and for the running order, see{' '}
             <a href="/live" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               zaostock.com/live
             </a>

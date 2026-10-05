@@ -65,7 +65,7 @@ export const SITE = {
   weather: 'Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it.',
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
-  producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
+  producedBy: 'ZAOstock was produced by ZAO Festivals, the events arm of The ZAO.',
   /**
    * THE PRIMARY MARK since 2026-09-10 (Zaal): the moose. It is a WHITE
    * knockout on transparent, so it only ever sits on the ink inverse surface
@@ -183,7 +183,29 @@ export function displayName(name: string): string {
 // No set times in public (Zaal, 2026-09-12), so this no longer sends anyone to
 // the program for one. The program publishes the order.
 export const LINEUP_NAMES_NOTE =
-  'They play in that order. Each act has its own page with a bio and photo.';
+  'Each act has its own page with a bio and photo.';
+
+/**
+ * ON THE BILL, DID NOT PLAY. Zaal, 2026-10-04 09:3x, typed in the seat pane when
+ * asked about Acadia Rising's set: "Acadia rising did not play" (vault
+ * decisions/grill-2026-10-04-orchestration-0150.md, item 3). An act goes in this
+ * list only on his word.
+ *
+ * What it does: the act stays on the published bill (/artists, its own page,
+ * which says "was on the bill"), and is left out of everything that says who
+ * PLAYED: PLAYED_NAMES below, the home lineup, the /program record and the
+ * structured data's `performer` list. No page says in words that the act did
+ * not play; how, or whether, to say that is his call.
+ */
+export const DID_NOT_PLAY: readonly string[] = ['Acadia Rising'];
+
+/**
+ * WHO PLAYED, in running order: the bill minus DID_NOT_PLAY. Basis: Zaal's
+ * word above, and the 3 October stream recordings, which show seven sets
+ * (catalogue of the Twitch archives, 2026-10-04). Use this, never
+ * LINEUP_NAMES, wherever a page says an act played.
+ */
+export const PLAYED_NAMES: readonly string[] = LINEUP_NAMES.filter((name) => !DID_NOT_PLAY.includes(name));
 
 /**
  * The after-party, from Black Moon's own flyer (shared by Zaal 2026-09-30).
@@ -403,6 +425,11 @@ export interface SupportTier {
   gets: readonly string[];
 }
 
+// PAST TENSE, 2026-10-04: the day happened, so the tier copy below no longer
+// promises a thank-you from the stage or says the money pays for a day to come.
+// The tiers still work and /tickets now frames them as support for the artists
+// on the bill.
+//
 // Renamed 2026-09-29 (Zaal picked option B of ZAOOS research doc 2578, "Keep
 // it free"): Fan / Supporter / Pro Ticket became Chip in / Friend / Backer.
 // Money keeps a free day free; it is not a way in, so no tier promises a 1:1,
@@ -416,8 +443,8 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     price: '$1',
     amount: 1,
     spots: null,
-    blurb: 'Every dollar goes to the day.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
+    blurb: 'Every dollar goes to the artists.',
+    gets: ['Goes toward artist fees, sound and stage, and materials.'],
   },
   {
     id: 'supporter',
@@ -425,8 +452,8 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     price: '$20',
     amount: 20,
     spots: null,
-    blurb: 'Pays for the day.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
+    blurb: 'Helps cover the day.',
+    gets: ['Goes toward artist fees, sound and stage, and materials.'],
   },
   {
     id: 'pro',
@@ -435,7 +462,7 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     amount: 50,
     spots: null,
     blurb: 'The same, and it carries the most weight.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
+    gets: ['Goes toward artist fees, sound and stage, and materials.'],
   },
 ] as const;
 
@@ -621,7 +648,7 @@ export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL
 }
 
 export const TIERS: readonly Tier[] = [
-  { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
+  { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions.', price: null },
   { name: 'Sponsor an artist', gets: "Backs one named artist on the bill. They make content carrying your name. The artist opts in.", price: null },
   { name: 'Community', gets: 'Logo on the site, named in the recap, thanked from stage.', price: null },
 ];
@@ -656,7 +683,7 @@ export const ZAO = {
    * Replaced with the track record, which is what a sponsor is actually weighing
    * and is sourced from SERIES below rather than invented.
    */
-  festivalsRun: { value: '3', label: 'live festivals run since 2024, before this one' },
+  festivalsRun: { value: '3', label: 'live festivals run since 2024, before ZAOstock' },
 } as const;
 
 /** Deck slide 6, measured 2026-08-27. Re-pull from wavewarz.info/api/public/stats before print. */

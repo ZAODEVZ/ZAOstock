@@ -1,7 +1,11 @@
 import { FESTIVAL } from './festival';
-import { LINEUP_NAMES, AFTER_PARTY, displayName } from './site';
+import { LINEUP_NAMES, DID_NOT_PLAY, AFTER_PARTY, displayName } from './site';
 
 // EVENT STRUCTURED DATA (schema.org MusicEvent), rendered once in layout.tsx.
+//
+// PAST TENSE, 2026-10-04: the event happened on 3 October. It stays here as a
+// record - same dates, venue and performers - but the Offer no longer claims
+// `availability: InStock`, and the description says the festival was held.
 //
 // It is what puts the date, the venue and the free price into Google's own
 // result for ZAOstock. On 2026-09-28 Search Console reported "Events
@@ -39,7 +43,7 @@ export const eventJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
   name: 'ZAOstock 2026',
-  description: 'A free, one-day, artist-built music festival in downtown Ellsworth, Maine. Run by The ZAO.',
+  description: 'A free, one-day, artist-built music festival held in downtown Ellsworth, Maine. Run by The ZAO.',
   image: [`${SITE_URL}/brand/posters/2026-lineup-poster-1600x2000.png`],
   url: SITE_URL,
   startDate: FESTIVAL.date,
@@ -52,7 +56,9 @@ export const eventJsonLd = {
     name: FESTIVAL.venue,
     address: ADDRESS,
   },
-  performer: LINEUP_NAMES.map((name) => ({
+  // The bill minus anyone Zaal has said did not play (DID_NOT_PLAY in site.ts):
+  // `performer` says they performed.
+  performer: LINEUP_NAMES.filter((name) => !DID_NOT_PLAY.includes(name)).map((name) => ({
     '@type': 'PerformingGroup',
     name: displayName(name),
     url: `${SITE_URL}/artist/${artistSlug(name)}`,
@@ -61,7 +67,6 @@ export const eventJsonLd = {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    availability: 'https://schema.org/InStock',
     url: SITE_URL,
     validFrom: '2026-08-01T00:00:00-04:00',
   },

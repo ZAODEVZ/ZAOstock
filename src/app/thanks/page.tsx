@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
-import { SiteShell, Section, Eyebrow, Button, AddToCalendar } from '@/components/poster';
+import { SiteShell, Section, Eyebrow, Button } from '@/components/poster';
 import { FESTIVAL } from '@/content/festival';
 import { SITE } from '@/content/site';
 
@@ -13,21 +13,24 @@ import { SITE } from '@/content/site';
 // lands on it, including someone who types the URL directly with no
 // purchase behind it at all.
 //
+// PAST TENSE, 2026-10-04: ZAOstock happened, so this reads as a thank-you for
+// supporting the ZAOstock artists. The calendar button is gone.
+//
 // Not in the sitemap or footer nav - a destination, not a page anyone
 // should navigate to.
 
 export const metadata: Metadata = {
   title: 'Thanks',
-  description: "You're in - ZAOstock ticket confirmation.",
+  description: "Thank you for supporting the ZAOstock artists.",
   robots: { index: false },
   alternates: { canonical: '/thanks' },
   openGraph: {
     title: "Thanks | ZAOstock",
-    description: "You're in - ZAOstock ticket confirmation.",
+    description: "Thank you for supporting the ZAOstock artists.",
     url: 'https://zaostock.com/thanks',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Thanks | ZAOstock', "You're in - ZAOstock ticket confirmation."),
+  twitter: twitterCard('Thanks | ZAOstock', 'Thank you for supporting the ZAOstock artists.'),
 };
 
 export default function ThanksPage() {
@@ -36,10 +39,10 @@ export default function ThanksPage() {
       <Section first className="pt-12 sm:pt-16">
       <div className="max-w-[760px] space-y-8">
         <div className="space-y-2">
-          <Eyebrow tone="denim">Confirmed</Eyebrow>
-          <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">You&apos;re in.</h1>
+          <Eyebrow tone="denim">Received</Eyebrow>
+          <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1">Thank you.</h1>
           <p className="text-lg text-ink-secondary measure">
-            Your receipt is on its way by email from Stripe. If anything looks off, email{' '}
+            Your support for the ZAOstock artists is received, and your receipt is on its way by email from Stripe. If anything looks off, email{' '}
             <a href={`mailto:${SITE.contact}?subject=ZAOstock%20ticket%20question`} className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               {SITE.contact}
             </a>
@@ -50,19 +53,18 @@ export default function ThanksPage() {
         <section className="space-y-2">
           <h2 className="font-display text-h3 text-ink-950">The day</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
-            {FESTIVAL.dateLabel}, {FESTIVAL.window}. {FESTIVAL.venue}, {FESTIVAL.city}.
+            ZAOstock happened on {FESTIVAL.dateLabel}, {FESTIVAL.window}, at the {FESTIVAL.venue}, {FESTIVAL.city}.
           </p>
-          <AddToCalendar className="mt-1" />
         </section>
 
         <section className="space-y-2">
-          <h2 className="font-display text-h3 text-ink-950">Before you go</h2>
+          <h2 className="font-display text-h3 text-ink-950">Next</h2>
           <p className="text-base text-ink-950 leading-relaxed measure">
-            Weather, refunds, filming, and entry conditions are all on our{' '}
+            The terms the day ran under are on our{' '}
             <a href="/terms" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               terms page
             </a>
-            . For the stream and day-of updates, see{' '}
+            . To watch the day again, see{' '}
             <a href="/live" className="text-denim-400 hover:text-denim-500 underline underline-offset-4">
               zaostock.com/live
             </a>

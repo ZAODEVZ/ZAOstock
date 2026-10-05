@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const shown = displayName(artist.name);
   const description = artist.bio
     ? truncateAtWord(artist.bio, 160)
-    : `${shown} at ZAOstock, ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
+    : `${shown} was on the bill for ZAOstock, ${FESTIVAL.shortDate}, in ${FESTIVAL.city}.`;
 
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
@@ -108,7 +108,12 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
             <Card>
               <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
-                {displayName(artist.name)} is on the ZAOstock roster for {FESTIVAL.dateLabel} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
+                {/* "On the bill" for every act, on purpose. That seven acts played is
+                    established (Zaal: "Acadia rising did not play", and seven sets on
+                    the stream), but WHICH act played which set was read off the
+                    running order at low to medium confidence, not confirmed by him.
+                    A sentence naming one act as having played waits for his word. */}
+                {displayName(artist.name)} was on the bill for ZAOstock, {FESTIVAL.dateLabel}, at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/" size="sm">

@@ -2,12 +2,11 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FESTIVAL } from '@/content/festival';
-import { SITE } from '@/content/site';
 
 // The moose on ink, beside the wordmark on paper, at 1200x630, per docs/design/redesign-2026-08-28.md. Every
 // route inherits it unless a page sets its own openGraph.images. Rendered once
 // at build; the mono badge (86 KB) keeps the response small.
-export const alt = `ZAOstock 2026: a free, one-day, artist-built music festival in Ellsworth, Maine. ${FESTIVAL.dateLabel}.`;
+export const alt = `ZAOstock 2026: a free, one-day, artist-built music festival held in Ellsworth, Maine, ${FESTIVAL.dateLabel}.`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -47,10 +46,10 @@ export default async function OpengraphImage() {
             <span style={{ color: GOLD }}>stock</span>
           </div>
           <div style={{ fontSize: 30, marginTop: 22, lineHeight: 1.3, color: '#625A4E' }}>
-            A free, one-day, artist-built music festival on Franklin Street, downtown Ellsworth, Maine.
+            A free, one-day, artist-built music festival held on Franklin Street, downtown Ellsworth, Maine.
           </div>
           <div style={{ display: 'flex', gap: 10, marginTop: 30 }}>
-            {[FESTIVAL.shortDate, FESTIVAL.shortVenue, `Music from ${SITE.musicFrom}`, 'Free'].map((t) => (
+            {[FESTIVAL.shortDate, FESTIVAL.shortVenue, 'Free'].map((t) => (
               <div
                 key={t}
                 style={{

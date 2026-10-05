@@ -4,6 +4,13 @@ import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
+// PAST TENSE, 2026-10-04. ZAOstock 2026 happened on Saturday 3 October and Zaal
+// ruled everything pushed to the past: "can u loop on pushing eveything zaostock
+// to the past". RSVP is over, so the free RSVP card and the "do I need the RSVP"
+// row are gone. The page is now where you back the artists: the three
+// support tiers and the Giveth section stay (they still work). The history below
+// is kept for the record of how the page got here.
+//
 // WHY THIS PAGE EXISTS
 //
 // ticket.zaostock.com 302s straight to a free Luma RSVP page, and FESTIVAL.rsvpUrl
@@ -38,19 +45,19 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // above"). PayPal is not offered (finance grill 28 Sep, item 10).
 
 export const metadata: Metadata = {
-  title: `Free RSVP, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
+  title: `Support the artists, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
   description:
-    `ZAOstock 2026 is free to attend. RSVP to hold a spot, or chip in to support the artists. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    `ZAOstock 2026 was free to attend. You can still chip in to support the artists. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
-    title: 'Tickets | ZAOstock',
-    description: 'Free to attend. RSVP to hold a spot, or chip in to help fund the day.',
+    title: 'Support the artists | ZAOstock',
+    description: 'ZAOstock 2026 was free to attend. Chip in to support the artists.',
     url: 'https://zaostock.com/tickets',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
-    'Tickets | ZAOstock',
-    'Free to attend. RSVP to hold a spot, or chip in to help fund the day.',
+    'Support the artists | ZAOstock',
+    'ZAOstock 2026 was free to attend. Chip in to support the artists.',
   ),
 };
 
@@ -59,34 +66,18 @@ export default function TicketsPage() {
     <SiteShell>
       <Section first className="pt-12 sm:pt-16">
         <div className="max-w-[760px]">
-          <Eyebrow tone="denim">{FESTIVAL.admission}</Eyebrow>
+          <Eyebrow tone="denim">{FESTIVAL.shortDate}</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Free. Support the artists.
+            Support the artists.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            ZAOstock is free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists playing, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
+            ZAOstock was free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists on the bill, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
           </p>
         </div>
       </Section>
 
       <Section id="support">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-2">
-          <Card>
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="font-display text-[2.25rem] leading-none text-red-500">Free</span>
-            </div>
-            <h3 className="font-display text-h3 text-ink-950 m-0 mt-2">RSVP</h3>
-            <p className="text-sm text-ink-secondary m-0 mt-1">Hold a spot. No line, no ticket to show at the door.</p>
-            <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
-              <li>Tells us how many people to plan for.</li>
-              <li>Not required. Turn up either way.</li>
-            </ul>
-            <div className="mt-4 flex flex-wrap items-start gap-2">
-              <Button href={FESTIVAL.rsvpUrl} external variant="primary">
-                RSVP free
-              </Button>
-            </div>
-          </Card>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2">
           {SUPPORT_TIERS.map((tier) => (
             <Card key={tier.id}>
               <div className="flex items-baseline justify-between gap-3">
@@ -138,7 +129,7 @@ export default function TicketsPage() {
         <SectionHeader
           eyebrow="Pay with crypto"
           title="Or give in crypto."
-          lede="Send it through Giveth to the ZAO Festivals project. It goes to the day itself, the same as the tiers above."
+          lede="Send it through Giveth to the ZAO Festivals project. It goes to the festival, the same as the tiers above."
         />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
           <Card>
@@ -160,13 +151,12 @@ export default function TicketsPage() {
             <SectionHeader
               eyebrow="Straight answers"
               title="What your money does and does not do."
-              lede="The festival runs at break-even. Nothing here buys access, because access is free."
+              lede="The festival ran at break-even. Nothing here buys access, because access was free."
             />
             <BorderedList
               rows={[
-                { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket is checked at the parklet.` },
-                { term: 'Do I need the RSVP', detail: 'No. It helps us plan numbers, that is all. Turn up either way.' },
-                { term: 'Do I need to pay', detail: 'No. Everyone gets in, paid or not, and nothing about the day changes if you pay.' },
+                { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket was checked at the parklet.` },
+                { term: 'Do I need to pay', detail: 'No. Everyone got in, paid or not, and nothing about the day depended on it.' },
                 { term: 'What does it pay for', detail: 'Artist fees, sound and stage, and materials.' },
                 { term: 'What is the difference between them', detail: 'Only the amount.' },
                 { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, above.' },
@@ -181,7 +171,6 @@ export default function TicketsPage() {
                 { term: 'When', detail: `${FESTIVAL.shortDate}, music from ${SITE.musicFrom}` },
                 { term: 'Where', detail: FESTIVAL.venue },
                 { term: 'Evening', detail: `${FESTIVAL.afterParty.name}, ${FESTIVAL.afterParty.note}` },
-                { term: 'Weather', detail: SITE.weather },
               ]}
             />
             <div>

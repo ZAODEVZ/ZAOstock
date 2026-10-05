@@ -48,9 +48,10 @@ describe('the festival stays free', () => {
   // Two prices under a heading that says "Tickets" is exactly the shape a reader
   // mistakes for a paywall. The free line must come first on the page, and the
   // page must keep saying admission is not what is being sold.
-  it('states admission is free before it names any price', () => {
+  it('states admission was free before it names any price', () => {
+    // Past tense 2026-10-04: the page leads with "free to attend", in the past.
     const src = read(TICKETS);
-    const free = src.indexOf('FESTIVAL.admission');
+    const free = src.indexOf('was free to attend');
     const paid = src.indexOf('SUPPORT_TIERS.map');
     expect(free).toBeGreaterThan(-1);
     expect(paid).toBeGreaterThan(-1);
@@ -60,12 +61,15 @@ describe('the festival stays free', () => {
   it('still says in words that paying is not admission', () => {
     const src = read(TICKETS);
     expect(src).toContain('no ticket, no gate');
-    expect(src).toContain('access is free');
+    expect(src).toContain('access was free');
   });
 
-  it('sends the free RSVP at the branded URL, not a raw Luma link', () => {
-    const src = read(TICKETS);
-    expect(src).toContain('FESTIVAL.rsvpUrl');
+  it('no longer offers an RSVP (ZAOstock is over), and never links a raw Luma page', () => {
+    // Was: the free RSVP card pointed at FESTIVAL.rsvpUrl. RSVP is over, so the
+    // card is gone; FESTIVAL.rsvpUrl itself stays in festival.ts as the record.
+    const src = code(TICKETS);
+    expect(src).not.toContain('FESTIVAL.rsvpUrl');
+    expect(src).not.toMatch(/>\s*RSVP free|'Do I need the RSVP'/);
     expect(src).not.toContain('luma.com');
     expect(FESTIVAL.rsvpUrl).toBe('https://ticket.zaostock.com');
   });
