@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, DID_NOT_PLAY, didNotPlay, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -774,7 +774,8 @@ describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
  * excluded: a separate change owns the replay surface and its wording.
  */
 describe('claims about who played stay within what Zaal has confirmed', () => {
-  // Zaal, 2026-10-04: "Acadia rising did not play", and the after-party ran with
+  // Zaal, 2026-10-04: "Acadia rising did not play"; the other seven, "yes all
+  // played"; and the after-party ran with
   // all four billed acts ("A and it was awesome"). So "played" is now allowed,
   // but only for PLAYED_NAMES and the after-party: never for all eight, and
   // never for an act in DID_NOT_PLAY.
@@ -783,7 +784,6 @@ describe('claims about who played stay within what Zaal has confirmed', () => {
     [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES, not the bill'],
     [/Acadia Rising[^.\n]{0,80}\bplayed\b/i, 'Zaal: "Acadia rising did not play"'],
     [/Played in order/, 'say "Running order"'],
-    [/\bplayed ZAOstock\b/i, 'no sentence names one act as having played until Zaal confirms which seven; say "was on the bill for ZAOstock"'],
   ];
 
   const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
@@ -816,7 +816,36 @@ describe('claims about who played stay within what Zaal has confirmed', () => {
     expect('{LINEUP_NAMES.length} acts played from noon').toMatch(BARRED_PERFORMANCE[1][0]);
     expect('Acadia Rising played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[2][0]);
     expect('7 independent acts played back to back').not.toMatch(BARRED_PERFORMANCE[0][0]);
-    expect('DCoop played ZAOstock on Oct 3').toMatch(BARRED_PERFORMANCE[4][0]);
+  });
+
+  // The artist page passes the DATABASE row's name, and nothing holds that
+  // column to the spelling in site.ts. The sentence is assembled at run time,
+  // where the source scan above cannot see it, so it is tested here.
+  it('an act that did not play never gets "played ZAOstock", however the database spells it', () => {
+    for (const name of ['Acadia Rising', 'acadia rising', 'ACADIA RISING', ' Acadia Rising ', 'Acadia  Rising', 'Acadia Rising!']) {
+      expect(didNotPlay(name), JSON.stringify(name)).toBe(true);
+      const line = artistRecordLine(name, 'Oct 3, 2026', 'in Ellsworth, Maine');
+      expect(line, JSON.stringify(name)).toContain('was on the bill for ZAOstock');
+      expect(line, JSON.stringify(name)).not.toMatch(/played/i);
+    }
+  });
+
+  it('every act that played gets "played ZAOstock", and no other act is caught by the slug match', () => {
+    for (const name of PLAYED_NAMES) {
+      expect(didNotPlay(name), name).toBe(false);
+      const line = artistRecordLine(name, 'Oct 3, 2026', 'in Ellsworth, Maine');
+      expect(line, name).toContain('played ZAOstock on Oct 3, 2026 in Ellsworth, Maine.');
+      expect(line, name).not.toContain('on the bill');
+    }
+    expect(didNotPlay('Acadia')).toBe(false);
+    expect(didNotPlay('')).toBe(false);
+  });
+
+  it('the artist page builds that sentence through artistRecordLine, not by comparing names itself', () => {
+    const page = readFileSync(path.join(process.cwd(), 'src/app/artist/[slug]/page.tsx'), 'utf8');
+    expect(page.match(/artistRecordLine\(artist\.name/g)?.length).toBe(2);
+    expect(page).not.toMatch(/DID_NOT_PLAY\.includes/);
+    expect(page).not.toMatch(/played ZAOstock on/);
   });
 
   it('counts seven as having played and keeps the eighth on the bill only', () => {

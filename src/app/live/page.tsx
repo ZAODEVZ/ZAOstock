@@ -197,8 +197,8 @@ export default async function LivePage() {
         <Card>
           <Eyebrow>After six</Eyebrow>
           <p className="text-sm text-ink-secondary m-0 mt-2">
-            The stream runs with the parklet. When the music outdoors finishes, the day moves next door to Black Moon Public House for the
-            after-party, and that part is in person only: doors at 6, music from 7. See the <a href="/afterparty" className="text-red-700 font-bold">after-party page</a>.
+            The stream ran with the parklet. When the music outdoors finished, the day moved next door to Black Moon Public House for the
+            after-party, and that part was in person only, so it is not in the recording. See the <a href="/afterparty" className="text-red-700 font-bold">after-party page</a>.
           </p>
         </Card>
       </Section>
