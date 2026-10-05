@@ -12,15 +12,17 @@ import { FESTIVAL, NEXT_EDITION } from '@/content/festival';
 // slot", per-city revenue split) is retired. Do not bring it back from an
 // older deck.
 //
-// What a residency is, the working definition (default, pending Zaal): a block
-// of ZAO artists on the host's bill, with our stream and content, on their
-// stage. We do not produce the host's event. Nothing here names a fee, a date
-// or a place for ZAOville 2027: none is set.
+// Only what Zaal said is public: we come as an artist residency when invited,
+// and we bring ZAO artists. The fuller offer (MC, livestream, recap content,
+// artist pay and travel terms) is a DRAFT in the 2027 plan, pending his yes.
+// Dotfiles, reviewing #450 at b7c66044: a host reads these lists as an offer,
+// so nothing goes here that he has not stated. Nothing here names a fee, a
+// date or a place for ZAOville 2027: none is set.
 
 export const metadata: Metadata = {
   title: 'For Event Organizers',
   description:
-    'Invite ZAO Festivals to your event. We bring a residency of independent artists from The ZAO to your bill, with a livestream and content. In 2027 ZAO Festivals runs two events of its own: ZAOville and ZAOstock.',
+    'Invite ZAO Festivals to your event. We bring a residency of independent artists from The ZAO to your bill. In 2027 ZAO Festivals runs two events of its own: ZAOville and ZAOstock.',
   alternates: { canonical: '/event-organizers' },
   openGraph: {
     title: 'For Organizers · ZAO Festivals',
@@ -45,17 +47,11 @@ export default function EventOrganizersPage() {
       subhead="In 2027 ZAO Festivals runs two events of its own, ZAOville and ZAOstock. Everywhere else we come as an artist residency: you invite us, and we bring a block of ZAO artists to your bill."
       youGetHeading={{ eyebrow: 'What a residency brings', title: 'To your event' }}
       youGet={[
-        'A curated set of independent artists from The ZAO, a community of 100+ musicians and digital creators.',
-        'An MC between our sets, if you want one.',
-        'A livestream of our block, so people who cannot be there can watch.',
-        'Footage and recap content afterwards, crediting your event.',
+        'Independent artists from The ZAO, a community of 100+ musicians and digital creators, on your bill.',
       ]}
       weAskHeading={{ eyebrow: 'What we ask', title: 'From the host' }}
       weAsk={[
-        'A slot on your bill, with the stage and the sound.',
-        'Artist pay and travel costs agreed in writing before anyone books travel.',
-        'Permission to stream and film our block.',
-        'One contact on your side for the day.',
+        'An invitation, and a first conversation about your event.',
       ]}
       ctas={[
         { label: 'Invite us: email for a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAO%20Festivals%20Residency%20Invite', primary: true },
