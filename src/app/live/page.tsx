@@ -8,6 +8,7 @@ import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
 import { ShareButton } from '@/components/ShareButton';
 import { ReplayPlayer } from '@/components/ReplayPlayer';
+import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const metadata: Metadata = {
   title: `Watch live, ${FESTIVAL.shortDate}, noon to 6 PM Eastern`,
@@ -51,6 +52,7 @@ export default async function LivePage() {
 
   return (
     <SiteShell>
+      <EventJsonLd />
       {/* AFTER THE DAY (was the festival-day layout). Zaal, 2026-10-03, at the venue: "lets add more cta
           buttons on the live page and less whitepspace". The player now sits in
           the first section, straight under a short heading, so on a 390px phone

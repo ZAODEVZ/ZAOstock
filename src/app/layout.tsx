@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { FESTIVAL } from '@/content/festival';
-import { eventJsonLd } from '@/content/event-jsonld';
 import './globals.css';
 
 // Three families per DESIGN.md: Boogaloo for display, Rubik for body and UI,
@@ -70,16 +69,14 @@ export const metadata: Metadata = {
 };
 
 // Event structured data lives in src/content/event-jsonld.ts (image, performer
-// and street address added 2026-09-28 for Search Console's Events report).
+// and street address added 2026-09-28 for Search Console's Events report). It is
+// NOT rendered here: since 2026-10-06 the EventJsonLd component renders it only on the
+// festival pages, so /zaoville, /privacy and the rest stop claiming to be it.
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${boogaloo.variable} ${oswald.variable} ${rubik.variable} ${spaceMono.variable}`}>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
-        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-gold-400 focus:text-ink-950 focus:font-bold focus:px-4 focus:py-2 focus:rounded-sm focus:border-2 focus:border-ink-950"

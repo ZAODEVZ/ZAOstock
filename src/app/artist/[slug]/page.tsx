@@ -9,6 +9,7 @@ import { displayName, artistRecordLine } from '@/content/site';
 import { zaoMediaFor } from '@/content/zao-media';
 import { artistJsonLdString } from '@/content/artist-jsonld';
 import Link from 'next/link';
+import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const dynamic = 'force-dynamic';
 
@@ -68,6 +69,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
 
   return (
     <SiteShell>
+      <EventJsonLd />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: artistJsonLdString(artist) }}
