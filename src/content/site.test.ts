@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, RETIRED_ACT_SLUGS, isRetiredAct, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, RETIRED_ACT_SLUGS, isRetiredAct, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl, FEEDBACK_FORM_URL, feedbackFormUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -889,5 +889,24 @@ describe('retired names appear nowhere in the public site', () => {
       expect(isRetiredAct(name), JSON.stringify(name)).toBe(true);
     }
     expect(isRetiredAct('Acadia')).toBe(false);
+  });
+});
+
+describe('feedback form link stays an email fallback until the form exists', () => {
+  it('is still UNSET, and the helper hands back null for it', () => {
+    expect(FEEDBACK_FORM_URL).toBe('UNSET');
+    expect(feedbackFormUrl()).toBeNull();
+  });
+
+  it('refuses anything that is not a Google Forms link', () => {
+    for (const wrong of ['https://zaostock.com/suggest', 'docs.google.com/forms/d/x', 'https://docs.google.com/document/d/x', 'http://forms.gle/x', '']) {
+      expect(feedbackFormUrl(wrong)).toBeNull();
+    }
+  });
+
+  it('hands back a real form link, long or short', () => {
+    for (const real of ['https://docs.google.com/forms/d/e/abc/viewform', 'https://forms.gle/abc123']) {
+      expect(feedbackFormUrl(real)).toBe(real);
+    }
   });
 });

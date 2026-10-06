@@ -666,6 +666,27 @@ export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL
   return FACEBOOK_URL_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
 }
 
+/**
+ * THE ZAOSTOCK 2026 FEEDBACK FORM. Zaal, 2026-10-06, picked a Google Form in
+ * the info@thezao.com account ("a"), with zaostock.com/feedback linking to it.
+ * Answers land in that account's Google Sheet, so nothing personal is stored
+ * here. The question list is in the zaostock-content lane's
+ * 07-feedback-form.md (outside the repo). The ideas box was ruled out:
+ * /suggest lists every entry publicly, name and all.
+ *
+ * UNSET until the form exists: /feedback falls back to an email link, the
+ * same way the Facebook link above renders nothing until its Page is real.
+ * Paste the form's share link here (docs.google.com/forms/... or forms.gle/...).
+ */
+export const FEEDBACK_FORM_URL: string = UNSET;
+
+const FEEDBACK_FORM_PREFIXES = ['https://docs.google.com/forms/', 'https://forms.gle/'];
+
+/** The feedback form link, or null while it is UNSET or not a Google Forms link. */
+export function feedbackFormUrl(url: string = FEEDBACK_FORM_URL): string | null {
+  return FEEDBACK_FORM_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
+}
+
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions.', price: null },
   { name: 'Sponsor an artist', gets: "Backs one named artist on the bill. They make content carrying your name. The artist opts in.", price: null },
