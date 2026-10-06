@@ -1,24 +1,35 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE } from '@/lib/meta';
 import { EntryPage } from '@/components/entry/EntryPage';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, NEXT_EDITION } from '@/content/festival';
+
+// THE 2027 MODEL - Zaal, 2026-10-05 ~19:00 EDT: "just the two events again
+// nxt year ZAOVILLE and ZAOstock". The old pitch on this page ("Run your own
+// ZAO", "ZAO-{YourCity}", "First city to commit gets the slot", per-city
+// revenue split) is retired. Do not bring it back from an older deck.
+//
+// Artist residencies at invited events are a SIDE PLAN, internal only. Zaal,
+// 2026-10-05 ~19:3x: "No don't say this right now just plan for it as a side
+// thing". So no page says "residency" or offers one until he says so. The plan
+// lives outside the repo (zaostock-content 06-zao-festivals-2027-plan.md).
+// Nothing here names a fee, a date or a place for ZAOville 2027: none is set.
 
 export const metadata: Metadata = {
   title: 'For Event Organizers',
   description:
-    'Built a community? Run your own ZAO. ZAOstock was the fourth ZAO Festivals event, after ZAO-PALOOZA, ZAO-CHELLA and ZAOville. The next could be in your city.',
+    'In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock. Running something and want to talk? Get in touch.',
   alternates: { canonical: '/event-organizers' },
   openGraph: {
-    title: 'For Organizers · ZAOstock 2026',
-    description: 'Built a community? Run your own ZAO. The next chapter could be yours - in your city, with your community.',
+    title: 'For Organizers · ZAO Festivals',
+    description: 'In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock.',
     url: 'https://zaostock.com/event-organizers',
     images: [OG_IMAGE],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'For Organizers · ZAOstock 2026',
-    description: 'Run your own ZAO in your city. Next chapter could be yours.',
+    title: 'For Organizers · ZAO Festivals',
+    description: 'In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock.',
   },
 };
 
@@ -27,33 +38,30 @@ export default function EventOrganizersPage() {
     <EntryPage
       personaSlug="event-organizers"
       personaLabel="Event Organizers"
-      hero="Built a community? Run your own ZAO."
-      subhead="ZAOstock was the fourth event in the ZAO Festivals series after ZAO-PALOOZA NYC, ZAO-CHELLA Miami, and ZAOville in the DMV. The next chapter could be yours - in your city, with your community, under the ZAO Festivals umbrella."
+      hero="ZAO Festivals in 2027: two events."
+      subhead="In 2027 ZAO Festivals runs ZAOville and ZAOstock. We are not opening new city chapters. If you run events and want to talk, write to us."
+      youGetHeading={{ eyebrow: 'In 2027', title: 'The two events' }}
       youGet={[
-        'The full ZAOstock playbook - run-of-show, sponsor framework, finders fee structure, livestream rig, partner template.',
-        'Access to the 100+ member ZAO music community for booking artists.',
-        'Brand co-presentation - your event runs as ZAO-{YourCity} with shared visual identity.',
-        'Coaching from Zaal and the team during your first event.',
-        'Per-event revenue split. We work the deal out per-city based on what you bring.',
+        'ZAOville 2027: date and place to be announced.',
+        `${NEXT_EDITION.name}: ${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}.`,
       ]}
+      weAskHeading={{ eyebrow: 'Get in touch', title: 'If you run events' }}
       weAsk={[
-        'Real local roots in your city. You can answer "why your city" without flinching.',
-        'Capacity to land a venue, permits, and day-of crew. We coach but you operate.',
-        'Participation in the broader ZAO Festivals brand. Not your own competing brand.',
-        'Honest financial reporting. Same break-even ethos that shapes ZAOstock.',
+        'Write to info@thezao.com and tell us about your event.',
       ]}
       ctas={[
-        { label: 'Email for a 30-min intro', href: 'mailto:info@thezao.com?subject=ZAOstock%20Event%20Organizer%20Intro', primary: true },
-        { label: 'Ask about hosting a city', href: 'mailto:info@thezao.com?subject=ZAOstock%20City%20Host%20Inquiry' },
+        { label: 'Email us', href: 'mailto:info@thezao.com?subject=ZAO%20Festivals%202027', primary: true },
+        { label: 'See the festivals', href: '/festivals' },
       ]}
       facts={[
         { term: 'ZAO-PALOOZA', detail: 'New York City, 2024' },
         { term: 'ZAO-CHELLA', detail: 'Miami, Wynwood, during Art Basel, December 2024' },
         { term: 'ZAOville', detail: 'Laurel, Maryland, July 2026' },
         { term: 'ZAOstock', detail: `${FESTIVAL.city}, ${FESTIVAL.shortDate} - the first in Maine` },
-        { term: 'Next', detail: '2027, your city' },
+        { term: 'ZAOville 2027', detail: 'Date and place to be announced' },
+        { term: NEXT_EDITION.name, detail: `${NEXT_EDITION.dateLabel}. ${NEXT_EDITION.place}` },
       ]}
-      footnote="Open conversations now for 2027 events. First city to commit gets the slot. Lineage so far: ZAO-PALOOZA (New York City, April 2024) and ZAO-CHELLA (Miami, Art Basel, December 2024) - both proved the model."
+      footnote="ZAO Festivals is the events arm of The ZAO."
     />
   );
 }

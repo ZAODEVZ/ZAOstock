@@ -37,7 +37,7 @@ export interface EntryPageProps {
 const DOORS = [
   { slug: 'musicians', label: 'Musicians', href: '/musicians', line: 'Stay in touch.' },
   { slug: 'artists', label: 'Visual artists', href: '/artists', line: 'Meet the 2026 artists.' },
-  { slug: 'event-organizers', label: 'Organizers', href: '/event-organizers', line: 'Host the next one in 2027.' },
+  { slug: 'event-organizers', label: 'Organizers', href: '/event-organizers', line: 'Two events in 2027.' },
 ] as const;
 
 function List({ items }: { items: string[] }) {
