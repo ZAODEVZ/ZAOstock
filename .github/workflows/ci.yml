@@ -41,6 +41,49 @@ jobs:
       - run: npm run test
       - run: npm run build
 
+  # End-to-end, doc 2504 (card 10079, 2026-10-06). Runs the Playwright specs in
+  # e2e/ against THIS commit's build served on localhost - never the live site,
+  # which is what playwright.config.ts defaults to when E2E_BASE_URL is unset.
+  # No secrets: the checkout doors read site.ts constants and the backstage spec
+  # only exercises the no-match 404. FAIL-SAFE by design: a server that never
+  # answers, or a test list that comes back empty, fails this job with a loud
+  # message instead of passing on zero tests.
+  e2e:
+    name: e2e (playwright)
+    runs-on: ubuntu-latest
+    env:
+      E2E_BASE_URL: http://127.0.0.1:3000
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: start the built site
+        run: |
+          nohup npx next start -H 127.0.0.1 -p 3000 > next-start.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS -o /dev/null "$E2E_BASE_URL/"; then echo "server up after ${i}s"; exit 0; fi
+            sleep 1
+          done
+          echo "::error::e2e: the built site never answered on $E2E_BASE_URL within 60s - the specs did NOT run"
+          cat next-start.log
+          exit 1
+      - name: refuse an empty test list
+        run: |
+          total=$(npx playwright test --list | grep -oE 'Total: [0-9]+' | grep -oE '[0-9]+' || true)
+          echo "playwright lists ${total:-0} tests"
+          if [ -z "$total" ] || [ "$total" -eq 0 ]; then
+            echo "::error::e2e: playwright found no tests - refusing to pass on zero"
+            exit 1
+          fi
+      - run: npm run test:e2e
+      - if: failure()
+        run: cat next-start.log || true
+
   lint:
     name: lint
     runs-on: ubuntu-latest
