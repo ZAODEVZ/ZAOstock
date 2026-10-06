@@ -82,6 +82,9 @@ export default async function LivePage() {
           <Button href="/media" variant="secondary" size="sm">
             Press and radio
           </Button>
+          <Button href="/feedback" variant="secondary" size="sm">
+            How was it? Tell us
+          </Button>
           <ShareButton
             url="https://zaostock.com/live"
             title="ZAOstock, live from Ellsworth, Maine"
