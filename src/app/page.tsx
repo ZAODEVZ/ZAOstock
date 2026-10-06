@@ -37,7 +37,7 @@ import s from './home.module.css';
 export const metadata: Metadata = {
   title: { absolute: 'ZAOstock 2026 | A free music festival, Ellsworth, Maine' },
   description:
-    `A free, artist-built music festival on Franklin Street, downtown Ellsworth, Maine, held ${FESTIVAL.dateLabel}. Eight independent artists on the bill, one stage. Watch the replay.`,
+    `A free, artist-built music festival on Franklin Street, downtown Ellsworth, Maine, held ${FESTIVAL.dateLabel}. ${PLAYED_NAMES.length} independent acts played, one stage. Watch the replay.`,
   alternates: { canonical: '/' },
   openGraph: {
     title: 'ZAOstock 2026',
