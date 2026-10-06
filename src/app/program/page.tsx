@@ -6,6 +6,7 @@ import { PLAYED_NAMES, displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Badge, Button, SectionHeader, BorderedList } from '@/components/poster';
 import { QUICK_ANSWERS, faqJsonLd } from '@/content/quick-answers';
 import { BLOCKS, actTimes, publicSlots, type Venue } from '@/content/program';
+import { EventJsonLd } from '@/components/EventJsonLd';
 
 // The record of the day shows who played: the public slots of program.ts, which
 // is also the published schedule the crew documents are checked against.
@@ -78,6 +79,7 @@ const TONE: Record<'set' | 'gap' | 'open' | 'battle', string> = {
 export default function ProgramPage() {
   return (
     <SiteShell>
+      <EventJsonLd />
       <Section first className="pt-12 sm:pt-16">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-start">
           <div className="max-w-[760px]">

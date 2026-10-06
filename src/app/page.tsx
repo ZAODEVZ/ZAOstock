@@ -9,6 +9,7 @@ import { HomeHero } from './HomeHero';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import { RADIO_SESSIONS, STAR_977_URL } from '@/content/media';
 import s from './home.module.css';
+import { EventJsonLd } from '@/components/EventJsonLd';
 
 // THE HOMEPAGE IN CANDY'S LOOK. Zaal, 2026-09-10, of her site build: "this is
 // what the site should look like". Her layout, her art, her CSS (ported into
@@ -78,6 +79,7 @@ const PLUG_IN = [
 export default function HomePage() {
   return (
     <SiteShell>
+      <EventJsonLd />
       {/* AFTER THE DAY. Replaces the 3 October "ZAOstock is today" banner
           (Zaal, 2026-10-03, relayed by the seat: prepare the post-festival flip). */}
       <div className="bg-denim-600 text-onfill">
