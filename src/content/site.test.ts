@@ -892,10 +892,10 @@ describe('retired names appear nowhere in the public site', () => {
   });
 });
 
-describe('feedback form link stays an email fallback until the form exists', () => {
-  it('is still UNSET, and the helper hands back null for it', () => {
-    expect(FEEDBACK_FORM_URL).toBe('UNSET');
-    expect(feedbackFormUrl()).toBeNull();
+describe('feedback form link', () => {
+  it('is set to the real Google Form, and the helper hands it back', () => {
+    expect(FEEDBACK_FORM_URL).not.toBe('UNSET');
+    expect(feedbackFormUrl()).toBe(FEEDBACK_FORM_URL);
   });
 
   it('refuses anything that is not a Google Forms link', () => {
