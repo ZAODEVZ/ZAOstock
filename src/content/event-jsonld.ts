@@ -12,7 +12,8 @@ import { LINEUP_NAMES, AFTER_PARTY, displayName } from './site';
 // enhancement: Non-critical issues detected" and a source-side audit found the
 // same three fields missing: image, performer and a street address. All three
 // are added here, from sources that already exist:
-// - image: the confirmed lineup poster, public/brand/posters (live, HTTP 200).
+// - image: Candy (CandyToyBox)'s wide poster, public/brand/posters, no act
+//   names (the lineup poster was taken off the site 2026-10-08, #459).
 // - performer: LINEUP_NAMES, the same identity list the sitemap and artist
 //   pages use, so a lineup change cannot leave Google on the old bill. Each
 //   links its /artist/<slug> page. event-jsonld.test.ts holds the two together.
