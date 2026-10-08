@@ -238,9 +238,9 @@ export const AFTER_PARTY = {
   music: '7 PM',
   end: '10 PM',
   ages: 'All ages',
-  lineup: ['North Creek', 'Treelock & HiDef', 'Sam Savage', 'Oven Baked Beats DJ Aquavantes'],
+  lineup: ['North Creek', 'Treelock & HiDef', 'Sam Savage', 'Oven Baked Beats', 'DJ Aquavantes'],
   flyer: '/afterparty/flyer.jpg',
-  summary: 'Black Moon Public House, 142 Main St, next door: doors from 6, after-party music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.',
+  summary: 'Black Moon Public House, 142 Main St, next door: doors from 6, after-party music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage, Oven Baked Beats and DJ Aquavantes. All ages.',
 } as const;
 
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
