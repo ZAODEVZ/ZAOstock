@@ -44,7 +44,9 @@ export const eventJsonLd = {
   '@type': 'MusicEvent',
   name: 'ZAOstock 2026',
   description: 'A free, one-day, artist-built music festival held in downtown Ellsworth, Maine. Run by The ZAO.',
-  image: [`${SITE_URL}/brand/posters/2026-lineup-poster-1600x2000.png`],
+  // Candy's wide poster, no act names. The 2026 lineup poster was taken off
+  // the site on 2026-10-08: it showed the act that did not play.
+  image: [`${SITE_URL}/brand/posters/wide-with-logo-1920x1080.png`],
   url: SITE_URL,
   startDate: FESTIVAL.date,
   endDate: '2026-10-03T18:00:00-04:00',
