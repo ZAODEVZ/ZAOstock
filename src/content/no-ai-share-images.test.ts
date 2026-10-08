@@ -42,4 +42,22 @@ describe('no code-drawn share or promo images', () => {
     expect(OG_IMAGE.url.startsWith('/brand/posters/')).toBe(true);
     expect(existsSync(path.join(process.cwd(), 'public', OG_IMAGE.url))).toBe(true);
   });
+
+  // Next.js replaces, not merges, a page's openGraph: a page that sets none
+  // gets the root layout's whole object. With the implicit opengraph-image
+  // file gone, the root layout must carry the image itself, or ten pages share
+  // with no picture.
+  it('gives the root layout an explicit share image, for pages with no openGraph of their own', () => {
+    const layout = readFileSync(path.join(SRC, 'app/layout.tsx'), 'utf8');
+    const og = layout.slice(layout.indexOf('openGraph: {'), layout.indexOf('twitter: {'));
+    const tw = layout.slice(layout.indexOf('twitter: {'), layout.indexOf('};', layout.indexOf('twitter: {')));
+    expect(og).toContain('images: [OG_IMAGE]');
+    expect(tw).toContain('images: [OG_IMAGE.url]');
+  });
+
+  it('those pages really have no openGraph of their own, so they inherit it', () => {
+    for (const page of ['app/pitch/page.tsx', 'app/circles/page.tsx', 'app/sponsor/deck/page.tsx', 'app/backstage/page.tsx']) {
+      expect(readFileSync(path.join(SRC, page), 'utf8')).not.toContain('openGraph');
+    }
+  });
 });

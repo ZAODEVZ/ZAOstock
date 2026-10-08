@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { FESTIVAL } from '@/content/festival';
+import { OG_IMAGE } from '@/lib/meta';
 import './globals.css';
 
 // Three families per DESIGN.md: Boogaloo for display, Rubik for body and UI,
@@ -60,11 +61,17 @@ export const metadata: Metadata = {
     url: 'https://zaostock.com',
     siteName: 'ZAOstock',
     type: 'website',
+    // The image every page without its own openGraph inherits (/pitch,
+    // /circles, /sponsor/deck, the team and backstage pages). Before
+    // 2026-10-08 the code-drawn src/app/opengraph-image.tsx filled this in
+    // implicitly; it was removed (human-made design only), so it is explicit.
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ZAOstock 2026',
     description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    images: [OG_IMAGE.url],
   },
 };
 
