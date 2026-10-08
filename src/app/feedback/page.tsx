@@ -9,6 +9,11 @@ import { SITE, feedbackFormUrl } from '@/content/site';
 // and no personal data. Until FEEDBACK_FORM_URL in site.ts is set, the button
 // is an email link instead: a page that promises a form must not link to
 // nothing.
+//
+// EMBEDDED, 2026-10-07. Zaal: "form should be embeed". The form now sits on
+// the page in an iframe (?embedded=true); the button opens it in a new tab for
+// anyone whose browser blocks the frame. next.config.ts already allows
+// docs.google.com in frame-src.
 
 export const metadata: Metadata = {
   title: 'Feedback',
@@ -38,8 +43,8 @@ export default function FeedbackPage() {
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
             {form ? (
-              <Button href={form} external variant="primary">
-                Fill in the form
+              <Button href={form} external variant="secondary">
+                Open the form in a new tab
               </Button>
             ) : (
               <Button href={mailto} variant="primary">
@@ -54,6 +59,16 @@ export default function FeedbackPage() {
             We only quote what you write if you say we can.
           </p>
         </div>
+        {form ? (
+          <iframe
+            src={`${form}?embedded=true`}
+            title="How was ZAOstock? feedback form"
+            loading="lazy"
+            className="block w-full max-w-[760px] mt-10 h-[1600px] rounded-lg border border-ink-950/10 bg-white"
+          >
+            Loading the form. If it does not appear, use the button above.
+          </iframe>
+        ) : null}
       </Section>
     </SiteShell>
   );
