@@ -11,9 +11,11 @@ import { SiteShell, Section, Eyebrow, Card, Button } from '@/components/poster';
 // it and does not describe it as a second ZAOstock stage.
 //
 // PAST TENSE, 2026-10-04: the day has passed. Zaal, same day, asked whether the
-// after-party ran with the four acts on the flyer: "A and it was awesome"
-// (A = yes, all four; vault decisions/grill-2026-10-04-orchestration-0150.md
-// item 4). So the acts are listed as having played. The door and music times
+// after-party ran with the acts on the flyer: "A and it was awesome"
+// (vault decisions/grill-2026-10-04-orchestration-0150.md item 4). The flyer's
+// "Oven Baked Beats DJ Aquavantes" is two acts, and all five played (Zaal,
+// 2026-10-07: "DJ Aquavantes is differetn than Oven Baked Beats", then
+// "everyone played sorry i ment 5"). So the acts are listed as having played. The door and music times
 // are still the billed ones; nobody has said what time things actually ran.
 
 const TITLE = 'After-party at Black Moon';

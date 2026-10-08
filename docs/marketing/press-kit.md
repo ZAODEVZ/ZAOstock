@@ -74,8 +74,8 @@ of The ZAO, an independent music community.
   <!-- Zaal, 2026-09-28: "Publish times on /program" (supersedes the 2026-09-12 no-set-times note). Changeovers are 5 to 12 minutes since #365, so no single length is stated. -->
 - **Six onward: Black Moon Public House's own evening, next door.** The ZAOstock
   after-party was billed at Black Moon Public House, 142 Main St, on Black Moon's own premises: doors
-  at 6 PM, music 7 to 10 PM, billed with North Creek, Treelock & HiDef, Sam Savage and Oven
-  Baked Beats DJ Aquavantes (Black Moon's flyer, zaostock.com/afterparty),
+  at 6 PM, music 7 to 10 PM, billed with North Creek, Treelock & HiDef, Sam Savage, Oven
+  Baked Beats and DJ Aquavantes (Black Moon's flyer, zaostock.com/afterparty; two acts, Zaal 2026-10-07),
   **hosted and underwritten by Black Moon on
   their own stage and their own licence.** It was their event, not part of the ZAOstock
   programme, and ZAOstock's cover was the outdoor day only.
