@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, RETIRED_ACT_SLUGS, isRetiredAct, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl, FEEDBACK_FORM_URL, feedbackFormUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, RETIRED_ACT_SLUGS, isRetiredAct, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl, FEEDBACK_FORM_URL, feedbackFormUrl, feedbackEmbedUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -908,5 +908,13 @@ describe('feedback form link', () => {
     for (const real of ['https://docs.google.com/forms/d/e/abc/viewform', 'https://forms.gle/abc123']) {
       expect(feedbackFormUrl(real)).toBe(real);
     }
+  });
+
+  it('builds a well-formed embed link, and none for a short link or no form', () => {
+    expect(feedbackEmbedUrl('https://docs.google.com/forms/d/e/abc/viewform')).toBe('https://docs.google.com/forms/d/e/abc/viewform?embedded=true');
+    expect(feedbackEmbedUrl('https://docs.google.com/forms/d/e/abc/viewform?usp=sf_link')).toBe('https://docs.google.com/forms/d/e/abc/viewform?usp=sf_link&embedded=true');
+    expect(feedbackEmbedUrl('https://docs.google.com/forms/d/e/abc/viewform?embedded=true')).toBe('https://docs.google.com/forms/d/e/abc/viewform?embedded=true');
+    expect(feedbackEmbedUrl('https://forms.gle/abc123')).toBeNull();
+    expect(feedbackEmbedUrl('UNSET')).toBeNull();
   });
 });

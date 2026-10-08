@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { SiteShell, Section, Eyebrow, Button } from '@/components/poster';
-import { SITE, feedbackFormUrl } from '@/content/site';
+import { SITE, feedbackFormUrl, feedbackEmbedUrl } from '@/content/site';
 
 // FEEDBACK, 2026-10-06. Zaal picked a Google Form (option A) for ZAOstock 2026
 // feedback, shared from this page and from all the recap content. The form
@@ -30,6 +30,7 @@ export const metadata: Metadata = {
 
 export default function FeedbackPage() {
   const form = feedbackFormUrl();
+  const embed = feedbackEmbedUrl();
   const mailto = `mailto:${SITE.contact}?subject=${encodeURIComponent('ZAOstock feedback')}`;
 
   return (
@@ -59,9 +60,9 @@ export default function FeedbackPage() {
             We only quote what you write if you say we can.
           </p>
         </div>
-        {form ? (
+        {embed ? (
           <iframe
-            src={`${form}?embedded=true`}
+            src={embed}
             title="How was ZAOstock? feedback form"
             loading="lazy"
             className="block w-full max-w-[760px] mt-10 h-[1600px] rounded-lg border border-ink-950/10 bg-white"
