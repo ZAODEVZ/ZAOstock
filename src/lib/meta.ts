@@ -1,7 +1,12 @@
-// Shared metadata bits for the public pages. The root opengraph-image.tsx
-// only reaches routes that do not set their own openGraph object; every
-// public page does, so each one lists the image explicitly.
-export const OG_IMAGE = { url: '/opengraph-image', width: 1200, height: 630, alt: 'ZAOstock 2026, Saturday 3 October, Franklin Street Parklet, Ellsworth, Maine' } as const;
+// Shared metadata bits for the public pages. Every public page lists this
+// image in its own openGraph object.
+//
+// HUMAN-MADE ONLY (Zaal, 2026-10-08): the code-drawn share card
+// (src/app/opengraph-image.tsx) was removed with the per-artist flyer route,
+// because AI-made promo and design is a deal breaker for some of the Maine
+// audience; design is led by a person. This is Candy (CandyToyBox)'s wide
+// poster, which carries no act names. See src/content/no-ai-share-images.test.ts.
+export const OG_IMAGE = { url: '/brand/posters/wide-with-logo-1920x1080.png', width: 1920, height: 1080, alt: 'ZAOstock 2026, Franklin Street Parklet, Ellsworth, Maine' } as const;
 
 /**
  * Twitter Card, mirroring a page's own Open Graph title/description rather
