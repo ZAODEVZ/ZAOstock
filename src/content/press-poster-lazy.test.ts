@@ -5,9 +5,10 @@ import path from 'node:path';
 // THE 2026 LINEUP POSTER IS OFF THE SITE (2026-10-08).
 //
 // It showed the act that did not play, and Zaal's standing rule (2026-10-05)
-// is that this act appears nowhere public. The file moved, not deleted, to
-// docs/brand/archive/2026-lineup-poster-1600x2000.png, which Next does not
-// serve. This test used to hold the poster's lazy-loading (it was 3.3 MB and
+// is that this act appears nowhere public. This repo is public, so the file is
+// not kept anywhere in it: the copy lives in the private vault at
+// projects/zaostock/archive/2026-lineup-poster-1600x2000.png, and git history
+// still has it. This test used to hold the poster's lazy-loading (it was 3.3 MB and
 // rode every prefetch of /press); with the poster gone, it holds the removal.
 
 const POSTER = '2026-lineup-poster-1600x2000.png';
@@ -27,8 +28,8 @@ describe('the 2026 lineup poster stays off the public site', () => {
     expect(existsSync(path.join(process.cwd(), 'public/brand/posters', POSTER))).toBe(false);
   });
 
-  it('is kept in the docs archive, not deleted', () => {
-    expect(existsSync(path.join(process.cwd(), 'docs/brand/archive', POSTER))).toBe(true);
+  it('is not kept anywhere in this public repo, docs included', () => {
+    expect(existsSync(path.join(process.cwd(), 'docs/brand/archive', POSTER))).toBe(false);
   });
 
   it('is not referenced by any page, component or content file', () => {
