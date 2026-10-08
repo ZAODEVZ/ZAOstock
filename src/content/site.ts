@@ -678,7 +678,7 @@ export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL
  * same way the Facebook link above renders nothing until its Page is real.
  * Paste the form's share link here (docs.google.com/forms/... or forms.gle/...).
  */
-export const FEEDBACK_FORM_URL: string = UNSET;
+export const FEEDBACK_FORM_URL: string = 'https://docs.google.com/forms/d/e/1FAIpQLSdkwhmYVaMMIS_pKVoxFBG6SWgY4wsBVnFMP1rmqm0gyftOMg/viewform';
 
 const FEEDBACK_FORM_PREFIXES = ['https://docs.google.com/forms/', 'https://forms.gle/'];
 
