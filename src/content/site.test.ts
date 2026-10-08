@@ -767,8 +767,10 @@ describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
  * excluded: a separate change owns the replay surface and its wording.
  */
 describe('claims about who played stay within what Zaal has confirmed', () => {
-  // Zaal, 2026-10-04: seven acts, "yes all played"; and the after-party ran with
-  // all four billed acts ("A and it was awesome"). So "played" is allowed for
+  // Zaal, 2026-10-04: seven acts, "yes all played"; and the after-party ran
+  // ("A and it was awesome"). Its flyer line "Oven Baked Beats DJ Aquavantes" is
+  // two acts, and all five played (Zaal, 2026-10-07: "everyone played sorry i
+  // ment 5"; #455). So "played" is allowed for
   // PLAYED_NAMES and the after-party: never for "eight", which is not the count.
   const BARRED_PERFORMANCE: ReadonlyArray<readonly [RegExp, string]> = [
     [/\b(eight|8|all eight|all 8)( independent)? (acts|artists) (that |who )?played\b/i, 'seven acts played'],
