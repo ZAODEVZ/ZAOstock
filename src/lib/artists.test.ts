@@ -141,10 +141,10 @@ describe('getRosterArtists - setOrder is a dense rank, not the raw column (2026-
 // time the on-bill roster changes. Queued by the seat 2026-09-16: a status
 // change (an act declined, a new one confirmed) with no matching OPS_ACTS
 // edit would not 404 the backstage page (findActByCode does not touch the
-// roster at all) - it would 404 that act's /artist/<slug>/flyer instead,
-// silently, the first time anyone tried the "Your flyer" block or opened a
-// share link, because the flyer route's slug comes from getArtistBySlug
-// (the real roster), not from OPS_ACTS.
+// roster at all) - it would 404 that act's /artist/<slug> page instead,
+// silently, the first time anyone opened a share link, because that page's
+// slug comes from getArtistBySlug (the real roster), not from OPS_ACTS.
+// (The per-artist flyer route this once also guarded was removed 2026-10-08.)
 //
 // This can only check that CODE reflects CODE - it re-uses the real nine-row
 // gap fixture above (the true production shape, Hurricane declined mid-list)
