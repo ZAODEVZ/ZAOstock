@@ -687,6 +687,20 @@ export function feedbackFormUrl(url: string = FEEDBACK_FORM_URL): string | null 
   return FEEDBACK_FORM_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
 }
 
+/**
+ * The same form as an iframe src, or null when it cannot be embedded. Only a
+ * docs.google.com/forms link embeds: a forms.gle short link is a redirect, so
+ * it gets the button only. embedded=true is set on the parsed URL, so a link
+ * that already carries a query (or the flag) still comes out well formed.
+ */
+export function feedbackEmbedUrl(url: string = FEEDBACK_FORM_URL): string | null {
+  const form = feedbackFormUrl(url);
+  if (!form || !form.startsWith('https://docs.google.com/forms/')) return null;
+  const parsed = new URL(form);
+  parsed.searchParams.set('embedded', 'true');
+  return parsed.toString();
+}
+
 export const TIERS: readonly Tier[] = [
   { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions.', price: null },
   { name: 'Sponsor an artist', gets: "Backs one named artist on the bill. They make content carrying your name. The artist opts in.", price: null },
