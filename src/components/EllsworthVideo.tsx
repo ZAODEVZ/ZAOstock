@@ -19,8 +19,8 @@ interface NetworkInformationLike {
  * even for visitors who never scrolled to this section (or who were on
  * cell service standing in the street). Now the video has no `src` until
  * the section scrolls into view, and it never loads at all for visitors
- * with Save-Data, a 2g-class connection, or prefers-reduced-motion (the
- * poster still covers every case).
+ * with Save-Data, a 2g-class connection, prefers-reduced-motion, or a
+ * phone-width viewport (the poster still covers every case).
  */
 export default function EllsworthVideo() {
   const ref = useRef<HTMLVideoElement>(null);
@@ -31,10 +31,12 @@ export default function EllsworthVideo() {
 
     const connection = (navigator as Navigator & { connection?: NetworkInformationLike }).connection;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const narrowViewport = window.matchMedia('(max-width: 767px)').matches;
     if (!shouldAutoplayBgVideo({
       saveData: connection?.saveData,
       effectiveType: connection?.effectiveType,
       reducedMotion,
+      narrowViewport,
     })) {
       return;
     }

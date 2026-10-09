@@ -22,4 +22,13 @@ describe('shouldAutoplayBgVideo', () => {
     expect(shouldAutoplayBgVideo({ reducedMotion: true })).toBe(false);
     expect(shouldAutoplayBgVideo({ reducedMotion: true, effectiveType: '4g', saveData: false })).toBe(false);
   });
+
+  it('never loads the video on a phone-width viewport, even on a fast connection', () => {
+    expect(shouldAutoplayBgVideo({ narrowViewport: true })).toBe(false);
+    expect(shouldAutoplayBgVideo({ narrowViewport: true, effectiveType: '4g', saveData: false, reducedMotion: false })).toBe(false);
+  });
+
+  it('still loads the video on a desktop-width viewport', () => {
+    expect(shouldAutoplayBgVideo({ narrowViewport: false, effectiveType: '4g' })).toBe(true);
+  });
 });

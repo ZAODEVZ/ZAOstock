@@ -9,6 +9,11 @@ export interface BgVideoConditions {
   effectiveType?: string;
   /** matchMedia('(prefers-reduced-motion: reduce)').matches */
   reducedMotion?: boolean;
+  /**
+   * matchMedia('(max-width: 767px)').matches - a phone-width viewport.
+   * Phones get the poster only: the video's bytes never load there.
+   */
+  narrowViewport?: boolean;
 }
 
 const SLOW_EFFECTIVE_TYPES = new Set(['slow-2g', '2g']);
@@ -21,6 +26,7 @@ const SLOW_EFFECTIVE_TYPES = new Set(['slow-2g', '2g']);
  * preload="none".
  */
 export function shouldAutoplayBgVideo(c: BgVideoConditions): boolean {
+  if (c.narrowViewport) return false;
   if (c.reducedMotion) return false;
   if (c.saveData) return false;
   if (c.effectiveType && SLOW_EFFECTIVE_TYPES.has(c.effectiveType)) return false;
