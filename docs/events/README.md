@@ -11,7 +11,7 @@ One file per event, numbered in the order they happened.
 | 01 | [ZAO-PALOOZA](01-zao-palooza-2024.md) | New York City, during NFT NYC | 2024 | `zao-palooza` | past |
 | 02 | [ZAO-CHELLA](02-zao-chella-2024.md) | Miami, Wynwood, during Art Basel | December 2024 | `zao-chella` | past |
 | 03 | [ZAOville](03-zaoville-2026.md) | Laurel, Maryland | July 2026 | `zaoville` | past |
-| 04 | [ZAOstock](04-zaostock-2026.md) | Ellsworth, Maine | 3 October 2026 | `zaostock` | **upcoming** |
+| 04 | [ZAOstock](04-zaostock-2026.md) | Ellsworth, Maine | 3 October 2026 | `zaostock` | **past** |
 
 ## Reveal day
 
