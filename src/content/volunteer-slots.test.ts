@@ -24,13 +24,14 @@ describe('volunteer sheet', () => {
   it('counts people with whole non-negative numbers', () => {
     for (const s of slots) {
       expect(Number.isInteger(s.taken) && s.taken >= 0).toBe(true);
-      expect(Number.isInteger(s.lastYear) && s.lastYear > 0).toBe(true);
+      expect(Number.isInteger(s.plannedFor2026) && s.plannedFor2026 > 0).toBe(true);
     }
     expect(signedUp(ALL)).toBe(slots.reduce((n, s) => n + s.taken, 0));
   });
 
   it('promises nothing', () => {
-    const promise = /\b(you'?ll get|we'?ll (give|provide|cover|train)|training|trained|free (food|meal|ticket|shirt|t-shirt|entry)|perks?|guarantee|insurance|insured|reimburse|paid|stipend|age|minimum age|18\+|21\+)\b/i;
+    // Generic perks too (review on #462): "Free merch for all volunteers." passed the first version.
+    const promise = /\b(you'?ll get|you will get|we'?ll (give|provide|cover|train|feed)|we will (give|provide|cover|train|feed)|training|trained|free|merch|merchandise|swag|t-?shirts?|shirts?|hoodies?|gifts?|goodie|rewards?|bonus|perks?|vip|backstage|passes?|meals?|snacks?|drinks?|food|lunch|dinner|comp(ed|ensation|ensated)?|credits?|certificates?|guarantee[ds]?|insurance|insured|reimburse(d|ment)?|paid|pay|stipend|age|minimum age|18\+|21\+)\b/i;
     expect(text).not.toMatch(promise);
   });
 

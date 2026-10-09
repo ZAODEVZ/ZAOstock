@@ -12,8 +12,8 @@ import { PrintButton } from './PrintButton';
 //
 // Reopened 2026-10-08 (Zaal: "lets open it up and make it better"). It was a
 // closed thank-you page from 2026-10-04. The 2027 place and times are not set,
-// so the sheet says so and shows each job's 2026 head count as history, never
-// as a 2027 promise. Every 2027 fact comes from NEXT_EDITION.
+// so the sheet says so and shows the head count each job was PLANNED for in
+// 2026 (not an attendance figure, never recorded), never as a 2027 promise. Every 2027 fact comes from NEXT_EDITION.
 
 const TITLE = 'Volunteer sign-up sheet';
 const DESCRIPTION = `Help at ${NEXT_EDITION.name}, in person or online. See the jobs and message us to put your name down.`;
@@ -37,7 +37,7 @@ function Sheet({ days }: { days: VolunteerDay[] }) {
             <thead>
               <tr className="text-left text-ink-muted">
                 <th className="py-1 pr-3 font-bold">Job</th>
-                <th className="py-1 pr-3 font-bold whitespace-nowrap">In 2026</th>
+                <th className="py-1 pr-3 font-bold whitespace-nowrap">Planned for 2026</th>
                 <th className="py-1 pr-3 font-bold whitespace-nowrap">Signed up</th>
                 <th className="py-1 font-bold hidden print:table-cell">Name</th>
               </tr>
@@ -50,7 +50,7 @@ function Sheet({ days }: { days: VolunteerDay[] }) {
                     <span className="block text-ink-secondary">{s.what}</span>
                   </td>
                   <td className="py-2 pr-3 whitespace-nowrap text-ink-secondary">
-                    {s.lastYear} {s.lastYear === 1 ? 'person' : 'people'}
+                    {s.plannedFor2026} {s.plannedFor2026 === 1 ? 'person' : 'people'}
                   </td>
                   <td className="py-2 pr-3 whitespace-nowrap font-bold text-ink-950">{s.taken}</td>
                   <td className="py-2 hidden print:table-cell w-[35%] border-b border-ink-950/40" />
@@ -81,8 +81,8 @@ export default function VolunteerPage() {
             with the job and your name, and we will count you in here. Names are never shown on this page.
           </p>
           <p className="text-sm text-ink-muted measure m-0 mt-3">
-            The place and times for {NEXT_EDITION.name} are not set yet. The &ldquo;In 2026&rdquo; column is how many
-            people each job took last time, so you can see the size of it. Signed up so far: {total}.
+            The place and times for {NEXT_EDITION.name} are not set yet. The &ldquo;Planned for 2026&rdquo; column is how many
+            people last year&rsquo;s sheet planned for each job, so you can see the size of it. Signed up so far: {total}.
           </p>
           <div className="mt-6">
             <PrintButton />

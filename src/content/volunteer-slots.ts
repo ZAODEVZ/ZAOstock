@@ -14,9 +14,11 @@
 // WHAT 2027 MAY SAY. ZAOstock 2027 has two facts: the date in NEXT_EDITION and
 // that the place is not set (src/content/festival.ts). So nothing here names a
 // venue, a street, a time of day, an after-party or a livestream as if it were
-// arranged. Jobs are described relative to festival day, and `lastYear` is the
-// one number we actually have: how many people the job took in 2026. A 2027
-// head count is not invented until the place is known.
+// arranged. Jobs are described relative to festival day, and `plannedFor2026`
+// is the head count the 2026 sheet PLANNED for each job (its `needed` field in
+// #412). It is not an attendance figure: every 2026 `taken` stayed 0 and no
+// actual head count was recorded. A 2027 count is not invented until the place
+// is known.
 //
 // Rules for editing: `taken` counts people, never names (a public page is no
 // place for a volunteer's name without their say-so). Promise nothing here:
@@ -27,8 +29,9 @@ export interface VolunteerSlot {
   id: string;
   job: string;
   what: string;
-  /** How many people this job took at ZAOstock 2026. History, not a 2027 target. */
-  lastYear: number;
+  /** How many people the 2026 sheet planned for this job (#412's `needed`). Not an
+   *  actual 2026 head count, which was never recorded, and not a 2027 target. */
+  plannedFor2026: number;
   /** People signed up for 2027 so far, counted, never named. */
   taken: number;
 }
@@ -49,9 +52,9 @@ export const IN_PERSON: VolunteerDay[] = [
     title: 'The day before',
     where: TO_BE_SET,
     slots: [
-      { id: 'setup', job: 'Setup', what: 'Tables, banners, decor and signs.', lastYear: 3, taken: 0 },
-      { id: 'supplies', job: 'Supplies run', what: 'Extension cables, tape, trash bags, work lights.', lastYear: 1, taken: 0 },
-      { id: 'power', job: 'Power and cables', what: 'Find the outlets and lay cable runs out of walkways.', lastYear: 1, taken: 0 },
+      { id: 'setup', job: 'Setup', what: 'Tables, banners, decor and signs.', plannedFor2026: 3, taken: 0 },
+      { id: 'supplies', job: 'Supplies run', what: 'Extension cables, tape, trash bags, work lights.', plannedFor2026: 1, taken: 0 },
+      { id: 'power', job: 'Power and cables', what: 'Find the outlets and lay cable runs out of walkways.', plannedFor2026: 1, taken: 0 },
     ],
   },
   {
@@ -59,15 +62,15 @@ export const IN_PERSON: VolunteerDay[] = [
     title: 'Festival day',
     where: TO_BE_SET,
     slots: [
-      { id: 'loadin', job: 'Load-in', what: 'Help set the sound gear, cables and tables.', lastYear: 3, taken: 0 },
-      { id: 'checkin', job: 'Artist check-in', what: 'Greet the acts as they arrive for soundcheck.', lastYear: 1, taken: 0 },
-      { id: 'clock', job: 'Timekeeper', what: 'Give each act a 5-minute and a 1-minute signal so sets end on time.', lastYear: 1, taken: 0 },
-      { id: 'count', job: 'Headcount', what: 'A clicker at the entrance, counting people coming in.', lastYear: 2, taken: 0 },
-      { id: 'hello', job: 'Welcome', what: 'Say hello and point people to the sign-up.', lastYear: 1, taken: 0 },
-      { id: 'floater', job: 'Floater', what: 'Trash sweep, resets, and the lost-and-found point.', lastYear: 1, taken: 0 },
-      { id: 'photos', job: 'Photos', what: 'Phone photos of the day, and one photo from the same spot every hour.', lastYear: 1, taken: 0 },
-      { id: 'log', job: 'Event log', what: 'Jot down anything unusual with a rough time.', lastYear: 1, taken: 0 },
-      { id: 'strike', job: 'Strike', what: 'Sound gear down, cables, tables, trash, lights.', lastYear: 3, taken: 0 },
+      { id: 'loadin', job: 'Load-in', what: 'Help set the sound gear, cables and tables.', plannedFor2026: 3, taken: 0 },
+      { id: 'checkin', job: 'Artist check-in', what: 'Greet the acts as they arrive for soundcheck.', plannedFor2026: 1, taken: 0 },
+      { id: 'clock', job: 'Timekeeper', what: 'Give each act a 5-minute and a 1-minute signal so sets end on time.', plannedFor2026: 1, taken: 0 },
+      { id: 'count', job: 'Headcount', what: 'A clicker at the entrance, counting people coming in.', plannedFor2026: 2, taken: 0 },
+      { id: 'hello', job: 'Welcome', what: 'Say hello and point people to the sign-up.', plannedFor2026: 1, taken: 0 },
+      { id: 'floater', job: 'Floater', what: 'Trash sweep, resets, and the lost-and-found point.', plannedFor2026: 1, taken: 0 },
+      { id: 'photos', job: 'Photos', what: 'Phone photos of the day, and one photo from the same spot every hour.', plannedFor2026: 1, taken: 0 },
+      { id: 'log', job: 'Event log', what: 'Jot down anything unusual with a rough time.', plannedFor2026: 1, taken: 0 },
+      { id: 'strike', job: 'Strike', what: 'Sound gear down, cables, tables, trash, lights.', plannedFor2026: 3, taken: 0 },
     ],
   },
   {
@@ -75,7 +78,7 @@ export const IN_PERSON: VolunteerDay[] = [
     title: 'The day after',
     where: TO_BE_SET,
     slots: [
-      { id: 'loadout', job: 'Load-out', what: 'Final pack-up and returns.', lastYear: 2, taken: 0 },
+      { id: 'loadout', job: 'Load-out', what: 'Final pack-up and returns.', plannedFor2026: 2, taken: 0 },
     ],
   },
 ];
@@ -87,7 +90,7 @@ export const VIRTUAL: VolunteerDay[] = [
     title: 'Before the festival',
     where: 'From anywhere',
     slots: [
-      { id: 'v-share', job: 'Share ZAOstock', what: 'Tell Maine friends and groups about ZAOstock 2027 when there is something to share.', lastYear: 10, taken: 0 },
+      { id: 'v-share', job: 'Share ZAOstock', what: 'Tell Maine friends and groups about ZAOstock 2027 when there is something to share.', plannedFor2026: 10, taken: 0 },
     ],
   },
   {
@@ -95,9 +98,9 @@ export const VIRTUAL: VolunteerDay[] = [
     title: 'Festival day',
     where: 'Online, if the day is livestreamed',
     slots: [
-      { id: 'v-chat', job: 'Stream chat', what: 'Welcome people in the livestream chat and answer questions.', lastYear: 2, taken: 0 },
-      { id: 'v-social', job: 'Live posting', what: 'Post short updates and photos to socials.', lastYear: 1, taken: 0 },
-      { id: 'v-clips', job: 'Clips', what: 'Cut short clips for sharing, during and after the day.', lastYear: 2, taken: 0 },
+      { id: 'v-chat', job: 'Stream chat', what: 'Welcome people in the livestream chat and answer questions.', plannedFor2026: 2, taken: 0 },
+      { id: 'v-social', job: 'Live posting', what: 'Post short updates and photos to socials.', plannedFor2026: 1, taken: 0 },
+      { id: 'v-clips', job: 'Clips', what: 'Cut short clips for sharing, during and after the day.', plannedFor2026: 2, taken: 0 },
     ],
   },
 ];
