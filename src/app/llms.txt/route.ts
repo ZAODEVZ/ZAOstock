@@ -9,8 +9,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
 
 // PAST TENSE, 2026-10-04: ZAOstock 2026 happened on 3 October, so every line
-// below describes it as something that took place. RSVP and the volunteer sheet
-// are closed and no longer listed as ways in.
+// below describes it as something that took place. RSVP is closed. The volunteer
+// sheet reopened for ZAOstock 2027 on 2026-10-08 (Zaal: "lets open it up").
 //
 // The whole public site in one text file for agents and crawlers. Facts
 // match src/content/festival.ts and src/content/site.ts; rewritten 29 Aug
@@ -89,7 +89,7 @@ Every car heading to Acadia National Park passes through. Downtown is newly on t
 - https://zaostock.com/build - the builder kit: five things the festival needs built and how to show them live
 - https://zaostock.com/musicians - for musicians; the way in is email, there is no submission form
 - https://zaostock.com/artists - lineup directory and artist profiles
-- https://zaostock.com/volunteer - the 2026 volunteer sheet, now closed (and /apply, also closed)
+- https://zaostock.com/volunteer - the volunteer sign-up sheet for ZAOstock 2027, reopened 2026-10-08; place and times not set yet, people email to put their name down (/apply stays closed)
 - https://zaostock.com/afterparty - the after-party at Black Moon, with Black Moon's flyer
 - https://zaostock.com/ellsworth and /acadia - getting here and the park
 - https://zaostock.com/festivals - the ZAO Festivals series
