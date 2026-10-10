@@ -182,8 +182,17 @@ export default function HomePage() {
             <div className={s.lineupWrap}>
               {PANELS.map((p) => (
                 <div key={p.kicker} className={s.panel}>
-                  {/* eslint-disable-next-line @next/next/no-img-element -- decorative, cropped by CSS */}
-                  <img src={p.img} alt="" />
+                  {/* next/image, not a raw <img>: measured on the live site
+                      2026-10-01, these three were the only images on the page
+                      without loading="lazy", so every mobile visitor on cell
+                      service downloaded all of them before scrolling - 40 KB
+                      (acoustic_guitar_yellow) + 83 KB (electric_guitar_blue_
+                      semihollow) + 37 KB (vintage_microphone_with_cable) = 160
+                      KB of the initial payload, for images that sit two
+                      screens down. Through /_next/image at w=640&q=75 the
+                      microphone is 15 KB. width/height are required by
+                      next/image; the CSS crops it, so only the ratio matters. */}
+                  <Image src={p.img} alt="" width={640} height={640} />
                   <div className={s.fade} />
                   <div className={s.panelTxt}>
                     <div className={s.kicker}>{p.kicker}</div>
