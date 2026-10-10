@@ -157,6 +157,9 @@
 /* plug in */
 .plugGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 50px; background: var(--ink-soft); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 .plugCard { display: block; background: var(--cream); padding: 38px 20px; text-align: center; text-decoration: none; color: var(--ink); transition: background 0.25s ease, transform 0.25s ease; }
+/* The grid clips overflow. Keep the site-wide focus outline inside each card;
+   the extra .home specificity overrides only the global outline offset. */
+.home .plugCard:focus-visible { outline-offset: -5px; }
 .plugCard:hover { background: var(--fireside); transform: translateY(-4px); }
 .plugCard:hover * { color: #fff8ec !important; }
 .num { font-family: var(--font-oswald), 'Arial Narrow', Impact, sans-serif; font-weight: 700; font-size: 34px; color: var(--fireside); margin-bottom: 10px; }
