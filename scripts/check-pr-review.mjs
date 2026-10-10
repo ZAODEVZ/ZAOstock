@@ -25,7 +25,8 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AKIA[0-9A-Z]{16}|(?:api_key|apikey|secret|private_key|auth_token)\s*[:=]\s*["'][0-9a-zA-Z_\-]{20,}["'])/i;
 // A base64 data URI is a known false-positive class for the patterns above: a
@@ -210,6 +211,6 @@ function main() {
 // Guarded so a test can `import { auditFile } from "./check-pr-review.mjs"`
 // without running the whole gate (git calls, process.exit) as an import side
 // effect - main() only fires when this file is the process entrypoint.
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1])) {
   main();
 }
