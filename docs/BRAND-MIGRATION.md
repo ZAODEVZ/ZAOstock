@@ -1,6 +1,17 @@
 # Brand migration: what moving to ZAOstock 26 actually costs
 
-**Status: a plan and a cost estimate. Nothing has been migrated.**
+**Status: Phase 0 and Phase 2 are done. Phase 3 was never started, on purpose.**
+
+Measured 2026-10-02 against `main`, by the method in [Method](#method) below:
+`globals.css` is 501 lines with 97 tokens defined, the 64 public `.tsx` files
+contain **zero** hardcoded hexes and 760 token references, and all 414
+remaining legacy hexes sit in 34 of the 42 files under `src/app/team/` — the
+internal dashboard with no external audience, which Phase 3 always said could
+be "do it later, do it never".
+
+So the numbers further down that describe the starting point are the 2026-08-22
+baseline, not the state today. They are kept as the record of what the plan was
+costing then.
 Whether we rebrand before or after the lineup announcement is Zaal's call.
 
 Candy's package landed in PR #42 (`docs/brand/README.md`). Her README is explicit
@@ -21,8 +32,8 @@ token layer to absorb it.**
 | | Measured |
 |---|---|
 | `.tsx` files in `src/` | 96 |
-| Files carrying brand colour | **77 of 96** |
-| Hardcoded brand hexes | **1,067** |
+| Files carrying brand colour | **77 of 96** *(baseline, 2026-08-22)* |
+| Hardcoded brand hexes | **1,067** *(baseline, 2026-08-22)* |
 | Light-on-dark utilities that break on a paper ground | **1,297** |
 | **Total edit sites** | **~2,364** |
 | Files consuming the existing CSS variables | **1** |
@@ -55,7 +66,7 @@ you discover it one component at a time.
 
 ### Why there is no shortcut through tokens
 
-`src/app/globals.css` is nine lines. It defines `--background`, `--foreground` and
+`src/app/globals.css` was nine lines when this was written. It is 501 lines now, with 97 tokens defined, and the public site has come across entirely: 0 hardcoded hexes across the 64 public `.tsx` files, 760 token references. The 414 that remain are all under `src/app/team/`. It defines `--background`, `--foreground` and
 `--accent` correctly, and **exactly one file in the codebase uses them.** Every
 other component hardcodes the hex inline as a Tailwind arbitrary value
 (`bg-[#0a1628]`, `text-[#f5a623]`).
@@ -71,8 +82,8 @@ is worth doing even if the rebrand slips.
 
 | Surface | Files | Hexes | Notes |
 |---|---|---|---|
-| **Public site** | 42 | **605** | 24 routes. What the lineup announcement points at |
-| **Team dashboard** (`/team/*`) | 37 | **462** | Internal. Nobody outside the team sees it |
+| **Public site** | 42 | **605** *(baseline)* | 24 routes. What the lineup announcement points at |
+| **Team dashboard** (`/team/*`) | 37 | **462** *(baseline)* | Internal. Nobody outside the team sees it |
 | Other brand surfaces | - | - | `src/app/icon.svg`, `src/app/opengraph-image.tsx` |
 
 The public routes:
@@ -89,7 +100,7 @@ Heaviest single files: `app/page.tsx` (69), `pitch/page.tsx` (48),
 `team/SponsorCRM.tsx` (37).
 
 **The public/internal split is the most useful fact in this document.** It is a
-real seam: 605 of the 1,067 hexes are on surfaces anyone outside the team will
+real seam: 605 of the 1,067 hexes were on surfaces anyone outside the team will
 ever look at. The dashboard can stay navy indefinitely without anybody noticing,
 and nothing about the announcement depends on it.
 
@@ -130,7 +141,7 @@ not the hexes** - the hexes are the fast part.
 
 ### Phase 3 - the dashboard, or never
 
-462 hexes across 37 files for a surface with no external audience. Legitimate
+462 hexes across 37 files (measured 2026-08-22; 414 across 34 today) for a surface with no external audience. Legitimate
 outcomes include "do it later", "do it never", and "do it when someone is already
 in that file". It should not gate the announcement.
 
