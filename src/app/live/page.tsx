@@ -8,7 +8,10 @@ import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
 import { ShareButton } from '@/components/ShareButton';
 import { ReplayPlayer } from '@/components/ReplayPlayer';
-import { REPLAY_PARTS, replayPartsPhrase, replayWatchHref } from '@/content/replay';
+import { REPLAY_PARTS, replayPartsPhrase, replayPartWatchHref, replayHostName } from '@/content/replay';
+
+// The channel's video list is only the right link while the day is in several Twitch parts.
+const ALL_ON_TWITCH = REPLAY_PARTS.length > 1 && REPLAY_PARTS.every((p) => replayHostName(p) === 'Twitch');
 import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const metadata: Metadata = {
@@ -76,8 +79,8 @@ export default async function LivePage() {
           <Button href="/tickets" variant="primary" size="sm">
             Support the artists
           </Button>
-          <Button href={REPLAY_PARTS.length === 1 ? replayWatchHref(REPLAY_PARTS[0].id) : replaysHref()} external variant="secondary" size="sm">
-            {REPLAY_PARTS.length === 1 ? 'Watch on Twitch' : 'All parts on Twitch'}
+          <Button href={ALL_ON_TWITCH ? replaysHref() : replayPartWatchHref(REPLAY_PARTS[0])} external variant="secondary" size="sm">
+            {ALL_ON_TWITCH ? 'All parts on Twitch' : `Watch on ${replayHostName(REPLAY_PARTS[0])}`}
           </Button>
           <Button href="/afterparty" variant="secondary" size="sm">
             After-party

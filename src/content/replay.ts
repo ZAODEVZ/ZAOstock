@@ -18,12 +18,18 @@
 // The permanent fix is the per-act sets on YouTube (iman-desk #64); when those
 // exist, swap this list for them. replay.test.ts keeps the shape honest.
 
+export type ReplayProvider = 'twitch' | 'youtube';
+
 export type ReplayPart = {
   part: number;
-  /** Twitch video id, digits only. */
+  /** Where the video lives. Twitch when left out. */
+  provider?: ReplayProvider;
+  /** Button text. An act's name when each part is one set; "Part N" when left out. */
+  label?: string;
+  /** Twitch video id (digits only), or the 11-character YouTube video id. */
   id: string;
   title: string;
-  /** Running length as Twitch shows it. */
+  /** Running length as the host shows it. */
   length: string;
   /** Roughly when in the day, Eastern. Approximate by construction. */
   window: string;
@@ -32,6 +38,14 @@ export type ReplayPart = {
 export const REPLAY_PARTS: readonly ReplayPart[] = [
   { part: 1, id: '2890835848', title: 'ZAOstock Music Festival Live', length: '7:15:48', window: 'The whole day, from noon' },
 ];
+
+/** The line under the player. Says what this list is, so it changes with the list. */
+export const REPLAY_NOTE = 'The whole day in one recording, captured from this page as it streamed.';
+
+/** "Part 3", or the part's own label when it has one. */
+export function replayPartLabel(p: Pick<ReplayPart, 'part' | 'label'>): string {
+  return p.label ?? `Part ${p.part}`;
+}
 
 /** The part that opens first. */
 export const DEFAULT_REPLAY_PART = 1;
@@ -50,4 +64,29 @@ export function replayEmbedSrc(id: string): string {
 
 export function replayWatchHref(id: string): string {
   return `https://www.twitch.tv/videos/${id}`;
+}
+
+// YOUTUBE PARTS. Twitch deletes past broadcasts; YouTube does not. A part with
+// provider 'youtube' embeds from youtube-nocookie.com, which is already on the
+// frame-src list in next.config.ts, and never autoplays (the default there).
+
+export function replayProvider(p: Pick<ReplayPart, 'provider'>): ReplayProvider {
+  return p.provider ?? 'twitch';
+}
+
+/** "Twitch" or "YouTube", for button and link labels. */
+export function replayHostName(p: Pick<ReplayPart, 'provider'>): string {
+  return replayProvider(p) === 'youtube' ? 'YouTube' : 'Twitch';
+}
+
+/** The iframe src for a part, whichever host it is on. */
+export function replayPartEmbedSrc(p: Pick<ReplayPart, 'provider' | 'id'>): string {
+  if (replayProvider(p) === 'youtube') return `https://www.youtube-nocookie.com/embed/${p.id}?rel=0`;
+  return replayEmbedSrc(p.id);
+}
+
+/** The link that opens a part on its host. */
+export function replayPartWatchHref(p: Pick<ReplayPart, 'provider' | 'id'>): string {
+  if (replayProvider(p) === 'youtube') return `https://www.youtube.com/watch?v=${p.id}`;
+  return replayWatchHref(p.id);
 }
