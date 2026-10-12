@@ -6,6 +6,12 @@ on:
   push:
     branches: [main]
 
+# Every job here only reads the repository. Saying so means a token with write
+# scope is never handed to a pull request's code, whatever the repository or
+# organisation default happens to be.
+permissions:
+  contents: read
+
 # LINT IS A SEPARATE JOB, AND THE REASON IS A REAL OUTAGE.
 #
 # On 2026-09-20 the ESLint 10 bump (#185) merged while red. Every step here
@@ -188,4 +194,47 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # THE VERDICT COMES FROM MAIN'S COPY OF THE GATE (card 10402).
+      #
+      # `npm run check:review` runs scripts/check-pr-review.mjs from the checked
+      # out tree, and on a pull request that tree is the pull request. So a
+      # change to the gate was graded by the changed gate: on 2026-10-12 PR 431
+      # rewrote one of its rules, the rule lost a case it used to catch, and
+      # this job was green, produced by the edited script.
+      #
+      # This step reads the script out of origin/main and runs that against the
+      # pull request's files. The copy goes to RUNNER_TEMP, outside the tree, so
+      # it cannot show up as a changed file. A run that prints no verdict fails:
+      # a script that exits 0 having done nothing must not read as a pass.
+      #
+      # WHAT THIS DOES NOT CLOSE. This file is also read from the pull request,
+      # so a pull request can still edit this step away. Nothing inside a
+      # `pull_request` workflow can prevent that. The step below says so out
+      # loud when either file is touched, and the fix for the rest is a branch
+      # rule or a CODEOWNERS entry on these two paths, which is a repository
+      # setting and not something this file can do.
+      - name: review gate, graded by main's copy of the script
+        run: |
+          gate="$RUNNER_TEMP/check-pr-review.base.mjs"
+          log="$RUNNER_TEMP/check-pr-review.base.log"
+          git show origin/main:scripts/check-pr-review.mjs > "$gate"
+          if [ ! -s "$gate" ]; then
+            echo "could not read scripts/check-pr-review.mjs from origin/main" >&2
+            exit 2
+          fi
+          status=0
+          node "$gate" > "$log" 2>&1 || status=$?
+          cat "$log"
+          if ! grep -q "OVERALL VERDICT" "$log"; then
+            echo "main's copy of the gate printed no verdict, so nothing was checked" >&2
+            exit 2
+          fi
+          exit "$status"
+      - name: say so when the pull request edits the gate
+        run: |
+          if ! git diff --quiet origin/main HEAD -- scripts/check-pr-review.mjs .github/workflows/ci.yml; then
+            echo "::warning::This pull request edits the review gate or the workflow that runs it. The verdict above came from main's copy of the script, so it says nothing about the edit. A person has to read the change to these two files."
+          fi
+      # The pull request's own copy still runs, so an edit that breaks the gate
+      # is red here before it reaches main. It is not the verdict.
       - run: npm run check:review
