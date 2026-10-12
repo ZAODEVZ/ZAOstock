@@ -15,7 +15,7 @@ One Next.js app serving two audiences out of one codebase and one database.
 
 ```
                     ┌─────────────────────────────┐
-   public visitor ─▶│  24 public routes           │
+   public visitor ─▶│  39 public routes           │
                     │  /  /program  /pitch  ...   │──┐
                     └─────────────────────────────┘  │
                                                      │   ┌──────────────┐
@@ -59,7 +59,6 @@ npm run build      # next build --turbopack
 npm run typecheck  # tsc --noEmit
 npm run lint       # eslint .
 npm run test       # vitest run
-npm run codes      # scripts/team-codes.mjs - generate team login codes
 ```
 
 CI (`.github/workflows/ci.yml`) runs `typecheck`, `lint`, `test`, `build` on every
@@ -72,13 +71,13 @@ push and PR to `main`.
 ```
 src/
   app/
-    (24 public routes)      the festival site
+    (39 public routes)      the festival site
     team/                   the dashboard, behind a session
-    api/                    41 route handlers
+    api/                    43 route handlers
       events/[slug]/lineup  public lineup, consumed by the mobile app
       team/*                dashboard CRUD, session-guarded
       cron/                 scheduled jobs, guarded by CRON_SECRET
-    globals.css             9 lines. See "the token gap" below
+    globals.css             501 lines, 97 tokens. See "the token gap" below
   lib/
     env.ts                  server-only env access, throws on missing secrets
     db/supabase.ts          the admin client
@@ -195,7 +194,7 @@ the exact failure this repo now guards against.
 
 ## API conventions
 
-41 route handlers under `src/app/api`.
+43 route handlers under `src/app/api`.
 
 - **Zod on input.** `lib/api/parse-json.ts` is the shared parser.
 - **Rate limiting** via `lib/api/rate-limit.ts` on public form endpoints. Read its
@@ -215,12 +214,27 @@ the exact failure this repo now guards against.
 
 ## Two things that will surprise you
 
-**The token gap.** `src/app/globals.css` is nine lines. It defines
-`--background`, `--foreground` and `--accent` correctly - and **exactly one file
-in the codebase uses them.** Every other component hardcodes brand hex inline as
-Tailwind arbitrary values (`bg-[#0a1628]`). That is 1,067 hardcoded hexes across
-77 of 96 `.tsx` files. It is the single biggest source of friction in the app and
-it is measured in [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md).
+**The token gap — half closed since this was written.** This document said
+`src/app/globals.css` was nine lines, defining three variables, and that exactly
+one file used them while 1,067 hardcoded hexes sat across 77 of 96 `.tsx` files.
+None of that is true now. `globals.css` is 501 lines and defines 97 tokens, and
+414 hardcoded hexes remain across 34 of 106 `.tsx` files — a 61% reduction.
+
+So the migration described in [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) is
+partly done rather than still a plan. What remains true is that the two halves
+do not fully meet: 414 hardcoded hexes are still Tailwind arbitrary values
+(`bg-[#0a1628]`) in components that do not consume the token layer. Changing a
+brand colour today still means touching those files.
+
+The honest shape of the remaining work: the token layer exists and is
+populated, and roughly a third of the components have come across. **Not** the
+"single biggest source of friction in the app" — that was a verdict about a
+situation that has since changed.
+
+`docs/ARCHITECTURE.md` states it was written by reading the code on 2026-08-22.
+`src/architecture-doc-facts.test.ts` now re-reads the filesystem and fails when
+the numbers here stop matching, which is how the other four went stale for six
+weeks without anyone noticing.
 
 **No schema in the repo.** See above. Combined with service-role-only RLS, the
 database is a hard dependency with no local story: there is no seed, no fixture
