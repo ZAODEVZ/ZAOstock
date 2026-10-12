@@ -189,11 +189,6 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
       # THE VERDICT COMES FROM MAIN'S COPY OF THE GATE (card 10402).
       #
       # `npm run check:review` runs scripts/check-pr-review.mjs from the checked
@@ -207,6 +202,16 @@ jobs:
       # it cannot show up as a changed file. A run that prints no verdict fails:
       # a script that exits 0 having done nothing must not read as a pass.
       #
+      # IT RUNS BEFORE ANYTHING FROM THE PULL REQUEST HAS RUN. `npm ci` executes
+      # the pull request's own lifecycle scripts, and after that nothing on the
+      # runner can be trusted: a script could plant a `zao-review-gate` binary
+      # (main's copy of the gate hands over to one if it finds it), leave a
+      # tracked file dirty so that only that file is audited, or move the local
+      # origin/main ref. So this step and the next come straight after
+      # checkout, before setup-node restores a cache and before `npm ci`, with
+      # an empty HOME, on the Node the runner image ships. The gate imports
+      # only Node built-ins, so it needs nothing installed.
+      #
       # WHAT THIS DOES NOT CLOSE. This file is also read from the pull request,
       # so a pull request can still edit this step away. Nothing inside a
       # `pull_request` workflow can prevent that. The step below says so out
@@ -217,13 +222,15 @@ jobs:
         run: |
           gate="$RUNNER_TEMP/check-pr-review.base.mjs"
           log="$RUNNER_TEMP/check-pr-review.base.log"
+          echo "gate read from origin/main at $(git rev-parse origin/main), node $(node --version)"
           git show origin/main:scripts/check-pr-review.mjs > "$gate"
           if [ ! -s "$gate" ]; then
             echo "could not read scripts/check-pr-review.mjs from origin/main" >&2
             exit 2
           fi
+          mkdir -p "$RUNNER_TEMP/empty-home"
           status=0
-          node "$gate" > "$log" 2>&1 || status=$?
+          HOME="$RUNNER_TEMP/empty-home" node "$gate" > "$log" 2>&1 || status=$?
           cat "$log"
           if ! grep -q "OVERALL VERDICT" "$log"; then
             echo "main's copy of the gate printed no verdict, so nothing was checked" >&2
@@ -235,6 +242,11 @@ jobs:
           if ! git diff --quiet origin/main HEAD -- scripts/check-pr-review.mjs .github/workflows/ci.yml; then
             echo "::warning::This pull request edits the review gate or the workflow that runs it. The verdict above came from main's copy of the script, so it says nothing about the edit. A person has to read the change to these two files."
           fi
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
       # The pull request's own copy still runs, so an edit that breaks the gate
       # is red here before it reaches main. It is not the verdict.
       - run: npm run check:review

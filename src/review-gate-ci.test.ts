@@ -45,6 +45,8 @@ describe('review gate CI job', () => {
 
   it("passes the base copy's exit code through", () => {
     expect(job).toMatch(/node "\$gate" > "\$log" 2>&1 \|\| status=\$\?/);
+    // continue-on-error would turn a failing verdict into a green job.
+    expect(job).not.toMatch(/continue-on-error/);
     expect(job).toMatch(/exit "\$status"/);
   });
 
@@ -53,6 +55,33 @@ describe('review gate CI job', () => {
     const own = job.indexOf('- run: npm run check:review');
     expect(base).toBeGreaterThan(-1);
     expect(own).toBeGreaterThan(base);
+  });
+
+  it("runs before any of the pull request's code can run", () => {
+    // `npm ci` runs the pull request's lifecycle scripts. After that a script
+    // could have planted a zao-review-gate binary, dirtied a tracked file or
+    // moved origin/main, and the base copy would be grading a staged scene.
+    // setup-node comes after too, because it restores a cache.
+    const base = job.indexOf('node "$gate"');
+    const warn = job.indexOf('git diff --quiet origin/main HEAD');
+    const setupNode = job.indexOf('actions/setup-node');
+    const install = job.indexOf('- run: npm ci');
+    expect(setupNode).toBeGreaterThan(-1);
+    expect(install).toBeGreaterThan(-1);
+    for (const trusted of [base, warn]) {
+      expect(trusted).toBeGreaterThan(-1);
+      expect(trusted).toBeLessThan(setupNode);
+      expect(trusted).toBeLessThan(install);
+    }
+  });
+
+  it('gives the base copy an empty HOME', () => {
+    // Main's copy hands over to ~/bin/zao-review-gate when one exists.
+    expect(job).toMatch(/HOME="\$RUNNER_TEMP\/empty-home" node "\$gate"/);
+  });
+
+  it('prints which commit the gate was read from', () => {
+    expect(job).toMatch(/git rev-parse origin\/main/);
   });
 
   it('warns when the pull request edits the gate or this workflow', () => {
