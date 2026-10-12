@@ -65,7 +65,15 @@ const config: NextConfig = {
               // before removing - none found. An allowlist entry with no
               // backing usage is exactly the kind of drift this
               // Report-Only header exists to catch before it goes live.
-              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com",
+              // player.twitch.tv added 2026-10-12: the replay on /live and
+              // /media is a Twitch player iframe (replayEmbedSrc in
+              // src/content/replay.ts) and this list did not have its host,
+              // so enforcing the header would have blanked the recording.
+              // www.google.com added the same day for the same reason: the
+              // venue map on /ellsworth is a Google Maps iframe.
+              // src/content/csp-frame-src.test.ts fails when a framed host is
+              // missing here, so the next embed cannot repeat this.
+              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com https://player.twitch.tv https://www.google.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
