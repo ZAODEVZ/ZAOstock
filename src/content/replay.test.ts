@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { REPLAY_PARTS, DEFAULT_REPLAY_PART, replayEmbedSrc, replayWatchHref } from './replay';
+import { REPLAY_PARTS, DEFAULT_REPLAY_PART, replayEmbedSrc, replayWatchHref, replayPartsPhrase } from './replay';
 
 describe('the recorded festival', () => {
   it('lists the parts in order, each with a numeric Twitch id and a length', () => {
@@ -12,6 +12,17 @@ describe('the recorded festival', () => {
       expect(p.title).not.toMatch(/WAVEWARZ/i);
     });
     expect(new Set(REPLAY_PARTS.map((p) => p.id)).size).toBe(REPLAY_PARTS.length);
+  });
+
+  it('does not list the six zaofestivals broadcasts that Twitch deleted (measured 2026-10-12)', () => {
+    const expired = ['2890837517', '2890841510', '2890850258', '2890857550', '2890969100', '2891031137'];
+    expect(REPLAY_PARTS.filter((p) => expired.includes(p.id))).toEqual([]);
+  });
+
+  it('says how many parts in words that follow the list', () => {
+    expect(replayPartsPhrase(1)).toBe('in one recording');
+    expect(replayPartsPhrase(6)).toBe('in six parts');
+    expect(replayPartsPhrase()).toBe(replayPartsPhrase(REPLAY_PARTS.length));
   });
 
   it('opens on a part that exists', () => {

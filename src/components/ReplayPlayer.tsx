@@ -3,8 +3,11 @@
 import { useState } from 'react';
 import { REPLAY_PARTS, DEFAULT_REPLAY_PART, replayEmbedSrc, replayWatchHref } from '@/content/replay';
 
-// One player, six parts. Only the chosen part's iframe is on the page, so a
-// visitor never loads six Twitch players at once.
+const MANY = REPLAY_PARTS.length > 1;
+
+// One player. Only the chosen part's iframe is on the page, so a visitor never
+// loads more than one Twitch player. With a single recording the part buttons
+// are not shown.
 export function ReplayPlayer() {
   const [part, setPart] = useState<number>(DEFAULT_REPLAY_PART);
   const current = REPLAY_PARTS.find((p) => p.part === part) ?? REPLAY_PARTS[0];
@@ -15,8 +18,10 @@ export function ReplayPlayer() {
         <iframe key={current.id} src={replayEmbedSrc(current.id)} className="h-full w-full" allowFullScreen title={current.title} />
       </div>
       <p className="m-0 mt-3 text-sm font-bold text-ink-950">
-        Part {current.part} of {REPLAY_PARTS.length}: {current.window}. {current.length}.
+        {MANY ? `Part ${current.part} of ${REPLAY_PARTS.length}: ` : ''}
+        {current.window}. {current.length}.
       </p>
+      {MANY && (
       <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Choose a part of the recording">
         {REPLAY_PARTS.map((p) => (
           <button
@@ -32,10 +37,13 @@ export function ReplayPlayer() {
           </button>
         ))}
       </div>
+      )}
       <p className="m-0 mt-3 text-xs text-ink-muted">
-        The stream reconnected a few times, so the day is in six parts. Times are approximate.{' '}
+        {MANY
+          ? 'The stream reconnected a few times, so the day is in parts. Times are approximate.'
+          : 'The whole day in one recording, captured from this page as it streamed.'}{' '}
         <a href={replayWatchHref(current.id)} target="_blank" rel="noopener noreferrer" className="font-bold text-ink-950 underline">
-          Open this part on Twitch
+          {MANY ? 'Open this part on Twitch' : 'Open it on Twitch'}
         </a>
         .
       </p>

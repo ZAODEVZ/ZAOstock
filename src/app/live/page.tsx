@@ -8,6 +8,7 @@ import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
 import { ShareButton } from '@/components/ShareButton';
 import { ReplayPlayer } from '@/components/ReplayPlayer';
+import { REPLAY_PARTS, replayPartsPhrase, replayWatchHref } from '@/content/replay';
 import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const metadata: Metadata = {
@@ -62,7 +63,7 @@ export default async function LivePage() {
         <Eyebrow tone="denim">Thank you for watching</Eyebrow>
         <h1 className="font-display font-normal text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-2 mb-2">The stream has ended.</h1>
         <p className="text-base sm:text-lg text-ink-secondary measure m-0 mb-3">
-          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The whole day is recorded below, in six parts.
+          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The whole day is recorded below, {replayPartsPhrase()}.
         </p>
         <div id="replay">
           <ReplayPlayer />
@@ -75,8 +76,8 @@ export default async function LivePage() {
           <Button href="/tickets" variant="primary" size="sm">
             Support the artists
           </Button>
-          <Button href={replaysHref()} external variant="secondary" size="sm">
-            All parts on Twitch
+          <Button href={REPLAY_PARTS.length === 1 ? replayWatchHref(REPLAY_PARTS[0].id) : replaysHref()} external variant="secondary" size="sm">
+            {REPLAY_PARTS.length === 1 ? 'Watch on Twitch' : 'All parts on Twitch'}
           </Button>
           <Button href="/afterparty" variant="secondary" size="sm">
             After-party

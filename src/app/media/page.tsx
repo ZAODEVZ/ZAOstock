@@ -10,6 +10,7 @@ import { parseSocials } from '@/lib/socials';
 import { SiteShell, Section, Eyebrow, Card } from '@/components/poster';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import { ReplayPlayer } from '@/components/ReplayPlayer';
+import { replayPartsPhrase } from '@/content/replay';
 
 // PAST TENSE, 2026-10-04: the festival happened; the acts are listed as the ones
 // on the bill.
@@ -97,7 +98,7 @@ export default async function MediaPage() {
 
       <Section id="replay">
         <Eyebrow className="mb-3">The festival, recorded</Eyebrow>
-        <p className="text-sm text-ink-secondary m-0 mb-3 max-w-[760px]">The full 3 October stream from the parklet stage, in six parts.</p>
+        <p className="text-sm text-ink-secondary m-0 mb-3 max-w-[760px]">The full 3 October stream from the parklet stage, {replayPartsPhrase()}.</p>
         <div className="max-w-[760px]">
           <ReplayPlayer />
         </div>

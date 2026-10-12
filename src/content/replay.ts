@@ -8,8 +8,15 @@
 // measured stream starts (about 12:01, 12:05, 12:25, 14:28 and 15:32) and the
 // 18:07 end, so they are approximate and say so.
 //
-// TWITCH EXPIRES PAST BROADCASTS. When these are highlighted or exported
-// somewhere permanent, swap the ids here; replay.test.ts keeps the shape honest.
+// TWITCH EXPIRES PAST BROADCASTS, AND THESE DID. Measured 2026-10-12 against
+// Twitch's own API: all six zaofestivals ids above (2890837517, 2890841510,
+// 2890850258, 2890857550, 2890969100, 2891031137) return "video does not
+// exist", so /live and /media were showing six dead players. The one public
+// recording left is twitch.tv/videos/2890835848 on bettercallzaal, "ZAOstock
+// Music Festival Live", 26148 s: the whole day in one piece, captured from the
+// /live page itself, so the stage sits inside the page. It will expire too.
+// The permanent fix is the per-act sets on YouTube (iman-desk #64); when those
+// exist, swap this list for them. replay.test.ts keeps the shape honest.
 
 export type ReplayPart = {
   part: number;
@@ -23,16 +30,19 @@ export type ReplayPart = {
 };
 
 export const REPLAY_PARTS: readonly ReplayPart[] = [
-  { part: 1, id: '2890837517', title: 'ZAOstock Music Festival Live Stream 1', length: '3:25', window: 'Just before the music, about noon' },
-  { part: 2, id: '2890841510', title: 'ZAOstock Music Festival Live Stream 2', length: '9:25', window: 'About 12:05 PM' },
-  { part: 3, id: '2890850258', title: 'ZAOstock Music Festival Live Stream 3', length: '7:22', window: 'About 12:15 PM' },
-  { part: 4, id: '2890857550', title: 'ZAOstock Music Festival Live Stream 4', length: '2:00:50', window: 'About 12:25 to 2:25 PM' },
-  { part: 5, id: '2890969100', title: 'ZAOstock Music Festival Live Stream 5', length: '1:04:03', window: 'About 2:30 to 3:30 PM' },
-  { part: 6, id: '2891031137', title: 'ZAOstock Music Festival Live Stream 6', length: '2:30:51', window: 'About 3:30 PM to the close at 6' },
+  { part: 1, id: '2890835848', title: 'ZAOstock Music Festival Live', length: '7:15:48', window: 'The whole day, from noon' },
 ];
 
-/** The part that opens first: the first long one, where the afternoon gets going. */
-export const DEFAULT_REPLAY_PART = 4;
+/** The part that opens first. */
+export const DEFAULT_REPLAY_PART = 1;
+
+const COUNT_WORDS = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+
+/** "in one recording" or "in six parts": page copy follows the list, so it cannot go stale. */
+export function replayPartsPhrase(count: number = REPLAY_PARTS.length): string {
+  if (count === 1) return 'in one recording';
+  return `in ${COUNT_WORDS[count] ?? String(count)} parts`;
+}
 
 export function replayEmbedSrc(id: string): string {
   return `https://player.twitch.tv/?video=${id}&parent=zaostock.com&parent=localhost&autoplay=false`;
