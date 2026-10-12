@@ -61,7 +61,6 @@ act_name() {
     crown-vics) echo 'The Crown Vics' ;;
     open-x) echo 'OPEN X' ;;
     grass-rug) echo 'Grass Rug' ;;
-    acadia-rising) echo 'Acadia Rising' ;;
     michael-anderson) echo 'Michael Anderson' ;;
     dcoop) echo 'DCoop' ;;
     lyons-den) echo 'LyonsDen' ;;

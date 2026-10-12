@@ -167,6 +167,7 @@ export function BioEditor({ memberName, initialBio, initialLinks, initialPhotoUr
       {!editing && hasBio && (
         <div className="flex items-start gap-3">
           {showPhoto && (
+            // eslint-disable-next-line @next/next/no-img-element -- member photo_url is an arbitrary user-supplied external URL; next/image cannot optimize unknown hosts, and these are 48-96px avatars on an authenticated dashboard, not a public LCP image
             <img
               src={photoUrl}
               alt={`${memberName} profile`}
@@ -224,6 +225,7 @@ export function BioEditor({ memberName, initialBio, initialLinks, initialPhotoUr
           </p>
 
           {showPhoto && (
+            // eslint-disable-next-line @next/next/no-img-element -- member photo_url is an arbitrary user-supplied external URL; next/image cannot optimize unknown hosts, and these are 48-96px avatars on an authenticated dashboard, not a public LCP image
             <img
               src={photoUrl}
               alt="Preview"

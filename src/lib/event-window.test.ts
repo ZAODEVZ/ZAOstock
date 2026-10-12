@@ -48,7 +48,8 @@ describe('the public window and the programme must not disagree silently', () =>
     expect(SITE.windowLabel).toBe('Noon - 6 PM');
     const last = DAY[DAY.length - 1];
     expect(last.where).toContain('Black Moon');
-    expect(last.time).toBe('6 - 9 PM');
+    // 10 PM: Zaal, 2026-09-27, "Yes, 10 PM is right." (see program.ts).
+    expect(last.time).toBe('6 - 10 PM');
     // The framing is the whole point of the resolution: if this stops reading as
     // Black Moon's own evening, the window label becomes a wrong end time again.
     expect(last.what).toContain('Black Moon');

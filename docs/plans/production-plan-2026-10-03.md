@@ -3,6 +3,24 @@
 > **The fire act is DROPPED 2026-09-11 (Zaal: "Drop the fire act.")** Every fire line below is
 > history: no fire slot, no permit paperwork, no performer certificate.
 
+> **STALE, RECONCILED IN PART 2026-09-27.** Everything below this notice is the
+> 26-28 August working draft, addressed to Steve, and most of section 2's
+> schedule has since been overtaken: **WaveWarZ, Stilo's DJ set and Steve's own
+> 20:00-22:00 set no longer exist in the current plan.** The current, canonical
+> schedule is `src/content/program.ts` - a single outdoor stage, eight acts back
+> to back noon to 17:40, then the evening at Black Moon is **their own
+> after-party with North Creek, 18:00-21:00, hosted and underwritten by Black
+> Moon** (not a Stilo/Steve block - see `src/content/program.ts` lines 84-106
+> and its 2026-09-26 correction note). The "Every act, by status" grid and the
+> certificate headcount table just below it are rebuilt to match program.ts and
+> the current eight-act lineup, sourced to `~/zao-vault/TODAY.md` card #264
+> (2026-09-27 09:56 EDT). **Everything else past section 3 - the WaveWarZ
+> mechanics, Steve's own-set logistics, the $20-certificate "Confirmed" tag, and
+> the drafts in sections 8-9 - is NOT reconciled and should not be trusted
+> without re-checking against `~/zao-vault/TODAY.md` first**, most notably card
+> `#146`: whether Black Moon is comping or the festival is buying the $20
+> certificates is open again, not settled the way this document says below.
+
 Ellsworth, Maine. Written 26 August 2026, 38 days out. Updated 27 August after
 Zaal's verdict that every act on Steve's list is proposed, not booked, and again
 that evening when he ruled that **music starts at noon** - the 11:00 open is
@@ -90,12 +108,52 @@ What it costs us, and I want to be straight about both:
 
 ## 2. The schedule
 
+### CURRENT, 2026-09-27, retimed 2026-09-29 to match program.ts after #365 - one stage, eight acts, no WaveWarZ block
+
+Source: `src/content/program.ts` (the one public source of set times, tested by
+`src/content/artist-ops.test.ts` and the ops room) and `~/zao-vault/TODAY.md`
+card #264 (2026-09-27 09:56 EDT). This replaces the 26-28 August grid below it
+in full - WaveWarZ, Stilo's DJ set and a set of Steve's own are gone from the
+plan; the evening is Black Moon's own after-party.
+
+| Time | Act | Genre |
+|------|-----|-------|
+| 12:00 | Doors. Music starts at noon | Five-minute welcome on the mic |
+| 12:05 | The Crown Vics | Rock n roll dance band |
+| 12:38 | Changeover | MC: the six o'clock move, Art of Ellsworth, a partner spot |
+| 12:50 | OPEN X | Power pop rock |
+| 13:23 | Changeover | - |
+| 13:35 | Grass Rug | Indie jam rock |
+| 14:08 | Changeover | - |
+| 14:20 | Acadia Rising | World Rhythms and Global Fusion |
+| 14:53 | Changeover | MC and a partner spot |
+| 15:00 | Michael Anderson | Solo piano |
+| 15:33 | Changeover | MC and our partners |
+| 15:40 | DCoop | Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B |
+| 16:20 | Changeover | - |
+| 16:25 | LyonsDen Rez Muzik | Native, Electro, Reggae and Hip-hop |
+| 17:05 | Changeover | - |
+| 17:10 | Tom Fellenz | Solo instrumental acoustic guitar. Closes the outdoor festival |
+| 17:50 | Music ends. Street clears at six | Black Moon next door hosts their own evening from six |
+| 18:00-21:00 | After-party at Black Moon Public House, with North Creek | Hosted and underwritten by Black Moon, on their own premises and licence (poster: 6 to 10 PM). Not Stilo, not a set of Steve's - his own email of 26 Sept names the act and that he underwrites it, he does not perform it |
+
+None of these acts has countersigned; "confirmed" here means "on the public
+grid Zaal built the API reveal from," per program.ts's own comment - the same
+caveat the old grid below carried.
+
+### Historical draft, 26-28 August - SUPERSEDED, kept for the record
+
+Everything from here to the end of section 2 assumed five daytime acts, a
+16:00-18:00 WaveWarZ block, Stilo's DJ set, and a set of Steve's own closing
+the night. None of that is the current plan (see above). Left as written for
+the provenance trail; do not schedule off it.
+
 Your cadence gave us the frame; the sets are now **about 30 minutes each**, in
 Zaal's order, five of them. Changeovers are **mixed, 5 and 10** (Zaal): the 5s
 are a swap and nothing else, the 10s carry the event talk and a sponsor spot.
 Which gap is which is **proposed** here and marked so.
 
-### Outdoors - Franklin Street Parklet
+#### (SUPERSEDED) Outdoors - Franklin Street Parklet
 
 | Time | What | Notes |
 |------|------|-------|
@@ -137,7 +195,7 @@ JANGO, Jadyn, Hurricane, none asked, two of them already inside WaveWarZ. One
 of them fits. Until he places one, the MC and sponsor spots hold the stretch,
 and the public page prints "sets from 12:05" with no count.
 
-### Indoors - Black Moon Public House
+#### (SUPERSEDED) Indoors - Black Moon Public House
 
 | Time | What | Notes |
 |------|------|-------|
@@ -145,7 +203,7 @@ and the public page prints "sets from 12:05" with no count.
 | 20:00 - 22:00 | Steve's own set | **BOOKED** - Zaal, 22:3x: "just the set I said going from 8-10" |
 | 22:00 - close | Close per Black Moon licence | Time **UNSET** - section 8.10 |
 
-### Every act, by status
+#### (SUPERSEDED) Every act, by status
 
 Three tags and nothing else. **Confirmed** means a yes we can point at.
 **WaveWarZ** means the act plays inside the 16:00 battle block, on our roster,
@@ -223,31 +281,33 @@ on his list are still proposals per act until he confirms each one.
 | 3a | **The headcount, counted (PROPOSED, 28 Aug 05:1x)** | ZAO | Awaiting Zaal | See the list under this table |
 | 9 | Hosting part of the day | Steve | **Not needed** - Zaal, 27 Aug | Thank you for the offer. Our own crew holds the mic all day, outside and in. If you want a moment on it at six to welcome the room, it is yours |
 
-### The certificate headcount, counted
+### The certificate headcount, counted (rebuilt 2026-09-27 for the current eight acts)
 
-Counted from the section 2 ledger (confirmed acts only) and the people map
-(named crew), plus the six unnamed crew the plan already assumes. **PROPOSED**
-for Zaal's approval. No band size is invented: where an act is a group, its
-size is UNSET and it is counted as a line, not a number.
+The 28 August version above is superseded - it counted five acts, a WaveWarZ
+roster, and named crew that has not been re-verified since. This table is the
+performer headcount only, for the "list of all the people performing" Zaal
+asked to send Black Moon (`~/zao-vault/TODAY.md` card #263). No band size is
+invented: where the size is not on record, it is UNSET, not a guess. No dollar
+figure appears here - the $20-per-head question (Black Moon comping vs. the
+festival buying) is itself open again per card `#146`, so a per-head or total
+cost has no place in this doc until that is settled; that math belongs to
+Finance, not here.
 
-| Who | People | Basis |
+| Act | People | Basis |
 |-----|--------|-------|
-| Dcoop | 1 | Confirmed act; also fire; also AV lead |
-| Fellenz | 1 | Confirmed act, closes the outdoor block. Same person as the advisor line in the people map - counted once |
-| LyonsDen | 1 | Confirmed act, fourth |
-| Acadia Rising - Sen with Women with Rhythm | **UNSET** (group) | Confirmed act, second. Size not on disk |
-| The Crown Vics | **UNSET** (group) | Booked, opens at 12:05. **Flag: this is Steve's own act - does he certificate his own band?** |
-| WaveWarZ: Stilo, Jango, Lui, Quan, Hurricane | 5 | Our battle roster and host (ledger tag WaveWarZ, not Confirmed - counted, flagged) |
-| Named crew on the day: Zaal, Paper, Candy | 3 | People map |
-| Named virtual crew: Aziz, Ohnahji, Motomoto | 3, **on site UNSET** | People map. They run the stream; whether they are in Ellsworth or remote is not on disk |
-| Unnamed crew | 6 | Stage manager, two sound operators, AV cover for Dcoop's set, First Aid contact, street pointer/shooter - the "about six crew" the plan has assumed since open item 3 |
-| **Excluded** | - | Steve's own set (his certificates), Werb (not fully confirmed), the dream acts (not asked), Katina and Steve (hosts) |
+| The Crown Vics | 5 | Zaal's own count, `~/zao-vault/TODAY.md` card #264, 2026-09-27 |
+| Grass Rug | 5 | Named in the act's own bio: Sam Mitchell, Jack Howianec, Jacob Mitchell, Donny Bowman, Peter Coleman |
+| OPEN X | 3 | The act's own bio: "despite having only three members" |
+| Michael Anderson | 1 | Public billing on program.ts: "Solo piano" |
+| Tom Fellenz | 1 | Public billing on program.ts: "Solo instrumental acoustic guitar" |
+| DCoop | 1 | No band mentioned anywhere on record; treated as solo pending his own confirmation - not the same certainty as Michael Anderson or Fellenz |
+| LyonsDen | 1 | Bio describes a solo, self-produced independent artist; no bandmates named |
+| Acadia Rising | 1 | Zaal, 2026-09-28 afternoon: "its just sen performing" (zao-vault decisions/grill-2026-09-28-zaostock-afternoon.md, item 0). Sen Wilde plays solo; Women in Rhythm are not on stage |
+| Aziz, Ohnahji, Motomoto (virtual crew) | **Excluded** | Zaal, card #264: not on site |
 
-**Proposed number: 20 people plus two groups of UNSET size** (Acadia Rising,
-The Crown Vics). At Steve's $20 that is $400 for the 20, plus $20 a head for
-the two groups once their sizes land. If the three virtual crew are remote,
-it is 17 plus the groups. Wristbands and lanyards (open item 3): the same
-list.
+**18 performers, no act UNSET** (filled 2026-09-28 when Zaal confirmed
+Acadia Rising is Sen alone). The Steve/Black Moon list in card #263 was
+blocked on that one number and can now be drafted.
 
 ---
 
@@ -413,6 +473,8 @@ crew is on site at 08:00 and everyone by 10:00.
 
 ### 8.4 Light in the 16:00-18:00 block
 
+> SUPERSEDED IN PART, 2026-09-29: written for the August grid (a 16:00-18:00 WaveWarZ block, Stilo's DJ set at Black Moon). There is no battle block, and the evening is Black Moon's own after-party with North Creek. Read for the mechanism, not the names or times.
+
 WaveWarZ is the most photographed and the most streamed two hours of the day,
 and it runs into the last of the daylight. In Ellsworth on 3 October the sun is
 down shortly after 18:00 and civil dusk follows within the half hour - that is
@@ -427,6 +489,8 @@ result and the walk at 17:55 are in dusk.
 | Lighting for the 18:00 walk between the two buildings | **UNSET** - street lighting may be enough; nobody has stood on Franklin Street at dusk and checked. The fire performance's time and place are Dcoop's to say | Unverified |
 
 ### 8.5 The 18:00 move - the mechanism, minute by minute
+
+> SUPERSEDED IN PART, 2026-09-29: written for the August grid (a 16:00-18:00 WaveWarZ block, Stilo's DJ set at Black Moon). There is no battle block, and the evening is Black Moon's own after-party with North Creek. Read for the mechanism, not the names or times.
 
 The review's words: the entire audience has to physically relocate, and if it is
 quiet they scatter. Fifteen minutes was written down; nothing else was. This is

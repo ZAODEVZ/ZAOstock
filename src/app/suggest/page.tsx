@@ -6,11 +6,11 @@ import { SiteShell, Section, Eyebrow, Badge, SectionHeader } from '@/components/
 
 export const metadata: Metadata = {
   title: 'Suggestions',
-  description: 'Drop a suggestion for ZAOstock. Anyone can submit. We credit the contributors.',
+  description: 'Drop a suggestion for ZAOstock, the free music festival in Ellsworth, Maine. Anyone can submit, and we credit the contributors.',
   alternates: { canonical: '/suggest' },
   openGraph: {
     title: 'Suggestions | ZAOstock',
-    description: 'Drop a suggestion for ZAOstock. Anyone can submit. We credit the contributors.',
+    description: 'Drop a suggestion for ZAOstock, the free music festival in Ellsworth, Maine. Anyone can submit, and we credit the contributors.',
     url: 'https://zaostock.com/suggest',
     images: [OG_IMAGE],
   },

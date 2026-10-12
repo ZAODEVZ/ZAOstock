@@ -80,7 +80,6 @@ describe('artist page URLs', () => {
       'the-crown-vics',
       'open-x',
       'grass-rug',
-      'acadia-rising',
       'michael-anderson',
       'dcoop',
       // One word, and so one slug segment. The old two-word /artist/lyons-den

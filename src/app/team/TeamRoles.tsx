@@ -155,6 +155,7 @@ function MemberCard({ member: m }: { member: Member }) {
   return (
     <div className="bg-[#0d1b2a] rounded-lg border border-white/[0.06] p-3 flex items-start gap-3">
       {showPhoto ? (
+        // eslint-disable-next-line @next/next/no-img-element -- member photo_url is an arbitrary user-supplied external URL; next/image cannot optimize unknown hosts, and these are 48-96px avatars on an authenticated dashboard, not a public LCP image
         <img
           src={m.photo_url}
           alt={m.name}

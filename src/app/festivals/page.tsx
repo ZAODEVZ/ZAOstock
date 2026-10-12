@@ -3,14 +3,14 @@ import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import Image from 'next/image';
 import { InstagramLinks } from './InstagramLinks';
 import { getPublicMembers, type PublicMember } from '@/lib/members';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, nextEditionLine } from '@/content/festival';
 import { SITE } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Badge, Card, SectionHeader } from '@/components/poster';
 
 export const metadata: Metadata = {
   title: 'ZAO Festivals',
   description:
-    "ZAO Festivals is The ZAO's series of community-owned, artist-built music festivals: free to attend, artists paid fairly. Flagship: ZAOstock 2026, Ellsworth, Maine.",
+    "The ZAO's series of community-owned, artist-built music festivals: free to attend, built to help artists grow. Flagship: ZAOstock 2026, held in Ellsworth, Maine.",
   alternates: { canonical: '/festivals' },
   openGraph: {
     title: 'ZAO Festivals | ZAOstock',
@@ -48,9 +48,9 @@ const SERIES: Chapter[] = [
 ];
 
 const PRINCIPLES = [
-  { k: '01', t: 'Artist-built', b: 'The lineup and the day are built by the artists and the community, not a promoter extracting margin. Curated by the people in the room.' },
+  { k: '01', t: 'Artist-built', b: 'The lineup and the day are built by the artists and the community. Curated by the people in the room.' },
   { k: '02', t: 'Community-owned', b: 'The crowd that funds it owns it. A festival as a protocol, not a product: open, shared, repeatable by anyone.' },
-  { k: '03', t: 'Free and fair', b: 'Free to attend. Artists paid fairly and transparently. Built in public, every step shared.' },
+  { k: '03', t: 'Free and open', b: 'Free to attend. Built to help the artists grow. Built in public, every step shared.' },
 ] as const;
 
 // Instagram posts/reels to link out to. This is where the real ZAO-CHELLA /
@@ -91,9 +91,10 @@ export default async function FestivalsPage() {
           <Eyebrow tone="denim">The series</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">ZAO Festivals</h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            The ZAO&apos;s series of community-owned, artist-built music festivals. Free to attend, artists paid fairly, and the crowd that funds it owns it. New York, Miami and Maryland so far; the flagship lands in Maine this October.
+            The ZAO&apos;s series of community-owned, artist-built music festivals. Free to attend, built to help artists grow, and the crowd that funds it owns it. New York, Miami, Maryland and Maine so far; the flagship was ZAOstock in Maine, October 2026.
           </p>
           <p className="text-base text-ink-950 font-bold mt-3 m-0">ZAO Festivals presents ZAOstock. One umbrella, many events, one DNA.</p>
+          <p className="text-base text-ink-secondary mt-2 m-0">{nextEditionLine()}</p>
         </div>
       </Section>
 
@@ -182,11 +183,11 @@ export default async function FestivalsPage() {
       ) : null}
 
       <Section>
-        <SectionHeader eyebrow="Be part of it" title="Bring one to your city, sponsor one, play one." lede="ZAO Festivals is a model anyone can run. The goal is more community-owned culture in more places." className="mb-6" />
+        <SectionHeader eyebrow="Be part of it" title="Sponsor one, play one, talk to us." lede="In 2027 ZAO Festivals runs two events: ZAOville and ZAOstock." className="mb-6" />
         <div className="flex flex-wrap gap-3">
           <Button href="/">ZAOstock 2026</Button>
           <Button href="/event-organizers" variant="secondary">
-            Organize
+            Organizers
           </Button>
           <Button href="/sponsor" variant="secondary">
             Sponsor

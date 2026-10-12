@@ -55,11 +55,15 @@ async function checkPage(browser, deviceName, name, path) {
       const overflowers = [];
       document.querySelectorAll('body *').forEach((el) => {
         const r = el.getBoundingClientRect();
-        if (r.right > winWidth + 1 && r.width > 0) {
+        const leftOverflow = r.left < -1;
+        const rightOverflow = r.right > winWidth + 1;
+        if ((leftOverflow || rightOverflow) && r.width > 0) {
           overflowers.push({
             tag: el.tagName,
-            text: (el.textContent || '').trim().slice(0, 40),
+            text: (el.textContent || "").trim().slice(0, 40),
+            left: Math.round(r.left),
             right: Math.round(r.right),
+            side: leftOverflow && rightOverflow ? "both" : leftOverflow ? "left" : "right",
           });
         }
       });
@@ -84,7 +88,7 @@ async function main() {
       console.log(`  ${label}  ${name.padEnd(14)} scrollWidth=${r.docWidth} viewport=${r.winWidth}`);
       if (!ok) {
         failures += 1;
-        r.overflowers.forEach((o) => console.log(`         ${o.tag} right=${o.right} "${o.text}"`));
+        r.overflowers.forEach((o) => console.log(`         ${o.tag} side=${o.side} left=${o.left} right=${o.right} \"${o.text}\"`));
       }
     }
   }

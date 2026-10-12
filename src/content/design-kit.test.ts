@@ -77,7 +77,8 @@ describe('the design kit cannot drift from the site it describes', () => {
 
   it('lists the three families the site actually loads', () => {
     const layout = read('src/app/layout.tsx');
-    for (const f of FONTS) expect(layout, f.family).toContain(f.family.replace(' ', '_'));
+    // Self-hosted fonts are named by family without spaces (src/app/fonts).
+    for (const f of FONTS) expect(layout, f.family).toContain(f.family.replace(' ', ''));
     expect(FONTS).toHaveLength(3);
   });
 

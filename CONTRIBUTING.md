@@ -33,7 +33,8 @@ of these throw a clear error at first use if missing, not a silent failure).
 ## Before you push
 
 CI runs `typecheck`, `lint`, `test`, `build`, `check:facts` and `check:review` on every push/PR to `main`
-(`.github/workflows/ci.yml`) - but run them locally first so you're not waiting on CI to find something obvious:
+(`.github/workflows/ci.yml`), plus the Playwright specs and the mobile overflow check against a local build -
+but run the first six locally so you're not waiting on CI to find something obvious:
 
 ```bash
 npm run typecheck

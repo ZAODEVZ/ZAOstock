@@ -31,7 +31,7 @@ describe('nowNextState', () => {
   });
 
   it('points at Black Moon the minute the last set ends, not at the 18:00 street-clear', () => {
-    const state = nowNextState(et('17:41'));
+    const state = nowNextState(et('17:51'));
     expect(state.phase).toBe('after');
     expect(state).toMatchObject({ phase: 'after', message: expect.stringContaining('Black Moon') });
   });
@@ -41,15 +41,15 @@ describe('nowNextState', () => {
   });
 
   it('renders LyonsDen by its display name, not its identity name', () => {
-    // LyonsDen plays 16:15-16:55; DISPLAY_NAMES maps it to "LyonsDen Rez Muzik"
+    // LyonsDen plays 16:25-17:05; DISPLAY_NAMES maps it to "LyonsDen Rez Muzik"
     // (site.ts) without touching the identity name the slug/form/sitemap use.
-    expect(nowNextState(et('16:20'))).toMatchObject({ onNow: 'LyonsDen Rez Muzik' });
+    expect(nowNextState(et('16:30'))).toMatchObject({ onNow: 'LyonsDen Rez Muzik' });
   });
 
   it('never returns a string containing a clock time', () => {
     // Zaal, 2026-09-12: name the act, not the slot. A regression here would
     // leak a time onto the public page.
-    for (const t of ['11:59', '12:05', '12:38', '13:00', '17:41', '18:01']) {
+    for (const t of ['11:59', '12:05', '12:38', '13:00', '17:51', '18:01']) {
       const state = nowNextState(et(t));
       const text = JSON.stringify(state);
       expect(text).not.toMatch(/\d{1,2}:\d{2}/);

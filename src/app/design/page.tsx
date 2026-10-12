@@ -7,11 +7,11 @@ import { getPosterFiles } from '@/lib/poster';
 
 export const metadata: Metadata = {
   title: 'Design kit',
-  description: 'The ZAOstock marks, colours, type and the rules for using them. Every file downloads.',
+  description: 'The ZAOstock marks, signs, poster pieces, colours, type and the rules for using them, for anyone making something for the festival. Every file downloads.',
   alternates: { canonical: '/design' },
   openGraph: {
     title: 'Design kit | ZAOstock',
-    description: 'The ZAOstock marks, colours, type and the rules for using them. Every file downloads.',
+    description: 'The ZAOstock marks, signs, poster pieces, colours, type and the rules for using them, for anyone making something for the festival. Every file downloads.',
     url: 'https://zaostock.com/design',
     images: [OG_IMAGE],
   },

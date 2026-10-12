@@ -51,6 +51,8 @@ export const AS_OF = '2026-09-23';
  * response verbatim, ordered by set_order (there is no set 6 in the source).
  * To refresh: re-read the endpoint when it says source "live" and pending 0,
  * replace the array, and move AS_OF - never edit a name or bio by hand.
+ * The one hand edit: one act's entry was removed on 2026-10-05 (Zaal's
+ * ruling, vault decisions/grill-2026-10-05-orchestration-retire-partners.md).
  */
 export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
   // Keyed by the slug the events table uses. The mobile app's 'zaostock-2026'
@@ -73,7 +75,7 @@ export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
       id: "9385596c-75c5-441a-ac77-b95a0c38ff15",
       name: "OPEN X",
       genre: "Power pop rock",
-      city: "",
+      city: "Down East Maine",
       bio: "OPEN X is best described as a bombastic, genre-blurring American rock power pop trio known for their cinematic sound, classical influences, and spectacular stadium-sized live shows. While rooted in alternative rock, OPEN X seamlessly blends progressive rock, heavy metal, and modern pop. They are famous for thick, heavy guitar riffs contrasted against delicate vocal melodies. A massive part of their identity is Ryan Miller's dramatic, soaring and emotional vocal delivery. Despite having only three members, they produce an incredibly dense, symphonic wall of sound, anchored by driving basslines and precise, hard-hitting percussion.",
       photo_url: "https://zaostock.com/artists/open-x-logo.webp",
       socials: "https://openxofficial.com",
@@ -88,16 +90,6 @@ export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
       photo_url: "https://zaostock.com/artists/grass-rug.webp",
       socials: "",
       set_order: 3,
-    },
-    {
-      id: "f3affe3f-58f2-4b0c-8513-201bcc282a3c",
-      name: "Acadia Rising",
-      genre: "World Rhythms / Global Fusion",
-      city: "Ellsworth, Maine",
-      bio: "Acadia Rising produces original flute and hand percussion music that blends global musical influences with the natural beauty of Maine. Featuring expressive flute melodies, dynamic rhythms, and improvisation, each piece is inspired by landscapes, cultures, and traditions from around the world while reflecting a unique contemporary voice. The performance invites listeners on a musical journey that celebrates rhythm, connection, and the universal language of music.",
-      photo_url: "https://zaostock.com/artists/acadia-rising.webp",
-      socials: "https://facebook.com/AcadiaRising https://instagram.com/acadia.rising",
-      set_order: 4,
     },
     {
       id: "53905045-9ebf-4bda-b7b9-61f0ba869bc7",
@@ -135,7 +127,7 @@ export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
       genre: "Solo Instrumental Acoustic Guitar",
       city: "SF Bay Area",
       bio: "A dynamic acoustic guitar instrumentalist, Tom has broad performance experience across event stages, clubs, cafes, house concerts and online/virtual platforms. His sets showcase a blend of influences, with his original music styled by 70s and 80s progressive rock, smooth jazz, and acoustic folk. His playing style has a cinematic quality, having listeners say his music takes them on immersive journeys, from introspective motivation to making your mark in the world; all from one guitar.",
-      photo_url: "https://pbs.twimg.com/profile_images/2062609763637293056/iU6Pe_nU_400x400.jpg",
+      photo_url: "/artists/tom-fellenz.webp",
       socials: "https://fellenz.net",
       set_order: 9,
     },

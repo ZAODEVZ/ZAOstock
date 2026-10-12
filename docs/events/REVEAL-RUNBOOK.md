@@ -101,6 +101,17 @@ exactly on time, the endpoint answered correctly, and the bill was empty because
 no row was `confirmed`. Everything worked and the result was still wrong, which
 is why this check exists before the website step rather than after it.
 
+**Corrected 2026-10-11: the bill is 7 acts, not 8, and 7 of 7 are published.**
+`GET https://zaostock.com/api/events/zaostock/lineup` returned HTTP 200 at
+2026-10-11T12:17Z with 7 artists and `pending: 0`, every one with a `photo_url`
+and a `bio`: The Crown Vics, OPEN X, Grass Rug, Michael Anderson, DCoop,
+LyonsDen and Tom Fellenz. These are the seven acts who played on 3 October, and
+they match `LINEUP_NAMES` in `src/content/site.ts` name for name. The eighth act
+counted below did not play and was taken off the bill on 2026-10-05 (#447).
+`src/lib/lineup.ts` now drops its leftover database row, so the endpoint and the
+site agree on seven. The 24 September paragraph below is the record of what the
+endpoint said then, not what it says now.
+
 **Re-measured 2026-09-24, five days before this marker was due, and the answer
 changed: 8 of 8 acts are confirmed.** The Crown Vics, OPEN X, Grass Rug, Acadia
 Rising, Michael Anderson, DCoop, LyonsDen and Tom Fellenz - every one with a
@@ -120,7 +131,9 @@ than from anyone's recollection.
 <!-- measured 2026-09-14T12:19Z - zao-measure --verify "zaostock acts confirmed count" (DRIFTED from 0 on 2026-09-08T21:00Z to 2 on 2026-09-14T12:19Z) -->
 <!-- re-checked 2026-09-22T12:47Z - GET https://zaostock.com/api/events/zaostock/lineup returned 5 artists, each with photo_url and bio (DRIFTED from 2 on 2026-09-14T12:19Z to 5 on 2026-09-22T12:47Z) -->
 <!-- re-checked 2026-09-24T17:51Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (DRIFTED from 5 on 2026-09-22T12:47Z to 8 on 2026-09-24T17:51Z) -->
-<!-- re-check: 2026-10-02 -->
+<!-- re-checked 2026-10-03T12:23Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (unchanged since 2026-09-24) -->
+<!-- re-checked 2026-10-11T12:17Z - GET https://zaostock.com/api/events/zaostock/lineup returned HTTP 200, 7 artists, pending 0, every one with photo_url and bio (DRIFTED from 8 on 2026-10-03T12:23Z to 7: one act retired off the bill in #447) -->
+<!-- re-check: 2026-11-10 -->
 
 ### 3. The website needs NO deploy - corrected 2026-09-08
 

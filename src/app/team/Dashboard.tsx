@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { GoalsBoard } from './GoalsBoard';
 import { TodoList } from './TodoList';
 import { TeamRoles } from './TeamRoles';
@@ -210,13 +209,6 @@ export function Dashboard({
           >
             Circles -&gt;
           </a>
-          <Link
-            href="/onepagers"
-            className="px-3 py-1.5 rounded-lg text-xs font-medium text-amber-300 border border-amber-500/30 bg-amber-500/5 hover:bg-amber-500/10 whitespace-nowrap"
-            title="Briefing docs for sponsors, partners, venues"
-          >
-            One-pagers -&gt;
-          </Link>
           {!showMore && (
             <button
               onClick={() => setShowMore(true)}

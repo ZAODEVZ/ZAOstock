@@ -2,12 +2,17 @@
 
 **For the ZABAL Gamez builder battle of 29 to 30 August, and anyone else who wants to build something the festival can use on 3 October.**
 
+> **UPDATED 2026-09-30.** Money has moved on since this brief: support is
+> $1 / $20 / $50 by card on zaostock.com/tickets, crypto through Giveth. There
+> is no PayPal, no /donate page and no "Pro Ticket" any more, and no tier
+> promises a 1:1 or a credit on the site.
+>
 > **UPDATED 2026-09-19.** The builder battle itself is over; the brief stays up
-> for anyone still building. Set times are not public. The facts table below
+> for anyone still building. Set times are on zaostock.com/program. The facts table below
 > is current; anything above it that still reads as a live battle window is
 > the August brief.
 
-ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Eight acts on the parklet stage, music from noon until the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
+ZAOstock is a free, one-day, artist-built music festival on Franklin Street in downtown Ellsworth, Maine, Saturday 3 October 2026. Seven acts played the parklet stage, music from noon until the street clears at six; Black Moon Public House next door hosts its own evening after that. Produced by ZAO Festivals, the events arm of The ZAO. Everything below is real, on disk, and yours to build on.
 
 ## The loop: build, then call Zaal
 
@@ -40,7 +45,7 @@ Build: a run-of-show board (phone first) that reads the five-minute grid, shows 
 What exists:
 
 - RSVP is free and runs on Luma: https://ticket.zaostock.com (redirects to the Luma event).
-- The Pro Ticket: $50, 20 spots, round-one goal $1,000, on https://zaostock.com/donate, paid by PayPal or Giveth. Pro Ticket buyers are credited by name on the site; that is the only recognition tier, on purpose.
+- Support tiers: $1 / $20 / $50 by card on https://zaostock.com/tickets (Stripe), and crypto through Giveth. (Until 29 Sep this was a $50 "Pro Ticket" on /donate via PayPal or Giveth; see the note at the top.)
 - The ZAO's standing decision (7 August 2026): Unlock Protocol on Base is the membership rail. The money door stays ZAO-owned; no platform takes a cut between The ZAO and its people. Unlock's DAO team is in the weekly ZAO room.
 
 What is missing: an onchain ticket. Nothing on Unlock exists for ZAOstock yet.
@@ -75,7 +80,7 @@ Build: a ZAOstock-skinned battle view in two sizes: a big-screen mode (bracket, 
 
 What exists:
 
-- poidhz, The ZAO's POIDH bounty operation: https://github.com/bettercallzaal/zpoidh (public; rounds, judging pages, leaderboard, a fork-ready `org.config.json`). Iman runs the rounds.
+- poidhz, The ZAO's POIDH bounty operation: https://github.com/bettercallzaal/poidhz (public; rounds, judging pages, leaderboard, a fork-ready `org.config.json`). Iman runs the rounds.
 - The last round ran on WaveWarZ Twitch clips, https://poidh.xyz/base/bounty/1330, and closed on Sunday 30 August, winner by POIDH consensus vote. Nothing is open right now.
 - The ZAO's payout path for contributors is x402 over POIDH (same 7 August decision as track 2).
 - Volunteer roles for 3 October: setup, check-in, stage crew, content, teardown (https://zaostock.com/apply).
@@ -90,12 +95,12 @@ Build: a ZAOstock collaboration board on POIDH: each open task (a photo set of e
 |---|---|
 | Date | Saturday 3 October 2026 |
 | Where | Franklin Street Parklet, Ellsworth, Maine; Black Moon Public House next door from six |
-| Cost | Free. Optional Pro Ticket, $50 |
-| Music | Eight acts, noon to six, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
+| Cost | Free. Optional support at $1, $20 or $50 on /tickets |
+| Music | Seven acts played, noon to six, one stage. The street clears at six. Black Moon next door hosts its own evening after that, on their stage and their licence |
 | Expected | 200 to 250 in person, about 1,000 online |
-| Lineup | All eight are public: The Crown Vics, OPEN X, Grass Rug, Acadia Rising, Michael Anderson, DCoop, LyonsDen, Tom Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
+| Lineup | All seven are public: The Crown Vics, OPEN X, Grass Rug, Michael Anderson, DCoop, LyonsDen, Tom Fellenz. Running order at https://zaostock.com/program. There is no reveal date |
 | Set times | **Not public, and not in any API.** The order is public, the clock is not. Each act reads its own time on its own backstage page. If you are building anything that shows a schedule, build it around the order |
-| Partners | City of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, Artizen, WE THE MEDIA, Heart of Ellsworth |
+| Partners | City of Ellsworth, Black Moon Public House, Star 97.7, Wallace Events, WaveWarZ, COC Concertz, Bomb Squad, WE THE MEDIA, Heart of Ellsworth |
 | Series | 9th Annual Art of Ellsworth, Maine Craft Weekend |
 | Produced by | ZAO Festivals, the events arm of The ZAO |
 | Contact | info@thezao.com |
@@ -113,7 +118,7 @@ Where to read more: https://zaostock.com/llms.txt (the whole site in one text fi
 
 ## Rules for anything you ship publicly
 
-1. Names: the eight acts in the facts table are public and no one else is. The repo carries planning documents with other names, including people no longer involved; those are not public copy. Do not print them.
+1. Names: the seven acts in the facts table are public and no one else is. The repo carries planning documents with other names, including people no longer involved; those are not public copy. Do not print them.
 2. No prices, tiers or sponsor numbers anywhere; packages are on request. No "tax-deductible", no fiscal sponsor claim: ZAOstock has neither.
 3. Partners are the ones listed above and no one else, however friendly the conversation.
 4. Attendee-facing words lead with the music. Your tool can run on Base; the festival page does not say so.

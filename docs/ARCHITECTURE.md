@@ -62,10 +62,12 @@ npm run test       # vitest run
 npm run test:e2e   # playwright test
 ```
 
-CI (`.github/workflows/ci.yml`) runs on every push and PR to `main`, as four jobs.
+CI (`.github/workflows/ci.yml`) runs on every push and PR to `main`, as six jobs.
 `check` runs `typecheck`, `test` and `build` in sequence, so a typecheck failure
-stops the other two. `lint`, `check:facts` and `check:review` each run as their
-own job, so a failure in one of them cannot hide the others.
+stops the other two. `e2e` runs the Playwright specs and `mobile` runs
+`check:mobile-overflow`, each against its own build of the commit served on
+localhost. `lint`, `facts` (`check:facts`) and `review` (`check:review`) each run
+as their own job, so a failure in one of them cannot hide the others.
 
 ---
 
@@ -226,10 +228,17 @@ the exact failure this repo now guards against.
 
 **The token gap, partly closed.** The brand tokens now live in a Tailwind v4
 `@theme` block in `src/app/globals.css` (`paper`, `ink`, `red`, `gold`, `denim`,
-`olive`), and 68 of 110 `.tsx` files use them. The rest still hardcode hex as Tailwind
-arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 110 `.tsx` files, as
-of 2026-09-27. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
+`olive`), and 71 of 109 `.tsx` files use them. The rest still hardcode hex as Tailwind
+arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 109 `.tsx` files, as
+of 2026-10-12. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
 measurement.
+
+These counts go stale with every new file, so here is how to take them again,
+from the repo root. Files: `find src -name '*.tsx' | wc -l`. Hardcoded hexes:
+`grep -rhoE '\[#[0-9a-fA-F]{3,8}\]' src --include='*.tsx' | wc -l`, and the same
+pattern with `-rlE` for the files that carry one. Files using the tokens: a
+utility prefix, a token family and an optional shade, counted with
+`grep -rlE '(bg|text|border|ring|fill|stroke|from|to|via|shadow|outline|decoration|divide|accent|caret|placeholder)-(paper|ink|red|gold|denim|olive)(-[0-9]+)?\b' src --include='*.tsx' | wc -l`.
 
 **No schema in the repo.** See above. Combined with service-role-only RLS, the
 database is a hard dependency with no local story: there is no seed, no fixture

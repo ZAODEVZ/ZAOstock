@@ -7,14 +7,27 @@ runs the stream, and neither is a document a new crew member can read cold to
 learn who is in charge of what, when to show up, or where the bathroom is.
 
 **UNSET stays UNSET here.** Where the source itself has no answer yet, this
-brief says so rather than guessing - tracker card 9992 (crew roster) and #39
-(shirt colour with Candy) are both still open as of 2026-09-26.
+brief says so rather than guessing - tracker card 9992 (crew roster) is still
+open, and #39 (crew shirts) is now partly answered: the colour is settled,
+count and sizes are not.
 
 ## Call time
 
-**Vital crew: 8 AM. Everyone else: by 10 AM.** (Zaal, 27 Aug grill round 2;
-`docs/plans/production-plan-2026-10-03.md`.) Friday 2 October, 4 to 7 PM, is
-mandatory soundcheck for every act - there is no Saturday alternative.
+**Vital crew: 8 AM Saturday. Everyone else: by 10 AM Saturday.** (Zaal, 27
+Aug grill round 2; `docs/plans/production-plan-2026-10-03.md`.)
+
+## Friday 2 October: setup and decorating, not soundcheck
+
+**2 to 6 PM, at the parklet, with volunteers** - Zaal's tap, grill
+2026-09-27 09:4x, on the recommended option: the stream and wifi test runs
+first, decorations after, **artists welcome from 4 PM**. This is NOT a
+soundcheck - nothing on stage is checked today, and nothing about any act's
+set depends on showing up. Soundcheck itself moved off Friday entirely on
+2026-09-24 (Zaal, live: "lets say sat 9:30 am is when soundcheck will
+start"); the live Google Form still calling Friday a soundcheck is a known,
+deliberately-left drift (Zaal, grill 2026-09-26 evening, #88: "Leave it, the
+backstage pages are the source" - `src/content/artist-ops.ts` `ARTIST_DATES`
+is the source, not this brief and not the form).
 
 ## Roles
 
@@ -27,7 +40,7 @@ mandatory soundcheck for every act - there is no Saturday alternative.
 | Stream rig lead | **UNSET** | `docs/av/stream-run-sheet-2026-10-03.md` |
 | Online side (stream + moderation) | Iman, Thy Revolution | Co-leads since 31 August; roughly 1,000 online against 200-250 on the street |
 | Crew (names, load-in/event-run/load-out) | **UNSET** | Tracker card 9992 - a written roster with a contact and role for each person does not exist yet |
-| Crew shirt colour, count, sizes, artwork | **UNSET** | Tracker card #39, with Candy |
+| Crew shirt | **Coyote brown ZAOstock hoodie.** Front: "2026 ZAOSTOCK" with the moose. Back: "ZAOstock 26" and the eight acts (Zaal, 2026-09-27; proof `~/zao-vault/projects/zaostock-crew-hoodie-coyote-brown-2026.png`). Count and sizes: **UNSET** | Tracker card #39, with Candy. The print spells "LYONS DEN" as two words - it is already printed, do not chase it |
 
 ## The clock
 
@@ -38,28 +51,27 @@ below without updating the source.
 | Time | What |
 |---|---|
 | 08:00 | Vital crew on site. PA power-up. Line checks only |
+| 9:30 AM to noon | Artist soundcheck, staggered through the block, be there by 11 AM at the latest - not mandatory, an ask (Zaal, 2026-09-24/25, moved off Friday) |
 | 10:00 | Everyone on site. First Aid kit and named contact, signage, wayfinding, merch if allowed |
 | 11:00 | MC mic check; partner spot scripts on the desk |
 | 11:30 | Stage manager's walk: every act on site; the overrun rule said out loud |
 | 12:00 | Doors. Music starts at noon. |
 | 12:05 | 1. The Crown Vics (33) |
-| 12:38 | Changeover (7) |
-| 12:45 | 2. OPEN X (40) |
-| 13:25 | Changeover (5) |
-| 13:30 | 3. Grass Rug (33) |
-| 14:03 | Changeover (7) |
-| 14:10 | 4. Acadia Rising (33) |
-| 14:43 | Changeover (7) |
-| 14:50 | 5. Michael Anderson (33) |
-| 15:23 | Changeover (7) |
-| 15:30 | 6. DCoop (40) |
-| 16:10 | Changeover (5) |
-| 16:15 | 7. LyonsDen (40) |
-| 16:55 | Changeover (5) |
-| 17:00 | 8. Tom Fellenz (40), closes the outdoor block |
-| 17:40 | Music ends. The street clears at six |
+| 12:38 | Changeover (12) |
+| 12:50 | 2. OPEN X (33) |
+| 13:23 | Changeover (12) |
+| 13:35 | 3. Grass Rug (33) |
+| 14:08 | Changeover (12) |
+| 15:00 | 4. Michael Anderson (33) |
+| 15:33 | Changeover (7) |
+| 15:40 | 5. DCoop (40) |
+| 16:20 | Changeover (5) |
+| 16:25 | 6. LyonsDen (40) |
+| 17:05 | Changeover (5) |
+| 17:10 | 7. Tom Fellenz (40), closes the outdoor block |
+| 17:50 | Music ends. Closing remarks (Zaal), the last ten minutes before the street clears at six |
 | 18:00 | Street clears. THE MOVE - after-party at Black Moon, North Creek, hosted by Black Moon, from six |
-| 21:00 | Close, approximate. Black Moon keeps its own hours |
+| 22:00 | Close, approximate. Black Moon keeps its own hours |
 
 **Overrun rule:** an act that runs over loses the time from its own
 changeover, and the next act still starts on the grid. Nobody holds the whole
@@ -80,9 +92,12 @@ day for one set.
   the crew who are in from 8, one-to-one, nothing else. No crew line on
   Steve's invoice.
 - **If someone is hurt:** find any crew member; there is no dedicated First
-  Aid post or named medic (Zaal's ruling). For anything serious, the nearest
-  urgent care - which one, its Saturday hours and a phone number are all
-  **UNSET** and not yet verified by any lane.
+  Aid post or named medic (Zaal's ruling). Non-emergency: **ConvenientMD
+  Urgent Care, 235 High St, Ellsworth** - about four minutes from Franklin
+  Street, walk-in, open 8 AM to 8 PM daily (Zaal, 2026-09-27; source
+  convenientmd.com/locations/ellsworth-me-urgent-care). Anything serious:
+  **911**, then Northern Light Maine Coast Hospital ER. Phone number for
+  ConvenientMD: **UNSET**.
 
 ## Media destination
 
@@ -94,11 +109,42 @@ day for one set.
 - **Iman uploads phone shots.**
 - **Same day** - nothing sits on a device overnight.
 
+## Rain plan (card 9991)
+
+**The plan: tent by default, Black Moon if it is severe.** Zaal's ruling,
+2026-09-24 morning (`decisions/grill-2026-09-24-seat-morning.md`, item 6,
+recorded as: tent by default, Black Moon if it is severe). Ordinary rain
+stays under the tent; the move indoors is for weather that forces it - not
+a threshold written down anywhere yet, just a call Zaal and Steve make
+together.
+
+- **Who calls it, by when:** Zaal and Steve, made Friday 2 October (setup
+  and decorating day, see above) with an 08:00 Saturday re-look. Ordinary
+  rain does not trigger this - the festival is rain or shine, the parklet is
+  open to the sky. This is for weather that forces it.
+- **Still open, from the same ruling:** Black Moon has not agreed in writing
+  to take the DAY part, only the evening after-party - the 2026-09-24 ruling
+  itself named this as one of two things it did not yet have (the other is
+  the published-threshold gap noted above). Whoever is talking to Black Moon
+  needs this in writing before the plan can be called settled, let alone
+  published.
+- **What moves:** UNSET. Whether it's all eight acts in the outdoor running
+  order, a shortened set, or something else has not been decided by anyone -
+  Black Moon's own capacity for a full changeover cycle is unmeasured.
+  Crew: do not announce or plan an indoor show's shape until this is
+  answered.
+- **The stream moves with it.** Black Moon's own wifi is untested for a
+  live feed - flag this before the day, not during it, to whoever is
+  running the stream (see card 9632: the Mon 28 Sep parklet test was rained out, so
+  Fri 2 Oct is now the only stream test, cellular first).
+- Katina and Steve need a line about this from Zaal - drafted in clip
+  zaostock-rain-plan-katina-steve-draft (inbox/clips), his own send.
+
 ## What this brief cannot fill
 
 - Crew names, contacts and roles for load-in, event-run and load-out (card 9992).
-- Shirt colour, count, sizes, artwork (card #39).
+- Shirt count and sizes (card #39, colour and artwork are now set).
 - The Google Drive folder link (cards 9807, #119).
-- Which urgent care, its Saturday hours, and a phone number.
+- ConvenientMD's phone number (address and hours are now set).
 - Whether food can come outside the parklet.
 - The exact porta-potty count and booking.

@@ -58,7 +58,9 @@
 
   --shadow-hard: 3px 3px 0 #241E15;
   --shadow-hard-lg: 5px 5px 0 #241E15;
-  --shadow-focus: 0 0 0 3px rgba(229, 172, 59, 0.45);
+  /* Solid ember, not translucent gold: the gold ring measured 1.2-1.3:1 on the
+     cream grounds, under WCAG 1.4.11's 3:1 (Dotfiles, 2026-09-28). Ember is 5-7:1. */
+  --shadow-focus: 0 0 0 3px #8F3E1E;
 
   --ease-poster: cubic-bezier(0.2, 0.8, 0.2, 1);
 
@@ -312,9 +314,22 @@ h1, h2, h3, h4 {
 
   --shadow-hard: 0 4px 14px rgba(46, 32, 21, 0.16);
   --shadow-hard-lg: 0 10px 30px rgba(46, 32, 21, 0.18);
-  --shadow-focus: 0 0 0 3px rgba(223, 162, 60, 0.5);
+  /* Resolves per theme: #8F3E1E on the light grounds, #F0955A in dark mode,
+     because the dark block redefines --color-red-700 on this same element. */
+  --shadow-focus: 0 0 0 3px var(--color-red-700);
 
   --font-display: var(--font-oswald), "Arial Narrow", Impact, sans-serif;
+}
+
+/* KEYBOARD FOCUS, site-wide (2026-09-28). Unlayered on purpose, so it beats
+   Tailwind's utilities layer: the per-component `focus-visible:[box-shadow:...]`
+   classes lost to `shadow-hard` on the RSVP pill (measured: :focus-visible
+   matched, box-shadow stayed the soft drop shadow, outline none), leaving no
+   visible focus at all. An outline does not compete with box-shadow classes.
+   Colour follows --color-red-700: #8F3E1E light, #F0955A dark, both over 3:1. */
+.site :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-red-700);
+  outline-offset: 2px;
 }
 
 /* Her dark variant, following the viewer's system setting as her homepage
@@ -426,4 +441,61 @@ h1, h2, h3, h4 {
 }
 .site .grain::after {
   display: none;
+}
+
+/* ------------------------------------------------------------------------
+   SCROLL FADE, SITEWIDE. Zaal, 2026-10-01: "make sure everything fades in and
+   out as people scroll on all pages".
+
+   Pure CSS scroll-driven animation (animation-timeline: view()), no JS, so:
+   - a browser without it (Firefox today) simply shows everything, unanimated;
+   - nothing is ever hidden waiting for a script, so content cannot get stuck
+     invisible and search engines read the page as it is;
+   - reduced-motion visitors get no animation at all;
+   - print is untouched (screen only), so /volunteer prints whole.
+   Each block in a page section fades and rises in over the first 60px of
+   entering from the bottom, and dims (never below 0.6) over the last 60px of
+   leaving under the 66px sticky header, which view()'s top inset accounts for.
+   The bands are kept small and the fade-out floored so a block more than half
+   on screen, a CTA above all, is never washed out (Dotfiles' 390px review of
+   #429). A block sitting in the bottom 60px at load starts partly faded and
+   reaches full opacity within 60px of scroll. The home hero is a <header>, not
+   a <section>, so the sticky flight is never touched; the Ellsworth background
+   layer is aria-hidden and skipped the same way. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Two animations with fixed scroll distances rather than percentages, so a
+       tall block (a stacked card grid on a phone) is fully visible after 60px
+       instead of staying half-faded until most of it is on screen. The fade-out
+       fills forwards only, so before its range it leaves the fade-in in charge. */
+    .site main section > div:not([aria-hidden='true']) > * {
+      animation:
+        zs-scroll-in linear both,
+        zs-scroll-out linear forwards;
+      animation-timeline: view(block 66px 0px), view(block 66px 0px);
+      animation-range:
+        entry 0% entry 60px,
+        exit calc(100% - 60px) exit 100%;
+    }
+  }
+}
+
+@keyframes zs-scroll-in {
+  from {
+    opacity: 0.3;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes zs-scroll-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.6;
+  }
 }

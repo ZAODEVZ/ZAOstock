@@ -15,9 +15,11 @@ import { displayName } from './site';
 // means in practice - epoch-ms comparison is timezone-agnostic by
 // construction, so there is no viewer-local-timezone bug to have.
 //
-// MUSIC_ENDS_MS is 17:40, not 18:00 (the street-clears time countdown.ts
-// uses): Zaal ruled the strip should point at Black Moon as soon as the last
-// act (Tom Fellenz) finishes, not wait for the extra 20 minutes of strike time.
+// MUSIC_ENDS_MS is computed from the last DAY_SLOTS entry, not 18:00 (the
+// street-clears time countdown.ts uses): Zaal ruled the strip should point at
+// Black Moon as soon as the last act (Tom Fellenz) finishes, not wait for the
+// extra margin of strike time. It moves with program.ts, so no time is typed
+// here to go stale the next time the schedule does.
 //
 // DAY_START_MS marks the start of 3 October itself (Dotfiles review of #331):
 // the bare "Doors at noon." reads as today only on the day - a visitor on
@@ -38,7 +40,7 @@ function slotMs(slot: Slot): number {
   return DOORS_MS + (toMinutes(slot.time) - 12 * 60) * 60_000;
 }
 
-const MUSIC_ENDS_MS = slotMs(DAY_SLOTS[DAY_SLOTS.length - 1]); // the 17:40 "Music ends" gap slot
+const MUSIC_ENDS_MS = slotMs(DAY_SLOTS[DAY_SLOTS.length - 1]); // the "Music ends" gap slot
 const DAY_START_MS = DOORS_MS - 12 * 60 * 60 * 1000; // 3 October, 00:00 ET
 
 export type NowNextState =
@@ -48,7 +50,7 @@ export type NowNextState =
 
 const BEFORE_MESSAGE_TODAY = 'Doors at noon.';
 const BEFORE_MESSAGE_DATED = 'Doors at noon on Saturday 3 October.';
-const AFTER_MESSAGE = "That's a wrap outside. Next door at Black Moon: North Creek hosts the after-party, from six.";
+const AFTER_MESSAGE = "That's a wrap outside. Next door at Black Moon: doors from six, after-party music from seven.";
 
 export function nowNextState(now: number): NowNextState {
   if (now < DOORS_MS) {

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { FESTIVAL } from '@/content/festival';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -21,11 +22,11 @@ export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Press',
-  description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
+  description: `Press kit for ZAOstock 2026, a free music festival held in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
   alternates: { canonical: '/press' },
   openGraph: {
     title: 'Press | ZAOstock',
-    description: 'Press kit for ZAOstock 2026: the facts, brand files and press contact.',
+    description: `Press kit for ZAOstock 2026, a free music festival held in Ellsworth, Maine, on ${FESTIVAL.shortDate}: fast facts, the lineup, partners, boilerplate and press contact.`,
     url: 'https://zaostock.com/press',
     images: [OG_IMAGE],
   },
@@ -98,34 +99,10 @@ export default function PressPage() {
       <Section id="kit">
         <SectionHeader
           eyebrow="Press kit"
-          title="Files you can use today."
-          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Artist bios and photos are going up per act as each is confirmed - see /artists for what's live now, or ask for the rest.`}
+          title="Files you can use."
+          lede={`The moose, our mark, and the partner logos as supplied. Credit the moose to ${SITE.logo.credit}. Colours, fonts and usage rules are on the design kit at /design. Artist bios and photos are on each act's page - see /artists, or ask for the rest.`}
           className="mb-6"
         />
-        {/* The confirmed 2026 lineup poster - the finished piece, not a design
-            reference. Full library at /brand#poster. */}
-        <Card className="p-0 mb-4 overflow-hidden">
-          <div className="grid grid-cols-1 sm:grid-cols-[160px_1fr]">
-            <a href="/brand/posters/2026-lineup-poster-1600x2000.png" download className="block border-b-2 border-ink-950 bg-paper-100 sm:border-b-0 sm:border-r-2">
-              {/* eslint-disable-next-line @next/next/no-img-element -- static brand asset, not optimised */}
-              <img
-                src="/brand/posters/2026-lineup-poster-1600x2000.png"
-                alt="ZAOstock 2026 confirmed lineup poster"
-                className="w-full h-full object-cover"
-              />
-            </a>
-            <div className="p-5 flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="font-sans font-extrabold text-base text-ink-950 m-0">2026 lineup poster</p>
-                <p className="text-[13px] text-ink-muted m-0 mt-0.5">PNG, full lineup + all 2026 partner marks, 1600&times;2000</p>
-              </div>
-              <Button href="/brand/posters/2026-lineup-poster-1600x2000.png" external variant="secondary" size="sm">
-                Download
-              </Button>
-            </div>
-          </div>
-        </Card>
-
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-8">
           {BADGES.map((b) => (
             <Card key={b.href} className="p-0">
@@ -176,7 +153,7 @@ export default function PressPage() {
             All partners
           </Button>
           <Button href="/program" variant="secondary" size="sm">
-            The program
+            The running order
           </Button>
         </div>
       </Section>
