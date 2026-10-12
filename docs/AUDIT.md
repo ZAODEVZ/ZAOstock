@@ -44,7 +44,20 @@ Two repos:
 > firing again during festival week is noise on a build nobody can act on. If
 > the guard fires on 2026-10-10 and the mobile repo is still untouched, the fix
 > is an event-aware marker in `recheck.test.ts`, not a fourth bump.
-> <!-- re-check: 2026-10-10 -->
+>
+> **Re-verified 2026-10-11T12:16Z. The guard fired on 2026-10-10 as planned.**
+> `gh api repos/bettercallzaal/zao-festivals --jq .pushed_at` returns
+> **`2026-08-25T18:44:44Z`**, now 47 days, unchanged since the 2026-09-24 check.
+> The newest commit on its `main` is still `b12ee86` (#288), committed
+> 2026-08-25T18:44:43Z. So items 2 and 3 still stand exactly as written.
+>
+> **This is the fourth date, and the paragraph above said not to set one.** The
+> event-aware marker it calls for is still owed. It was not built in this pass,
+> which was scoped to re-verify and re-date, and the gap is flagged in the pull
+> request that set this date. The date is one month out rather than one week,
+> because the mobile repo has not moved in seven weeks and the festival it was
+> building for ran on 2026-10-03.
+> <!-- re-check: 2026-11-10 -->
 
 ### 1. ~~Production is pointed at the wrong Supabase database~~ — RESOLVED
 
@@ -88,8 +101,10 @@ closed. **Re-checked 2026-09-16: still unverified, and still cannot be -
 `bettercallzaal/zao-festivals` has had no push since 2026-08-25T18:44Z, three
 weeks with no build attempt on record. Re-verified 2026-09-24: `pushed_at` is
 still `2026-08-25T18:44:44Z` (GitHub API, this repo's own metadata), now 30
-days, so no build attempt has been made since.** The re-check condition is Zaal
-running the command below, not a date. <!-- re-check: 2026-10-10 -->
+days, so no build attempt has been made since. Re-verified 2026-10-11:
+`pushed_at` is still `2026-08-25T18:44:44Z` (same API call), now 47 days, so
+still no build attempt and still unverified.** The re-check condition is Zaal
+running the command below, not a date. <!-- re-check: 2026-11-10 -->
 Build 13 failed on this and was never retried until this session. Run from a **real Terminal.app window**, not through Claude Code:
 ```
 cd /tmp/zaostock-app   # or wherever the mobile repo is checked out locally
@@ -102,8 +117,9 @@ Expect a prompt about syncing provisioning/capabilities — confirm yes.
 #1 and #2. #1 is resolved, so only #2 gates it. **Re-checked 2026-09-16: #2 is
 still unconfirmed (see above), so this is still gated on it, unchanged.
 Re-verified 2026-09-24: #2 is still unconfirmed on the same evidence, so this is
-still gated, still unchanged.**
-<!-- re-check: 2026-10-10 -->
+still gated, still unchanged. Re-verified 2026-10-11: #2 is still unconfirmed,
+`pushed_at` unchanged at `2026-08-25T18:44:44Z`, so this is still gated.**
+<!-- re-check: 2026-11-10 -->
 ```
 cd /tmp/zaostock-app
 eas build --platform ios --profile production

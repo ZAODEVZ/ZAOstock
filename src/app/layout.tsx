@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 import { FESTIVAL } from '@/content/festival';
-import { eventJsonLd } from '@/content/event-jsonld';
+import { OG_IMAGE } from '@/lib/meta';
 import './globals.css';
 
 // Three families per DESIGN.md: Boogaloo for display, Rubik for body and UI,
@@ -46,7 +46,7 @@ const spaceMono = localFont({
 
 export const metadata: Metadata = {
   title: { default: 'ZAOstock 2026', template: '%s | ZAOstock' },
-  description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}. Run by The ZAO.`,
+  description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}. Run by The ZAO.`,
   metadataBase: new URL('https://zaostock.com'),
   // Google Search Console ownership proof. Next.js renders this as
   // <meta name="google-site-verification" content="..."> in <head>.
@@ -57,36 +57,40 @@ export const metadata: Metadata = {
   verification: { google: 'Ur33SQv4u9BTUs4NDk5lcRZKAOuB-lc6lZERJ2fBpkU' },
   openGraph: {
     title: 'ZAOstock 2026',
-    description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
+    description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com',
     siteName: 'ZAOstock',
     type: 'website',
+    // The image every page without its own openGraph inherits (/pitch,
+    // /circles, /sponsor/deck, the team and backstage pages). Before
+    // 2026-10-08 the code-drawn src/app/opengraph-image.tsx filled this in
+    // implicitly; it was removed (human-made design only), so it is explicit.
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ZAOstock 2026',
-    description: `A one-day artist-built music festival in downtown Ellsworth, Maine. ${FESTIVAL.shortDate}.`,
+    description: `A one-day artist-built music festival held in downtown Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    images: [OG_IMAGE.url],
   },
 };
 
 // Event structured data lives in src/content/event-jsonld.ts (image, performer
-// and street address added 2026-09-28 for Search Console's Events report).
+// and street address added 2026-09-28 for Search Console's Events report). It is
+// NOT rendered here: since 2026-10-06 the EventJsonLd component renders it only on the
+// festival pages, so /zaoville, /privacy and the rest stop claiming to be it.
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${boogaloo.variable} ${oswald.variable} ${rubik.variable} ${spaceMono.variable}`}>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
-        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-gold-400 focus:text-ink-950 focus:font-bold focus:px-4 focus:py-2 focus:rounded-sm focus:border-2 focus:border-ink-950"
         >
           Skip to content
         </a>
-        <div id="main-content">{children}</div>
+        <div id="main-content" tabIndex={-1}>{children}</div>
         <Analytics />
       </body>
     </html>

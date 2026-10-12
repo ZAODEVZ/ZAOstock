@@ -5,10 +5,11 @@ import { ArtistProfileView } from './ArtistProfileView';
 import { FESTIVAL } from '@/content/festival';
 import { SiteShell, Section, Eyebrow, Button, Card } from '@/components/poster';
 import { OG_IMAGE, truncateAtWord, twitterCard } from '@/lib/meta';
-import { displayName } from '@/content/site';
+import { displayName, artistRecordLine } from '@/content/site';
 import { zaoMediaFor } from '@/content/zao-media';
 import { artistJsonLdString } from '@/content/artist-jsonld';
 import Link from 'next/link';
+import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const shown = displayName(artist.name);
   const description = artist.bio
     ? truncateAtWord(artist.bio, 160)
-    : `${shown} at ZAOstock, ${FESTIVAL.shortDate} in ${FESTIVAL.city}.`;
+    : artistRecordLine(artist.name, FESTIVAL.shortDate, `in ${FESTIVAL.city}`);
 
   return {
     // `absolute` bypasses the root layout's `%s | ZAOstock` title template -
@@ -68,6 +69,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
 
   return (
     <SiteShell>
+      <EventJsonLd />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: artistJsonLdString(artist) }}
@@ -108,7 +110,12 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
             <Card>
               <Eyebrow className="mb-2">About ZAOstock</Eyebrow>
               <p className="text-sm text-ink-secondary m-0">
-                {displayName(artist.name)} is on the ZAOstock roster for {FESTIVAL.dateLabel} at the {FESTIVAL.venue} in {FESTIVAL.city}. A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
+                {/* Zaal, 2026-10-04, asked whether The Crown Vics, OPEN X, Grass
+                    Rug, Michael Anderson, DCoop, LyonsDen and Tom Fellenz all played:
+                    "yes all played" (vault decisions/grill-2026-10-04-orchestration-0150.md,
+                    item 5). The sentence is built in artistRecordLine (site.ts). */}
+                {artistRecordLine(artist.name, FESTIVAL.dateLabel, `at the ${FESTIVAL.venue} in ${FESTIVAL.city}`)}{' '}
+                A free, community-built music festival, part of the 9th Annual Art of Ellsworth.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button href="/" size="sm">

@@ -6,20 +6,25 @@ import { FESTIVAL } from '@/content/festival';
 export const metadata: Metadata = {
   title: 'ZAO Guide to Acadia National Park',
   description:
-    'The ZAO Guide to Acadia National Park: getting in, Cadillac Mountain reservations, the 5 must-see spots and a multi-day plan for ZAOstock weekend.',
+    'The ZAO Guide to Acadia National Park: getting in, Cadillac Mountain reservations, the 5 must-see spots and a multi-day plan.',
   alternates: { canonical: '/acadia' },
   openGraph: {
     title: 'ZAO Guide to Acadia National Park | ZAOstock',
     description:
-      `Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, ${FESTIVAL.shortDate}.`,
+      `Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. From the ZAOstock team, ${FESTIVAL.shortDate}.`,
     url: 'https://zaostock.com/acadia',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
     'ZAO Guide to Acadia National Park | ZAOstock',
-    `Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. ZAOstock, ${FESTIVAL.shortDate}.`,
+    `Getting in, Cadillac Mountain reservations, the 5 must-see spots, and a multi-day excursion plan. From the ZAOstock team, ${FESTIVAL.shortDate}.`,
   ),
 };
+
+// PAST TENSE, 2026-10-04: ZAOstock happened on 3 October. The guide stays as a
+// general Acadia guide; the rows that only made sense for festival weekend (what
+// was open on Oct 3, the Oct 2-4 daylight row, the foliage timing) and the RSVP
+// call are gone.
 
 // ---------------------------------------------------------------------------
 // CONTENT - seeded from research doc 1034 (2026-07-11). NPS.gov + AllTrails +
@@ -27,7 +32,7 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 const MUST_SEE: { name: string; note: string }[] = [
-  { name: '1. Cadillac Mountain', note: 'Highest point on the US East Coast, 360-degree views. Go for golden hour/sunset around Oct 3. Summit Road reservation required if driving (see below).' },
+  { name: '1. Cadillac Mountain', note: 'Highest point on the US East Coast, 360-degree views. Go for golden hour or sunset. Summit Road reservation required if driving (see below).' },
   { name: '2. Jordan Pond + the Bubbles', note: 'The most-photographed spot in the park - twin-peak reflection in the pond. Best early morning before wind picks up.' },
   { name: '3. Otter Cliffs + Boulder Beach', note: 'Dramatic granite cliffs that glow rust-red at sunrise, accessible via the flat, paved Ocean Path.' },
   { name: '4. Bass Harbor Head Light', note: "Maine's most-photographed lighthouse - it's been on a US quarter and an NPS stamp. Golden hour, sunrise or sunset." },
@@ -36,9 +41,8 @@ const MUST_SEE: { name: string; note: string }[] = [
 
 const GETTING_IN: { label: string; detail: string }[] = [
   { label: 'Distance', detail: "About 25 miles / 30-40 minutes from Ellsworth via Route 3, on the Mount Desert Island / Bar Harbor side." },
-  { label: 'Cadillac Mountain reservation', detail: 'Required May 20-Oct 25, 2026 to drive to the summit ($6/vehicle, booked on Recreation.gov). 30% of slots release 90 days ahead, the rest 2 days ahead - the window for an Oct 3 visit opened around July 5. No reservation needed if you hike or bike to the summit instead.' },
+  { label: 'Cadillac Mountain reservation', detail: 'Required May 20-Oct 25, 2026 to drive to the summit ($6/vehicle, booked on Recreation.gov). 30% of slots release 90 days ahead, the rest 2 days ahead. No reservation needed if you hike or bike to the summit instead.' },
   { label: 'Island Explorer shuttle', detail: 'Free shuttle bus around Bar Harbor and the main park destinations, running through October 12, 2026. A good way to skip the parking crunch.' },
-  { label: 'What\'s open Oct 3', detail: 'Park Loop Road (through Dec 1), Schoodic Loop Road (year-round), and Hulls Cove Visitor Center (through Oct 31) are all open. Seawall/Schoodic Woods campgrounds close Oct 12, Blackwoods closes Oct 19 - only relevant if staying past the festival.' },
 ];
 
 const EXCURSIONS: { name: string; difficulty: string; time: string; note: string }[] = [
@@ -52,8 +56,6 @@ const EXCURSIONS: { name: string; difficulty: string; time: string; note: string
 
 const GOOD_TO_KNOW: { label: string; detail: string }[] = [
   { label: 'Weather', detail: 'Daytime highs roughly 55-65°F, dropping to the 40s at night. October is Maine\'s wettest month historically - bring a real waterproof layer, not just a light jacket.' },
-  { label: 'Sunrise / sunset', detail: 'Festival weekend (Oct 2-4) in Ellsworth: sunrise ~6:31-6:34 AM, sunset ~6:10-6:14 PM - useful for planning excursion start times.' },
-  { label: 'Fall foliage, honestly', detail: 'Peak color for this region lands in the Oct 10-27 window, not Oct 1-3. Expect early color starting on exposed high points and near water - genuinely pre-peak, but still a real backdrop.' },
 ];
 
 export default function AcadiaPage() {
@@ -68,7 +70,7 @@ export default function AcadiaPage() {
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
             Ellsworth is the gateway - Acadia is about 25 miles away. Whether you have an
-            afternoon or a few extra days around ZAOstock, here&apos;s what&apos;s actually worth doing,
+            afternoon or a few extra days, here&apos;s what&apos;s actually worth doing,
             what needs a reservation, and what to skip.
           </p>
         </section>
@@ -103,7 +105,7 @@ export default function AcadiaPage() {
         <section>
           <SectionHeader className="mb-5" eyebrow="Staying a few extra days?" title="Multi-day excursion plan." />
           <p className="text-base text-ink-secondary mb-4 measure">
-            Ranked for a mixed group of varying fitness - musicians and attendees, not a hiking club.
+            Ranked for a mixed group of varying fitness - not a hiking club.
             Suggested framing for 3 days: Day 1 downtown Ellsworth, Day 2 Ocean Path + Jordan Pond +
             Cadillac sunset, Day 3 Schoodic loop drive or the boat cruise.
           </p>
@@ -136,19 +138,16 @@ export default function AcadiaPage() {
 
         {/* CTA */}
         <section className="grain bg-paper-200 border-2 border-ink-950 rounded-md p-6 shadow-hard">
-          <h2 className="font-display font-normal text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2 m-0">Coming to ZAOstock?</h2>
+          <h2 className="font-display font-normal text-[2rem] leading-[1.05] tracking-[-0.01em] sm:text-h2 m-0">Missed ZAOstock?</h2>
           <p className="text-base text-ink-secondary mt-2 m-0">
-            {FESTIVAL.dateLabel}. {FESTIVAL.venue}, {FESTIVAL.city}. {FESTIVAL.admission}, music from noon.
+            It happened on {FESTIVAL.dateLabel} at the {FESTIVAL.venue}, {FESTIVAL.city}. It was free, with music from noon.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            {/* /tickets, not FESTIVAL.rsvpUrl direct - same fix as the
-                homepage hero and Header.tsx: a straight Luma link skips
-                the Pro Ticket funnel. Poidhz, 2026-09-27, measured live. */}
-            <Button href="/tickets">
-              RSVP free
+            <Button href="/live">
+              Watch the replay
             </Button>
             <Button href="/program" variant="secondary">
-              The program
+              The running order
             </Button>
             <Button href="/ellsworth" variant="ghost">
               Visiting Ellsworth

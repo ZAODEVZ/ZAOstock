@@ -56,9 +56,11 @@ describe('the fallback channel', () => {
  * quietly regress to no player at all.
  */
 describe('the confirmed Twitch channel', () => {
-  it('is zaofestivals, and the page embeds it', () => {
+  // After 3 October the page plays the recording (ReplayPlayer), not the live
+  // channel; embedSrc() stays exported and tested for the next live day.
+  it('is zaofestivals, and the page plays the recording from that channel', () => {
     expect(TWITCH_CHANNEL).toBe('zaofestivals');
-    expect(read(LIVE)).toContain('embedSrc()');
+    expect(read(LIVE)).toContain('<ReplayPlayer />');
   });
 
   it('the embed URL carries the channel and a parent matching production', () => {
@@ -87,21 +89,26 @@ describe('the confirmed Twitch channel', () => {
     }
   });
 
-  it('the iframe has a real title, for the one page thousands may hit at once', () => {
-    expect(read(LIVE)).toContain('title="ZAOstock live on Twitch"');
+  it('the replay iframe has a real title, taken from the part being played', () => {
+    expect(read('src/components/ReplayPlayer.tsx')).toContain('title={current.title}');
   });
 
   it('the chat embed carries the channel and a parent matching production', () => {
     const src = chatEmbedSrc();
     expect(src).toContain('/zaofestivals/chat');
     expect(src).toContain('parent=zaostock.com');
-    expect(read(LIVE)).toContain('chatEmbedSrc()');
   });
 });
 
 describe('watch parties', () => {
-  it('starts empty, because Zaal posts the list on the day', () => {
-    expect(WATCH_PARTIES).toEqual([]);
+  // Was "starts empty". Zaal, 2 Oct: ship only the confirmed hosts.
+  it('lists only named hosts, each with a place, and only real links', () => {
+    for (const p of WATCH_PARTIES) {
+      expect(p.host.trim()).not.toBe('');
+      expect(p.where.trim()).not.toBe('');
+      if (p.href !== undefined) expect(p.href).toMatch(/^https:\/\//);
+    }
+    expect(new Set(WATCH_PARTIES.map((p) => p.host)).size).toBe(WATCH_PARTIES.length);
   });
 
   it('says the list is coming rather than showing an empty box', () => {
@@ -128,7 +135,7 @@ describe('before the stream starts and after it ends', () => {
 
   it('tells a remote viewer the stream ends with the parklet', () => {
     const src = read(LIVE);
-    expect(src).toContain('The stream runs with the parklet.');
+    expect(src).toContain('The stream ran with the parklet.');
     expect(src).toContain('in person only');
     expect(src).toContain('Black Moon Public House');
   });

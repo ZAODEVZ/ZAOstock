@@ -113,16 +113,14 @@ a swap behind a HOLD card.
 | 12:50 | 2. OPEN X, 33 | STAGE WIDE | Cut on the downbeat | | They also run the PA all day |
 | 13:23 | Changeover 2 (12 min): swap only | HOLD "Next: Grass Rug" | HOLD the whole 12 | Zaal credits WE THE MEDIA (filming) and Bomb Squad (merch/crew), then intros Grass Rug | |
 | 13:35 | 3. GRASS RUG, 33 | STAGE WIDE | Cut on the downbeat | | |
-| 14:08 | Changeover 3 (12 min): swap only | HOLD "Next: Acadia Rising" | HOLD the whole 12 | Zaal thanks COC Concertz/Thy Revolution and Artizen, then intros Acadia Rising | |
-| 14:20 | 4. ACADIA RISING, 33 | STAGE WIDE | Cut on the downbeat | | Routed through Sen |
-| 14:53 | Changeover 4 (7 min): the MC and a partner spot | MC, PARTNER, HOLD "Next: Michael Anderson" | | Zaal on WaveWarZ and the supporter page, then intros Michael Anderson | |
-| 15:00 | 5. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | | Solo piano, brings his own keyboard |
+| 14:08 | Changeover 3 (12 min): swap only | HOLD "Next: Michael Anderson" | HOLD the whole 12 | Zaal thanks COC Concertz/Thy Revolution, then intros Michael Anderson | |
+| 15:00 | 4. MICHAEL ANDERSON, 33 | STAGE WIDE | Cut on the downbeat | | Solo piano, brings his own keyboard |
 | 15:33 | Changeover 5 (7 min): the MC and our partners | MC, PARTNER, HOLD "Next: DCoop" | | THE ROLL CALL - Zaal thanks all ten partners by name, then intros DCoop | |
-| 15:40 | 6. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | | He is also the music and AV lead, so AV cover during his own set is an open role |
+| 15:40 | 5. DCOOP, 40 | STAGE WIDE | Cut on the downbeat | | He is also the music and AV lead, so AV cover during his own set is an open role |
 | 16:20 | Changeover 6 (5 min): swap only | HOLD "Next: LyonsDen" | HOLD the whole 5 | Zaal flags the eating window (Black Moon, next door), then intros LyonsDen Rez Muzik himself | Supersedes the earlier DCoop-gives-the-intro plan; Zaal is sole MC all day |
-| 16:25 | 7. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | | Filming consent still outstanding: settle it before the first bar |
+| 16:25 | 6. LYONSDEN, 40 | STAGE WIDE | Cut on the downbeat | | Filming consent still outstanding: settle it before the first bar |
 | 17:05 | Changeover 7 (5 min): swap only | HOLD "Next: Tom Fellenz" | HOLD the whole 5 | Zaal thanks the crew (names UNSET, from crew roster), then intros Tom Fellenz, closing the outdoor stage | |
-| 17:10 | 8. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | | |
+| 17:10 | 7. TOM FELLENZ, 40, closes the outdoor block | STAGE WIDE | Cut on the downbeat | | |
 | 17:50 | Music ends. Closing remarks - thanks, where the recording will live, and that the evening is next door and in person | MC, then SIGN-OFF | Hold SIGN-OFF two minutes, then stop | Zaal: eight-act roll call, thanks partners and crew, points to Black Moon/North Creek, closes with thezao.com | |
 | 18:00 | Street clears. Recording OFF, check the file, strike | Rig lead | | | |
 

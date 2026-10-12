@@ -1,11 +1,18 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
-import { WATCH_PARTIES, fallbackChannelHref, watchHref, embedSrc, chatEmbedSrc } from '@/content/live';
+import { WATCH_PARTIES, fallbackChannelHref, replaysHref } from '@/content/live';
 import { getPublicLineup } from '@/lib/lineup';
 import { slugify } from '@/lib/artists';
 import { displayName } from '@/content/site';
-import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Countdown, AddToCalendar, LocalStartTime, NowNextStrip, Button } from '@/components/poster';
+import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
+import { ShareButton } from '@/components/ShareButton';
+import { ReplayPlayer } from '@/components/ReplayPlayer';
+import { REPLAY_PARTS, replayPartsPhrase, replayPartWatchHref, replayHostName } from '@/content/replay';
+
+// The channel's video list is only the right link while the day is in several Twitch parts.
+const ALL_ON_TWITCH = REPLAY_PARTS.length > 1 && REPLAY_PARTS.every((p) => replayHostName(p) === 'Twitch');
+import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const metadata: Metadata = {
   title: `Watch live, ${FESTIVAL.shortDate}, noon to 6 PM Eastern`,
@@ -49,81 +56,73 @@ export default async function LivePage() {
 
   return (
     <SiteShell>
-      <Section first className="pt-12 sm:pt-16">
-        <div className="max-w-[760px]">
-          <Eyebrow tone="denim">Watch from anywhere</Eyebrow>
-          <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">ZAOstock, live.</h1>
-          <p className="text-lg text-ink-secondary measure m-0">
-            {FESTIVAL.dateLabel}, {FESTIVAL.window}, from {FESTIVAL.venue} in {FESTIVAL.city}. This page is where the stream plays. Bookmark it.
-          </p>
-          <Countdown className="mt-4" />
-          <LocalStartTime className="mt-1" />
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <AddToCalendar />
-            {/* Watching from home has no other way to give. Zaal, 2026-09-27:
-                "we deff need a place for ppl to just go to the live website
-                and one button is the donate button." Label matches /tickets since
-                2026-09-30: "something there for supporting the artists". */}
-            <Button href="/tickets" variant="secondary">
-              Support the artists
-            </Button>
-          </div>
+      <EventJsonLd />
+      {/* AFTER THE DAY (was the festival-day layout). Zaal, 2026-10-03, at the venue: "lets add more cta
+          buttons on the live page and less whitepspace". The player now sits in
+          the first section, straight under a short heading, so on a 390px phone
+          it is on the first screen; the action buttons sit right under it. The
+          calendar buttons and the countdown are gone from the top: it is today. */}
+      <Section first className="pt-6 sm:pt-10">
+        <Eyebrow tone="denim">Thank you for watching</Eyebrow>
+        <h1 className="font-display font-normal text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-2 mb-2">The stream has ended.</h1>
+        <p className="text-base sm:text-lg text-ink-secondary measure m-0 mb-3">
+          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The whole day is recorded below, {replayPartsPhrase()}.
+        </p>
+        <div id="replay">
+          <ReplayPlayer />
         </div>
-      </Section>
-
-      <Section>
-        <NowNextStrip className="mb-4 max-w-[420px]" />
-        <Card>
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4">
-            <div className="aspect-video w-full rounded-[10px] overflow-hidden bg-black">
-              <iframe
-                src={embedSrc()}
-                className="w-full h-full"
-                allowFullScreen
-                title="ZAOstock live on Twitch"
-              />
-            </div>
-            <div className="h-[300px] lg:h-auto rounded-[10px] overflow-hidden">
-              <iframe
-                src={chatEmbedSrc()}
-                className="w-full h-full"
-                title="ZAOstock Twitch chat"
-              />
-            </div>
-          </div>
-          <p className="text-sm text-ink-secondary m-0 mt-3">
-            <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The stream is offline outside{' '}
-            {FESTIVAL.window} on {FESTIVAL.dateLabel} - that is expected before doors and after the outdoor block ends, not a broken
-            player.{' '}
-            Twitch shows its own offline screen either way, or watch straight from{' '}
-            <a href={watchHref()} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
-              Twitch
-            </a>{' '}
-            directly.
+        {/* Watching from home has no other way to give. Zaal, 2026-09-27:
+            "we deff need a place for ppl to just go to the live website
+            and one button is the donate button." Label matches /tickets since
+            2026-09-30: "something there for supporting the artists". */}
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <Button href="/tickets" variant="primary" size="sm">
+            Support the artists
+          </Button>
+          <Button href={ALL_ON_TWITCH ? replaysHref() : replayPartWatchHref(REPLAY_PARTS[0])} external variant="secondary" size="sm">
+            {ALL_ON_TWITCH ? 'All parts on Twitch' : `Watch on ${replayHostName(REPLAY_PARTS[0])}`}
+          </Button>
+          <Button href="/afterparty" variant="secondary" size="sm">
+            After-party
+          </Button>
+          <Button href="/media" variant="secondary" size="sm">
+            Press and radio
+          </Button>
+          <Button href="/feedback" variant="secondary" size="sm">
+            How was it? Tell us
+          </Button>
+          <ShareButton
+            url="https://zaostock.com/live"
+            title="ZAOstock, live from Ellsworth, Maine"
+            className={`${BUTTON_BASE} ${BUTTON_VARIANT.secondary} ${BUTTON_SIZE.sm}`}
+          />
+        </div>
+        <p className="text-sm text-ink-secondary m-0 mt-3">
+          <span className="font-sans font-extrabold text-ink-950">Nothing playing?</span> The live stream is offline now that the day is over; the recording above
+          plays from Twitch, which keeps past broadcasts for a limited time.
+        </p>
+        {fallbackHref ? (
+          <p className="text-sm text-ink-secondary m-0 mt-2">
+            <span className="font-sans font-extrabold text-ink-950">If the picture stops on the day,</span> go to the{' '}
+            <a href={fallbackHref} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
+              Telegram chat
+            </a>
+            . Somebody on the ground is always in there, and that is where we say what is happening and when it is back.
           </p>
-          {fallbackHref ? (
-            <p className="text-sm text-ink-secondary m-0 mt-4">
-              <span className="font-sans font-extrabold text-ink-950">If the picture stops on the day,</span> go to the{' '}
-              <a href={fallbackHref} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
-                Telegram chat
-              </a>
-              . Somebody on the ground is always in there, and that is where we say what is happening and when it is back.
-            </p>
-          ) : null}
-        </Card>
+        ) : null}
       </Section>
 
-      <Section>
+      <Section id="watch-parties">
         <TwoUp>
           <SectionHeader
             eyebrow="How to follow along"
-            title="Four ways in, if you can't make the parklet."
-            lede="No account or app required for any of them."
+            title="Four ways in, for anyone who could not make the parklet."
+            lede="No account needed to watch."
           />
           <div className="flex flex-col gap-4">
             <Card>
               <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0">On this page</h3>
-              <p className="text-sm text-ink-secondary m-0 mt-2">The stream plays here for the full window, {FESTIVAL.window}. No sign-up.</p>
+              <p className="text-sm text-ink-secondary m-0 mt-2">The stream played here for the full window, {FESTIVAL.window}. No sign-up.</p>
             </Card>
             <Card>
               <h3 className="font-sans font-extrabold text-h4 text-ink-950 m-0">At a watch party</h3>
@@ -132,15 +131,19 @@ export default async function LivePage() {
                 over it, in their own room, for their own people.{' '}
                 {WATCH_PARTIES.length === 0
                   ? 'The full list of places to watch goes out on the day itself.'
-                  : 'Running so far:'}
+                  : 'On the list:'}
               </p>
               {WATCH_PARTIES.length > 0 ? (
                 <ul className="list-disc pl-5 m-0 mt-3 text-sm text-ink-950 flex flex-col gap-1">
                   {WATCH_PARTIES.map((party) => (
-                    <li key={party.href}>
-                      <a href={party.href} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
-                        {party.host}
-                      </a>
+                    <li key={party.host}>
+                      {party.href ? (
+                        <a href={party.href} target="_blank" rel="noreferrer" className="text-red-700 font-bold">
+                          {party.host}
+                        </a>
+                      ) : (
+                        <span className="font-bold">{party.host}</span>
+                      )}
                       , {party.where}
                     </li>
                   ))}
@@ -168,9 +171,9 @@ export default async function LivePage() {
       {acts.length > 0 ? (
         <Section>
           <SectionHeader
-            eyebrow="Who's on"
-            title="Follow along with each act, in order."
-            lede="Set times are on the program. This is who's playing, in the order they play."
+            eyebrow="The lineup"
+            title="Every act on the bill, in running order."
+            lede="Each act has its own page with a bio and links."
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 list-none pl-0 m-0">
             {acts.map((act, i) => {
@@ -203,8 +206,8 @@ export default async function LivePage() {
         <Card>
           <Eyebrow>After six</Eyebrow>
           <p className="text-sm text-ink-secondary m-0 mt-2">
-            The stream runs with the parklet. When the music outdoors finishes, the day moves next door to Black Moon Public House for the
-            after-party, and that part is in person only: doors at 6, music from 7. See the <a href="/afterparty" className="text-red-700 font-bold">after-party page</a>.
+            The stream ran with the parklet. When the music outdoors finished, the day moved next door to Black Moon Public House for the
+            after-party, and that part was in person only, so it is not in the recording. See the <a href="/afterparty" className="text-red-700 font-bold">after-party page</a>.
           </p>
         </Card>
       </Section>

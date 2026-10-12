@@ -3,12 +3,17 @@ import { LINEUP_NAMES, AFTER_PARTY, displayName } from './site';
 
 // EVENT STRUCTURED DATA (schema.org MusicEvent), rendered once in layout.tsx.
 //
+// PAST TENSE, 2026-10-04: the event happened on 3 October. It stays here as a
+// record - same dates, venue and performers - but the Offer no longer claims
+// `availability: InStock`, and the description says the festival was held.
+//
 // It is what puts the date, the venue and the free price into Google's own
 // result for ZAOstock. On 2026-09-28 Search Console reported "Events
 // enhancement: Non-critical issues detected" and a source-side audit found the
 // same three fields missing: image, performer and a street address. All three
 // are added here, from sources that already exist:
-// - image: the confirmed lineup poster, public/brand/posters (live, HTTP 200).
+// - image: Candy (CandyToyBox)'s wide poster, public/brand/posters, no act
+//   names (the lineup poster was taken off the site 2026-10-08, #459).
 // - performer: LINEUP_NAMES, the same identity list the sitemap and artist
 //   pages use, so a lineup change cannot leave Google on the old bill. Each
 //   links its /artist/<slug> page. event-jsonld.test.ts holds the two together.
@@ -39,8 +44,10 @@ export const eventJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
   name: 'ZAOstock 2026',
-  description: 'A free, one-day, artist-built music festival in downtown Ellsworth, Maine. Run by The ZAO.',
-  image: [`${SITE_URL}/brand/posters/2026-lineup-poster-1600x2000.png`],
+  description: 'A free, one-day, artist-built music festival held in downtown Ellsworth, Maine. Run by The ZAO.',
+  // Candy's wide poster, no act names. The 2026 lineup poster was taken off
+  // the site on 2026-10-08: it showed the act that did not play.
+  image: [`${SITE_URL}/brand/posters/wide-with-logo-1920x1080.png`],
   url: SITE_URL,
   startDate: FESTIVAL.date,
   endDate: '2026-10-03T18:00:00-04:00',
@@ -52,6 +59,7 @@ export const eventJsonLd = {
     name: FESTIVAL.venue,
     address: ADDRESS,
   },
+  // The bill is the seven acts who played: `performer` says they performed.
   performer: LINEUP_NAMES.map((name) => ({
     '@type': 'PerformingGroup',
     name: displayName(name),
@@ -61,7 +69,6 @@ export const eventJsonLd = {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    availability: 'https://schema.org/InStock',
     url: SITE_URL,
     validFrom: '2026-08-01T00:00:00-04:00',
   },

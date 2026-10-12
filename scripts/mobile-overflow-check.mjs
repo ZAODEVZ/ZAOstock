@@ -39,7 +39,7 @@ const BASE = (process.env.BASE || 'https://zaostock.com').replace(/\/$/, '');
 // credentials, which is the test - a page that needs a database or a session
 // would fail here and should not be in this list.
 //
-// Before this list was widened it covered 5 of the 35, so two thirds of the
+// Before this list was widened it covered 5 of them, so most of the
 // site had no mobile check at all.
 const PAGES = [
   ['home', '/'],
@@ -79,6 +79,7 @@ const PAGES = [
   ['media', '/media'],
   ['suggest', '/suggest'],
   ['festivals', '/festivals'],
+  ['feedback', '/feedback'],
 ];
 
 const DEVICES = ['iPhone 13', 'Pixel 7'];

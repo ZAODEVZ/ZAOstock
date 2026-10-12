@@ -7,16 +7,32 @@
 // is displayed on a zaostock.com/volenteer page or something so anyone can
 // see it and they message me and i can update it".
 //
+// Zaal, 2026-10-08, on reopening it after the 2026 festival: "lets open it up
+// and make it better". So this is now the sheet for ZAOstock 2027. The 2026
+// sheet (Franklin Street, 2 to 4 October) is in git history at #412.
+//
+// WHAT 2027 MAY SAY. ZAOstock 2027 has two facts: the date in NEXT_EDITION and
+// that the place is not set (src/content/festival.ts). So nothing here names a
+// venue, a street, a time of day, an after-party or a livestream as if it were
+// arranged. Jobs are described relative to festival day, and `plannedFor2026`
+// is the head count the 2026 sheet PLANNED for each job (its `needed` field in
+// #412). It is not an attendance figure: every 2026 `taken` stayed 0 and no
+// actual head count was recorded. A 2027 count is not invented until the place
+// is known.
+//
 // Rules for editing: `taken` counts people, never names (a public page is no
 // place for a volunteer's name without their say-so). Promise nothing here:
 // no perks, no training, no cover. Say what the job is and when.
+// src/content/volunteer-slots.test.ts enforces both.
 
 export interface VolunteerSlot {
   id: string;
-  when: string;
   job: string;
   what: string;
-  needed: number;
+  /** How many people the 2026 sheet planned for this job (#412's `needed`). Not an
+   *  actual 2026 head count, which was never recorded, and not a 2027 target. */
+  plannedFor2026: number;
+  /** People signed up for 2027 so far, counted, never named. */
   taken: number;
 }
 
@@ -27,41 +43,42 @@ export interface VolunteerDay {
   slots: VolunteerSlot[];
 }
 
-/** In person, Franklin Street Parklet, Ellsworth. */
+const TO_BE_SET = 'Place and times to be set';
+
+/** In person, at the 2027 festival. Place to be announced. */
 export const IN_PERSON: VolunteerDay[] = [
   {
-    id: 'fri',
-    title: 'Friday, October 2',
-    where: 'Franklin Street Parklet, 2 to 6 PM',
+    id: 'before',
+    title: 'The day before',
+    where: TO_BE_SET,
     slots: [
-      { id: 'fri-setup', when: '2 - 6 PM', job: 'Setup', what: 'Tables, banners, decor and signs on the parklet.', needed: 3, taken: 0 },
-      { id: 'fri-supplies', when: 'Before 2 PM', job: 'Supplies run', what: 'Extension cables, tape, trash bags, work lights.', needed: 1, taken: 0 },
-      { id: 'fri-power', when: '2 - 4 PM', job: 'Power and cables', what: 'Find the outlets and lay cable runs out of walkways.', needed: 1, taken: 0 },
+      { id: 'setup', job: 'Setup', what: 'Tables, banners, decor and signs.', plannedFor2026: 3, taken: 0 },
+      { id: 'supplies', job: 'Supplies run', what: 'Extension cables, tape, trash bags, work lights.', plannedFor2026: 1, taken: 0 },
+      { id: 'power', job: 'Power and cables', what: 'Find the outlets and lay cable runs out of walkways.', plannedFor2026: 1, taken: 0 },
     ],
   },
   {
-    id: 'sat',
-    title: 'Saturday, October 3',
-    where: 'Franklin Street Parklet, from 8 AM',
+    id: 'day',
+    title: 'Festival day',
+    where: TO_BE_SET,
     slots: [
-      { id: 'sat-loadin', when: '8 - 10 AM', job: 'Load-in', what: 'Help set the sound gear, cables and tables.', needed: 3, taken: 0 },
-      { id: 'sat-checkin', when: '9:30 AM - 12 PM', job: 'Artist check-in', what: 'Greet the acts as they arrive for soundcheck.', needed: 1, taken: 0 },
-      { id: 'sat-clock', when: '12 - 6 PM', job: 'Timekeeper', what: 'Give each act a 5-minute and a 1-minute signal so sets end on time.', needed: 1, taken: 0 },
-      { id: 'sat-count', when: '12 - 6 PM', job: 'Headcount', what: 'A clicker at one end of the parklet, counting people coming in.', needed: 2, taken: 0 },
-      { id: 'sat-hello', when: '12 - 6 PM', job: 'Welcome and QR sign', what: 'Point people to the sign-up QR and ask two quick questions.', needed: 1, taken: 0 },
-      { id: 'sat-floater', when: '12 - 6 PM', job: 'Floater', what: 'Jenga reset, trash sweep, and the lost-and-found point at the stage.', needed: 1, taken: 0 },
-      { id: 'sat-photos', when: '12 - 6 PM', job: 'Photos', what: 'Phone photos of the day, and one photo from the same spot every hour.', needed: 1, taken: 0 },
-      { id: 'sat-log', when: '12 - 6 PM', job: 'Event log', what: 'Jot down anything unusual with a rough time.', needed: 1, taken: 0 },
-      { id: 'sat-sign', when: '5:50 - 6:15 PM', job: 'After-party sign', what: 'Hold the sign on the street pointing to Black Moon next door.', needed: 1, taken: 0 },
-      { id: 'sat-strike', when: 'From 5:50 PM', job: 'Strike', what: 'Sound gear down, cables, tables, trash, lights.', needed: 3, taken: 0 },
+      { id: 'loadin', job: 'Load-in', what: 'Help set the sound gear, cables and tables.', plannedFor2026: 3, taken: 0 },
+      { id: 'checkin', job: 'Artist check-in', what: 'Greet the acts as they arrive for soundcheck.', plannedFor2026: 1, taken: 0 },
+      { id: 'clock', job: 'Timekeeper', what: 'Give each act a 5-minute and a 1-minute signal so sets end on time.', plannedFor2026: 1, taken: 0 },
+      { id: 'count', job: 'Headcount', what: 'A clicker at the entrance, counting people coming in.', plannedFor2026: 2, taken: 0 },
+      { id: 'hello', job: 'Welcome', what: 'Say hello and point people to the sign-up.', plannedFor2026: 1, taken: 0 },
+      { id: 'floater', job: 'Floater', what: 'Trash sweep, resets, and the lost-and-found point.', plannedFor2026: 1, taken: 0 },
+      { id: 'photos', job: 'Photos', what: 'Phone photos of the day, and one photo from the same spot every hour.', plannedFor2026: 1, taken: 0 },
+      { id: 'log', job: 'Event log', what: 'Jot down anything unusual with a rough time.', plannedFor2026: 1, taken: 0 },
+      { id: 'strike', job: 'Strike', what: 'Sound gear down, cables, tables, trash, lights.', plannedFor2026: 3, taken: 0 },
     ],
   },
   {
-    id: 'sun',
-    title: 'Sunday, October 4',
-    where: 'Franklin Street Parklet, time set with the crew',
+    id: 'after',
+    title: 'The day after',
+    where: TO_BE_SET,
     slots: [
-      { id: 'sun-loadout', when: 'Sunday', job: 'Load-out', what: 'Final pack-up and returns.', needed: 2, taken: 0 },
+      { id: 'loadout', job: 'Load-out', what: 'Final pack-up and returns.', plannedFor2026: 2, taken: 0 },
     ],
   },
 ];
@@ -69,30 +86,24 @@ export const IN_PERSON: VolunteerDay[] = [
 /** Online, from anywhere. */
 export const VIRTUAL: VolunteerDay[] = [
   {
-    id: 'before',
-    title: 'Before Saturday',
+    id: 'v-before',
+    title: 'Before the festival',
     where: 'From anywhere',
     slots: [
-      { id: 'v-share', when: 'Any time', job: 'Share the event', what: 'Share the Facebook event or the poster with Maine friends and groups.', needed: 10, taken: 0 },
+      { id: 'v-share', job: 'Share ZAOstock', what: 'Tell Maine friends and groups about ZAOstock 2027 when there is something to share.', plannedFor2026: 10, taken: 0 },
     ],
   },
   {
-    id: 'day',
-    title: 'Saturday, October 3',
-    where: 'Online, noon to 6 PM Eastern',
+    id: 'v-day',
+    title: 'Festival day',
+    where: 'Online, if the day is livestreamed',
     slots: [
-      { id: 'v-chat', when: '12 - 6 PM', job: 'Stream chat', what: 'Welcome people in the livestream chat and answer questions.', needed: 2, taken: 0 },
-      { id: 'v-social', when: '12 - 6 PM', job: 'Live posting', what: 'Post short updates and photos from the stream to socials.', needed: 1, taken: 0 },
-      { id: 'v-clips', when: 'During and after', job: 'Clips', what: 'Cut short clips from the stream for sharing.', needed: 2, taken: 0 },
+      { id: 'v-chat', job: 'Stream chat', what: 'Welcome people in the livestream chat and answer questions.', plannedFor2026: 2, taken: 0 },
+      { id: 'v-social', job: 'Live posting', what: 'Post short updates and photos to socials.', plannedFor2026: 1, taken: 0 },
+      { id: 'v-clips', job: 'Clips', what: 'Cut short clips for sharing, during and after the day.', plannedFor2026: 2, taken: 0 },
     ],
   },
 ];
 
-/**
- * Already covered, so the sheet shows the whole picture, not only the gaps.
- * Roles only, never names: nobody on the crew has agreed to be listed here
- * (Dotfiles review of #412).
- */
-export const COVERED: readonly string[] = ['MC', 'Stage managers', 'Sound', 'Livestream', 'Video', 'Stream moderation'];
-
-export const openCount = (s: VolunteerSlot) => Math.max(0, s.needed - s.taken);
+export const signedUp = (days: VolunteerDay[]): number =>
+  days.reduce((sum, d) => sum + d.slots.reduce((s, x) => s + x.taken, 0), 0);

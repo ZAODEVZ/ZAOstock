@@ -1,5 +1,5 @@
 import { FESTIVAL } from './festival';
-import { SITE, LINEUP_NAMES, displayName } from './site';
+import { LINEUP_NAMES, displayName } from './site';
 
 // QUICK ANSWERS - the questions people type into a search box or ask an AI
 // assistant about the day, answered once, here, and rendered two ways from
@@ -9,7 +9,6 @@ import { SITE, LINEUP_NAMES, displayName } from './site';
 // Added in the 2026-09-29 SEO/GEO pass. EVERY answer is assembled from a
 // statement the site already makes - nothing here is new policy:
 // - free: FESTIVAL.admission and /tickets ("No ticket is checked").
-// - rain: SITE.weather, the same constant /program and /terms already use.
 // - all ages: /terms "Getting in".
 // - parking: PARKING_DETAIL below, which /ellsworth now renders from here.
 // - after six: the wording site.test.ts's crowd-movement guard lists as
@@ -21,32 +20,31 @@ export const PARKING_DETAIL = `Franklin Street itself has no vehicle parking dur
 const actList = LINEUP_NAMES.map(displayName);
 const acts = `${actList.slice(0, -1).join(', ')} and ${actList[actList.length - 1]}`;
 
+// PAST TENSE, 2026-10-04: the day happened, so every answer reads as a record.
+// "What if it rains?" and "Where do I park?" were advice for attending and are
+// gone from this list (PARKING_DETAIL stays: /ellsworth still renders it).
 export const QUICK_ANSWERS: ReadonlyArray<{ q: string; a: string }> = [
   {
-    q: 'Is ZAOstock free?',
-    a: `Yes. ${FESTIVAL.admission}. No ticket is checked at the parklet, and the RSVP is optional.`,
+    q: 'Was ZAOstock free?',
+    a: `Yes. ${FESTIVAL.admission}. No ticket was checked at the parklet.`,
   },
   {
-    q: 'When and where is it?',
-    a: `${FESTIVAL.dateLabel}, ${FESTIVAL.window}, on the ${FESTIVAL.venue} in downtown Ellsworth, Maine. Music starts at noon.`,
+    q: 'When and where was it?',
+    a: `${FESTIVAL.dateLabel}, ${FESTIVAL.window}, on the ${FESTIVAL.venue} in downtown Ellsworth, Maine. Music was billed from noon.`,
   },
   {
-    q: 'Who is playing?',
-    a: `${LINEUP_NAMES.length} independent acts: ${acts}. Set times are listed on this page.`,
+    q: 'Who was on the bill?',
+    a: `${LINEUP_NAMES.length} independent acts: ${acts}. The published running order and set times are listed on this page.`,
   },
-  { q: 'What if it rains?', a: SITE.weather },
-  // All ages after six is now answered by Black Moon's own flyer ("7 PM ALL
+  // All ages after six was answered by Black Moon's own flyer ("7 PM ALL
   // AGES", shared by Zaal 2026-09-30). The after-party end time (10 PM) was
-  // ruled 2026-09-27 (program.ts) but is Black Moon's close, so this list
-  // still does not quote it. Still OPEN with Zaal and NOT answered here: dogs,
-  // smoking, food on site, accessible restrooms.
-  { q: 'Is it all ages?', a: 'Yes. The festival on the parklet is all ages and family-friendly, and Black Moon lists its after-party as all ages too.' },
-  { q: 'Where do I park?', a: PARKING_DETAIL },
+  // Black Moon's close, so this list still does not quote it.
+  { q: 'Was it all ages?', a: 'Yes. The festival on the parklet was all ages and family-friendly, and Black Moon listed its after-party as all ages too.' },
   {
-    q: 'What happens after six?',
-    a: 'At six the street clears, and Black Moon Public House next door hosts its own evening: the ZAOstock after-party, doors from 6 and music from 7, with North Creek and friends. Details at zaostock.com/afterparty.',
+    q: 'What happened after six?',
+    a: 'The ZAOstock after-party ran at Black Moon Public House next door, with North Creek and friends. Details at zaostock.com/afterparty.',
   },
-  { q: 'Can I watch online?', a: 'Yes. The stream and the running order are at zaostock.com/live.' },
+  { q: 'Can I watch the replay?', a: 'Yes. The recording and the running order are at zaostock.com/live.' },
 ];
 
 export function faqJsonLd() {

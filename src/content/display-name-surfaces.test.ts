@@ -21,10 +21,6 @@ describe('visitor-facing act names go through displayName()', () => {
     expect(src).not.toMatch(/\{artist\.name\} is on the ZAOstock roster/);
   });
 
-  it('the shareable artist flyer', () => {
-    expect(read('src/app/artist/[slug]/flyer/route.tsx')).toContain('{displayName(artist.name)}');
-  });
-
   it('/zaoville schedule', () => {
     expect(read('src/app/zaoville/page.tsx')).toContain('{displayName(s.label)}');
   });

@@ -103,6 +103,15 @@ function loadFacts() {
     return { name, value, suggest };
   }).filter((f) => f.value);
 
+  // The next edition (ZAOstock 2027). NEXT_EDITION sits AFTER FESTIVAL in the
+  // same file, and extractField() returns the FIRST match, so read its own
+  // block rather than the whole source or this would re-find FESTIVAL's value.
+  // Missing means this check lost its input: fail closed, like the others.
+  const nextStart = festivalSrc.indexOf('export const NEXT_EDITION');
+  const nextDate = nextStart === -1 ? null : extractField(festivalSrc.slice(nextStart), 'dateLabel');
+  if (nextDate === null) missing.push('NEXT_EDITION.dateLabel');
+  else facts.push({ name: 'NEXT_EDITION.dateLabel', value: nextDate, suggest: 'NEXT_EDITION.dateLabel (or nextEditionLine())' });
+
   // Act count: LINEUP_NAMES is a readonly string[] literal in site.ts - count
   // its entries by counting quoted strings inside the array literal, not by
   // importing/evaluating the module.
@@ -242,7 +251,7 @@ function main() {
   // whatever the scan found, because a hit list from a partial fact list is
   // not the whole truth and a reader needs both halves of it.
   if (missing) {
-    console.error(`check:facts - could not read ${missing.length} of ${REQUIRED_FACTS.length + 1} known facts from festival.ts/site.ts:`);
+    console.error(`check:facts - could not read ${missing.length} of ${REQUIRED_FACTS.length + 2} known facts from festival.ts/site.ts:`);
     for (const name of missing) console.error(`  ${name}`);
     console.error('\nThis check has lost its own input, so it cannot certify anything.');
     console.error('Its extraction is a regex over the source text of festival.ts/site.ts, so any');

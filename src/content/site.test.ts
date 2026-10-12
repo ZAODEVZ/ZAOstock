@@ -7,7 +7,7 @@ import path from 'node:path';
 // artist-slugs.test.ts use.
 vi.mock('server-only', () => ({}));
 
-import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl } from './site';
+import { PARTNERS, PUBLIC_LINEUP, LINEUP_NAMES, PLAYED_NAMES, RETIRED_ACT_SLUGS, isRetiredAct, artistRecordLine, LINEUP_NAMES_NOTE, TIERS, SITE, DAY, SERIES, ZAO, WAVEWARZ_STATS, ELLSWORTH, DELIVERABLES, SOCIALS, DISPLAY_NAMES, displayName, ZAO_ELLSWORTH_FACEBOOK_URL, zaoEllsworthFacebookUrl, FEEDBACK_FORM_URL, feedbackFormUrl, feedbackEmbedUrl } from './site';
 import { slugify } from '@/lib/artists';
 import { artistFormUrl, OPS_ACTS, ARTIST_FORM } from './artist-ops';
 
@@ -66,14 +66,15 @@ describe('SITE facts', () => {
     for (const t of TIERS) expect(t.price).toBeNull();
   });
 
-  it('lists eleven confirmed partners', () => {
+  it('lists ten confirmed partners', () => {
     // Ninth since 2026-09-16: WE THE MEDIA, media and content capture (Zaal).
     // Tenth since 2026-09-18: Heart of Ellsworth, confirmed in writing by
     // their own email asking to be listed; Zaal said yes to all of it.
     // Eleventh since 2026-09-16 (Motomoto x Zaal call, tracker card 9793):
     // Baraza, Motomoto's AI-voice media distribution project.
-    expect(PARTNERS).toHaveLength(11);
-    expect(PARTNERS.map((p) => p.name)).toContain('Artizen');
+    // Back to ten on 2026-10-05: the funding partner was removed (Zaal: the platform wound down).
+    expect(PARTNERS).toHaveLength(10);
+    expect(PARTNERS.map((p) => p.name.toLowerCase()).join('|')).not.toContain(['art', 'izen'].join(''));
     expect(PARTNERS.map((p) => p.name)).toContain('Bomb Squad');
     expect(PARTNERS.map((p) => p.name)).toContain('COC Concertz');
     expect(PARTNERS.map((p) => p.name)).toContain('WE THE MEDIA');
@@ -202,14 +203,13 @@ describe('the names-only lineup', () => {
     'The Crown Vics',
     'OPEN X',
     'Grass Rug',
-    'Acadia Rising',
     'Michael Anderson',
     'DCoop',
     'LyonsDen',
     'Tom Fellenz',
   ];
 
-  it('is the eight acts of the locked run of show, in order (Hurricane out 2026-09-10)', () => {
+  it('is the seven acts who played, in run-of-show order (Hurricane out 2026-09-10, one act retired 2026-10-05)', () => {
     expect(LINEUP_NAMES).toEqual(RUN_OF_SHOW);
   });
 
@@ -342,6 +342,11 @@ describe('retired claims stay retired', () => {
     [/\$ ?25,?000|\$ ?25K/i, '$25K is internal only; $5,000 is the only public figure'],
     [/four million|\b4 ?million|\b4M\b/i, 'no source for "4 million drove through", MaineDOT included; Zaal: "Drop both" (2026-09-10)'],
     [/(twenty|\d+\+?)\s+countries/i, 'no member-country list exists; Zaal: "Drop both" (2026-09-10)'],
+    [/artist'?s travel|covers .{0,20}travel/i, 'ZAO artists travel is digital and not included; Zaal 2026-10-02 stripped the travel promise'],
+    [/paid fairly/i, 'Zaal 2026-10-02: say "we help them grow", never "we pay our artists"'],
+    [/\b28 (heart|events)|\b50\+ sponsors|sponsors of those events/i, 'no source for the Heart of Ellsworth 28 events / 50+ sponsors; Zaal 2026-10-02 stripped it'],
+    [/printed programme/i, 'no printed programme exists; Zaal 2026-10-02 stripped the promise'],
+    [/ordinary saturday|published local-business measurement|will publish the comparison/i, 'no measurement will be published; Zaal 2026-10-02 stripped the promise'],
   ];
 
   for (const [pattern, why] of BARRED) {
@@ -368,7 +373,7 @@ describe('retired claims stay retired', () => {
       const src = readFileSync(f, 'utf8');
       // "confirmed agreement": not every partner has a signed one. Zaal,
       // 2026-09-11, of the partner line: "Soften it".
-      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i, /confirmed agreement/i]
+      return [/four million|\b4 ?million\b/i, /(twenty|\d+\+?)\s+countries/i, /confirmed agreement/i, /paid fairly|printed programme|ordinary saturday|Sculpture Trail|28 events|artist'?s travel/i]
         .filter((re) => re.test(src))
         .map((re) => `${path.relative(process.cwd(), f)}: ${re.source}`);
     });
@@ -548,13 +553,6 @@ describe('Hurricane is off the bill', () => {
     expect(read('scripts/create-artist-form.gs')).not.toMatch(/'Hurricane - /);
   });
 
-  // Zaal's standing rule, 2026-09-10: always "Acadia Rising", never the long form.
-  it('bills Acadia Rising by that name only', () => {
-    for (const p of ['docs/marketing/press-kit.md', 'ops-room/ops-room.src.html', 'scripts/create-artist-form.gs', 'src/app/program/page.tsx']) {
-      expect(read(p), p).not.toMatch(/Acadia Rising \(|Women with Rhythm/);
-    }
-  });
-
   it('is counted as eight wherever the kit states a count', () => {
     expect(read('docs/marketing/press-kit.md')).not.toMatch(/\bnine\b/i);
   });
@@ -712,5 +710,213 @@ describe('ZAO Ellsworth footer link renders nothing until the Page exists', () =
     // would have rendered nothing for a real, correctly-pasted Page URL.
     const withWww = 'https://www.facebook.com/zaoellsworth';
     expect(zaoEllsworthFacebookUrl(withWww)).toBe(withWww);
+  });
+});
+
+/**
+ * ZAOSTOCK 2026 IS OVER (Zaal, 2026-10-04: "pushing eveything zaostock to the
+ * past"). The festival happened on 3 October, so no public page may invite
+ * anyone to it. These phrases each read as an upcoming day; the guard walks
+ * the public page files so one that comes back in a file nobody listed trips
+ * here. /team, /api, /live and the countdown/calendar components are not
+ * public pages and are left out (the components are kept but unrendered).
+ */
+describe('ZAOstock 2026 is over: no public page invites anyone to it', () => {
+  const UPCOMING: ReadonlyArray<readonly [RegExp, string]> = [
+    [/>\s*RSVP free\s*</, 'RSVP is over'],
+    [/See you on\s*<br \/>\s*<em>Franklin Street/, 'the closing section is a thank-you now'],
+    [/Coming to ZAOstock\?/, 'the day has passed'],
+    [/title="Before you come/, 'there is nothing to prepare for'],
+    [/<Countdown\b/, 'no countdown to a day that has passed'],
+    [/<AddToCalendar\b/, 'no calendar invite to a day that has passed'],
+    [/is on the ZAOstock roster/, 'artists played, they are not on a roster for a coming day'],
+  ];
+
+  const pageFiles = (readdirSync(path.join(process.cwd(), 'src/app'), { recursive: true }) as string[])
+    .filter((f) => /\.tsx$/.test(f) && !/\.test\.tsx$/.test(f))
+    .filter((f) => !/^(team|api|live)[\\/]/.test(f))
+    .map((f) => path.join(process.cwd(), 'src/app', f));
+
+  it('is actually inspecting the public pages', () => {
+    expect(pageFiles.length).toBeGreaterThan(20);
+    expect(pageFiles.some((f) => f.endsWith(path.join('tickets', 'page.tsx')))).toBe(true);
+  });
+
+  for (const [pattern, why] of UPCOMING) {
+    it(`no page carries ${pattern.source} - ${why}`, () => {
+      const hits = pageFiles.filter((f) => pattern.test(readFileSync(f, 'utf8'))).map((f) => path.relative(process.cwd(), f));
+      expect(hits).toEqual([]);
+    });
+  }
+
+  it('the control can fail: the pattern list does match a known upcoming line', () => {
+    expect('<Button>RSVP free</Button>').toMatch(UPCOMING[0][0]);
+  });
+});
+
+/**
+ * NOBODY HAS CONFIRMED WHAT HAPPENED ON THE DAY (2026-10-04). The site may say
+ * ZAOstock 2026 was held, was free, was streamed, and what was BILLED. It may
+ * not say a named act, "the eight acts" or the after-party acts actually
+ * played, that the set order or times are what happened, or that the
+ * after-party ran as listed, until the owner confirms. Stream evidence
+ * suggests fewer than eight sets and some running off schedule, with no
+ * after-party footage. These phrases are barred from every public file.
+ *
+ * src/app/live and its content (live.ts, replay.ts, ReplayPlayer.tsx) are
+ * excluded: a separate change owns the replay surface and its wording.
+ */
+describe('claims about who played stay within what Zaal has confirmed', () => {
+  // Zaal, 2026-10-04: seven acts, "yes all played"; and the after-party ran
+  // ("A and it was awesome"). Its flyer line "Oven Baked Beats DJ Aquavantes" is
+  // two acts, and all five played (Zaal, 2026-10-07: "everyone played sorry i
+  // ment 5"; #455). So "played" is allowed for
+  // PLAYED_NAMES and the after-party: never for "eight", which is not the count.
+  const BARRED_PERFORMANCE: ReadonlyArray<readonly [RegExp, string]> = [
+    [/\b(eight|8|all eight|all 8)( independent)? (acts|artists) (that |who )?played\b/i, 'seven acts played'],
+    [/LINEUP_NAMES\.length\}?[^\n]{0,60}\bplayed\b/, 'count who played with PLAYED_NAMES'],
+    [/Played in order/, 'say "Running order"'],
+  ];
+
+  const roots = ['src/app', 'src/components', 'src/content', 'docs/marketing'];
+  const OWNED_ELSEWHERE = /(^|[\\/])(live[\\/]page\.tsx|live\.ts|replay\.ts|ReplayPlayer\.tsx|lineup-fallback\.ts)$/;
+  const files: string[] = [];
+  for (const r of roots) {
+    const abs = path.join(process.cwd(), r);
+    for (const f of readdirSync(abs, { recursive: true }) as string[]) {
+      const full = path.join(abs, f);
+      if (/\.(tsx?|md|html|txt)$/.test(f) && !/\.test\.tsx?$/.test(f) && !OWNED_ELSEWHERE.test(f) && statSync(full).isFile()) files.push(full);
+    }
+  }
+
+  it('is actually inspecting the public files', () => {
+    expect(files.length).toBeGreaterThan(50);
+    expect(files.some((f) => f.endsWith(path.join('tickets', 'page.tsx')))).toBe(true);
+    expect(files.some((f) => f.endsWith(path.join('live', 'page.tsx')))).toBe(false);
+  });
+
+  for (const [pattern, why] of BARRED_PERFORMANCE) {
+    it(`no public file carries ${pattern.source} - ${why}`, () => {
+      const hits = files.filter((f) => pattern.test(readFileSync(f, 'utf8'))).map((f) => path.relative(process.cwd(), f));
+      expect(hits).toEqual([]);
+    });
+  }
+
+  it('the control can fail: the patterns do match the wording they bar', () => {
+    expect('the 8 acts played back to back').toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('Eight independent artists played one stage').toMatch(BARRED_PERFORMANCE[0][0]);
+    expect('{LINEUP_NAMES.length} acts played from noon').toMatch(BARRED_PERFORMANCE[1][0]);
+    expect('7 independent acts played back to back').not.toMatch(BARRED_PERFORMANCE[0][0]);
+  });
+
+  // The artist page passes the DATABASE row's name, and nothing holds that
+  // column to the spelling in site.ts. The sentence is assembled at run time,
+  // where the source scan above cannot see it, so it is tested here.
+  it('every act that played gets "played ZAOstock"', () => {
+    for (const name of PLAYED_NAMES) {
+      expect(isRetiredAct(name), name).toBe(false);
+      const line = artistRecordLine(name, 'Oct 3, 2026', 'in Ellsworth, Maine');
+      expect(line, name).toContain('played ZAOstock on Oct 3, 2026 in Ellsworth, Maine.');
+    }
+    expect(isRetiredAct('')).toBe(false);
+  });
+
+  it('the artist page builds that sentence through artistRecordLine, not by comparing names itself', () => {
+    const page = readFileSync(path.join(process.cwd(), 'src/app/artist/[slug]/page.tsx'), 'utf8');
+    expect(page.match(/artistRecordLine\(artist\.name/g)?.length).toBe(2);
+    expect(page).not.toMatch(/played ZAOstock on/);
+  });
+
+  it('the bill and the record are the same acts', () => {
+    expect(PLAYED_NAMES).toEqual(LINEUP_NAMES);
+    expect(LINEUP_NAMES).toHaveLength(7);
+  });
+});
+
+// Zaal, 2026-10-05: two names are retired from every public mention, now and in
+// the future (vault decisions/grill-2026-10-05-orchestration-retire-partners.md).
+// The repo is public, so this test builds the names from fragments: a test that
+// spelled them out would be the one file that still carried them.
+describe('retired names appear nowhere in the public site', () => {
+  const ACT = ['acad', 'ia ris', 'ing'].join('');
+  const ACT_SLUG = ['acad', 'ia-ris', 'ing'].join('');
+  const PLATFORM = ['art', 'izen'].join('');
+  const retired = new RegExp(`${ACT}|${ACT_SLUG.replace('-', '[- _]?')}|${PLATFORM}`, 'i');
+  const roots = ['src', 'public', 'ops-room', 'scripts'];
+  const files: string[] = [];
+  const walk = (dir: string) => {
+    for (const ent of readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) walk(full);
+      else if (/\.(tsx?|mjs|js|json|md|html|txt|gs|sh|xml|svg)$/.test(ent.name)) files.push(full);
+    }
+  };
+  for (const r of roots) walk(path.join(process.cwd(), r));
+
+  it('is inspecting the public tree', () => {
+    expect(files.length).toBeGreaterThan(50);
+    expect(files.some((f) => f.endsWith(path.join('content', 'site.ts')))).toBe(true);
+  });
+
+  it('the pattern can fail: it matches the names', () => {
+    expect(`${ACT} played`).toMatch(retired);
+    expect(`/artists/${ACT_SLUG}.webp`).toMatch(retired);
+    expect(`${PLATFORM}.fund`).toMatch(retired);
+    expect('Acadia National Park').not.toMatch(retired);
+  });
+
+  it('no source, public file or script carries either name', () => {
+    const hits = files
+      .filter((f) => retired.test(readFileSync(f, 'utf8')) || retired.test(path.basename(f)))
+      .map((f) => path.relative(process.cwd(), f));
+    expect(hits).toEqual([]);
+  });
+
+  it('no image file is named for either', () => {
+    const imgs: string[] = [];
+    const w = (dir: string) => {
+      for (const ent of readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, ent.name);
+        if (ent.isDirectory()) w(full);
+        else imgs.push(ent.name);
+      }
+    };
+    w(path.join(process.cwd(), 'public'));
+    expect(imgs.filter((n) => retired.test(n))).toEqual([]);
+  });
+
+  it('a database row for a retired act is recognised however it is spelled', () => {
+    expect(RETIRED_ACT_SLUGS).toEqual([ACT_SLUG]);
+    for (const name of [ACT, ACT.toUpperCase(), ` ${ACT} `, ACT.replace(' ', '  '), `${ACT}!`]) {
+      expect(isRetiredAct(name), JSON.stringify(name)).toBe(true);
+    }
+    expect(isRetiredAct('Acadia')).toBe(false);
+  });
+});
+
+describe('feedback form link', () => {
+  it('is set to the real Google Form, and the helper hands it back', () => {
+    expect(FEEDBACK_FORM_URL).not.toBe('UNSET');
+    expect(feedbackFormUrl()).toBe(FEEDBACK_FORM_URL);
+  });
+
+  it('refuses anything that is not a Google Forms link', () => {
+    for (const wrong of ['https://zaostock.com/suggest', 'docs.google.com/forms/d/x', 'https://docs.google.com/document/d/x', 'http://forms.gle/x', '']) {
+      expect(feedbackFormUrl(wrong)).toBeNull();
+    }
+  });
+
+  it('hands back a real form link, long or short', () => {
+    for (const real of ['https://docs.google.com/forms/d/e/abc/viewform', 'https://forms.gle/abc123']) {
+      expect(feedbackFormUrl(real)).toBe(real);
+    }
+  });
+
+  it('builds a well-formed embed link, and none for a short link or no form', () => {
+    expect(feedbackEmbedUrl('https://docs.google.com/forms/d/e/abc/viewform')).toBe('https://docs.google.com/forms/d/e/abc/viewform?embedded=true');
+    expect(feedbackEmbedUrl('https://docs.google.com/forms/d/e/abc/viewform?usp=sf_link')).toBe('https://docs.google.com/forms/d/e/abc/viewform?usp=sf_link&embedded=true');
+    expect(feedbackEmbedUrl('https://docs.google.com/forms/d/e/abc/viewform?embedded=true')).toBe('https://docs.google.com/forms/d/e/abc/viewform?embedded=true');
+    expect(feedbackEmbedUrl('https://forms.gle/abc123')).toBeNull();
+    expect(feedbackEmbedUrl('UNSET')).toBeNull();
   });
 });

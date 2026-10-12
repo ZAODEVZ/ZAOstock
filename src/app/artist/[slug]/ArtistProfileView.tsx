@@ -144,7 +144,7 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
             Volunteer eligible unlocked
           </p>
           <p className="text-[11px] text-ink-950 mt-0.5">
-            You are now on the roster for {FESTIVAL.shortDate}. See you at the parklet.
+            Recorded for the {FESTIVAL.shortDate} roster. Thank you for playing ZAOstock.
           </p>
         </div>
       )}
@@ -416,7 +416,7 @@ function ContributorPath({
         </p>
       </div>
       <p className="text-[11px] text-ink-muted leading-relaxed">
-        Each step earns 1 ZAOfestivals Point (paid post-event). Complete all steps to be eligible to work the event as a volunteer on {FESTIVAL.shortDate}.
+        Each step earns 1 ZAOfestivals Point (paid post-event). Volunteer eligibility applied to the event on {FESTIVAL.shortDate}, which has now happened.
       </p>
       <ol className="space-y-2">
         {steps.map((s, i) => (
