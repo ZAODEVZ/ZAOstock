@@ -49,6 +49,7 @@ function repoWithChange(paths: string[]): { cwd: string; base: string } {
   git(cwd, 'add', '-A');
   git(cwd, 'commit', '-qm', 'base');
   const base = git(cwd, 'rev-parse', 'HEAD');
+  if (paths.length === 0) return { cwd, base };
   for (const p of paths) write(cwd, p, `changed ${p}\n`);
   git(cwd, 'add', '-A');
   git(cwd, 'commit', '-qm', 'change');
@@ -105,29 +106,78 @@ describe('scripts/vercel-ignore.sh', { timeout: 30_000 }, () => {
     expect(decide(cwd, { VERCEL_ENV: 'preview', VERCEL_GIT_PREVIOUS_SHA: base }).code).toBe(1);
   });
 
-  it('falls back to the parent commit when the previous SHA is unknown', () => {
+  it('builds when the previous SHA is set but not reachable, even for docs only', () => {
     const { cwd } = repoWithChange(['docs/plans/run-sheet.md']);
     const r = decide(cwd, { VERCEL_GIT_PREVIOUS_SHA: 'f'.repeat(40) });
-    expect(r.code, r.log).toBe(0);
+    expect(r.code, r.log).toBe(1);
+    expect(r.log).toContain('not reachable');
   });
 
-  it('builds when there is no diff base at all', () => {
-    const cwd = mkdtempSync(join(tmpdir(), 'vercel-ignore-zaostock-'));
-    git(cwd, 'init', '-q');
-    git(cwd, 'config', 'user.email', 'test@example.invalid');
-    git(cwd, 'config', 'user.name', 'test');
-    write(cwd, 'README.md', '# first\n');
-    git(cwd, 'add', '-A');
-    git(cwd, 'commit', '-qm', 'only commit');
+  it('builds when there is no previous SHA at all', () => {
+    const { cwd } = repoWithChange(['README.md']);
     const r = decide(cwd, {});
     expect(r.code, r.log).toBe(1);
-    expect(r.log).toContain('no diff base');
+    expect(r.log).toContain('no previous deploy sha');
+  });
+
+  it('builds a push of a code commit followed by a docs commit', () => {
+    const { cwd, base } = repoWithChange(['src/app/page.tsx']);
+    write(cwd, 'docs/plans/run-sheet.md', 'later docs\n');
+    git(cwd, 'add', '-A');
+    git(cwd, 'commit', '-qm', 'docs after code');
+    const r = decide(cwd, { VERCEL_GIT_PREVIOUS_SHA: base });
+    expect(r.code, r.log).toBe(1);
+  });
+
+  it('builds a rename of a source file into docs (both sides of a rename count)', () => {
+    const { cwd, base } = repoWithChange([]);
+    git(cwd, 'mv', 'src/app/page.tsx', 'docs/page.md');
+    git(cwd, 'commit', '-qm', 'move source into docs');
+    const r = decide(cwd, { VERCEL_GIT_PREVIOUS_SHA: base });
+    expect(r.code, r.log).toBe(1);
+    expect(r.log).toContain('src/app/page.tsx');
+  });
+
+  it('builds markdown under public/, which is served as-is', () => {
+    const { cwd, base } = repoWithChange(['public/partners/README.md']);
+    const r = decide(cwd, { VERCEL_GIT_PREVIOUS_SHA: base });
+    expect(r.code, r.log).toBe(1);
   });
 });
 
-/** Every docs path that non-test code under src/ reads via path.join(process.cwd(), 'docs', ...). */
+/**
+ * Every docs path that non-test code under src/ reaches through path.join,
+ * path.resolve, readFile/readFileSync, a dynamic import() or an import ... from.
+ * String literals in the call are joined, so path.join(process.cwd(), 'docs',
+ * 'a', 'b.md'), path.join(process.cwd(), 'docs/a/b.md') and
+ * path.resolve('docs', 'a', 'b.md') all read as docs/a/b.md. A call that names
+ * docs but builds the rest from a variable cannot be resolved here, so it is
+ * returned as UNRESOLVED and the test fails until a person lists it.
+ */
 function docsReadBySrc(): string[] {
   const found = new Set<string>();
+  const CALL = /(path\.(?:join|resolve)|readFile(?:Sync)?|import)\s*\(/g;
+  const argsAt = (src: string, open: number): string => {
+    let depth = 0;
+    for (let i = open; i < src.length; i++) {
+      if (src[i] === '(') depth++;
+      else if (src[i] === ')' && --depth === 0) return src.slice(open + 1, i);
+    }
+    return '';
+  };
+  const resolveDocs = (args: string, where: string): void => {
+    const lits = [...args.matchAll(/'([^']*)'|"([^"]*)"|`([^`$]*)`/g)].map((m) => m[1] ?? m[2] ?? m[3]);
+    const joined = lits.join('/').replace(/\/+/g, '/');
+    const at = joined.search(/(^|\/)docs(\/|$)/);
+    if (at < 0) return;
+    const path = joined.slice(joined.indexOf('docs', at));
+    // A docs reference whose tail is not a concrete file is a dynamic path.
+    if (!/\.[a-z0-9]+$/i.test(path) || /[^'"`\s,]\s*\+|\$\{/.test(args) || /,\s*[A-Za-z_]\w*\s*[,)]?\s*$/.test(args)) {
+      found.add(`UNRESOLVED ${where}: ${args.replace(/\s+/g, ' ').slice(0, 100)}`);
+    } else {
+      found.add(path);
+    }
+  };
   const walk = (dir: string): void => {
     for (const name of readdirSync(dir)) {
       const p = join(dir, name);
@@ -135,9 +185,8 @@ function docsReadBySrc(): string[] {
         if (name !== '__tests__' && name !== 'node_modules') walk(p);
       } else if (/\.(ts|tsx|mjs)$/.test(name) && !/\.(test|spec)\./.test(name)) {
         const src = readFileSync(p, 'utf8');
-        for (const m of src.matchAll(/path\.join\(\s*process\.cwd\(\)\s*,\s*'docs'((?:\s*,\s*'[^']+')+)\s*\)/g)) {
-          found.add(['docs', ...[...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1])].join('/'));
-        }
+        for (const m of src.matchAll(CALL)) resolveDocs(argsAt(src, (m.index ?? 0) + m[0].length - 1), p);
+        for (const m of src.matchAll(/\bfrom\s+(['"])([^'"]+)\1/g)) resolveDocs(`'${m[2]}'`, p);
       }
     }
   };

@@ -17,26 +17,28 @@
 
 say() { echo "[vercel-ignore] $*"; }
 
-# 1. Diff base: the previous deploy's SHA when reachable (fetch it: the clone
-#    is shallow), else this commit's parent. No base at all -> BUILD.
+# 1. Diff base: the previous deploy's SHA, fetched if the shallow clone lacks
+#    it. No previous SHA, or one still unreachable after the fetch, BUILDS:
+#    falling back to HEAD^ would miss earlier commits in the same push (a code
+#    commit followed by a docs commit would skip).
 PREV="${VERCEL_GIT_PREVIOUS_SHA:-}"
-if [ -n "$PREV" ] && ! git cat-file -e "$PREV" 2>/dev/null; then
-  git fetch --depth=1 origin "$PREV" 2>/dev/null || true
-fi
-BASE=""
-if [ -n "$PREV" ] && git cat-file -e "$PREV" 2>/dev/null; then
-  BASE="$PREV"
-else
-  git rev-parse --verify -q HEAD^ >/dev/null 2>&1 || git fetch --deepen=1 origin 2>/dev/null || true
-  if git rev-parse --verify -q HEAD^ >/dev/null 2>&1; then BASE="HEAD^"; fi
-fi
-if [ -z "$BASE" ]; then
-  say "no diff base reachable (prev=${PREV:-unset}) -> BUILD (safe default)"
+if [ -z "$PREV" ]; then
+  say "no previous deploy sha -> BUILD (safe default)"
   exit 1
 fi
+if ! git cat-file -e "$PREV" 2>/dev/null; then
+  git fetch --depth=1 origin "$PREV" 2>/dev/null || true
+fi
+if ! git cat-file -e "$PREV" 2>/dev/null; then
+  say "previous deploy sha $PREV is not reachable -> BUILD (safe default)"
+  exit 1
+fi
+BASE="$PREV"
 
-# 2. The changed files. A git error or an empty list builds.
-if ! CHANGED="$(git diff --name-only "$BASE" HEAD 2>/dev/null)"; then
+# 2. The changed files. --no-renames lists both sides of a rename, so moving
+#    src/x.ts to docs/x.md shows the src path and builds. A git error or an
+#    empty list builds.
+if ! CHANGED="$(git diff --no-renames --name-only "$BASE" HEAD 2>/dev/null)"; then
   say "git diff failed vs $BASE -> BUILD (safe default)"
   exit 1
 fi
@@ -48,6 +50,7 @@ fi
 # 3. Files that never ship: docs, agent notes, tests and CI config.
 never_ships() {
   case "$1" in
+    public/*) return 1 ;;   # served as-is, markdown included (public/partners/README.md)
     docs/*|.handoffs/*|.agents/*|agents/*|e2e/*|.github/*) return 0 ;;
     *.md) return 0 ;;
     */__tests__/*|*.test.ts|*.test.tsx|*.test.mjs|*.spec.ts|*.spec.tsx) return 0 ;;
