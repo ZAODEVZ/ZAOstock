@@ -47,7 +47,7 @@ Reading: steady trickle over 5 months, with no launch spike, and 10 of 24 came i
 | Invited | 82 |
 | Responded (going plus interested) | 22, which is 27% of invited |
 | Responses from personal friends of the organiser | 8 of 22 |
-| Responses from people outside that circle | 14 of 22 |
+| Responses from people outside that circle | 13 of 22 (the 22nd is the organiser) |
 | Responses that came from one community member's invites | 5 of 22 (23%) |
 
 Reading: most response came from people outside the organiser's own network, and a single well-connected local brought in almost a quarter of it. Word of mouth through connectors is the strongest channel we can see.
