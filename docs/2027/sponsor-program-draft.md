@@ -6,9 +6,9 @@
 
 ## What changed for 2027
 
-In 2026, ZAOstock paid a fixed fee for event advisory work. In 2027 it will not. People and firms who help ZAO Festivals land sponsors are paid a commission on what those sponsors contribute, so the people who help are paid out of the money they help bring in.
+In 2026, ZAOstock paid a fixed fee for event advisory work. The direction for 2027 is to stop doing that: people and firms who help ZAO Festivals land sponsors would be paid a commission on what those sponsors contribute, out of the money they help bring in.
 
-Meridian Ridge Event Advisory, which ran the 2026 founding-year pilot, has been asked to help design this program. This draft is the starting point for that work, not a finished proposal.
+That is a direction, not an agreement. Meridian Ridge Event Advisory, which ran the 2026 founding-year pilot, has been asked to help design the program, and its own 2027 terms are still being discussed (debrief call, 18 October 2026). This draft is the starting point for that work, not a finished proposal.
 
 ## Two layers
 
@@ -18,7 +18,7 @@ The program has two layers. The first is the base for 2027. The second is an opt
 
 A sponsor pays a sponsorship, the way it does at any local festival. Whoever brought the sponsor in, and whoever runs the relationship through the event, earns a commission on what the sponsor actually pays.
 
-This keeps the 2026 shape: one share for bringing a sponsor, a second share for managing one, and both shares for someone who does both. What is new is that an outside advisor can earn on the same terms as a teammate.
+This keeps the 2026 shape: one share for bringing a sponsor, a second share for managing one, and both shares for someone who does both. What is new is that an outside advisor could earn on the same terms as a teammate, if that is what is agreed.
 
 ### Layer 2 - sponsor-funded rewards for attendees (option, undecided)
 
@@ -63,5 +63,6 @@ Towns Of (townsof.com) runs a sponsor product built around RSVPs: a sponsor pays
 | Who | What | By when |
 |---|---|---|
 | Zaal | Yes, no or later on Layer 2 | Open |
+| Meridian Ridge | Written response to the open questions, which was promised on the 18 October call | Open |
 | Meridian Ridge and ZAO Festivals | Turn the commission questions into a v1 structure | Open |
 | ZAO Festivals | Pick the door count and tracking-link tools for 2027 | Before the first 2027 sponsor pitch |
