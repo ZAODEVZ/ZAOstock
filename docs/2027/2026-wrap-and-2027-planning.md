@@ -13,20 +13,59 @@ ZAOstock 2026 ran on Saturday 3 October 2026 at the Franklin Street Parklet in d
 | Founding-year pilot close-out (priority brief and this debrief) | Debrief today | Meridian Ridge and ZAOstock |
 | Final 2026 finances | Closing | ZAOstock |
 
-## 2. What the data says (counts only)
+## 2. What the data says (counts only, no names or contact details)
 
-| Source | What we have |
+### Luma (ticketing and RSVP), export of 18 Oct 2026
+
+| Measure | Value |
 |---|---|
-| Luma | 24 registrations, all approved and free. First on 14 May, last on 3 Oct (3 on the day). 0 check-ins recorded. 0 tracking tags. |
-| Facebook event | 8 going, 14 interested, 82 invited. One community member personally brought in 5 of the 22 responses. |
-| Overlap | Unknown: no shared ID between Luma and Facebook. |
-| Real attendance | Not measured by either source. |
+| Registrations | 24 |
+| Approved | 24 of 24 (no approval gate used) |
+| Ticket type | 24 Standard, all free |
+| First and last sign-up | 14 May 2026, and 3 Oct 2026 (event day) |
+| Sign-ups on event day | 3 |
+| Checked in at the door | 0 (Luma check-in was not used) |
+| Tracking tags (UTM), referrers, referral credit | 0 of 24 |
+| Phone numbers collected | 0 of 24 |
+| Wallet addresses collected | 0 of 24 |
+| Post-event Luma survey answers | 0 of 24 |
+
+Sign-ups by month:
+
+| May | Jun | Jul | Aug | Sep | Oct (1-3) |
+|---|---|---|---|---|---|
+| 1 | 5 | 2 | 6 | 6 | 4 |
+
+Reading: steady trickle over 5 months, with no launch spike, and 10 of 24 came in the last five weeks. We can't say which channel drove any of them.
+
+### Facebook event
+
+| Measure | Value |
+|---|---|
+| Going | 8 (incl. the organiser) |
+| Interested | 14 |
+| Invited | 82 |
+| Responded (going plus interested) | 22, which is 27% of invited |
+| Responses from personal friends of the organiser | 8 of 22 |
+| Responses from people outside that circle | 14 of 22 |
+| Responses that came from one community member's invites | 5 of 22 (23%) |
+
+Reading: most response came from people outside the organiser's own network, and a single well-connected local brought in almost a quarter of it. Word of mouth through connectors is the strongest channel we can see.
+
+### Across both
+
+| Measure | Value |
+|---|---|
+| Luma registrations plus Facebook responses | 24 + 22 |
+| Overlap between the two | Unknown (no shared ID) |
+| Real attendance on the day | Not measured by either source |
 
 What this tells us for 2027:
-- Count people at the door (check-in or a simple clicker count).
-- Use tracking links per channel so we know what brings people.
-- Run one main sign-up place instead of several.
-- Word of mouth works: one person's invites made up almost a quarter of the Facebook responses. Track who brings whom.
+- Count people at the door (Luma check-in, or a simple clicker count).
+- Use a tracking link per channel (posters, partners, socials, newsletter) so we know what brings people.
+- Run one main sign-up place instead of several, and link everything else to it.
+- Turn on referral credit, so connectors are seen, thanked, and on the sponsor side paid.
+- Ask one or two optional questions at sign-up (town, how you heard), so we can show sponsors who comes.
 
 ## 3. Debrief questions
 
