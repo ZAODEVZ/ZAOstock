@@ -177,8 +177,11 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
             />
           )
         ) : (
-          <div className="w-24 h-24 rounded-full bg-paper-200 border-2 border-ink-950/60 flex-shrink-0 flex items-center justify-center">
-            <span className="text-2xl font-bold text-ink-muted">{initials}</span>
+          // No photo yet: a filled monogram badge, so the empty state reads as
+          // deliberate. The old cream-on-cream outline read as a broken image
+          // (ZAOOS doc 2507, item 3). Same fill and text pair as /zaoville.
+          <div className="w-24 h-24 rounded-full bg-denim-400 border-2 border-ink-950 flex-shrink-0 flex items-center justify-center">
+            <span className="text-2xl font-bold text-paper-200">{initials}</span>
           </div>
         )}
         <div className="flex-1 min-w-0">

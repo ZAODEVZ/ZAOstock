@@ -72,7 +72,7 @@ export default function ArtistsPage() {
               <div className="pt-2 border-t border-ink-950/10 flex items-center justify-between">
                 <Link
                   href={`/artist/${act.slug}`}
-                  className="font-sans text-xs font-bold uppercase tracking-wider text-fire-600 hover:text-fire-700 inline-flex items-center gap-1.5"
+                  className="font-sans text-xs font-bold uppercase tracking-wider text-red-600 hover:text-red-700 inline-flex items-center gap-1.5"
                 >
                   View artist profile &rarr;
                 </Link>
