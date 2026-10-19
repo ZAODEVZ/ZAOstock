@@ -31,8 +31,8 @@ no token layer to absorb it.** Most of that is now behind us.
 
 | | Measured 2026-08-22 | Measured now |
 |---|---|---|
-| `.tsx` files in `src/` | 96 | 102 |
-| Files carrying brand colour | 77 of 96 | **34 of 102** |
+| `.tsx` files in `src/` | 96 | 109 |
+| Files carrying brand colour | 77 of 96 | **34 of 109** |
 | Hardcoded brand hexes | 1,067 | **420** |
 | Light-on-dark utilities that break on a paper ground | 1,297 | **597** |
 | **Total edit sites** | ~2,364 | **~1,017** |
@@ -87,7 +87,7 @@ shift - it inverted.
 
 | Surface | Files | Hexes | Notes |
 |---|---|---|---|
-| **Public site** (`src/app/**`, outside `/team`) | 47 | **0** | On tokens by name. Nothing left to migrate |
+| **Public site** (`src/app/**`, outside `/team`) | 49 | **0** | On tokens by name. Nothing left to migrate |
 | **Team dashboard** (`src/app/team/*`) | 42 | **420** | Internal. Nobody outside the team sees it |
 | Other brand surfaces | - | - | `src/app/icon.svg`, `src/app/opengraph-image.tsx` |
 
@@ -142,7 +142,7 @@ Result: zero hardcoded hexes remain outside `src/app/team/`.
 
 ### Phase 3 - the dashboard, or never - THE ONLY THING LEFT
 
-420 hexes across 42 files for a surface with no external audience. Legitimate
+420 hexes across 34 files for a surface with no external audience. Legitimate
 outcomes include "do it later", "do it never", and "do it when someone is already
 in that file". It should not gate the announcement, and now it demonstrably
 cannot: the public site it was blocking is finished.
@@ -183,7 +183,7 @@ already committed by PR #42. Note there is no favicon or manifest PNG in
 
 The estimate this document gave on 2026-08-22 was roughly a week of focused
 work for one person, gated on the token layer and the public-site sweep. Both
-shipped. What is left is 420 hexes across 42 dashboard files that no visitor
+shipped. What is left is 420 hexes across 34 dashboard files that no visitor
 will ever load. The failure mode Candy's README warns about - shipped in front
 of an audience in a half-and-half state - cannot happen from dashboard work,
 because the dashboard is not what the audience loads.
