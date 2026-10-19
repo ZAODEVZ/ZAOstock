@@ -65,7 +65,7 @@ export const SITE = {
   weather: 'Rain or shine - we do not cancel for weather. The artists play under a tent, but the parklet is open to the sky, so dress for it.',
   series: '9th Annual Art of Ellsworth',
   weekend: 'Maine Craft Weekend',
-  producedBy: 'ZAOstock is produced by ZAO Festivals, the events arm of The ZAO.',
+  producedBy: 'ZAOstock was produced by ZAO Festivals, the events arm of The ZAO.',
   /**
    * THE PRIMARY MARK since 2026-09-10 (Zaal): the moose. It is a WHITE
    * knockout on transparent, so it only ever sits on the ink inverse surface
@@ -138,12 +138,13 @@ export const PUBLIC_LINEUP: readonly string[] = ['LyonsDen'];
  * Order is the run of show locked 3 September. EIGHT acts since 2026-09-10:
  * Hurricane is out (Zaal: "He knows, strip him today"), no replacement and no
  * held slot. Nobody else moved; his 15:10 set became an open stretch.
+ * SEVEN acts since 2026-10-05: one act did not show up and is retired from
+ * public copy (RETIRED_ACT_SLUGS below).
  */
 export const LINEUP_NAMES: readonly string[] = [
   'The Crown Vics',
   'OPEN X',
   'Grass Rug',
-  'Acadia Rising',
   'Michael Anderson',
   'DCoop',
   'LyonsDen',
@@ -183,7 +184,46 @@ export function displayName(name: string): string {
 // No set times in public (Zaal, 2026-09-12), so this no longer sends anyone to
 // the program for one. The program publishes the order.
 export const LINEUP_NAMES_NOTE =
-  'They play in that order. Each act has its own page with a bio and photo.';
+  'Each act has its own page with a bio and photo.';
+
+/**
+ * RETIRED ACTS. Zaal, 2026-10-05 (vault
+ * decisions/grill-2026-10-05-orchestration-retire-partners.md): remove the act
+ * that did not show up from every public mention, now and in the future. An
+ * act that did not show up is not on the bill, not in a thank-you, not on a
+ * page of its own. Slugs only, so this file prints no name.
+ *
+ * Used where rows come from the DATABASE rather than from LINEUP_NAMES (the
+ * roster, the lineup API), because a row left in the table would otherwise
+ * keep a page alive. Compared by slug for the same reason as always: nothing
+ * holds the column to one spelling.
+ */
+export const RETIRED_ACT_SLUGS: readonly string[] = [['acadia', 'rising'].join('-')]; // built from parts: this repo is public and a test holds it free of the name
+
+/** Same rule as slugify() in src/lib/artists.ts, kept local so this file needs no database import. */
+const nameKey = (name: string) => name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+
+/** Is this database act name one of the retired acts? */
+export function isRetiredAct(name: string): boolean {
+  return RETIRED_ACT_SLUGS.includes(nameKey(name));
+}
+
+/**
+ * The one sentence an artist page says about the day, for the act whose
+ * database name is `name`. Built here, in one place, so it can be tested: the
+ * registry scans source text and cannot see a sentence assembled at run time.
+ * Every act that has a page played (Zaal, 2026-10-04: "yes all played").
+ */
+export function artistRecordLine(name: string, date: string, where: string): string {
+  return `${displayName(name)} played ZAOstock on ${date} ${where}.`;
+}
+
+/**
+ * WHO PLAYED, in running order. Since 2026-10-05 the bill and the record are
+ * the same seven acts, so this is the bill. Kept as its own name because many
+ * pages say "played" and should keep reading from here.
+ */
+export const PLAYED_NAMES: readonly string[] = LINEUP_NAMES;
 
 /**
  * The after-party, from Black Moon's own flyer (shared by Zaal 2026-09-30).
@@ -198,9 +238,9 @@ export const AFTER_PARTY = {
   music: '7 PM',
   end: '10 PM',
   ages: 'All ages',
-  lineup: ['North Creek', 'Treelock & HiDef', 'Sam Savage', 'Oven Baked Beats DJ Aquavantes'],
+  lineup: ['North Creek', 'Treelock & HiDef', 'Sam Savage', 'Oven Baked Beats', 'DJ Aquavantes'],
   flyer: '/afterparty/flyer.jpg',
-  summary: 'Black Moon Public House, 142 Main St, next door: doors from 6, after-party music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.',
+  summary: 'Black Moon Public House, 142 Main St, next door: doors from 6, after-party music 7 to 10 PM with North Creek, Treelock & HiDef, Sam Savage, Oven Baked Beats and DJ Aquavantes. All ages.',
 } as const;
 
 /** The day, one venue at a time. Times are the public shape, not the run of show. */
@@ -299,9 +339,10 @@ const ALL_PARTNERS = [
   // nobody reads them as pending. Do not re-add either from an older deck or doc.
   // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner DCoop.
   { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'DCoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
-  // Artizen: Zaal, 2026-09-10, "also add artizen for funding as a parter". No
-  // amount is stated anywhere, on purpose: none has been given for public copy.
-  { name: 'Artizen', role: 'Funding partner', poc: 'Zaal', confirmed: true, logoSrc: '/partners/artizen.png' },
+  // A funding partner was listed here (Zaal, 2026-09-10) and was REMOVED
+  // 2026-10-05 by Zaal (vault decisions/grill-2026-10-05-orchestration-retire-partners.md):
+  // the platform wound down. Deleted rather than set to false. Do not re-add
+  // it from an older deck or doc.
   // WE THE MEDIA: Zaal, 2026-09-16 grill, role and poc his words exactly.
   // Zaal is getting the WE THE MEDIA logo himself and will drop it in
   // ~/zao-vault/inbox - textOnly until it lands, same as City of Ellsworth.
@@ -332,7 +373,6 @@ export const PARTNERS: readonly Partner[] = ALL_PARTNERS.filter((p) => p.confirm
 /** What every partner gets, whatever the tier (site-fix brief, 28 Aug). */
 export const DELIVERABLES = [
   { name: 'The parklet banner', detail: 'Your name on the banner behind the stage on Franklin Street.' },
-  { name: 'The programme', detail: 'Named in the printed programme and on the day-of schedule.' },
   { name: 'Site and stream', detail: 'Logo on zaostock.com and on the livestream.' },
   { name: 'Thank-you from the stage', detail: 'Said out loud by the MC, in the changeovers.' },
 ] as const;
@@ -404,6 +444,11 @@ export interface SupportTier {
   gets: readonly string[];
 }
 
+// PAST TENSE, 2026-10-04: the day happened, so the tier copy below no longer
+// promises a thank-you from the stage or says the money pays for a day to come.
+// The tiers still work and /tickets now frames them as support for the artists
+// on the bill.
+//
 // Renamed 2026-09-29 (Zaal picked option B of ZAOOS research doc 2578, "Keep
 // it free"): Fan / Supporter / Pro Ticket became Chip in / Friend / Backer.
 // Money keeps a free day free; it is not a way in, so no tier promises a 1:1,
@@ -417,8 +462,8 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     price: '$1',
     amount: 1,
     spots: null,
-    blurb: 'Every dollar goes to the day.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
+    blurb: 'Every dollar goes to the artists.',
+    gets: ['Goes toward artist fees, sound and stage, and materials.'],
   },
   {
     id: 'supporter',
@@ -426,8 +471,8 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     price: '$20',
     amount: 20,
     spots: null,
-    blurb: 'Pays for the day.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
+    blurb: 'Helps cover the day.',
+    gets: ['Goes toward artist fees, sound and stage, and materials.'],
   },
   {
     id: 'pro',
@@ -436,7 +481,7 @@ export const SUPPORT_TIERS: readonly SupportTier[] = [
     amount: 50,
     spots: null,
     blurb: 'The same, and it carries the most weight.',
-    gets: ['Pays toward artist fees, sound and stage, and materials.', 'Thanked from the stage.'],
+    gets: ['Goes toward artist fees, sound and stage, and materials.'],
   },
 ] as const;
 
@@ -621,9 +666,44 @@ export function zaoEllsworthFacebookUrl(url: string = ZAO_ELLSWORTH_FACEBOOK_URL
   return FACEBOOK_URL_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
 }
 
+/**
+ * THE ZAOSTOCK 2026 FEEDBACK FORM. Zaal, 2026-10-06, picked a Google Form in
+ * the info@thezao.com account ("a"), with zaostock.com/feedback linking to it.
+ * Answers land in that account's Google Sheet, so nothing personal is stored
+ * here. The question list is in the zaostock-content lane's
+ * 07-feedback-form.md (outside the repo). The ideas box was ruled out:
+ * /suggest lists every entry publicly, name and all.
+ *
+ * UNSET until the form exists: /feedback falls back to an email link, the
+ * same way the Facebook link above renders nothing until its Page is real.
+ * Paste the form's share link here (docs.google.com/forms/... or forms.gle/...).
+ */
+export const FEEDBACK_FORM_URL: string = 'https://docs.google.com/forms/d/e/1FAIpQLSdkwhmYVaMMIS_pKVoxFBG6SWgY4wsBVnFMP1rmqm0gyftOMg/viewform';
+
+const FEEDBACK_FORM_PREFIXES = ['https://docs.google.com/forms/', 'https://forms.gle/'];
+
+/** The feedback form link, or null while it is UNSET or not a Google Forms link. */
+export function feedbackFormUrl(url: string = FEEDBACK_FORM_URL): string | null {
+  return FEEDBACK_FORM_PREFIXES.some((prefix) => url.startsWith(prefix)) ? url : null;
+}
+
+/**
+ * The same form as an iframe src, or null when it cannot be embedded. Only a
+ * docs.google.com/forms link embeds: a forms.gle short link is a redirect, so
+ * it gets the button only. embedded=true is set on the parsed URL, so a link
+ * that already carries a query (or the flag) still comes out well formed.
+ */
+export function feedbackEmbedUrl(url: string = FEEDBACK_FORM_URL): string | null {
+  const form = feedbackFormUrl(url);
+  if (!form || !form.startsWith('https://docs.google.com/forms/')) return null;
+  const parsed = new URL(form);
+  parsed.searchParams.set('embedded', 'true');
+  return parsed.toString();
+}
+
 export const TIERS: readonly Tier[] = [
-  { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions. First refusal on 2027.', price: null },
-  { name: 'Sponsor an artist', gets: "Covers one artist's travel. They make content carrying your name. The artist opts in.", price: null },
+  { name: 'Presenting', gets: 'Name on the banner, the poster, the stage and the stream. Named in every announcement. Two on-stage mentions.', price: null },
+  { name: 'Sponsor an artist', gets: "Backs one named artist on the bill. They make content carrying your name. The artist opts in.", price: null },
   { name: 'Community', gets: 'Logo on the site, named in the recap, thanked from stage.', price: null },
 ];
 
@@ -639,8 +719,8 @@ export const ELLSWORTH = {
   // driveThrough ('4M drove through in 2025') RETIRED 2026-09-10: no source
   // was ever found, MaineDOT counts included, and Zaal ruled "Drop both".
   artOfEllsworth: { value: '9th', label: 'Annual Art of Ellsworth' },
-  heartEvents: { value: '28', label: 'Heart of Ellsworth events in 2025' },
-  heartSponsors: { value: '50+', label: 'sponsors of those events' },
+  // The Heart of Ellsworth event and sponsor counts RETIRED 2026-10-02:
+  // no source; Zaal ruled to strip unbacked claims.
   historic: 'Downtown newly on the National Historic Register.',
 } as const;
 
@@ -657,7 +737,7 @@ export const ZAO = {
    * Replaced with the track record, which is what a sponsor is actually weighing
    * and is sourced from SERIES below rather than invented.
    */
-  festivalsRun: { value: '3', label: 'live festivals run since 2024, before this one' },
+  festivalsRun: { value: '3', label: 'live festivals run since 2024, before ZAOstock' },
 } as const;
 
 /** Deck slide 6, measured 2026-08-27. Re-pull from wavewarz.info/api/public/stats before print. */

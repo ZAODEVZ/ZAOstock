@@ -51,6 +51,8 @@ export const AS_OF = '2026-09-23';
  * response verbatim, ordered by set_order (there is no set 6 in the source).
  * To refresh: re-read the endpoint when it says source "live" and pending 0,
  * replace the array, and move AS_OF - never edit a name or bio by hand.
+ * The one hand edit: one act's entry was removed on 2026-10-05 (Zaal's
+ * ruling, vault decisions/grill-2026-10-05-orchestration-retire-partners.md).
  */
 export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
   // Keyed by the slug the events table uses. The mobile app's 'zaostock-2026'
@@ -88,16 +90,6 @@ export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
       photo_url: "https://zaostock.com/artists/grass-rug.webp",
       socials: "",
       set_order: 3,
-    },
-    {
-      id: "f3affe3f-58f2-4b0c-8513-201bcc282a3c",
-      name: "Acadia Rising",
-      genre: "World Rhythms / Global Fusion",
-      city: "Ellsworth, Maine",
-      bio: "Acadia Rising produces original flute and hand percussion music that blends global musical influences with the natural beauty of Maine. Featuring expressive flute melodies, dynamic rhythms, and improvisation, each piece is inspired by landscapes, cultures, and traditions from around the world while reflecting a unique contemporary voice. The performance invites listeners on a musical journey that celebrates rhythm, connection, and the universal language of music.",
-      photo_url: "https://zaostock.com/artists/acadia-rising.webp",
-      socials: "https://facebook.com/AcadiaRising https://instagram.com/acadia.rising",
-      set_order: 4,
     },
     {
       id: "53905045-9ebf-4bda-b7b9-61f0ba869bc7",

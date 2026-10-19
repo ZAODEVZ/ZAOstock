@@ -2,6 +2,7 @@ import { getSupabaseAdmin } from '@/lib/db/supabase';
 import { AS_OF, getFallbackLineup, type FallbackArtist } from '@/lib/lineup-fallback';
 import { canonicalEventSlug } from '@/lib/event-slugs';
 import { isPublishable } from '@/lib/lineup-reveal';
+import { isRetiredAct } from '@/content/site';
 
 // Shared with src/app/api/events/[slug]/lineup/route.ts, which is the public
 // HTTP surface for the mobile app. This is the same query and the same gate,
@@ -65,12 +66,12 @@ export async function getPublicLineup(slug: string): Promise<LineupResult> {
     }
 
     const rows = (data ?? []) as Array<LineupArtist & { status?: string | null }>;
-    const artists: LineupArtist[] = rows.filter(isPublishable).map((row) => {
+    const artists: LineupArtist[] = rows.filter((r) => isPublishable(r) && !isRetiredAct(r.name)).map((row) => {
       const { status, ...publicFields } = row;
       void status; // read only to strip it from the public payload, never serialised
       return publicFields;
     });
-    const pending = rows.filter((r) => r.status === 'confirmed' && !isPublishable(r)).length;
+    const pending = rows.filter((r) => r.status === 'confirmed' && !isPublishable(r) && !isRetiredAct(r.name)).length;
 
     if (artists.length === 0) {
       return {

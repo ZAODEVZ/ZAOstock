@@ -5,9 +5,8 @@ import { PARTNERS } from '@/content/site';
 import { LOGO_SIZE } from './PartnerTile';
 
 // THE 2026-09-16 LOGO AUDIT FINDING: LOGO_SIZE was missing an entry for
-// artizen.png (a real, used logoSrc), so PartnerLogo rendered it with no
-// explicit width/height - a layout-shift risk none of the other six logos
-// had - and carried three dead entries (black-moon.jpg, star-977.jpg,
+// a real, used logoSrc, so PartnerLogo rendered it with no explicit
+// width/height - a layout-shift risk - and carried three dead entries (black-moon.jpg, star-977.jpg,
 // coc-concertz.jpg) for files that do not exist in public/partners/, since
 // every real logoSrc in PARTNERS is a .png.
 

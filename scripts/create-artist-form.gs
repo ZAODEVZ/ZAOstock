@@ -27,16 +27,16 @@ var ASK = 'as soon as you can';
 var EVENT = 'ZAOstock, Saturday 3 October 2026, Franklin Street Parklet, Ellsworth';
 
 // Locked from the 3 September running order. Do NOT re-ask acts for these.
-// EIGHT since 2026-09-10, bare names: the live form was edited by hand that day
-// to drop Hurricane and the set times, and Zaal's standing rule is always
-// "Acadia Rising", never the long form. This list mirrors the live dropdown.
+// SEVEN since 2026-10-05, bare names: the live form was edited by hand on
+// 2026-09-10 to drop Hurricane and the set times, and one act was retired
+// from public copy on 2026-10-05. This list is the seven who played; the
+// live dropdown may still carry the retired act until the form is edited.
 // A response filed before the edit carries the OLD text ("DCoop - 3:45 PM,
 // 40 min"), so anything reading responses must accept both shapes.
 var ACTS = [
   'The Crown Vics',
   'OPEN X',
   'Grass Rug',
-  'Acadia Rising',
   'Michael Anderson',
   'DCoop',
   'LyonsDen',

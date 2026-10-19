@@ -15,7 +15,7 @@ One Next.js app serving two audiences out of one codebase and one database.
 
 ```
                     ┌─────────────────────────────┐
-   public visitor ─▶│  39 public routes           │
+      web visitor ─▶│  35 non-team pages          │
                     │  /  /program  /pitch  ...   │──┐
                     └─────────────────────────────┘  │
                                                      │   ┌──────────────┐
@@ -59,10 +59,15 @@ npm run build      # next build --turbopack
 npm run typecheck  # tsc --noEmit
 npm run lint       # eslint .
 npm run test       # vitest run
+npm run test:e2e   # playwright test
 ```
 
-CI (`.github/workflows/ci.yml`) runs `typecheck`, `lint`, `test`, `build` on every
-push and PR to `main`.
+CI (`.github/workflows/ci.yml`) runs on every push and PR to `main`, as six jobs.
+`check` runs `typecheck`, `test` and `build` in sequence, so a typecheck failure
+stops the other two. `e2e` runs the Playwright specs and `mobile` runs
+`check:mobile-overflow`, each against its own build of the commit served on
+localhost. `lint`, `facts` (`check:facts`) and `review` (`check:review`) each run
+as their own job, so a failure in one of them cannot hide the others.
 
 ---
 
@@ -71,13 +76,13 @@ push and PR to `main`.
 ```
 src/
   app/
-    (39 public routes)      the festival site
+    (35 non-team pages)     the festival site, plus the private /backstage/<code> sheets
     team/                   the dashboard, behind a session
     api/                    43 route handlers
       events/[slug]/lineup  public lineup, consumed by the mobile app
       team/*                dashboard CRUD, session-guarded
       cron/                 scheduled jobs, guarded by CRON_SECRET
-    globals.css             501 lines, 97 tokens. See "the token gap" below
+    globals.css             the brand tokens, in a Tailwind v4 @theme block
   lib/
     env.ts                  server-only env access, throws on missing secrets
     db/supabase.ts          the admin client
@@ -104,12 +109,13 @@ decision rather than just listing variables.
 | `SUPABASE_SERVICE_ROLE_KEY` | **server only**, throws if missing |
 | `SESSION_SECRET` | **server only**, throws if missing |
 | `CRON_SECRET` | **server only**, throws if missing |
+| `ARTIST_CONFIRM_SECRET` | **server only**, throws if missing |
 
 Two properties matter:
 
 - The module imports `server-only`, so importing it from a client component is a
   **build error**, not a runtime leak.
-- The three secrets are lazy getters that throw **when read**, not when the module
+- The four secrets are lazy getters that throw **when read**, not when the module
   is imported. The comment explains why: Next's build-time page-data collection
   imports every route module without using every variable, so throwing at
   construction broke `next build` outright. A missing secret must not silently
@@ -118,6 +124,12 @@ Two properties matter:
 ---
 
 ## Auth
+
+**Retired.** The team dashboard was retired on 2026-08-29 (see
+[decision 0001](./decisions/0001-team-dashboard-retired.md)).
+`TEAM_DASHBOARD_RETIRED` in `src/lib/team-status.ts` makes every `/api/team/*`
+route answer 401 and the login, token and wallet routes answer 410. The code
+below is still in the tree until stage two deletes it.
 
 Two paths, one rule.
 
@@ -196,8 +208,8 @@ the exact failure this repo now guards against.
 
 43 route handlers under `src/app/api`.
 
-- **Zod on input.** `lib/api/parse-json.ts` is the shared parser.
-- **Rate limiting** via `lib/api/rate-limit.ts` on public form endpoints. Read its
+- **Zod on input.** `src/lib/api/parse-json.ts` is the shared parser.
+- **Rate limiting** via `src/lib/api/rate-limit.ts` on public form endpoints. Read its
   docstring before relying on it: it is an **in-memory map, per warm serverless
   instance**, explicitly "not a substitute for a real store if this needs to hold
   up against a determined attacker." It raises the bar against naive spam. It is
@@ -205,7 +217,7 @@ the exact failure this repo now guards against.
 - **Session guard first**, before any data access, on everything under
   `/api/team/*`.
 - **Cron routes** under `/api/cron/*` are guarded by `CRON_SECRET`.
-- **Public routes expose a narrow projection.** `lib/artists.ts` and the lineup
+- **Public routes expose a narrow projection.** `src/lib/artists.ts` and the lineup
   route both hand-list public-safe columns rather than selecting `*`, so fees,
   riders, notes and contact details cannot leak by accident. Keep that shape when
   adding fields.
@@ -214,27 +226,21 @@ the exact failure this repo now guards against.
 
 ## Two things that will surprise you
 
-**The token gap — half closed since this was written.** This document said
-`src/app/globals.css` was nine lines, defining three variables, and that exactly
-one file used them while 1,067 hardcoded hexes sat across 77 of 96 `.tsx` files.
-None of that is true now. `globals.css` is 501 lines and defines 97 tokens, and
-414 hardcoded hexes remain across 34 of 106 `.tsx` files — a 61% reduction.
+**The token gap, partly closed.** The brand tokens now live in a Tailwind v4
+`@theme` block in `src/app/globals.css` (`paper`, `ink`, `red`, `gold`, `denim`,
+`olive`), and 71 of 109 `.tsx` files use them. The rest still hardcode hex as Tailwind
+arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 109 `.tsx` files, as
+of 2026-10-12. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
+measurement.
 
-So the migration described in [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) is
-partly done rather than still a plan. What remains true is that the two halves
-do not fully meet: 414 hardcoded hexes are still Tailwind arbitrary values
-(`bg-[#0a1628]`) in components that do not consume the token layer. Changing a
-brand colour today still means touching those files.
+These counts go stale with every new file, so here is how to take them again,
+from the repo root. Files: `find src -name '*.tsx' | wc -l`. Hardcoded hexes:
+`grep -rhoE '\[#[0-9a-fA-F]{3,8}\]' src --include='*.tsx' | wc -l`, and the same
+pattern with `-rlE` for the files that carry one. Files using the tokens: a
+utility prefix, a token family and an optional shade, counted with
+`grep -rlE '(bg|text|border|ring|fill|stroke|from|to|via|shadow|outline|decoration|divide|accent|caret|placeholder)-(paper|ink|red|gold|denim|olive)(-[0-9]+)?\b' src --include='*.tsx' | wc -l`.
 
-The honest shape of the remaining work: the token layer exists and is
-populated, and roughly a third of the components have come across. **Not** the
-"single biggest source of friction in the app" — that was a verdict about a
-situation that has since changed.
-
-`docs/ARCHITECTURE.md` states it was written by reading the code on 2026-08-22.
-`src/architecture-doc-facts.test.ts` now re-reads the filesystem and fails when
-the numbers here stop matching, which is how the other four went stale for six
-weeks without anyone noticing.
+`src/architecture-doc-facts.test.ts` takes these same counts from the tree and fails when a figure in this document stops matching them.
 
 **No schema in the repo.** See above. Combined with service-role-only RLS, the
 database is a hard dependency with no local story: there is no seed, no fixture

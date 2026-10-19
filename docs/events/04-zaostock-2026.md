@@ -3,7 +3,7 @@ event: ZAOstock
 slug: zaostock
 place: Franklin Street Parklet, Ellsworth, Maine
 when: Saturday 3 October 2026
-status: upcoming
+status: past
 public-page: /
 ---
 

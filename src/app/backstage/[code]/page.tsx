@@ -52,26 +52,6 @@ export default async function BackstagePage({ params }: Props) {
         </div>
 
         <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
-          <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-ink-muted m-0 mb-3">
-            Your flyer
-          </p>
-          {/* eslint-disable-next-line @next/next/no-img-element -- a generated route, not a static asset next/image can optimize */}
-          <img
-            src={`/artist/${slugify(act.name)}/flyer`}
-            alt={`${act.name} - ZAOstock, ${FESTIVAL.dateLabel}, ${FESTIVAL.venue}, ${FESTIVAL.city}`}
-            className="w-full rounded-[10px] border-[1.5px] border-ink-950/20"
-          />
-          <div className="mt-3 flex flex-wrap gap-4">
-            <a href={`/artist/${slugify(act.name)}/flyer`} download className="text-sm font-bold underline text-ink-950">
-              Download (wide)
-            </a>
-            <a href={`/artist/${slugify(act.name)}/flyer?variant=ig`} download className="text-sm font-bold underline text-ink-950">
-              Download (Instagram)
-            </a>
-          </div>
-        </section>
-
-        <section className="rounded-[14px] border-[1.5px] border-gold-500/60 bg-paper-200 p-5">
           <p className="font-sans text-eyebrow font-extrabold uppercase tracking-[0.16em] text-denim-400 m-0 mb-2">
             Your page
           </p>

@@ -71,6 +71,43 @@ describe('auditFile - base64 data URI false positive', () => {
 });
 
 /**
+ * The raw-SQL rule. Until 2026-10-12 its method list held `$queryRaw` and
+ * `$executeRawUnsafe` only, so `$queryRawUnsafe(` and `$executeRaw(` passed.
+ * PR 431 found the first gap; its fix dropped `$queryRaw(` in exchange, which
+ * is why every spelling is pinned here, the old ones included.
+ */
+describe('auditFile - raw SQL with an interpolated value', () => {
+  const sqlFindings = (line: string) =>
+    writeAndAudit(line + '\n').filter((f: { category: string }) => f.category === 'database');
+
+  const flagged = [
+    'db.query(`select * from artists where id = ${id}`)',
+    'db.execute(`delete from artists where id = ${id}`)',
+    'prisma.$queryRaw(`select * from artists where id = ${id}`)',
+    'prisma.$queryRawUnsafe(`select * from artists where id = ${id}`)',
+    'prisma.$executeRaw(`delete from artists where id = ${id}`)',
+    'prisma.$executeRawUnsafe(`delete from artists where id = ${id}`)',
+  ];
+  for (const line of flagged) {
+    it(`flags ${line.slice(0, line.indexOf('('))}( with a value in the template`, () => {
+      expect(sqlFindings(line)).toHaveLength(1);
+    });
+  }
+
+  it('leaves a static query alone', () => {
+    expect(sqlFindings('db.query(`select * from artists`)')).toEqual([]);
+  });
+
+  it('leaves a placeholder query alone', () => {
+    expect(sqlFindings('db.query(`select * from artists where id = $1`, [id])')).toEqual([]);
+  });
+
+  it('leaves the parameterised tagged-template form alone', () => {
+    expect(sqlFindings('prisma.$queryRaw`select * from artists where id = ${id}`')).toEqual([]);
+  });
+});
+
+/**
  * getChangedFiles() range coverage.
  *
  * This is the fix from PR #311 (silent PASS on a shallow clone, and only the

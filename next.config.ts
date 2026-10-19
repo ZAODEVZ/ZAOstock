@@ -65,7 +65,15 @@ const config: NextConfig = {
               // before removing - none found. An allowlist entry with no
               // backing usage is exactly the kind of drift this
               // Report-Only header exists to catch before it goes live.
-              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com",
+              // player.twitch.tv added 2026-10-12: the replay on /live and
+              // /media is a Twitch player iframe (replayEmbedSrc in
+              // src/content/replay.ts) and this list did not have its host,
+              // so enforcing the header would have blanked the recording.
+              // www.google.com added the same day for the same reason: the
+              // venue map on /ellsworth is a Google Maps iframe.
+              // src/content/csp-frame-src.test.ts fails when a framed host is
+              // missing here, so the next embed cannot repeat this.
+              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com https://player.twitch.tv https://www.google.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
@@ -96,6 +104,23 @@ const config: NextConfig = {
   // outlive a future decision to give `/lineup` a real page of its own.
   async redirects() {
     return [
+      // Short links to the Giveth project (GIVETH_URL in src/content/site.ts),
+      // no DNS needed. Zaal, 2026-10-03, asked for a Giveth subdomain; these
+      // paths work today while a subdomain would need his DNS step.
+      { source: '/giveth', destination: 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology', permanent: false },
+      { source: '/crypto', destination: 'https://giveth.io/project/sustaining-zao-festivals-creativity-technology', permanent: false },
+      // facebook.zaostock.com -> the ZAO Festivals Facebook Page (SOCIALS in
+      // src/content/site.ts). Zaal, 2026-10-03: "we should laso add more
+      // subdomains so we should add one for facebook.zaostock.com for the
+      // facebook page". Works only once the subdomain is added to the Vercel
+      // project and DNS points at it; until then this rule is never reached.
+      // Not permanent, for the same caching reason as the rules below.
+      {
+        source: '/:path*',
+        destination: 'https://www.facebook.com/zaofestivals',
+        has: [{ type: 'host', value: 'facebook.zaostock.com' }],
+        permanent: false,
+      },
       { source: '/lineup', destination: '/program', permanent: false },
       { source: '/schedule', destination: '/program', permanent: false },
       { source: '/sponsors', destination: '/sponsor', permanent: false },

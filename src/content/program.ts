@@ -41,7 +41,7 @@ export const BLOCKS: Block[] = [
     end: '18:00',
     venue: 'OUT',
     title: 'Live sets',
-    lede: 'Eight independent acts back to back on the parklet stage. Between sets the MC keeps the day moving with the story of the event and a word from the partners.',
+    lede: 'Seven independent acts played the parklet stage. The program had the MC between sets with the story of the event and a word from the partners.',
     slots: [
       // THE RUN OF SHOW, RETIMED 2026-09-10 (Zaal: "lets give 7 mins between
       // performers and give the 30 mins people some more time", then "option b"),
@@ -56,9 +56,9 @@ export const BLOCKS: Block[] = [
       // still keeps every start on the 5-minute grid - 7 becomes 12 after a
       // 33-minute set, 5 becomes 10 after a 40-minute one. OPEN X drops from
       // 40 to 33 minutes, so its own following changeover also needs the
-      // 33-minute tier (12, not 10). The other four acts are unchanged: four
-      // 33-minute acts (Crown Vics, Grass Rug, Acadia Rising, Michael
-      // Anderson), three 40-minute acts (DCoop, LyonsDen, Tom Fellenz).
+      // 33-minute tier (12, not 10). The other acts are unchanged: three
+      // 33-minute acts (Crown Vics, Grass Rug, Michael Anderson), three
+      // 40-minute acts (DCoop, LyonsDen, Tom Fellenz).
       // Music 12:05 to 17:50, street clears at 18:00: ten minutes of margin.
       //
       // CLOSING REMARKS ADDED 2026-09-27: Tom Fellenz, by text - "should for
@@ -75,23 +75,21 @@ export const BLOCKS: Block[] = [
       // countersigned, and the word "confirmed" appears against no act here.
       // The API reveal is a separate gate that still reads only
       // status='confirmed'.
-      { time: '12:00', label: 'Doors. Music starts at noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
+      { time: '12:00', label: 'Doors. Music from noon.', detail: 'A five-minute welcome on the mic.', tone: 'gap' },
       { time: '12:05', label: 'The Crown Vics', detail: 'Rock n roll dance band.', tone: 'set' },
       { time: '12:38', label: 'Changeover', detail: 'The MC, the six o\u2019clock move, Art of Ellsworth, a partner spot.', tone: 'gap' , crewFacing: true },
       { time: '12:50', label: 'OPEN X', detail: 'Power pop rock.', tone: 'set' },
       { time: '13:23', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '13:35', label: 'Grass Rug', detail: 'Indie jam rock.', tone: 'set' },
       { time: '14:08', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '14:20', label: 'Acadia Rising', detail: 'World Rhythms and Global Fusion.', tone: 'set' },
-      { time: '14:53', label: 'Changeover', detail: 'The MC and a partner spot.', tone: 'gap' , crewFacing: true },
       { time: '15:00', label: 'Michael Anderson', detail: 'Solo piano.', tone: 'set' },
       { time: '15:33', label: 'Changeover', detail: 'The MC and our partners.', tone: 'gap' , crewFacing: true },
       { time: '15:40', label: 'DCoop', detail: 'Hip-hop rooted, pulling from reggae, rock, punk, tribal, country, EDM and R&B.', tone: 'set' },
       { time: '16:20', label: 'Changeover', tone: 'gap' , crewFacing: true },
       { time: '16:25', label: 'LyonsDen', detail: 'Native, Electro, Reggae and Hip-hop.', tone: 'set' },
       { time: '17:05', label: 'Changeover', tone: 'gap' , crewFacing: true },
-      { time: '17:10', label: 'Tom Fellenz', detail: 'Solo Instrumental Acoustic Guitar. Closes out the Outdoor Festival!', tone: 'set' },
-      { time: '17:50', label: 'Music ends. Closing remarks, the last ten minutes before the street clears at six.', detail: 'Zaal thanks everyone and sends them to Black Moon next door, hosting their own evening from six.', tone: 'gap' },
+      { time: '17:10', label: 'Tom Fellenz', detail: 'Solo Instrumental Acoustic Guitar. Last act on the outdoor bill.', tone: 'set' },
+      { time: '17:50', label: 'Music ends. Closing remarks, the last ten minutes before six.', detail: 'The program had Zaal thanking everyone and sending them to Black Moon next door from six.', tone: 'gap' },
     ],
   },
   {
@@ -122,9 +120,9 @@ export const BLOCKS: Block[] = [
     // have not been given.
     // Short on purpose: the After-party row right below carries the details,
     // and repeating them here printed the same sentence twice (audit 2026-09-30).
-    lede: 'At six the street clears. Black Moon Public House next door hosts the ZAOstock after-party. Black Moon\'s flyer and details: zaostock.com/afterparty.',
+    lede: 'The ZAOstock after-party ran at Black Moon Public House next door from six. Black Moon\'s flyer and details: zaostock.com/afterparty.',
     slots: [
-      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party at Black Moon Public House, 142 Main St, hosted by Black Moon. Doors from 6, music 7 to 10 PM: North Creek, Treelock & HiDef, Sam Savage and Oven Baked Beats DJ Aquavantes. All ages.', tone: 'set' },
+      { time: '18:00', label: 'After-party', detail: 'The ZAOstock after-party ran at Black Moon Public House, 142 Main St, on Black Moon\'s own premises, with North Creek, Treelock & HiDef, Sam Savage, Oven Baked Beats and DJ Aquavantes. Billed doors from 6, music 7 to 10 PM. All ages.', tone: 'set' },
       { time: '22:00', label: 'Close', detail: 'Around 10 PM. Black Moon keeps its own hours.', tone: 'gap' },
     ],
   },

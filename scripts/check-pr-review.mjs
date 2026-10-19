@@ -25,7 +25,8 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AKIA[0-9A-Z]{16}|(?:api_key|apikey|secret|private_key|auth_token)\s*[:=]\s*["'][0-9a-zA-Z_\-]{20,}["'])/i;
 // A base64 data URI is a known false-positive class for the patterns above: a
@@ -35,7 +36,18 @@ const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AK
 // check runs, so the blob itself is never what a match is found inside.
 const RE_DATA_URI_BASE64 = /data:[^;,'"]+;base64,[A-Za-z0-9+/=]+/g;
 const PAT_PUBLIC_SECRET = /(?<![A-Za-z0-9_])NEXT_PUBLIC_(?:[A-Za-z0-9_]*(?:SECRET|PRIVATE_KEY|TOKEN)|GEMINI_API_KEY|PINATA_JWT)\s*=\s*["'][^"']+/;
-const RE_RAW_SQL = /\.(?:query|execute|\$queryRaw|\$executeRawUnsafe)\s*\(\s*`[^`]*\$\{/;
+// A value interpolated into a template string that is then passed, in
+// parentheses, to a raw query call. Both Prisma spellings of each method are
+// listed: with only `$queryRaw` in the list, `$queryRawUnsafe(` matched the
+// prefix and then failed on the leftover "Unsafe", so the method most likely
+// to carry an injection was the one the rule could not see. `$executeRaw(` was
+// missing the same way round.
+//
+// The opening parenthesis stays required on purpose. The tagged-template form,
+// db.$queryRaw`... ${id}` with no parenthesis, is the parameterised one: the
+// driver receives the values separately. Flagging it would push people from
+// the safe spelling to the unsafe one.
+const RE_RAW_SQL = /\.(?:query|execute|\$queryRaw(?:Unsafe)?|\$executeRaw(?:Unsafe)?)\s*\(\s*`[^`]*\$\{/;
 const RE_SERVICE_ROLE_CLIENT = /(?:SUPABASE_SERVICE_ROLE_KEY|createAdminClient)/;
 const RE_SENSITIVE_LOG = /console\.(?:log|debug|info|warn|error)\s*\([^)]*\b(?:password|secret|privateKey|secretKey|claimToken|adminKey)\b[^)]*\)/;
 
@@ -210,6 +222,6 @@ function main() {
 // Guarded so a test can `import { auditFile } from "./check-pr-review.mjs"`
 // without running the whole gate (git calls, process.exit) as an import side
 // effect - main() only fires when this file is the process entrypoint.
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1])) {
   main();
 }
