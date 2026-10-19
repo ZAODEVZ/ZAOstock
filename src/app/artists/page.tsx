@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ViewTransition } from 'react';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { SITE, LINEUP_NAMES, displayName } from '@/content/site';
@@ -56,13 +57,24 @@ export default function ArtistsPage() {
                   <span className="font-mono text-xs font-bold uppercase tracking-widest text-ink-muted">
                     Act {act.order}
                   </span>
-                  <Badge tone="outline">
-                    {act.genre}
+                  {/* One line, ellipsis past the badge's width (ZAOOS doc 2507,
+                      item 15): DCoop's eight-genre string wrapped to two lines and
+                      pushed that card out of rhythm with its neighbours. The full
+                      string stays in the DOM, so screen readers read all of it,
+                      and in the title tooltip. */}
+                  <Badge tone="outline" className="min-w-0 max-w-[60%]">
+                    <span className="truncate min-w-0" title={act.genre}>{act.genre}</span>
                   </Badge>
                 </div>
-                <h2 className="font-display text-2xl font-bold text-ink-950 mb-2">
-                  {displayName(act.name)}
-                </h2>
+                {/* Shared with the h1 on /artist/[slug] (doc 2507, item 18): the
+                    act's name moves between the two pages instead of the whole
+                    page being swapped. globals.css switches this off under
+                    prefers-reduced-motion. */}
+                <ViewTransition name={`act-name-${act.slug}`}>
+                  <h2 className="font-display text-2xl font-bold text-ink-950 mb-2">
+                    {displayName(act.name)}
+                  </h2>
+                </ViewTransition>
                 {act.highlight ? (
                   <p className="text-sm text-ink-secondary m-0 mb-4">
                     {act.highlight}

@@ -228,8 +228,8 @@ the exact failure this repo now guards against.
 
 **The token gap, partly closed.** The brand tokens now live in a Tailwind v4
 `@theme` block in `src/app/globals.css` (`paper`, `ink`, `red`, `gold`, `denim`,
-`olive`), and 71 of 109 `.tsx` files use them. The rest still hardcode hex as Tailwind
-arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 109 `.tsx` files, as
+`olive`), and 72 of 110 `.tsx` files use them. The rest still hardcode hex as Tailwind
+arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 110 `.tsx` files, as
 of 2026-10-12. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
 measurement.
 

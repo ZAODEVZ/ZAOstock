@@ -10,6 +10,7 @@ import { zaoMediaFor } from '@/content/zao-media';
 import { artistJsonLdString } from '@/content/artist-jsonld';
 import Link from 'next/link';
 import { EventJsonLd } from '@/components/EventJsonLd';
+import { nextAct } from './act-nav';
 
 export const dynamic = 'force-dynamic';
 
@@ -66,6 +67,7 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
   const roster = await getRosterArtists();
   const total = roster.length;
   const media = zaoMediaFor(artist.name);
+  const next = nextAct(roster, slug);
 
   return (
     <SiteShell>
@@ -85,6 +87,19 @@ export default async function ArtistProfilePage({ params, searchParams }: Props)
               text wrap instead of forcing the row wider than the viewport. */}
           <div className="flex-1 min-w-0 max-w-[760px] space-y-6">
             <ArtistProfileView artist={artist} canEdit={canEdit} token={token || ''} total={total} />
+            {/* No dead ends (ZAOOS doc 2507, item 11): a way back to the whole
+                lineup and on to the next act. Shown at every width; the Act
+                order rail below is desktop only. */}
+            <nav aria-label="Lineup" className="flex flex-wrap items-center justify-between gap-3 text-sm font-bold">
+              <Link href="/artists" className="text-ink-950 underline hover:no-underline">
+                &larr; Back to the lineup
+              </Link>
+              {next && (
+                <Link href={`/artist/${next.slug}`} className="text-ink-950 underline hover:no-underline">
+                  Next act: {displayName(next.name)} &rarr;
+                </Link>
+              )}
+            </nav>
             {media.length > 0 && (
               <Card>
                 <Eyebrow className="mb-2">ZAO media</Eyebrow>
