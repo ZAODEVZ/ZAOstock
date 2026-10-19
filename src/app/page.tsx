@@ -256,7 +256,7 @@ export default function HomePage() {
               <div className={s.ellCopy}>
                 <div className={s.kicker}>Downeast Maine</div>
                 <h2 className={s.title}>
-                  Why <em style={{ color: 'var(--sun)' }}>Ellsworth</em>
+                  Why <em>Ellsworth</em>
                 </h2>
                 <p>
                   The gateway to Acadia National Park. {ELLSWORTH.historic} ZAOstock added a new music experience to Ellsworth&apos;s calendar of downtown events, part of the 9th Annual Art of Ellsworth.
