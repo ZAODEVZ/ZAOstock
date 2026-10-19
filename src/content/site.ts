@@ -276,7 +276,7 @@ export const SOCIALS = [
   { platform: 'Instagram', href: 'https://instagram.com/zaofestivals/', label: 'ZAO Festivals on Instagram' },
   { platform: 'YouTube', href: 'https://youtube.com/@thezaodao', label: 'ZAO on YouTube' },
   { platform: 'Facebook', href: 'https://facebook.com/zaofestivals', label: 'ZAO Festivals on Facebook' },
-  { platform: 'Facebook Event', href: 'https://facebook.com/events/28051455107809318', label: 'ZAOstock event on Facebook' },
+  { platform: 'Facebook Event', href: 'https://facebook.com/events/28051455107809318', label: 'Facebook Event for ZAOstock' },
   { platform: 'Discord', href: 'https://discord.com/invite/ACJyYQH3BE', label: 'ZAO on Discord' },
 ] as const;
 
