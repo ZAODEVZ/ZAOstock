@@ -240,6 +240,8 @@ pattern with `-rlE` for the files that carry one. Files using the tokens: a
 utility prefix, a token family and an optional shade, counted with
 `grep -rlE '(bg|text|border|ring|fill|stroke|from|to|via|shadow|outline|decoration|divide|accent|caret|placeholder)-(paper|ink|red|gold|denim|olive)(-[0-9]+)?\b' src --include='*.tsx' | wc -l`.
 
+`src/architecture-doc-facts.test.ts` takes these same counts from the tree and fails when a figure in this document stops matching them.
+
 **No schema in the repo.** See above. Combined with service-role-only RLS, the
 database is a hard dependency with no local story: there is no seed, no fixture
 set, and no way to run the dashboard without real credentials.
