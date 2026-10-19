@@ -67,6 +67,11 @@
   /* Constants for the front page's look (.site, below). They never flip in
      dark mode: a button, the footer and the moose's ground stay the same. */
   --color-fireside: #C1662C;
+  /* The top stop of the primary button's gradient. Fireside itself measures
+     3.82:1 against the onfill label, under WCAG AA's 4.5:1 for the button's
+     14px bold text (ZAOOS doc 2507, item 12). This shade is 4.82:1, so the
+     whole gradient clears AA and the button still reads warm at the top. */
+  --color-fireside-button: #AD5621;
   --color-ember: #8F3E1E;
   --color-night: #1B130B;
   --color-onfill: #FFF8EC;
@@ -131,6 +136,13 @@ h1, h2, h3, h4 {
   .poster-motion {
     transition: none !important;
     transform: none !important;
+  }
+  /* The act-name view transition between /artists and /artist/[slug]
+     (ZAOOS doc 2507, item 18): no motion, the new page simply appears. */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }
 
@@ -409,11 +421,11 @@ h1, h2, h3, h4 {
   background: var(--color-olive-300);
 }
 .site .zs-btn--primary {
-  background: linear-gradient(180deg, var(--color-fireside), var(--color-ember));
+  background: linear-gradient(180deg, var(--color-fireside-button), var(--color-ember));
   color: var(--color-onfill);
 }
 .site .zs-btn--primary:hover:not(:disabled) {
-  background: linear-gradient(180deg, var(--color-fireside), var(--color-ember));
+  background: linear-gradient(180deg, var(--color-fireside-button), var(--color-ember));
   transform: translateY(-2px);
 }
 .site .zs-btn--secondary {

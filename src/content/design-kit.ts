@@ -36,7 +36,7 @@ export type KitColour = { token: string; hex: string; role: string };
  * viewer's system is dark. The test reads them from globals.css (.site).
  */
 export const COLOURS: readonly KitColour[] = [
-  { token: 'red-500', hex: '#C1662C', role: 'Fireside. The accent word in a headline, stat values, the top of the button.' },
+  { token: 'red-500', hex: '#C1662C', role: 'Fireside. The accent word in a headline and stat values. The button uses a darker shade at its top (#AD5621) so its label passes AA.' },
   { token: 'red-700', hex: '#8F3E1E', role: 'Ember. The foot of the button, and fireside when it has to be text.' },
   { token: 'red-600', hex: '#9F4B1D', role: 'Between the two. Small red text on cream.' },
   { token: 'red-300', hex: '#E2833F', role: 'Fireside on dark grounds.' },

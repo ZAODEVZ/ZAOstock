@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, ViewTransition } from 'react';
 import Image from 'next/image';
 import type { PublicArtist } from '@/lib/artists';
 import { parseSocials } from '@/lib/socials';
@@ -193,7 +193,10 @@ export function ArtistProfileView({ artist, canEdit, token, total }: Props) {
           <p className="text-[10px] text-ink-muted uppercase tracking-wider font-bold mb-1">
             Act {artist.setOrder} of {total}
           </p>
-          <h1 className="text-2xl font-bold text-ink-950">{displayName(artist.name)}</h1>
+          {/* Same name as the lineup card's h2 on /artists (doc 2507, item 18). */}
+          <ViewTransition name={`act-name-${artist.slug}`}>
+            <h1 className="text-2xl font-bold text-ink-950">{displayName(artist.name)}</h1>
+          </ViewTransition>
           <div className="flex items-center gap-2 mt-2 flex-wrap">
             {points > 0 && (
               <span className="text-[10px] font-bold px-2 py-1 rounded-full border uppercase bg-gold-400 text-gold-600 border-ink-950">
