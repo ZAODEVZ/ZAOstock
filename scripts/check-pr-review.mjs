@@ -49,14 +49,20 @@ const PAT_PUBLIC_SECRET = /(?<![A-Za-z0-9_])NEXT_PUBLIC_(?:[A-Za-z0-9_]*(?:SECRE
 // the safe spelling to the unsafe one.
 const RE_RAW_SQL = /\.(?:query|execute|\$queryRaw(?:Unsafe)?|\$executeRaw(?:Unsafe)?)\s*\(\s*`[^`]*\$\{/;
 // The rule above reads one line, so a query string built in a variable and then
-// passed to the call is invisible to it (card 10407). For the two Unsafe Prisma
-// methods that shape is the dangerous one, so a non-literal first argument is
-// flagged on its own. For .query() and .execute() a variable argument is the
-// normal parameterised form (sql plus a values array), so it is not flagged;
-// the gate prints that limit in its output instead of passing it silently.
-const RE_RAW_SQL_UNSAFE_VAR = /\.\$(?:queryRaw|executeRaw)Unsafe\s*\(\s*(?![`"'])[A-Za-z_$]/;
+// passed to the call is invisible to it (card 10407). The unsafe-by-name calls,
+// Prisma's $queryRawUnsafe / $executeRawUnsafe and postgres.js's sql.unsafe,
+// take the SQL as a plain string, so any first argument that is not ONE plain
+// literal is flagged: a variable, a concatenation ("select " + x), or a
+// template with ${...} (evaluator-b2 on #480, comment 6332987525, found the
+// first version missed the last two). A lone literal with no interpolation,
+// followed by "," or ")", is left alone. For .query() and .execute() a
+// variable argument is the normal parameterised form (sql plus a values
+// array), so it is not flagged; the gate prints that limit instead.
+const RE_UNSAFE_CALL = /(?:\.\$(?:queryRaw|executeRaw)Unsafe|\bsql\.unsafe)\s*\(/;
+const RE_UNSAFE_LITERAL_ONLY =
+  /(?:\.\$(?:queryRaw|executeRaw)Unsafe|\bsql\.unsafe)\s*\(\s*(?:'[^']*'|"[^"]*"|`[^`$]*`)\s*[,)]/;
 export const RAW_SQL_LIMIT =
-  "the raw-SQL rule reads one line at a time: a query built in a variable and passed to .query() or .execute() is not traced (the Unsafe Prisma methods are flagged for any non-literal argument)";
+  "the raw-SQL rule reads one line at a time: a query built in a variable and passed to .query() or .execute() is not traced ($queryRawUnsafe, $executeRawUnsafe and sql.unsafe are flagged for anything but one plain literal)";
 const RE_SERVICE_ROLE_CLIENT = /(?:SUPABASE_SERVICE_ROLE_KEY|createAdminClient)/;
 const RE_SENSITIVE_LOG = /console\.(?:log|debug|info|warn|error)\s*\([^)]*\b(?:password|secret|privateKey|secretKey|claimToken|adminKey)\b[^)]*\)/;
 
@@ -199,7 +205,7 @@ export function auditFile(relPath, root = process.cwd()) {
 
     if (RE_RAW_SQL.test(line)) {
       findings.push({ category: "database", line: lineNum, msg: "SQL injection risk via raw template interpolation" });
-    } else if (RE_RAW_SQL_UNSAFE_VAR.test(line)) {
+    } else if (RE_UNSAFE_CALL.test(line) && !RE_UNSAFE_LITERAL_ONLY.test(line)) {
       findings.push({ category: "database", line: lineNum, msg: "Unsafe raw query called with a non-literal argument; check how it is built" });
     }
 

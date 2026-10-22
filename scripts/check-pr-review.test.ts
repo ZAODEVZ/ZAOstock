@@ -238,6 +238,24 @@ describe('card 10407 - a query built in a variable', () => {
     expect(dbFindings("await db.$queryRawUnsafe('SELECT 1');")).toEqual([]);
   });
 
+  // evaluator-b2 on #480 (comment 6332987525): the first version missed these.
+  it('flags $queryRawUnsafe called with a concatenation', () => {
+    expect(dbFindings('await db.$queryRawUnsafe("select " + x);')).toHaveLength(1);
+  });
+
+  it('flags sql.unsafe with an interpolated template', () => {
+    expect(dbFindings('await sql.unsafe(`select * from t where id = ${x}`);')).toHaveLength(1);
+  });
+
+  it('flags sql.unsafe with a variable', () => {
+    expect(dbFindings('await sql.unsafe(q);')).toHaveLength(1);
+  });
+
+  it('leaves sql.unsafe with a plain literal alone, and a literal with params', () => {
+    expect(dbFindings("await sql.unsafe('select 1');")).toEqual([]);
+    expect(dbFindings("await db.$queryRawUnsafe('SELECT * FROM t WHERE id = $1', id);")).toEqual([]);
+  });
+
   it('leaves the parameterised .query(sql, values) form alone, and names that limit', async () => {
     expect(dbFindings('await pool.query(sql, [id]);')).toEqual([]);
     const mod = await import('./check-pr-review.mjs');
