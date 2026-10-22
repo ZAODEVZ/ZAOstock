@@ -17,6 +17,23 @@ const config = readFileSync(path.join(ROOT, 'next.config.ts'), 'utf8');
 const directive = config.match(/"frame-src ([^"]+)"/)?.[1] ?? '';
 const allowed = directive.split(/\s+/).filter((s) => s.startsWith('https://'));
 
+/**
+ * Whether frame-src lets this URL be framed, read the way CSP reads a source:
+ * a bare origin allows any path on it; a source with a path allows exactly
+ * that path, or anything under it when the source path ends in "/". The query
+ * string is never part of the match. Card 10409 narrowed www.google.com to
+ * the map's own paths, so an origin-only comparison no longer says enough.
+ */
+export function frameAllowed(url: string, sources: string[] = allowed): boolean {
+  const u = new URL(url);
+  return sources.some((src) => {
+    const s = new URL(src);
+    if (s.origin !== u.origin) return false;
+    if (s.pathname === '/' && !src.endsWith('/')) return true; // origin only
+    return s.pathname.endsWith('/') ? u.pathname.startsWith(s.pathname) : u.pathname === s.pathname;
+  });
+}
+
 function tsxFiles(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
@@ -26,14 +43,14 @@ function tsxFiles(dir: string, out: string[] = []): string[] {
   return out;
 }
 
-/** Every https origin written literally inside an <iframe ...> tag in src. */
-function literalIframeOrigins(): { file: string; origin: string }[] {
-  const found: { file: string; origin: string }[] = [];
+/** Every https URL (origin plus literal path) written inside an <iframe ...> tag in src. */
+function literalIframeOrigins(): { file: string; origin: string; url: string }[] {
+  const found: { file: string; origin: string; url: string }[] = [];
   for (const file of tsxFiles(path.join(ROOT, 'src'))) {
     const text = readFileSync(file, 'utf8');
     for (const tag of text.matchAll(/<iframe\b[\s\S]*?\/>/g)) {
-      for (const url of tag[0].matchAll(/https:\/\/[A-Za-z0-9.-]+/g)) {
-        found.push({ file: path.relative(ROOT, file), origin: url[0] });
+      for (const m of tag[0].matchAll(/https:\/\/[A-Za-z0-9.-]+[A-Za-z0-9._~/-]*/g)) {
+        found.push({ file: path.relative(ROOT, file), origin: new URL(m[0]).origin, url: m[0] });
       }
     }
   }
@@ -69,6 +86,26 @@ describe('CSP frame-src covers every iframe the site renders', () => {
     const origins = literals.map((l) => l.origin);
     expect(origins).toContain('https://www.youtube-nocookie.com');
     expect(origins).toContain('https://www.google.com');
-    expect(literals.filter((l) => !allowed.includes(l.origin))).toEqual([]);
+    expect(literals.filter((l) => !frameAllowed(l.url))).toEqual([]);
+  });
+});
+
+describe('frame-src: the map is allowed by path, not by the whole host (card 10409)', () => {
+  it('lists www.google.com only with the map paths', () => {
+    expect(allowed).not.toContain('https://www.google.com');
+    expect(allowed).toContain('https://www.google.com/maps');
+    expect(allowed).toContain('https://www.google.com/maps/embed');
+  });
+
+  it('allows the map URL and its redirect target, and nothing else on the host', () => {
+    expect(frameAllowed('https://www.google.com/maps?q=Ellsworth&output=embed')).toBe(true);
+    expect(frameAllowed('https://www.google.com/maps/embed?origin=mfe&pb=x')).toBe(true);
+    expect(frameAllowed('https://www.google.com/search?q=x')).toBe(false);
+    expect(frameAllowed('https://www.google.com/')).toBe(false);
+  });
+
+  it('still reads a bare origin as allowing every path on it', () => {
+    expect(frameAllowed('https://player.twitch.tv/?video=1')).toBe(true);
+    expect(frameAllowed('https://evil.example/maps')).toBe(false);
   });
 });
