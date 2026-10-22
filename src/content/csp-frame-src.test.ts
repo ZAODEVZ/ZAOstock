@@ -104,6 +104,14 @@ describe('frame-src: the map is allowed by path, not by the whole host (card 104
     expect(frameAllowed('https://www.google.com/')).toBe(false);
   });
 
+  // evaluator-b2 on #482 (comment 6333007399): with the exact-path match
+  // turned into a prefix match, every case above still passed. These two fail
+  // under a prefix match, so they pin "a path source matches that path only".
+  it('does not treat a path source as a prefix', () => {
+    expect(frameAllowed('https://www.google.com/maps/foo')).toBe(false);
+    expect(frameAllowed('https://www.google.com/mapsx')).toBe(false);
+  });
+
   it('still reads a bare origin as allowing every path on it', () => {
     expect(frameAllowed('https://player.twitch.tv/?video=1')).toBe(true);
     expect(frameAllowed('https://evil.example/maps')).toBe(false);
