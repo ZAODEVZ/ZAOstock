@@ -198,7 +198,8 @@ unchanged while the alias shipped and both endpoints started answering - a claim
 about an external service that stayed loud after it stopped being true, which is
 the exact failure this repo now guards against.
 <!-- re-checked 2026-09-22: /api/events/zaostock/lineup and /api/events/zaostock-2026/lineup both 200 with the same first artist (The Crown Vics, id aedc603c); /api/events/not-a-festival/lineup 404s {"error":"Event not found"}, so the 200s are the alias answering and not a catch-all. Still closed. -->
-<!-- re-check: 2026-10-20 -->
+<!-- re-checked 2026-10-22 04:55 UTC: /api/events/zaostock/lineup and /api/events/zaostock-2026/lineup both 200 with byte-identical 6,573-byte bodies (sha256 3685b61d5dc3...), 7 artists, first The Crown Vics (id aedc603c); /api/events/not-a-festival/lineup 404s {"error":"Event not found"}. Still closed. -->
+<!-- re-check: 2026-11-19 -->
 
 </details>
 
