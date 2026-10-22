@@ -33,9 +33,9 @@ no token layer to absorb it.** Most of that is now behind us.
 |---|---|---|
 | `.tsx` files in `src/` | 96 | 110 |
 | Files carrying brand colour | 77 of 96 | **34 of 110** |
-| Hardcoded brand hexes | 1,067 | **420** |
+| Hardcoded brand hexes | 1,067 | **422** |
 | Light-on-dark utilities that break on a paper ground | 1,297 | **597** |
-| **Total edit sites** | ~2,364 | **~1,017** |
+| **Total edit sites** | ~2,364 | **~1,019** |
 | Files consuming the existing CSS variables | 1 | 0 |
 
 The old identity was dark: navy ground, light text. The new one is light: paper
@@ -88,13 +88,13 @@ shift - it inverted.
 | Surface | Files | Hexes | Notes |
 |---|---|---|---|
 | **Public site** (`src/app/**`, outside `/team`) | 50 | **0** | On tokens by name. Nothing left to migrate |
-| **Team dashboard** (`src/app/team/*`) | 42 | **420** | Internal. Nobody outside the team sees it |
+| **Team dashboard** (`src/app/team/*`) | 42 | **422** | Internal. Nobody outside the team sees it |
 | Other brand surfaces | - | - | `src/app/icon.svg`, `src/app/opengraph-image.tsx` |
 
 The original claim was "605 of the 1,067 hexes are on surfaces anyone outside
 the team will ever look at. The dashboard can stay navy indefinitely without
 anybody noticing, and nothing about the announcement depends on it." Every one of
-those 420 hexes is now under `src/app/team/`. The public site has **zero**.
+those 422 hexes is now under `src/app/team/`. The public site has **zero**.
 
 Heaviest single files, all of them internal: `team/ArtistPipeline.tsx` (43),
 `team/SponsorCRM.tsx` (37), `team/QuickAdd.tsx` (25), `team/TeamRoles.tsx` (24),
@@ -142,7 +142,7 @@ Result: zero hardcoded hexes remain outside `src/app/team/`.
 
 ### Phase 3 - the dashboard, or never - THE ONLY THING LEFT
 
-420 hexes across 34 files for a surface with no external audience. Legitimate
+422 hexes across 34 files for a surface with no external audience. Legitimate
 outcomes include "do it later", "do it never", and "do it when someone is already
 in that file". It should not gate the announcement, and now it demonstrably
 cannot: the public site it was blocking is finished.
@@ -183,7 +183,7 @@ already committed by PR #42. Note there is no favicon or manifest PNG in
 
 The estimate this document gave on 2026-08-22 was roughly a week of focused
 work for one person, gated on the token layer and the public-site sweep. Both
-shipped. What is left is 420 hexes across 34 dashboard files that no visitor
+shipped. What is left is 422 hexes across 34 dashboard files that no visitor
 will ever load. The failure mode Candy's README warns about - shipped in front
 of an audience in a half-and-half state - cannot happen from dashboard work,
 because the dashboard is not what the audience loads.
@@ -232,7 +232,7 @@ Two differences worth stating plainly rather than burying:
   migration actually has to fix. A dark-only file carrying an unrelated
   non-brand hex is still an edit site.
 - **The hand count and this script are not the same measurement**, so the
-  1,067 -> 420 change mixes two things: real migration, and a wider definition.
+  1,067 -> 422 change mixes two things: real migration, and a wider definition.
   The public/internal split is the number to trust, because it is the one that
   flips the document's conclusion: **0 hexes outside `src/app/team/`**, which
   is true under either definition.
