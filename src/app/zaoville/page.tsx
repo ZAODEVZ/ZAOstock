@@ -6,18 +6,18 @@ import { SiteShell, Section, Eyebrow, Button, Card, SectionHeader } from '@/comp
 export const metadata: Metadata = {
   title: 'ZAOville Pool Party',
   description:
-    'The ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026, co-hosted with DCoop and The VEC. Free entry, open mic, live sets and a DJ night swim.',
+    'A recap of the ZAOville Pool Party: Laurel, Maryland, Saturday 25 July 2026, co-hosted with DCoop and The VEC. Open mic, live sets and a DJ night swim. ZAOville 2027: date and place to be announced.',
   alternates: { canonical: '/zaoville' },
   openGraph: {
     title: 'ZAOville Pool Party | ZAO Festivals | ZAOstock',
-    description: 'Laurel, Maryland, Saturday 25 July 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
+    description: 'How the ZAOville Pool Party ran: Laurel, Maryland, Saturday 25 July 2026, co-hosted with DCoop and The VEC. ZAOville 2027: date and place to be announced.',
     url: 'https://zaostock.com/zaoville',
     images: [OG_IMAGE],
     type: 'website',
   },
   twitter: twitterCard(
     'ZAOville Pool Party | ZAO Festivals | ZAOstock',
-    'Laurel, Maryland, Saturday 25 July 2026. Co-hosted with DCoop and The VEC. Free entry, free drinks, open mic, live sets, DJ night swim.',
+    'How the ZAOville Pool Party ran: Laurel, Maryland, Saturday 25 July 2026, co-hosted with DCoop and The VEC. ZAOville 2027: date and place to be announced.',
   ),
 };
 
@@ -69,8 +69,9 @@ export default function ZAOvillePage() {
           <Eyebrow tone="denim">Laurel, Maryland · Saturday 25 July 2026</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">ZAOville Pool Party</h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            The DMV chapter of the ZAO Festivals series, co-hosted with DCoop, founder of The VEC. Free entry, free drinks: a vibe sesh and food from 11 AM, then open mic, live independent sets and a DJ night swim to close. Cross-promoted across the series and feeding straight into ZAOstock.
+            The DMV chapter of the ZAO Festivals series, co-hosted with DCoop, founder of The VEC. Entry and drinks were free: a vibe sesh and food from 11 AM, then open mic, live independent sets and a DJ night swim to close. It was cross-promoted across the series and fed straight into ZAOstock.
           </p>
+          <p className="text-lg text-ink-secondary measure mt-3 m-0">ZAOville 2027: date and place to be announced.</p>
         </div>
       </Section>
 

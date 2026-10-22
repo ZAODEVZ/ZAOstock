@@ -317,7 +317,7 @@ export function Dashboard({
           <>
             <CalloutBanner
               title="Where do these come from?"
-              body="Every row is someone who submitted the RSVP form on the /stock landing page. This is your marketing list. Notify them when tickets drop and when the lineup is announced."
+              body="Every row is someone who submitted the site RSVP form, which no page shows any more. This is your marketing list: use it to tell them about the next edition."
             />
             <RsvpList rsvps={rsvps} />
           </>
