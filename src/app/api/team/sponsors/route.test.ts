@@ -95,4 +95,19 @@ describe('PATCH /api/team/sponsors referred_by', () => {
     expect(res.status).toBe(200);
     expect(written.update?.referred_by).toBe('Test Referrer');
   });
+
+  it('rejects a referred_by longer than 200 characters', async () => {
+    const written = stub();
+    const res = await call(PATCH, { id: ID, referred_by: 'x'.repeat(201) });
+    expect(res.status).toBe(400);
+    expect(written.update).toBeUndefined();
+  });
+
+  it('requires a team session', async () => {
+    getStockTeamMember.mockResolvedValue(null);
+    const written = stub();
+    const res = await call(PATCH, { id: ID, referred_by: 'Test Referrer' });
+    expect(res.status).toBe(401);
+    expect(written.update).toBeUndefined();
+  });
 });
