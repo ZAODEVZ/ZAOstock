@@ -1,0 +1,67 @@
+# Weekly listing of re-check dates coming due (card 10545).
+#
+# src/content/recheck.test.ts fails every build once a re-check marker is past
+# its date. On 2026-10-22 one expired marker failed #480, #481 and #482 at once,
+# because nobody owned it until an unrelated PR tripped it. This runs every
+# Monday, lists markers due within 7 days, and opens ONE issue for the zaostock
+# lane when any are due, so the claim is re-verified before a PR goes red.
+#
+# Caveats: scheduled workflows are best-effort and GitHub disables them on a
+# public repo after 60 days with no commits (same note as uptime.yml).
+name: Re-check dates due
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: List markers due within 7 days
+        id: list
+        run: |
+          set -uo pipefail
+          node scripts/recheck-due.mjs --days 7 > listing.txt
+          RC=$?
+          cat listing.txt
+          { echo '```'; cat listing.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          echo "rc=$RC" >> "$GITHUB_OUTPUT"
+          # 2 means the scan saw no markers at all; fail loudly, never read it as clean.
+          if [ "$RC" = "2" ]; then exit 1; fi
+          exit 0
+
+      - name: Open an issue if any are due
+        if: steps.list.outputs.rc == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          TITLE="Re-check dates due this week"
+          # One open issue at a time; the next Monday's run skips while it is open.
+          EXISTING="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$TITLE\" in:title" --json number --jq 'length')"
+          if [ "$EXISTING" != "0" ]; then
+            echo "Already tracked in an open issue. Not filing another."
+            exit 0
+          fi
+          {
+            printf 'These re-check markers are past or due within 7 days. Once one passes its\n'
+            printf 'date, `src/content/recheck.test.ts` fails every PR.\n\n'
+            printf '```\n'; cat listing.txt; printf '```\n\n'
+            printf 'Owner: the zaostock lane. Re-verify each claim, then correct it or move its\n'
+            printf 'date forward with the evidence. Close this issue when the listing is clear.\n\n'
+            printf 'Run: %s\n' "$RUN_URL"
+          } > issue-body.md
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body-file issue-body.md
