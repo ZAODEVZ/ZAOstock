@@ -57,7 +57,7 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // above"). PayPal is not offered (finance grill 28 Sep, item 10).
 
 export const metadata: Metadata = {
-  title: `Tickets, ${NEXT_EDITION.name}, Ellsworth, Maine`,
+  title: `Tickets, ${NEXT_EDITION.name}`,
   description:
     `Tickets for ${NEXT_EDITION.name} are not on sale yet. ZAOstock 2026 was free to attend. You can still chip in to support the artists.`,
   alternates: { canonical: '/tickets' },

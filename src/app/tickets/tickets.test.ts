@@ -144,7 +144,12 @@ describe('the 2027 ticket page claims nothing that is not set', () => {
     expect(src).not.toContain('nextEditionLine');
     expect(src).not.toContain(NEXT_EDITION.dateLabel);
     expect(src).not.toContain(NEXT_EDITION.date);
-    expect(src).not.toMatch(/September|Sept?\b/);
+    // Any month, full or short, and any typed 2027 date. FESTIVAL.shortDate in
+    // "Last year" is an expression, so its month never appears in the source.
+    expect(src).not.toMatch(
+      /\b(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\b/,
+    );
+    expect(src).not.toMatch(/2027-\d|\d{1,2}\/\d{1,2}\/(20)?27\b/);
   });
 
   it('says 2027 tickets are not on sale and the tiers are not a ticket', () => {
@@ -154,7 +159,9 @@ describe('the 2027 ticket page claims nothing that is not set', () => {
   });
 
   it('names no 2027 venue, partner or sponsor', () => {
+    // The 2027 place is not set (NEXT_EDITION.place), so not even the town.
     const src = code(TICKETS);
+    expect(src).not.toMatch(/Ellsworth|Maine/);
     expect(src).not.toMatch(/PARTNERS|SPONSORS|Heart of Ellsworth|Star 97/);
     expect(src).not.toContain('NEXT_EDITION.place');
   });
