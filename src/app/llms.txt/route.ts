@@ -79,7 +79,7 @@ Every car heading to Acadia National Park passes through. Downtown is newly on t
 
 - https://zaostock.com - overview, the day, the lineup, partners, the series
 - https://zaostock.com/program - the published running order of the day
-- https://zaostock.com/tickets - support the artists, at ${TIER_PRICES}
+- https://zaostock.com/tickets - ZAOstock 2027 tickets: not on sale yet, how to get in not announced; support tiers at ${TIER_PRICES}
 - https://zaostock.com/live - watch the replay of the day
 - https://zaostock.com/media - press coverage and each act's socials
 - https://zaostock.com/partners - every partner, with logos
