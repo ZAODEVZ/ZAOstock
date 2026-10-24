@@ -100,6 +100,24 @@ export const NEWSLETTER: readonly Edition[] = [
  * would re-flag them; this list is the record that the answer is "none".
  * Michael Anderson: Zaal, 2026-09-29, "Micheal Anderson doesn't have social media".
  */
+/**
+ * PHOTOS FROM THE DAY. Albums people shot at ZAOstock and shared, linked (the
+ * photos stay where the photographer put them). Every row shows its credit as
+ * "Photos: <photographer>". Ed Pinkham cleared his photos for ZAOstock media
+ * and the website by Facebook message, on or after 2026-10-13 (vault
+ * projects/zaostock-media-inventory-2026-10-08.md, section 10). Linked, not
+ * re-hosted, until the files themselves are in hand.
+ */
+export type PhotoAlbum = { photographer: string; title: string; url: string };
+
+export const PHOTO_ALBUMS: readonly PhotoAlbum[] = [
+  {
+    photographer: 'Ed Pinkham',
+    title: 'ZAOstock, Franklin Street Parklet',
+    url: 'https://www.facebook.com/media/set?vanity=ed.pinkham.3&set=a.3338118119694282',
+  },
+];
+
 export const NO_SOCIALS: readonly string[] = ['Michael Anderson'];
 
 export type Embed = { kind: 'youtube'; id: string; title: string };
