@@ -23,9 +23,9 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, lstatSync, readFileSync, realpathSync } from "node:fs";
 import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { join, relative, resolve, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AKIA[0-9A-Z]{16}|(?:api_key|apikey|secret|private_key|auth_token)\s*[:=]\s*["'][0-9a-zA-Z_\-]{20,}["'])/i;
@@ -48,6 +48,21 @@ const PAT_PUBLIC_SECRET = /(?<![A-Za-z0-9_])NEXT_PUBLIC_(?:[A-Za-z0-9_]*(?:SECRE
 // driver receives the values separately. Flagging it would push people from
 // the safe spelling to the unsafe one.
 const RE_RAW_SQL = /\.(?:query|execute|\$queryRaw(?:Unsafe)?|\$executeRaw(?:Unsafe)?)\s*\(\s*`[^`]*\$\{/;
+// The rule above reads one line, so a query string built in a variable and then
+// passed to the call is invisible to it (card 10407). The unsafe-by-name calls,
+// Prisma's $queryRawUnsafe / $executeRawUnsafe and postgres.js's sql.unsafe,
+// take the SQL as a plain string, so any first argument that is not ONE plain
+// literal is flagged: a variable, a concatenation ("select " + x), or a
+// template with ${...} (evaluator-b2 on #480, comment 6332987525, found the
+// first version missed the last two). A lone literal with no interpolation,
+// followed by "," or ")", is left alone. For .query() and .execute() a
+// variable argument is the normal parameterised form (sql plus a values
+// array), so it is not flagged; the gate prints that limit instead.
+const RE_UNSAFE_CALL = /(?:\.\$(?:queryRaw|executeRaw)Unsafe|\bsql\.unsafe)\s*\(/;
+const RE_UNSAFE_LITERAL_ONLY =
+  /(?:\.\$(?:queryRaw|executeRaw)Unsafe|\bsql\.unsafe)\s*\(\s*(?:'[^']*'|"[^"]*"|`[^`$]*`)\s*[,)]/;
+export const RAW_SQL_LIMIT =
+  "the raw-SQL rule reads one line at a time: a query built in a variable and passed to .query() or .execute() is not traced ($queryRawUnsafe, $executeRawUnsafe and sql.unsafe are flagged for anything but one plain literal)";
 const RE_SERVICE_ROLE_CLIENT = /(?:SUPABASE_SERVICE_ROLE_KEY|createAdminClient)/;
 const RE_SENSITIVE_LOG = /console\.(?:log|debug|info|warn|error)\s*\([^)]*\b(?:password|secret|privateKey|secretKey|claimToken|adminKey)\b[^)]*\)/;
 
@@ -75,8 +90,12 @@ function findZaoReviewGate() {
   return null;
 }
 
+// The diff is read with -z (card 10407): without it git quotes a path holding a
+// space-adjacent oddity, a non-ASCII byte or a quote ("caf\303\251.ts"), and the
+// quoted string names no file on disk, so existsSync() failed and the file was
+// skipped as if clean. NUL-separated output is the path exactly as stored.
 function splitFiles(stdout) {
-  return stdout.trim() ? stdout.trim().split("\n").map((f) => f.trim()).filter(Boolean) : [];
+  return stdout.split("\0").filter((f) => f.length > 0);
 }
 
 // Returns { files, determinable }. determinable=false means the range could
@@ -87,8 +106,8 @@ function splitFiles(stdout) {
 export function getChangedFiles(cwd = process.cwd()) {
   const git = (args) => spawnSync("git", args, { encoding: "utf8", cwd });
 
-  const rDirty = git(["diff", "--name-only", "HEAD"]);
-  if (rDirty.status === 0 && rDirty.stdout.trim()) {
+  const rDirty = git(["diff", "-z", "--name-only", "HEAD"]);
+  if (rDirty.status === 0 && rDirty.stdout.length > 0) {
     return { files: splitFiles(rDirty.stdout), determinable: true };
   }
 
@@ -104,7 +123,7 @@ export function getChangedFiles(cwd = process.cwd()) {
   // Two-dot form: a direct tree comparison between origin/main and HEAD, not
   // merge-base arithmetic - it needs both commits present, not shared
   // ancestry, so it still works when either side is a shallow, depth=1 fetch.
-  const rRange = git(["diff", "--name-only", "origin/main", "HEAD"]);
+  const rRange = git(["diff", "-z", "--name-only", "origin/main", "HEAD"]);
   if (rRange.status !== 0) {
     return { files: null, determinable: false };
   }
@@ -116,12 +135,36 @@ function getHeadSha() {
   return r.status === 0 ? r.stdout.trim() : "UNKNOWN_HEAD";
 }
 
-export function auditFile(relPath) {
-  if (isTestFile(relPath) || relPath.endsWith("check-pr-review.mjs") || relPath.endsWith("zao-review-gate")) {
+// True when relPath is a symlink whose target resolves outside root. Such a link
+// is never read: following it would audit, and print lines from, a file that is
+// not part of the change (card 10407). A link inside the tree is audited as the
+// file it points at.
+export function symlinkOutside(relPath, root = process.cwd()) {
+  try {
+    if (!lstatSync(relPath).isSymbolicLink()) return false;
+    const target = realpathSync(relPath);
+    const rel = relative(realpathSync(root), target);
+    return rel.startsWith("..") || isAbsolute(rel);
+  } catch {
+    return false;
+  }
+}
+
+export function auditFile(relPath, root = process.cwd()) {
+  // The gate's own files hold its patterns and its deliberate secret-shaped
+  // fixtures, so they are exempt by exact name, and nothing else is.
+  if (relPath.endsWith("check-pr-review.mjs") || relPath.endsWith("check-pr-review.test.ts") ||
+      relPath.endsWith("zao-review-gate")) {
     return [];
   }
+  // A test-named file used to be skipped outright, so a real key pasted into a
+  // fixture went through unread (card 10407). It is now scanned for secrets;
+  // only the database and client rules, which fire on test code by design, are
+  // left out for it.
+  const testNamed = isTestFile(relPath);
   const findings = [];
   if (!existsSync(relPath)) return findings;
+  if (symlinkOutside(relPath, root)) return findings;
 
   let content = "";
   try {
@@ -154,12 +197,16 @@ export function auditFile(relPath) {
         findings.push({ category: "security", line: lineNum, msg: "Potential hardcoded secret or API key" });
       }
     }
+    if (testNamed) continue;
+
     if (RE_SENSITIVE_LOG.test(line)) {
       findings.push({ category: "security", line: lineNum, msg: "Sensitive credential logged to console" });
     }
 
     if (RE_RAW_SQL.test(line)) {
       findings.push({ category: "database", line: lineNum, msg: "SQL injection risk via raw template interpolation" });
+    } else if (RE_UNSAFE_CALL.test(line) && !RE_UNSAFE_LITERAL_ONLY.test(line)) {
+      findings.push({ category: "database", line: lineNum, msg: "Unsafe raw query called with a non-literal argument; check how it is built" });
     }
 
     if (isClient && RE_SERVICE_ROLE_CLIENT.test(line)) {
@@ -197,7 +244,12 @@ function main() {
   console.log(`Auditing ${changedFiles.length} file(s) for security and database patterns:`);
   let hasFailures = false;
 
+  console.log(`  LIMIT: ${RAW_SQL_LIMIT}`);
   for (const f of changedFiles) {
+    if (symlinkOutside(f)) {
+      console.log(`  NOTE: ${f} is a symlink to a path outside the repository; not followed`);
+      continue;
+    }
     const issues = auditFile(f);
     if (issues.length > 0) {
       hasFailures = true;
@@ -222,6 +274,21 @@ function main() {
 // Guarded so a test can `import { auditFile } from "./check-pr-review.mjs"`
 // without running the whole gate (git calls, process.exit) as an import side
 // effect - main() only fires when this file is the process entrypoint.
-if (process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1])) {
+// Both sides go through realpath (card 10407). With resolve() alone, running the
+// gate through a symlinked path compared the link's path with the real one, they
+// differed, main() never ran, and node exited 0 having checked nothing.
+export function isEntrypoint(moduleUrl, argv1) {
+  if (!argv1) return false;
+  const real = (p) => {
+    try {
+      return realpathSync(p);
+    } catch {
+      return resolve(p);
+    }
+  };
+  return real(fileURLToPath(moduleUrl)) === real(argv1);
+}
+
+if (isEntrypoint(import.meta.url, process.argv[1])) {
   main();
 }
