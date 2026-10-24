@@ -27,14 +27,32 @@ const APP = join(process.cwd(), 'src', 'app');
 
 const check = readFileSync(CHECK, 'utf8');
 const pageList = check.match(/const PAGES = \[[\s\S]*?\];/)?.[0] ?? '';
-// String.matchAll yields one array per hit whose element 0 is the WHOLE match
-// and elements 1..n are the capture groups. Destructuring with a hole
-// ([, path]) takes element 1, which here is the label, not the path - so the
-// list silently held "home, program, artists" and every path assertion below
-// failed for the wrong reason. Read index 2 explicitly.
-const entries = [...pageList.matchAll(/\['([^']+)', '([^']+)'\]/g)].map(
-  (m) => [m[1], m[2]] as const
-);
+
+/**
+ * The [label, path] entries of a PAGES list, with comments removed FIRST.
+ *
+ * Card 10410 (evaluator-af on PR 431): the entries used to be read straight
+ * from the source text, so `// ['press', '/press'],` still counted as covered
+ * while the checker itself never visited /press. A commented-out line is a
+ * deleted line to the checker, so it must be one to this test too. Block
+ * comments go first, then any `//` that starts a line or follows whitespace
+ * (an entry's own path never contains one, since paths are single-slash).
+ */
+export function pageEntries(list: string): (readonly [string, string])[] {
+  const code = list
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .split('\n')
+    .map((line) => line.replace(/(^|\s)\/\/.*$/, '$1'))
+    .join('\n');
+  // String.matchAll yields one array per hit whose element 0 is the WHOLE match
+  // and elements 1..n are the capture groups. Destructuring with a hole
+  // ([, path]) takes element 1, which here is the label, not the path - so the
+  // list silently held "home, program, artists" and every path assertion below
+  // failed for the wrong reason. Read index 2 explicitly.
+  return [...code.matchAll(/\['([^']+)', '([^']+)'\]/g)].map((m) => [m[1], m[2]] as const);
+}
+
+const entries = pageEntries(pageList);
 
 /** Every public page route that exists as a page.tsx in the app tree. */
 function pageRoutes(dir = APP, out: string[] = []): string[] {
@@ -57,6 +75,29 @@ function pageRoutes(dir = APP, out: string[] = []): string[] {
 
 const routes = pageRoutes();
 const checked = entries.map(([, path]) => path);
+
+describe('pageEntries - a commented-out entry is not coverage (card 10410)', () => {
+  const list = [
+    'const PAGES = [',
+    "  ['home', '/'],",
+    "  // ['press', '/press'],",
+    "  ['live', '/live'], // trailing note stays harmless",
+    "  /* ['pitch', '/pitch'], */",
+    '];',
+  ].join('\n');
+
+  it('drops a line comment and a block comment, keeps live entries', () => {
+    expect(pageEntries(list).map(([, path]) => path)).toEqual(['/', '/live']);
+  });
+
+  it('reads the real list the same with or without its comments', () => {
+    // A guard on the guard: on today's file the stripping must change nothing,
+    // so no real entry is being lost to it.
+    const raw = [...pageList.matchAll(/\['([^']+)', '([^']+)'\]/g)].length;
+    const commented = (pageList.match(/^\s*\/\/.*\['[^']+', '[^']+'\]/gm) ?? []).length;
+    expect(entries.length).toBe(raw - commented);
+  });
+});
 
 describe('mobile overflow page list', () => {
   it('has entries', () => {
