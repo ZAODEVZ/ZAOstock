@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { LINEUP_NAMES, displayName, SOCIALS } from '@/content/site';
-import { PRESS, RADIO, NEWSLETTER, STAR_977_URL, embedsFor, NO_SOCIALS } from '@/content/media';
+import { PRESS, RADIO, NEWSLETTER, PHOTO_ALBUMS, STAR_977_URL, embedsFor, NO_SOCIALS } from '@/content/media';
 import { getRosterArtists, slugify } from '@/lib/artists';
 import { getFallbackLineup } from '@/lib/lineup-fallback';
 import { parseSocials } from '@/lib/socials';
@@ -102,6 +102,20 @@ export default async function MediaPage() {
         <div className="max-w-[760px]">
           <ReplayPlayer />
         </div>
+      </Section>
+
+      <Section id="photos">
+        <Eyebrow className="mb-3">Photos from the day</Eyebrow>
+        <ul className="list-none m-0 p-0 space-y-2 max-w-[760px]">
+          {PHOTO_ALBUMS.map((a) => (
+            <li key={a.url} className="text-sm">
+              <a href={a.url} target="_blank" rel="noopener noreferrer" className="font-bold text-ink-950 underline hover:no-underline">
+                {a.title}
+              </a>
+              <span className="text-ink-muted ml-2">Photos: {a.photographer}</span>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section>

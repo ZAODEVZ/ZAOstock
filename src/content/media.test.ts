@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS, RADIO, NEWSLETTER } from './media';
+import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS, RADIO, NEWSLETTER, PHOTO_ALBUMS } from './media';
 import { existsSync } from 'node:fs';
 import { ZAO_MEDIA } from './zao-media';
 
@@ -55,5 +55,18 @@ describe('/media content', () => {
   it('is in the sitemap and the footer', () => {
     expect(read('src/app/sitemap.ts')).toContain("'/media'");
     expect(read('src/components/poster/Footer.tsx')).toContain("'/media'");
+  });
+});
+
+describe('photos from the day', () => {
+  // Linked albums only, each credited "Photos: <photographer>" on the page.
+  it('every album has a photographer and an https link, and the page shows the credit', () => {
+    expect(PHOTO_ALBUMS.length).toBeGreaterThan(0);
+    for (const a of PHOTO_ALBUMS) {
+      expect(a.photographer.trim()).not.toBe('');
+      expect(a.url).toMatch(/^https:\/\//);
+    }
+    const page = readFileSync(path.join(process.cwd(), 'src/app/media/page.tsx'), 'utf8');
+    expect(page).toContain('Photos: {a.photographer}');
   });
 });
