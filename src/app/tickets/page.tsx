@@ -6,8 +6,8 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 
 // ZAOSTOCK 2027, 2026-10-23. Zaal (relayed by the seat, 22 Oct): build the
 // 2027 ticket page from the existing site. Constraints from that ask: no 2027
-// date (it is Zaal's call and under review against the Art of Ellsworth dates,
-// vault notes/zaostock-2027-art-of-ellsworth-date-2026-10-22.md), no prices,
+// date (it is Zaal's call and under review against the Art of Ellsworth
+// dates), no prices,
 // no sponsor or partner names without a source, no AI-made visuals. Ground: the
 // zaostock ICM box (boxes/zaostock.llm.txt), which records 2026 as free, all
 // ages, and says nothing about 2027 admission. So this page says tickets are

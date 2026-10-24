@@ -103,10 +103,8 @@ export const NEWSLETTER: readonly Edition[] = [
 /**
  * PHOTOS FROM THE DAY. Albums people shot at ZAOstock and shared, linked (the
  * photos stay where the photographer put them). Every row shows its credit as
- * "Photos: <photographer>". Ed Pinkham cleared his photos for ZAOstock media
- * and the website by Facebook message, on or after 2026-10-13 (vault
- * projects/zaostock-media-inventory-2026-10-08.md, section 10). Linked, not
- * re-hosted, until the files themselves are in hand.
+ * "Photos: <photographer>". Ed Pinkham: cleared by Ed by Facebook message, on
+ * or after 2026-10-13; linked, not re-hosted.
  */
 export type PhotoAlbum = { photographer: string; title: string; url: string };
 
