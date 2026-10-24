@@ -1,9 +1,21 @@
 import { Metadata } from 'next';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
-import { FESTIVAL } from '@/content/festival';
-import { SITE, LINEUP_NAMES, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
+import { FESTIVAL, NEXT_EDITION } from '@/content/festival';
+import { SITE, SUPPORT_TIERS, PRO_TICKET, GIVETH_URL, GIVETH_WALLET, stripeLinkFor, unlockCheckoutUrl } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, BorderedList } from '@/components/poster';
 
+// ZAOSTOCK 2027, 2026-10-23. Zaal (relayed by the seat, 22 Oct): build the
+// 2027 ticket page from the existing site. Constraints from that ask: no 2027
+// date (it is Zaal's call and under review against the Art of Ellsworth dates,
+// vault notes/zaostock-2027-art-of-ellsworth-date-2026-10-22.md), no prices,
+// no sponsor or partner names without a source, no AI-made visuals. Ground: the
+// zaostock ICM box (boxes/zaostock.llm.txt), which records 2026 as free, all
+// ages, and says nothing about 2027 admission. So this page says tickets are
+// not on sale, 2026 was free, and 2027 admission is not announced. It reads
+// NEXT_EDITION.name only, never NEXT_EDITION.dateLabel; tickets.test.ts pins
+// that. The 2026 support tiers and Giveth stay below, labelled as support,
+// not a 2027 ticket.
+//
 // PAST TENSE, 2026-10-04. ZAOstock 2026 happened on Saturday 3 October and Zaal
 // ruled everything pushed to the past: "can u loop on pushing eveything zaostock
 // to the past". RSVP is over, so the free RSVP card and the "do I need the RSVP"
@@ -45,39 +57,74 @@ import { SiteShell, Section, TwoUp, Eyebrow, Button, Card, SectionHeader, Border
 // above"). PayPal is not offered (finance grill 28 Sep, item 10).
 
 export const metadata: Metadata = {
-  title: `Support the artists, ${FESTIVAL.shortDate}, Ellsworth, Maine`,
+  title: `Tickets, ${NEXT_EDITION.name}`,
   description:
-    `ZAOstock 2026 was free to attend. You can still chip in to support the artists. Ellsworth, Maine, ${FESTIVAL.shortDate}.`,
+    `Tickets for ${NEXT_EDITION.name} are not on sale yet. ZAOstock 2026 was free to attend. You can still chip in to support the artists.`,
   alternates: { canonical: '/tickets' },
   openGraph: {
-    title: 'Support the artists | ZAOstock',
-    description: 'ZAOstock 2026 was free to attend. Chip in to support the artists.',
+    title: `Tickets | ${NEXT_EDITION.name}`,
+    description: `Tickets for ${NEXT_EDITION.name} are not on sale yet. ZAOstock 2026 was free to attend.`,
     url: 'https://zaostock.com/tickets',
     images: [OG_IMAGE],
   },
   twitter: twitterCard(
-    'Support the artists | ZAOstock',
-    'ZAOstock 2026 was free to attend. Chip in to support the artists.',
+    `Tickets | ${NEXT_EDITION.name}`,
+    `Tickets for ${NEXT_EDITION.name} are not on sale yet. ZAOstock 2026 was free to attend.`,
   ),
 };
+
+const ASK_URL = `mailto:${SITE.contact}?subject=${encodeURIComponent(`${NEXT_EDITION.name} tickets`)}`;
 
 export default function TicketsPage() {
   return (
     <SiteShell>
       <Section first className="pt-12 sm:pt-16">
         <div className="max-w-[760px]">
-          <Eyebrow tone="denim">{FESTIVAL.shortDate}</Eyebrow>
+          <Eyebrow tone="denim">Not on sale yet</Eyebrow>
           <h1 className="font-display text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">
-            Support the artists.
+            {NEXT_EDITION.name} tickets.
           </h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            ZAOstock was free to attend - no ticket, no gate. If you want to back the {LINEUP_NAMES.length} artists on the bill, chip in at {SUPPORT_TIERS.slice(0, -1).map((t) => t.price).join(', ')} or {PRO_TICKET.price}.
+            Nothing is on sale yet. ZAOstock 2026 was free to attend - no ticket, no gate. The date, the place and how
+            to get in for 2027 have not been announced. When they are, they go on this page.
           </p>
         </div>
       </Section>
 
-      <Section id="support">
+      <Section id="next">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2">
+          <Card>
+            <h3 className="font-display text-h3 text-ink-950 m-0">Hear when tickets open</h3>
+            <p className="text-sm text-ink-secondary m-0 mt-1">
+              Email us and ask to be told when {NEXT_EDITION.name} tickets open.
+            </p>
+            <div className="mt-4">
+              <Button href={ASK_URL} external variant="primary">
+                Email {SITE.contact}
+              </Button>
+            </div>
+          </Card>
+          <Card>
+            <h3 className="font-display text-h3 text-ink-950 m-0">Help on the day</h3>
+            <p className="text-sm text-ink-secondary m-0 mt-1">
+              The volunteer sheet for {NEXT_EDITION.name} is open. See the jobs and put your name down.
+            </p>
+            <div className="mt-4">
+              <Button href="/volunteer" variant="secondary">
+                Volunteer sign-up sheet
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </Section>
+
+      <Section id="support">
+        <SectionHeader
+          eyebrow="Chip in now"
+          title="Support the artists."
+          lede={`These are support, not a ${NEXT_EDITION.name} ticket. Card only; crypto is below.`}
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
           {SUPPORT_TIERS.map((tier) => (
             <Card key={tier.id}>
               <div className="flex items-baseline justify-between gap-3">
@@ -151,13 +198,13 @@ export default function TicketsPage() {
             <SectionHeader
               eyebrow="Straight answers"
               title="What your money does and does not do."
-              lede="The festival ran at break-even. Nothing here buys access, because access was free."
+              lede={`Nothing here buys access to ${NEXT_EDITION.name}. In 2026 access was free.`}
             />
             <BorderedList
               rows={[
-                { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket was checked at the parklet.` },
-                { term: 'Do I need to pay', detail: 'No. Everyone got in, paid or not, and nothing about the day depended on it.' },
-                { term: 'What does it pay for', detail: 'Artist fees, sound and stage, and materials.' },
+                { term: `${NEXT_EDITION.name} tickets`, detail: 'Not on sale. How to get in has not been announced.' },
+                { term: 'When and where', detail: 'Not announced yet. It goes on this page when it is.' },
+                { term: 'Does chipping in buy a ticket', detail: 'No. The tiers above are support only.' },
                 { term: 'What is the difference between them', detail: 'Only the amount.' },
                 { term: 'Other ways to give', detail: 'The tiers above take card. For crypto, give through Giveth, above.' },
                 { term: 'Questions', detail: SITE.contact },
@@ -165,17 +212,17 @@ export default function TicketsPage() {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <Eyebrow>The day</Eyebrow>
+            <Eyebrow>Last year</Eyebrow>
             <BorderedList
               rows={[
                 { term: 'When', detail: `${FESTIVAL.shortDate}, music from ${SITE.musicFrom}` },
                 { term: 'Where', detail: FESTIVAL.venue },
-                { term: 'Evening', detail: `${FESTIVAL.afterParty.name}, ${FESTIVAL.afterParty.note}` },
+                { term: 'Admission', detail: `${FESTIVAL.admission}. No ticket was checked at the parklet.` },
               ]}
             />
             <div>
-              <Button href="#give" variant="secondary">
-                Other ways to give
+              <Button href="/program" variant="secondary">
+                See how 2026 ran
               </Button>
             </div>
           </div>

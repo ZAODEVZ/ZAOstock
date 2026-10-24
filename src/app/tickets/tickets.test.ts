@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { SUPPORT_TIERS, PRO_TICKET } from '@/content/site';
-import { FESTIVAL } from '@/content/festival';
+import { FESTIVAL, NEXT_EDITION } from '@/content/festival';
 
 // /tickets exists because ticket.zaostock.com 302s to a free Luma RSVP, so the
 // paid tiers had no front door. These tests pin the things that would quietly
@@ -129,5 +129,44 @@ describe('no tier promises what nothing on file delivers', () => {
   it('keeps the $50 tier on the pro id the Stripe link is keyed on', () => {
     expect(PRO_TICKET.id).toBe('pro');
     expect(PRO_TICKET.name).toBe('Backer');
+  });
+});
+
+describe('the 2027 ticket page claims nothing that is not set', () => {
+  // Zaal's ask via the seat, 2026-10-22: a 2027 ticket page with no 2027 date
+  // (his call, under review against the Art of Ellsworth dates), no prices and
+  // no sponsor or partner names without a source.
+  it('names the 2027 edition but never its date', () => {
+    const src = code(TICKETS);
+    expect(src).toContain('NEXT_EDITION.name');
+    expect(src).not.toContain('NEXT_EDITION.dateLabel');
+    expect(src).not.toContain('NEXT_EDITION.date');
+    expect(src).not.toContain('nextEditionLine');
+    expect(src).not.toContain(NEXT_EDITION.dateLabel);
+    expect(src).not.toContain(NEXT_EDITION.date);
+    // Any month, full or short, and any typed 2027 date. FESTIVAL.shortDate in
+    // "Last year" is an expression, so its month never appears in the source.
+    expect(src).not.toMatch(
+      /\b(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\b/,
+    );
+    expect(src).not.toMatch(/2027-\d|\d{1,2}\/\d{1,2}\/(20)?27\b/);
+  });
+
+  it('says 2027 tickets are not on sale and the tiers are not a ticket', () => {
+    const src = read(TICKETS);
+    expect(src).toContain('Nothing is on sale yet.');
+    expect(src).toContain('The tiers above are support only.');
+  });
+
+  it('names no 2027 venue, partner or sponsor', () => {
+    // The 2027 place is not set (NEXT_EDITION.place), so not even the town.
+    const src = code(TICKETS);
+    expect(src).not.toMatch(/Ellsworth|Maine/);
+    expect(src).not.toMatch(/PARTNERS|SPONSORS|Heart of Ellsworth|Star 97/);
+    expect(src).not.toContain('NEXT_EDITION.place');
+  });
+
+  it('prints no dollar figure of its own', () => {
+    expect(code(TICKETS)).not.toMatch(/\$\d/);
   });
 });
