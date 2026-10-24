@@ -87,7 +87,7 @@ export type WatchParty = {
 /**
  * CONFIRMED HOSTS ONLY, and only ones who said yes to being named. Anything
  * added here renders immediately. Zaal, seat grill 2 Oct 15:5x: "Only the ones
- * confirmed so far, ship now" (decisions/grill-2026-10-02-orchestration-1550.md).
+ * confirmed so far, ship now".
  * Entries from IMan's list on iman-desk #16 (comment 2 Oct 21:55 CAT), each
  * host's "yes" to being named recorded there. Not confirmed, so left out:
  * @Oshuxhu, AJ Sanchez, and Trey1 G (streaming from the ground, not a watch

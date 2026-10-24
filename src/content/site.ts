@@ -187,8 +187,7 @@ export const LINEUP_NAMES_NOTE =
   'Each act has its own page with a bio and photo.';
 
 /**
- * RETIRED ACTS. Zaal, 2026-10-05 (vault
- * decisions/grill-2026-10-05-orchestration-retire-partners.md): remove the act
+ * RETIRED ACTS. Zaal, 2026-10-05 (grill): remove the act
  * that did not show up from every public mention, now and in the future. An
  * act that did not show up is not on the bill, not in a thank-you, not on a
  * page of its own. Slugs only, so this file prints no name.
@@ -340,12 +339,12 @@ const ALL_PARTNERS = [
   // Bomb Squad: resolved a partner at the 24 Aug standup (docs/marketing/partner-logos.md row 5), owner DCoop.
   { name: 'Bomb Squad', role: 'Crew, content and merch', poc: 'DCoop', confirmed: true, logoSrc: '/partners/bomb-squad.png' },
   // A funding partner was listed here (Zaal, 2026-09-10) and was REMOVED
-  // 2026-10-05 by Zaal (vault decisions/grill-2026-10-05-orchestration-retire-partners.md):
+  // 2026-10-05 by Zaal:
   // the platform wound down. Deleted rather than set to false. Do not re-add
   // it from an older deck or doc.
   // WE THE MEDIA: Zaal, 2026-09-16 grill, role and poc his words exactly.
   // Zaal is getting the WE THE MEDIA logo himself and will drop it in
-  // ~/zao-vault/inbox - textOnly until it lands, same as City of Ellsworth.
+  // the team inbox - textOnly until it lands, same as City of Ellsworth.
   // Logo: Zaal sent it 2026-09-19 (400x400 square emblem), resampled to 400px tall.
   { name: 'WE THE MEDIA', role: 'Media and content capture', poc: 'Zaal', confirmed: true, logoSrc: '/partners/we-the-media.png' },
   // Heart of Ellsworth: confirmed IN WRITING 2026-09-18, their own email to
@@ -640,8 +639,7 @@ export function unlockCheckoutUrl(url: string = UNLOCK_CHECKOUT_URL): string | n
 
 /**
  * ZAO ELLSWORTH - a new, ongoing local chapter, ruled 2026-09-27
- * (zao-vault decisions/grill-2026-09-27-orchestrator-batch-5.md, commit
- * 69d93004): "New local chapter, own Page." It gets its own Facebook
+ * (grill): "New local chapter, own Page." It gets its own Facebook
  * Page, kept separate from the ZAOstock event Page in SOCIALS above - ZAO
  * Ellsworth outlives Saturday, so the site should point people at the
  * thing they can still join afterward, not at an event that will be over.

@@ -52,7 +52,7 @@ export const AS_OF = '2026-09-23';
  * To refresh: re-read the endpoint when it says source "live" and pending 0,
  * replace the array, and move AS_OF - never edit a name or bio by hand.
  * The one hand edit: one act's entry was removed on 2026-10-05 (Zaal's
- * ruling, vault decisions/grill-2026-10-05-orchestration-retire-partners.md).
+ * ruling).
  */
 export const LINEUP_FALLBACK: Record<string, FallbackArtist[]> = {
   // Keyed by the slug the events table uses. The mobile app's 'zaostock-2026'
