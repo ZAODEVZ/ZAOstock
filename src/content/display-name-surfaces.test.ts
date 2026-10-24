@@ -2,8 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-// Zaal, 2026-09-29 (zao-vault decisions/grill-2026-09-29-iman-desk-morning.md
-// item 4): act 7 reads "LyonsDen Rez Muzik" everywhere a visitor sees it. The
+// Zaal, 2026-09-29 (grill): act 7 reads "LyonsDen Rez Muzik" everywhere a visitor sees it. The
 // identity "LyonsDen" stays for slugs, the sitemap and the DB join. Found
 // rendering the bare identity by the #384 review; each surface now goes
 // through displayName(), and this holds it there.

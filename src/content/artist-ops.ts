@@ -1,7 +1,7 @@
 import { createHash } from 'crypto';
 
 // THE ARTIST OPS PAGE - one private page per act at /backstage/<code>.
-// Zaal, 2026-09-10 (zao-vault decisions/zaostock-2026-09-10-lineup-and-ops-page.md):
+// Zaal, 2026-09-10:
 // "Don't have it need a code to fill in form just to see more background on
 // the event."
 //

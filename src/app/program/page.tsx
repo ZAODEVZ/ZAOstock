@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 // passed. The comments below describe how the schedule was built.
 //
 // Source of truth: docs/plans/ros-5min-2026-10-03.md (v7, 28 Aug 05:0x) and
-// Zaal's typed verdicts in ~/zao-vault/daily/2026-08-27.md and 2026-08-28.md.
+// Zaal's typed verdicts of 27 and 28 Aug 2026.
 //
 // One venue at a time (Zaal, 23 Aug): outdoors on the parklet until six, then
 // the street clears and Black Moon hosts their own evening next door.

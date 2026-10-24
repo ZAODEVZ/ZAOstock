@@ -834,7 +834,7 @@ describe('claims about who played stay within what Zaal has confirmed', () => {
 });
 
 // Zaal, 2026-10-05: two names are retired from every public mention, now and in
-// the future (vault decisions/grill-2026-10-05-orchestration-retire-partners.md).
+// the future.
 // The repo is public, so this test builds the names from fragments: a test that
 // spelled them out would be the one file that still carried them.
 describe('retired names appear nowhere in the public site', () => {

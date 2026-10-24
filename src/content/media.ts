@@ -37,7 +37,7 @@ export const PRESS: readonly PressItem[] = [
  * ON THE RADIO. Both files already ship in public/brand/audio and play on
  * /brand; /media plays them too. Zaal, 2026-09-29: "include ... a link to
  * the star 97.7 interview". The 30-second spot ran on Star 97.7 from 21 Sep
- * to 2 Oct (vault projects/zaostock-star-977-radio-commercial-2026-09-17.md).
+ * to 2 Oct.
  */
 /** session = Zaal on air (shown on the homepage too); spot = the 30-second ad. */
 /** seconds = the file's length from ffprobe, so the player shows it before anything loads. */

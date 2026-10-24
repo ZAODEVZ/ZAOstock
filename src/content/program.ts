@@ -11,7 +11,7 @@
 // publicSlots() stays clock-free; the time travels separately.
 //
 // Source: docs/plans/ros-5min-2026-10-03.md (v7) and Zaal's typed verdicts in
-// ~/zao-vault/daily/2026-08-27.md and 2026-08-28.md, retimed 2026-09-10
+// 27 and 28 Aug 2026, retimed 2026-09-10
 // ("option b": seven-minute changeovers, the 30-minute acts to 33).
 
 export type Venue = 'OUT' | 'IN';

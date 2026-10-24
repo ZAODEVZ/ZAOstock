@@ -60,8 +60,7 @@ describe('no set times in public', () => {
     expect(actTimes(BLOCKS[1])).toEqual({});
   });
 
-  // Zaal, seat grill 2026-09-19 (vault decisions/grill-2026-09-19-seat-
-  // afternoon.md): "Let's keep it for everyone." /ops stays public as it is -
+  // Zaal, seat grill 2026-09-19: "Let's keep it for everyone." /ops stays public as it is -
   // no gate, no /ops/<code> route, no takedown. Accepted exception to the
   // no-set-times rule above, for that one page only.
   //

@@ -26,9 +26,8 @@ import { CopyBlock } from './CopyBlock';
 // rather than silently dropped.
 //
 // ONE FILE FLAGGED, NOT COMMITTED: the vault's zaostock-new-1536x1024.png
-// poster reference is 3.3 MB, over the 2 MB budget for this PR. It still
-// lives at ~/zao-vault/images/zaostock/poster/zaostock-new-1536x1024.png;
-// ask for a compressed export before publishing it here.
+// poster reference is 3.3 MB, over the 2 MB budget for this PR. It is still
+// outside the repo; ask for a compressed export before publishing it here.
 //
 // DRONE SHOTS: Zaal mentioned having some but had not sent them as of this
 // PR. Not hunted for - asked for through the seat instead.

@@ -6,7 +6,7 @@ import path from 'path';
 // is copied out of them and sent to an artist. On 2026-09-10 nine deal memos
 // were corrected in the vault for naming ENTERACT, and the template that made
 // them still named it. Zaal, 2026-09-10: "enteract is not a partner neither is
-// we 3 metal" (vault decisions/enteract-and-we3metal-are-not-partners.md).
+// we 3 metal".
 
 const read = (p: string) => readFileSync(path.join(process.cwd(), p), 'utf8');
 
