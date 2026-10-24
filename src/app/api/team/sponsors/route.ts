@@ -33,6 +33,9 @@ const createSchema = z.object({
   contact_email: z.string().max(200).optional(),
   contact_phone: z.string().max(50).optional(),
   why_them: z.string().max(1000).optional(),
+  // Who referred this sponsor. The finder's fee (docs/sponsor/finders-fee-structure.md)
+  // is paid to the named person, so the name has to live on the row, not in notes.
+  referred_by: z.string().trim().max(200).optional(),
   owner_id: z.string().uuid().nullable().optional(),
 });
 
@@ -78,6 +81,7 @@ const patchSchema = z.object({
   amount_committed: z.number().min(0).optional(),
   amount_paid: z.number().min(0).optional(),
   why_them: z.string().max(1000).optional(),
+  referred_by: z.string().trim().max(200).optional(),
   notes: z.string().max(2000).optional(),
   owner_id: z.string().uuid().nullable().optional(),
   last_contacted_at: z.string().datetime().nullable().optional(),
