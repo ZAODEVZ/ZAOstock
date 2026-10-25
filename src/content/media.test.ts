@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS, RADIO, NEWSLETTER, PHOTO_ALBUMS } from './media';
+import { PRESS, ARTIST_EMBEDS, MEDIA_ACTS, NO_SOCIALS, RADIO, NEWSLETTER, PHOTO_ALBUMS, PHOTOS, PHOTOS_BY } from './media';
 import { existsSync } from 'node:fs';
 import { ZAO_MEDIA } from './zao-media';
 
@@ -68,5 +68,19 @@ describe('photos from the day', () => {
     }
     const page = readFileSync(path.join(process.cwd(), 'src/app/media/page.tsx'), 'utf8');
     expect(page).toContain('Photos: {a.photographer}');
+  });
+
+  it('hosts only photos that exist, each described and credited on the page', () => {
+    expect(PHOTOS.length).toBeGreaterThan(0);
+    for (const p of PHOTOS) {
+      expect(existsSync(path.join(process.cwd(), 'public', p.src)), p.src).toBe(true);
+      expect(p.alt.trim().length).toBeGreaterThan(0);
+      expect(p.width).toBeGreaterThan(0);
+      expect(p.height).toBeGreaterThan(0);
+    }
+    expect(PHOTOS_BY.trim()).not.toBe('');
+    const page = read('src/app/media/page.tsx');
+    expect(page).toContain('Photos by <span className="font-bold text-ink-950">{PHOTOS_BY}</span>');
+    expect(page).toContain('Photo: ${PHOTOS_BY}.');
   });
 });
