@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { OG_IMAGE } from '@/lib/meta';
 import { FESTIVAL } from '@/content/festival';
 import { LINEUP_NAMES, displayName, SOCIALS } from '@/content/site';
-import { PRESS, RADIO, NEWSLETTER, PHOTO_ALBUMS, STAR_977_URL, embedsFor, NO_SOCIALS } from '@/content/media';
+import { PRESS, RADIO, NEWSLETTER, PHOTO_ALBUMS, PHOTOS, PHOTOS_BY, STAR_977_URL, embedsFor, NO_SOCIALS } from '@/content/media';
 import { getRosterArtists, slugify } from '@/lib/artists';
 import { getFallbackLineup } from '@/lib/lineup-fallback';
 import { parseSocials } from '@/lib/socials';
@@ -106,6 +107,23 @@ export default async function MediaPage() {
 
       <Section id="photos">
         <Eyebrow className="mb-3">Photos from the day</Eyebrow>
+        <p className="text-sm text-ink-secondary m-0 mb-3 max-w-[760px]">
+          Photos by <span className="font-bold text-ink-950">{PHOTOS_BY}</span>, shared with his permission. Thank you, Ed.
+        </p>
+        <ul className="list-none m-0 p-0 mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-[760px]">
+          {PHOTOS.map((p) => (
+            <li key={p.src} className="rounded-md overflow-hidden border border-ink-950/40 aspect-[2/3]">
+              <Image
+                src={p.src}
+                alt={`${p.alt} Photo: ${PHOTOS_BY}.`}
+                width={p.width}
+                height={p.height}
+                sizes="(min-width: 640px) 250px, 50vw"
+                className="w-full h-full object-cover"
+              />
+            </li>
+          ))}
+        </ul>
         <ul className="list-none m-0 p-0 space-y-2 max-w-[760px]">
           {PHOTO_ALBUMS.map((a) => (
             <li key={a.url} className="text-sm">

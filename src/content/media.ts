@@ -116,6 +116,32 @@ export const PHOTO_ALBUMS: readonly PhotoAlbum[] = [
   },
 ];
 
+/**
+ * A selection from Ed Pinkham's album, hosted here and credited on the page
+ * (his clearance covers ZAOstock media and the website). Files are his
+ * Facebook copies from the shared Drive folder, unedited. Picked from the
+ * album's top picks; left out on purpose: the welcome-banner shot (its lineup
+ * poster names an act that did not play) and the two close-ups of members of
+ * the public. Alt text describes the photo and never guesses an act's name.
+ */
+export type Photo = { src: string; alt: string; width: number; height: number };
+
+const PINKHAM = '/photos/ed-pinkham/zaostock-2026-ed-pinkham';
+
+export const PHOTOS: readonly Photo[] = [
+  { src: `${PINKHAM}-072.jpg`, alt: 'A singer in a grey tee and green sunglasses laughing mid-song with a red guitar, drummer behind.', width: 640, height: 960 },
+  { src: `${PINKHAM}-070.jpg`, alt: 'A bassist with wild hair flying, playing under the stage tent.', width: 640, height: 960 },
+  { src: `${PINKHAM}-063.jpg`, alt: 'A young guitarist laughing with a white guitar, his band behind him.', width: 1080, height: 1620 },
+  { src: `${PINKHAM}-035.jpg`, alt: 'A guitarist in a red beanie and red sunglasses singing with a sunburst guitar.', width: 1080, height: 1620 },
+  { src: `${PINKHAM}-094.jpg`, alt: 'Two singers sharing the stage, one in a black tee, one in a tan jacket.', width: 640, height: 960 },
+  { src: `${PINKHAM}-108.jpg`, alt: 'A singer out in the street with one arm raised, microphone in hand.', width: 640, height: 960 },
+  { src: `${PINKHAM}-043.jpg`, alt: 'A singer in a black tank top and cap belting into the microphone on stage.', width: 640, height: 960 },
+  { src: `${PINKHAM}-090.jpg`, alt: 'Franklin Street in autumn sun, the crowd in chairs and on the planters.', width: 1620, height: 1080 },
+  { src: `${PINKHAM}-056.jpg`, alt: 'A drone flying over the brick roofline against a blue sky.', width: 960, height: 640 },
+];
+
+export const PHOTOS_BY = 'Ed Pinkham';
+
 export const NO_SOCIALS: readonly string[] = ['Michael Anderson'];
 
 export type Embed = { kind: 'youtube'; id: string; title: string };
