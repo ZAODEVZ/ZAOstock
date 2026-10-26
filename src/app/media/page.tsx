@@ -112,7 +112,12 @@ export default async function MediaPage() {
         </p>
         <ul className="list-none m-0 p-0 mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-[760px]">
           {PHOTOS.map((p) => (
-            <li key={p.src} className="rounded-md overflow-hidden border border-ink-950/40 aspect-[2/3]">
+            <li
+              key={p.src}
+              className={`rounded-md overflow-hidden border border-ink-950/40 ${
+                p.width > p.height ? 'col-span-full aspect-[3/2]' : 'aspect-[2/3]'
+              }`}
+            >
               <Image
                 src={p.src}
                 alt={`${p.alt} Photo: ${PHOTOS_BY}.`}
