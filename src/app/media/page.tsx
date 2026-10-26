@@ -123,7 +123,7 @@ export default async function MediaPage() {
                 alt={`${p.alt} Photo: ${PHOTOS_BY}.`}
                 width={p.width}
                 height={p.height}
-                sizes="(min-width: 640px) 250px, 50vw"
+                sizes={p.width > p.height ? '(min-width: 760px) 760px, 100vw' : '(min-width: 640px) 250px, 50vw'}
                 className="w-full h-full object-cover"
               />
             </li>
