@@ -34,12 +34,13 @@ function Sheet({ days }: { days: VolunteerDay[] }) {
           <h3 className="font-display text-h3 text-ink-950 m-0">{d.title}</h3>
           <p className="text-sm text-ink-muted m-0 mt-1">{d.where}</p>
           <table className="w-full mt-4 text-sm border-collapse">
+            <caption className="sr-only">{d.title} volunteer roles and signup counts</caption>
             <thead>
               <tr className="text-left text-ink-muted">
-                <th className="py-1 pr-3 font-bold">Job</th>
-                <th className="py-1 pr-3 font-bold whitespace-nowrap">Planned for 2026</th>
-                <th className="py-1 pr-3 font-bold whitespace-nowrap">Signed up</th>
-                <th className="py-1 font-bold hidden print:table-cell">Name</th>
+                <th scope="col" className="py-1 pr-3 font-bold">Job</th>
+                <th scope="col" className="py-1 pr-3 font-bold whitespace-nowrap">Planned for 2026</th>
+                <th scope="col" className="py-1 pr-3 font-bold whitespace-nowrap">Signed up</th>
+                <th scope="col" className="py-1 font-bold hidden print:table-cell">Name</th>
               </tr>
             </thead>
             <tbody>
