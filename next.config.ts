@@ -71,9 +71,15 @@ const config: NextConfig = {
               // so enforcing the header would have blanked the recording.
               // www.google.com added the same day for the same reason: the
               // venue map on /ellsworth is a Google Maps iframe.
+              // Narrowed 2026-10-22 (card 10409) from the whole host to the
+              // two paths the map uses: the iframe loads /maps?...&output=embed,
+              // which answers 301 to /maps/embed?... (measured with curl that
+              // day). A source with a path matches that path exactly; both
+              // are listed so the policy holds whether or not a browser
+              // applies the path after the redirect.
               // src/content/csp-frame-src.test.ts fails when a framed host is
               // missing here, so the next embed cannot repeat this.
-              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com https://player.twitch.tv https://www.google.com",
+              "frame-src 'self' https://docs.google.com https://js.stripe.com https://www.youtube-nocookie.com https://player.twitch.tv https://www.google.com/maps https://www.google.com/maps/embed",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
