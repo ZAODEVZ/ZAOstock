@@ -26,6 +26,7 @@ interface Sponsor {
   amount_committed: number;
   amount_paid: number;
   why_them: string;
+  referred_by?: string | null;
   notes: string;
   owner: Member | null;
   last_contacted_at: string | null;
@@ -386,6 +387,7 @@ function EditRow({
   const [notes, setNotes] = useState(sponsor.notes || '');
   const [contactName, setContactName] = useState(sponsor.contact_name || '');
   const [contactEmail, setContactEmail] = useState(sponsor.contact_email || '');
+  const [referredBy, setReferredBy] = useState(sponsor.referred_by || '');
 
   function save() {
     onUpdate(sponsor.id, {
@@ -394,6 +396,9 @@ function EditRow({
       notes,
       contact_name: contactName,
       contact_email: contactEmail,
+      // Sent only when it changed, so a Save that does not touch it still works
+      // before the referred_by column exists.
+      ...(referredBy !== (sponsor.referred_by || '') ? { referred_by: referredBy } : {}),
     });
   }
 
@@ -413,6 +418,13 @@ function EditRow({
           className="bg-[#0d1b2a] border border-white/[0.06] rounded px-2 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
         />
       </div>
+      <input
+        value={referredBy}
+        onChange={(e) => setReferredBy(e.target.value)}
+        placeholder="Referred by (finder's fee goes to this person)"
+        maxLength={200}
+        className="w-full bg-[#0d1b2a] border border-white/[0.06] rounded px-2 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#f5a623]/30"
+      />
       <div className="grid grid-cols-2 gap-2">
         <input
           type="number"

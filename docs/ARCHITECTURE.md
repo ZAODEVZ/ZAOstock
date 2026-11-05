@@ -171,9 +171,11 @@ Tables referenced in code, by how often:
 `circle_members` (4) · `attachments` (4) · `activity_log` (4) · `goals` (3) ·
 `contact_log` (3) · `comments` (3) · `onepager_activity` (2) · `circles` (2)
 
-Schema lives in the Supabase project, not in this repo - there is no migrations
-directory. That is a real gap: the schema is not reviewable in a PR and cannot be
-recreated from a clone.
+Schema lives in the Supabase project, not in this repo. That is a real gap: the
+schema is not reviewable in a PR and cannot be recreated from a clone.
+`supabase/migrations/` holds only changes written since 2026-10-22 (the first is
+`sponsors.referred_by`), each run by hand by a maintainer before its PR merges.
+It is not a full schema and nothing applies it automatically.
 
 ### Event scoping
 
@@ -230,7 +232,7 @@ the exact failure this repo now guards against.
 **The token gap, partly closed.** The brand tokens now live in a Tailwind v4
 `@theme` block in `src/app/globals.css` (`paper`, `ink`, `red`, `gold`, `denim`,
 `olive`), and 72 of 110 `.tsx` files use them. The rest still hardcode hex as Tailwind
-arbitrary values (`bg-[#0a1628]`): 420 of them across 34 of 110 `.tsx` files, as
+arbitrary values (`bg-[#0a1628]`): 422 of them across 34 of 110 `.tsx` files, as
 of 2026-10-12. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
 measurement.
 
