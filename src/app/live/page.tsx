@@ -15,16 +15,16 @@ const ALL_ON_TWITCH = REPLAY_PARTS.length > 1 && REPLAY_PARTS.every((p) => repla
 import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const metadata: Metadata = {
-  title: `Watch live, ${FESTIVAL.shortDate}, noon to 6 PM Eastern`,
-  description: `Watch ZAOstock 2026 from anywhere. The stream, the running order, and every way to follow along on ${FESTIVAL.dateLabel}.`,
+  title: `Replay, ${FESTIVAL.shortDate}, Ellsworth, Maine (the whole day, recorded)`,
+  description: `ZAOstock 2026 streamed live from Ellsworth, Maine on ${FESTIVAL.dateLabel}. Watch the whole day again.`,
   alternates: { canonical: '/live' },
   openGraph: {
-    title: 'Live | ZAOstock',
-    description: `Watch ZAOstock 2026 from anywhere on ${FESTIVAL.dateLabel}.`,
+    title: 'Replay | ZAOstock',
+    description: `Watch the ZAOstock 2026 stream from ${FESTIVAL.dateLabel} again.`,
     url: 'https://zaostock.com/live',
     images: [OG_IMAGE],
   },
-  twitter: twitterCard('Live | ZAOstock', `Watch ZAOstock 2026 from anywhere on ${FESTIVAL.dateLabel}.`),
+  twitter: twitterCard('Replay | ZAOstock', `Watch the ZAOstock 2026 stream from ${FESTIVAL.dateLabel} again.`),
 };
 
 // The stream test passed 2026-09-25 (Fellenz's software chain) and Zaal named
