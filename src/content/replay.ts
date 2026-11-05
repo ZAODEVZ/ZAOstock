@@ -35,12 +35,23 @@ export type ReplayPart = {
   window: string;
 };
 
+// THE 7 FULL SETS ON YOUTUBE (iman-desk #164). Files and order from Iman's
+// docs/media/festival-full-sets.md (#497). DRAFT: every id below is a TODO
+// until Iman posts the YouTube links on #164, and the lengths are the Drive
+// cuts before the intro and outro go on. Re-read each length from YouTube when
+// the id lands. Windows stay clock-free (no-public-set-times.test.ts).
 export const REPLAY_PARTS: readonly ReplayPart[] = [
-  { part: 1, id: '2890835848', title: 'ZAOstock Music Festival Live', length: '7:15:48', window: 'The whole day, from noon' },
+  { part: 1, provider: 'youtube', label: 'The Crown Vics', id: 'TODO-CROWNV', title: 'The Crown Vics, live at ZAOstock 2026 (full set)', length: '45:22', window: 'First set of the day' },
+  { part: 2, provider: 'youtube', label: 'OPEN X', id: 'TODO-OPEN-X', title: 'OPEN X, live at ZAOstock 2026 (full set)', length: '45:30', window: 'Second set' },
+  { part: 3, provider: 'youtube', label: 'Grass Rug', id: 'TODO-GRASSR', title: 'Grass Rug, live at ZAOstock 2026 (full set)', length: '37:50', window: 'Third set' },
+  { part: 4, provider: 'youtube', label: 'Michael Anderson', id: 'TODO-MANDER', title: 'Michael Anderson, live at ZAOstock 2026 (full set)', length: '36:30', window: 'Fourth set' },
+  { part: 5, provider: 'youtube', label: 'DCoop', id: 'TODO-DCOOP0', title: 'DCoop, live at ZAOstock 2026 (full set)', length: '55:23', window: 'Fifth set' },
+  { part: 6, provider: 'youtube', label: 'LyonsDen', id: 'TODO-LYONSD', title: 'LyonsDen, live at ZAOstock 2026 (full set)', length: '42:30', window: 'Sixth set' },
+  { part: 7, provider: 'youtube', label: 'Tom Fellenz', id: 'TODO-TOMFEL', title: 'Tom Fellenz, live at ZAOstock 2026 (full set)', length: '40:00', window: 'Last set, into the close' },
 ];
 
 /** The line under the player. Says what this list is, so it changes with the list. */
-export const REPLAY_NOTE = 'The whole day in one recording, captured from this page as it streamed.';
+export const REPLAY_NOTE = 'Each act\u2019s full set, one video per act.';
 
 /** "Part 3", or the part's own label when it has one. */
 export function replayPartLabel(p: Pick<ReplayPart, 'part' | 'label'>): string {

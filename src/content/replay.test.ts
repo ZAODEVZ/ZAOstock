@@ -17,6 +17,12 @@ describe('the recorded festival', () => {
     expect(new Set(REPLAY_PARTS.map((p) => p.id)).size).toBe(REPLAY_PARTS.length);
   });
 
+  it('carries no placeholder ids: every part is a real video before this merges', () => {
+    // The 7 YouTube sets were staged with TODO ids (iman-desk #164). This fails
+    // until each one is a real id, so a dead player cannot reach the site.
+    expect(REPLAY_PARTS.filter((p) => /TODO/i.test(p.id)).map((p) => p.label ?? p.part)).toEqual([]);
+  });
+
   it('does not list the six zaofestivals broadcasts that Twitch deleted (measured 2026-10-12)', () => {
     const expired = ['2890837517', '2890841510', '2890850258', '2890857550', '2890969100', '2891031137'];
     expect(REPLAY_PARTS.filter((p) => expired.includes(p.id))).toEqual([]);
