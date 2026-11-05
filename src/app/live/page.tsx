@@ -8,15 +8,15 @@ import { displayName } from '@/content/site';
 import { SiteShell, Section, TwoUp, Eyebrow, Card, SectionHeader, Button, BUTTON_BASE, BUTTON_VARIANT, BUTTON_SIZE } from '@/components/poster';
 import { ShareButton } from '@/components/ShareButton';
 import { ReplayPlayer } from '@/components/ReplayPlayer';
-import { REPLAY_PARTS, replayPartsPhrase, replayPartWatchHref, replayHostName } from '@/content/replay';
+import { REPLAY_PARTS, replayPartWatchHref, replayHostName } from '@/content/replay';
 
 // The channel's video list is only the right link while the day is in several Twitch parts.
 const ALL_ON_TWITCH = REPLAY_PARTS.length > 1 && REPLAY_PARTS.every((p) => replayHostName(p) === 'Twitch');
 import { EventJsonLd } from '@/components/EventJsonLd';
 
 export const metadata: Metadata = {
-  title: `Replay, ${FESTIVAL.shortDate}, Ellsworth, Maine (the whole day, recorded)`,
-  description: `ZAOstock 2026 streamed live from Ellsworth, Maine on ${FESTIVAL.dateLabel}. Watch the whole day again.`,
+  title: `Replay, ${FESTIVAL.shortDate}, Ellsworth, Maine (every set, recorded)`,
+  description: `ZAOstock 2026 streamed live from Ellsworth, Maine on ${FESTIVAL.dateLabel}. Watch every set again, one video per act.`,
   alternates: { canonical: '/live' },
   openGraph: {
     title: 'Replay | ZAOstock',
@@ -66,7 +66,7 @@ export default async function LivePage() {
         <Eyebrow tone="denim">Thank you for watching</Eyebrow>
         <h1 className="font-display font-normal text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-2 mb-2">The stream has ended.</h1>
         <p className="text-base sm:text-lg text-ink-secondary measure m-0 mb-3">
-          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. The whole day is recorded below, {replayPartsPhrase()}.
+          ZAOstock streamed live on {FESTIVAL.dateLabel} from {FESTIVAL.venue} in {FESTIVAL.city}. Every set is recorded below, one video per act.
         </p>
         <div id="replay">
           <ReplayPlayer />
