@@ -130,6 +130,23 @@
 - Day-of attendance and soundcheck participation
 - Help share when ZAOstock posts the lineup announcement (one repost / share is enough)
 
+## Ready for stage
+
+Six things that make a set work, live and on the stream. Send these with the
+memo; ask each act to read them before soundcheck. They are a check, not a
+contract, and none of them is a reason to drop an act.
+
+| # | Check | What it means here |
+|---|---|---|
+| 1 | One look | The whole act reads as one in photos and on the stream. Black with one personal touch each works well. A suggestion, not a dress code |
+| 2 | No music stands or iPads | Know the set. Nothing between you and the crowd |
+| 3 | The music serves the vocals | Leave room for the voice in the arrangement and the mix |
+| 4 | Tight rhythm section | Bass and drums lock in. No busy riffs or fills |
+| 5 | Play to the crowd | Talk to them, move, make eye contact, and talk to the camera too. Most of the audience is watching online |
+| 6 | Clean, balanced sound | Use the Friday soundcheck. A clean mix beats a loud one |
+
+Source: [ZAOresearch doc 2443](https://github.com/ZAODEVZ/ZAOresearch/blob/main/research/events/2443-six-rules-band-live-balcony-gig/README.md).
+
 ## Travel + lodging
 
 ZAOstock supports artist travel via the following channels (artist picks one, in order of preference):
