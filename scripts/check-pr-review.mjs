@@ -25,7 +25,7 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RE_HARDCODED_SECRET = /(?:sk_live_[0-9a-zA-Z]{16,}|ghp_[0-9a-zA-Z]{20,}|AKIA[0-9A-Z]{16}|(?:api_key|apikey|secret|private_key|auth_token)\s*[:=]\s*["'][0-9a-zA-Z_\-]{20,}["'])/i;
@@ -116,8 +116,15 @@ function getHeadSha() {
   return r.status === 0 ? r.stdout.trim() : "UNKNOWN_HEAD";
 }
 
+// The scanner's own files are exempt by EXACT file name. endsWith("check-pr-review.mjs")
+// also matched a real file named xcheck-pr-review.mjs, which then went unreviewed.
+const SCANNER_FILES = new Set(["check-pr-review.mjs", "zao-review-gate"]);
+function isScannerFile(relPath) {
+  return SCANNER_FILES.has(basename(relPath));
+}
+
 export function auditFile(relPath) {
-  if (isTestFile(relPath) || relPath.endsWith("check-pr-review.mjs") || relPath.endsWith("zao-review-gate")) {
+  if (isTestFile(relPath) || isScannerFile(relPath)) {
     return [];
   }
   const findings = [];
@@ -131,7 +138,7 @@ export function auditFile(relPath) {
   }
 
   const isClient = content.slice(0, 500).includes('"use client"') || content.slice(0, 500).includes("'use client'");
-  const isScanner = relPath.endsWith("check-pr-review.mjs") || relPath.endsWith("zao-review-gate");
+  const isScanner = isScannerFile(relPath);
   const lines = content.split("\n");
 
   for (let i = 0; i < lines.length; i++) {

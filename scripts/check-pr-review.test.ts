@@ -215,3 +215,31 @@ describe('getChangedFiles - range computation', () => {
     expect(result.files).toEqual([]);
   });
 });
+
+describe('auditFile - scanner files are exempt by exact file name', () => {
+  const secretLine = `const apiKey = "${'z'.repeat(24)}";`;
+
+  function auditNamed(name: string) {
+    dir = mkdtempSync(path.join(tmpdir(), 'check-pr-review-names-'));
+    const file = path.join(dir, name);
+    writeFileSync(file, secretLine);
+    return auditFile(file);
+  }
+
+  it('control: a lookalike name is NOT exempt, its secret is flagged', () => {
+    const findings = auditNamed('xcheck-pr-review.mjs');
+    expect(findings).toHaveLength(1);
+    expect(findings[0].category).toBe('security');
+  });
+
+  it('control: a lookalike zao-review-gate suffix is NOT exempt', () => {
+    expect(auditNamed('xzao-review-gate')).toHaveLength(1);
+  });
+
+  it.each(['check-pr-review.mjs', 'check-pr-review.test.ts', 'zao-review-gate'])(
+    'the exact name %s stays exempt',
+    (name) => {
+      expect(auditNamed(name)).toEqual([]);
+    },
+  );
+});
