@@ -133,7 +133,8 @@ than from anyone's recollection.
 <!-- re-checked 2026-09-24T17:51Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (DRIFTED from 5 on 2026-09-22T12:47Z to 8 on 2026-09-24T17:51Z) -->
 <!-- re-checked 2026-10-03T12:23Z - GET https://zaostock.com/api/events/zaostock/lineup returned 8 artists, every one with photo_url and bio (unchanged since 2026-09-24) -->
 <!-- re-checked 2026-10-11T12:17Z - GET https://zaostock.com/api/events/zaostock/lineup returned HTTP 200, 7 artists, pending 0, every one with photo_url and bio (DRIFTED from 8 on 2026-10-03T12:23Z to 7: one act retired off the bill in #447) -->
-<!-- re-check: 2026-11-10 -->
+<!-- re-checked 2026-11-12T14:23Z - GET https://zaostock.com/api/events/zaostock/lineup returned HTTP 200, 7 artists, pending 0, every one with photo_url and bio (unchanged since 2026-10-11T12:17Z) -->
+<!-- re-check: 2026-12-12 -->
 
 ### 3. The website needs NO deploy - corrected 2026-09-08
 
