@@ -328,7 +328,14 @@ describe('card 10407 - files the gate used to skip', () => {
     const link = path.join(dir, 'link.ts');
     symlinkSync(path.join(outside, 'elsewhere.ts'), link);
     expect(symlinkOutside!(link, dir)).toBe(true);
-    expect(auditFile(link, dir)).toEqual([]);
+    // Not followed, and not passed quietly either: an unreadable file is an unreviewed file.
+    const outsideFound = auditFile(link, dir);
+    expect(outsideFound).toHaveLength(1);
+    expect(outsideFound[0].category).toBe('security');
+    expect(outsideFound[0].line).toBe(0);
+    expect(outsideFound[0].msg).toContain('symlink to a path outside the repository');
+    // The key inside the outside file was not read into the report.
+    expect(JSON.stringify(outsideFound)).not.toContain('vvvvvvvv');
     const inside = path.join(dir, 'inside.ts');
     writeFileSync(inside, `const apiKey = "${'u'.repeat(24)}";\n`);
     const link2 = path.join(dir, 'link2.ts');

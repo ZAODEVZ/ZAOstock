@@ -164,7 +164,17 @@ export function auditFile(relPath, root = process.cwd()) {
   const testNamed = isTestFile(relPath);
   const findings = [];
   if (!existsSync(relPath)) return findings;
-  if (symlinkOutside(relPath, root)) return findings;
+  // A link that leaves the tree is never read, so it is never reviewed. Passing it
+  // quietly would let any file be smuggled past the gate behind a link, so it is a
+  // finding: the gate fails loudly and the author replaces the link with the file.
+  if (symlinkOutside(relPath, root)) {
+    findings.push({
+      category: "security",
+      line: 0,
+      msg: "symlink to a path outside the repository: not read, so not reviewed. Replace it with the file itself",
+    });
+    return findings;
+  }
 
   let content = "";
   try {
@@ -246,10 +256,6 @@ function main() {
 
   console.log(`  LIMIT: ${RAW_SQL_LIMIT}`);
   for (const f of changedFiles) {
-    if (symlinkOutside(f)) {
-      console.log(`  NOTE: ${f} is a symlink to a path outside the repository; not followed`);
-      continue;
-    }
     const issues = auditFile(f);
     if (issues.length > 0) {
       hasFailures = true;
