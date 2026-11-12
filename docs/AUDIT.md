@@ -112,7 +112,7 @@ still `2026-08-25T18:44:44Z` (GitHub API, this repo's own metadata), now 30
 days, so no build attempt has been made since. Re-verified 2026-10-11:
 `pushed_at` is still `2026-08-25T18:44:44Z` (same API call), now 47 days, so
 still no build attempt and still unverified.** The re-check condition is Zaal
-running the command below, not a date. Re-verified 2026-11-12T14:23Z: `pushed_at` is still `2026-08-25T18:44:44Z` (same API call), now 79 days, so still no build attempt and still unverified. <!-- re-check: 2026-12-12 -->
+running the command below, not a date. Re-verified 2026-11-12T14:23Z: `gh api repos/bettercallzaal/zao-festivals --jq .pushed_at` still returns `2026-08-25T18:44:44Z` (same API call), now 79 days, so still no build attempt and still unverified. <!-- re-check: 2026-12-12 -->
 Build 13 failed on this and was never retried until this session. Run from a **real Terminal.app window**, not through Claude Code:
 ```
 cd /tmp/zaostock-app   # or wherever the mobile repo is checked out locally
@@ -127,7 +127,7 @@ still unconfirmed (see above), so this is still gated on it, unchanged.
 Re-verified 2026-09-24: #2 is still unconfirmed on the same evidence, so this is
 still gated, still unchanged. Re-verified 2026-10-11: #2 is still unconfirmed,
 `pushed_at` unchanged at `2026-08-25T18:44:44Z`, so this is still gated.
-Re-verified 2026-11-12T14:23Z: #2 is still unconfirmed, `pushed_at` unchanged at `2026-08-25T18:44:44Z` (79 days), so this is still gated.**
+Re-verified 2026-11-12T14:23Z: #2 is still unconfirmed; `gh api repos/bettercallzaal/zao-festivals --jq .pushed_at` returns `2026-08-25T18:44:44Z` (79 days), the same value as at the 2026-10-11 check, so this is still gated.**
 <!-- re-check: 2026-12-12 -->
 ```
 cd /tmp/zaostock-app
