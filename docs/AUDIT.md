@@ -59,7 +59,7 @@ Two repos:
 > building for ran on 2026-10-03.
 >
 > **Re-verified 2026-11-12T14:23Z (seat-merge lane).** `gh api repos/bettercallzaal/zao-festivals --jq .pushed_at`
-> returns **`2026-08-25T18:44:44Z`**, now 79 days, unchanged since the 2026-10-11 check. The newest
+> returns **`2026-08-25T18:44:44Z`**, now 79 days; that `pushed_at` value is unchanged from the 2026-10-11 check. The newest
 > commit on its `main` is still `b12ee86`, committed 2026-08-25T18:44:43Z
 > (`gh api repos/bettercallzaal/zao-festivals/commits/main`). So items 2 and 3 still stand as written.
 > **This is the fifth date, and the note above said the fix is an event-aware marker in `recheck.test.ts`, not
