@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { OG_IMAGE, twitterCard } from '@/lib/meta';
 import { RiderForm } from './RiderForm';
 import { FormsUnavailable } from '@/components/FormsUnavailable';
@@ -32,10 +33,10 @@ export default function RiderPage() {
           <Eyebrow tone="denim">Confirmed artists</Eyebrow>
           <h1 className="font-display font-normal text-[2.75rem] leading-[1.05] tracking-[-0.01em] sm:text-h1 mt-3 mb-4">Performance and participation rider.</h1>
           <p className="text-lg text-ink-secondary measure m-0">
-            Thanks for being part of the lineup. This is the official rider and information packet. Complete the sections that apply. If you have not been confirmed yet, email{' '}
-            <a href={`mailto:${SITE.contact}`} className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
-              {SITE.contact}
-            </a>{' '}
+            Thanks for being part of the lineup. This is the official rider and information packet. Complete the sections that apply. If you have not been confirmed yet, start at{' '}
+            <Link href="/musicians/submit" className="text-denim-400 underline underline-offset-4 hover:text-denim-500">
+              /musicians/submit
+            </Link>{' '}
             instead.
           </p>
         </div>

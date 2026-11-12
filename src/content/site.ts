@@ -27,7 +27,8 @@ export const SITE = {
   // post about each of them individually starting on Saturday with their bio
   // and photo." Deleted, not blanked: reveal-date.test.ts fails if either key,
   // or the date, comes back. Acts publish per artist (src/lib/lineup-reveal.ts).
-  // UNUSED since 2026-09-01: the submission form was removed from the site, so
+  // UNUSED: the 2026 cutoff is history. The form is back since 2026-11-12 with no
+  // closing date (/musicians/submit, FORM_POLICY in forms-status.ts), so
   // nothing renders these and there is no cutoff to enforce. Left in place
   // rather than deleted so the value is not lost if intake ever returns. Do NOT
   // read them as a live deadline - there is no way to submit on the site.

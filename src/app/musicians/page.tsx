@@ -45,7 +45,8 @@ export default function MusiciansPage() {
         'Help share when we posted the slot. We did the heavy lift on socials, the artist amplified.',
       ]}
       ctas={[
-        { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest', primary: true },
+        { label: 'Submit your music', href: '/musicians/submit', primary: true },
+        { label: 'Email info@thezao.com', href: 'mailto:info@thezao.com?subject=ZAOstock%20Musician%20Interest' },
       ]}
       facts={[
         { term: 'Date', detail: `${FESTIVAL.dateLabel}, music from noon` },
