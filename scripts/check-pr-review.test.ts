@@ -344,4 +344,24 @@ describe('card 10407 - files the gate used to skip', () => {
     expect(auditFile(link2, dir)).toHaveLength(1);
     rmSync(outside, { recursive: true, force: true });
   });
+
+  it('does not let an exempt file name hide a symlink that leaves the tree', async () => {
+    const outside = mkdtempSync(path.join(tmpdir(), 'check-pr-review-fixtures-'));
+    writeFileSync(path.join(outside, 'planted.ts'), `const apiKey = "${'p'.repeat(24)}";\n`);
+    dir = mkdtempSync(path.join(tmpdir(), 'check-pr-review-fixtures-'));
+    // The three exempt names: the gate script, its test, and the shell wrapper.
+    for (const name of ['check-pr-review.mjs', 'check-pr-review.test.ts', 'zao-review-gate']) {
+      const link = path.join(dir, name);
+      symlinkSync(path.join(outside, 'planted.ts'), link);
+      const found = auditFile(link, dir);
+      expect(found).toHaveLength(1);
+      expect(found[0].category).toBe('security');
+      expect(found[0].msg).toContain('symlink to a path outside the repository');
+    }
+    // Control: the same exempt names as plain files inside the tree stay exempt.
+    const real = path.join(dir, 'sub-check-pr-review.mjs');
+    writeFileSync(real, `const apiKey = "${'q'.repeat(24)}";\n`);
+    expect(auditFile(real, dir)).toEqual([]);
+    rmSync(outside, { recursive: true, force: true });
+  });
 });

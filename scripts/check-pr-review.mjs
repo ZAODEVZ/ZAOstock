@@ -151,6 +151,18 @@ export function symlinkOutside(relPath, root = process.cwd()) {
 }
 
 export function auditFile(relPath, root = process.cwd()) {
+  // FIRST, before the exempt-name return below: a link that leaves the tree is never
+  // read, so it is never reviewed, and an exempt NAME must not hide it (a link called
+  // check-pr-review.mjs pointing at a file with a planted secret used to pass). Passing it
+  // quietly would let any file be smuggled past the gate behind a link, so it is a
+  // finding: the gate fails loudly and the author replaces the link with the file.
+  if (symlinkOutside(relPath, root)) {
+    return [{
+      category: "security",
+      line: 0,
+      msg: "symlink to a path outside the repository: not read, so not reviewed. Replace it with the file itself",
+    }];
+  }
   // The gate's own files hold its patterns and its deliberate secret-shaped
   // fixtures, so they are exempt by exact name, and nothing else is.
   if (relPath.endsWith("check-pr-review.mjs") || relPath.endsWith("check-pr-review.test.ts") ||
@@ -164,17 +176,6 @@ export function auditFile(relPath, root = process.cwd()) {
   const testNamed = isTestFile(relPath);
   const findings = [];
   if (!existsSync(relPath)) return findings;
-  // A link that leaves the tree is never read, so it is never reviewed. Passing it
-  // quietly would let any file be smuggled past the gate behind a link, so it is a
-  // finding: the gate fails loudly and the author replaces the link with the file.
-  if (symlinkOutside(relPath, root)) {
-    findings.push({
-      category: "security",
-      line: 0,
-      msg: "symlink to a path outside the repository: not read, so not reviewed. Replace it with the file itself",
-    });
-    return findings;
-  }
 
   let content = "";
   try {
