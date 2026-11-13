@@ -15,7 +15,7 @@ One Next.js app serving two audiences out of one codebase and one database.
 
 ```
                     ┌─────────────────────────────┐
-      web visitor ─▶│  35 non-team pages          │
+      web visitor ─▶│  36 non-team pages          │
                     │  /  /program  /pitch  ...   │──┐
                     └─────────────────────────────┘  │
                                                      │   ┌──────────────┐
@@ -76,7 +76,7 @@ as their own job, so a failure in one of them cannot hide the others.
 ```
 src/
   app/
-    (35 non-team pages)     the festival site, plus the private /backstage/<code> sheets
+    (36 non-team pages)     the festival site, plus the private /backstage/<code> sheets
     team/                   the dashboard, behind a session
     api/                    43 route handlers
       events/[slug]/lineup  public lineup, consumed by the mobile app
@@ -231,8 +231,8 @@ the exact failure this repo now guards against.
 
 **The token gap, partly closed.** The brand tokens now live in a Tailwind v4
 `@theme` block in `src/app/globals.css` (`paper`, `ink`, `red`, `gold`, `denim`,
-`olive`), and 72 of 110 `.tsx` files use them. The rest still hardcode hex as Tailwind
-arbitrary values (`bg-[#0a1628]`): 422 of them across 34 of 110 `.tsx` files, as
+`olive`), and 74 of 112 `.tsx` files use them. The rest still hardcode hex as Tailwind
+arbitrary values (`bg-[#0a1628]`): 422 of them across 34 of 112 `.tsx` files, as
 of 2026-10-12. [`BRAND-MIGRATION.md`](./BRAND-MIGRATION.md) has the original
 measurement.
 

@@ -61,6 +61,7 @@ const PAGES = [
   ['meetings', '/meetings'],
   ['musicians', '/musicians'],
   ['rider', '/musicians/rider'],
+  ['musicians-submit', '/musicians/submit'],
   ['partners', '/partners'],
   ['pitch', '/pitch'],
   ['press', '/press'],

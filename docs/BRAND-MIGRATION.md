@@ -31,8 +31,8 @@ no token layer to absorb it.** Most of that is now behind us.
 
 | | Measured 2026-08-22 | Measured now |
 |---|---|---|
-| `.tsx` files in `src/` | 96 | 110 |
-| Files carrying brand colour | 77 of 96 | **34 of 110** |
+| `.tsx` files in `src/` | 96 | 112 |
+| Files carrying brand colour | 77 of 96 | **34 of 112** |
 | Hardcoded brand hexes | 1,067 | **422** |
 | Light-on-dark utilities that break on a paper ground | 1,297 | **597** |
 | **Total edit sites** | ~2,364 | **~1,019** |
@@ -87,7 +87,7 @@ shift - it inverted.
 
 | Surface | Files | Hexes | Notes |
 |---|---|---|---|
-| **Public site** (`src/app/**`, outside `/team`) | 50 | **0** | On tokens by name. Nothing left to migrate |
+| **Public site** (`src/app/**`, outside `/team`) | 52 | **0** | On tokens by name. Nothing left to migrate |
 | **Team dashboard** (`src/app/team/*`) | 42 | **422** | Internal. Nobody outside the team sees it |
 | Other brand surfaces | - | - | `src/app/icon.svg`, `src/app/opengraph-image.tsx` |
 
