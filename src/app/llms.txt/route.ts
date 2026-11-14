@@ -87,7 +87,7 @@ Every car heading to Acadia National Park passes through. Downtown is newly on t
 - https://zaostock.com/sponsor - who backed 2026, who we are, a contact line for a future edition
 - https://zaostock.com/meetings - how to reach the team
 - https://zaostock.com/build - the builder kit: five things the festival needs built and how to show them live
-- https://zaostock.com/musicians - for musicians; the way in is email, there is no submission form
+- https://zaostock.com/musicians - for musicians; submit music any time at /musicians/submit (open all year, no closing date)
 - https://zaostock.com/artists - lineup directory and artist profiles
 - https://zaostock.com/volunteer - the volunteer sign-up sheet for ZAOstock 2027, reopened 2026-10-08; place and times not set yet, people email to put their name down (/apply stays closed)
 - https://zaostock.com/afterparty - the after-party at Black Moon, with Black Moon's flyer

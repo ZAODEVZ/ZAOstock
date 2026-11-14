@@ -27,7 +27,7 @@ export const FORM_POLICY: Record<FormSurface, FormPolicy> = {
   volunteer: 'form',
   ideas: 'form',
   rsvp: 'form',
-  'musician-submission': 'email',
+  'musician-submission': 'form',
   rider: 'email',
 };
 

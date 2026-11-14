@@ -17,8 +17,8 @@ describe('form policy', () => {
     expect(FORM_POLICY.rsvp).toBe('form');
   });
 
-  it('sends the music intakes to email', () => {
-    expect(FORM_POLICY['musician-submission']).toBe('email');
+  it('music submissions are a form again (12 Nov 2026); the rider stays email', () => {
+    expect(FORM_POLICY['musician-submission']).toBe('form');
     expect(FORM_POLICY.rider).toBe('email');
   });
 
@@ -31,9 +31,9 @@ describe('form policy', () => {
     for (const s of SURFACES) expect(surfaceIsLive(FORM_POLICY[s], false)).toBe(false);
   });
 
-  it('renders exactly the three form surfaces once the database is up', () => {
+  it('renders exactly the four form surfaces once the database is up', () => {
     const live = SURFACES.filter((s) => surfaceIsLive(FORM_POLICY[s], true));
-    expect(live).toEqual(['volunteer', 'ideas', 'rsvp']);
+    expect(live).toEqual(['volunteer', 'ideas', 'rsvp', 'musician-submission']);
   });
 
   it('wires the shipped helper to the same rule as the flag it reads', () => {
