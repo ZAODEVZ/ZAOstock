@@ -18,11 +18,11 @@
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
-    "@supabase/supabase-js": "^2.119.0",
-    "@tiptap/extension-link": "^3.33.1",
-    "@tiptap/extension-placeholder": "^3.33.1",
-    "@tiptap/react": "^3.33.1",
-    "@tiptap/starter-kit": "^3.33.1",
+    "@supabase/supabase-js": "^2.119.2",
+    "@tiptap/extension-link": "^3.34.0",
+    "@tiptap/extension-placeholder": "^3.34.0",
+    "@tiptap/react": "^3.34.0",
+    "@tiptap/starter-kit": "^3.34.0",
     "@vercel/analytics": "^2.0.1",
     "iron-session": "^9.1.0",
     "next": "^16.4.6",
@@ -34,12 +34,12 @@
     "remark-gfm": "^4.0.0",
     "sharp": "^0.35.5",
     "tiptap-markdown": "^0.9.0",
-    "viem": "^2.57.19",
+    "viem": "^2.58.2",
     "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
-    "@playwright/test": "^1.65.0",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
@@ -48,10 +48,10 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.4.6",
     "playwright": "^1.56.0",
-    "postcss": "^8.5.32",
+    "postcss": "^8.5.33",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.6.0",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.1"
   },
   "overrides": {
     "postcss": "$postcss"
